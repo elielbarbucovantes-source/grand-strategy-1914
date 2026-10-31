@@ -6,7 +6,7 @@
 > **Décideur :** Propriétaire du projet (arbitrage attendu)
 > **Remplace :** aucun
 > **Remplacé par :** aucun
-> **Documents liés :** [design-review-v0.1.md](../design-review-v0.1.md) · [gameplay/rules.md](../gameplay/rules.md) · [military/strategic-warfare.md](../military/strategic-warfare.md) · [military/tactical-battles.md](../military/tactical-battles.md) · [architecture/overview.md](../architecture/overview.md)
+> **Documents liés :** [design-review-v0.1.md](../design-review-v0.1.md) · [arbitrage-t029-temps-strategique-tactique.md](arbitrage-t029-temps-strategique-tactique.md) · [gameplay/rules.md](../gameplay/rules.md) · [military/strategic-warfare.md](../military/strategic-warfare.md) · [military/tactical-battles.md](../military/tactical-battles.md) · [architecture/overview.md](../architecture/overview.md)
 
 ---
 
@@ -123,7 +123,7 @@ Cette recommandation ne devient une décision qu'après validation du propriéta
 
 ## 7. État
 
-`proposé`. **Ne vaut pas décision.** Le propriétaire doit arbitrer C-01, C-02, C-04, C-15 et C-17 dans [design-review-v0.1.md](../design-review-v0.1.md).
+`proposé`. **Ne vaut pas décision.** Le propriétaire doit arbitrer C-01, C-02, C-04, C-15 et C-17 dans [design-review-v0.1.md](../design-review-v0.1.md). Le dossier [arbitrage-t029-temps-strategique-tactique.md](arbitrage-t029-temps-strategique-tactique.md) rassemble les options, les scénarios cohérents et la fiche de décision ; il ne tranche rien.
 
 ## 8. Suivi
 

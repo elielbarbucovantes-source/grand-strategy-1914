@@ -84,6 +84,7 @@ required_files=(
   docs/decisions/0003-report-du-choix-de-pile-technique.md
   docs/decisions/0004-adoption-du-document-fondateur.md
   docs/decisions/0005-integration-strategique-tactique.md
+  docs/decisions/arbitrage-t029-temps-strategique-tactique.md
   scripts/check-infrastructure.sh
   src/README.md
   tests/README.md

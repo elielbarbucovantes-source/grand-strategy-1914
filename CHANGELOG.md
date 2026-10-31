@@ -23,6 +23,7 @@ Le projet ne contient encore **aucune version jouable**. La version `0.1.0` corr
 - **Décisions** : D-027 (douze caractéristiques nationales), D-028 (colonies simplifiées, Allemagne sans empire colonial exploitable), D-029 (ambitions initiales non contraignantes).
 - **Tâches de suivi** : T-029 (arbitrage stratégique/tactique), T-030 (validation du cahier des charges), T-031 (alignement documentaire), T-032 (modélisation des profils), T-033 (relations et traités initiaux), T-034 (évolution des caractéristiques).
 - **Nom officiel du jeu** : *Grand Strategy-1914*, arrêté par le propriétaire le 2026-10-31 (D-030). Il remplace la dénomination provisoire `GrandStrategy`, qui ne subsiste que comme nom du répertoire Git.
+- **Dossier d'arbitrage T-029** : `docs/decisions/arbitrage-t029-temps-strategique-tactique.md` rassemble cinq décisions (C-01, C-02, C-04, C-15, C-17), trois scénarios cohérents et une fiche de décision. **Document de travail** : il ne vaut pas décision et ne tranche aucune tension.
 
 ### Changed
 

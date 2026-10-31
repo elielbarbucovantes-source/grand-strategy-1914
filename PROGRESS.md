@@ -1,7 +1,7 @@
 # PROGRESS.md — Tableau de bord permanent
 
-> **Version :** 0.2.3
-> **Dernière mise à jour :** 2026-10-31
+> **Version :** 0.2.4
+> **Dernière mise à jour :** 2026-11-01
 > **Dernier agent intervenu :** OpenCode
 > **Phase actuelle :** Phase 1 — Cadrage produit (en cours)
 > **Prochaine phase :** À définir après validation du cahier des charges (T-030)
@@ -18,8 +18,8 @@
 | Avancement des fonctionnalités de jeu | **0 fonctionnalité terminée** |
 | Backlog fonctionnel de jeu | **Non défini** : aucun pourcentage global ne peut être calculé honnêtement |
 | Livrables d'infrastructure | **2 / 2 vérifiés** (INF-001, INF-002) |
-| Livrables de conception | **3 terminés** (T-019, T-031, T-035) · **1 partiel** (T-020) |
-| Dernière mise à jour | 2026-10-31 |
+| Livrables de conception | **3 terminés** (T-019, T-031, T-035) · **1 partiel** (T-020) · **1 dossier d'arbitrage préparé** (T-029, non tranché) |
+| Dernière mise à jour | 2026-11-01 |
 | Dernier agent intervenu | OpenCode |
 | Stabilité du projet | **Stable sur le fond** : aucun code exécutable, aucune décision technique, documentation alignée et vérifiée. Travail documentaire consolidé sur `main`. |
 | Dépôt Git | Initialisé ; `main` = `e20bf90` (infrastructure, document fondateur, alignement et consolidation). Aucun remote. Nom officiel du jeu : *Grand Strategy-1914*. |
@@ -83,6 +83,15 @@
 
 ## C. Travaux en cours
 
+### T-029 — Dossier d'arbitrage du temps stratégique et tactique
+
+- **Responsable :** OpenCode (préparation du dossier) — **décision réservée au propriétaire**
+- **Date de début :** 2026-11-01
+- **Fichiers concernés :** `docs/decisions/arbitrage-t029-temps-strategique-tactique.md` (nouveau), `docs/decisions/0005-integration-strategique-tactique.md`, `docs/decisions/README.md`, `docs/README.md`, `PROGRESS.md`, `CHANGELOG.md`, `scripts/check-infrastructure.sh`
+- **Dépendances :** Aucune. Le dossier s'appuie sur les tensions C-01, C-02, C-04, C-15 et C-17 de `docs/design-review-v0.1.md`.
+- **État actuel :** Dossier rédigé ; **aucune option n'est tranchée**. La fiche de décision attend la réponse du propriétaire.
+- **Prochaine étape :** le propriétaire remplit la fiche de décision (§ 8 du dossier) ou répond aux cinq questions D1 à D5. L'agent consignera ensuite la décision dans un ADR-0006 et mettra à jour ADR-0005.
+
 ### T-035 — Entériner le nom officiel du jeu
 
 - **Responsable :** OpenCode
@@ -118,7 +127,7 @@ La réservation T-019 a été clôturée par OpenCode le 2026-10-31 après véri
 | ID | Tâche | Description | Dépendances | Statut |
 |---|---|---|---|---|
 | T-030 | Valider le cahier des charges détaillé | Le propriétaire valide le document qui autorisera l'implémentation des mécaniques : périmètre MVP (Q-002), valeurs, seuils et cas limites. | T-020 à T-029 | **À faire — propriétaire** ; bloque tout développement |
-| T-029 | Arbitrer l'intégration stratégique/tactique | Trancher C-01, C-02, C-04, C-15 et C-17 ; accepter, modifier ou rejeter ADR-0005. | Aucune | **À faire — propriétaire** ; ADR-0005 proposé |
+| T-029 | Arbitrer l'intégration stratégique/tactique | Trancher C-01, C-02, C-04, C-15 et C-17 ; accepter, modifier ou rejeter ADR-0005. | Aucune | **Dossier préparé le 2026-11-01** — décision propriétaire attendue (voir `docs/decisions/arbitrage-t029-temps-strategique-tactique.md`) |
 | T-021 | Économie, industrie et niveau de vie | Définir les trois ressources, la production, le budget, l'industrie, la population et l'indicateur de niveau de vie. | T-020, Q-028 | **À faire — agent** ; bloqué par Q-028 |
 | T-022 | Règles diplomatiques | Spécifier types d'accords, clauses contraignantes, sanctions, crises, cycle de vie et calendrier (C-16). | T-020, T-021 | **À faire — agent** |
 | T-026 | Tours, résolution, victoire et visibilité | Définir phases, verrouillage, résolution des conflits d'ordres, seuils de victoire (C-08) et fog of war (C-06). | T-021 à T-025, T-029 | **À faire — agent + propriétaire** |
@@ -206,7 +215,7 @@ Cinq prochaines actions recommandées, dans l'ordre :
 | # | Action | Responsable | Dépendances | Pourquoi maintenant |
 |---|---|---|---|---|
 | 1 | **T-030** — Valider le cahier des charges | Propriétaire | T-020 à T-029 | Conditionne tout développement ; sans lui, aucune mécanique ne peut être implémentée. |
-| 2 | **T-029** — Arbitrer le temps stratégique/tactique | Propriétaire | Aucune | Bloque les règles, l'architecture et l'interface ; ADR-0005 est prêt à être accepté ou rejeté. |
+| 2 | **T-029** — Arbitrer le temps stratégique/tactique | Propriétaire | Aucune | Bloque les règles, l'architecture et l'interface. **Dossier prêt** : cinq décisions (D1 à D5), trois scénarios, fiche à remplir dans `docs/decisions/arbitrage-t029-temps-strategique-tactique.md`. |
 | 3 | **Committer** le travail documentaire | OpenCode ou agent suivant | Revue du diff | **Fait le 2026-10-31** (commit `a2e0940`, L-007 résolu). |
 | 4 | **T-021** — Économie, industrie et niveau de vie | Agent | T-020, Q-028 | Deuxième priorité validée par PROJECT.md. Bloqué tant que Q-028 n'est pas tranchée. |
 | 5 | **T-022** — Règles diplomatiques | Agent | T-020, T-021 | Troisième priorité validée ; peut avancer en parallèle de T-021 sur les parties non chiffrées. |
@@ -225,6 +234,7 @@ Cinq prochaines actions recommandées, dans l'ordre :
 | 2026-10-31 | OpenCode | Clôture de session : commit du travail documentaire sur `docs/fiche-maitresse-v0.2`, vérification finale après réécriture de PROGRESS.md, résolution de L-007 et mise à jour du tableau de bord. | `PROGRESS.md` (journal et état) ; commit `a2e0940` portant 36 fichiers (racine, `docs/`, `scripts/`) | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `git status` propre avant commit ; `git commit` → `a2e0940` (36 fichiers, +5409/−1334). | Terminé |
 | 2026-10-31 | OpenCode | Consolidation demandée par le propriétaire : correctif du test Git du script (reconnaissance d'un worktree), puis fusion fast-forward de `docs/fiche-maitresse-v0.2` dans `main`. La branche `docs/fiche-maitresse-opencode` (travail parallèle isolé, commit `ca0d4e2`) est entièrement reprise par la branche consolidée ; elle reste archivée, non fusionnée. | `scripts/check-infrastructure.sh`, `CHANGELOG.md`, `PROGRESS.md` | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `git merge --ff-only` — succès, `main` avancée. | Terminé |
 | 2026-10-31 | OpenCode | T-035 : enregistrement du nom officiel du jeu, **Grand Strategy-1914**, décidé par le propriétaire. Ajout de D-030, clôture de Q-001, alignement de l'en-tête de `PROJECT.md` (v0.2.3), du titre de `README.md`, du `CHANGELOG.md` et du tableau de bord. Aucune règle de jeu touchée ; aucun renommage du répertoire Git. | `PROJECT.md`, `README.md`, `CHANGELOG.md`, `PROGRESS.md` | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `git diff --check` — aucune erreur d'espacement ; `git status` — périmètre limité aux quatre fichiers. | Terminé |
+| 2026-11-01 | OpenCode | T-029 : préparation du dossier d'arbitrage du temps stratégique et tactique. Cinq décisions (D1 à D5) documentées avec options, coûts et risques ; contraintes transverses ; matrice de compatibilité ; trois scénarios cohérents (S1 à S3) ; propositions pour huit questions secondaires ; impacts documentaires ; fiche de décision à remplir par le propriétaire. **Aucune tension tranchée, ADR-0005 toujours proposé.** | `docs/decisions/arbitrage-t029-temps-strategique-tactique.md` (nouveau), `docs/decisions/0005-integration-strategique-tactique.md`, `docs/decisions/README.md`, `docs/README.md`, `PROGRESS.md`, `CHANGELOG.md`, `scripts/check-infrastructure.sh` | `bash scripts/check-infrastructure.sh` — 84 vérifications, 0 échec, exit 0 ; vérification manuelle des liens et de la fiche de décision. | Dossier terminé ; décision propriétaire en attente (T-029 ouverte) |
 
 > Le journal est append-only. Ne jamais supprimer ni réécrire une ligne existante. Une correction s'ajoute avec une référence à la ligne corrigée.
 
@@ -240,3 +250,4 @@ Cinq prochaines actions recommandées, dans l'ordre :
 | 2026-10-31 | OpenCode | Version 0.2.2 : correctif du script pour les worktrees et consolidation sur `main` (fast-forward). |
 | 2026-10-31 | OpenCode | Version 0.2.1 : commit `a2e0940`, résolution de L-007, journal de clôture de session. |
 | 2026-10-31 | OpenCode | Version 0.2.3 : nom officiel *Grand Strategy-1914* (D-030), clôture de Q-001, livrable T-035. |
+| 2026-11-01 | OpenCode | Version 0.2.4 : dossier d'arbitrage T-029 préparé (cinq décisions, trois scénarios, fiche de décision) ; ADR-0005 toujours proposé. |

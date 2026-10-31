@@ -31,6 +31,7 @@ Ce dossier contient la documentation de conception et de gouvernance du projet. 
 | [decisions/0003-report-du-choix-de-pile-technique.md](decisions/0003-report-du-choix-de-pile-technique.md) | Report du choix de pile technique. |
 | [decisions/0004-adoption-du-document-fondateur.md](decisions/0004-adoption-du-document-fondateur.md) | Adoption du document fondateur comme source de conception (accepté, avec réserve sur le cahier des charges). |
 | [decisions/0005-integration-strategique-tactique.md](decisions/0005-integration-strategique-tactique.md) | Intégration du temps stratégique et tactique (**proposé**, ne vaut pas décision). |
+| [decisions/arbitrage-t029-temps-strategique-tactique.md](decisions/arbitrage-t029-temps-strategique-tactique.md) | Dossier d'arbitrage T-029 : options, scénarios et fiche de décision (**document de travail**, ne vaut pas décision). |
 
 ### Architecture
 
