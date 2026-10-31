@@ -1,6 +1,6 @@
 # PROGRESS.md — Tableau de bord permanent
 
-> **Version :** 0.2.0
+> **Version :** 0.2.1
 > **Dernière mise à jour :** 2026-10-31
 > **Dernier agent intervenu :** OpenCode
 > **Phase actuelle :** Phase 1 — Cadrage produit (en cours)
@@ -21,8 +21,8 @@
 | Livrables de conception | **2 terminés** (T-019, T-031) · **1 partiel** (T-020) |
 | Dernière mise à jour | 2026-10-31 |
 | Dernier agent intervenu | OpenCode |
-| Stabilité du projet | **Stable sur le fond** : aucun code exécutable, aucune décision technique, documentation alignée et vérifiée. **Travail non commité** sur la branche `docs/fiche-maitresse-v0.2`. |
-| Dépôt Git | Initialisé ; branche courante `docs/fiche-maitresse-v0.2` ; un seul commit publié (`459375a`) ; travail en cours non commité. |
+| Stabilité du projet | **Stable sur le fond** : aucun code exécutable, aucune décision technique, documentation alignée et vérifiée. Travail documentaire commité sur `docs/fiche-maitresse-v0.2`. |
+| Dépôt Git | Initialisé ; branche courante `docs/fiche-maitresse-v0.2` ; commits `459375a` (infrastructure) puis `a2e0940` (document fondateur et alignement). Aucun remote. |
 
 ### Méthode de calcul de l'avancement
 
@@ -39,7 +39,7 @@
 - Aucun code exécutable : aucun bug logiciel possible à ce stade.
 - Documentation alignée sur la fiche maîtresse et vérifiée par script (structure, liens, empreinte du document fondateur).
 - Aucune décision technique de jeu prise ; ADR-0005 est **proposé**, pas accepté.
-- Travail non commité : voir L-007.
+- Travail documentaire commité (`a2e0940`) ; L-007 résolu.
 - Risque principal : démarrer le développement avant d'avoir tranché le périmètre et le cahier des charges (T-030).
 
 ---
@@ -181,7 +181,7 @@ Les anciennes tâches T-001 à T-018 ne sont plus suivies séparément : elles o
 | L-004 | L'identité formelle du propriétaire et le canal d'arbitrage ne sont pas définis. | Moyenne | Information manquante | Ouvert — voir Q-025 | Propriétaire |
 | L-005 | Aucun glossaire commun n'existe encore ; certains termes peuvent être interprétés différemment. | Faible | Cadrage initial | Ouvert | À assigner |
 | L-006 | `PROGRESS.md` ne reflétait pas l'état décrit par le `CHANGELOG.md` : T-019 était listée « en cours » et les tâches T-020 à T-031 n'apparaissaient pas toutes. | Moyenne | Mises à jour séquentielles non clôturées | **Résolu le 2026-10-31** par la présente version 0.2.0 | OpenCode |
-| L-007 | Le travail de la branche `docs/fiche-maitresse-v0.2` n'est pas encore commité : une perte du répertoire de travail perdrait la réorganisation, les réécritures et les nouveaux documents. | Haute tant que non commité | Commit non effectué | Ouvert — à corriger avant clôture de session | OpenCode |
+| L-007 | Le travail de la branche `docs/fiche-maitresse-v0.2` n'est pas encore commité : une perte du répertoire de travail perdrait la réorganisation, les réécritures et les nouveaux documents. | Haute tant que non commité | Commit non effectué | **Résolu le 2026-10-31** par le commit `a2e0940` | OpenCode |
 | L-008 | Aucun système de jeu n'est spécifié ni testable : les documents sont des cadrages alignés, pas des spécifications. | Moyenne | Phase 1 | Connu, assumé | Propriétaire / agents |
 | L-009 | Le document fondateur contient des tensions internes non tranchées (C-01 à C-18). | Haute | Document fondateur v0.1 | Connu — voir `docs/design-review-v0.1.md` | Propriétaire |
 
@@ -199,7 +199,7 @@ Cinq prochaines actions recommandées, dans l'ordre :
 |---|---|---|---|---|
 | 1 | **T-030** — Valider le cahier des charges | Propriétaire | T-020 à T-029 | Conditionne tout développement ; sans lui, aucune mécanique ne peut être implémentée. |
 | 2 | **T-029** — Arbitrer le temps stratégique/tactique | Propriétaire | Aucune | Bloque les règles, l'architecture et l'interface ; ADR-0005 est prêt à être accepté ou rejeté. |
-| 3 | **Committer** le travail documentaire | OpenCode ou agent suivant | Revue du diff | Le travail non commité est vulnérable (L-007). |
+| 3 | **Committer** le travail documentaire | OpenCode ou agent suivant | Revue du diff | **Fait le 2026-10-31** (commit `a2e0940`, L-007 résolu). |
 | 4 | **T-021** — Économie, industrie et niveau de vie | Agent | T-020, Q-028 | Deuxième priorité validée par PROJECT.md. Bloqué tant que Q-028 n'est pas tranchée. |
 | 5 | **T-022** — Règles diplomatiques | Agent | T-020, T-021 | Troisième priorité validée ; peut avancer en parallèle de T-021 sur les parties non chiffrées. |
 
@@ -214,6 +214,7 @@ Cinq prochaines actions recommandées, dans l'ordre :
 | 2026-10-31 | OpenCode | Création de l'infrastructure documentaire initiale : documents de référence, documentation thématique, ADR 0001–0003, script de vérification, initialisation Git. | `AGENTS.md`, `PROJECT.md`, `PROGRESS.md`, `README.md`, `CHANGELOG.md`, `CLAUDE.md`, `.gitignore`, `.env.example`, `docs/**`, `scripts/check-infrastructure.sh`, `src/README.md`, `tests/README.md`, `assets/README.md` | `./scripts/check-infrastructure.sh` — 67 vérifications, 0 échec (après correction d'un lien cassé) ; `git status` — vérification avant commit. | Terminé |
 | 2026-10-31 | OpenCode | Intégration du dossier des puissances jouables fourni par le propriétaire : profils des sept nations, douze caractéristiques, ambitions, colonies, comparaison, comportement des IA et annexe d'intégration (D-027 à D-029, Q-027 à Q-031). Mise à jour des index et des liens, correction des chemins de documentation déplacés, ajout des nouveaux documents au script de vérification. | `docs/nations/nations.md` (nouveau), `PROJECT.md`, `PROGRESS.md`, `CHANGELOG.md`, `README.md`, `docs/README.md`, `AGENTS.md`, `docs/architecture/overview.md`, `docs/development/testing-strategy.md`, `scripts/check-infrastructure.sh` | `bash scripts/check-infrastructure.sh` — 76 vérifications, 0 échec, exit 0 ; `git diff --stat` et `git status` — vérification du périmètre. | Terminé |
 | 2026-10-31 | OpenCode | Gel du document fondateur, revue de conception, ADR-0004 (accepté) et ADR-0005 (proposé), réorganisation `docs/ai`, `docs/military`, `docs/economy`, alignement de 22 documents thématiques sur les décisions D-001 à D-029, mise à jour des index, de `PROJECT.md` v0.2.2, du `CHANGELOG.md` et du script (empreinte SHA-256). Clôture de T-019 ; T-020 laissée **partielle** ; T-021 à T-034 documentées ; tâches T-001 à T-018 archivées avec leur remplacement. | `docs/founding-document-v0.1.md`, `docs/design-review-v0.1.md`, `docs/decisions/0004-adoption-du-document-fondateur.md`, `docs/decisions/0005-integration-strategique-tactique.md`, `docs/README.md`, `docs/decisions/README.md`, `docs/gameplay/rules.md`, `docs/gameplay/map-system.md`, `docs/military/strategic-warfare.md`, `docs/military/tactical-battles.md`, `docs/economy/economy-system.md`, `docs/technology/research-system.md`, `docs/intelligence/intelligence-system.md`, `docs/nations/regimes.md`, `docs/diplomacy/*.md`, `docs/architecture/*.md`, `docs/ai/*.md`, `PROJECT.md`, `PROGRESS.md`, `README.md`, `CHANGELOG.md`, `AGENTS.md`, `scripts/check-infrastructure.sh` | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `sha256sum docs/founding-document-v0.1.md` — empreinte conforme ; `git status` et `git diff` — périmètre examiné. | Partiel (T-020) / Terminé (reste) ; commit non effectué |
+| 2026-10-31 | OpenCode | Clôture de session : commit du travail documentaire sur `docs/fiche-maitresse-v0.2`, vérification finale après réécriture de PROGRESS.md, résolution de L-007 et mise à jour du tableau de bord. | `PROGRESS.md` (journal et état) ; commit `a2e0940` portant 36 fichiers (racine, `docs/`, `scripts/`) | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `git status` propre avant commit ; `git commit` → `a2e0940` (36 fichiers, +5409/−1334). | Terminé |
 
 > Le journal est append-only. Ne jamais supprimer ni réécrire une ligne existante. Une correction s'ajoute avec une référence à la ligne corrigée.
 
@@ -226,3 +227,4 @@ Cinq prochaines actions recommandées, dans l'ordre :
 | 2026-10-31 | OpenCode | Création initiale. |
 | 2026-10-31 | OpenCode | Version 0.1.1 : phase 1 en cours, livrable de conception T-020, tâches T-032 à T-034, constat L-006, journal d'intégration du dossier des nations. |
 | 2026-10-31 | OpenCode | Version 0.2.0 : clôture de T-019, ajout de T-021 à T-034, archivage de T-001 à T-018, constats L-007 à L-009, résolution de L-006, journal d'alignement documentaire. |
+| 2026-10-31 | OpenCode | Version 0.2.1 : commit `a2e0940`, résolution de L-007, journal de clôture de session. |

@@ -30,7 +30,7 @@ Le projet ne contient encore **aucune version jouable**. La version `0.1.0` corr
 - `PROJECT.md` passe en version 0.2.2 : tableau de correspondance documentaire mis à jour, ajout du document fondateur, de la revue de conception et des ADR-0004/0005. Aucune décision de jeu ajoutée.
 - `README.md` et `docs/README.md` : index enrichi (nations, régimes, militaire, économie, technologie, renseignement, IA, cadre de conception) et chemins alignés sur l'arborescence réelle.
 - `AGENTS.md` : document fondateur et revue de conception ajoutés aux documents de référence ; ordre de lecture obligatoire étendu.
-- `PROGRESS.md` passe en version 0.2.0 : phase 1 en cours, T-019 clôturée, backlog T-020 à T-034, constats mis à jour, journal complété.
+- `PROGRESS.md` passe en version 0.2.0 puis 0.2.1 (clôture du commit) : phase 1 en cours, T-019 clôturée, backlog T-020 à T-034, constats mis à jour, journal complété et L-007 résolu.
 - `scripts/check-infrastructure.sh` : fichiers obligatoires alignés sur la réorganisation, vérification de l'empreinte SHA-256 du document fondateur.
 
 ### Fixed
