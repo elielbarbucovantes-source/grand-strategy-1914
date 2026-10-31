@@ -1,9 +1,11 @@
-# GrandStrategy — nom provisoire
+# Grand Strategy-1914
 
 > Jeu de grande stratégie géopolitique et militaire à partir de l'Europe de 1914, combinant négociation à la Diplomacy, gestion industrielle et militaire à la Hearts of Iron IV, batailles tactiques indépendantes et dirigeants IA autonomes capables de négocier, mentir et trahir.
 
 **État actuel : Phase 1 — conception. Aucun code de jeu, aucun moteur, aucune interface.**
-La fiche maîtresse du jeu est intégrée dans [PROJECT.md](PROJECT.md). Le nom officiel, le périmètre du MVP et la pile technique ne sont pas encore décidés.
+La fiche maîtresse du jeu est intégrée dans [PROJECT.md](PROJECT.md). Le périmètre du MVP et la pile technique ne sont pas encore décidés.
+
+> **Nom :** *Grand Strategy-1914* est le titre officiel du jeu (décision du propriétaire, D-030 dans [PROJECT.md](PROJECT.md) § 20.1). Le répertoire Git de travail s'appelle encore `GrandStrategy` ; ce nom technique n'est pas le titre du produit.
 
 ---
 
@@ -19,7 +21,7 @@ Le joueur dirige une nation européenne en 1914. Le monde ne tourne pas autour d
 
 | Élément | État |
 |---|---|
-| Vision et périmètre | Fiche maîtresse v0.1 intégrée et dossier des nations (PROJECT.md v0.2.2) |
+| Vision et périmètre | Fiche maîtresse v0.1 intégrée et dossier des nations (PROJECT.md v0.2.3) |
 | Règles du jeu | Cadre validé ; spécifications détaillées à écrire |
 | Nations et carte | Profils initiaux des sept puissances intégrés ; petites puissances et carte à définir |
 | Architecture technique | Non choisie (étude requise) |

@@ -22,6 +22,7 @@ Le projet ne contient encore **aucune version jouable**. La version `0.1.0` corr
 - **Dossier des puissances jouables** : `docs/nations/nations.md` fixe les profils initiaux des sept nations en 1914 — identité, douze caractéristiques nationales, forces, faiblesses, armées, marine, économie, diplomatie, ambitions et possessions — avec une annexe d'intégration et de questions ouvertes (Q-027 à Q-031).
 - **Décisions** : D-027 (douze caractéristiques nationales), D-028 (colonies simplifiées, Allemagne sans empire colonial exploitable), D-029 (ambitions initiales non contraignantes).
 - **Tâches de suivi** : T-029 (arbitrage stratégique/tactique), T-030 (validation du cahier des charges), T-031 (alignement documentaire), T-032 (modélisation des profils), T-033 (relations et traités initiaux), T-034 (évolution des caractéristiques).
+- **Nom officiel du jeu** : *Grand Strategy-1914*, arrêté par le propriétaire le 2026-10-31 (D-030). Il remplace la dénomination provisoire `GrandStrategy`, qui ne subsiste que comme nom du répertoire Git.
 
 ### Changed
 
@@ -32,6 +33,7 @@ Le projet ne contient encore **aucune version jouable**. La version `0.1.0` corr
 - `AGENTS.md` : document fondateur et revue de conception ajoutés aux documents de référence ; ordre de lecture obligatoire étendu.
 - `PROGRESS.md` passe en version 0.2.0 puis 0.2.1 (clôture du commit) : phase 1 en cours, T-019 clôturée, backlog T-020 à T-034, constats mis à jour, journal complété et L-007 résolu.
 - `scripts/check-infrastructure.sh` : fichiers obligatoires alignés sur la réorganisation, vérification de l'empreinte SHA-256 du document fondateur.
+- `PROJECT.md` passe en version 0.2.3 et `README.md` porte le titre *Grand Strategy-1914* : Q-001 est close, D-030 ajoutée. Aucune règle de jeu modifiée.
 
 ### Fixed
 

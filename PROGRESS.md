@@ -1,6 +1,6 @@
 # PROGRESS.md — Tableau de bord permanent
 
-> **Version :** 0.2.2
+> **Version :** 0.2.3
 > **Dernière mise à jour :** 2026-10-31
 > **Dernier agent intervenu :** OpenCode
 > **Phase actuelle :** Phase 1 — Cadrage produit (en cours)
@@ -18,11 +18,11 @@
 | Avancement des fonctionnalités de jeu | **0 fonctionnalité terminée** |
 | Backlog fonctionnel de jeu | **Non défini** : aucun pourcentage global ne peut être calculé honnêtement |
 | Livrables d'infrastructure | **2 / 2 vérifiés** (INF-001, INF-002) |
-| Livrables de conception | **2 terminés** (T-019, T-031) · **1 partiel** (T-020) |
+| Livrables de conception | **3 terminés** (T-019, T-031, T-035) · **1 partiel** (T-020) |
 | Dernière mise à jour | 2026-10-31 |
 | Dernier agent intervenu | OpenCode |
-| Stabilité du projet | **Stable sur le fond** : aucun code exécutable, aucune décision technique, documentation alignée et vérifiée. Travail documentaire commité sur `docs/fiche-maitresse-v0.2`. |
-| Dépôt Git | Initialisé ; branche courante `docs/fiche-maitresse-v0.2` ; commits `459375a` (infrastructure) puis `a2e0940` (document fondateur et alignement). Aucun remote. |
+| Stabilité du projet | **Stable sur le fond** : aucun code exécutable, aucune décision technique, documentation alignée et vérifiée. Travail documentaire consolidé sur `main`. |
+| Dépôt Git | Initialisé ; `main` = `e20bf90` (infrastructure, document fondateur, alignement et consolidation). Aucun remote. Nom officiel du jeu : *Grand Strategy-1914*. |
 
 ### Méthode de calcul de l'avancement
 
@@ -31,7 +31,7 @@
 - **Avancement infrastructure** = livrables d'infrastructure vérifiés / livrables d'infrastructure définis.
   Aujourd'hui : 2 / 2. Ce chiffre ne mesure **pas** l'avancement du jeu.
 - **Avancement conception** = livrables de conception terminés / livrables de conception identifiés.
-  Aujourd'hui : 2 terminés (T-019, T-031) et 1 partiel (T-020). Ce chiffre ne mesure **pas** un pourcentage du jeu.
+  Aujourd'hui : 3 terminés (T-019, T-031, T-035) et 1 partiel (T-020). Ce chiffre ne mesure **pas** un pourcentage du jeu.
 - Aucun pourcentage arbitraire, aucune estimation subjective.
 
 ### État de stabilité
@@ -68,6 +68,7 @@
 | T-019 | Intégration de la fiche maîtresse | `PROJECT.md` reprend la fiche maîtresse v0.1 (D-001 à D-026, questions tranchées, Q-026) puis le dossier des nations (D-027 à D-029, Q-027 à Q-031). Version 0.2.2. | 2026-10-31 | OpenCode | Relecture du document source ; contrôle des liens par `scripts/check-infrastructure.sh`. | Plusieurs décisions restent « à définir » dans la fiche elle-même. |
 | T-031 | Alignement de la documentation thématique | Réécriture ou alignement de 22 documents thématiques sur les décisions D-001 à D-029 ; ajout des documents tactiques, technologie, renseignement et régimes ; signalement des tensions C-01 à C-18. | 2026-10-31 | OpenCode | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 (voir journal). | Alignement de **cadrage** : aucun système n'est spécifié ni testé. Les valeurs chiffrées restent à définir. |
 | T-020 | Profils des sept puissances jouables | Intégration du dossier du propriétaire dans `docs/nations/nations.md` : identité, douze caractéristiques, forces, faiblesses, armées, économie, diplomatie, ambitions, colonies. | 2026-10-31 | OpenCode | Relecture du dossier source ; contrôle des liens par `scripts/check-infrastructure.sh` ; valeurs nationales non modifiées. | **Partiel** : petites puissances non traitées ; articulation chiffrée avec province/économie/armée non définie (Q-027 à Q-031) ; relations initiales non chiffrées. |
+| T-035 | Nom officiel du jeu | Le propriétaire arrête **Grand Strategy-1914** (D-030, Q-001 close). En-tête de `PROJECT.md`, titre de `README.md` et entrées de `CHANGELOG.md` alignés. | 2026-10-31 | OpenCode | `bash scripts/check-infrastructure.sh` (voir journal) ; relecture du diff. | Le répertoire Git reste `GrandStrategy` : le renommer casserait les chemins de worktree. Aucun renommage n'a été fait. |
 
 ### B.4 Décisions et revue de conception
 
@@ -82,9 +83,16 @@
 
 ## C. Travaux en cours
 
-**Aucune tâche réservée à ce jour.** La réservation T-019 a été clôturée par OpenCode le 2026-10-31 après vérification de son achèvement (voir journal).
+### T-035 — Entériner le nom officiel du jeu
 
-Aucun autre agent n'a réservé de fichier. Le prochain agent doit choisir une tâche dans la section D et l'annoncer ici avant de commencer.
+- **Responsable :** OpenCode
+- **Date de début :** 2026-10-31
+- **Fichiers concernés :** `PROJECT.md`, `PROGRESS.md`, `CHANGELOG.md`, `README.md`
+- **Dépendances :** Décision du propriétaire du 2026-10-31 : le jeu s'appelle **Grand Strategy-1914**.
+- **État actuel :** **Terminé** le 2026-10-31
+- **Prochaine étape :** Aucune. D-030 est la référence ; toute modification du nom devra être une nouvelle décision du propriétaire.
+
+La réservation T-019 a été clôturée par OpenCode le 2026-10-31 après vérification de son achèvement (voir journal). Aucun autre agent n'a réservé de fichier.
 
 ### Modèle d'entrée (à utiliser pour toute nouvelle tâche)
 
@@ -216,6 +224,7 @@ Cinq prochaines actions recommandées, dans l'ordre :
 | 2026-10-31 | OpenCode | Gel du document fondateur, revue de conception, ADR-0004 (accepté) et ADR-0005 (proposé), réorganisation `docs/ai`, `docs/military`, `docs/economy`, alignement de 22 documents thématiques sur les décisions D-001 à D-029, mise à jour des index, de `PROJECT.md` v0.2.2, du `CHANGELOG.md` et du script (empreinte SHA-256). Clôture de T-019 ; T-020 laissée **partielle** ; T-021 à T-034 documentées ; tâches T-001 à T-018 archivées avec leur remplacement. | `docs/founding-document-v0.1.md`, `docs/design-review-v0.1.md`, `docs/decisions/0004-adoption-du-document-fondateur.md`, `docs/decisions/0005-integration-strategique-tactique.md`, `docs/README.md`, `docs/decisions/README.md`, `docs/gameplay/rules.md`, `docs/gameplay/map-system.md`, `docs/military/strategic-warfare.md`, `docs/military/tactical-battles.md`, `docs/economy/economy-system.md`, `docs/technology/research-system.md`, `docs/intelligence/intelligence-system.md`, `docs/nations/regimes.md`, `docs/diplomacy/*.md`, `docs/architecture/*.md`, `docs/ai/*.md`, `PROJECT.md`, `PROGRESS.md`, `README.md`, `CHANGELOG.md`, `AGENTS.md`, `scripts/check-infrastructure.sh` | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `sha256sum docs/founding-document-v0.1.md` — empreinte conforme ; `git status` et `git diff` — périmètre examiné. | Partiel (T-020) / Terminé (reste) ; commit non effectué |
 | 2026-10-31 | OpenCode | Clôture de session : commit du travail documentaire sur `docs/fiche-maitresse-v0.2`, vérification finale après réécriture de PROGRESS.md, résolution de L-007 et mise à jour du tableau de bord. | `PROGRESS.md` (journal et état) ; commit `a2e0940` portant 36 fichiers (racine, `docs/`, `scripts/`) | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `git status` propre avant commit ; `git commit` → `a2e0940` (36 fichiers, +5409/−1334). | Terminé |
 | 2026-10-31 | OpenCode | Consolidation demandée par le propriétaire : correctif du test Git du script (reconnaissance d'un worktree), puis fusion fast-forward de `docs/fiche-maitresse-v0.2` dans `main`. La branche `docs/fiche-maitresse-opencode` (travail parallèle isolé, commit `ca0d4e2`) est entièrement reprise par la branche consolidée ; elle reste archivée, non fusionnée. | `scripts/check-infrastructure.sh`, `CHANGELOG.md`, `PROGRESS.md` | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `git merge --ff-only` — succès, `main` avancée. | Terminé |
+| 2026-10-31 | OpenCode | T-035 : enregistrement du nom officiel du jeu, **Grand Strategy-1914**, décidé par le propriétaire. Ajout de D-030, clôture de Q-001, alignement de l'en-tête de `PROJECT.md` (v0.2.3), du titre de `README.md`, du `CHANGELOG.md` et du tableau de bord. Aucune règle de jeu touchée ; aucun renommage du répertoire Git. | `PROJECT.md`, `README.md`, `CHANGELOG.md`, `PROGRESS.md` | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `git diff --check` — aucune erreur d'espacement ; `git status` — périmètre limité aux quatre fichiers. | Terminé |
 
 > Le journal est append-only. Ne jamais supprimer ni réécrire une ligne existante. Une correction s'ajoute avec une référence à la ligne corrigée.
 
@@ -230,3 +239,4 @@ Cinq prochaines actions recommandées, dans l'ordre :
 | 2026-10-31 | OpenCode | Version 0.2.0 : clôture de T-019, ajout de T-021 à T-034, archivage de T-001 à T-018, constats L-007 à L-009, résolution de L-006, journal d'alignement documentaire. |
 | 2026-10-31 | OpenCode | Version 0.2.2 : correctif du script pour les worktrees et consolidation sur `main` (fast-forward). |
 | 2026-10-31 | OpenCode | Version 0.2.1 : commit `a2e0940`, résolution de L-007, journal de clôture de session. |
+| 2026-10-31 | OpenCode | Version 0.2.3 : nom officiel *Grand Strategy-1914* (D-030), clôture de Q-001, livrable T-035. |

@@ -1,11 +1,11 @@
 # PROJECT.md — Document de référence du projet
 
-> **Version :** 0.2.2
+> **Version :** 0.2.3
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
-> **Source :** fiche maîtresse v0.1 et dossier des puissances jouables fournis par le propriétaire du projet le 2026-10-31.
+> **Source :** fiche maîtresse v0.1 et dossier des puissances jouables fournis par le propriétaire du projet le 2026-10-31 ; nom du jeu arrêté par le propriétaire le 2026-10-31.
 > **Statut global :** Phase 1 — conception. Aucun code de jeu n'existe. Aucune mécanique définitive n'est développée avant validation du cahier des charges.
-> **Nom du projet :** provisoire (`GrandStrategy`, nom du dossier). Le nom officiel reste **à définir**.
+> **Nom du jeu :** **Grand Strategy-1914** **[VALIDÉ]** (D-030, 2026-10-31). Le nom du répertoire Git reste `GrandStrategy` ; il ne conditionne pas le nom du produit.
 > **Propriétaire :** autorité finale du projet ; identité formelle et canal d'arbitrage **à documenter** (voir § 20.4, Q-025).
 
 ---
@@ -711,6 +711,7 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 | D-027 | Chaque puissance jouable possède douze caractéristiques nationales notées de 1 à 10, relatives aux sept puissances, représentant la situation initiale de 1914 et pouvant évoluer. | [docs/nations/nations.md](docs/nations/nations.md) § I |
 | D-028 | Les possessions coloniales sont représentées de manière simplifiée, sous forme de grandes régions impériales. L'Empire allemand est considéré comme n'ayant pas d'empire colonial exploitable, par simplification volontaire. | [docs/nations/nations.md](docs/nations/nations.md) § I.4, II.10 |
 | D-029 | Chaque puissance commence avec des ambitions initiales qui orientent l'IA sans l'enfermer : elles peuvent être abandonnées si la situation évolue. | [docs/nations/nations.md](docs/nations/nations.md) § II-XI |
+| D-030 | Le jeu s'appelle **Grand Strategy-1914**. Ce nom est le titre officiel du produit (interface, documentation, communication). Le nom du répertoire Git et des chemins de travail reste `GrandStrategy` par commodité technique. | Décision du propriétaire, 2026-10-31 |
 
 **Révision de D-001 (ancienne version 0.1.x) :** la formulation antérieure « jeu inspiré de webDiplomacy » est remplacée par la présente description, plus large. L'inspiration Diplomacy reste explicite.
 
@@ -734,12 +735,12 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 | Q-014 — conditions de victoire | Trois voies : territoriale, diplomatique, économique et sociale. Seuils à définir. | § 13 |
 | Q-015 — économie | Oui : trois ressources par territoire, industrie et budget. | § 9 |
 | Q-016 — traités contraignants ? | Deux catégories : contraignants par les règles ou fondés sur la confiance. | § 6.3 |
+| Q-001 — nom officiel du projet | **Grand Strategy-1914** (décision du propriétaire, 2026-10-31). | § 20.1, D-030 |
 
 ### 20.4 Questions encore ouvertes
 
 | ID | Question | Impact | Statut |
 |---|---|---|---|
-| Q-001 | Quel est le nom officiel du projet ? | Identité, communication | Ouverte |
 | Q-002 | Quel est le périmètre exact du MVP ? | Priorisation | **Bloquante** |
 | Q-007 | Quelle plateforme (web, desktop, mobile) ? | Stack, UI | Haute |
 | Q-008 | Quel langage et quel moteur ? | Tout le développement | **Bloquante** (étude requise) |
@@ -842,5 +843,6 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 | 2026-10-31 | OpenCode | Version 0.2.0 : intégration de la fiche maîtresse v0.1 du propriétaire. Révision de D-001, ajout des décisions D-002 à D-026, des questions tranchées et des questions Q-026 et suivantes. |
 | 2026-10-31 | OpenCode | Version 0.2.1 : intégration du dossier des puissances jouables. Ajout de D-027 à D-029, des questions Q-027 à Q-031, renvoi vers `docs/nations/nations.md` et mise à jour des éléments restant à définir. |
 | 2026-10-31 | OpenCode | Version 0.2.2 : alignement de la documentation thématique sur la fiche maîtresse (T-031), ajout du document fondateur gelé, de la revue de conception et des ADR-0004/0005 au tableau de correspondance. Aucune décision de jeu ajoutée. |
+| 2026-10-31 | OpenCode | Version 0.2.3 : le propriétaire arrête le nom officiel du jeu, **Grand Strategy-1914**. Ajout de D-030, clôture de Q-001, mise à jour de l'en-tête et du `README.md`. Aucune règle de jeu modifiée. |
 
 Toute modification de ce document doit être cohérente avec [PROGRESS.md](PROGRESS.md), [AGENTS.md](AGENTS.md) et les ADR acceptés.
