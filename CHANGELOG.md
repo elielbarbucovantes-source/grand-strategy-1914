@@ -35,6 +35,7 @@ Le projet ne contient encore **aucune version jouable**. La version `0.1.0` corr
 
 ### Fixed
 
+- `scripts/check-infrastructure.sh` reconnaît désormais un dépôt Git dans un worktree (`.git` y est un fichier et non un dossier) : le contrôle Git ne produit plus de faux échec hors du checkout principal.
 - Liens relatifs cassés vers `docs/artificial-intelligence/`, `docs/gameplay/military-system.md` et `docs/gameplay/economy-system.md` dans les documents de référence et d'architecture.
 - Référence obsolète `docs/artificial-intelligence/` dans `AGENTS.md`.
 - Collision d'identifiants `C-001…C-005` renommée `CT-001…CT-010` pour laisser `C-01…C-18` à la revue de conception ; sources incorrectes corrigées dans le registre technique.
