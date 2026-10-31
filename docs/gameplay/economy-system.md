@@ -1,15 +1,17 @@
 # Système économique
 
-> **Statut :** Cadrage — **existence non confirmée**, non conçu, non implémenté
+> **Statut :** Cadrage antérieur — existence **confirmée** par la fiche maîtresse, système non conçu, non implémenté
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [rules.md](rules.md) · [military-system.md](military-system.md) · [map-system.md](map-system.md) · [PROJECT.md](../../PROJECT.md)
 
 ---
 
+> **Note de cohérence (2026-10-31) —** La fiche maîtresse (PROJECT.md v0.2.0) confirme une économie : chaque territoire produit trois ressources en quantités faible, moyenne et forte, avec budget, industrie et réarmement civil/militaire. La liste des ressources reste à définir. Voir [PROJECT.md](../../PROJECT.md) § 9 et 20.3 (Q-015 tranchée). Révision suivie par la tâche **T-031**.
+
 ## 1. Avertissement essentiel
 
-**Le projet n'a pas décidé s'il aurait une économie.** Ce document explore les options et les questions ; il ne décrit pas un système existant.
+**La fiche maîtresse confirme que le projet aura une économie.** Ce document reste un cadrage antérieur : il explore des options et des questions, il ne décrit pas le système définitif.
 
 **[VALIDÉ]** Aucune mécanique économique n'est validée à ce jour.
 **[À DÉFINIR — Q-015]** Le jeu doit-il comporter une économie ?

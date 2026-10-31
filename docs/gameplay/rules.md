@@ -1,11 +1,13 @@
 # Règles du jeu
 
-> **Statut :** Cadrage — règles non conçues, non validées, non implémentées
+> **Statut :** Cadrage antérieur — fiche maîtresse non intégrée, règles détaillées non conçues, non implémentées
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [map-system.md](map-system.md) · [military-system.md](military-system.md) · [economy-system.md](economy-system.md) · [diplomacy/treaties.md](../diplomacy/treaties.md) · [architecture/overview.md](../architecture/overview.md)
 
 ---
+
+> **Note de cohérence (2026-10-31) —** Ce document a été rédigé avant la fiche maîtresse (PROJECT.md v0.2.0). La relation aux inspirations, le rythme (un tour = un mois, résolution simultanée), le cadre 1914 et les trois voies de victoire y sont désormais tranchés : voir [PROJECT.md](../../PROJECT.md) § 1.2, 3, 5, 13 et 20.3. Les hypothèses contraires ci-dessous sont historiques et ne font plus autorité. Révision suivie par la tâche **T-031**.
 
 ## 1. Objet
 

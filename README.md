@@ -1,24 +1,27 @@
 # GrandStrategy — nom provisoire
 
-> Jeu de stratégie, de diplomatie et de guerre inspiré de webDiplomacy, avec des agents IA autonomes capables de négocier, coopérer, manipuler, respecter des traités et trahir intelligemment.
+> Jeu de grande stratégie géopolitique et militaire à partir de l'Europe de 1914, combinant négociation à la Diplomacy, gestion industrielle et militaire à la Hearts of Iron IV, batailles tactiques indépendantes et dirigeants IA autonomes capables de négocier, mentir et trahir.
 
-**État actuel : Phase 0 — fondations documentaires. Aucun code de jeu, aucun moteur, aucune interface.**
-Le nom officiel, le périmètre du MVP et la pile technique ne sont pas encore décidés.
+**État actuel : Phase 1 — conception. Aucun code de jeu, aucun moteur, aucune interface.**
+La fiche maîtresse du jeu est intégrée dans [PROJECT.md](PROJECT.md). Le nom officiel, le périmètre du MVP et la pile technique ne sont pas encore décidés.
 
 ---
 
 ## 1. Ce qu'est le projet
 
-Un projet de jeu de stratégie et de diplomatie à développement long, conçu pour être réalisé par plusieurs agents IA (OpenCode, Codex, Claude Code) et par le propriétaire du projet, en conservant une trace durable de chaque décision.
+Un jeu de stratégie et de diplomatie à développement long, conçu pour être réalisé par plusieurs agents IA (OpenCode, Codex, Claude Code) et par le propriétaire du projet, en conservant une trace durable de chaque décision.
 
-À ce stade, le dépôt contient **l'infrastructure organisationnelle et documentaire**, pas le jeu.
+Le joueur dirige une nation européenne en 1914. Le monde ne tourne pas autour de lui : les autres nations poursuivent leurs propres objectifs, et l'Histoire peut diverger.
+
+À ce stade, le dépôt contient **la conception de référence et l'infrastructure documentaire**, pas le jeu.
 
 ## 2. État actuel
 
 | Élément | État |
 |---|---|
-| Vision et périmètre | Cadrés, questions ouvertes listées |
-| Règles du jeu | Non conçues |
+| Vision et périmètre | Fiche maîtresse v0.1 intégrée (PROJECT.md v0.2.0) |
+| Règles du jeu | Cadre validé ; spécifications détaillées à écrire |
+| Nations et carte | À définir (prochaine étape : sept grandes puissances) |
 | Architecture technique | Non choisie (étude requise) |
 | Code de jeu | Aucun |
 | Tests de jeu | Aucun |
@@ -62,7 +65,7 @@ Ne pas improviser de commande de lancement ni ajouter de dépendance pour « fai
 | Fichier | Rôle |
 |---|---|
 | [AGENTS.md](AGENTS.md) | Constitution : règles communes à tous les agents, protocole, sécurité, Git, ADR. **À lire en premier.** |
-| [PROJECT.md](PROJECT.md) | Vision, objectifs, périmètre, décisions validées, questions ouvertes. |
+| [PROJECT.md](PROJECT.md) | Fiche maîtresse : vision, règles de conception validées, décisions, questions ouvertes. |
 | [PROGRESS.md](PROGRESS.md) | Tableau de bord : état, travaux, backlog, bugs, prochaines étapes, journal. |
 | [CHANGELOG.md](CHANGELOG.md) | Historique des versions. |
 | [docs/decisions/](docs/decisions/) | Architecture Decision Records (ADR). |
@@ -76,6 +79,8 @@ Ne pas improviser de commande de lancement ni ajouter de dépendance pour « fai
 | [docs/diplomacy/](docs/diplomacy/) | Traités, négociations, alliances, réputation. |
 | [docs/artificial-intelligence/](docs/artificial-intelligence/) | Architecture IA, personnalités, mémoire, décision, interactions. |
 | [docs/development/](docs/development/) | Conventions de code, stratégie de test, guide de contribution. |
+
+**Attention :** les documents thématiques ont été rédigés avant la fiche maîtresse. Plusieurs de leurs hypothèses sont désormais tranchées ou contredites ; ils restent utiles comme cadrage mais ne font plus autorité. Leur alignement est suivi par la tâche T-031 dans [PROGRESS.md](PROGRESS.md).
 
 Un index plus détaillé se trouve dans [docs/README.md](docs/README.md).
 

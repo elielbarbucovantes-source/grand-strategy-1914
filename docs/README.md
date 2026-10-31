@@ -5,6 +5,8 @@
 
 Ce dossier contient la documentation de conception et de gouvernance du projet. **Aucun système décrit ici n'est implémenté.** Les documents de cadrage listent les objectifs, les hypothèses, les questions ouvertes et les éléments à définir.
 
+**Cohérence :** la fiche maîtresse du propriétaire (PROJECT.md v0.2.0, 2026-10-31) fixe désormais le cadre du jeu. Les documents thématiques ont été rédigés avant elle : plusieurs de leurs hypothèses sont tranchées ou contredites. Ils ne font plus autorité ; les plus directement concernés portent une note de cohérence. Leur alignement est la tâche **T-031** de [PROGRESS.md](../PROGRESS.md).
+
 ## Règles de lecture
 
 - Les documents racine font autorité : [AGENTS.md](../AGENTS.md), [PROJECT.md](../PROJECT.md), [PROGRESS.md](../PROGRESS.md).
@@ -29,7 +31,7 @@ Ce dossier contient la documentation de conception et de gouvernance du projet. 
 | [gameplay/rules.md](gameplay/rules.md) | Boucle de jeu, phases, ordres, résolution, victoire. |
 | [gameplay/map-system.md](gameplay/map-system.md) | Territoires, adjacences, centres, formats de carte. |
 | [gameplay/military-system.md](gameplay/military-system.md) | Unités, mouvement, soutien, attrition. |
-| [gameplay/economy-system.md](gameplay/economy-system.md) | Ressources et production (existence non confirmée). |
+| [gameplay/economy-system.md](gameplay/economy-system.md) | Ressources et production (existence confirmée par la fiche maîtresse ; à réviser). |
 
 ### Diplomatie
 

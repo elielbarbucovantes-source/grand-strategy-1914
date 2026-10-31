@@ -1,11 +1,13 @@
 # Système de carte
 
-> **Statut :** Cadrage — non conçu, non implémenté
+> **Statut :** Cadrage antérieur — fiche maîtresse non intégrée, non conçu, non implémenté
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [rules.md](rules.md) · [military-system.md](military-system.md) · [architecture/data-model.md](../architecture/data-model.md)
 
 ---
+
+> **Note de cohérence (2026-10-31) —** Ce document a été rédigé avant la fiche maîtresse (PROJECT.md v0.2.0). La carte représente désormais l'Europe de 1914, découpée en provinces conquérables portant propriétaire, géographie, ressources, importance stratégique, infrastructures et fortifications : voir [PROJECT.md](../../PROJECT.md) § 4. Révision suivie par la tâche **T-031**.
 
 ## 1. Objet
 

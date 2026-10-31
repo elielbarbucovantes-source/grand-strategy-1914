@@ -176,7 +176,7 @@ else
 fi
 
 printf '\n== Dépôt Git ==\n'
-if [ -d .git ]; then
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   if git ls-files --error-unmatch .env >/dev/null 2>&1; then
     fail ".env est suivi par Git"
   else

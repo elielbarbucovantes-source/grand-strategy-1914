@@ -1,11 +1,13 @@
 # Traités
 
-> **Statut :** Cadrage — non conçu, non implémenté
+> **Statut :** Cadrage antérieur — fiche maîtresse non intégrée, non conçu, non implémenté
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [negotiations.md](negotiations.md) · [alliances.md](alliances.md) · [reputation.md](reputation.md) · [gameplay/rules.md](../gameplay/rules.md) · [architecture/data-model.md](../architecture/data-model.md)
 
 ---
+
+> **Note de cohérence (2026-10-31) —** Ce document a été rédigé avant la fiche maîtresse (PROJECT.md v0.2.0). Deux catégories d'accords sont désormais retenues : contraignants par les règles du jeu, ou fondés sur la confiance, avec des conséquences de violation cohérentes avec leur nature. La diplomatie est confidentielle par défaut et les relations se limitent initialement à amitié / neutralité / hostilité. Voir [PROJECT.md](../../PROJECT.md) § 6. Révision suivie par la tâche **T-031**.
 
 ## 1. Objet
 

@@ -1,11 +1,13 @@
 # Système militaire
 
-> **Statut :** Cadrage — non conçu, non implémenté
+> **Statut :** Cadrage antérieur — fiche maîtresse non intégrée, non conçu, non implémenté
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [rules.md](rules.md) · [map-system.md](map-system.md) · [economy-system.md](economy-system.md) · [diplomacy/alliances.md](../diplomacy/alliances.md)
 
 ---
+
+> **Note de cohérence (2026-10-31) —** Ce document a été rédigé avant la fiche maîtresse (PROJECT.md v0.2.0). Sont désormais tranchés : les fronts statiques se résolvent sur la carte stratégique, une offensive qui rencontre des armées déclenche une bataille tactique indépendante (30 minutes maximum, effectifs proportionnels), l'occupation automatique de la province par le vainqueur, les pertes définitives, et l'exclusion du moral et des généraux. Voir [PROJECT.md](../../PROJECT.md) § 8. Révision suivie par la tâche **T-031**.
 
 ## 1. Objet
 
