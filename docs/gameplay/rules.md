@@ -1,141 +1,128 @@
 # Règles du jeu
 
-> **Statut :** Cadrage — règles non conçues, non validées, non implémentées
+> **Statut :** Cadrage aligné sur la fiche maîtresse — règles détaillées non conçues, non validées, non implémentées
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
-> **Documents liés :** [map-system.md](map-system.md) · [military-system.md](military-system.md) · [economy-system.md](economy-system.md) · [diplomacy/treaties.md](../diplomacy/treaties.md) · [architecture/overview.md](../architecture/overview.md)
+> **Source de conception :** [PROJECT.md](../../PROJECT.md) § 5, § 13, § 20.1 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 5, § 13
+> **Documents liés :** [map-system.md](map-system.md) · [military/strategic-warfare.md](../military/strategic-warfare.md) · [military/tactical-battles.md](../military/tactical-battles.md) · [economy/economy-system.md](../economy/economy-system.md) · [technology/research-system.md](../technology/research-system.md) · [diplomacy/treaties.md](../diplomacy/treaties.md) · [architecture/overview.md](../architecture/overview.md) · [design-review-v0.1.md](../design-review-v0.1.md)
 
 ---
 
 ## 1. Objet
 
-Poser le cadre des règles de base : boucle de jeu, phases, types d'ordres, résolution, conditions de fin. Ce document ne définit pas encore de règles définitives.
+Poser le cadre des règles de base : boucle de jeu, phases, types d'ordres, résolution, conditions de fin.
 
-## 2. Base de référence
+Ce document **reprend le cadre validé par la fiche maîtresse** et signale ce qui reste à définir. Il ne remplace ni PROJECT.md ni le futur cahier des charges détaillé.
 
-**[VALIDÉ]** Le jeu est inspiré de webDiplomacy / Diplomacy.
+## 2. Cadre validé par le propriétaire
 
-**[À DÉFINIR — Q-003]** La nature exacte de cette inspiration :
-
-- reprise fidèle des mécaniques de Diplomacy (plateau classique, sept puissances, ordres simultanés) ?
-- adaptation libre (carte différente, puissances différentes, mécaniques supplémentaires) ?
-- inspiration thématique seulement (négociation et trahison), avec des règles originales ?
-
-Cette question est **bloquante** : elle conditionne le système militaire, la carte, l'équilibrage et le risque juridique.
-
-## 3. Boucle de jeu envisagée (hypothèse)
-
-**[HYPOTHÈSE]** Une partie se déroulerait par cycles :
-
-1. **Phase de négociation** : les acteurs échangent des messages, forment des alliances, prennent des engagements.
-2. **Phase d'ordres** : chaque acteur soumet secrètement ses ordres.
-3. **Résolution** : les ordres sont validés puis résolus simultanément.
-4. **Phase de retraite / ajustement** : selon les résultats.
-5. **Fin de tour** : mise à jour des perceptions, de la réputation et des objectifs.
-
-**[À DÉFINIR]** L'ordre exact, la possibilité de négocier pendant la phase d'ordres, et l'existence de phases distinctes.
-
-## 4. Types d'ordres (proposition inspirée de Diplomacy)
-
-| Ordre | Description | Statut |
+| Élément | Décision | Référence |
 |---|---|---|
-| Tenir | L'unité reste sur place. | **Proposition** |
-| Se déplacer | Vers un territoire adjacent. | **Proposition** |
-| Soutenir | Soutenir une unité qui tient ou se déplace. | **Proposition** |
-| Convoyer | Transporter une unité par mer. | **Proposition** |
-| Retraite | Repli après une défaite. | **Proposition** |
-| Construction | Créer une unité dans un centre contrôlé. | **Proposition** |
-| Démantèlement | Retirer une unité. | **Proposition** |
+| Cadre historique | Europe de 1914 ; histoire alternative crédible. | D-004, PROJECT.md § 3 et § 14 |
+| Puissances jouables | Sept grandes puissances ; les autres pays sont des entités indépendantes non jouables en v1. | D-005, § 3.2 |
+| Unité de temps | **Un tour = un mois**. | D-006, § 5.1 |
+| Résolution | Les ordres sont préparés pendant une phase commune puis **résolus simultanément pour le monde entier**. | D-006, § 5.2 |
+| Piliers | Diplomatie et stratégie militaire. | D-007, § 2 |
+| Information | Les nations ne sont pas omniscientes ; communications confidentielles par défaut ; interception possible. | D-008, D-011, D-023 |
+| Victoire | Trois voies : territoriale, diplomatique, économique et sociale. | D-025, § 13 |
+| Élimination | Un pays entièrement conquis élimine son joueur. | § 13.1 |
 
-**[À DÉFINIR]** Faut-il des ordres conditionnels, des ordres différés, des ordres de renseignement, des ordres économiques ? La réponse dépend du périmètre (Q-002) et de l'économie (Q-015).
+**Conséquence :** les hypothèses antérieures de ce document (temps réel global, rythme non défini, reprise fidèle de Diplomacy, victoire unique par conquête) sont **historiques** et ne font plus autorité.
 
-## 5. Résolution des ordres (hypothèse)
+## 3. Boucle de jeu proposée
 
-**[HYPOTHÈSE]** Une résolution simultanée, avec :
+**[PROPOSITION — non validée]** La séquence suivante traduit le cadre validé sans trancher les tensions C-01, C-04 et C-16 :
 
-- priorité des soutiens ;
-- résolution des conflits de mouvement ;
-- effets des coupes de soutien ;
-- gestion des chaînes de convoi ;
-- règles de retraite et de construction.
+1. **Ouverture du tour** : le monde entre dans le mois `M`.
+2. **Phase de préparation** : chaque nation consulte ses rapports, négocie, planifie et saisit ses ordres.
+3. **Verrouillage** : les ordres sont figés à une échéance définie par le mode de partie.
+4. **Résolution simultanée** : le noyau résout l'ensemble des ordres du monde avec une graine et une version de règles identiques.
+5. **Batailles tactiques** : les offensives qui rencontrent des armées ouvrent des batailles indépendantes (voir [tactical-battles.md](../military/tactical-battles.md)).
+6. **Application des résultats** : conquêtes, pertes, production, recherche, effets diplomatiques.
+7. **Rapports** : chaque nation reçoit son état mis à jour et ses rapports de renseignement.
+8. **Tour suivant** : le mois `M+1`.
 
-**[VALIDÉ — contrainte de qualité]** La résolution doit être **déterministe** : à ordres, état et graine identiques, le résultat doit être identique. Tout aléatoire doit être explicite et enregistré.
+**[À DÉFINIR — C-01, C-16]** La position exacte des batailles tactiques dans cette séquence, le sort des ordres passés après le verrouillage et l'effet d'un traité signé pendant la résolution ne sont pas tranchés. Voir [ADR-0005](../decisions/0005-integration-strategique-tactique.md), à l'état `proposé`.
 
-**[À DÉFINIR]** Le détail des conflits, les égalités, les cycles de mouvement, les règles de bord. Ces points doivent être spécifiés et testés avant implémentation.
+## 4. Types d'ordres envisagés
 
-## 6. Phases et calendrier
+**[PROPOSITION]** Les ordres devraient couvrir au moins :
 
-**[À DÉFINIR — Q-005]**
+| Domaine | Exemples d'ordres | Statut |
+|---|---|---|
+| Militaire | déplacer une formation, tenir un front, lancer une offensive, construire une fortification. | À définir |
+| Économie | affecter un budget, construire une usine, mobiliser l'industrie, commercer. | À définir |
+| Recherche | choisir une technologie, financer une branche, tenter une recherche en avance. | À définir |
+| Renseignement | financer une interception, orienter une mission, demander un rapport. | À définir |
+| Diplomatie | envoyer un message, proposer un accord, rompre un accord, déclarer un état relationnel. | À définir |
+| Politique intérieure | réforme, changement de régime (si conditions réunies). | À définir |
 
-- temps réel avec ticks ?
-- tour par tour synchrone avec minuteur ?
-- asynchrone (plusieurs heures/jours par tour) ?
-- hybride avec négociation asynchrone et résolution programmée ?
+**[À DÉFINIR]** Le format exact, la validation, les ordres conditionnels et les ordres par défaut en cas d'absence du joueur.
 
-Le choix influence l'architecture, le design des IA et l'expérience. Aucune option n'est retenue.
+## 5. Résolution simultanée
 
-## 7. Conditions de victoire et de fin
+**[VALIDÉ — contrainte]** La résolution doit être déterministe et reproductible : mêmes ordres + même graine + même version de règles ⇒ même résultat.
 
-**[À DÉFINIR — Q-014]** Options possibles :
+**[VALIDÉ — intention]** Le système doit éviter qu'une nation puisse systématiquement agir après avoir observé les décisions des autres pendant le même tour.
 
-- contrôle d'un nombre de centres ;
-- élimination des adversaires ;
-- score après un nombre de tours ;
-- objectifs asymétriques ;
-- victoire diplomatique / coalition ;
-- condition de survie.
+**[À DÉFINIR]** Les modalités exactes de résolution des conflits entre ordres simultanés : priorités, égalités, ordre interne, effets des annulations, cas des mouvements contradictoires.
 
-**[À DÉFINIR]** Que se passe-t-il en cas d'égalité, d'abandon, de joueur déconnecté, d'IA défaillante ?
+**[PROPOSITION]** Un journal d'événements append-only enregistre les ordres et les résultats ; il sert aux tests, au replay et à l'audit des décisions des IA.
 
-## 8. Information et fog of war
+## 6. Conditions de fin de partie
 
-**[À DÉFINIR — Q-013]** Diplomacy classique repose sur une information largement publique (positions des unités), avec secret des ordres et des négociations. Le projet peut conserver ce modèle ou introduire un brouillard plus fort.
+### 6.1 Élimination
 
-Contrainte : toute règle de visibilité doit être compatible avec l'équité des IA (Q-012) et testable.
+**[VALIDÉ]** Lorsqu'un pays est entièrement conquis, son joueur est éliminé.
 
-## 9. Rythme et durée
+**[À DÉFINIR — C-08]** Sort des joueurs éliminés : spectateur, retour possible, fin de partie anticipée.
 
-**[À DÉFINIR — Q-017]** Durée cible d'une partie, nombre de tours, temps de négociation, possibilité de sauvegarder/reprendre.
+### 6.2 Victoires
 
-## 10. Règles et variantes
+**[VALIDÉ]** Trois voies coexistent :
 
-**[PROPOSITION]** Séparer :
+1. **Victoire territoriale** : conquérir l'Europe.
+2. **Victoire diplomatique** : dominer politiquement le continent par les alliances, l'influence et les relations internationales.
+3. **Victoire économique et sociale** : atteindre un niveau de vie exceptionnellement élevé par rapport aux autres nations.
 
-- le **socle** de règles obligatoires ;
-- les **variantes** optionnelles, déclarées dans la configuration de partie ;
-- la **version des règles**, enregistrée avec chaque sauvegarde.
+**[À DÉFINIR — C-07, C-08]** Seuils, durée, indicateurs, victoire partagée, match nul, date de fin et retournement d'alliance. Aucun agent ne doit inventer ces seuils. Voir [design-review-v0.1.md § C-07 et C-08](../design-review-v0.1.md).
 
-Cela faciliterait les tests, le replay et l'ajout de mécaniques.
+## 7. Visibilité et information
 
-## 11. Questions ouvertes
+**[VALIDÉ]** Les nations ne sont pas omniscientes. Les intentions secrètes ne sont pas connues automatiquement.
 
-| ID | Question |
-|---|---|
-| G-001 | Reprise fidèle ou adaptation libre de Diplomacy (Q-003) ? |
-| G-002 | Quels types d'ordres exactement ? |
-| G-003 | Comment résoudre les conflits et les égalités ? |
-| G-004 | Y a-t-il des ordres conditionnels ? |
-| G-005 | Quel rythme de partie (Q-005) ? |
-| G-006 | Quelles conditions de victoire (Q-014) ? |
-| G-007 | Quel niveau de fog of war (Q-013) ? |
-| G-008 | Les traités ont-ils un effet mécanique (Q-016) ? |
-| G-009 | Les règles sont-elles moddables (Q-018) ? |
-| G-010 | Comment gérer les abandons et déconnexions ? |
+**[À DÉFINIR — C-06]** Niveau de fog of war : positions des armées visibles ou non, effectifs visibles ou non, informations obtenues par le renseignement, informations publiques (fronts, conquêtes, déclarations).
 
-## 12. Dépendances
+**[VALIDÉ — exigence d'équité]** Toute asymétrie d'information doit s'appliquer de la même façon aux joueurs humains et aux IA.
 
-- La carte dépend des règles ([map-system.md](map-system.md)).
-- Le militaire dépend des types d'ordres ([military-system.md](military-system.md)).
-- L'économie n'est pertinente que si elle est confirmée ([economy-system.md](economy-system.md)).
-- La diplomatie doit s'articuler avec les phases ([negotiations.md](../diplomacy/negotiations.md)).
-- L'IA doit connaître les règles et les ordres légaux ([decision-making.md](../artificial-intelligence/decision-making.md)).
+## 8. Tensions de conception applicables
 
-## 13. Critères de passage à « Spécifié »
+| ID | Tension | Traitement |
+|---|---|---|
+| C-01 | Tour mensuel vs bataille tactique de 30 minutes. | Non tranchée ; ADR-0005 `proposé`. |
+| C-04 | « Nouvelle offensive immédiate » vs calendrier mensuel. | Non tranchée. |
+| C-08 | Seuils et fin de partie. | Non tranchés. |
+| C-16 | Diplomatie pendant le mois vs verrouillage des ordres. | Non tranchée. |
 
-- [ ] Q-003 et Q-002 tranchées.
-- [ ] Types d'ordres listés et justifiés.
-- [ ] Algorithme de résolution décrit, cas limites inclus.
-- [ ] Conditions de victoire définies.
-- [ ] Règles de visibilité définies.
+Aucune de ces tensions ne peut être résolue par un agent seul ([AGENTS.md](../../AGENTS.md) § 14).
+
+## 9. Questions ouvertes
+
+| ID | Question | Référence |
+|---|---|---|
+| R-001 | Quelles phases exactes et quel moment de verrouillage ? | C-01, C-16 |
+| R-002 | Quels ordres sont disponibles au lancement ? | T-026 |
+| R-003 | Comment résoudre les conflits d'ordres simultanés ? | § 5 |
+| R-004 | Quels seuils de victoire et quelle durée maximale ? | C-08 |
+| R-005 | Quel niveau de fog of war ? | C-06 |
+| R-006 | Que se passe-t-il pour un joueur absent ou éliminé ? | C-08, C-14 |
+
+## 10. Critères de passage à « Spécifié »
+
+- [ ] Phases et verrouillage définis et validés.
+- [ ] Types d'ordres et validation spécifiés.
+- [ ] Résolution des conflits simultanés décrite, cas limites inclus.
+- [ ] Seuils et conditions de fin validés par le propriétaire.
+- [ ] Niveau de visibilité validé.
 - [ ] Jeux de tests de référence identifiés.
 - [ ] Validation du propriétaire.

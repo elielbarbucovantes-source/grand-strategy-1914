@@ -1,9 +1,10 @@
-# Traités
+# Traités et accords
 
-> **Statut :** Cadrage — non conçu, non implémenté
+> **Statut :** Cadrage aligné sur la fiche maîtresse — types non validés, non implémentés
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
-> **Documents liés :** [negotiations.md](negotiations.md) · [alliances.md](alliances.md) · [reputation.md](reputation.md) · [gameplay/rules.md](../gameplay/rules.md) · [architecture/data-model.md](../architecture/data-model.md)
+> **Source de conception :** [PROJECT.md](../../PROJECT.md) § 6.3 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 6.3
+> **Documents liés :** [negotiations.md](negotiations.md) · [alliances.md](alliances.md) · [reputation.md](reputation.md) · [../gameplay/rules.md](../gameplay/rules.md) · [../military/strategic-warfare.md](../military/strategic-warfare.md) · [../architecture/data-model.md](../architecture/data-model.md)
 
 ---
 
@@ -11,166 +12,116 @@
 
 Définir ce qu'est un traité dans le jeu, comment il naît, vit et meurt, et comment une IA peut le respecter ou le trahir de façon crédible.
 
-**Aucun type de traité n'est validé.** Les listes ci-dessous sont des propositions de conception.
+## 2. Cadre validé par le propriétaire
 
-## 2. Définition proposée
+**[VALIDÉ]** Deux catégories d'accords coexistent (D-009, § 6.3) :
 
-**[PROPOSITION]** Un traité est un accord explicite entre au moins deux puissances, portant sur des obligations identifiables, avec :
+1. **Accords juridiquement contraignants dans les règles** : le moteur applique l'accord et sanctionne sa violation selon des règles définies.
+2. **Accords fondés sur la confiance** : le respect dépend de la volonté des dirigeants, de la réputation et de la mémoire des IA.
+
+**[VALIDÉ]** Les conséquences d'une violation doivent être **cohérentes avec la nature de l'accord** (§ 6.3).
+
+**Conséquence :** l'hypothèse antérieure « on ne sait pas si un traité est appliqué par le moteur ou par la confiance » est **historique** : la réponse est « les deux, selon la catégorie ».
+
+## 3. Définition proposée
+
+**[PROPOSITION — non validée]** Un accord est un engagement explicite entre au moins deux puissances, portant sur des obligations identifiables, avec :
 
 - des parties ;
 - des clauses ;
+- une **catégorie** (contraignant ou de confiance) ;
 - une durée ou une condition de fin ;
 - un statut ;
-- un historique (proposition, acceptation, rupture, expiration).
+- un historique horodaté (proposition, acceptation, rupture, expiration).
 
-Un simple message n'est pas nécessairement un traité. La frontière entre promesse informelle, engagement et traité doit être définie.
+Un simple message n'est pas nécessairement un accord. La frontière entre promesse informelle et engagement doit être claire pour le joueur.
 
-## 3. Types de traités proposés
+## 4. Types d'accords envisagés
 
-| Type | Contenu possible | Statut |
+**[PROPOSITION — non validée]** Types possibles, à valider un par un :
+
+| Type | Contenu possible | Catégorie par défaut |
 |---|---|---|
-| Non-agression | Ne pas attaquer une puissance ou un territoire | Proposition |
-| Alliance défensive | Se défendre mutuellement en cas d'agression | Proposition |
-| Alliance offensive | Coordonner une attaque | Proposition |
-| Cessez-le-feu | Arrêter les hostilités | Proposition |
-| Paix | Mettre fin à un conflit, éventuellement avec conditions | Proposition |
-| Zone démilitarisée | Interdire des unités dans une zone | Proposition |
-| Accord commercial | Échanges de ressources, si économie | Proposition |
-| Soutien logistique | Autoriser le passage ou le ravitaillement | Proposition |
-| Partage de renseignement | Échanger des informations | Proposition |
-| Pacte de partage de victoire | Coordonner la fin de partie | Proposition |
-| Ultimatum | Exigence avec échéance et conséquence | Proposition |
+| Non-agression | Ne pas attaquer pendant une durée. | À trancher |
+| Alliance | Coordination militaire et diplomatique. | À trancher |
+| Soutien militaire | Intervention sous conditions. | À trancher |
+| Cessez-le-feu | Arrêt des combats. | Contraignant ? |
+| Paix | Fin de guerre, transferts éventuels. | Contraignant ? |
+| Commerce | Échanges de ressources. | À trancher |
+| Passage | Droit de traverser un territoire. | À trancher |
+| Zone démilitarisée | Interdiction de forces dans une zone. | À trancher |
+| Tribut / aide | Paiement ou transfert conditionnel. | À trancher |
+| Secret | Accord occulte, non public. | De confiance ? |
 
-**[À DÉFINIR]** Les traités peuvent-ils contenir des clauses secrètes ? Des clauses conditionnelles ? Des clauses automatiques ?
+**Règle :** un accord « contraignant » doit avoir des **conséquences mécaniques** explicites. Un accord « de confiance » ne doit pas être secrètement appliqué par le moteur, sinon la catégorie n'a pas de sens.
 
-## 4. Cycle de vie proposé
+## 5. Cycle de vie
 
-```
-proposé → accepté → actif → (rempli | expiré | rompu | renégocié)
-                  ↘ rejeté
-                  ↘ annulé
-```
+**[PROPOSITION — non validée]**
 
-Règles à définir :
+1. **Proposition** : rédigée, envoyée, horodatée.
+2. **Négociation** : acceptation, refus, contre-proposition.
+3. **Signature / entrée en vigueur** : selon la catégorie et le calendrier (voir C-16).
+4. **Exécution** : le moteur applique les clauses contraignantes ; les autres reposent sur la confiance.
+5. **Violation** : détection, conséquence, trace.
+6. **Rupture / expiration / renégociation**.
+7. **Archivage** : l'accord reste dans l'historique et la mémoire des IA.
 
-- qui peut proposer, accepter, rejeter ?
-- faut-il une acceptation unanime ?
-- un traité peut-il être accepté tacitement ?
-- comment modifier un traité actif ?
-- que se passe-t-il si une partie est éliminée ?
-- un traité survit-il à la fin de la partie ?
+## 6. Violation et conséquences
 
-## 5. Clauses
+**[À DÉFINIR — T-022]** Pour chaque type :
 
-**[PROPOSITION]** Une clause devrait être structurée pour être vérifiable et exploitable par les IA :
+- qu'est-ce qu'une violation ?
+- qui la constate : le moteur, la victime, un tiers ?
+- quelles conséquences : réputation, sanctions, rupture automatique, guerre ?
+- la violation est-elle publique ou secrète ?
+- peut-on violer un accord contraignant ? À quel coût ?
 
-- type d'obligation ;
-- acteurs concernés ;
-- portée (territoires, unités, ressources) ;
-- condition de déclenchement ;
-- échéance ;
-- conséquence en cas de violation ;
-- visibilité (publique / privée).
+**[PROPOSITION — non validée]** Un accord contraignant viole les règles **et** produit une sanction mécanique ; un accord de confiance ne produit qu'un effet de réputation et de mémoire. Les deux doivent être traçables.
 
-**[À DÉFINIR]** Jusqu'où structurer ? Un texte libre est plus riche mais moins vérifiable. Un format structuré est plus testable mais moins expressif. Un mélange (clauses structurées + commentaire libre) est possible.
+## 7. Application par le moteur
 
-## 6. Application : mécanique ou sociale ?
+**[VALIDÉ]** Une partie des accords est appliquée par les règles (D-009).
 
-**[À DÉFINIR — Q-016]** Trois modèles possibles :
+**[À DÉFINIR]** Quelles clauses sont mécaniques : interdiction d'attaque, transfert de province, paiement, passage, cessez-le-feu. Toute clause mécanique doit être testable et ne pas dépendre de l'interprétation d'un texte libre.
 
-### Modèle 1 — Traités purement sociaux
+## 8. Accords secrets
 
-Le moteur n'empêche rien. Un traité est une promesse ; la violation est possible et n'a de conséquence que par la réputation et les représailles.
+**[VALIDÉ]** Les canaux secrets existent et les communications sont confidentielles par défaut (D-008).
 
-- Avantages : liberté, mensonge, diplomatie riche.
-- Inconvénients : les traités peuvent sembler décoratifs ; les IA doivent gérer la confiance.
+**[À DÉFINIR]** Un accord secret est-il connu du moteur seul ? Peut-il être révélé par interception ? Sa violation est-elle plus ou moins coûteuse en réputation ?
 
-### Modèle 2 — Traités partiellement contraignants
+## 9. Interaction avec la réputation et la mémoire
 
-Certaines clauses sont appliquées par le moteur (par exemple une zone démilitarisée), d'autres sont sociales.
+**[VALIDÉ]** Les IA ont une mémoire longue et se souviennent des promesses et des trahisons (D-011, § 7.3).
 
-- Avantages : compromis.
-- Inconvénients : règles complexes, cas limites.
+**[À DÉFINIR]** Voir [reputation.md](reputation.md) : comment un accord violé modifie la confiance, la réputation et les décisions futures.
 
-### Modèle 3 — Traités contraignants
+## 10. Tensions applicables
 
-Le moteur empêche de violer un traité ; il faut d'abord le dénoncer.
+| ID | Tension | Traitement |
+|---|---|---|
+| C-05 | Interception des accords secrets. | Non tranchée ; T-025. |
+| C-08 | Accords de paix et victoire. | Non tranchée. |
+| C-16 | Entrée en vigueur pendant le tour. | Non tranchée ; T-022. |
 
-- Avantages : clarté.
-- Inconvénients : réduit la trahison « surprise », qui est au cœur de la vision.
-
-**[PROPOSITION]** Le modèle 1 ou 2 préserve mieux la vision de trahison intelligente, mais le choix appartient au propriétaire.
-
-## 7. Trahison
-
-**[VALIDÉ]** Les IA doivent pouvoir trahir intelligemment.
-
-**[À DÉFINIR]** Ce que « trahir » signifie mécaniquement :
-
-- violer un traité actif ;
-- rompre une promesse informelle ;
-- attaquer un allié ;
-- révéler des informations confidentielles ;
-- ne pas fournir l'aide promise.
-
-Pour chaque cas : comment le détecter, le rendre visible, et quel effet sur la réputation ?
-
-**[PROPOSITION]** Une trahison doit être **traçable** et avoir un coût social, sans être automatiquement irrationnelle. Une IA peut gagner à court terme et perdre en réputation à long terme.
-
-## 8. Traités et IA
-
-Une IA doit pouvoir :
-
-- proposer, lire, accepter, refuser un traité ;
-- se souvenir de ses engagements ;
-- évaluer le risque de trahison de l'autre ;
-- décider de tenir ou de rompre ;
-- expliquer (au moins en interne) sa décision ;
-- ne pas être piégée par un format ambigu.
-
-**[PROPOSITION]** Le format des traités doit être assez simple pour être fiable, assez riche pour permettre la négociation.
-
-## 9. Journalisation et visibilité
-
-- Chaque proposition, acceptation, rejet, modification et rupture doit produire un événement.
-- Les traités publics et secrets doivent être distingués.
-- Les observateurs et les administrateurs doivent pouvoir auditer.
-- Les autres IA ne doivent voir que ce qui est public ou ce qui leur est communiqué.
-
-**[À DÉFINIR]** Un traité secret reste-t-il secret après sa rupture ? Qui peut le révéler ?
-
-## 10. Questions ouvertes
+## 11. Questions ouvertes
 
 | ID | Question |
 |---|---|
-| T-001 | Quelle définition exacte d'un traité ? |
-| T-002 | Quels types sont nécessaires au MVP ? |
-| T-003 | Clauses structurées, libres ou hybrides ? |
-| T-004 | Application mécanique ou sociale (Q-016) ? |
-| T-005 | Comment modifier un traité actif ? |
-| T-006 | Que se passe-t-il si un acteur est éliminé ? |
-| T-007 | Comment détecter et qualifier une trahison ? |
-| T-008 | Quels traités sont publics ? |
-| T-009 | Les traités peuvent-ils être secrets ? |
-| T-010 | Comment empêcher les interprétations abusives ? |
-| T-011 | Un traité peut-il être imposé par un ultimatum ? |
-| T-012 | Les traités sont-ils versionnés avec les règles ? |
-
-## 11. Dépendances
-
-- [negotiations.md](negotiations.md) : format des propositions.
-- [alliances.md](alliances.md) : cas particulier des alliances.
-- [reputation.md](reputation.md) : conséquences des ruptures.
-- [gameplay/rules.md](../gameplay/rules.md) : effets mécaniques éventuels.
-- [artificial-intelligence/memory-system.md](../artificial-intelligence/memory-system.md) : mémorisation des engagements.
+| D-201 | Quels types d'accords au lancement ? |
+| D-202 | Quelles clauses sont contraignantes ? |
+| D-203 | Quelles sanctions pour violation ? |
+| D-204 | Comment un accord secret est-il géré ? |
+| D-205 | Quand entre-t-il en vigueur ? |
+| D-206 | Peut-on renégocier ou suspendre un accord ? |
 
 ## 12. Critères de passage à « Spécifié »
 
-- [ ] Q-016 tranchée.
-- [ ] Types de traités du MVP listés.
-- [ ] Structure des clauses validée.
-- [ ] Cycle de vie complet, cas limites inclus.
-- [ ] Règles de visibilité et de trahison définies.
-- [ ] Événements de journal identifiés.
-- [ ] Jeux de tests de scénarios diplomatiques définis.
+- [ ] Types d'accords validés.
+- [ ] Catégorie de chaque accord tranchée.
+- [ ] Clauses mécaniques spécifiées.
+- [ ] Violations et sanctions définies.
+- [ ] Cycle de vie et calendrier arrêtés.
+- [ ] Interaction avec la réputation définie.
 - [ ] Validation du propriétaire.

@@ -3,7 +3,7 @@
 > **Statut :** Cadrage — aucun test n'existe, aucun framework choisi
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
-> **Documents liés :** [coding-standards.md](coding-standards.md) · [contribution-guide.md](contribution-guide.md) · [AGENTS.md](../../AGENTS.md) · [artificial-intelligence/decision-making.md](../artificial-intelligence/decision-making.md)
+> **Documents liés :** [coding-standards.md](coding-standards.md) · [contribution-guide.md](contribution-guide.md) · [AGENTS.md](../../AGENTS.md) · [ai/decision-making.md](../ai/decision-making.md)
 
 ---
 

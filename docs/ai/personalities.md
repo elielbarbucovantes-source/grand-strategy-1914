@@ -7,6 +7,16 @@
 
 ---
 
+## 0. Cadre validé par la fiche maîtresse
+
+**[VALIDÉ]** Chaque dirigeant possède **quelques traits de personnalité**, par exemple agressif, prudent, expansionniste, diplomate, opportuniste (D-011, § 7.1).
+
+**[VALIDÉ]** Ces traits influencent ses décisions **sans déterminer mécaniquement** toutes ses actions (§ 7.1).
+
+**[VALIDÉ]** Les traits doivent rester cohérents avec les caractéristiques historiques du pays, sans figer l'histoire ni imposer un comportement unique (§ 3.3, § 14).
+
+**[À DÉFINIR — T-023]** Nombre exact de traits, génération, évolution, interaction avec les objectifs nationaux et les régimes, affichage au joueur.
+
 ## 1. Objet
 
 Définir comment donner aux agents IA des personnalités distinctes, cohérentes et crédibles, sans tomber dans la caricature ni dans l'aléatoire.

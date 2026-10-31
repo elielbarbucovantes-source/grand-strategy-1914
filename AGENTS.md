@@ -4,7 +4,7 @@
 > **Dernière mise à jour :** 2026-10-31
 > **Autorité :** ce document prime sur les habitudes et préférences individuelles des agents.
 > **Portée :** tout agent (humain ou IA) qui lit, modifie ou produit du contenu dans ce dépôt.
-> **Documents de référence :** [PROJECT.md](PROJECT.md) (vision et décisions) · [PROGRESS.md](PROGRESS.md) (état opérationnel) · [README.md](README.md) (prise en main) · [docs/decisions/](docs/decisions/) (décisions architecturales).
+> **Documents de référence :** [PROJECT.md](PROJECT.md) (vision et décisions) · [PROGRESS.md](PROGRESS.md) (état opérationnel) · [README.md](README.md) (prise en main) · [docs/decisions/](docs/decisions/) (décisions architecturales) · [docs/founding-document-v0.1.md](docs/founding-document-v0.1.md) (document fondateur du propriétaire) · [docs/design-review-v0.1.md](docs/design-review-v0.1.md) (revue critique).
 
 ---
 
@@ -18,9 +18,11 @@ En cas de contradiction entre documents, l'ordre de priorité est :
 2. [AGENTS.md](AGENTS.md) (règles de collaboration et de sécurité).
 3. [PROJECT.md](PROJECT.md) (vision, périmètre, décisions).
 4. Les ADR acceptés dans [docs/decisions/](docs/decisions/).
-5. Les documents de conception (`docs/architecture/`, `docs/gameplay/`, `docs/diplomacy/`, `docs/artificial-intelligence/`).
+5. Les documents de conception (`docs/architecture/`, `docs/nations/`, `docs/gameplay/`, `docs/military/`, `docs/economy/`, `docs/technology/`, `docs/intelligence/`, `docs/diplomacy/`, `docs/ai/`).
 6. [PROGRESS.md](PROGRESS.md) (état opérationnel, jamais une source de vérité sur la conception).
 7. Les conventions locales d'un dossier ou d'un outil.
+
+La **fiche maîtresse du propriétaire** est transposée dans [PROJECT.md](PROJECT.md) ; le document fondateur v0.1 conservé dans [docs/founding-document-v0.1.md](docs/founding-document-v0.1.md) en est la source. Les tensions internes et les manques de définition de ce document sont consignés dans [docs/design-review-v0.1.md](docs/design-review-v0.1.md). Leur existence ne vaut pas validation : le cahier des charges détaillé reste à valider par le propriétaire.
 
 Un agent ne peut pas modifier cet ordre de priorité de sa propre initiative.
 
@@ -30,12 +32,13 @@ Dans cet ordre, et sans exception :
 
 1. Lire [AGENTS.md](AGENTS.md) (ce fichier).
 2. Lire [PROJECT.md](PROJECT.md).
-3. Lire [PROGRESS.md](PROGRESS.md), en particulier les sections **C. Travaux en cours**, **D. Travaux à effectuer** et **E. Bugs et problèmes connus**.
-4. Examiner l'état Git : `git status`, `git log --oneline -10`, branche courante, worktrees éventuels (`git worktree list`).
-5. Identifier les travaux en cours et les fichiers déjà réservés par un autre agent.
-6. Vérifier les dépendances de la mission envisagée.
-7. Vérifier qu'un travail identique ou compatible n'existe pas déjà.
-8. Lire les documents de conception concernés par la mission.
+3. Lire [docs/founding-document-v0.1.md](docs/founding-document-v0.1.md) et [docs/design-review-v0.1.md](docs/design-review-v0.1.md) : ils portent le cadre validé et les tensions encore ouvertes.
+4. Lire [PROGRESS.md](PROGRESS.md), en particulier les sections **C. Travaux en cours**, **D. Travaux à effectuer** et **E. Bugs et problèmes connus**.
+5. Examiner l'état Git : `git status`, `git log --oneline -10`, branche courante, worktrees éventuels (`git worktree list`).
+6. Identifier les travaux en cours et les fichiers déjà réservés par un autre agent.
+7. Vérifier les dépendances de la mission envisagée.
+8. Vérifier qu'un travail identique ou compatible n'existe pas déjà.
+9. Lire les documents de conception concernés par la mission.
 
 Si une information manque, l'agent le signale ; il ne l'invente pas.
 

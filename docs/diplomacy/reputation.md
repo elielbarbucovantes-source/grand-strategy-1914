@@ -1,21 +1,35 @@
-# Réputation
+# Réputation et confiance
 
-> **Statut :** Cadrage — non conçu, non implémenté
+> **Statut :** Cadrage aligné sur la fiche maîtresse — modèle non validé, non implémenté
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
-> **Documents liés :** [treaties.md](treaties.md) · [alliances.md](alliances.md) · [negotiations.md](negotiations.md) · [artificial-intelligence/memory-system.md](../artificial-intelligence/memory-system.md)
+> **Source de conception :** [PROJECT.md](../../PROJECT.md) § 6.4, § 7.3 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 6, § 7
+> **Documents liés :** [treaties.md](treaties.md) · [alliances.md](alliances.md) · [negotiations.md](negotiations.md) · [../ai/memory-system.md](../ai/memory-system.md) · [../nations/regimes.md](../nations/regimes.md)
 
 ---
 
 ## 1. Objet
 
-Définir comment la confiance, la fiabilité et l'historique des engagements sont représentés et utilisés. La réputation est le mécanisme qui donne un coût à la trahison et de la valeur aux promesses.
+Définir comment la confiance, la fiabilité et l'historique des engagements sont représentés et utilisés.
 
-**Aucun modèle n'est validé.**
+La réputation est le mécanisme qui donne un coût à la trahison et de la valeur aux promesses.
 
-## 2. Pourquoi une réputation
+## 2. Cadre validé par le propriétaire
 
-**[PROPOSITION]** Sans réputation :
+| Élément | Décision | Référence |
+|---|---|---|
+| Relations | Amitié, neutralité, hostilité. | D-010, § 6.4 |
+| Évolution | Les relations évoluent selon les actions, négociations, promesses et conflits. | § 6.4 |
+| Accords | Contraignants par les règles ou fondés sur la confiance. | D-009, § 6.3 |
+| IA | Mémoire longue des conversations, promesses, trahisons, alliances, conflits, erreurs. | D-011, § 7.3 |
+| Conséquences | Une violation doit avoir des conséquences cohérentes avec la nature de l'accord. | § 6.3 |
+| Confiance | Une IA trahie doit pouvoir en tenir compte longtemps après les faits. | § 7.3 |
+
+**Conséquence :** l'hypothèse antérieure « la réputation n'est qu'une option » est **historique**. La mémoire longue et le coût de la trahison sont validés ; leur **modèle** reste à définir.
+
+## 3. Pourquoi une réputation
+
+**[PROPOSITION — non validée]** Sans réputation :
 
 - trahir n'a aucun coût ;
 - les promesses ne valent rien ;
@@ -27,130 +41,86 @@ Avec une réputation :
 - les engagements passés influencent les décisions futures ;
 - la coopération devient possible ;
 - la trahison devient un calcul, pas une impulsion ;
-- les personnalités peuvent se distinguer (fidèle, opportuniste, imprévisible).
+- les personnalités peuvent se distinguer.
 
-## 3. Dimensions proposées
+## 4. Modèle proposé
 
-| Dimension | Signification | Exemple |
+**[PROPOSITION — non validée]** Deux niveaux distincts, à ne pas confondre :
+
+| Niveau | Objet | Portée |
 |---|---|---|
-| Fiabilité | Tient ses engagements | Traités respectés |
-| Honnêteté | Dit la vérité | Informations vérifiées |
-| Loyauté | Soutient ses alliés | Aide effective |
-| Agressivité | Attaque fréquemment | Guerres déclarées |
-| Prévisibilité | Comportement stable | Écarts aux habitudes |
-| Réciprocité | Rend les services | Aide retournée |
+| Relation diplomatique | État officiel entre deux nations : amitié / neutralité / hostilité. | Globale, connue. |
+| Réputation | Fiabilité perçue d'une nation, fondée sur ses actes. | Par nation observatrice, ou agrégée. |
 
-**[À DÉFINIR]** Faut-il une valeur unique de « confiance » ou plusieurs dimensions ? Trop de dimensions rend le modèle opaque et difficile à équilibrer.
+**[À DÉFINIR]** La réputation est-elle :
 
-## 4. Sources de réputation
+- une valeur unique par nation ;
+- un vecteur par type d'engagement (militaire, commercial, territorial) ;
+- une croyance par observateur (A peut croire B fiable et C non) ;
+- une combinaison de ces options.
 
-- traités signés et respectés ;
-- traités rompus ;
-- promesses tenues ou non ;
-- alliances honorées ou trahies ;
-- aide apportée ou refusée ;
-- mensonges découverts ;
-- attaques non provoquées ;
-- comportement envers les plus faibles ;
-- cohérence entre discours et actes.
+**[PROPOSITION — non validée]** Une croyance **par observateur** est plus riche et plus réaliste, mais plus coûteuse à stocker et à expliquer. Une valeur agrégée est plus lisible. Le choix doit être tranché avant implémentation.
 
-**[À DÉFINIR]** Comment distinguer une trahison justifiée d'une trahison gratuite ? Faut-il une notion de légitimité ?
+## 5. Sources de réputation
 
-## 5. Calcul et mise à jour
+**[PROPOSITION — non validée]**
 
-**[À DÉFINIR]**
+- respect ou violation d'un accord contraignant ;
+- respect ou violation d'une promesse informelle ;
+- trahison d'une alliance ;
+- déclaration de guerre sans préavis ;
+- aide effective à un allié ;
+- respect d'un cessez-le-feu ;
+- propagande et mensonges découverts ;
+- comportement lors d'une crise.
 
-- événementiel (chaque acte modifie un score) ou évalué périodiquement ?
-- pondération par gravité ?
-- décroissance dans le temps ?
-- réputation par paire (A envers B) ou globale ?
-- réputation connue de tous ou privée ?
-- comment éviter les oscillations et les effets de bord ?
+**[À DÉFINIR]** Poids, durée, oubli, récupération, effet des régimes et de la propagande.
 
-**[HYPOTHÈSE]** Une réputation par paire, complétée d'une réputation publique agrégée, serait plus réaliste. À valider.
+## 6. Utilisation par les IA
 
-## 6. Visibilité
+**[VALIDÉ]** Les IA se souviennent des trahisons et en tiennent compte longtemps (D-011).
 
-**[À DÉFINIR]** Qui voit quoi :
+**[À DÉFINIR]** Comment la réputation entre dans la décision : seuils d'alliance, primes de coopération, pénalités de négociation, mémoire des promesses non tenues. Voir [../ai/decision-making.md](../ai/decision-making.md) et [../ai/memory-system.md](../ai/memory-system.md).
 
-- chaque acteur voit-il sa réputation vue par les autres ?
-- les scores sont-ils publics ?
-- les causes sont-elles visibles ?
-- les IA peuvent-elles cacher leurs intentions ?
-- le joueur humain doit-il voir pourquoi une IA ne lui fait plus confiance ?
+## 7. Lisibilité pour le joueur
 
-**[PROPOSITION]** Une interface lisible mais imparfaite : le joueur voit des signaux, pas les calculs exacts.
+**[À DÉFINIR]** Le joueur voit-il sa propre réputation ? Celle des autres ? Sous quelle forme : valeur, historique, alertes ?
 
-## 7. Effets sur le jeu
+**[PROPOSITION — non validée]** Afficher un **historique des engagements** plutôt qu'un score opaque : chaque promesse, chaque trahison, chaque accord, avec sa conséquence. Le joueur comprend ainsi pourquoi une IA se méfie.
 
-Options :
+## 8. Interaction avec les accords contraignants
 
-- les IA modifient leurs décisions selon la réputation ;
-- les traités futurs sont plus difficiles à conclure ;
-- les coalitions se forment contre les traîtres ;
-- les échanges économiques sont refusés ;
-- les représailles sont plus probables ;
-- aucun effet mécanique, seulement social.
+**[VALIDÉ]** Un accord contraignant est appliqué par les règles (D-009).
 
-**[À DÉFINIR]** La réputation doit-elle avoir un effet mécanique dur (interdiction de traité) ou rester une incitation ?
-
-## 8. Réputation et IA
-
-Une IA doit pouvoir :
-
-- estimer la fiabilité d'un autre acteur ;
-- mettre à jour cette estimation après un événement ;
-- décider de coopérer ou non ;
-- décider de trahir en tenant compte du coût réputationnel ;
-- se souvenir des engagements ;
-- éventuellement mentir sur sa propre réputation.
-
-**[VALIDÉ]** Les IA doivent pouvoir manipuler. La réputation ne doit donc pas être une vérité parfaite et incontestable.
+**[À DÉFINIR]** La violation d'un accord contraignant est-elle seulement une sanction mécanique, ou aussi une perte de réputation ? Les deux devraient probablement coexister, sans que l'un remplace l'autre.
 
 ## 9. Risques
 
 | Risque | Description | Mitigation proposée |
 |---|---|---|
-| Modèle opaque | Le joueur ne comprend pas | Signaux et explications |
-| Réputation figée | Un traître ne peut jamais se racheter | Décroissance, rédemption |
-| Réputation trop punitive | Personne n'ose trahir | Pondération, contexte |
-| Réputation trop faible | Trahison sans conséquence | Événements visibles, coalitions |
-| Exploit | Collusion pour manipuler les scores | Détection, règles anti-collusion |
-| Biais anti-IA | Les IA se coalisent contre l'humain | Symétrie des règles |
-| Données excessives | Trop d'historique | Résumés, oubli |
+| Score opaque | Le joueur ne comprend pas sa réputation. | Historique explicite. |
+| Réputation infinie | Une trahison rend une nation éternellement discréditée. | Oubli progressif, rédemption. |
+| Réputation cosmétique | Aucun effet réel sur les IA. | Effets testés. |
+| Collusion | Les IA se coordonnent trop parfaitement. | Information filtrée, méfiance. |
+| Complexité | Trop de dimensions à stocker. | Commencer simple, étendre après validation. |
 
 ## 10. Questions ouvertes
 
 | ID | Question |
 |---|---|
-| R-001 | Une ou plusieurs dimensions ? |
-| R-002 | Réputation par paire ou globale ? |
-| R-003 | Comment est-elle calculée ? |
-| R-004 | Décroît-elle avec le temps ? |
-| R-005 | Est-elle visible ? Par qui ? |
-| R-006 | A-t-elle un effet mécanique ? |
-| R-007 | Comment permettre la rédemption ? |
-| R-008 | Comment éviter les abus de collusion ? |
-| R-009 | Comment les IA l'utilisent-elles ? |
-| R-010 | Comment la tester et l'équilibrer ? |
-| R-011 | La réputation est-elle persistante entre parties ? |
-| R-012 | Que se passe-t-il si un acteur est éliminé ? |
+| Y-001 | Valeur unique ou croyance par observateur ? |
+| Y-002 | Quelles sources et quels poids ? |
+| Y-003 | Comment la réputation s'oublie-t-elle ? |
+| Y-004 | Comment entre-t-elle dans la décision des IA ? |
+| Y-005 | Que voit le joueur ? |
+| Y-006 | Quel lien avec les accords contraignants ? |
 
-## 11. Dépendances
+## 11. Critères de passage à « Spécifié »
 
-- [treaties.md](treaties.md) : engagements et ruptures.
-- [alliances.md](alliances.md) : loyauté et trahison.
-- [negotiations.md](negotiations.md) : promesses et mensonges.
-- [artificial-intelligence/memory-system.md](../artificial-intelligence/memory-system.md) : mémoire des événements.
-- [artificial-intelligence/decision-making.md](../artificial-intelligence/decision-making.md) : usage dans les décisions.
-- [architecture/data-model.md](../architecture/data-model.md) : entité `Reputation`.
-
-## 12. Critères de passage à « Spécifié »
-
-- [ ] Dimensions et granularité validées.
-- [ ] Règles de calcul et de décroissance définies.
-- [ ] Visibilité définie.
-- [ ] Effets sur le jeu définis.
+- [ ] Modèle de réputation tranché.
+- [ ] Sources et poids définis.
+- [ ] Oubli et récupération définis.
 - [ ] Utilisation par les IA spécifiée.
-- [ ] Stratégie de test et d'équilibrage définie.
+- [ ] Affichage joueur défini.
+- [ ] Interaction avec les accords contraignants définie.
 - [ ] Validation du propriétaire.

@@ -7,6 +7,18 @@
 
 ---
 
+## 0. Cadre validé par la fiche maîtresse
+
+**[VALIDÉ]** La décision d'un agent IA doit respecter :
+
+- l'autonomie et l'initiative (D-011) ;
+- la non-omniscience : la décision repose sur une **perception filtrée**, jamais sur l'état complet du jeu (§ 7.4, Q-012) ;
+- les objectifs combinés (ambitions, intérêts nationaux, survie, adaptation, victoire) (§ 7.2) ;
+- la mémoire longue des engagements et des trahisons (§ 7.3) ;
+- l'interdiction d'ajouter des mécaniques non validées (§ 17).
+
+**[À DÉFINIR — T-023]** La méthode : heuristiques, LLM, planificateur, combinaison ? Aucune architecture n'est validée. Les niveaux de décision ci-dessous restent des propositions.
+
 ## 1. Objet
 
 Décrire comment un agent passe de la perception à une décision : analyse, planification, négociation, génération d'ordres, validation et apprentissage.

@@ -7,6 +7,16 @@
 
 ---
 
+## 0. Cadre validé par la fiche maîtresse
+
+**[VALIDÉ]** Les IA disposent d'une **mémoire à long terme** : conversations, promesses, trahisons, alliances, conflits, erreurs stratégiques et événements importants (D-011, § 7.3).
+
+**[VALIDÉ]** Une IA trahie doit pouvoir en tenir compte **longtemps après les faits** (§ 7.3).
+
+**[VALIDÉ]** La mémoire est liée à la réputation et aux accords, sans que le modèle exact soit défini. Voir [../diplomacy/reputation.md](../diplomacy/reputation.md).
+
+**[À DÉFINIR — T-023]** Support, rétention, résumé, oubli, coût, confidentialité et reproductibilité. Aucune base de données ni technique d'embedding n'est choisie.
+
 ## 1. Objet
 
 Définir ce qu'un agent IA doit retenir, comment il le retrouve, comment il oublie, et comment cette mémoire reste cohérente, utile et abordable.

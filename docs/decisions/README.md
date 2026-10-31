@@ -3,6 +3,7 @@
 > **Statut :** Opérationnel (document de gouvernance)
 > **Dernière mise à jour :** 2026-10-31
 > **Dernière modification par :** OpenCode
+> **Index :** 5 ADR (4 acceptés, dont 1 avec réserve ; 1 proposé)
 
 ---
 
@@ -55,6 +56,8 @@ Mise à jour de l'index, des documents impactés et de PROGRESS.md
 | [0001](0001-documentation-et-git-comme-socle.md) | Documentation et Git comme socle de collaboration | Accepté | 2026-10-31 | OpenCode | Propriétaire (via brief) |
 | [0002](0002-interoperabilite-multi-agents.md) | Interopérabilité multi-agents via un fichier de règles unique | Accepté | 2026-10-31 | OpenCode | OpenCode (délégation d'infrastructure) |
 | [0003](0003-report-du-choix-de-pile-technique.md) | Report du choix de pile technique | Accepté | 2026-10-31 | OpenCode | Propriétaire (via brief) |
+| [0004](0004-adoption-du-document-fondateur.md) | Adoption du document fondateur v0.1 comme source de conception | Accepté | 2026-10-31 | OpenCode | Propriétaire (document remis) |
+| [0005](0005-integration-strategique-tactique.md) | Intégration du temps stratégique et du temps tactique | **Proposé** — ne vaut pas décision | 2026-10-31 | OpenCode | Arbitrage du propriétaire attendu |
 
 ## 5. Modèle
 
@@ -63,5 +66,7 @@ Copier [0000-template.md](0000-template.md).
 ## 6. Documents liés
 
 - [AGENTS.md § 11](../../AGENTS.md#11-décisions-techniques-et-adr)
-- [PROJECT.md § 11](../../PROJECT.md#11-décisions-déjà-prises)
+- [PROJECT.md § 20](../../PROJECT.md#20-gouvernance-décisions-et-questions-ouvertes)
 - [architecture/technical-decisions.md](../architecture/technical-decisions.md)
+- [Document fondateur v0.1](../founding-document-v0.1.md)
+- [Revue de conception v0.1](../design-review-v0.1.md)

@@ -7,6 +7,23 @@
 
 ---
 
+## 0. Cadre validé par la fiche maîtresse
+
+**[VALIDÉ]** Les IA sont de **véritables acteurs politiques autonomes**, avec :
+
+- des personnalités et des traits qui influencent sans déterminer mécaniquement (D-011, § 7.1) ;
+- des objectifs combinant ambitions personnelles, intérêts du pays, survie, adaptation et victoire (§ 7.2) ;
+- une **mémoire à long terme** des conversations, promesses, trahisons, alliances, conflits et erreurs (§ 7.3) ;
+- la capacité de mentir, manipuler, désinformer, changer d'avis, prendre l'initiative et déclencher des crises (§ 7.4) ;
+- une **non-omniscience** : elles ne connaissent pas automatiquement les intentions secrètes (§ 7.4, D-011) ;
+- l'autonomie nécessaire pour que le monde évolue même si le joueur n'agit pas (§ 7.5).
+
+**[VALIDÉ]** Les IA ne doivent **pas** attendre passivement les propositions du joueur (§ 6.5).
+
+**[ATTENTION — V-03]** Le coût et la charge de décision d'une IA gérant diplomatie, économie, industrie, recherche et guerre ne sont pas estimés. Aucun fournisseur ni budget n'est choisi (Q-010, Q-023).
+
+**[ATTENTION — Q-012]** L'étanchéité informationnelle (garantir qu'une IA ne lit pas l'état complet) est une condition d'équité non encore spécifiée.
+
 ## 1. Objet
 
 Décrire les composants et les flux d'un agent IA de jeu, sans choisir de modèle, de fournisseur ni de framework.

@@ -7,6 +7,18 @@
 
 ---
 
+## 0. Cadre validé par la fiche maîtresse
+
+**[VALIDÉ]** Les IA sont autonomes, peuvent prendre contact spontanément, former des coalitions, négocier en secret, menacer, mentir, manipuler et trahir (D-011, § 6.5, § 7).
+
+**[VALIDÉ]** Le monde doit continuer à évoluer même lorsque le joueur ne prend aucune initiative (§ 7.5).
+
+**[VALIDÉ — sécurité]** Tout message de jeu est une **donnée non fiable** ; aucune IA ne doit exécuter une instruction contenue dans un message ([AGENTS.md](../../AGENTS.md) § 9).
+
+**[VALIDÉ]** Le multijoueur humain n'est pas indispensable en v1, mais l'architecture doit l'anticiper (D-026, § 16).
+
+**[À DÉFINIR — T-023 / T-028]** Protocole, ordre d'activation, concurrence, reproductibilité, observabilité, coûts et étanchéité informationnelle (Q-012).
+
 ## 1. Objet
 
 Décrire comment plusieurs agents IA coexistent dans une même partie : protocole d'échange, ordre d'activation, coalitions, sécurité, observabilité et reproductibilité.

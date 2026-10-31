@@ -51,22 +51,29 @@ required_files=(
   .gitignore
   .env.example
   docs/README.md
+  docs/founding-document-v0.1.md
+  docs/design-review-v0.1.md
   docs/architecture/overview.md
   docs/architecture/technical-decisions.md
   docs/architecture/data-model.md
   docs/gameplay/rules.md
   docs/gameplay/map-system.md
-  docs/gameplay/military-system.md
-  docs/gameplay/economy-system.md
+  docs/nations/nations.md
+  docs/nations/regimes.md
+  docs/military/strategic-warfare.md
+  docs/military/tactical-battles.md
+  docs/economy/economy-system.md
+  docs/technology/research-system.md
+  docs/intelligence/intelligence-system.md
   docs/diplomacy/treaties.md
   docs/diplomacy/negotiations.md
   docs/diplomacy/alliances.md
   docs/diplomacy/reputation.md
-  docs/artificial-intelligence/ai-architecture.md
-  docs/artificial-intelligence/personalities.md
-  docs/artificial-intelligence/memory-system.md
-  docs/artificial-intelligence/decision-making.md
-  docs/artificial-intelligence/multi-agent-interactions.md
+  docs/ai/ai-architecture.md
+  docs/ai/personalities.md
+  docs/ai/memory-system.md
+  docs/ai/decision-making.md
+  docs/ai/multi-agent-interactions.md
   docs/development/coding-standards.md
   docs/development/testing-strategy.md
   docs/development/contribution-guide.md
@@ -75,6 +82,8 @@ required_files=(
   docs/decisions/0001-documentation-et-git-comme-socle.md
   docs/decisions/0002-interoperabilite-multi-agents.md
   docs/decisions/0003-report-du-choix-de-pile-technique.md
+  docs/decisions/0004-adoption-du-document-fondateur.md
+  docs/decisions/0005-integration-strategique-tactique.md
   scripts/check-infrastructure.sh
   src/README.md
   tests/README.md
@@ -87,9 +96,14 @@ done
 printf '\n== Dossiers ==\n'
 for d in \
   docs/architecture \
+  docs/nations \
   docs/gameplay \
+  docs/military \
+  docs/economy \
+  docs/technology \
+  docs/intelligence \
   docs/diplomacy \
-  docs/artificial-intelligence \
+  docs/ai \
   docs/development \
   docs/decisions \
   src \
@@ -141,6 +155,24 @@ if grep -qF '| Date | Agent | Intervention | Fichiers | Tests | Résultat |' PRO
   ok "en-tête du journal conforme"
 else
   fail "en-tête du journal absent ou non conforme dans PROGRESS.md"
+fi
+
+printf '\n== Empreinte du document fondateur ==\n'
+founding_hash="6de617ca12d9b9028b72ddae6ec85a41b394f1875a4b6af0cabfeb553e1a25ce"
+if [ -f docs/founding-document-v0.1.md ]; then
+  actual_hash=$(sha256sum docs/founding-document-v0.1.md | awk '{print $1}')
+  if [ "$actual_hash" = "$founding_hash" ]; then
+    ok "empreinte SHA-256 du document fondateur conforme"
+  else
+    fail "empreinte SHA-256 du document fondateur modifiée : $actual_hash"
+  fi
+  if grep -qF "$founding_hash" docs/design-review-v0.1.md 2>/dev/null; then
+    ok "empreinte reportée dans la revue de conception"
+  else
+    fail "empreinte absente ou différente dans docs/design-review-v0.1.md"
+  fi
+else
+  fail "document fondateur absent : impossible de vérifier l'empreinte"
 fi
 
 printf '\n== Liens Markdown relatifs ==\n'

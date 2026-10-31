@@ -1,10 +1,10 @@
 # PROGRESS.md — Tableau de bord permanent
 
-> **Version :** 0.1.0
+> **Version :** 0.2.0
 > **Dernière mise à jour :** 2026-10-31
 > **Dernier agent intervenu :** OpenCode
-> **Phase actuelle :** Phase 0 — Fondations documentaires (terminée)
-> **Prochaine phase :** Phase 1 — Cadrage produit (non démarrée)
+> **Phase actuelle :** Phase 1 — Cadrage produit (en cours)
+> **Prochaine phase :** À définir après validation du cahier des charges (T-030)
 
 > **À lire avant toute intervention.** Ce document décrit l'état réel du projet. Il ne remplace pas Git. Toute modification doit respecter [AGENTS.md](AGENTS.md) § 7.3 (mise à jour séquentielle).
 
@@ -14,14 +14,15 @@
 
 | Élément | Valeur |
 |---|---|
-| Phase actuelle | Phase 0 — Fondations documentaires, **terminée** |
+| Phase actuelle | Phase 1 — Cadrage produit, **en cours** |
 | Avancement des fonctionnalités de jeu | **0 fonctionnalité terminée** |
 | Backlog fonctionnel de jeu | **Non défini** : aucun pourcentage global ne peut être calculé honnêtement |
 | Livrables d'infrastructure | **2 / 2 vérifiés** (INF-001, INF-002) |
+| Livrables de conception | **2 terminés** (T-019, T-031) · **1 partiel** (T-020) |
 | Dernière mise à jour | 2026-10-31 |
 | Dernier agent intervenu | OpenCode |
-| Stabilité du projet | **Stable** : aucun code exécutable, aucun conflit Git, documentation vérifiée structurellement |
-| Dépôt Git | Initialisé, branche `main`, aucun historique antérieur |
+| Stabilité du projet | **Stable sur le fond** : aucun code exécutable, aucune décision technique, documentation alignée et vérifiée. **Travail non commité** sur la branche `docs/fiche-maitresse-v0.2`. |
+| Dépôt Git | Initialisé ; branche courante `docs/fiche-maitresse-v0.2` ; un seul commit publié (`459375a`) ; travail en cours non commité. |
 
 ### Méthode de calcul de l'avancement
 
@@ -29,15 +30,17 @@
   Le backlog fonctionnel n'existe pas encore ; le dénominateur est inconnu. **Aucun pourcentage de jeu n'est affiché.**
 - **Avancement infrastructure** = livrables d'infrastructure vérifiés / livrables d'infrastructure définis.
   Aujourd'hui : 2 / 2. Ce chiffre ne mesure **pas** l'avancement du jeu.
+- **Avancement conception** = livrables de conception terminés / livrables de conception identifiés.
+  Aujourd'hui : 2 terminés (T-019, T-031) et 1 partiel (T-020). Ce chiffre ne mesure **pas** un pourcentage du jeu.
 - Aucun pourcentage arbitraire, aucune estimation subjective.
 
 ### État de stabilité
 
 - Aucun code exécutable : aucun bug logiciel possible à ce stade.
-- Documentation créée et vérifiée par script (structure et liens).
-- Aucune décision technique de jeu prise.
-- Aucun travail non sauvegardé.
-- Risque principal : démarrer le développement avant d'avoir tranché le périmètre (voir section F).
+- Documentation alignée sur la fiche maîtresse et vérifiée par script (structure, liens, empreinte du document fondateur).
+- Aucune décision technique de jeu prise ; ADR-0005 est **proposé**, pas accepté.
+- Travail non commité : voir L-007.
+- Risque principal : démarrer le développement avant d'avoir tranché le périmètre et le cahier des charges (T-030).
 
 ---
 
@@ -56,15 +59,32 @@
 | ID | Nom | Description | Date | Agent | Tests effectués | Limitations |
 |---|---|---|---|---|---|---|
 | INF-001 | Infrastructure documentaire | Création des documents de référence, de la documentation thématique, des ADR et des dossiers de base. | 2026-10-31 | OpenCode | Vérification de présence, de non-vacuité et des liens par `scripts/check-infrastructure.sh` ; inspection manuelle de la cohérence. | Les documents sont des documents de **cadrage**, pas des spécifications validées. La cohérence sémantique n'est pas vérifiée automatiquement. |
-| INF-002 | Script de vérification | `scripts/check-infrastructure.sh` : contrôle des fichiers, dossiers, sections obligatoires, champs d'ADR, liens relatifs, secrets et état Git. | 2026-10-31 | OpenCode | Exécution réelle : voir journal section G. | Ne vérifie pas le sens du contenu ni l'exactitude des décisions. Pas encore intégré à une CI. |
+| INF-002 | Script de vérification | `scripts/check-infrastructure.sh` : contrôle des fichiers, dossiers, sections obligatoires, champs d'ADR, liens relatifs, empreinte du document fondateur, secrets et état Git. | 2026-10-31 | OpenCode | Exécution réelle : voir journal section G. | Ne vérifie pas le sens du contenu ni l'exactitude des décisions. Pas encore intégré à une CI. |
+
+### B.3 Livrables de conception
+
+| ID | Nom | Description | Date | Agent | Vérifications | Limitations |
+|---|---|---|---|---|---|---|
+| T-019 | Intégration de la fiche maîtresse | `PROJECT.md` reprend la fiche maîtresse v0.1 (D-001 à D-026, questions tranchées, Q-026) puis le dossier des nations (D-027 à D-029, Q-027 à Q-031). Version 0.2.2. | 2026-10-31 | OpenCode | Relecture du document source ; contrôle des liens par `scripts/check-infrastructure.sh`. | Plusieurs décisions restent « à définir » dans la fiche elle-même. |
+| T-031 | Alignement de la documentation thématique | Réécriture ou alignement de 22 documents thématiques sur les décisions D-001 à D-029 ; ajout des documents tactiques, technologie, renseignement et régimes ; signalement des tensions C-01 à C-18. | 2026-10-31 | OpenCode | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 (voir journal). | Alignement de **cadrage** : aucun système n'est spécifié ni testé. Les valeurs chiffrées restent à définir. |
+| T-020 | Profils des sept puissances jouables | Intégration du dossier du propriétaire dans `docs/nations/nations.md` : identité, douze caractéristiques, forces, faiblesses, armées, économie, diplomatie, ambitions, colonies. | 2026-10-31 | OpenCode | Relecture du dossier source ; contrôle des liens par `scripts/check-infrastructure.sh` ; valeurs nationales non modifiées. | **Partiel** : petites puissances non traitées ; articulation chiffrée avec province/économie/armée non définie (Q-027 à Q-031) ; relations initiales non chiffrées. |
+
+### B.4 Décisions et revue de conception
+
+| ID | Objet | Statut | Preuve |
+|---|---|---|---|
+| ADR-0004 | Adoption du document fondateur v0.1 comme source de conception | **Accepté**, avec réserve sur le cahier des charges | `docs/decisions/0004-adoption-du-document-fondateur.md` |
+| ADR-0005 | Intégration du temps stratégique et tactique | **Proposé** — ne vaut pas décision | `docs/decisions/0005-integration-strategique-tactique.md` |
+| Revue de conception | Tensions C-01 à C-18, vigilances V-01 à V-08 | Cadrage, non validée | `docs/design-review-v0.1.md` |
+| Document fondateur | Source gelée par empreinte SHA-256 | Gelé | `docs/founding-document-v0.1.md` |
 
 ---
 
 ## C. Travaux en cours
 
-**Aucun travail en cours.**
+**Aucune tâche réservée à ce jour.** La réservation T-019 a été clôturée par OpenCode le 2026-10-31 après vérification de son achèvement (voir journal).
 
-La phase 0 est clôturée. Aucune tâche n'est réservée. Le prochain agent doit choisir une tâche dans la section D et l'annoncer ici avant de commencer.
+Aucun autre agent n'a réservé de fichier. Le prochain agent doit choisir une tâche dans la section D et l'annoncer ici avant de commencer.
 
 ### Modèle d'entrée (à utiliser pour toute nouvelle tâche)
 
@@ -83,43 +103,61 @@ La phase 0 est clôturée. Aucune tâche n'est réservée. Le prochain agent doi
 
 ## D. Travaux à effectuer
 
+> **Règle :** une tâche qui dépend d'une décision du propriétaire n'est pas « en cours » ; elle est **bloquée** tant que la décision n'est pas consignée. Aucun agent ne tranche une tension C-xx ou une question Q-xx à la place du propriétaire.
+
 ### P0 — Bloquant / indispensable
 
 | ID | Tâche | Description | Dépendances | Statut |
 |---|---|---|---|---|
-| T-001 | Valider la vision et le périmètre du MVP | Le propriétaire tranche Q-002 : ce que le MVP doit démontrer, ce qu'il exclut. | Aucune | **À faire — propriétaire** |
-| T-002 | Trancher la relation à Diplomacy | Décider Q-003 : reprise fidèle, adaptation libre ou inspiration thématique. Impacte règles, carte, juridique. | Aucune | **À faire — propriétaire** |
-| T-003 | Trancher le rythme de partie | Décider Q-005 : temps réel, tour par tour, asynchrone ou hybride. Impacte architecture et IA. | T-001, T-002 | **À faire — propriétaire** |
-| T-004 | Étude de pile technique + ADR | Comparer les options (langage, application, moteur, persistance) et produire un ADR. Ne rien implémenter avant validation. | T-001 à T-003 | **À faire — agent** |
-| T-005 | Spécifier les règles de base v0.1 | Compléter `docs/gameplay/rules.md` : ordres, résolution, victoire, visibilité. | T-002, T-003 | **À faire — agent** |
+| T-030 | Valider le cahier des charges détaillé | Le propriétaire valide le document qui autorisera l'implémentation des mécaniques : périmètre MVP (Q-002), valeurs, seuils et cas limites. | T-020 à T-029 | **À faire — propriétaire** ; bloque tout développement |
+| T-029 | Arbitrer l'intégration stratégique/tactique | Trancher C-01, C-02, C-04, C-15 et C-17 ; accepter, modifier ou rejeter ADR-0005. | Aucune | **À faire — propriétaire** ; ADR-0005 proposé |
+| T-021 | Économie, industrie et niveau de vie | Définir les trois ressources, la production, le budget, l'industrie, la population et l'indicateur de niveau de vie. | T-020, Q-028 | **À faire — agent** ; bloqué par Q-028 |
+| T-022 | Règles diplomatiques | Spécifier types d'accords, clauses contraignantes, sanctions, crises, cycle de vie et calendrier (C-16). | T-020, T-021 | **À faire — agent** |
+| T-026 | Tours, résolution, victoire et visibilité | Définir phases, verrouillage, résolution des conflits d'ordres, seuils de victoire (C-08) et fog of war (C-06). | T-021 à T-025, T-029 | **À faire — agent + propriétaire** |
 
 ### P1 — Haute priorité
 
 | ID | Tâche | Description | Dépendances | Statut |
 |---|---|---|---|---|
-| T-006 | Modèle de données v0.2 | Passer du modèle conceptuel à un modèle validé, avec événements et invariants. | T-005 | À faire |
-| T-007 | Contrat d'interface IA + frontière informationnelle | Spécifier perceptions, entrées/sorties, garanties d'étanchéité. | T-005 | À faire |
-| T-008 | Format de carte + validateur | Choisir un format déclaratif, définir les contrôles, produire une carte de test. | T-005 | À faire |
-| T-009 | Spécifier traités et négociations | Structure des clauses, cycle de vie, canaux, timeouts, trahison. | T-005 | À faire |
-| T-010 | Harnais d'évaluation des IA | Scénarios reproductibles, métriques, comparaison de versions. | T-007 | À faire |
+| T-023 | IA dirigeantes | Spécifier personnalités, mémoire, objectifs, prise de décision, gestion des crises et étanchéité informationnelle (Q-012). | T-022, T-021 | À faire — agent |
+| T-024 | Règles militaires et batailles | Définir unités, fronts, offensives, fortifications, conversion stratégique ↔ tactique (C-03) et état des unités sans moral (C-10). | T-026, T-029 | À faire — agent |
+| T-025 | Technologies et renseignement | Définir l'arbre 1914-1945, coûts, avance, spécialisations, interception (C-05, C-11) et espionnage industriel. | T-021, T-023 | À faire — agent |
+| T-027 | Interface et modes de jeu | Concevoir l'interface stratégique, les campagnes, les parties libres, l'observation, la prise de contrôle (C-14) et l'accessibilité. | T-026, T-029 | À faire — agent |
+| T-028 | Architecture, persistance et licences | Étudier la pile technique (ADR), la persistance, le replay (C-15), l'anticipation multijoueur (C-17) et les licences (C-13, Q-020, Q-026). | T-030, Q-002, Q-007, Q-008 | À faire — agent |
+| T-032 | Modéliser les profils nationaux | Intégrer les douze caractéristiques, les ambitions initiales, les régions impériales et les relations de départ dans le modèle de données, sans double comptage avec les provinces. | T-021, T-020 | À faire — agent |
+| T-033 | Traduire la situation diplomatique initiale | Convertir les relations décrites dans `docs/nations/nations.md` en valeurs amitié / neutralité / hostilité et en traités de départ, y compris secrets. | T-022, T-020 | À faire — agent |
 
 ### P2 — Priorité normale
 
 | ID | Tâche | Description | Dépendances | Statut |
 |---|---|---|---|---|
-| T-011 | Persistance et replay | ADR sur sauvegarde, journal, versionnement, compatibilité. | T-004, T-006 | À faire |
-| T-012 | Personnalités et mémoire | Spécifier traits, génération, mémoire, oubli, coûts. | T-007 | À faire |
-| T-013 | Étude UI/UX | Support, lisibilité, informations visibles, accessibilité. | T-004 | À faire |
-| T-014 | Observabilité | Logs, métriques, traces, audit des décisions IA. | T-004 | À faire |
+| T-034 | Évolution des caractéristiques nationales | Définir coûts, seuils, durées et plafonds d'évolution des douze caractéristiques, ainsi que leurs effets. | T-032, Q-031 | À faire — agent |
+| T-020 (suite) | Petites puissances et articulation | Définir la liste et le poids des pays non jouables, puis l'articulation chiffrée des douze caractéristiques avec les provinces, la production et le budget. | T-021, Q-028, Q-029 | **Partiel** — agent |
 
-### P3 — Amélioration facultative
+### D.5 Tâches archivées (remplacées)
 
-| ID | Tâche | Description | Dépendances | Statut |
-|---|---|---|---|---|
-| T-015 | Modding | Étudier l'ouverture des règles et des cartes. | T-005, T-008 | À faire |
-| T-016 | Localisation | Choisir les langues et le mécanisme i18n. | T-013 | À faire |
-| T-017 | Accessibilité | Contraste, navigation clavier, lisibilité. | T-013 | À faire |
-| T-018 | Éditeur de carte | Outil interne ou externe. | T-008 | À faire |
+Les anciennes tâches T-001 à T-018 ne sont plus suivies séparément : elles ont été remplacées par les tâches ci-dessus. Elles sont conservées pour l'historique et ne doivent pas être réactivées sans vérifier leur remplacement.
+
+| Ancienne tâche | Objet | Remplacée par | Motif |
+|---|---|---|---|
+| T-001 | Valider la vision et le MVP | T-030 / Q-002 | La fiche maîtresse fixe la vision ; le MVP reste à valider. |
+| T-002 | Trancher la relation à Diplomacy | Q-003 (tranchée) | Réponse consignée dans PROJECT.md § 1.2. |
+| T-003 | Trancher le rythme | Q-005 (tranchée) | Un tour = un mois (D-006). |
+| T-004 | Étude de pile technique + ADR | T-028 | Toujours ouverte, intégrée à l'architecture. |
+| T-005 | Spécifier les règles de base | T-026 | Couvert par tours/résolution/victoire. |
+| T-006 | Modèle de données v0.2 | T-032 / T-028 | Le modèle dépend des profils et de la persistance. |
+| T-007 | Contrat d'interface IA | T-023 | Intégré aux IA dirigeantes. |
+| T-008 | Format de carte + validateur | T-020 / T-026 | Dépend de la liste des provinces. |
+| T-009 | Spécifier traités et négociations | T-022 | Intégré aux règles diplomatiques. |
+| T-010 | Harnais d'évaluation des IA | T-023 | Intégré aux IA dirigeantes. |
+| T-011 | Persistance et replay | T-028 | Intégré à l'architecture. |
+| T-012 | Personnalités et mémoire | T-023 | Intégré aux IA dirigeantes. |
+| T-013 | Étude UI/UX | T-027 | Intégré à l'interface. |
+| T-014 | Observabilité | T-028 | Intégré à l'architecture. |
+| T-015 | Modding | T-028 / Q-018 | Question ouverte. |
+| T-016 | Localisation | T-027 / Q-019 | Question ouverte. |
+| T-017 | Accessibilité | T-027 / Q-021 | Question ouverte. |
+| T-018 | Éditeur de carte | T-020 / T-027 | Dépend de la carte et de l'interface. |
 
 ---
 
@@ -133,15 +171,19 @@ La phase 0 est clôturée. Aucune tâche n'est réservée. Le prochain agent doi
 |---|---|---|---|---|---|---|
 | — | — | — | — | — | — | — |
 
-### E.2 Limitations connues de l'infrastructure
+### E.2 Limitations connues de l'infrastructure et de la conception
 
 | ID | Problème | Gravité | Origine | État | Responsable |
 |---|---|---|---|---|---|
-| L-001 | Le script vérifie la structure et les liens, pas la cohérence sémantique des documents. | Faible | Limite de l'automatisation | Connu, accepté | OpenCode |
+| L-001 | Le script vérifie la structure, les liens et une empreinte, pas la cohérence sémantique des documents. | Faible | Limite de l'automatisation | Connu, accepté | OpenCode |
 | L-002 | Aucune CI n'exécute le script automatiquement. | Moyenne | Pile technique non choisie | Ouvert | À assigner |
 | L-003 | La protection de branche et la revue obligatoire ne sont pas configurées côté hébergeur. | Moyenne | Dépôt local, pas de remote | Ouvert | Propriétaire |
 | L-004 | L'identité formelle du propriétaire et le canal d'arbitrage ne sont pas définis. | Moyenne | Information manquante | Ouvert — voir Q-025 | Propriétaire |
 | L-005 | Aucun glossaire commun n'existe encore ; certains termes peuvent être interprétés différemment. | Faible | Cadrage initial | Ouvert | À assigner |
+| L-006 | `PROGRESS.md` ne reflétait pas l'état décrit par le `CHANGELOG.md` : T-019 était listée « en cours » et les tâches T-020 à T-031 n'apparaissaient pas toutes. | Moyenne | Mises à jour séquentielles non clôturées | **Résolu le 2026-10-31** par la présente version 0.2.0 | OpenCode |
+| L-007 | Le travail de la branche `docs/fiche-maitresse-v0.2` n'est pas encore commité : une perte du répertoire de travail perdrait la réorganisation, les réécritures et les nouveaux documents. | Haute tant que non commité | Commit non effectué | Ouvert — à corriger avant clôture de session | OpenCode |
+| L-008 | Aucun système de jeu n'est spécifié ni testable : les documents sont des cadrages alignés, pas des spécifications. | Moyenne | Phase 1 | Connu, assumé | Propriétaire / agents |
+| L-009 | Le document fondateur contient des tensions internes non tranchées (C-01 à C-18). | Haute | Document fondateur v0.1 | Connu — voir `docs/design-review-v0.1.md` | Propriétaire |
 
 ### E.3 Risques suivis (rappel)
 
@@ -151,17 +193,17 @@ Les risques architecturaux sont détaillés dans [docs/architecture/overview.md 
 
 ## F. Prochaines étapes
 
-Cinq prochaines tâches recommandées, dans l'ordre :
+Cinq prochaines actions recommandées, dans l'ordre :
 
-| # | Tâche | Responsable | Dépendances | Pourquoi maintenant |
+| # | Action | Responsable | Dépendances | Pourquoi maintenant |
 |---|---|---|---|---|
-| 1 | **T-001** — Valider le périmètre du MVP | Propriétaire | Aucune | Tout le reste en dépend ; sans périmètre, les choix techniques seraient arbitraires. |
-| 2 | **T-002** — Trancher la relation à Diplomacy | Propriétaire | Aucune | Conditionne les règles, la carte et le risque juridique. |
-| 3 | **T-003** — Trancher le rythme de partie | Propriétaire | T-001, T-002 | Conditionne l'architecture, le rythme des IA et les coûts. |
-| 4 | **T-005** — Spécifier les règles de base v0.1 | Agent (OpenCode/Codex/Claude Code) | T-002, T-003 | Permet de tester le noyau et de préparer T-004. |
-| 5 | **T-004** — Étude de pile technique + ADR | Agent | T-001 à T-003 | À réaliser avec un périmètre clair, pas avant. |
+| 1 | **T-030** — Valider le cahier des charges | Propriétaire | T-020 à T-029 | Conditionne tout développement ; sans lui, aucune mécanique ne peut être implémentée. |
+| 2 | **T-029** — Arbitrer le temps stratégique/tactique | Propriétaire | Aucune | Bloque les règles, l'architecture et l'interface ; ADR-0005 est prêt à être accepté ou rejeté. |
+| 3 | **Committer** le travail documentaire | OpenCode ou agent suivant | Revue du diff | Le travail non commité est vulnérable (L-007). |
+| 4 | **T-021** — Économie, industrie et niveau de vie | Agent | T-020, Q-028 | Deuxième priorité validée par PROJECT.md. Bloqué tant que Q-028 n'est pas tranchée. |
+| 5 | **T-022** — Règles diplomatiques | Agent | T-020, T-021 | Troisième priorité validée ; peut avancer en parallèle de T-021 sur les parties non chiffrées. |
 
-**Point de blocage actuel :** les décisions T-001 à T-003 appartiennent au propriétaire. Aucun agent ne doit les prendre à sa place. En attendant, un agent peut préparer des options documentées, sans les présenter comme validées.
+**Point de blocage actuel :** T-030 et T-029 appartiennent au propriétaire. Aucun agent ne doit les trancher à sa place. En attendant, un agent peut préparer des options documentées, sans les présenter comme validées.
 
 ---
 
@@ -170,6 +212,8 @@ Cinq prochaines tâches recommandées, dans l'ordre :
 | Date | Agent | Intervention | Fichiers | Tests | Résultat |
 |---|---|---|---|---|---|
 | 2026-10-31 | OpenCode | Création de l'infrastructure documentaire initiale : documents de référence, documentation thématique, ADR 0001–0003, script de vérification, initialisation Git. | `AGENTS.md`, `PROJECT.md`, `PROGRESS.md`, `README.md`, `CHANGELOG.md`, `CLAUDE.md`, `.gitignore`, `.env.example`, `docs/**`, `scripts/check-infrastructure.sh`, `src/README.md`, `tests/README.md`, `assets/README.md` | `./scripts/check-infrastructure.sh` — 67 vérifications, 0 échec (après correction d'un lien cassé) ; `git status` — vérification avant commit. | Terminé |
+| 2026-10-31 | OpenCode | Intégration du dossier des puissances jouables fourni par le propriétaire : profils des sept nations, douze caractéristiques, ambitions, colonies, comparaison, comportement des IA et annexe d'intégration (D-027 à D-029, Q-027 à Q-031). Mise à jour des index et des liens, correction des chemins de documentation déplacés, ajout des nouveaux documents au script de vérification. | `docs/nations/nations.md` (nouveau), `PROJECT.md`, `PROGRESS.md`, `CHANGELOG.md`, `README.md`, `docs/README.md`, `AGENTS.md`, `docs/architecture/overview.md`, `docs/development/testing-strategy.md`, `scripts/check-infrastructure.sh` | `bash scripts/check-infrastructure.sh` — 76 vérifications, 0 échec, exit 0 ; `git diff --stat` et `git status` — vérification du périmètre. | Terminé |
+| 2026-10-31 | OpenCode | Gel du document fondateur, revue de conception, ADR-0004 (accepté) et ADR-0005 (proposé), réorganisation `docs/ai`, `docs/military`, `docs/economy`, alignement de 22 documents thématiques sur les décisions D-001 à D-029, mise à jour des index, de `PROJECT.md` v0.2.2, du `CHANGELOG.md` et du script (empreinte SHA-256). Clôture de T-019 ; T-020 laissée **partielle** ; T-021 à T-034 documentées ; tâches T-001 à T-018 archivées avec leur remplacement. | `docs/founding-document-v0.1.md`, `docs/design-review-v0.1.md`, `docs/decisions/0004-adoption-du-document-fondateur.md`, `docs/decisions/0005-integration-strategique-tactique.md`, `docs/README.md`, `docs/decisions/README.md`, `docs/gameplay/rules.md`, `docs/gameplay/map-system.md`, `docs/military/strategic-warfare.md`, `docs/military/tactical-battles.md`, `docs/economy/economy-system.md`, `docs/technology/research-system.md`, `docs/intelligence/intelligence-system.md`, `docs/nations/regimes.md`, `docs/diplomacy/*.md`, `docs/architecture/*.md`, `docs/ai/*.md`, `PROJECT.md`, `PROGRESS.md`, `README.md`, `CHANGELOG.md`, `AGENTS.md`, `scripts/check-infrastructure.sh` | `bash scripts/check-infrastructure.sh` — 83 vérifications, 0 échec, exit 0 ; `sha256sum docs/founding-document-v0.1.md` — empreinte conforme ; `git status` et `git diff` — périmètre examiné. | Partiel (T-020) / Terminé (reste) ; commit non effectué |
 
 > Le journal est append-only. Ne jamais supprimer ni réécrire une ligne existante. Une correction s'ajoute avec une référence à la ligne corrigée.
 
@@ -180,3 +224,5 @@ Cinq prochaines tâches recommandées, dans l'ordre :
 | Date | Agent | Changement |
 |---|---|---|
 | 2026-10-31 | OpenCode | Création initiale. |
+| 2026-10-31 | OpenCode | Version 0.1.1 : phase 1 en cours, livrable de conception T-020, tâches T-032 à T-034, constat L-006, journal d'intégration du dossier des nations. |
+| 2026-10-31 | OpenCode | Version 0.2.0 : clôture de T-019, ajout de T-021 à T-034, archivage de T-001 à T-018, constats L-007 à L-009, résolution de L-006, journal d'alignement documentaire. |
