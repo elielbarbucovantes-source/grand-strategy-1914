@@ -1,0 +1,5588 @@
+{
+  "schema_version": "1.0.0",
+  "agent_id": "agent_1",
+  "reference_date": "1914-01-01",
+  "total_regions": 50,
+  "total_railway_axes": 76,
+  "total_major_ports": 47,
+  "total_fortifications": 32,
+  "regional_infrastructure": {
+    "region_001": {
+      "region_id": "region_001",
+      "name_fr": "Angleterre du Sud",
+      "sovereign_1914": "Royaume-Uni",
+      "strategic_site_ids": [
+        "city_london",
+        "city_portsmouth",
+        "city_birmingham",
+        "city_plymouth"
+      ],
+      "major_port_ids": [
+        "city_london",
+        "city_portsmouth",
+        "city_plymouth"
+      ],
+      "fortification_ids": [
+        "fort_portsmouth_plymouth_dover"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_uk_south_north",
+        "rail_uk_midlands_north",
+        "rail_uk_east_coast",
+        "rail_uk_south_wales"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_002": {
+      "region_id": "region_002",
+      "name_fr": "Angleterre du Nord",
+      "sovereign_1914": "Royaume-Uni",
+      "strategic_site_ids": [
+        "city_manchester",
+        "city_liverpool",
+        "city_sheffield",
+        "city_newcastle"
+      ],
+      "major_port_ids": [
+        "city_liverpool",
+        "city_newcastle"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_uk_midlands_north",
+        "rail_uk_east_coast",
+        "rail_uk_anglo_scottish",
+        "rail_uk_west_scottish",
+        "rail_uk_wales_north"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_003": {
+      "region_id": "region_003",
+      "name_fr": "Écosse",
+      "sovereign_1914": "Royaume-Uni",
+      "strategic_site_ids": [
+        "city_glasgow",
+        "city_edinburgh"
+      ],
+      "major_port_ids": [
+        "city_glasgow",
+        "city_edinburgh"
+      ],
+      "fortification_ids": [
+        "fort_rosyth_scapa"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_uk_anglo_scottish",
+        "rail_uk_west_scottish"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_004": {
+      "region_id": "region_004",
+      "name_fr": "Pays de Galles",
+      "sovereign_1914": "Royaume-Uni",
+      "strategic_site_ids": [
+        "city_cardiff"
+      ],
+      "major_port_ids": [
+        "city_cardiff"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_uk_south_wales",
+        "rail_uk_wales_north"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_005": {
+      "region_id": "region_005",
+      "name_fr": "Ulster géographique",
+      "sovereign_1914": "Royaume-Uni",
+      "strategic_site_ids": [
+        "city_belfast"
+      ],
+      "major_port_ids": [
+        "city_belfast"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ire_dublin_belfast"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_006": {
+      "region_id": "region_006",
+      "name_fr": "Irlande hors Ulster",
+      "sovereign_1914": "Royaume-Uni",
+      "strategic_site_ids": [
+        "city_dublin",
+        "city_cork_queenstown"
+      ],
+      "major_port_ids": [
+        "city_dublin",
+        "city_cork_queenstown"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ire_dublin_belfast",
+        "rail_ire_dublin_cork"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_007": {
+      "region_id": "region_007",
+      "name_fr": "France — Nord",
+      "sovereign_1914": "France",
+      "strategic_site_ids": [
+        "city_lille",
+        "city_calais",
+        "city_amiens"
+      ],
+      "major_port_ids": [
+        "city_calais"
+      ],
+      "fortification_ids": [
+        "fort_maubeuge"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_fr_paris_lille",
+        "rail_fr_lille_brussels"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_008": {
+      "region_id": "region_008",
+      "name_fr": "France — Bassin parisien",
+      "sovereign_1914": "France",
+      "strategic_site_ids": [
+        "city_paris",
+        "city_le_havre",
+        "city_bourges"
+      ],
+      "major_port_ids": [
+        "city_le_havre"
+      ],
+      "fortification_ids": [
+        "fort_paris"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_fr_paris_lille",
+        "rail_fr_paris_brussels",
+        "rail_fr_paris_le_havre",
+        "rail_fr_paris_cherbourg",
+        "rail_fr_paris_brest",
+        "rail_fr_paris_nantes",
+        "rail_fr_paris_bordeaux",
+        "rail_fr_paris_nancy",
+        "rail_fr_paris_verdun",
+        "rail_fr_paris_belfort",
+        "rail_fr_paris_lyon"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_009": {
+      "region_id": "region_009",
+      "name_fr": "France — Ouest",
+      "sovereign_1914": "France",
+      "strategic_site_ids": [
+        "city_nantes",
+        "city_brest",
+        "city_cherbourg"
+      ],
+      "major_port_ids": [
+        "city_nantes",
+        "city_brest",
+        "city_cherbourg"
+      ],
+      "fortification_ids": [
+        "fort_brest"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_fr_paris_cherbourg",
+        "rail_fr_paris_brest",
+        "rail_fr_paris_nantes"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_010": {
+      "region_id": "region_010",
+      "name_fr": "France — Sud-Ouest",
+      "sovereign_1914": "France",
+      "strategic_site_ids": [
+        "city_bordeaux",
+        "city_toulouse"
+      ],
+      "major_port_ids": [
+        "city_bordeaux"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_fr_paris_bordeaux",
+        "rail_fr_bordeaux_toulouse",
+        "rail_fr_toulouse_marseille"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_011": {
+      "region_id": "region_011",
+      "name_fr": "France — Est",
+      "sovereign_1914": "France",
+      "strategic_site_ids": [
+        "city_verdun",
+        "city_nancy",
+        "city_belfort",
+        "city_le_creusot"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_verdun",
+        "fort_toul",
+        "fort_epinal",
+        "fort_belfort"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_fr_paris_nancy",
+        "rail_fr_paris_verdun",
+        "rail_fr_paris_belfort",
+        "rail_fr_nancy_belfort"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_012": {
+      "region_id": "region_012",
+      "name_fr": "France — Sud-Est",
+      "sovereign_1914": "France",
+      "strategic_site_ids": [
+        "city_lyon",
+        "city_marseille",
+        "city_toulon"
+      ],
+      "major_port_ids": [
+        "city_marseille",
+        "city_toulon"
+      ],
+      "fortification_ids": [
+        "fort_toulon"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_fr_paris_lyon",
+        "rail_fr_lyon_marseille",
+        "rail_fr_toulouse_marseille",
+        "rail_fr_lyon_turin"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_013": {
+      "region_id": "region_013",
+      "name_fr": "Flandre (Bruxelles incluse)",
+      "sovereign_1914": "Belgique",
+      "strategic_site_ids": [
+        "city_brussels",
+        "city_antwerp"
+      ],
+      "major_port_ids": [
+        "city_antwerp"
+      ],
+      "fortification_ids": [
+        "fort_antwerp"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_fr_lille_brussels",
+        "rail_be_brussels_antwerp",
+        "rail_be_brussels_liege",
+        "rail_nl_antwerp_rotterdam"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_014": {
+      "region_id": "region_014",
+      "name_fr": "Wallonie",
+      "sovereign_1914": "Belgique",
+      "strategic_site_ids": [
+        "city_liege",
+        "city_namur"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_liege",
+        "fort_namur"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_fr_paris_brussels",
+        "rail_be_brussels_liege",
+        "rail_be_liege_cologne",
+        "rail_lu_luxembourg_namur"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_015": {
+      "region_id": "region_015",
+      "name_fr": "Pays-Bas — Ouest",
+      "sovereign_1914": "Pays-Bas",
+      "strategic_site_ids": [
+        "city_amsterdam",
+        "city_rotterdam"
+      ],
+      "major_port_ids": [
+        "city_amsterdam",
+        "city_rotterdam"
+      ],
+      "fortification_ids": [
+        "fort_amsterdam"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_nl_antwerp_rotterdam",
+        "rail_nl_amsterdam_arnhem"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_016": {
+      "region_id": "region_016",
+      "name_fr": "Pays-Bas — Est et Nord",
+      "sovereign_1914": "Pays-Bas",
+      "strategic_site_ids": [
+        "city_arnhem"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_nl_amsterdam_arnhem",
+        "rail_nl_arnhem_essen"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_017": {
+      "region_id": "region_017",
+      "name_fr": "Suisse — Ouest",
+      "sovereign_1914": "Suisse",
+      "strategic_site_ids": [
+        "city_bern",
+        "city_basel"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ch_basel_bern",
+        "rail_ch_basel_zurich",
+        "rail_ch_simplon"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_018": {
+      "region_id": "region_018",
+      "name_fr": "Suisse — Est",
+      "sovereign_1914": "Suisse",
+      "strategic_site_ids": [
+        "city_zurich"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_gotthard"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ch_basel_zurich",
+        "rail_ch_gotthard"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_019": {
+      "region_id": "region_019",
+      "name_fr": "Luxembourg",
+      "sovereign_1914": "Luxembourg",
+      "strategic_site_ids": [
+        "city_luxembourg"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_lu_luxembourg_metz",
+        "rail_lu_luxembourg_namur"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_020": {
+      "region_id": "region_020",
+      "name_fr": "Portugal",
+      "sovereign_1914": "Portugal",
+      "strategic_site_ids": [
+        "city_lisbon",
+        "city_porto"
+      ],
+      "major_port_ids": [
+        "city_lisbon",
+        "city_porto"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ib_madrid_lisbon",
+        "rail_ib_lisbon_porto"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_021": {
+      "region_id": "region_021",
+      "name_fr": "Espagne — Nord-Ouest",
+      "sovereign_1914": "Espagne",
+      "strategic_site_ids": [
+        "city_ferrol_coruna",
+        "city_oviedo"
+      ],
+      "major_port_ids": [
+        "city_ferrol_coruna"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ib_madrid_coruna"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_022": {
+      "region_id": "region_022",
+      "name_fr": "Espagne — Nord-Est",
+      "sovereign_1914": "Espagne",
+      "strategic_site_ids": [
+        "city_barcelona",
+        "city_bilbao",
+        "city_zaragoza"
+      ],
+      "major_port_ids": [
+        "city_barcelona",
+        "city_bilbao"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ib_madrid_bilbao",
+        "rail_ib_madrid_barcelona",
+        "rail_ib_barcelona_valencia"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_023": {
+      "region_id": "region_023",
+      "name_fr": "Espagne — Centre",
+      "sovereign_1914": "Espagne",
+      "strategic_site_ids": [
+        "city_madrid"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ib_madrid_lisbon",
+        "rail_ib_madrid_bilbao",
+        "rail_ib_madrid_coruna",
+        "rail_ib_madrid_barcelona",
+        "rail_ib_madrid_valencia",
+        "rail_ib_madrid_seville"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_024": {
+      "region_id": "region_024",
+      "name_fr": "Espagne — Méditerranée",
+      "sovereign_1914": "Espagne",
+      "strategic_site_ids": [
+        "city_valencia",
+        "city_cartagena"
+      ],
+      "major_port_ids": [
+        "city_valencia",
+        "city_cartagena"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ib_madrid_valencia",
+        "rail_ib_barcelona_valencia"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_025": {
+      "region_id": "region_025",
+      "name_fr": "Espagne — Sud",
+      "sovereign_1914": "Espagne",
+      "strategic_site_ids": [
+        "city_seville",
+        "city_cadiz"
+      ],
+      "major_port_ids": [
+        "city_cadiz"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ib_madrid_seville"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_026": {
+      "region_id": "region_026",
+      "name_fr": "Prusse-Orientale",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_konigsberg"
+      ],
+      "major_port_ids": [
+        "city_konigsberg"
+      ],
+      "fortification_ids": [
+        "fort_konigsberg"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_de_berlin_konigsberg"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_027": {
+      "region_id": "region_027",
+      "name_fr": "Prusse-Occidentale et Posnanie",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_danzig",
+        "city_posen"
+      ],
+      "major_port_ids": [
+        "city_danzig"
+      ],
+      "fortification_ids": [
+        "fort_thorn_posen_graudenz"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_de_berlin_posen"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_028": {
+      "region_id": "region_028",
+      "name_fr": "Poméranie, Mecklembourg et Brandebourg",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_berlin",
+        "city_stettin"
+      ],
+      "major_port_ids": [
+        "city_stettin"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_de_berlin_konigsberg",
+        "rail_de_berlin_posen",
+        "rail_de_berlin_breslau",
+        "rail_de_berlin_hamburg",
+        "rail_de_berlin_hanover_cologne",
+        "rail_de_berlin_leipzig",
+        "rail_de_berlin_dresden"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_029": {
+      "region_id": "region_029",
+      "name_fr": "Allemagne du Nord-Ouest",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_hamburg",
+        "city_kiel",
+        "city_wilhelmshaven",
+        "city_hanover"
+      ],
+      "major_port_ids": [
+        "city_hamburg",
+        "city_kiel",
+        "city_wilhelmshaven"
+      ],
+      "fortification_ids": [
+        "fort_kiel_wilhelmshaven_helgoland"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_de_berlin_hamburg"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_030": {
+      "region_id": "region_030",
+      "name_fr": "Silésie",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_breslau",
+        "city_kattowitz"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_breslau_glogau"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_de_berlin_breslau"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_031": {
+      "region_id": "region_031",
+      "name_fr": "Saxe et Thuringe",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_leipzig",
+        "city_dresden"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_de_berlin_leipzig",
+        "rail_de_berlin_dresden",
+        "rail_de_leipzig_frankfurt",
+        "rail_de_leipzig_munich",
+        "rail_ah_prague_dresden"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_032": {
+      "region_id": "region_032",
+      "name_fr": "Rhénanie-Westphalie",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_essen",
+        "city_cologne"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_cologne_koblenz"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_be_liege_cologne",
+        "rail_nl_arnhem_essen",
+        "rail_de_berlin_hanover_cologne",
+        "rail_de_cologne_frankfurt",
+        "rail_de_cologne_metz"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_033": {
+      "region_id": "region_033",
+      "name_fr": "Allemagne du Sud-Ouest",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_frankfurt",
+        "city_stuttgart"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_mainz_germersheim"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_de_leipzig_frankfurt",
+        "rail_de_cologne_frankfurt",
+        "rail_de_frankfurt_strasbourg",
+        "rail_de_stuttgart_munich"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_034": {
+      "region_id": "region_034",
+      "name_fr": "Bavière",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_munich",
+        "city_nuremberg"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_ingolstadt_ulm"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_de_leipzig_munich",
+        "rail_de_stuttgart_munich",
+        "rail_ah_brenner"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_035": {
+      "region_id": "region_035",
+      "name_fr": "Alsace-Lorraine",
+      "sovereign_1914": "Empire allemand",
+      "strategic_site_ids": [
+        "city_strasbourg",
+        "city_metz"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_metz_thionville",
+        "fort_strasbourg_mutzig"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_lu_luxembourg_metz",
+        "rail_de_cologne_metz",
+        "rail_de_frankfurt_strasbourg"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_036": {
+      "region_id": "region_036",
+      "name_fr": "Autriche centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "strategic_site_ids": [
+        "city_vienna",
+        "city_graz"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ah_vienna_prague",
+        "rail_ah_vienna_brunn_lemberg",
+        "rail_ah_vienna_budapest",
+        "rail_ah_vienna_trieste",
+        "rail_ah_vienna_innsbruck"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_037": {
+      "region_id": "region_037",
+      "name_fr": "Alpes autrichiennes",
+      "sovereign_1914": "Autriche-Hongrie",
+      "strategic_site_ids": [
+        "city_trieste",
+        "city_pola",
+        "city_innsbruck_trento"
+      ],
+      "major_port_ids": [
+        "city_trieste",
+        "city_pola"
+      ],
+      "fortification_ids": [
+        "fort_trento_franzensfeste",
+        "fort_pola"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ah_vienna_trieste",
+        "rail_ah_vienna_innsbruck",
+        "rail_ah_brenner"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_038": {
+      "region_id": "region_038",
+      "name_fr": "Bohême",
+      "sovereign_1914": "Autriche-Hongrie",
+      "strategic_site_ids": [
+        "city_prague"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ah_vienna_prague",
+        "rail_ah_prague_dresden"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_039": {
+      "region_id": "region_039",
+      "name_fr": "Moravie et Silésie autrichienne",
+      "sovereign_1914": "Autriche-Hongrie",
+      "strategic_site_ids": [
+        "city_brunn"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_040": {
+      "region_id": "region_040",
+      "name_fr": "Galicie et Bucovine",
+      "sovereign_1914": "Autriche-Hongrie",
+      "strategic_site_ids": [
+        "city_lemberg",
+        "city_przemysl"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_przemysl_krakau"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ah_vienna_brunn_lemberg",
+        "rail_ah_budapest_lemberg"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_041": {
+      "region_id": "region_041",
+      "name_fr": "Hongrie et Slovaquie",
+      "sovereign_1914": "Autriche-Hongrie",
+      "strategic_site_ids": [
+        "city_budapest",
+        "city_pozsony"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_komarom"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ah_vienna_budapest",
+        "rail_ah_budapest_lemberg",
+        "rail_ah_budapest_kolozsvar",
+        "rail_ah_budapest_zagreb_fiume"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_042": {
+      "region_id": "region_042",
+      "name_fr": "Transylvanie",
+      "sovereign_1914": "Autriche-Hongrie",
+      "strategic_site_ids": [
+        "city_kolozsvar"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ah_budapest_kolozsvar"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_043": {
+      "region_id": "region_043",
+      "name_fr": "Croatie et territoires méridionaux",
+      "sovereign_1914": "Autriche-Hongrie",
+      "strategic_site_ids": [
+        "city_zagreb",
+        "city_sarajevo",
+        "city_fiume_cattaro"
+      ],
+      "major_port_ids": [
+        "city_fiume_cattaro"
+      ],
+      "fortification_ids": [
+        "fort_cattaro_sarajevo"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ah_budapest_zagreb_fiume",
+        "rail_ah_zagreb_sarajevo"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_080": {
+      "region_id": "region_080",
+      "name_fr": "Italie — Nord-Ouest",
+      "sovereign_1914": "Italie",
+      "strategic_site_ids": [
+        "city_milan",
+        "city_turin",
+        "city_genoa"
+      ],
+      "major_port_ids": [
+        "city_genoa"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_fr_lyon_turin",
+        "rail_ch_gotthard",
+        "rail_ch_simplon",
+        "rail_it_turin_milan_venice",
+        "rail_it_milan_genoa",
+        "rail_it_milan_bologna_rome",
+        "rail_it_genoa_rome"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_081": {
+      "region_id": "region_081",
+      "name_fr": "Italie — Nord-Est",
+      "sovereign_1914": "Italie",
+      "strategic_site_ids": [
+        "city_venice",
+        "city_bologna"
+      ],
+      "major_port_ids": [
+        "city_venice"
+      ],
+      "fortification_ids": [
+        "fort_verona_venice"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_it_turin_milan_venice",
+        "rail_it_bologna_ancona_taranto"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_082": {
+      "region_id": "region_082",
+      "name_fr": "Italie — Centre-Ouest",
+      "sovereign_1914": "Italie",
+      "strategic_site_ids": [
+        "city_rome",
+        "city_la_spezia"
+      ],
+      "major_port_ids": [
+        "city_la_spezia"
+      ],
+      "fortification_ids": [
+        "fort_la_spezia"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_it_milan_bologna_rome",
+        "rail_it_genoa_rome",
+        "rail_it_rome_naples_palermo"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_083": {
+      "region_id": "region_083",
+      "name_fr": "Italie — Centre-Est",
+      "sovereign_1914": "Italie",
+      "strategic_site_ids": [
+        "city_ancona"
+      ],
+      "major_port_ids": [
+        "city_ancona"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_084": {
+      "region_id": "region_084",
+      "name_fr": "Italie — Sud",
+      "sovereign_1914": "Italie",
+      "strategic_site_ids": [
+        "city_naples",
+        "city_taranto"
+      ],
+      "major_port_ids": [
+        "city_naples",
+        "city_taranto"
+      ],
+      "fortification_ids": [
+        "fort_taranto"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_it_bologna_ancona_taranto"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_085": {
+      "region_id": "region_085",
+      "name_fr": "Sicile",
+      "sovereign_1914": "Italie",
+      "strategic_site_ids": [
+        "city_palermo"
+      ],
+      "major_port_ids": [
+        "city_palermo"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_it_rome_naples_palermo"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    "region_086": {
+      "region_id": "region_086",
+      "name_fr": "Sardaigne",
+      "sovereign_1914": "Italie",
+      "strategic_site_ids": [
+        "city_cagliari"
+      ],
+      "major_port_ids": [
+        "city_cagliari"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    }
+  },
+  "railways": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "rail_uk_south_north",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -0.1276,
+              51.5072
+            ],
+            [
+              -1.8904,
+              52.4862
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_uk_south_north",
+          "name_fr": "West Coast & Midland Main Lines (Londres — Birmingham)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_001",
+          "to_region_id": "region_001",
+          "from_site_id": "city_london",
+          "to_site_id": "city_birmingham",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_uk_midlands_north",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -1.8904,
+              52.4862
+            ],
+            [
+              -2.2426,
+              53.4808
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_uk_midlands_north",
+          "name_fr": "West Coast Main Line (Birmingham — Manchester/Liverpool)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_001",
+          "to_region_id": "region_002",
+          "from_site_id": "city_birmingham",
+          "to_site_id": "city_manchester",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_uk_east_coast",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -0.1276,
+              51.5072
+            ],
+            [
+              -1.6178,
+              54.9783
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_uk_east_coast",
+          "name_fr": "East Coast Main Line (Londres — York — Newcastle)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_001",
+          "to_region_id": "region_002",
+          "from_site_id": "city_london",
+          "to_site_id": "city_newcastle",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_uk_anglo_scottish",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -1.6178,
+              54.9783
+            ],
+            [
+              -3.1883,
+              55.9533
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_uk_anglo_scottish",
+          "name_fr": "East Coast Main Line (Newcastle — Édimbourg — Glasgow)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_002",
+          "to_region_id": "region_003",
+          "from_site_id": "city_newcastle",
+          "to_site_id": "city_edinburgh",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_uk_west_scottish",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -2.2426,
+              53.4808
+            ],
+            [
+              -4.2518,
+              55.8642
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_uk_west_scottish",
+          "name_fr": "West Coast Main Line (Manchester — Carlisle — Glasgow)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_002",
+          "to_region_id": "region_003",
+          "from_site_id": "city_manchester",
+          "to_site_id": "city_glasgow",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_uk_south_wales",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -0.1276,
+              51.5072
+            ],
+            [
+              -3.1791,
+              51.4816
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_uk_south_wales",
+          "name_fr": "Great Western Main Line (Londres — Tunnel de la Severn — Cardiff)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_001",
+          "to_region_id": "region_004",
+          "from_site_id": "city_london",
+          "to_site_id": "city_cardiff",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_uk_wales_north",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -3.1791,
+              51.4816
+            ],
+            [
+              -2.9779,
+              53.4084
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_uk_wales_north",
+          "name_fr": "Welsh Marches Line (Cardiff — Hereford — Crewe — Liverpool)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_004",
+          "to_region_id": "region_002",
+          "from_site_id": "city_cardiff",
+          "to_site_id": "city_liverpool",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ire_dublin_belfast",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -6.2603,
+              53.3498
+            ],
+            [
+              -5.9301,
+              54.5973
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ire_dublin_belfast",
+          "name_fr": "Great Northern Railway Ireland (Dublin — Drogheda — Belfast)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_006",
+          "to_region_id": "region_005",
+          "from_site_id": "city_dublin",
+          "to_site_id": "city_belfast",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ire_dublin_cork",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -6.2603,
+              53.3498
+            ],
+            [
+              -8.4756,
+              51.8985
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ire_dublin_cork",
+          "name_fr": "Great Southern and Western Railway (Dublin — Cork — Queenstown)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_006",
+          "to_region_id": "region_006",
+          "from_site_id": "city_dublin",
+          "to_site_id": "city_cork_queenstown",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_lille",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              3.0573,
+              50.6292
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_lille",
+          "name_fr": "Compagnie du Nord (Paris — Amiens — Arras — Lille)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_007",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_lille",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_lille_brussels",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              3.0573,
+              50.6292
+            ],
+            [
+              4.3517,
+              50.8503
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_lille_brussels",
+          "name_fr": "Axe franco-belge (Lille — Tournai/Mons — Bruxelles)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_007",
+          "to_region_id": "region_013",
+          "from_site_id": "city_lille",
+          "to_site_id": "city_brussels",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_brussels",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              4.8675,
+              50.4674
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_brussels",
+          "name_fr": "Ligne Paris — Maubeuge — Charleroi — Namur — Liège",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_014",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_namur",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_le_havre",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              0.1278,
+              49.4944
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_le_havre",
+          "name_fr": "Ligne Paris-Saint-Lazare — Rouen — Le Havre",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_008",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_le_havre",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_cherbourg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              -1.6221,
+              49.6337
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_cherbourg",
+          "name_fr": "Ligne Paris — Caen — Cherbourg",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_009",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_cherbourg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_brest",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              -4.4861,
+              48.3904
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_brest",
+          "name_fr": "Ligne Paris-Montparnasse — Le Mans — Rennes — Brest",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_009",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_brest",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_nantes",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              -1.5536,
+              47.2184
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_nantes",
+          "name_fr": "Compagnie d'Orléans (Paris — Tours — Angers — Nantes)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_009",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_nantes",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_bordeaux",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              -0.5792,
+              44.8378
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_bordeaux",
+          "name_fr": "Compagnie du PO (Paris — Orléans — Poitiers — Bordeaux)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_010",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_bordeaux",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_bordeaux_toulouse",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -0.5792,
+              44.8378
+            ],
+            [
+              1.4442,
+              43.6047
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_bordeaux_toulouse",
+          "name_fr": "Compagnie du Midi (Bordeaux — Agen — Toulouse)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_010",
+          "to_region_id": "region_010",
+          "from_site_id": "city_bordeaux",
+          "to_site_id": "city_toulouse",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_nancy",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              6.1844,
+              48.6921
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_nancy",
+          "name_fr": "Compagnie de l'Est (Paris — Châlons — Toul — Nancy)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_011",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_nancy",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_verdun",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              5.3844,
+              49.1599
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_verdun",
+          "name_fr": "Ligne stratégique Paris — Sainte-Menehould — Verdun",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_011",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_verdun",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_belfort",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              6.8638,
+              47.6397
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_belfort",
+          "name_fr": "Compagnie de l'Est (Paris — Troyes — Chaumont — Langres — Belfort)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_011",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_belfort",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_nancy_belfort",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              6.1844,
+              48.6921
+            ],
+            [
+              6.8638,
+              47.6397
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_nancy_belfort",
+          "name_fr": "Rocade de l'Est (Nancy — Épinal — Belfort)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_011",
+          "to_region_id": "region_011",
+          "from_site_id": "city_nancy",
+          "to_site_id": "city_belfort",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_paris_lyon",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.3522,
+              48.8566
+            ],
+            [
+              4.8357,
+              45.764
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_paris_lyon",
+          "name_fr": "Artère impériale PLM (Paris — Dijon — Mâcon — Lyon)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_008",
+          "to_region_id": "region_012",
+          "from_site_id": "city_paris",
+          "to_site_id": "city_lyon",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_lyon_marseille",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              4.8357,
+              45.764
+            ],
+            [
+              5.3698,
+              43.2965
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_lyon_marseille",
+          "name_fr": "Artère PLM de la vallée du Rhône (Lyon — Valence — Avignon — Marseille — Toulon)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_012",
+          "to_region_id": "region_012",
+          "from_site_id": "city_lyon",
+          "to_site_id": "city_marseille",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_toulouse_marseille",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              1.4442,
+              43.6047
+            ],
+            [
+              5.3698,
+              43.2965
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_toulouse_marseille",
+          "name_fr": "Ligne transversale Midi-PLM (Toulouse — Narbonne — Montpellier — Marseille)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_010",
+          "to_region_id": "region_012",
+          "from_site_id": "city_toulouse",
+          "to_site_id": "city_marseille",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_fr_lyon_turin",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              4.8357,
+              45.764
+            ],
+            [
+              7.6869,
+              45.0703
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_fr_lyon_turin",
+          "name_fr": "Ligne de la Maurienne et tunnel ferroviaire du Mont-Cenis (Lyon — Chambéry — Modane — Turin)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_012",
+          "to_region_id": "region_080",
+          "from_site_id": "city_lyon",
+          "to_site_id": "city_turin",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_be_brussels_antwerp",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              4.3517,
+              50.8503
+            ],
+            [
+              4.4025,
+              51.2194
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_be_brussels_antwerp",
+          "name_fr": "Chemins de fer de l'État belge (Bruxelles — Malines — Anvers)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_013",
+          "to_region_id": "region_013",
+          "from_site_id": "city_brussels",
+          "to_site_id": "city_antwerp",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_be_brussels_liege",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              4.3517,
+              50.8503
+            ],
+            [
+              5.5797,
+              50.6326
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_be_brussels_liege",
+          "name_fr": "Axe Louvain — Tirlemont — Liège — Aix-la-Chapelle",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_013",
+          "to_region_id": "region_014",
+          "from_site_id": "city_brussels",
+          "to_site_id": "city_liege",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_be_liege_cologne",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              5.5797,
+              50.6326
+            ],
+            [
+              6.9603,
+              50.9375
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_be_liege_cologne",
+          "name_fr": "Ligne internationale Liège — Herbesthal — Aix-la-Chapelle — Cologne",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_014",
+          "to_region_id": "region_032",
+          "from_site_id": "city_liege",
+          "to_site_id": "city_cologne",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_nl_antwerp_rotterdam",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              4.4025,
+              51.2194
+            ],
+            [
+              4.4777,
+              51.9244
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_nl_antwerp_rotterdam",
+          "name_fr": "Ligne Anvers — Roosendaal — Dordrecht — Rotterdam — Amsterdam",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_013",
+          "to_region_id": "region_015",
+          "from_site_id": "city_antwerp",
+          "to_site_id": "city_rotterdam",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_nl_amsterdam_arnhem",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              4.9041,
+              52.3676
+            ],
+            [
+              5.8987,
+              51.9851
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_nl_amsterdam_arnhem",
+          "name_fr": "Rhijnspoorweg (Amsterdam — Utrecht — Arnhem — Emmerich)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_015",
+          "to_region_id": "region_016",
+          "from_site_id": "city_amsterdam",
+          "to_site_id": "city_arnhem",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_nl_arnhem_essen",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              5.8987,
+              51.9851
+            ],
+            [
+              7.0116,
+              51.4556
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_nl_arnhem_essen",
+          "name_fr": "Connexion ferroviaire Pays-Bas — Bassin de la Ruhr",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_016",
+          "to_region_id": "region_032",
+          "from_site_id": "city_arnhem",
+          "to_site_id": "city_essen",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_lu_luxembourg_metz",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              6.1319,
+              49.6116
+            ],
+            [
+              6.1757,
+              49.1193
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_lu_luxembourg_metz",
+          "name_fr": "Réseau Guillaume-Luxembourg (direction Reichsland Elsaß-Lothringen)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_019",
+          "to_region_id": "region_035",
+          "from_site_id": "city_luxembourg",
+          "to_site_id": "city_metz",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_lu_luxembourg_namur",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              6.1319,
+              49.6116
+            ],
+            [
+              4.8675,
+              50.4674
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_lu_luxembourg_namur",
+          "name_fr": "Ligne du Luxembourg (Bruxelles — Namur — Arlon — Luxembourg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_019",
+          "to_region_id": "region_014",
+          "from_site_id": "city_luxembourg",
+          "to_site_id": "city_namur",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ch_basel_bern",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              7.5886,
+              47.5596
+            ],
+            [
+              7.4474,
+              46.948
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ch_basel_bern",
+          "name_fr": "Chemins de fer fédéraux suisses CFF (Bâle — Olten — Berne — Simplon)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_017",
+          "to_region_id": "region_017",
+          "from_site_id": "city_basel",
+          "to_site_id": "city_bern",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ch_basel_zurich",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              7.5886,
+              47.5596
+            ],
+            [
+              8.5417,
+              47.3769
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ch_basel_zurich",
+          "name_fr": "CFF (Bâle — Zurich)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_017",
+          "to_region_id": "region_018",
+          "from_site_id": "city_basel",
+          "to_site_id": "city_zurich",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ch_gotthard",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              8.5417,
+              47.3769
+            ],
+            [
+              9.19,
+              45.4642
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ch_gotthard",
+          "name_fr": "Gotthardbahn (Zurich — Lucerne — Tunnel du Saint-Gothard — Bellinzone — Chiasso — Milan)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_018",
+          "to_region_id": "region_080",
+          "from_site_id": "city_zurich",
+          "to_site_id": "city_milan",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ch_simplon",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              7.4474,
+              46.948
+            ],
+            [
+              9.19,
+              45.4642
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ch_simplon",
+          "name_fr": "Axe Lötschberg-Simplon (Berne — Brigue — Tunnel du Simplon — Domodossola — Milan)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_017",
+          "to_region_id": "region_080",
+          "from_site_id": "city_bern",
+          "to_site_id": "city_milan",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ib_madrid_lisbon",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -3.7038,
+              40.4168
+            ],
+            [
+              -9.1393,
+              38.7223
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ib_madrid_lisbon",
+          "name_fr": "Ligne internationale Madrid — Cáceres — Badajoz/Valencia de Alcántara — Lisbonne",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_023",
+          "to_region_id": "region_020",
+          "from_site_id": "city_madrid",
+          "to_site_id": "city_lisbon",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ib_lisbon_porto",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -9.1393,
+              38.7223
+            ],
+            [
+              -8.6291,
+              41.1579
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ib_lisbon_porto",
+          "name_fr": "Linha do Norte (Lisbonne — Coimbra — Porto)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_020",
+          "to_region_id": "region_020",
+          "from_site_id": "city_lisbon",
+          "to_site_id": "city_porto",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ib_madrid_bilbao",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -3.7038,
+              40.4168
+            ],
+            [
+              -2.935,
+              43.263
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ib_madrid_bilbao",
+          "name_fr": "Caminos de Hierro del Norte (Madrid — Valladolid — Burgos — Miranda — Bilbao / Irún)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_023",
+          "to_region_id": "region_022",
+          "from_site_id": "city_madrid",
+          "to_site_id": "city_bilbao",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ib_madrid_coruna",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -3.7038,
+              40.4168
+            ],
+            [
+              -8.4115,
+              43.3623
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ib_madrid_coruna",
+          "name_fr": "Ligne du Nord-Ouest (Madrid — León — Monforte — La Corogne)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_023",
+          "to_region_id": "region_021",
+          "from_site_id": "city_madrid",
+          "to_site_id": "city_ferrol_coruna",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ib_madrid_barcelona",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -3.7038,
+              40.4168
+            ],
+            [
+              2.1734,
+              41.3851
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ib_madrid_barcelona",
+          "name_fr": "MZA (Madrid — Guadalajara — Saragosse — Barcelone)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_023",
+          "to_region_id": "region_022",
+          "from_site_id": "city_madrid",
+          "to_site_id": "city_barcelona",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ib_madrid_valencia",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -3.7038,
+              40.4168
+            ],
+            [
+              -0.3763,
+              39.4699
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ib_madrid_valencia",
+          "name_fr": "MZA (Madrid — Alcázar — Albacete — Valence)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_023",
+          "to_region_id": "region_024",
+          "from_site_id": "city_madrid",
+          "to_site_id": "city_valencia",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ib_madrid_seville",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -3.7038,
+              40.4168
+            ],
+            [
+              -5.9845,
+              37.3891
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ib_madrid_seville",
+          "name_fr": "Ligne d'Andalousie (Madrid — Despeñaperros — Cordoue — Séville — Cadix)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_023",
+          "to_region_id": "region_025",
+          "from_site_id": "city_madrid",
+          "to_site_id": "city_seville",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ib_barcelona_valencia",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.1734,
+              41.3851
+            ],
+            [
+              -0.3763,
+              39.4699
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ib_barcelona_valencia",
+          "name_fr": "Ligne côtière méditerranéenne (Barcelone — Tarragone — Castellón — Valence)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_022",
+          "to_region_id": "region_024",
+          "from_site_id": "city_barcelona",
+          "to_site_id": "city_valencia",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_berlin_konigsberg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              13.405,
+              52.52
+            ],
+            [
+              20.4522,
+              54.7104
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_berlin_konigsberg",
+          "name_fr": "Preußische Ostbahn (Berlin — Küstrin — Dirschau/Dantzig — Königsberg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_028",
+          "to_region_id": "region_026",
+          "from_site_id": "city_berlin",
+          "to_site_id": "city_konigsberg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_berlin_posen",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              13.405,
+              52.52
+            ],
+            [
+              16.9252,
+              52.4064
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_berlin_posen",
+          "name_fr": "Ligne stratégique Berlin — Francfort-sur-l'Oder — Posen — Thorn",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_028",
+          "to_region_id": "region_027",
+          "from_site_id": "city_berlin",
+          "to_site_id": "city_posen",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_berlin_breslau",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              13.405,
+              52.52
+            ],
+            [
+              17.0385,
+              51.1079
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_berlin_breslau",
+          "name_fr": "Niederschlesisch-Märkische Eisenbahn (Berlin — Francfort-sur-l'Oder — Liegnitz — Breslau — Kattowitz)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_028",
+          "to_region_id": "region_030",
+          "from_site_id": "city_berlin",
+          "to_site_id": "city_breslau",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_berlin_hamburg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              13.405,
+              52.52
+            ],
+            [
+              9.9937,
+              53.5511
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_berlin_hamburg",
+          "name_fr": "Berlin-Hamburger Bahn (Berlin — Wittenberge — Hambourg — Kiel)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_028",
+          "to_region_id": "region_029",
+          "from_site_id": "city_berlin",
+          "to_site_id": "city_hamburg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_berlin_hanover_cologne",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              13.405,
+              52.52
+            ],
+            [
+              6.9603,
+              50.9375
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_berlin_hanover_cologne",
+          "name_fr": "Magistrale est-ouest de mobilisation (Berlin — Magdebourg — Hanovre — Minden — Hamm — Essen — Cologne)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_028",
+          "to_region_id": "region_032",
+          "from_site_id": "city_berlin",
+          "to_site_id": "city_cologne",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_berlin_leipzig",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              13.405,
+              52.52
+            ],
+            [
+              12.3731,
+              51.3397
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_berlin_leipzig",
+          "name_fr": "Anhalter Bahn (Berlin — Halle/Leipzig)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_028",
+          "to_region_id": "region_031",
+          "from_site_id": "city_berlin",
+          "to_site_id": "city_leipzig",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_berlin_dresden",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              13.405,
+              52.52
+            ],
+            [
+              13.7373,
+              51.0504
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_berlin_dresden",
+          "name_fr": "Ligne Berlin — Dresde — Prague — Vienne",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_028",
+          "to_region_id": "region_031",
+          "from_site_id": "city_berlin",
+          "to_site_id": "city_dresden",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_leipzig_frankfurt",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              12.3731,
+              51.3397
+            ],
+            [
+              8.6821,
+              50.1109
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_leipzig_frankfurt",
+          "name_fr": "Thüringer Bahn (Leipzig — Erfurt — Bebra — Francfort-sur-le-Main)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_031",
+          "to_region_id": "region_033",
+          "from_site_id": "city_leipzig",
+          "to_site_id": "city_frankfurt",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_leipzig_munich",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              12.3731,
+              51.3397
+            ],
+            [
+              11.582,
+              48.1351
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_leipzig_munich",
+          "name_fr": "Axe nord-sud (Leipzig — Hof — Ratisbonne/Nuremberg — Munich)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_031",
+          "to_region_id": "region_034",
+          "from_site_id": "city_leipzig",
+          "to_site_id": "city_munich",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_cologne_frankfurt",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              6.9603,
+              50.9375
+            ],
+            [
+              8.6821,
+              50.1109
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_cologne_frankfurt",
+          "name_fr": "Lignes de la vallée du Rhin (Cologne — Coblence — Mayence — Francfort)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_032",
+          "to_region_id": "region_033",
+          "from_site_id": "city_cologne",
+          "to_site_id": "city_frankfurt",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_cologne_metz",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              6.9603,
+              50.9375
+            ],
+            [
+              6.1757,
+              49.1193
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_cologne_metz",
+          "name_fr": "Kanonenbahn & Moselbahn (Cologne/Coblence — Trèves — Thionville — Metz)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_032",
+          "to_region_id": "region_035",
+          "from_site_id": "city_cologne",
+          "to_site_id": "city_metz",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_frankfurt_strasbourg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              8.6821,
+              50.1109
+            ],
+            [
+              7.7521,
+              48.5734
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_frankfurt_strasbourg",
+          "name_fr": "Rheintalbahn & lignes du Palatinat (Francfort — Mannheim — Karlsruhe — Strasbourg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_033",
+          "to_region_id": "region_035",
+          "from_site_id": "city_frankfurt",
+          "to_site_id": "city_strasbourg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_de_stuttgart_munich",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              9.1829,
+              48.7758
+            ],
+            [
+              11.582,
+              48.1351
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_de_stuttgart_munich",
+          "name_fr": "Württembergische & Bayerische Staatsbahnen (Stuttgart — Ulm — Augsbourg — Munich)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_033",
+          "to_region_id": "region_034",
+          "from_site_id": "city_stuttgart",
+          "to_site_id": "city_munich",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_vienna_prague",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              16.3738,
+              48.2082
+            ],
+            [
+              14.4378,
+              50.0755
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_vienna_prague",
+          "name_fr": "Kaiser-Ferdinands-Nordbahn / Franz-Josefs-Bahn (Vienne — Gmünd/Brünn — Prague)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_036",
+          "to_region_id": "region_038",
+          "from_site_id": "city_vienna",
+          "to_site_id": "city_prague",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_prague_dresden",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              14.4378,
+              50.0755
+            ],
+            [
+              13.7373,
+              51.0504
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_prague_dresden",
+          "name_fr": "Ligne internationale Prague — Aussig — Tetschen — Dresde",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_038",
+          "to_region_id": "region_031",
+          "from_site_id": "city_prague",
+          "to_site_id": "city_dresden",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_vienna_brunn_lemberg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              16.3738,
+              48.2082
+            ],
+            [
+              24.0297,
+              49.8397
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_vienna_brunn_lemberg",
+          "name_fr": "Nordbahn & Carl-Ludwig-Bahn (Vienne — Brünn — Ostrava — Cracovie — Przemyśl — Lemberg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_036",
+          "to_region_id": "region_040",
+          "from_site_id": "city_vienna",
+          "to_site_id": "city_lemberg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_vienna_budapest",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              16.3738,
+              48.2082
+            ],
+            [
+              19.0402,
+              47.4979
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_vienna_budapest",
+          "name_fr": "Ostbahn & ligne du Danube (Vienne — Presbourg/Győr — Budapest)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_036",
+          "to_region_id": "region_041",
+          "from_site_id": "city_vienna",
+          "to_site_id": "city_budapest",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_vienna_trieste",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              16.3738,
+              48.2082
+            ],
+            [
+              13.7768,
+              45.6495
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_vienna_trieste",
+          "name_fr": "k.k. Südbahn (Vienne — Semmering — Graz — Marbourg — Laibach — Trieste / Pola)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_036",
+          "to_region_id": "region_037",
+          "from_site_id": "city_vienna",
+          "to_site_id": "city_trieste",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_vienna_innsbruck",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              16.3738,
+              48.2082
+            ],
+            [
+              11.4041,
+              47.2692
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_vienna_innsbruck",
+          "name_fr": "Westbahn & Gisela-Bahn (Vienne — Linz — Salzbourg — Wörgl — Innsbruck)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_036",
+          "to_region_id": "region_037",
+          "from_site_id": "city_vienna",
+          "to_site_id": "city_innsbruck_trento",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_brenner",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              11.582,
+              48.1351
+            ],
+            [
+              11.4041,
+              47.2692
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_brenner",
+          "name_fr": "Brennerbahn (Munich — Kufstein — Innsbruck — Col du Brenner — Bozen — Trente — Vérone)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_034",
+          "to_region_id": "region_037",
+          "from_site_id": "city_munich",
+          "to_site_id": "city_innsbruck_trento",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_budapest_lemberg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              19.0402,
+              47.4979
+            ],
+            [
+              22.7678,
+              49.7838
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_budapest_lemberg",
+          "name_fr": "Lignes transcarpatiques (Budapest — Miskolc/Kaschau — cols de Lupków/Uzsok — Przemyśl/Lemberg)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_041",
+          "to_region_id": "region_040",
+          "from_site_id": "city_budapest",
+          "to_site_id": "city_przemysl",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_budapest_kolozsvar",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              19.0402,
+              47.4979
+            ],
+            [
+              23.6236,
+              46.7712
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_budapest_kolozsvar",
+          "name_fr": "MÁV (Budapest — Szolnok — Nagyvárad — Kolozsvár — Brassó)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_041",
+          "to_region_id": "region_042",
+          "from_site_id": "city_budapest",
+          "to_site_id": "city_kolozsvar",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_budapest_zagreb_fiume",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              19.0402,
+              47.4979
+            ],
+            [
+              14.4422,
+              45.3271
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_budapest_zagreb_fiume",
+          "name_fr": "MÁV ligne de la mer (Budapest — Nagykanizsa — Zagreb — Karlovac — Fiume)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_041",
+          "to_region_id": "region_043",
+          "from_site_id": "city_budapest",
+          "to_site_id": "city_fiume_cattaro",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ah_zagreb_sarajevo",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              15.9819,
+              45.815
+            ],
+            [
+              18.4131,
+              43.8563
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ah_zagreb_sarajevo",
+          "name_fr": "Bosnische Ostbahn / Bosnabahn (Zagreb — Brod — Doboj — Sarajevo)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_043",
+          "to_region_id": "region_043",
+          "from_site_id": "city_zagreb",
+          "to_site_id": "city_sarajevo",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_it_turin_milan_venice",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              7.6869,
+              45.0703
+            ],
+            [
+              12.242,
+              45.48
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_it_turin_milan_venice",
+          "name_fr": "Ferdinandea (Turin — Milan — Brescia — Vérone — Padoue — Venise)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_080",
+          "to_region_id": "region_081",
+          "from_site_id": "city_turin",
+          "to_site_id": "city_venice",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_it_milan_genoa",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              9.19,
+              45.4642
+            ],
+            [
+              8.9463,
+              44.415
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_it_milan_genoa",
+          "name_fr": "Ligne Milan — Pavie — Alexandrie — Col des Giovi — Gênes",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_080",
+          "to_region_id": "region_080",
+          "from_site_id": "city_milan",
+          "to_site_id": "city_genoa",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_it_milan_bologna_rome",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              9.19,
+              45.4642
+            ],
+            [
+              12.4964,
+              41.9028
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_it_milan_bologna_rome",
+          "name_fr": "Dorsale italienne FS (Milan — Plaisance — Bologne — Florence — Rome)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_080",
+          "to_region_id": "region_082",
+          "from_site_id": "city_milan",
+          "to_site_id": "city_rome",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_it_genoa_rome",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              8.9463,
+              44.415
+            ],
+            [
+              12.4964,
+              41.9028
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_it_genoa_rome",
+          "name_fr": "Ferrovia Tirrenica (Gênes — La Spezia — Pise/Livourne — Civitavecchia — Rome)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_080",
+          "to_region_id": "region_082",
+          "from_site_id": "city_genoa",
+          "to_site_id": "city_rome",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_it_bologna_ancona_taranto",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              11.3426,
+              44.4949
+            ],
+            [
+              17.247574,
+              40.465394
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_it_bologna_ancona_taranto",
+          "name_fr": "Ferrovia Adriatica (Bologne — Rimini — Ancône — Pescara — Foggia — Bari — Brindisi/Tarente)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_081",
+          "to_region_id": "region_084",
+          "from_site_id": "city_bologna",
+          "to_site_id": "city_taranto",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_it_rome_naples_palermo",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              12.4964,
+              41.9028
+            ],
+            [
+              13.3615,
+              38.1157
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_it_rome_naples_palermo",
+          "name_fr": "Ligne Rome — Cassino — Naples — Reggio de Calabre — Ferry de Messine — Palerme",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_082",
+          "to_region_id": "region_085",
+          "from_site_id": "city_rome",
+          "to_site_id": "city_palermo",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "esteban_oliver_2023",
+            "ciccarelli_groote_1913"
+          ]
+        }
+      }
+    ]
+  },
+  "major_ports": [
+    {
+      "id": "city_london",
+      "name_fr": "Londres",
+      "name_key": "site.city_london.name",
+      "region_id": "region_001",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        -0.1276,
+        51.5072
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_portsmouth",
+      "name_fr": "Portsmouth",
+      "name_key": "site.city_portsmouth.name",
+      "region_id": "region_001",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -1.088,
+        50.8198
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_plymouth",
+      "name_fr": "Plymouth",
+      "name_key": "site.city_plymouth.name",
+      "region_id": "region_001",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -4.1427,
+        50.3755
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_liverpool",
+      "name_fr": "Liverpool",
+      "name_key": "site.city_liverpool.name",
+      "region_id": "region_002",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -2.9779,
+        53.4084
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_newcastle",
+      "name_fr": "Newcastle upon Tyne",
+      "name_key": "site.city_newcastle.name",
+      "region_id": "region_002",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -1.6178,
+        54.9783
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_glasgow",
+      "name_fr": "Glasgow",
+      "name_key": "site.city_glasgow.name",
+      "region_id": "region_003",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -4.2518,
+        55.8642
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_edinburgh",
+      "name_fr": "Édimbourg (Rosyth)",
+      "name_key": "site.city_edinburgh.name",
+      "region_id": "region_003",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -3.1883,
+        55.9533
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_cardiff",
+      "name_fr": "Cardiff",
+      "name_key": "site.city_cardiff.name",
+      "region_id": "region_004",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -3.1791,
+        51.4816
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_belfast",
+      "name_fr": "Belfast",
+      "name_key": "site.city_belfast.name",
+      "region_id": "region_005",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -5.9301,
+        54.5973
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_dublin",
+      "name_fr": "Dublin",
+      "name_key": "site.city_dublin.name",
+      "region_id": "region_006",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -6.2603,
+        53.3498
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_cork_queenstown",
+      "name_fr": "Cork (Queenstown)",
+      "name_key": "site.city_cork_queenstown.name",
+      "region_id": "region_006",
+      "sovereign_1914": "Royaume-Uni",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -8.4756,
+        51.8985
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_calais",
+      "name_fr": "Calais",
+      "name_key": "site.city_calais.name",
+      "region_id": "region_007",
+      "sovereign_1914": "France",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        1.8587,
+        50.9513
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_le_havre",
+      "name_fr": "Le Havre",
+      "name_key": "site.city_le_havre.name",
+      "region_id": "region_008",
+      "sovereign_1914": "France",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        0.1278,
+        49.4944
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_nantes",
+      "name_fr": "Nantes (Saint-Nazaire)",
+      "name_key": "site.city_nantes.name",
+      "region_id": "region_009",
+      "sovereign_1914": "France",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -1.5536,
+        47.2184
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_brest",
+      "name_fr": "Brest",
+      "name_key": "site.city_brest.name",
+      "region_id": "region_009",
+      "sovereign_1914": "France",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -4.4861,
+        48.3904
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_cherbourg",
+      "name_fr": "Cherbourg",
+      "name_key": "site.city_cherbourg.name",
+      "region_id": "region_009",
+      "sovereign_1914": "France",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -1.6221,
+        49.6337
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_bordeaux",
+      "name_fr": "Bordeaux",
+      "name_key": "site.city_bordeaux.name",
+      "region_id": "region_010",
+      "sovereign_1914": "France",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -0.5792,
+        44.8378
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_marseille",
+      "name_fr": "Marseille",
+      "name_key": "site.city_marseille.name",
+      "region_id": "region_012",
+      "sovereign_1914": "France",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        5.3698,
+        43.2965
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_toulon",
+      "name_fr": "Toulon",
+      "name_key": "site.city_toulon.name",
+      "region_id": "region_012",
+      "sovereign_1914": "France",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        5.928,
+        43.129911
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_antwerp",
+      "name_fr": "Anvers",
+      "name_key": "site.city_antwerp.name",
+      "region_id": "region_013",
+      "sovereign_1914": "Belgique",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        4.4025,
+        51.2194
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_amsterdam",
+      "name_fr": "Amsterdam",
+      "name_key": "site.city_amsterdam.name",
+      "region_id": "region_015",
+      "sovereign_1914": "Pays-Bas",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        4.9041,
+        52.3676
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_rotterdam",
+      "name_fr": "Rotterdam",
+      "name_key": "site.city_rotterdam.name",
+      "region_id": "region_015",
+      "sovereign_1914": "Pays-Bas",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        4.4777,
+        51.9244
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_lisbon",
+      "name_fr": "Lisbonne",
+      "name_key": "site.city_lisbon.name",
+      "region_id": "region_020",
+      "sovereign_1914": "Portugal",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        -9.1393,
+        38.7223
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_porto",
+      "name_fr": "Porto",
+      "name_key": "site.city_porto.name",
+      "region_id": "region_020",
+      "sovereign_1914": "Portugal",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -8.6291,
+        41.1579
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_ferrol_coruna",
+      "name_fr": "La Corogne (Ferrol)",
+      "name_key": "site.city_ferrol_coruna.name",
+      "region_id": "region_021",
+      "sovereign_1914": "Espagne",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -8.4115,
+        43.3623
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_barcelona",
+      "name_fr": "Barcelone",
+      "name_key": "site.city_barcelona.name",
+      "region_id": "region_022",
+      "sovereign_1914": "Espagne",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        2.1734,
+        41.3851
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_bilbao",
+      "name_fr": "Bilbao",
+      "name_key": "site.city_bilbao.name",
+      "region_id": "region_022",
+      "sovereign_1914": "Espagne",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -2.935,
+        43.263
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_valencia",
+      "name_fr": "Valence",
+      "name_key": "site.city_valencia.name",
+      "region_id": "region_024",
+      "sovereign_1914": "Espagne",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -0.3763,
+        39.4699
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_cartagena",
+      "name_fr": "Carthagène",
+      "name_key": "site.city_cartagena.name",
+      "region_id": "region_024",
+      "sovereign_1914": "Espagne",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -0.9862,
+        37.6057
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_cadiz",
+      "name_fr": "Cadix",
+      "name_key": "site.city_cadiz.name",
+      "region_id": "region_025",
+      "sovereign_1914": "Espagne",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -6.309063,
+        36.520171
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_konigsberg",
+      "name_fr": "Königsberg",
+      "name_key": "site.city_konigsberg.name",
+      "region_id": "region_026",
+      "sovereign_1914": "Empire allemand",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        20.4522,
+        54.7104
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_danzig",
+      "name_fr": "Dantzig",
+      "name_key": "site.city_danzig.name",
+      "region_id": "region_027",
+      "sovereign_1914": "Empire allemand",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        18.6466,
+        54.352
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_stettin",
+      "name_fr": "Stettin",
+      "name_key": "site.city_stettin.name",
+      "region_id": "region_028",
+      "sovereign_1914": "Empire allemand",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        14.5528,
+        53.4285
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_hamburg",
+      "name_fr": "Hambourg",
+      "name_key": "site.city_hamburg.name",
+      "region_id": "region_029",
+      "sovereign_1914": "Empire allemand",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        9.9937,
+        53.5511
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kiel",
+      "name_fr": "Kiel",
+      "name_key": "site.city_kiel.name",
+      "region_id": "region_029",
+      "sovereign_1914": "Empire allemand",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        10.1228,
+        54.3233
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_wilhelmshaven",
+      "name_fr": "Wilhelmshaven (Brême)",
+      "name_key": "site.city_wilhelmshaven.name",
+      "region_id": "region_029",
+      "sovereign_1914": "Empire allemand",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        8.1069,
+        53.529
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_trieste",
+      "name_fr": "Trieste",
+      "name_key": "site.city_trieste.name",
+      "region_id": "region_037",
+      "sovereign_1914": "Autriche-Hongrie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        13.7768,
+        45.6495
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_pola",
+      "name_fr": "Pola",
+      "name_key": "site.city_pola.name",
+      "region_id": "region_037",
+      "sovereign_1914": "Autriche-Hongrie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        13.8496,
+        44.8666
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_fiume_cattaro",
+      "name_fr": "Fiume (Cattaro)",
+      "name_key": "site.city_fiume_cattaro.name",
+      "region_id": "region_043",
+      "sovereign_1914": "Autriche-Hongrie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        14.4422,
+        45.3271
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_genoa",
+      "name_fr": "Gênes",
+      "name_key": "site.city_genoa.name",
+      "region_id": "region_080",
+      "sovereign_1914": "Italie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        8.9463,
+        44.415
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_venice",
+      "name_fr": "Venise (Vérone)",
+      "name_key": "site.city_venice.name",
+      "region_id": "region_081",
+      "sovereign_1914": "Italie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        12.242,
+        45.48
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_la_spezia",
+      "name_fr": "La Spezia (Livourne)",
+      "name_key": "site.city_la_spezia.name",
+      "region_id": "region_082",
+      "sovereign_1914": "Italie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        9.873817,
+        44.145006
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_ancona",
+      "name_fr": "Ancône",
+      "name_key": "site.city_ancona.name",
+      "region_id": "region_083",
+      "sovereign_1914": "Italie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        13.51,
+        43.6
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_naples",
+      "name_fr": "Naples",
+      "name_key": "site.city_naples.name",
+      "region_id": "region_084",
+      "sovereign_1914": "Italie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        14.2681,
+        40.8518
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_taranto",
+      "name_fr": "Tarente (Brindisi)",
+      "name_key": "site.city_taranto.name",
+      "region_id": "region_084",
+      "sovereign_1914": "Italie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        17.247574,
+        40.465394
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_palermo",
+      "name_fr": "Palerme (Messine)",
+      "name_key": "site.city_palermo.name",
+      "region_id": "region_085",
+      "sovereign_1914": "Italie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        13.3615,
+        38.1157
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_cagliari",
+      "name_fr": "Cagliari",
+      "name_key": "site.city_cagliari.name",
+      "region_id": "region_086",
+      "sovereign_1914": "Italie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        9.1217,
+        39.24
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    }
+  ],
+  "fortifications": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "fort_verdun",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            5.3844,
+            49.1599
+          ]
+        },
+        "properties": {
+          "id": "fort_verdun",
+          "name_fr": "Place forte de Verdun (Système Séré de Rivières)",
+          "name_key": "fort.fort_verdun.name",
+          "region_id": "region_011",
+          "sovereign_1914": "France",
+          "historical_type": "entrenched_camp_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_toul",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            5.8919,
+            48.675
+          ]
+        },
+        "properties": {
+          "id": "fort_toul",
+          "name_fr": "Place forte de Toul (Système Séré de Rivières)",
+          "name_key": "fort.fort_toul.name",
+          "region_id": "region_011",
+          "sovereign_1914": "France",
+          "historical_type": "entrenched_camp_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_epinal",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            6.4494,
+            48.1725
+          ]
+        },
+        "properties": {
+          "id": "fort_epinal",
+          "name_fr": "Place forte d'Épinal (Système Séré de Rivières)",
+          "name_key": "fort.fort_epinal.name",
+          "region_id": "region_011",
+          "sovereign_1914": "France",
+          "historical_type": "entrenched_camp_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_belfort",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            6.8638,
+            47.6397
+          ]
+        },
+        "properties": {
+          "id": "fort_belfort",
+          "name_fr": "Place forte de Belfort (Système Séré de Rivières)",
+          "name_key": "fort.fort_belfort.name",
+          "region_id": "region_011",
+          "sovereign_1914": "France",
+          "historical_type": "entrenched_camp_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_maubeuge",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            3.9727,
+            50.2775
+          ]
+        },
+        "properties": {
+          "id": "fort_maubeuge",
+          "name_fr": "Place forte de Maubeuge",
+          "name_key": "fort.fort_maubeuge.name",
+          "region_id": "region_007",
+          "sovereign_1914": "France",
+          "historical_type": "entrenched_camp_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_paris",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.3522,
+            48.8566
+          ]
+        },
+        "properties": {
+          "id": "fort_paris",
+          "name_fr": "Camp retranché de Paris",
+          "name_key": "fort.fort_paris.name",
+          "region_id": "region_008",
+          "sovereign_1914": "France",
+          "historical_type": "capital_entrenched_camp",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_brest",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -4.4861,
+            48.3904
+          ]
+        },
+        "properties": {
+          "id": "fort_brest",
+          "name_fr": "Camp retranché et goulet de Brest",
+          "name_key": "fort.fort_brest.name",
+          "region_id": "region_009",
+          "sovereign_1914": "France",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_toulon",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            5.928,
+            43.129911
+          ]
+        },
+        "properties": {
+          "id": "fort_toulon",
+          "name_fr": "Place forte maritime de Toulon",
+          "name_key": "fort.fort_toulon.name",
+          "region_id": "region_012",
+          "sovereign_1914": "France",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_liege",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            5.5797,
+            50.6326
+          ]
+        },
+        "properties": {
+          "id": "fort_liege",
+          "name_fr": "Position fortifiée de Liège (Brialmont)",
+          "name_key": "fort.fort_liege.name",
+          "region_id": "region_014",
+          "sovereign_1914": "Belgique",
+          "historical_type": "brialmont_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_namur",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.8675,
+            50.4674
+          ]
+        },
+        "properties": {
+          "id": "fort_namur",
+          "name_fr": "Position fortifiée de Namur (Brialmont)",
+          "name_key": "fort.fort_namur.name",
+          "region_id": "region_014",
+          "sovereign_1914": "Belgique",
+          "historical_type": "brialmont_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_antwerp",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.4025,
+            51.2194
+          ]
+        },
+        "properties": {
+          "id": "fort_antwerp",
+          "name_fr": "Réduit national d'Anvers (Brialmont)",
+          "name_key": "fort.fort_antwerp.name",
+          "region_id": "region_013",
+          "sovereign_1914": "Belgique",
+          "historical_type": "national_redoubt_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_amsterdam",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.9041,
+            52.3676
+          ]
+        },
+        "properties": {
+          "id": "fort_amsterdam",
+          "name_fr": "Stelling van Amsterdam & Nieuwe Hollandse Waterlinie",
+          "name_key": "fort.fort_amsterdam.name",
+          "region_id": "region_015",
+          "sovereign_1914": "Pays-Bas",
+          "historical_type": "inundation_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_gotthard",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            8.5944,
+            46.6356
+          ]
+        },
+        "properties": {
+          "id": "fort_gotthard",
+          "name_fr": "Fortifications du Saint-Gothard et de Saint-Maurice",
+          "name_key": "fort.fort_gotthard.name",
+          "region_id": "region_018",
+          "sovereign_1914": "Suisse",
+          "historical_type": "alpine_pass_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_metz_thionville",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            6.1757,
+            49.1193
+          ]
+        },
+        "properties": {
+          "id": "fort_metz_thionville",
+          "name_fr": "Festung Metz et Thionville (Moselstellung)",
+          "name_key": "fort.fort_metz_thionville.name",
+          "region_id": "region_035",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "imperial_festung_feste",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_strasbourg_mutzig",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            7.7521,
+            48.5734
+          ]
+        },
+        "properties": {
+          "id": "fort_strasbourg_mutzig",
+          "name_fr": "Festung Straßburg et Feste Kaiser Wilhelm II (Mutzig)",
+          "name_key": "fort.fort_strasbourg_mutzig.name",
+          "region_id": "region_035",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "imperial_festung_feste",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_mainz_germersheim",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            8.2473,
+            49.9929
+          ]
+        },
+        "properties": {
+          "id": "fort_mainz_germersheim",
+          "name_fr": "Festungen Mayence et Germersheim",
+          "name_key": "fort.fort_mainz_germersheim.name",
+          "region_id": "region_033",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "rhine_bridgehead_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_cologne_koblenz",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            6.9603,
+            50.9375
+          ]
+        },
+        "properties": {
+          "id": "fort_cologne_koblenz",
+          "name_fr": "Festungen Cologne, Coblence et Wesel",
+          "name_key": "fort.fort_cologne_koblenz.name",
+          "region_id": "region_032",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "rhine_bridgehead_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_konigsberg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            20.4522,
+            54.7104
+          ]
+        },
+        "properties": {
+          "id": "fort_konigsberg",
+          "name_fr": "Festung Königsberg et Feste Boyen (Lötzen)",
+          "name_key": "fort.fort_konigsberg.name",
+          "region_id": "region_026",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "imperial_festung",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_thorn_posen_graudenz",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.9252,
+            52.4064
+          ]
+        },
+        "properties": {
+          "id": "fort_thorn_posen_graudenz",
+          "name_fr": "Festungen Thorn, Posen et Graudenz",
+          "name_key": "fort.fort_thorn_posen_graudenz.name",
+          "region_id": "region_027",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "imperial_festung",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_breslau_glogau",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.0385,
+            51.1079
+          ]
+        },
+        "properties": {
+          "id": "fort_breslau_glogau",
+          "name_fr": "Festungen Breslau et Glogau",
+          "name_key": "fort.fort_breslau_glogau.name",
+          "region_id": "region_030",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "imperial_festung",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_kiel_wilhelmshaven_helgoland",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            10.1228,
+            54.3233
+          ]
+        },
+        "properties": {
+          "id": "fort_kiel_wilhelmshaven_helgoland",
+          "name_fr": "Bases navales fortifiées de Kiel, Wilhelmshaven et Helgoland",
+          "name_key": "fort.fort_kiel_wilhelmshaven_helgoland.name",
+          "region_id": "region_029",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_ingolstadt_ulm",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            11.4258,
+            48.7665
+          ]
+        },
+        "properties": {
+          "id": "fort_ingolstadt_ulm",
+          "name_fr": "Festungen Ingolstadt et Ulm",
+          "name_key": "fort.fort_ingolstadt_ulm.name",
+          "region_id": "region_034",
+          "sovereign_1914": "Empire allemand",
+          "historical_type": "danube_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_przemysl_krakau",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            22.7678,
+            49.7838
+          ]
+        },
+        "properties": {
+          "id": "fort_przemysl_krakau",
+          "name_fr": "Forteresses de Przemyśl et Cracovie",
+          "name_key": "fort.fort_przemysl_krakau.name",
+          "region_id": "region_040",
+          "sovereign_1914": "Autriche-Hongrie",
+          "historical_type": "austro_hungarian_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_trento_franzensfeste",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            11.1211,
+            46.0748
+          ]
+        },
+        "properties": {
+          "id": "fort_trento_franzensfeste",
+          "name_fr": "Forteresses du Tyrol (Trente, Riva, Franzensfeste, Lavarone/Folgaria)",
+          "name_key": "fort.fort_trento_franzensfeste.name",
+          "region_id": "region_037",
+          "sovereign_1914": "Autriche-Hongrie",
+          "historical_type": "alpine_barrier_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_pola",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            13.8496,
+            44.8666
+          ]
+        },
+        "properties": {
+          "id": "fort_pola",
+          "name_fr": "Camp retranché maritime de Pola (Arsenal impérial et royal)",
+          "name_key": "fort.fort_pola.name",
+          "region_id": "region_037",
+          "sovereign_1914": "Autriche-Hongrie",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_cattaro_sarajevo",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            18.4131,
+            43.8563
+          ]
+        },
+        "properties": {
+          "id": "fort_cattaro_sarajevo",
+          "name_fr": "Forteresses de Sarajevo, Mostar et Bouches de Cattaro",
+          "name_key": "fort.fort_cattaro_sarajevo.name",
+          "region_id": "region_043",
+          "sovereign_1914": "Autriche-Hongrie",
+          "historical_type": "mountain_and_coastal_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_komarom",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            18.1226,
+            47.7425
+          ]
+        },
+        "properties": {
+          "id": "fort_komarom",
+          "name_fr": "Forteresse de Komárom (Komorn)",
+          "name_key": "fort.fort_komarom.name",
+          "region_id": "region_041",
+          "sovereign_1914": "Autriche-Hongrie",
+          "historical_type": "danube_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_verona_venice",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            10.9916,
+            45.4384
+          ]
+        },
+        "properties": {
+          "id": "fort_verona_venice",
+          "name_fr": "Forts des Alpes vénitiennes, Vérone et lagune de Venise",
+          "name_key": "fort.fort_verona_venice.name",
+          "region_id": "region_081",
+          "sovereign_1914": "Italie",
+          "historical_type": "alpine_and_lagoon_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_la_spezia",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            9.873817,
+            44.145006
+          ]
+        },
+        "properties": {
+          "id": "fort_la_spezia",
+          "name_fr": "Place forte maritime de La Spezia",
+          "name_key": "fort.fort_la_spezia.name",
+          "region_id": "region_082",
+          "sovereign_1914": "Italie",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_taranto",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.247574,
+            40.465394
+          ]
+        },
+        "properties": {
+          "id": "fort_taranto",
+          "name_fr": "Base navale fortifiée de Tarente",
+          "name_key": "fort.fort_taranto.name",
+          "region_id": "region_084",
+          "sovereign_1914": "Italie",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_portsmouth_plymouth_dover",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -1.088,
+            50.8198
+          ]
+        },
+        "properties": {
+          "id": "fort_portsmouth_plymouth_dover",
+          "name_fr": "Places fortes navales de Portsmouth, Plymouth et Douvres",
+          "name_key": "fort.fort_portsmouth_plymouth_dover.name",
+          "region_id": "region_001",
+          "sovereign_1914": "Royaume-Uni",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_rosyth_scapa",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -3.1883,
+            55.9533
+          ]
+        },
+        "properties": {
+          "id": "fort_rosyth_scapa",
+          "name_fr": "Bases navales fortifiées de Rosyth (Firth of Forth) et Scapa Flow",
+          "name_key": "fort.fort_rosyth_scapa.name",
+          "region_id": "region_003",
+          "sovereign_1914": "Royaume-Uni",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "regis_2026_v1",
+            "historical_military_atlases_1914"
+          ]
+        }
+      }
+    ]
+  }
+}
