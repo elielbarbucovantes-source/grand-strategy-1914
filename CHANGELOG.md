@@ -3,6 +3,14 @@
 
 Toutes les évolutions importantes du projet sont consignées ici.
 
+## [1.3] — Intégration des décisions cartographiques et contrats d’affichage
+
+- Intégration individuelle des décisions validées MAP-DEC-27 à MAP-DEC-69, en complément des 26 décisions déjà documentées.
+- Audit des contradictions et précisions ouvertes : masquage des noms vs capitales toujours nommées (MAP-OPEN-15), dénominateur de victoire (MAP-OPEN-16), visibilité selon l’observateur et agrégation/présentation (MAP-OPEN-17 à 19).
+- Extension du modèle et du schéma structurel aux ressources et infrastructures régionales, préférences d’affichage, flèches d’ordres, unités, renseignement daté, combats, marqueurs d’événements et états maritimes/diplomatiques/logistiques.
+- Mise à jour du document maître, de l’état d’avancement, des règles de contribution et du guide des données cartographiques.
+- Aucun atlas, région, géométrie, donnée historique ou gameplay créé.
+
 ## [1.2] — Décisions cartographiques et préparation de l’atlas
 
 - Intégration des 26 décisions cartographiques validées le 2026-11-01 dans la spécification dédiée et le document maître.

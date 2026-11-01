@@ -28,7 +28,7 @@ Une proposition ou hypothèse ne devient jamais une règle validée sans décisi
 
 La formule du jeu est : **« Le joueur dirige son pays, mais ne dirige pas le monde. »** Toute proposition respecte les trois piliers d’égale importance : profondeur stratégique, autonomie convaincante de l’IA, réalisme historique. Respecter également la simultanéité mensuelle, l’information limitée, le périmètre solo initial, les exclusions de la V1 et tous les principes VALIDÉS dans `PROJECT.md` et les documents spécialisés.
 
-La conception cartographique continue dans un travail distinct. `docs/map/TECHNICAL_SPEC.md` décrit seulement des besoins techniques déduits des principes déjà validés. Il ne définit ni projection, ni frontière, ni nombre de provinces, ni géométrie, ni contenu final. Ne pas modifier la spécification cartographique de conception sans le directeur.
+La conception cartographique continue dans un travail distinct. `docs/map/TECHNICAL_SPEC.md` contient désormais les décisions explicitement validées MAP-DEC-01 à MAP-DEC-69 et des contrats techniques de données/présentation. Le plafond est de 100 régions terrestres ; leur nombre final, géométrie, frontières, contenu et projection de rendu restent à définir. Ne pas créer de régions ou données historiques ni arbitrer les points du registre sans décision du directeur. La mission explicite du directeur autorise l’intégration documentaire de décisions cartographiques, sans ouvrir le développement du gameplay.
 
 ## Architecture technique approuvée pour préparation
 

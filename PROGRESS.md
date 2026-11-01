@@ -1,6 +1,6 @@
 # PROGRESS — État du projet
 
-Dernière mise à jour : intégration documentaire et architecture technique 1.1
+Dernière mise à jour : intégration des 69 décisions cartographiques et contrats de présentation
 Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION EXPLICITE**
 
 ## 1. État général
@@ -10,7 +10,7 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 | Vision et piliers | VALIDÉ | Profondeur stratégique, autonomie de l’IA, réalisme historique |
 | Campagne et puissances | Principes VALIDÉS | Europe 1914, sept puissances jouables, autres États IA |
 | Boucle et temps | VALIDÉ | Mois par tour, ordres secrets simultanés, résolution simultanée |
-| Carte | 26 décisions VALIDÉES ; atlas en cours | Modèle et schéma structurel avec plafond 100 ; aucune géométrie ni inventaire de lieux créé |
+| Carte | 69 décisions VALIDÉES ; atlas en cours | Schéma de données statiques/dynamiques étendu ; maximum 100 régions terrestres ; aucune géométrie ni inventaire de lieux créé |
 | Diplomatie | Principes VALIDÉS ; règles À DÉFINIR | Accords, confiance, acceptation, sanctions, confidentialité |
 | Économie / industrie | Principes VALIDÉS ; valeurs À DÉFINIR | Trois ressources, stock national centralisé, cinq industries |
 | Armée / logistique | Principes VALIDÉS ; modèle À DÉFINIR | Hiérarchie, mouvement/logistique et batailles d’offensive ; détails ouverts |
@@ -19,7 +19,7 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 | Architecture logicielle | PROPOSITION TECHNIQUE DOCUMENTÉE | Godot 4.7.2 stable + GDScript typé ; simulation pure et domaines modulaires |
 | Multijoueur | Orientation VALIDÉE | Après le solo ; interfaces préparées, aucun réseau en V1 |
 | Code de gameplay | INTERDIT | Attendre l’autorisation explicite du directeur |
-| Dépôt Git | ABSENT dans l’environnement fourni | Le dossier de projet est organisé, mais il ne s’agit pas d’un dépôt Git initialisé |
+| Dépôt Git | INITIALISÉ sur `main` | Commit documentaire de fondation `5d8579f`; modifications de cette mission à committer |
 
 ## 2. Documentation intégrée
 
@@ -28,14 +28,14 @@ Le corpus du dossier initial a été extrait dans ses chemins logiques : documen
 Documents techniques ajoutés :
 
 - `docs/architecture/TECHNICAL_ARCHITECTURE.md` — architecture cible, contrats, domaines, tours, sauvegarde, IA et multijoueur futur.
-- `docs/map/TECHNICAL_SPEC.md` — modèle de données et pipeline cartographique provisoires, sans fixer la géométrie ou le contenu de l’atlas.
+- `docs/map/TECHNICAL_SPEC.md` — registre des 69 décisions validées, modèle étendu de données statiques/dynamiques et pipeline cartographique provisoire, sans fixer la géométrie ou le contenu de l’atlas.
 - `docs/decisions/DECISIONS_PENDING.md` — registre des décisions de conception restant nécessaires.
 
 ## 3. Prochaines tâches de conception
 
 ### Priorité 1 — Carte (travail de conception en cours)
 
-- Définir emprise et projection, puis les provinces, frontières et identifiants stables.
+- Définir emprise et projection, puis les régions (au plus 100), frontières et identifiants stables.
 - Définir terrains, villes, ports, forteresses, voies ferrées, routes, zones maritimes et passages.
 - Valider l’atlas et les règles d’occupation/transfert. La spécification technique ne tranche pas ces choix.
 
@@ -89,7 +89,9 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 - [x] Architecture modulaire proposée avec système de tours, ordres simultanés, domaines, IA, sauvegarde et multijoueur futur.
 - [x] Spécification cartographique technique provisoire préparée, sans figer l’atlas.
 - [x] 26 décisions cartographiques transmises le 2026-11-01 ajoutées comme VALIDÉES ; aucune région définie.
+- [x] 69 décisions cartographiques transmises le 2026-11-01 intégrées et auditées ; conflit de labels de capitales signalé, sans arbitrage inventé.
 - [x] Modèle de données et schéma structural avec plafond de 100 régions préparés.
+- [x] Contrats cartographiques de présentation et d’annotations dynamiques représentés sans règles de simulation.
 - [x] Flux éditorial/import et inventaire des données géographiques/historiques documentés.
 - [x] Difficultés techniques du plafond de 100 régions consignées.
 - [x] Registre des décisions ouvertes créé.
@@ -101,4 +103,4 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 
 ## 6. Vérification et limites
 
-Vérification effectuée : JSON schema parseable, liens Markdown relatifs valides, 26 décisions reportées, huit documents de domaine comparés au texte source, absence de nouvelles régions. Un squelette `project.godot` et `.gitignore` sont présents ; aucune scène ni logique de jeu n’est créée. Godot n’est pas installé dans cet environnement ; le projet n’a pas pu être ouvert dans l’éditeur. Aucun test de gameplay n’a été exécuté. Le dépôt source antérieur n’était pas fourni ; le dépôt courant a été initialisé dans le dossier de projet.
+Vérifications effectuées : schéma JSON parseable ; 69 identifiants cartographiques présents sans trou ; plafond du schéma fixé à 100 ; liens Markdown relatifs vérifiés ; `git diff --check` propre ; aucun fichier géographique créé. Le squelette `project.godot` ne contient aucune scène ni logique de jeu. Aucun test de gameplay n’a été exécuté.

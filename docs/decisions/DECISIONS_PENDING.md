@@ -6,11 +6,11 @@ Utiliser les statuts `À DÉFINIR`, `PROPOSITION`, `VALIDÉ`, `BLOQUÉ`. Ajouter
 
 ## A. Atlas et géographie
 
-Les décisions suivantes sont **VALIDÉES par le directeur le 2026-11-01** ; elles sont consignées individuellement dans `docs/map/TECHNICAL_SPEC.md` :
+Les décisions cartographiques **MAP-DEC-01 à MAP-DEC-69** sont **VALIDÉES par le directeur le 2026-11-01** ; elles sont consignées individuellement dans `docs/map/TECHNICAL_SPEC.md`. Elles priment sur les formulations cartographiques plus anciennes du dossier. Les groupes 01–26 couvrent géographie, régions, occupation et réseaux ; 27–69 couvrent zoom, calques, symboles, unités, ordres, renseignement, réglages et présentation. Les consigner ici par identifiant garantit que le statut ne se confond pas avec les décisions encore ouvertes.
 
 - **MAP-DEC-01 à 04 : VALIDÉ.** Plafond 100 régions terrestres ; découpage hybride priorisant les frontières de 1914 ; Europe de l’Atlantique à l’Oural incluant Scandinavie/Balkans ; petits États importants gardent leurs régions, micro-États simplifiés.
 - **MAP-DEC-05 à 10 : VALIDÉ.** Sites urbains limités aux catégories stratégiques ; relief régional intermédiaire ; rails visibles et infrastructures régionales ; routes visibles ; fleuves obstacles et transport ; fortifications historiques et évolutives.
-- **MAP-DEC-11 à 16 : VALIDÉ.** Zones maritimes intermédiaires ; brouillard dynamique ; occupation distincte de souveraineté et victoire par contrôle militaire de 90 % de la carte ; résistance locale abstraite ; taille des régions répond aux trois dimensions d’importance ; détroits contrôlables.
+- **MAP-DEC-11 à 16 : VALIDÉ.** Zones maritimes intermédiaires ; brouillard dynamique ; occupation distincte de souveraineté et victoire par contrôle militaire de 90 % des régions ; résistance locale abstraite ; taille des régions répond aux trois dimensions d’importance ; détroits contrôlables.
 - **MAP-DEC-17 à 21 : VALIDÉ.** Ports majeurs seulement individualisés ; priorités aux frontières historiques avec adaptation géographique ; débarquement sur côtes accessibles et facilité par ports ; grandes/îles stratégiques distinctes et autres simplifiées ; adjacency par frontières terrestres, routes/rails facilitent les déplacements.
 - **MAP-DEC-22 à 26 : VALIDÉ.** Montagnes régionales et obstacles frontaliers ; ponts/passages facilitent franchissement des fleuves ; frontières politiques inchangées visuellement pendant occupation ; occupation hachurée aux couleurs de l’occupant ; style atlas historique et interface moderne.
 
@@ -26,10 +26,15 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 - **MAP-OPEN-08 — Mer/détroits/débarquements :** nombre et limites des zones, relations aux détroits, règle de contrôle, côte accessible et effet des ports.
 - **MAP-OPEN-09 — Occupation/résistance :** règles et états de résistance, transition d’occupation et critères visuels de hachures.
 - **MAP-OPEN-10 — Brouillard :** niveaux/portée de visibilité, fraîcheur des rapports et champs cartographiques visibles.
-- **MAP-OPEN-11 — Victoire territoriale :** dénominateur exact de « 90 % de la carte » (régions terrestres seules ou autre), traitement des régions contestées/non attribuées et zones maritimes.
+- **MAP-OPEN-11 — Victoire territoriale :** dénominateur exact du seuil de 90 % de régions, traitement des régions contestées/non attribuées et éventuel effet des zones maritimes (voir aussi MAP-OPEN-16).
 - **MAP-OPEN-12 — Données :** sources, qualité, licences et attributions des frontières, relief, démographie, industrie, fortifications, villes et réseaux.
 - **MAP-OPEN-13 — Affichage :** palette, symboles, hachures, zoom, labels et critères d’accessibilité du style hybride.
 - **MAP-OPEN-14 — Terminologie :** préciser si l’unité « région » de l’atlas est exactement l’unité « province » des documents de jeu existants, ou si une correspondance distincte est nécessaire.
+- **MAP-OPEN-15 — Visibilité des noms de capitale : À ARBITRER.** MAP-DEC-30 permet de masquer les noms de régions et villes ; MAP-DEC-41 demande que le nom de chaque capitale reste toujours visible. Les deux décisions sont conservées telles quelles. Définir si l’option masque aussi les capitales ou si elles restent une exception.
+- **MAP-OPEN-16 — Dénominateur de victoire : À DÉFINIR.** MAP-DEC-13 confirme le seuil de 90 % de contrôle militaire des régions. Le dénominateur exact, les régions contestées/non attribuées et l’exclusion/inclusion éventuelle des zones maritimes restent à fixer ; la formule plus ancienne « 90 % de la carte » ne doit pas élargir le périmètre de façon implicite.
+- **MAP-OPEN-17 — Vue filtrée par observateur : À DÉFINIR.** Les informations militaires vieillissent puis disparaissent selon MAP-DEC-56 et leur date est visible au survol selon MAP-DEC-65. Définir les champs et marqueurs consultables dans les vues joueur/IA, sans divulguer d’information cachée.
+- **MAP-OPEN-18 — Hiérarchie et agrégation visuelles : À DÉFINIR.** Seuils de zoom, priorités entre symboles superposés, agrégation hors armées, couleurs des ordres/états, limites adaptatives et tailles d’interaction restent à préciser.
+- **MAP-OPEN-19 — Inventaire des annotations dynamiques : À DÉFINIR.** Seuils/valeurs d’intensité, données de composition, repères de blocus, routes touchées, rattachements de ravitaillement, durée d’événements et crise/journal sont à définir par les systèmes concernés ; leurs champs de transport ne fixent aucune mécanique.
 
 ## B. Données nationales et équilibre
 

@@ -137,9 +137,21 @@ sans déplacement visuel des frontières souveraines. Le style combine atlas
 historique et interface stratégique moderne. La spécification technique et
 les points restant à définir sont suivis dans `docs/map/TECHNICAL_SPEC.md`.
 
-Les positions exactes des provinces, leur nombre, leurs frontières et
-les données cartographiques restent à définir dans un atlas de
-conception dédié.
+Décisions complémentaires d’interface cartographique (27–69) : zoom
+continental à régional ; couches activables ; couleurs historiques
+personnalisables et hachures d’occupation ; labels adaptatifs ; sélection,
+fiches et recherche ; symboles et regroupements distincts pour armées,
+aviation, flottes, combats, événements et infrastructures ; flèches
+d’ordres avec état et difficultés ; renseignement périssable ; marqueurs
+maritimes, commerciaux, diplomatiques et de crise ; légende contextuelle,
+réglages essentiels, qualité graphique adaptable et carte prioritaire dans
+l’interface. Les décisions exhaustives figurent dans
+`docs/map/TECHNICAL_SPEC.md`.
+
+Les positions exactes des régions, leur nombre final (au plus 100), leurs
+frontières et les données cartographiques restent à définir dans l’atlas
+en cours. Les modalités détaillées de présentation et les contradictions
+de labels sont suivies dans le registre des décisions.
 
 ## 7. Temps et résolution
 
@@ -309,9 +321,10 @@ l'IA peut les accepter, les refuser, les influencer ou les éviter.
 L'histoire n'est pas une suite de résultats obligatoires.
 
 Trois conditions de victoire : - **Victoire territoriale** : contrôle
-militaire d'au moins 90 % de la carte. La portée exacte du dénominateur
-(notamment régions terrestres et zones maritimes) reste à préciser dans
-la conception cartographique. - **Victoire socio-économique** :
+militaire d'au moins 90 % des régions. Le traitement des régions
+contestées/non attribuées et l’application du dénominateur restent à
+préciser dans la conception cartographique ; le décompte des zones
+maritimes n’est pas validé. - **Victoire socio-économique** :
 atteindre un niveau exceptionnel de développement humain par rapport aux
 autres pays. La formule exacte reste à définir. - **Victoire collective
 / match nul** : accord de tous les pays pour signer le « Traité de paix
