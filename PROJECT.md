@@ -148,10 +148,19 @@ réglages essentiels, qualité graphique adaptable et carte prioritaire dans
 l’interface. Les décisions exhaustives figurent dans
 `docs/map/TECHNICAL_SPEC.md`.
 
+Le zoom libre du niveau continental au niveau régional détaillé, les noms
+adaptatifs, le regroupement automatique des unités selon le zoom et le
+placement des flottes au centre de leur zone maritime sont validés. Les
+noms ordinaires peuvent être masqués ; les noms des capitales restent
+toujours visibles. Les revendications contestées n’ont pas de marquage
+cartographique et la couleur officielle reste celle de l’État souverain.
+
 Les positions exactes des régions, leur nombre final (au plus 100), leurs
 frontières et les données cartographiques restent à définir dans l’atlas
-en cours. Les modalités détaillées de présentation et les contradictions
-de labels sont suivies dans le registre des décisions.
+en cours. Seuls les seuils/distances d’affichage et détails techniques
+d’agrégation restent à préciser. Le calcul détaillé des cas particuliers
+du seuil de victoire militaire de 90 % des régions est également à
+définir ; la représentation visuelle des revendications, elle, est décidée.
 
 ## 7. Temps et résolution
 

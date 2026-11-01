@@ -681,7 +681,8 @@
           }
         },
         "show_names": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Controls ordinary region/city names; capital names remain visible."
         },
         "animate_territorial_transfers": {
           "type": "boolean"
@@ -694,6 +695,10 @@
         },
         "manual_quality_ref": {
           "type": "string"
+        },
+        "capital_names_always_visible": {
+          "const": true,
+          "description": "MAP-DEC-41 takes precedence over the general name visibility setting in MAP-DEC-30."
         }
       },
       "additionalProperties": false

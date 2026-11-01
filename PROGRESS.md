@@ -10,7 +10,7 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 | Vision et piliers | VALIDÉ | Profondeur stratégique, autonomie de l’IA, réalisme historique |
 | Campagne et puissances | Principes VALIDÉS | Europe 1914, sept puissances jouables, autres États IA |
 | Boucle et temps | VALIDÉ | Mois par tour, ordres secrets simultanés, résolution simultanée |
-| Carte | 69 décisions VALIDÉES ; atlas en cours | Schéma de données statiques/dynamiques étendu ; maximum 100 régions terrestres ; aucune géométrie ni inventaire de lieux créé |
+| Carte | 69 décisions VALIDÉES ; atlas en cours | Zoom, labels adaptatifs, regroupement et rendu maritime confirmés ; maximum 100 régions terrestres ; aucune géométrie ni inventaire de lieux créé |
 | Diplomatie | Principes VALIDÉS ; règles À DÉFINIR | Accords, confiance, acceptation, sanctions, confidentialité |
 | Économie / industrie | Principes VALIDÉS ; valeurs À DÉFINIR | Trois ressources, stock national centralisé, cinq industries |
 | Armée / logistique | Principes VALIDÉS ; modèle À DÉFINIR | Hiérarchie, mouvement/logistique et batailles d’offensive ; détails ouverts |
@@ -89,7 +89,9 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 - [x] Architecture modulaire proposée avec système de tours, ordres simultanés, domaines, IA, sauvegarde et multijoueur futur.
 - [x] Spécification cartographique technique provisoire préparée, sans figer l’atlas.
 - [x] 26 décisions cartographiques transmises le 2026-11-01 ajoutées comme VALIDÉES ; aucune région définie.
-- [x] 69 décisions cartographiques transmises le 2026-11-01 intégrées et auditées ; conflit de labels de capitales signalé, sans arbitrage inventé.
+- [x] 69 décisions cartographiques intégrées et auditées ; noms ordinaires masquables, noms de capitales toujours visibles selon la priorité spécifique de MAP-DEC-41.
+- [x] Principes de zoom libre, labels adaptatifs, regroupement des unités et position des flottes explicitement conservés comme décisions validées ; paramètres techniques reportés au registre.
+- [x] Présentation des revendications contestées distinguée du calcul des cas particuliers de victoire à 90 % des régions.
 - [x] Modèle de données et schéma structural avec plafond de 100 régions préparés.
 - [x] Contrats cartographiques de présentation et d’annotations dynamiques représentés sans règles de simulation.
 - [x] Flux éditorial/import et inventaire des données géographiques/historiques documentés.
@@ -103,4 +105,4 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 
 ## 6. Vérification et limites
 
-Vérifications effectuées : schéma JSON parseable ; 69 identifiants cartographiques présents sans trou ; plafond du schéma fixé à 100 ; liens Markdown relatifs vérifiés ; `git diff --check` propre ; aucun fichier géographique créé. Le squelette `project.godot` ne contient aucune scène ni logique de jeu. Aucun test de gameplay n’a été exécuté.
+Vérifications effectuées : parse JSON et méta-validation du schéma Draft 2020-12 réussies ; 69 identifiants cartographiques présents sans trou ; plafond du schéma fixé à 100 ; liens Markdown locaux vérifiés ; `git diff --check` propre ; aucune mention résiduelle d’anciennes estimations de 150/300 régions ; aucun fichier géographique créé. Le squelette `project.godot` ne contient aucune scène ni logique de jeu. Aucun test de gameplay n’a été exécuté.

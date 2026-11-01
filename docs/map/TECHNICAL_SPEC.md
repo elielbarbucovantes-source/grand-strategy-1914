@@ -33,10 +33,10 @@
 | MAP-DEC-25 | Occupation figurée par des hachures aux couleurs de l’occupant. |
 | MAP-DEC-26 | Style hybride : atlas historique et interface stratégique moderne. |
 
-| MAP-DEC-27 | Zoom libre du niveau continental au niveau régional. |
+| MAP-DEC-27 | Zoom libre, du niveau continental au niveau régional détaillé. |
 | MAP-DEC-28 | La carte principale montre l’essentiel ; couches économie/industrie, rail/routes, relief, diplomatie, renseignement et infrastructures militaires activables. |
 | MAP-DEC-29 | Couleurs nationales historiques par défaut, personnalisables dans les réglages ; hachures d’occupation distinctes. |
-| MAP-DEC-30 | Noms de régions et villes adaptés au zoom et à l’importance ; option pour masquer les noms (en tension avec MAP-DEC-41, voir MAP-OPEN-15). |
+| MAP-DEC-30 | Noms ordinaires de régions et villes adaptés au zoom et à l’importance stratégique ; le joueur peut masquer ces noms ordinaires. Les noms de capitales restent toujours visibles selon MAP-DEC-41, décision spécifique prioritaire. |
 | MAP-DEC-31 | Sélection d’une région par clic ou recherche de nom dans un panneau latéral. |
 | MAP-DEC-32 | La sélection ouvre un panneau latéral extensible avec fiche détaillée de région. |
 | MAP-DEC-33 | Limites régionales discrètes à faible zoom et plus lisibles à fort zoom. |
@@ -47,7 +47,7 @@
 | MAP-DEC-38 | Couleur des flèches différenciée par type d’ordre (déplacement, attaque, retraite, renfort) et état (planifié, en cours, bloqué, terminé). |
 | MAP-DEC-39 | Frontières nationales plus épaisses que régionales ; couleur adaptée aux pays voisins. |
 | MAP-DEC-40 | Transfert territorial éventuellement animé progressivement ; option pour désactiver les animations et appliquer immédiatement. |
-| MAP-DEC-41 | Chaque capitale a une étoile distinctive, son nom toujours visible et une fiche accessible au clic (conflit potentiel avec MAP-DEC-30). |
+| MAP-DEC-41 | Chaque capitale a une étoile distinctive, son nom toujours visible et une fiche accessible au clic ; cette règle spécifique prévaut sur l’option générale de masquage des noms ordinaires de MAP-DEC-30. |
 | MAP-DEC-42 | Autres villes importantes : point simple, nom et fiche ; aucun pictogramme différent par fonction. |
 | MAP-DEC-43 | Un seul symbole de port ; catégorie et importance consultables dans la fiche. |
 | MAP-DEC-44 | Grandes lignes ferroviaires visibles sur la carte ; détails régionaux dans une couche. |
@@ -77,7 +77,7 @@
 | MAP-DEC-68 | Qualité graphique ajustée automatiquement à l’ordinateur, avec modification manuelle possible. |
 | MAP-DEC-69 | La carte occupe presque tout l’écran ; panneaux latéraux discrets et rétractables, priorité visuelle à la carte. |
 
-Les 69 décisions sont des décisions de conception VALIDÉES, mais ne fixent pas une liste de lieux, une frontière particulière, le nombre final sous le plafond ni des formules de déplacement, résistance ou visibilité. Les détails visuels nommés (intensité, catégorie, durée estimée) sont des données à afficher lorsqu’elles existent ; leur calcul reste hors de cette spécification.
+Les 69 décisions sont des décisions de conception VALIDÉES, mais ne fixent pas une liste de lieux, une frontière particulière, le nombre final sous le plafond ni des formules de déplacement, résistance ou visibilité. Les détails visuels nommés (intensité, catégorie, durée estimée) sont des données à afficher lorsqu’elles existent ; leur calcul reste hors de cette spécification. Les revendications territoriales contestées n’ont aucun marquage cartographique : la couleur officielle reste celle de l’État souverain (MAP-DEC-51). Cette présentation est décidée ; elle ne tranche pas le calcul du contrôle militaire de 90 % (MAP-DEC-13).
 
 ## 2. Modèle de données proposé
 
@@ -95,7 +95,7 @@ Les identifiants sont permanents et indépendants des noms affichés. Géométri
 | `regional_infrastructure.json` | Enregistrement indexé par `region_id` | infrastructures régionales avec source, date et unité | Ne pas créer de niveaux ou valeurs non validés. |
 | `regional_resources.json` | Enregistrement indexé par région | référence de ressource, quantité, production, unités et provenance | Types, unités, quantités et règles de production restent à définir. |
 | `countries.json` (style) | Identifiant de pays | couleur historique par défaut et surcharge de préférence utilisateur | Palette exacte et règles de contraste ouvertes. |
-| `map_presentation.json` | Configuration de rendu | visibilité des couches, noms, animations, qualité auto/manuelle et légende contextuelle | Respecter le conflit de labels MAP-OPEN-15 ; valeurs de rendu à définir. |
+| `map_presentation.json` | Configuration de rendu | visibilité des couches, noms ordinaires, animations, qualité auto/manuelle et légende contextuelle | Le masquage ne s’applique pas aux noms des capitales ; paramètres de rendu à définir. |
 | `map_overlays` (runtime, par observateur) | Enregistrements typés référant aux IDs statiques | occupation/hachures, armées et regroupements, flèches d’ordres, avions, flottes, batailles, événements, ravitaillement, blocus, commerce, influence, crises | Contenu visible soumis au brouillard et aux règles futures ; le schéma ne calcule aucun état. |
 | `intelligence_state` (runtime, par observateur) | Observateur + cible + type d’information | date de collecte, dernière mise à jour, précision/référence de statut | Décroissance et seuil de disparition ouverts ; pas de formule imposée. |
 | `territorial_state` (runtime) | `region_id` | souveraineté, occupant/contrôleur et temps de campagne | Occupation distincte validée ; transitions ouvertes. Souveraineté détermine la frontière visuelle. |
@@ -112,7 +112,9 @@ Le catalogue technique des calques comprend les calques explicitement validés :
 
 Les données d’ordres peuvent porter catégorie (déplacement/attaque/retraite/renfort), état (planifié/en cours/bloqué/terminé), destination, durée estimée, distance et références de difficultés (terrain, infrastructure, frontière, autorisation). Le rendu associe des styles distincts aux types et états, sans couleur officielle présumée dans le schéma. Les données d’unités distinguent armées terrestres, avions en déplacement ou basés, et flottes rattachées à une zone maritime. Les combats terrestres/navals portent intensité et participants ; blocus portent intensité et routes touchées ; routes commerciales relient les ports majeurs avec une épaisseur visuelle uniforme. Les lignes de ravitaillement relient armées et sources. Les événements temporaires et crises persistantes référencent leur entrée de journal. Les ports partagent un symbole ; les villes importantes non capitales ont un point simple sans symbole propre à leur fonction ; fortifications partagent un symbole et exposent leurs détails en fiche. Ces champs ne signifient pas que ces systèmes sont implémentés.
 
-Le rendu adapte regroupement d’unités, limites, labels, symboles et détails de réseaux au zoom. Les réglages ne contiennent que les préférences validées : palette nationale, affichage des noms, animations, couches principales et qualité graphique automatique/manuelle. Les noms de capitales sont soumis à l’arbitrage MAP-OPEN-15.
+Les principes d’affichage validés comprennent le zoom libre du niveau continental au niveau régional détaillé (MAP-DEC-27), l’adaptation des noms ordinaires au zoom et à l’importance (MAP-DEC-30), le regroupement automatique des unités selon le zoom (MAP-DEC-35) et une flotte placée au centre de sa zone maritime (MAP-DEC-58). Le nom de chaque capitale reste visible, même si le joueur masque les noms ordinaires (MAP-DEC-41). Ces règles de conception sont acquises. Les seuils exacts de zoom, distances d’affichage, priorités et algorithmes de regroupement sont des détails d’implémentation restant à préciser.
+
+Les réglages ne contiennent que les préférences validées : palette nationale, affichage des noms ordinaires, animations, couches principales et qualité graphique automatique/manuelle.
 
 ### Topologie
 
@@ -172,12 +174,12 @@ Pour des diffs propres, ordonner les features par ID, normaliser l’ordre des p
 - Hachures superposées aux couleurs de l’occupant, dans une couche dynamique distincte.
 - Brouillard dynamique calculé par vue d’acteur ; ne pas exposer dans l’image des informations cachées à ce joueur/à cette IA.
 - Relief, fleuves, rail, routes, ponts, passages, sites, fortifications et zones maritimes surcouchés indépendamment.
-- Palette, motifs, échelle de zoom, règles de labels et mode accessible restent à préciser. Couleur et hachure ne doivent pas être l’unique encodage d’information importante.
+- La palette précise, les motifs, seuils de zoom, distances/conditions d’affichage des labels, algorithmes de regroupement et adaptations d’accessibilité restent à préciser lors de l’implémentation. Les principes et exceptions décidés ci-dessus ne sont pas ouverts. Couleur et hachure ne doivent pas être l’unique encodage d’information importante.
 
 ## 6. Difficultés techniques du plafond de 100 régions
 
 - **Le plafond d’entités n’est pas un plafond de géométrie.** Cent MultiPolygons avec îles, détroits et frontières détaillées peuvent contenir beaucoup de sommets et trous ; mémoire, taille des fichiers, import, rendu et hit-testing dépendent de ce détail.
-- **Taille et importance varient fortement.** Les régions des petits États importants et les régions très peuplées/industrielles/stratégiques coexistent avec de grands espaces. Au zoom global, petites régions et détroits deviennent invisibles ; au zoom local, grandes régions dominent. Un seuil de sélection et une hiérarchie de labels seront à concevoir.
+- **Taille et importance varient fortement.** Les régions des petits États importants et les régions très peuplées/industrielles/stratégiques coexistent avec de grands espaces. Au zoom global, petites régions et détroits deviennent invisibles ; au zoom local, grandes régions dominent. Les principes de zoom et de labels sont validés ; seuils de sélection et distances exactes restent à concevoir.
 - **Déformation stratégique/historique.** Adapter la taille aux trois dimensions d’importance peut déformer la géographie et les frontières historiques. Aucun poids ou algorithme n’est validé ; le contrôle reste cartographique humain.
 - **Topologie fragile à simplifier.** Simplifier les polygones indépendamment peut créer trous, chevauchements ou faux voisins et rompre le graphe terrestre. Les contours communs doivent partager une même topologie ou être revalidés après chaque niveau de détail.
 - **Réseaux nombreux malgré peu de régions.** Routes, rails, fleuves, ponts, fortifications, sites et zones maritimes peuvent dépasser le coût des polygones. Il faudra filtrer et simplifier les couches par zoom sans altérer la carte de simulation.
@@ -218,9 +220,11 @@ Les sources candidates restent à sélectionner après comparaison de leur couve
 - Nombre, limites, adjacences des zones maritimes ; contrôle des détroits ; critère d’accessibilité côtière et effet des ports pour les débarquements.
 - Brouillard : champs visibles, niveaux, portée, fraîcheur, infrastructures révélées et interaction avec le renseignement.
 - Résistance locale : représentation, déclencheurs, durée et effets.
-- Victoire par contrôle de 90 % : dénominateur exact de « carte » (régions terrestres uniquement ou autre), mesure des régions contestées/non attribuées et place des zones maritimes.
+- Victoire par contrôle militaire d’au moins 90 % des régions : modalités exactes du décompte, notamment contrôle partiel, occupation, contestation militaire ou autres situations particulières. MAP-DEC-51 fixe déjà l’absence de marqueur des revendications et le maintien de la couleur de souveraineté ; ce choix visuel ne détermine pas le calcul de victoire.
+- Labels et interaction : distances d’affichage, seuils de zoom et priorité des labels ordinaires selon importance ; les noms de capitales restent toujours visibles. Contenu, dimensions et comportement technique de recherche/fiche régionale restent à préciser.
+- Rendu et interface : seuils exacts de zoom, algorithmes de regroupement des unités, priorités entre symboles, styles/couleurs exacts des flèches et frontières, détails de légende contextuelle, qualité graphique et comportements des panneaux. Le principe de regroupement automatique par zoom, le zoom libre et le placement central des flottes sont validés.
 - Sources, licences et attribution des données géographiques/historiques.
-- Palette, motifs, labels, zoom et exigences d’accessibilité.
+- Palette, motifs et exigences d’accessibilité ; seuils et distances exacts d’affichage des labels et des éléments au zoom.
 
 ## 9. Limite de portée
 
