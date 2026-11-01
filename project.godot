@@ -1,0 +1,8 @@
+; Grand Strategy-1914 — technical project shell
+; No main scene or gameplay code is configured at this stage.
+config_version=5
+
+[application]
+
+config/name="Grand Strategy-1914"
+config/description="Projet de grande stratégie — socle technique en préparation."
