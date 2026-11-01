@@ -16,7 +16,7 @@ Les décisions cartographiques **MAP-DEC-01 à MAP-DEC-69** sont **VALIDÉES par
 
 Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cours :
 
-- **MAP-OPEN-01 — Atlas de régions :** nombre final (≤100), géométries, noms, identifiants, frontières précises et date/référence historique.
+- **MAP-OPEN-01 — Atlas de régions : PARTIELLEMENT RÉSOLU le 2026-11-01.** La cible exacte de 90 régions et sa répartition zonale sont fixées par le dossier cartographique; la liste de travail se trouve dans `data/world/map/tables/region_plan.csv`. Le pays de Galles est une région distincte, selon clarification directe du directeur. Les identifiants sont réservés à titre éditorial. Les géométries, contours détaillés, appariement aux unités historiques et vérification intégrale des noms/souverainetés restent à construire/sourcer; voir `docs/map/ATLAS_BUILD_STATUS.md`.
 - **MAP-OPEN-02 — Découpage :** définition opérationnelle de « petit État important » et « micro-État » ; méthode d’arbitrage entre taille et frontières historiques, sans poids présumés.
 - **MAP-OPEN-03 — Emprise/représentation :** limites exactes de l’emprise, projection de rendu, toponymie, statut des régions transcontinentales et détails des îles/territoires abstraits.
 - **MAP-OPEN-04 — Relief/hydrographie :** affectation des classes aux régions, chevauchements, grands fleuves retenus, obstacles et passages précis.
@@ -27,7 +27,7 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 - **MAP-OPEN-09 — Occupation/résistance :** règles et états de résistance, transition d’occupation et critères visuels de hachures.
 - **MAP-OPEN-10 — Brouillard :** niveaux/portée de visibilité, fraîcheur des rapports et champs cartographiques visibles.
 - **MAP-OPEN-11 — Victoire territoriale :** modalités exactes du décompte du contrôle militaire de 90 % des régions, notamment les cas partiels ou particuliers (voir aussi MAP-OPEN-16). L’absence de marquage cartographique des revendications contestées et le maintien de la couleur de souveraineté sont déjà décidés par MAP-DEC-51.
-- **MAP-OPEN-12 — Données :** sources, qualité, licences et attributions des frontières, relief, démographie, industrie, fortifications, villes et réseaux.
+- **MAP-OPEN-12 — Données : À DÉFINIR / EN COURS DE RECHERCHE.** Les sources candidates et leurs limites/licences connues sont recensées dans `data/world/map/sources/README.md`. Aucune source n’a été importée dans les données du jeu; établir une provenance par objet, licences compatibles, qualité et couverture pour frontières, relief, démographie, industrie, fortifications, villes et réseaux.
 - **MAP-OPEN-13 — Affichage :** palette exacte, symboles/hachures détaillés, paramètres de rendu et critères d’accessibilité du style hybride. Les principes de zoom, de labels adaptatifs et de regroupement par zoom (MAP-DEC-27, 30, 35) sont validés.
 - **MAP-OPEN-14 — Terminologie :** préciser si l’unité « région » de l’atlas est exactement l’unité « province » des documents de jeu existants, ou si une correspondance distincte est nécessaire.
 - **MAP-OPEN-15 — Visibilité des noms de capitale : RÉSOLU le 2026-11-01.** Les noms ordinaires peuvent être masqués ; les noms de capitales restent toujours visibles selon MAP-DEC-41, règle spécifique prioritaire sur MAP-DEC-30. Les décisions validées sont conservées sans modification.

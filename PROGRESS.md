@@ -1,6 +1,6 @@
 # PROGRESS — État du projet
 
-Dernière mise à jour : intégration des 69 décisions cartographiques et contrats de présentation
+Dernière mise à jour : inventaire cible et recherche initiale de l’atlas à 90 régions
 Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION EXPLICITE**
 
 ## 1. État général
@@ -10,7 +10,7 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 | Vision et piliers | VALIDÉ | Profondeur stratégique, autonomie de l’IA, réalisme historique |
 | Campagne et puissances | Principes VALIDÉS | Europe 1914, sept puissances jouables, autres États IA |
 | Boucle et temps | VALIDÉ | Mois par tour, ordres secrets simultanés, résolution simultanée |
-| Carte | 69 décisions VALIDÉES ; atlas en cours | Zoom, labels adaptatifs, regroupement et rendu maritime confirmés ; maximum 100 régions terrestres ; aucune géométrie ni inventaire de lieux créé |
+| Carte | 69 décisions VALIDÉES ; inventaire cible de 90 régions saisi; atlas géométrique non construit | Répartition zonale et noms de travail consignés; pays de Galles distinct suite à clarification; sources candidates documentées; aucune géométrie/ville/infrastructure/zone maritime n’a été créée |
 | Diplomatie | Principes VALIDÉS ; règles À DÉFINIR | Accords, confiance, acceptation, sanctions, confidentialité |
 | Économie / industrie | Principes VALIDÉS ; valeurs À DÉFINIR | Trois ressources, stock national centralisé, cinq industries |
 | Armée / logistique | Principes VALIDÉS ; modèle À DÉFINIR | Hiérarchie, mouvement/logistique et batailles d’offensive ; détails ouverts |
@@ -96,6 +96,10 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 - [x] Contrats cartographiques de présentation et d’annotations dynamiques représentés sans règles de simulation.
 - [x] Flux éditorial/import et inventaire des données géographiques/historiques documentés.
 - [x] Difficultés techniques du plafond de 100 régions consignées.
+- [x] Recherche initiale des sources historiques et licences documentée.
+- [x] Index éditorial `region_001`–`region_090` préparé sans polygones.
+- [x] Validateur réutilisable ajouté pour l’index et les futures géométries.
+- [ ] Géométries historiques, couverture, adjacences, villes, relief, infrastructures et zones maritimes — non réalisées; atlas non validé.
 - [x] Registre des décisions ouvertes créé.
 - [x] Huit spécifications de domaine comparées aux sources jointes ; contenu identique.
 - [ ] Conception de l’atlas cartographique validée par le directeur.
@@ -105,4 +109,4 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 
 ## 6. Vérification et limites
 
-Vérifications effectuées : parse JSON et méta-validation du schéma Draft 2020-12 réussies ; 69 identifiants cartographiques présents sans trou ; plafond du schéma fixé à 100 ; liens Markdown locaux vérifiés ; `git diff --check` propre ; aucune mention résiduelle d’anciennes estimations de 150/300 régions ; aucun fichier géographique créé. Le squelette `project.godot` ne contient aucune scène ni logique de jeu. Aucun test de gameplay n’a été exécuté.
+Pour cette mission : le validateur confirme 90 IDs uniques, champs éditoriaux obligatoires et comptes zonaux (6/13/6/18/8/18/10/7/4). Il signale explicitement `regions.geojson` absent et sort avec statut incomplet; aucune validation géométrique/topologique n’a donc eu lieu. Le schéma JSON parse correctement. Les liens Markdown relatifs des fichiers ajoutés ont été contrôlés par inspection; `git diff --check` doit être relancé avant commit. L’archive REGIS téléchargée était altérée et n’a pas été importée. Aucune géométrie, ville, infrastructure, zone maritime ou logique de gameplay n’a été créée. L’atlas n’est pas validé ni jouable.

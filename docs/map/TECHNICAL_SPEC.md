@@ -186,6 +186,7 @@ Pour des diffs propres, ordonner les features par ID, normaliser l’ordre des p
 - **Accessibilité de sélection.** Petites régions, îles et détroits ont une faible surface cliquable. La sélection devra prévoir une tolérance/UI adaptée qui ne modifie pas les géométries ni l’adjacence du gameplay.
 - **Occupation et brouillard superposés.** Hachures occupant, frontières souveraines, relief et visibilité peuvent rendre la carte illisible. Tester contraste, motifs et vues daltoniennes.
 - **Côtes, îles et débarquements.** Même avec moins de 100 régions, la topologie terre-mer exige des côtes accessibles, ports, îles et zones de mer suffisamment détaillés.
+
 - **Évolution d’atlas.** Fusion/scission ou changement d’ID casse historiques, ordres, sites attachés et sauvegardes. Geler IDs et prévoir migrations avant les données de campagne.
 
 À mesurer sur l’atlas réel : nombre de sommets, taille de source, import, dessin, sélection, lisibilité à différents zooms et cohérence d’adjacence. Aucun budget de performance n’est présumé.
@@ -210,7 +211,7 @@ Les sources candidates restent à sélectionner après comparaison de leur couve
 ## 8. Points encore ouverts
 
 - Projection de rendu, emprise cartographique exacte et conventions de noms.
-- Nombre final (maximum 100), géométrie, noms, IDs et frontières de chaque région ; définition opérationnelle de « petit État important » et « micro-État ».
+- Cible de 90 régions et répartition zonale fixées; géométries, frontières exactes, appariement aux unités historiques et vérification complète des noms/IDs restent à réaliser. Définition opérationnelle de « petit État important » et « micro-État » à préciser.
 - Méthode de dimensionnement démographique/industriel/stratégique, données et arbitrage de déformation.
 - Classification détaillée des îles et traitement des micro-États, régions transcontinentales et territoires coloniaux abstraits.
 - Relief : affectation régionale, coexistence de catégories, seuil d’un grand fleuve, et emplacement des obstacles montagneux.
@@ -228,4 +229,25 @@ Les sources candidates restent à sélectionner après comparaison de leur couve
 
 ## 9. Limite de portée
 
-Aucune région, frontière, ville, route, ligne ferroviaire, fortification ou zone maritime n’a été créée. Aucun importeur runtime ni gameplay n’a été développé.
+Aucun polygone de région, frontière, ville, route, ligne ferroviaire, fortification ou zone maritime n’a été créé. Seul l’index éditorial de 90 entrées existe. Aucun importeur runtime ni gameplay n’a été développé.
+
+## 10. Construction de l’atlas à 90 régions
+
+La mission cartographique du directeur fixe une cible de **90 régions terrestres**, avec répartition par zone 6 / 13 / 6 / 18 / 8 / 18 / 10 / 7 / 4 (îles Britanniques, Europe occidentale, péninsule ibérique, Europe centrale, Scandinavie, Europe orientale, Balkans, Italie, territoires ottomans européens). Cette cible est inférieure au plafond validé de 100. La liste des identifiants et souverainetés prévues est dans `data/world/map/tables/region_plan.csv`; le détail de son état et des sources est dans `docs/map/ATLAS_BUILD_STATUS.md`.
+
+Précisions validées dans le dossier de mission : le pays de Galles est distinct (clarification du directeur); Ulster désigne les neuf comtés sans frontière de partition postérieure; l’Islande reste sous souveraineté danoise; Bruxelles est représentée en Flandre comme simplification de jeu; Alsace-Lorraine est allemande; Bosnie-Herzégovine est austro-hongroise; Trentin, Tyrol du Sud, Trieste et Istrie ne sont pas italiens. Ces précisions ne suffisent pas à définir les contours géométriques exacts.
+
+Le registre des sources candidates est `data/world/map/sources/README.md`. Les sources examinées sont complémentaires et incomplètes : frontières nationales « c. 1914 », unités administratives à différentes dates (par ex. 1910/1920), carte russe raster au 1er janvier 1914 et données régionales à d’autres dates. Aucune ne livre seule les 90 géométries. L’archive REGIS obtenue pendant la recherche a échoué au contrôle d’intégrité et n’a pas été importée. Par conséquent, aucune géométrie, frontière partagée, adjacence, ville, infrastructure ou zone maritime n’est déclarée construite.
+
+La table `region_plan.csv` constitue un index éditorial, et non une donnée de carte. Les IDs `region_001`–`region_090` sont réservés dans cet inventaire, mais les polygones et leur topologie restent à produire à partir de sources réutilisables et datées. Ne pas fabriquer de subdivisions pour atteindre le compte. `tools/map/validate_atlas.py` vérifie l’index et, lorsque le GeoJSON existera, les identifiants, attributs minimaux, validité et chevauchements géométriques. Il ne peut pas prouver l’exactitude historique ou l’absence de lacunes de couverture sans emprise de référence appropriée.
+
+## 11. Points de conception / données cartographiques encore ouverts
+
+- Références vectorielles historiques et licence de dérivation pour Russie, Balkans, territoires ottomans européens et autres lacunes nationales.
+- Table détaillée d’appariement des unités administratives historiques à chacune des 90 régions; date et arbitrages de toute unité scindée/fusionnée.
+- Tracés exacts des 90 frontières, emprise jusqu’à l’Oural et règle de couverture de toutes les îles/territoires visés.
+- Liste géoréférencée des villes, reliefs et fleuves; topologie des côtes, routes, chemins de fer, ports, fortifications, ponts et cols.
+- Nombre, limites et connexions des zones maritimes.
+- Sources au niveau des objets, niveaux de précision, traitement des incertitudes, contrôle des superpositions et des petits écarts.
+
+Le plafond ne dispense pas de ces contrôles : des régions très vastes ou hétérogènes peuvent masquer des incohérences, et les unités historiques ne correspondent pas toujours aux découpages de jeu demandés. Les licences incompatibles (notamment données ferroviaires non commerciales) ne doivent pas être incorporées sans analyse dédiée.

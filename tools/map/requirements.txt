@@ -1,0 +1,2 @@
+pyogrio>=0.11,<1
+shapely>=2.0,<3

@@ -1,15 +1,24 @@
-# Données de carte
+# Atlas historique — données cartographiques
 
-Les jeux de données réels ne sont pas encore ajoutés : la conception de l’atlas continue. Ne pas créer de régions, frontières, sites ou tracés par anticipation.
+## État
 
-Sources éditables futures : couches GeoJSON décrites dans [`TECHNICAL_SPEC.md`](../../../docs/map/TECHNICAL_SPEC.md). Le schéma structurel se trouve dans [`data/schemas/map.schema.json`](../../schemas/map.schema.json). Le manifeste, une fois les sources choisies, enregistrera la version des données, références, licences, date et provenance.
+La répartition éditoriale cible de **90 régions terrestres** est enregistrée dans [`tables/region_plan.csv`](tables/region_plan.csv), avec IDs stables provisoires `region_001` à `region_090`, zone, nom français et souveraineté de 1914. Cette table n’est pas une carte : aucune géométrie n’y est jointe et les régions ne sont pas encore cartographiquement construites. L’atlas n’est donc pas validé ni utilisable comme carte jouable.
 
-Convention proposée : IDs stables en minuscules ASCII ; WGS 84/longitude-latitude pour l’échange RFC 7946 ; fichiers UTF-8, features triées par ID ; les couches de géométrie restent séparées de l’état de partie. Les valeurs de gameplay et les frontières initiales exigent une source validée.
+Le plafond validé est de 100 régions terrestres. Les 90 identifiants sont réservés par le plan; leur géométrie doit provenir de données historiques vérifiables et partager une topologie cohérente. Ne pas attribuer à la table d’inventaire une précision qui n’existe pas encore.
 
-Le plafond de 100 s’applique à `land_regions.geojson` uniquement. Il n’y a actuellement aucun fichier de données géographiques dans ce répertoire.
+## Fichiers et formats prévus
 
-La spécification couvre 69 décisions validées. Les contrats décrivent également les futurs attributs possibles de présentation et d’état dynamique : couleur historique/préférence utilisateur, calques activables, flèches d’ordres, unités/agrégats, renseignements datés, batailles, événements, blocus, commerce maritime, influence, crises et ravitaillement. Ils ne sont ni des données de campagne ni des règles. Toute donnée dynamique doit être construite pour une vue d’observateur et respecter le brouillard ; ne jamais stocker ces marqueurs dans la source géographique statique.
+- `tables/region_plan.csv` : registre éditorial des 90 régions et souverainetés prévues, sans polygones.
+- `regions.geojson` : à créer après dérivation documentée des géométries (RFC 7946, WGS 84).
+- `adjacency.json`, `cities.json`, `terrain.json`, `infrastructure.json`, `maritime_zones.geojson` : à créer depuis des sources identifiées et validées.
+- `sources/README.md` : registre des sources, licences, périodes, limites et transformations.
 
-Principes de rendu déjà fixés : zoom libre continental-régional détaillé, noms ordinaires adaptatifs et masquables mais noms des capitales toujours visibles, regroupement des unités selon le zoom, flotte au centre de sa zone, et aucune surcouche dédiée aux revendications contestées (la couleur reste celle de la souveraineté officielle). Les seuils/distances et algorithmes d’affichage restent des détails ouverts. Le seuil de victoire est le contrôle militaire d’au moins 90 % des régions ; les cas particuliers de calcul restent à définir séparément de leur représentation visuelle.
+Les propositions de nom et d’affectation de souveraineté reproduisent la mission de construction et les décisions déjà validées. Les conventions plus précises de frontière, villes, relief et infrastructures restent en attente. Le manifeste doit distinguer géométrie dérivée, arbitrage historique et simplification de jeu.
 
-Flux éditorial prévu : sources géographiques versionnées dans `source/`, tables de référence dans `tables/`, configuration visuelle séparée des données historiques, et éventuels états runtime séparés de ces deux familles. Les modifications de données géographiques nécessiteront provenance, licence, identifiants stables et validation topologique ; aucun processus d’import automatisé n’est encore implémenté.
+## Import et édition
+
+Les sources originales ne doivent pas être écrasées. Conserver une copie ou une référence versionnée sous `sources/`, avec licence/attribution et somme de contrôle si la redistribution est autorisée. Importer vers une couche de travail, reprojeter vers EPSG:4326 uniquement à l’export GeoJSON, normaliser les noms et IDs, puis faire valider la topologie avant publication. Les traitements doivent pouvoir être relancés et documenter chaque fusion/découpe. Ne jamais créer de limites rectangulaires ou interpolées pour remplir une lacune de source.
+
+Le schéma structurel est [`data/schemas/map.schema.json`](../../schemas/map.schema.json). Les contrôles géométriques et de couverture ne sont pas encore exécutés sur des données, car aucune géométrie de région n’est présente.
+
+Voir [`docs/map/ATLAS_BUILD_STATUS.md`](../../../docs/map/ATLAS_BUILD_STATUS.md) pour l’état, les sources candidates et les livrables encore bloqués.

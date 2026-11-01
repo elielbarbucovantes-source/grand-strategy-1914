@@ -155,9 +155,12 @@ noms ordinaires peuvent être masqués ; les noms des capitales restent
 toujours visibles. Les revendications contestées n’ont pas de marquage
 cartographique et la couleur officielle reste celle de l’État souverain.
 
-Les positions exactes des régions, leur nombre final (au plus 100), leurs
-frontières et les données cartographiques restent à définir dans l’atlas
-en cours. Seuls les seuils/distances d’affichage et détails techniques
+La répartition cible de l’atlas est désormais de 90 régions terrestres
+(sous le plafond validé de 100), listées dans
+`data/world/map/tables/region_plan.csv`. Cette liste et ses souverainetés
+prévues ne contiennent pas de géométries. Les frontières détaillées, leur
+provenance, la couverture et les autres données cartographiques restent à
+construire et valider dans `docs/map/ATLAS_BUILD_STATUS.md`. Seuls les seuils/distances d’affichage et détails techniques
 d’agrégation restent à préciser. Le calcul détaillé des cas particuliers
 du seuil de victoire militaire de 90 % des régions est également à
 définir ; la représentation visuelle des revendications, elle, est décidée.

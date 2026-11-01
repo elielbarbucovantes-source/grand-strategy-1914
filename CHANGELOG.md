@@ -3,6 +3,14 @@
 
 Toutes les évolutions importantes du projet sont consignées ici.
 
+## [1.4] — Inventaire et recherche initiale de l’atlas à 90 régions
+
+- Inscription de la répartition cible de 90 régions et des identifiants de travail dans `data/world/map/tables/region_plan.csv`; le pays de Galles est distinct selon clarification du directeur.
+- Documentation des sources historiques candidates, périodes, licences connues et limites; aucune donnée externe n’a été intégrée aux fichiers de carte.
+- Ajout d’un statut de construction qui distingue l’index éditorial de l’atlas géométrique incomplet et décrit les livrables restants.
+- Ajout d’un validateur de l’index et du futur GeoJSON; l’exécution confirme les 90 entrées mais signale que les géométries sont absentes.
+- Mise à jour de `PROJECT.md`, `PROGRESS.md`, `AGENTS.md`, du registre et de la spécification cartographique. Aucun gameplay créé ou modifié.
+
 ## [1.3] — Intégration des décisions cartographiques et contrats d’affichage
 
 - Intégration individuelle des décisions validées MAP-DEC-27 à MAP-DEC-69, en complément des 26 décisions déjà documentées.
