@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "provisional": true,
+  "note": "Chaine de Sarajevo et evenements generiques du MVP (H-015). Les issues ne sont pas forcees : les IA pesent les options et le joueur choisit.",
+  "events": [
+    {
+      "id": "sarajevo",
+      "title": "Attentat de Sarajevo",
+      "text": "Le 28 juin 1914, l'archiduc Francois-Ferdinand, heritier du trone d'Autriche-Hongrie, est assassine a Sarajevo. Vienne accuse la Serbie d'avoir couvert les conspirateurs. L'Europe retient son souffle.",
+      "target": "austria",
+      "trigger": {"turn": 0, "once": true},
+      "default_option": "ultimatum",
+      "options": [
+        {
+          "id": "ultimatum",
+          "label": "Adresser un ultimatum a la Serbie",
+          "description": "Exiger une reponse humiliante. Risque de guerre, gain de prestige si Belgrade cede.",
+          "ai_weight": 0.75,
+          "effects": [
+            {"type": "relation", "from": "austria", "to": "serbia", "delta": -35},
+            {"type": "relation", "from": "russia", "to": "austria", "delta": -15},
+            {"type": "stability", "nation": "austria", "delta": 2},
+            {"type": "flag", "name": "sarajevo_ultimatum", "value": true}
+          ],
+          "schedule": [{"event": "serbian_response", "delay": 1, "target": "serbia"}]
+        },
+        {
+          "id": "negotiate",
+          "label": "Negocier une conference europeenne",
+          "description": "Confier le reglement a une conference. Apaisement immediat, prestige entame.",
+          "ai_weight": 0.25,
+          "effects": [
+            {"type": "relation", "from": "austria", "to": "serbia", "delta": 10},
+            {"type": "relation", "from": "austria", "to": "russia", "delta": 10},
+            {"type": "stability", "nation": "austria", "delta": 3},
+            {"type": "prestige", "nation": "austria", "delta": -2},
+            {"type": "flag", "name": "sarajevo_conference", "value": true}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "serbian_response",
+      "title": "Reponse de Belgrade",
+      "text": "L'ultimatum autrichien est sur la table. Belgrade doit choisir entre capituler devant Vienne ou risquer la guerre avec le soutien incertain de la Russie.",
+      "target": "serbia",
+      "trigger": {"scheduled": true, "once": true},
+      "default_option": "refuse",
+      "options": [
+        {
+          "id": "accept",
+          "label": "Accepter l'ultimatum",
+          "description": "Sauver la paix au prix de la souverainete. Vienne gagne un prestige considerable.",
+          "ai_weight": 0.2,
+          "effects": [
+            {"type": "relation", "from": "serbia", "to": "austria", "delta": 15},
+            {"type": "stability", "nation": "serbia", "delta": -8},
+            {"type": "prestige", "nation": "serbia", "delta": -5},
+            {"type": "prestige", "nation": "austria", "delta": 3},
+            {"type": "flag", "name": "serbia_accepted", "value": true}
+          ]
+        },
+        {
+          "id": "refuse",
+          "label": "Refuser et mobiliser",
+          "description": "Defendre l'independance. La Russie pourrait soutenir Belgrade.",
+          "ai_weight": 0.8,
+          "effects": [
+            {"type": "war", "attacker": "austria", "defender": "serbia"},
+            {"type": "relation", "from": "russia", "to": "austria", "delta": -25},
+            {"type": "relation", "from": "serbia", "to": "russia", "delta": 10},
+            {"type": "stability", "nation": "serbia", "delta": 4}
+          ],
+          "schedule": [{"event": "russian_mobilization", "delay": 1, "target": "russia"}]
+        }
+      ]
+    },
+    {
+      "id": "russian_mobilization",
+      "title": "Mobilisation russe",
+      "text": "Vienne a declare la guerre a la Serbie. La Russie doit-elle mobiliser pour proteger son influence dans les Balkans, au risque d'un conflit general ?",
+      "target": "russia",
+      "trigger": {"scheduled": true, "once": true},
+      "default_option": "mobilize",
+      "options": [
+        {
+          "id": "mobilize",
+          "label": "Mobiliser l'armee russe",
+          "description": "Soutenir la Serbie. L'engrenage des alliances peut embraser l'Europe.",
+          "ai_weight": 0.7,
+          "effects": [
+            {"type": "war", "attacker": "russia", "defender": "austria"},
+            {"type": "war", "attacker": "germany", "defender": "russia"},
+            {"type": "war", "attacker": "france", "defender": "germany"},
+            {"type": "relation", "from": "france", "to": "russia", "delta": 10},
+            {"type": "stability", "nation": "russia", "delta": 2}
+          ],
+          "schedule": [{"event": "british_entry", "delay": 1, "target": "uk"}]
+        },
+        {
+          "id": "stand_down",
+          "label": "Renoncer a la mobilisation",
+          "description": "Eviter la guerre generale et abandonner la Serbie a son sort.",
+          "ai_weight": 0.3,
+          "effects": [
+            {"type": "stability", "nation": "russia", "delta": -10},
+            {"type": "prestige", "nation": "russia", "delta": -4},
+            {"type": "relation", "from": "serbia", "to": "russia", "delta": -20},
+            {"type": "relation", "from": "austria", "to": "russia", "delta": 10}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "british_entry",
+      "title": "Le Royaume-Uni doit choisir",
+      "text": "L'Allemagne et la France sont en guerre. Londres hesite : intervenir pour preserver l'equilibre continental ou rester a l'ecart du carnage.",
+      "target": "uk",
+      "trigger": {"scheduled": true, "once": true},
+      "default_option": "intervene",
+      "options": [
+        {
+          "id": "intervene",
+          "label": "Intervenir aux cotes de la France",
+          "description": "Honorer l'Entente et proteger la Belgique. La Royal Navy entre en guerre.",
+          "ai_weight": 0.65,
+          "effects": [
+            {"type": "war", "attacker": "uk", "defender": "germany"},
+            {"type": "relation", "from": "uk", "to": "france", "delta": 15},
+            {"type": "relation", "from": "uk", "to": "germany", "delta": -25},
+            {"type": "stability", "nation": "uk", "delta": 2}
+          ]
+        },
+        {
+          "id": "neutral",
+          "label": "Rester neutre",
+          "description": "Preserver les interets imperiaux. La France se sentira abandonnee.",
+          "ai_weight": 0.35,
+          "effects": [
+            {"type": "prestige", "nation": "uk", "delta": -4},
+            {"type": "relation", "from": "uk", "to": "germany", "delta": 10},
+            {"type": "relation", "from": "uk", "to": "france", "delta": -10},
+            {"type": "stability", "nation": "uk", "delta": -2}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "harvest_good",
+      "title": "Bonne recolte",
+      "text": "Les recoltes depassent les previsions. Les greniers se remplissent et le moral populaire s'ameliore.",
+      "target": "random_all",
+      "trigger": {"chance": 0.05, "cooldown": 6, "conditions": []},
+      "effects": [
+        {"type": "stock", "nation": "$target", "resource": "food", "delta": 18},
+        {"type": "stability", "nation": "$target", "delta": 2}
+      ]
+    },
+    {
+      "id": "harvest_failure",
+      "title": "Mauvaise recolte",
+      "text": "Le gel et la secheresse ruinent une partie de la production agricole. Les prix montent.",
+      "target": "random_all",
+      "trigger": {"chance": 0.04, "cooldown": 6, "conditions": []},
+      "effects": [
+        {"type": "stock", "nation": "$target", "resource": "food", "delta": -16},
+        {"type": "stability", "nation": "$target", "delta": -3}
+      ]
+    },
+    {
+      "id": "labour_strike",
+      "title": "Greve ouvriere",
+      "text": "Les salaires et les conditions de travail provoquent un mouvement social dans les bassins industriels.",
+      "target": "random_major",
+      "trigger": {"chance": 0.04, "cooldown": 5, "conditions": [{"type": "stability_below", "nation": "$target", "value": 70}]},
+      "effects": [
+        {"type": "stability", "nation": "$target", "delta": -4},
+        {"type": "stock", "nation": "$target", "resource": "wealth", "delta": -10}
+      ]
+    },
+    {
+      "id": "economic_boom",
+      "title": "Essor economique",
+      "text": "Les carnets de commandes se remplissent. Les recettes fiscales progressent.",
+      "target": "random_major",
+      "trigger": {"chance": 0.05, "cooldown": 6, "conditions": []},
+      "effects": [
+        {"type": "stock", "nation": "$target", "resource": "wealth", "delta": 15},
+        {"type": "stability", "nation": "$target", "delta": 2}
+      ]
+    },
+    {
+      "id": "tech_breakthrough",
+      "title": "Percee scientifique",
+      "text": "Un laboratoire national annonce une avancee remarquable. Les programmes de recherche en profitent.",
+      "target": "random_major",
+      "trigger": {"chance": 0.03, "cooldown": 5, "conditions": []},
+      "effects": [
+        {"type": "research", "nation": "$target", "delta": 25},
+        {"type": "prestige", "nation": "$target", "delta": 1}
+      ]
+    },
+    {
+      "id": "nationalist_unrest",
+      "title": "Agitation nationaliste",
+      "text": "Des minorites reclament plus d'autonomie. La cohesion nationale est mise a l'epreuve.",
+      "target": "random_major",
+      "trigger": {"chance": 0.04, "cooldown": 5, "conditions": [{"type": "stability_below", "nation": "$target", "value": 60}]},
+      "effects": [
+        {"type": "stability", "nation": "$target", "delta": -5},
+        {"type": "relation_all", "from": "$target", "delta": -2}
+      ]
+    },
+    {
+      "id": "colonial_crisis",
+      "title": "Crise coloniale",
+      "text": "Un incident frontalier dans les colonies oppose deux puissances imperiales.",
+      "target": "random_major",
+      "trigger": {"chance": 0.03, "cooldown": 7, "conditions": []},
+      "effects": [
+        {"type": "relation_all", "from": "$target", "delta": -4},
+        {"type": "stability", "nation": "$target", "delta": -1}
+      ]
+    }
+  ]
+}

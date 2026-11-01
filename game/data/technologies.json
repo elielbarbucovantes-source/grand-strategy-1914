@@ -1,0 +1,207 @@
+{
+  "version": 1,
+  "provisional": true,
+  "note": "Arbre technologique provisoire du MVP (H-011). Cinq branches, vingt technologies, 1914-1945.",
+  "technologies": [
+    {
+      "id": "army_1914_infantry",
+      "name": "Infanterie de 1914",
+      "branch": "armee",
+      "year": 1914,
+      "cost": 40,
+      "requires": [],
+      "effects": {"combat": 0.05},
+      "description": "Fusils a repetition, mitrailleuses et artillerie de campagne."
+    },
+    {
+      "id": "army_1916_artillery",
+      "name": "Artillerie de preparation",
+      "branch": "armee",
+      "year": 1916,
+      "cost": 70,
+      "requires": ["army_1914_infantry"],
+      "effects": {"combat": 0.07, "artillery": 0.1},
+      "description": "Bombardements longs et coordination de l'artillerie."
+    },
+    {
+      "id": "army_1918_tanks",
+      "name": "Chars d'assaut",
+      "branch": "armee",
+      "year": 1918,
+      "cost": 110,
+      "requires": ["army_1916_artillery"],
+      "effects": {"combat": 0.1},
+      "description": "Blindes capables de percer les lignes retranchees."
+    },
+    {
+      "id": "army_1936_motorisation",
+      "name": "Motorisation",
+      "branch": "armee",
+      "year": 1936,
+      "cost": 160,
+      "requires": ["army_1918_tanks"],
+      "effects": {"combat": 0.1, "supply": 0.05},
+      "description": "Transport motorise et logistique plus rapide."
+    },
+    {
+      "id": "army_1943_blitzkrieg",
+      "name": "Guerre eclair",
+      "branch": "armee",
+      "year": 1943,
+      "cost": 220,
+      "requires": ["army_1936_motorisation"],
+      "effects": {"combat": 0.12, "supply": 0.05},
+      "description": "Combinaison des blindes, de l'aviation et des transmissions."
+    },
+    {
+      "id": "navy_dreadnought",
+      "name": "Cuirasses dreadnought",
+      "branch": "marine",
+      "year": 1914,
+      "cost": 50,
+      "requires": [],
+      "effects": {"naval": 0.1, "prestige": 2},
+      "description": "Navires tout-gros-calibre et turbines."
+    },
+    {
+      "id": "navy_submarines",
+      "name": "Guerre sous-marine",
+      "branch": "marine",
+      "year": 1917,
+      "cost": 80,
+      "requires": ["navy_dreadnought"],
+      "effects": {"naval": 0.12},
+      "description": "Submersibles et torpilles de nouvelle generation."
+    },
+    {
+      "id": "navy_carriers",
+      "name": "Porte-aeronefs",
+      "branch": "marine",
+      "year": 1930,
+      "cost": 140,
+      "requires": ["navy_submarines"],
+      "effects": {"naval": 0.12, "prestige": 2},
+      "description": "Projection aerienne en mer."
+    },
+    {
+      "id": "navy_radar",
+      "name": "Radar naval",
+      "branch": "marine",
+      "year": 1940,
+      "cost": 180,
+      "requires": ["navy_carriers"],
+      "effects": {"naval": 0.12, "intelligence": 5},
+      "description": "Detection avancee des flottes adverses."
+    },
+    {
+      "id": "industry_electrification",
+      "name": "Electrification",
+      "branch": "industrie",
+      "year": 1914,
+      "cost": 45,
+      "requires": [],
+      "effects": {"production": 0.05},
+      "description": "Reseaux electriques et moteurs industriels."
+    },
+    {
+      "id": "industry_assembly_line",
+      "name": "Travail a la chaine",
+      "branch": "industrie",
+      "year": 1918,
+      "cost": 90,
+      "requires": ["industry_electrification"],
+      "effects": {"production": 0.08},
+      "description": "Standardisation et production de masse."
+    },
+    {
+      "id": "industry_synthetic",
+      "name": "Chimie de synthese",
+      "branch": "industrie",
+      "year": 1935,
+      "cost": 150,
+      "requires": ["industry_assembly_line"],
+      "effects": {"production": 0.08, "raw_efficiency": 0.1},
+      "description": "Ersatz et matieres premieres synthetiques."
+    },
+    {
+      "id": "industry_automation",
+      "name": "Automatisation",
+      "branch": "industrie",
+      "year": 1945,
+      "cost": 220,
+      "requires": ["industry_synthetic"],
+      "effects": {"production": 0.12},
+      "description": "Automatisation des chaines de production."
+    },
+    {
+      "id": "science_radio",
+      "name": "Radio et transmissions",
+      "branch": "science",
+      "year": 1915,
+      "cost": 45,
+      "requires": [],
+      "effects": {"research": 0.05, "intelligence": 5},
+      "description": "Communications sans fil et ecoute radio."
+    },
+    {
+      "id": "science_aviation",
+      "name": "Aviation",
+      "branch": "science",
+      "year": 1919,
+      "cost": 80,
+      "requires": ["science_radio"],
+      "effects": {"research": 0.05, "prestige": 2},
+      "description": "Aeronautique civile et militaire."
+    },
+    {
+      "id": "science_computing",
+      "name": "Calcul mecanique",
+      "branch": "science",
+      "year": 1940,
+      "cost": 160,
+      "requires": ["science_aviation"],
+      "effects": {"research": 0.12, "intelligence": 10},
+      "description": "Machines a calculer et cryptanalyse."
+    },
+    {
+      "id": "society_welfare",
+      "name": "Assurances sociales",
+      "branch": "societe",
+      "year": 1914,
+      "cost": 40,
+      "requires": [],
+      "effects": {"stability": 3, "manpower": 0.05},
+      "description": "Protection sociale et sante publique."
+    },
+    {
+      "id": "society_propaganda",
+      "name": "Mobilisation de l'opinion",
+      "branch": "societe",
+      "year": 1916,
+      "cost": 60,
+      "requires": ["society_welfare"],
+      "effects": {"stability": 2, "unity": 0.05},
+      "description": "Propagande et encadrement de l'opinion."
+    },
+    {
+      "id": "society_public_health",
+      "name": "Sante publique",
+      "branch": "societe",
+      "year": 1925,
+      "cost": 100,
+      "requires": ["society_propaganda"],
+      "effects": {"stability": 2, "manpower": 0.1},
+      "description": "Hygiene, vaccination et medecine de masse."
+    },
+    {
+      "id": "society_mass_education",
+      "name": "Instruction de masse",
+      "branch": "societe",
+      "year": 1930,
+      "cost": 140,
+      "requires": ["society_public_health"],
+      "effects": {"research": 0.08, "stability": 2},
+      "description": "Alphabetisation et formation technique."
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "provisional": true,
+  "note": "Valeurs provisoires du MVP. Chaque bloc renvoie aux hypotheses H-xxx de DECISIONS_PENDING.md. Ne pas presenter comme equilibre definitif.",
+  "start": {"year": 1914, "month": 6},
+  "economy": {
+    "province_output_multiplier": 1.0,
+    "occupied_output_multiplier": 0.5,
+    "industry_wealth_bonus": 0.5,
+    "economy_stat_divisor": 8.0,
+    "stability_factor_min": 0.7,
+    "army_upkeep_per_regiment": 0.35,
+    "food_per_population_million": 0.1,
+    "food_per_regiment": 0.15,
+    "raw_per_industry": 0.8,
+    "manpower_per_million": 20,
+    "manpower_regen": 0.02,
+    "construction_turns": 2,
+    "construction_cost": {
+      "industry": {"wealth": 25, "raw": 20},
+      "fortification": {"wealth": 20, "raw": 15}
+    },
+    "recruit_turns": 1,
+    "recruit_cost": {
+      "infantry": {"wealth": 4, "food": 3, "manpower": 20},
+      "artillery": {"wealth": 7, "raw": 5, "manpower": 10},
+      "cavalry": {"wealth": 6, "food": 2, "manpower": 15}
+    },
+    "max_construction_queue": 4,
+    "max_recruit_queue": 6
+  },
+  "military": {
+    "infantry_power": 10,
+    "artillery_power": 15,
+    "cavalry_power": 6,
+    "terrain_defense": {
+      "plains": 1.0,
+      "hills": 1.25,
+      "mountains": 1.5,
+      "forest": 1.2,
+      "marsh": 1.3,
+      "coastal": 1.1,
+      "urban": 1.35
+    },
+    "fortification_defense": 0.15,
+    "entrenchment_defense": 0.1,
+    "attacker_loss_ratio": 0.12,
+    "defender_loss_ratio": 0.16,
+    "capture_ratio": 1.15,
+    "morale_loss_defeat": 15,
+    "morale_gain_victory": 5,
+    "supply_max": 100,
+    "supply_loss_cutoff": 15,
+    "supply_gain_connected": 12,
+    "low_supply_threshold": 40,
+    "attrition_threshold": 25,
+    "attrition_ratio": 0.05,
+    "retreat_supply_penalty": 10,
+    "starting_infantry": 12,
+    "starting_artillery": 3,
+    "starting_cavalry": 2
+  },
+  "diplomacy": {
+    "improve_cost": 6,
+    "improve_gain": 6,
+    "improve_cooldown": 1,
+    "alliance_threshold": 55,
+    "alliance_cost": 10,
+    "nap_threshold": 10,
+    "nap_cost": 5,
+    "trade_threshold": 25,
+    "trade_cost": 5,
+    "trade_wealth_bonus": 0.08,
+    "transit_threshold": 35,
+    "transit_cost": 5,
+    "peace_base_chance": 0.35,
+    "war_stability_cost": 6,
+    "declare_war_relation_cost": 40,
+    "max_relation": 100,
+    "min_relation": -100
+  },
+  "research": {
+    "points_per_tech_stat": 1.5,
+    "points_per_industry": 0.15,
+    "ahead_penalty": 0.15,
+    "starting_era": 1914
+  },
+  "stability": {
+    "base": 55,
+    "max": 100,
+    "min": 0,
+    "war_penalty": 0.5,
+    "shortage_penalty": 3,
+    "recovery": 0.5
+  },
+  "intelligence": {
+    "base": 20,
+    "per_turn_gain": 1,
+    "max": 90,
+    "estimate_error": 0.25
+  },
+  "victory": {
+    "territorial_share": 0.9,
+    "diplomatic_share": 0.7,
+    "economic_turns": 18,
+    "economic_min_index": 0.58,
+    "economic_margin": 0.06,
+    "economic_min_provinces": 6,
+    "economic_min_population": 10.0
+  },
+  "ai": {
+    "aggression_threshold": -35,
+    "war_strength_ratio": 1.15,
+    "max_moves_per_turn": 12,
+    "improve_chance": 0.25,
+    "build_chance": 0.35,
+    "recruit_chance": 0.45,
+    "peace_chance": 0.4
+  }
+}

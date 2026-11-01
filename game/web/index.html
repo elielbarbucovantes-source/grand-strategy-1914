@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grand Strategy-1914</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app">
+    <section id="selection-screen" class="screen">
+      <div class="selection-hero">
+        <p class="eyebrow">Juin 1914 · Europe</p>
+        <h1>Grand Strategy<span class="dash">-</span>1914</h1>
+        <p class="tagline">Le joueur dirige son pays, mais ne dirige pas le monde.</p>
+        <p class="intro">
+          Choisissez une puissance. Chaque mois, donnez vos ordres, puis regardez l'Europe
+          resoudre simultanement les mouvements, les combats, l'economie et les crises.
+          Les autres nations poursuivent leurs propres desseins.
+        </p>
+      </div>
+      <div id="nation-cards" class="nation-cards"></div>
+      <div class="selection-footer">
+        <div class="seed-row">
+          <label for="seed-input">Graine de partie (optionnel)</label>
+          <input id="seed-input" type="number" min="1" placeholder="aleatoire">
+        </div>
+        <button id="observer-button" class="ghost-button">Observer le monde</button>
+        <button id="load-button-selection" class="ghost-button">Charger une partie</button>
+      </div>
+      <p class="provisional-note">
+        MVP provisoire : carte stylisee, combat strategique automatique, pas encore de batailles tactiques.
+        Les valeurs sont des hypotheses consignees dans <code>DECISIONS_PENDING.md</code>.
+      </p>
+    </section>
+
+    <section id="game-screen" class="screen hidden">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-title">Grand Strategy<span class="dash">-</span>1914</span>
+          <span id="player-label" class="player-label"></span>
+        </div>
+        <div class="date-block">
+          <span id="date-label" class="date-label"></span>
+          <span id="turn-label" class="turn-label"></span>
+        </div>
+        <div id="resource-strip" class="resource-strip"></div>
+        <div class="topbar-actions">
+          <button id="save-button" class="ghost-button small">Sauvegarder</button>
+          <button id="load-button" class="ghost-button small">Charger</button>
+          <button id="end-turn-button" class="primary-button">Fin du tour</button>
+        </div>
+      </header>
+
+      <main class="game-layout">
+        <section class="map-column">
+          <div class="map-toolbar">
+            <span id="map-hint" class="map-hint">Cliquez une province pour l'inspecter.</span>
+            <div class="map-legend">
+              <span><i class="swatch own"></i>Vous</span>
+              <span><i class="swatch ally"></i>Allie</span>
+              <span><i class="swatch enemy"></i>Ennemi</span>
+              <span><i class="swatch neutral"></i>Neutre</span>
+              <span><i class="swatch hidden"></i>Hors vue</span>
+            </div>
+          </div>
+          <div class="map-wrap">
+            <svg id="map" role="img" aria-label="Carte de l'Europe en 1914"></svg>
+          </div>
+          <div id="province-panel" class="province-panel">
+            <p class="muted">Selectionnez une province sur la carte.</p>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <nav id="tabs" class="tabs">
+            <button data-tab="orders" class="tab active">Ordres</button>
+            <button data-tab="diplomacy" class="tab">Diplomatie</button>
+            <button data-tab="economy" class="tab">Economie</button>
+            <button data-tab="research" class="tab">Recherche</button>
+            <button data-tab="world" class="tab">Monde</button>
+            <button data-tab="report" class="tab">Rapport</button>
+            <button data-tab="log" class="tab">Journal</button>
+          </nav>
+          <div id="tab-content" class="tab-content"></div>
+        </aside>
+      </main>
+    </section>
+  </div>
+
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <div id="modal" class="modal" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
