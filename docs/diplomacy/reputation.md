@@ -1,7 +1,7 @@
 # Réputation et confiance
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — modèle non validé, non implémenté
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : relations −100 à +100 ; modèle cible non validé
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 6.4, § 7.3 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 6, § 7
 > **Documents liés :** [treaties.md](treaties.md) · [alliances.md](alliances.md) · [negotiations.md](negotiations.md) · [../ai/memory-system.md](../ai/memory-system.md) · [../nations/regimes.md](../nations/regimes.md)

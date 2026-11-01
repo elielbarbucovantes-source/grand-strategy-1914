@@ -1,10 +1,10 @@
 # PROJECT.md — Document de référence du projet
 
-> **Version :** 0.2.3
-> **Dernière mise à jour :** 2026-10-31
+> **Version :** 0.2.4
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
-> **Source :** fiche maîtresse v0.1 et dossier des puissances jouables fournis par le propriétaire du projet le 2026-10-31 ; nom du jeu arrêté par le propriétaire le 2026-10-31.
-> **Statut global :** Phase 1 — conception. Aucun code de jeu n'existe. Aucune mécanique définitive n'est développée avant validation du cahier des charges.
+> **Source :** fiche maîtresse v0.1 et dossier des puissances jouables fournis par le propriétaire du projet le 2026-10-31 ; nom du jeu arrêté par le propriétaire le 2026-10-31 ; autorisation du MVP jouable le 2026-10-31 (D-031).
+> **Statut global :** Phase 2 — MVP jouable. Un premier MVP de bout en bout est implémenté dans `game/` (voir [ADR-0006](docs/decisions/0006-pile-technique-mvp.md)). Les mécaniques définitives restent soumises au cahier des charges ; les valeurs du MVP sont des hypothèses provisoires.
 > **Nom du jeu :** **Grand Strategy-1914** **[VALIDÉ]** (D-030, 2026-10-31). Le nom du répertoire Git reste `GrandStrategy` ; il ne conditionne pas le nom du produit.
 > **Propriétaire :** autorité finale du projet ; identité formelle et canal d'arbitrage **à documenter** (voir § 20.4, Q-025).
 
@@ -18,7 +18,7 @@ Ce document est la **fiche maîtresse** du jeu : il définit ce que le projet do
 
 **[VALIDÉ]** En cas de contradiction, l'ordre de priorité est celui d'[AGENTS.md](AGENTS.md) § 1. Une décision du propriétaire consignée ici ou dans un ADR accepté prime sur tout document thématique.
 
-**[À DÉFINIR]** Le cahier des charges détaillé qui autorisera le développement des mécaniques définitives. Tant qu'il n'existe pas, la conception peut avancer, l'implémentation non (voir § 19).
+**[À DÉFINIR]** Le cahier des charges détaillé qui autorisera le développement des mécaniques définitives. Tant qu'il n'existe pas, la conception peut avancer et seul le MVP autorisé par D-031 peut être implémenté, sous hypothèses provisoires (voir § 19).
 
 ---
 
@@ -576,6 +576,8 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 
 **[VALIDÉ]** Aucune mécanique majeure ne doit être codée avant d'avoir été suffisamment définie et documentée.
 
+**[VALIDÉ — exception MVP]** Par D-031, le propriétaire a autorisé un premier MVP jouable et délégué les choix techniques ordinaires. Les règles nécessaires au MVP sont implémentées comme hypothèses provisoires (H-001 à H-023) ; elles ne deviennent pas des règles définitives et ne dispensent pas du cahier des charges (T-030).
+
 ---
 
 ## 18. Éléments restant à définir
@@ -712,6 +714,7 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 | D-028 | Les possessions coloniales sont représentées de manière simplifiée, sous forme de grandes régions impériales. L'Empire allemand est considéré comme n'ayant pas d'empire colonial exploitable, par simplification volontaire. | [docs/nations/nations.md](docs/nations/nations.md) § I.4, II.10 |
 | D-029 | Chaque puissance commence avec des ambitions initiales qui orientent l'IA sans l'enfermer : elles peuvent être abandonnées si la situation évolue. | [docs/nations/nations.md](docs/nations/nations.md) § II-XI |
 | D-030 | Le jeu s'appelle **Grand Strategy-1914**. Ce nom est le titre officiel du produit (interface, documentation, communication). Le nom du répertoire Git et des chemins de travail reste `GrandStrategy` par commodité technique. | Décision du propriétaire, 2026-10-31 |
+| D-031 | Le propriétaire autorise l'implémentation d'un **premier MVP jouable de bout en bout** et lui délègue les choix techniques ordinaires (langage, architecture, bibliothèques, tests, organisation). Les règles non validées nécessaires au MVP sont implémentées comme **hypothèses provisoires**, centralisées dans `DECISIONS_PENDING.md` et dans les fichiers de données, et ne deviennent pas des règles validées. | Consigne d'exécution du propriétaire, 2026-10-31 ; [ADR-0006](docs/decisions/0006-pile-technique-mvp.md) |
 
 **Révision de D-001 (ancienne version 0.1.x) :** la formulation antérieure « jeu inspiré de webDiplomacy » est remplacée par la présente description, plus large. L'inspiration Diplomacy reste explicite.
 
@@ -722,6 +725,7 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 | I-001 | Documentation de référence + Git comme socle de collaboration. | [ADR-0001](docs/decisions/0001-documentation-et-git-comme-socle.md) | Structurante, validée par le brief |
 | I-002 | `AGENTS.md` est l'unique constitution ; `CLAUDE.md` n'est qu'un pointeur. | [ADR-0002](docs/decisions/0002-interoperabilite-multi-agents.md) | Réversible |
 | I-003 | Report de tout choix de pile technique jusqu'à étude et ADR. | [ADR-0003](docs/decisions/0003-report-du-choix-de-pile-technique.md) | Réversible, contrainte du propriétaire |
+| I-004 | Pile du premier MVP jouable : Python 3.12, serveur HTTP, web natif, JSON, `unittest`. | [ADR-0006](docs/decisions/0006-pile-technique-mvp.md) | Provisoire et réversible ; ne tranche pas la v1.0 |
 
 ### 20.3 Questions tranchées par la fiche maîtresse
 
@@ -741,10 +745,10 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 
 | ID | Question | Impact | Statut |
 |---|---|---|---|
-| Q-002 | Quel est le périmètre exact du MVP ? | Priorisation | **Bloquante** |
-| Q-007 | Quelle plateforme (web, desktop, mobile) ? | Stack, UI | Haute |
-| Q-008 | Quel langage et quel moteur ? | Tout le développement | **Bloquante** (étude requise) |
-| Q-009 | Quel modèle de persistance et de sauvegarde ? | Architecture | Haute |
+| Q-002 | Quel est le périmètre exact du MVP ? | Priorisation | **MVP initial défini par D-031** ; extension à valider |
+| Q-007 | Quelle plateforme (web, desktop, mobile) ? | Stack, UI | **Web locale pour le MVP** (ADR-0006) ; cible à valider |
+| Q-008 | Quel langage et quel moteur ? | Tout le développement | **Python 3.12 pour le MVP** (ADR-0006) ; moteur tactique à valider |
+| Q-009 | Quel modèle de persistance et de sauvegarde ? | Architecture | **JSON versionné pour le MVP** (ADR-0006) ; cible à valider |
 | Q-010 | Quels fournisseurs de LLM, avec quels coûts et quelles limites ? | IA, budget | Haute |
 | Q-011 | Les IA peuvent-elles utiliser des modèles locaux ? | Coût, confidentialité | Moyenne |
 | Q-012 | Comment garantir qu'une IA ne triche pas informationnellement ? | Équité, architecture | **Bloquante** pour l'IA |
@@ -770,34 +774,32 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 
 ## 21. Architecture technique et technologies
 
-**[À DÉFINIR]** Aucune architecture technique n'est validée. Voir [docs/architecture/overview.md](docs/architecture/overview.md) pour la décomposition logique **proposée** et [docs/architecture/technical-decisions.md](docs/architecture/technical-decisions.md) pour les choix ouverts.
+**[DÉCIDÉ POUR LE MVP]** Le premier MVP jouable utilise **Python 3.12 (bibliothèque standard uniquement)**, un serveur HTTP local, une interface **HTML/CSS/JavaScript/SVG** sans framework, des sauvegardes **JSON** et des tests **`unittest`**. Cette décision est consignée dans [ADR-0006](docs/decisions/0006-pile-technique-mvp.md), au titre de la délégation technique de D-031. Elle est **provisoire** : elle ne tranche ni le moteur de bataille tactique, ni le multijoueur, ni l'hébergement, ni les services LLM.
 
-**[PROPOSITION]** Séparation logique en couches :
+**[PROPOSITION]** Séparation logique en couches, partiellement réalisée par le MVP :
 
-1. **Noyau de règles** : état du jeu, validation et résolution des ordres ; pur, déterministe, sans IA ni interface.
-2. **Modèle de données / persistance** : sauvegarde, rechargement, journal d'événements.
-3. **Couche diplomatique** : messages, propositions, traités, réputation.
-4. **Couche IA** : perception filtrée, mémoire, décision, génération de messages et d'ordres.
-5. **Interface / API** : accès joueurs humains, IA, observateurs.
-6. **Outillage** : tests, simulation, évaluation des IA, administration.
+1. **Noyau de règles** : état du jeu, validation et résolution des ordres ; pur, déterministe, sans IA ni interface. *Implémenté dans `game/model.py`, `game/engine.py` et les modules de règles.*
+2. **Modèle de données / persistance** : sauvegarde, rechargement, journal d'événements. *Implémenté partiellement : sauvegardes JSON, journal de tour ; pas d'event sourcing complet.*
+3. **Couche diplomatique** : messages, propositions, traités, réputation. *Partielle : relations, traités simples, guerre et paix ; pas de messagerie libre.*
+4. **Couche IA** : perception filtrée, mémoire, décision, génération de messages et d'ordres. *Minimale : heuristiques déterministes et brouillard de guerre ; pas de LLM ni de mémoire longue.*
+5. **Interface / API** : accès joueurs humains, IA, observateurs. *Implémentée pour le solo et l'observation locale.*
+6. **Outillage** : tests, simulation, évaluation des IA, administration. *Partiel : `unittest` et script de vérification ; pas de CI.*
 
-**[HYPOTHÈSE]** Un noyau déterministe et un journal d'événements append-only faciliteraient les tests, la rejouabilité et l'audit des IA. À valider par une étude et éventuellement un prototype.
+**[HYPOTHÈSE]** Un noyau déterministe et un journal d'événements append-only faciliteraient les tests, la rejouabilité et l'audit des IA. Le MVP confirme le déterminisme par une graine explicite ; le journal append-only reste à généraliser.
 
-**[À DÉFINIR]** Aucune technologie n'est sélectionnée à ce jour.
-
-| Domaine | État | Décision requise |
+| Domaine | État pour le MVP | Cible à décider |
 |---|---|---|
-| Langage principal | Non choisi | Oui |
-| Moteur de jeu / rendu | Non choisi | Oui |
-| Interface | Non choisie (web, desktop, autre) | Oui |
-| Base de données / persistance | Non choisie | Oui |
-| Transport temps réel | Non choisi | Oui |
-| Intégration LLM | Non choisie | Oui |
-| Tests | Non choisis | Oui |
-| CI/CD | Non choisi | Oui |
-| Hébergement | Non choisi | Oui |
+| Langage principal | Python 3.12, bibliothèque standard (ADR-0006) | Confirmer pour la v1.0 |
+| Moteur de jeu / rendu | SVG/DOM natif (ADR-0006) | Moteur tactique à choisir |
+| Interface | Web locale servie par HTTP (ADR-0006) | Distribution et accessibilité à définir |
+| Base de données / persistance | Fichiers JSON versionnés (ADR-0006) | Base de production à définir |
+| Transport temps réel | HTTP local (ADR-0006) | WebSocket ou autre pour le multijoueur |
+| Intégration LLM | Aucune : IA heuristique | Fournisseurs, coûts et confidentialité (Q-010, Q-011, Q-023) |
+| Tests | `unittest` (ADR-0006) | CI et évaluation IA à définir |
+| CI/CD | Aucune | À définir (TD-013) |
+| Hébergement | Local uniquement | À définir (TD-014) |
 
-**[VALIDÉ]** Ne pas choisir de framework ou de moteur graphique sans étude préalable (voir ADR-0003).
+**[VALIDÉ]** Ne pas choisir de framework ou de moteur graphique définitif sans étude préalable (voir ADR-0003). L'ADR-0006 ne vaut que pour le MVP et reste réversible.
 
 ---
 
@@ -805,7 +807,7 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 
 **[VALIDÉ — état documentaire]** Les documents ci-dessous ont été rédigés avant la fiche maîtresse, puis **alignés** sur elle le 2026-10-31 (tâche T-031). Ils reprennent les décisions D-001 à D-029, signalent les tensions C-01 à C-18 de la [revue de conception](docs/design-review-v0.1.md) et distinguent ce qui reste **[À DÉFINIR]**.
 
-**Limite :** un document « aligné » n'est pas un système « spécifié ». Aucune mécanique détaillée n'est validée ; le cahier des charges reste à écrire et à valider (T-030).
+**Limite :** un document « aligné » n'est pas un système « spécifié ». Le MVP implémente un sous-ensemble provisoire (D-031, ADR-0006), mais aucune mécanique détaillée n'est validée ; le cahier des charges reste à écrire et à valider (T-030).
 
 | Système | Document | État après alignement |
 |---|---|---|
@@ -829,8 +831,8 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 | Mémoire | [docs/ai/memory-system.md](docs/ai/memory-system.md) | Aligné (D-011) ; support, rétention et coût à définir. |
 | Décision | [docs/ai/decision-making.md](docs/ai/decision-making.md) | Aligné (D-011) ; heuristiques, LLM ou hybride non choisis. |
 | Interactions multi-agents | [docs/ai/multi-agent-interactions.md](docs/ai/multi-agent-interactions.md) | Aligné (D-011, D-026) ; protocole et reproductibilité à définir. |
-| Architecture technique | [docs/architecture/overview.md](docs/architecture/overview.md) | Aligné (D-006, D-026) ; aucune pile choisie ; ADR-0005 **proposé**. |
-| Décisions techniques | [docs/architecture/technical-decisions.md](docs/architecture/technical-decisions.md) | Aligné ; TD-001 à TD-027 ouverts. |
+| Architecture technique | [docs/architecture/overview.md](docs/architecture/overview.md) | Aligné (D-006, D-026) ; MVP Python/web selon ADR-0006 ; ADR-0005 **proposé**. |
+| Décisions techniques | [docs/architecture/technical-decisions.md](docs/architecture/technical-decisions.md) | Aligné ; décisions MVP consignées (ADR-0006), TD restants ouverts. |
 | Modèle de données | [docs/architecture/data-model.md](docs/architecture/data-model.md) | Aligné ; modèle conceptuel seulement, non validé. |
 
 ---
@@ -844,5 +846,6 @@ Règle : une proposition ou une hypothèse ne devient jamais une décision par s
 | 2026-10-31 | OpenCode | Version 0.2.1 : intégration du dossier des puissances jouables. Ajout de D-027 à D-029, des questions Q-027 à Q-031, renvoi vers `docs/nations/nations.md` et mise à jour des éléments restant à définir. |
 | 2026-10-31 | OpenCode | Version 0.2.2 : alignement de la documentation thématique sur la fiche maîtresse (T-031), ajout du document fondateur gelé, de la revue de conception et des ADR-0004/0005 au tableau de correspondance. Aucune décision de jeu ajoutée. |
 | 2026-10-31 | OpenCode | Version 0.2.3 : le propriétaire arrête le nom officiel du jeu, **Grand Strategy-1914**. Ajout de D-030, clôture de Q-001, mise à jour de l'en-tête et du `README.md`. Aucune règle de jeu modifiée. |
+| 2026-11-01 | OpenCode | Version 0.2.4 : MVP jouable de bout en bout autorisé par D-031 et documenté. Ajout d'ADR-0006 (pile technique du MVP), mise à jour du statut global, de l'architecture (§ 21), des questions Q-002/Q-007/Q-008/Q-009 et de la correspondance documentaire. Les valeurs du MVP restent des hypothèses (H-001 à H-023). Aucune règle définitive n'est validée. |
 
 Toute modification de ce document doit être cohérente avec [PROGRESS.md](PROGRESS.md), [AGENTS.md](AGENTS.md) et les ADR acceptés.

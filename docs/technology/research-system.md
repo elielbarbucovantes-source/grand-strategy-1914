@@ -1,7 +1,7 @@
 # Recherche et technologies
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — arbre non conçu, non validé, non implémenté
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : 20 technologies provisoires ; arbre cible non validé
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 10 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 10
 > **Documents liés :** [../economy/economy-system.md](../economy/economy-system.md) · [../military/strategic-warfare.md](../military/strategic-warfare.md) · [../military/tactical-battles.md](../military/tactical-battles.md) · [../intelligence/intelligence-system.md](../intelligence/intelligence-system.md) · [../nations/nations.md](../nations/nations.md) · [../design-review-v0.1.md](../design-review-v0.1.md)

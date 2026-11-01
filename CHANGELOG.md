@@ -6,7 +6,7 @@ Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et le pr
 
 **Important :** ce changelog décrit les versions livrées. Il ne remplace pas le journal détaillé des interventions, tenu dans [PROGRESS.md](PROGRESS.md) section G.
 
-Le projet ne contient encore **aucune version jouable**. La version `0.1.0` correspond à l'infrastructure documentaire.
+La version `0.3.0` est le **premier MVP jouable**. Elle reste provisoire : les valeurs de jeu sont des hypothèses et les batailles tactiques ne sont pas implémentées. La version `0.1.0` correspond à l'infrastructure documentaire.
 
 ---
 
@@ -14,6 +14,34 @@ Le projet ne contient encore **aucune version jouable**. La version `0.1.0` corr
 
 ### Added
 
+- —
+
+### Changed
+
+- —
+
+### Fixed
+
+- —
+
+### Security
+
+- Aucun secret n'est versionné.
+
+---
+
+## [0.3.0] — 2026-11-01
+
+### Added
+
+- **Premier MVP jouable de bout en bout** : `game/` fournit un moteur de stratégie mensuel, une carte d'Europe de juin 1914, le choix d'une des sept puissances ou le mode observation, des ordres simultanés, une économie, une recherche, une diplomatie simple, des événements (dont Sarajevo), un combat stratégique automatique, un brouillard de guerre, une IA heuristique, trois voies de victoire, la sauvegarde/chargement JSON et une interface web.
+- **Carte provisoire** : 90 provinces, 472 hexes, grille 38 × 26, générée par `tools/generate_map.py` et chargée depuis `game/data/map.json`.
+- **Données de scénario** : 22 nations (7 jouables), profils nationaux, 20 technologies, 11 événements, valeurs provisoires centralisées dans `game/data/config.json`.
+- **Interface web** : HTML/CSS/JavaScript natifs, carte SVG, onglets Ordres, Diplomatie, Économie, Recherche, Monde, Rapport et Journal, sauvegarde/chargement et prise de contrôle en cours de partie.
+- **Tests** : `tests/test_engine.py`, 24 tests `unittest` couvrant scénario, économie, recherche, militaire, diplomatie, événements, IA, victoire et sauvegarde.
+- **Hypothèses de conception** : `DECISIONS_PENDING.md` consigne H-001 à H-023, dont les seuils de victoire économique et le garde-fou de taille (H-018, H-023).
+- **ADR-0006** : pile technique du MVP — Python 3.12, bibliothèque standard, serveur HTTP, interface web native, JSON, `unittest`.
+- **Documentation du MVP** : commandes de lancement et de test dans `README.md`, statut et architecture dans `PROJECT.md` v0.2.4, tableau de bord dans `PROGRESS.md` v0.3.0, registres ADR et techniques mis à jour.
 - **Document fondateur gelé** : `docs/founding-document-v0.1.md` conserve intégralement le document remis par le propriétaire, avec empreinte SHA-256 `6de617ca12d9b9028b72ddae6ec85a41b394f1875a4b6af0cabfeb553e1a25ce`. Toute correction doit créer une version distincte.
 - **Revue de conception** : `docs/design-review-v0.1.md` consigne les tensions internes C-01 à C-18 et les points de vigilance V-01 à V-08. Elle ne tranche aucune règle.
 - **ADR-0004** : adoption du document fondateur comme source de conception (accepté, avec réserve explicite sur le cahier des charges détaillé).
@@ -26,6 +54,11 @@ Le projet ne contient encore **aucune version jouable**. La version `0.1.0` corr
 
 ### Changed
 
+- `README.md` décrit désormais l'état réel du MVP : installation, lancement (`python3 -m game --port 8765`), tests, première partie, structure et limites connues.
+- `PROJECT.md` passe en version 0.2.4 : statut phase 2, D-031 et ADR-0006 intégrés, architecture du MVP documentée, questions Q-002/Q-007/Q-008/Q-009 marquées comme tranchées pour le MVP.
+- `PROGRESS.md` passe en version 0.3.0 : MVP-001 livré, T-036 terminé, tests et parcours navigateur consignés, limites L-010 à L-015 et extensions T-037 à T-042 ajoutées.
+- `docs/README.md`, `docs/decisions/README.md`, `docs/architecture/technical-decisions.md`, `docs/architecture/overview.md`, `docs/development/testing-strategy.md` et `docs/development/coding-standards.md` : index, statuts et choix du MVP alignés sur ADR-0006.
+- `src/README.md` et `tests/README.md` : pointeurs vers `game/` et description des 24 tests réels.
 - **Réorganisation de `docs/`** : `docs/artificial-intelligence/` devient `docs/ai/` ; `docs/gameplay/military-system.md` devient `docs/military/strategic-warfare.md` ; `docs/gameplay/economy-system.md` devient `docs/economy/economy-system.md` (déplacements via `git mv`).
 - **Alignement thématique (T-031)** : réécriture de `docs/gameplay/rules.md`, `docs/gameplay/map-system.md`, `docs/military/strategic-warfare.md`, `docs/economy/economy-system.md`, des quatre documents de `docs/diplomacy/`, des trois documents de `docs/architecture/` et ajout d'une section « Cadre validé » aux cinq documents de `docs/ai/`.
 - `PROJECT.md` passe en version 0.2.2 : tableau de correspondance documentaire mis à jour, ajout du document fondateur, de la revue de conception et des ADR-0004/0005. Aucune décision de jeu ajoutée.
@@ -37,6 +70,10 @@ Le projet ne contient encore **aucune version jouable**. La version `0.1.0` corr
 
 ### Fixed
 
+- Serveur : `Handler.log_message` plantait sur les réponses 404 (`send_error` recevait un entier au lieu d'un message).
+- Interface : à 768 px de hauteur, les onglets passaient sous la barre supérieure ; l'écran de jeu utilise maintenant `100vh` avec des panneaux défilants.
+- Mode observation : `build_view` supposait une nation joueur non nulle ; un helper `_view()` gère désormais l'absence de joueur.
+- Ajout de `favicon.svg` et service correct des fichiers statiques.
 - `scripts/check-infrastructure.sh` reconnaît désormais un dépôt Git dans un worktree (`.git` y est un fichier et non un dossier) : le contrôle Git ne produit plus de faux échec hors du checkout principal.
 - Liens relatifs cassés vers `docs/artificial-intelligence/`, `docs/gameplay/military-system.md` et `docs/gameplay/economy-system.md` dans les documents de référence et d'architecture.
 - Référence obsolète `docs/artificial-intelligence/` dans `AGENTS.md`.

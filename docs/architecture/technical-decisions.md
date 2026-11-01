@@ -1,9 +1,9 @@
 # Décisions techniques — registre des choix ouverts
 
-> **Statut :** Cadrage — aucun choix technique validé
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP jouable implémenté (ADR-0006) ; les choix définitifs restent ouverts
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
-> **Documents liés :** [overview.md](overview.md) · [data-model.md](data-model.md) · [ADR-0003](../decisions/0003-report-du-choix-de-pile-technique.md) · [ADR-0005](../decisions/0005-integration-strategique-tactique.md) · [PROJECT.md](../../PROJECT.md)
+> **Documents liés :** [overview.md](overview.md) · [data-model.md](data-model.md) · [ADR-0003](../decisions/0003-report-du-choix-de-pile-technique.md) · [ADR-0005](../decisions/0005-integration-strategique-tactique.md) · [ADR-0006](../decisions/0006-pile-technique-mvp.md) · [PROJECT.md](../../PROJECT.md)
 
 ---
 
@@ -18,6 +18,8 @@ Règles :
 - Aucun agent ne peut passer une ligne à `Décidé` sans ADR et validation du propriétaire lorsque la décision est structurante.
 
 **Note de révision (2026-10-31) :** les contraintes étaient numérotées `C-001` à `C-005`, ce qui entrait en collision avec les tensions `C-01` à `C-18` de [design-review-v0.1.md](../design-review-v0.1.md). Elles sont renommées `CT-001` et suivantes. Les sources incorrectes ont été corrigées (les lignes `D-005` et `D-008` ne correspondaient pas aux règles citées).
+
+**Note MVP (2026-11-01) :** les lignes marquées **« Décidé pour le MVP »** le sont par [ADR-0006](../decisions/0006-pile-technique-mvp.md), au titre de la délégation technique de D-031. Elles décrivent l'implémentation actuelle, pas un choix définitif pour la version 1.0 : le moteur tactique, le multijoueur, l'hébergement et les services LLM restent ouverts.
 
 ## 2. Processus de décision
 
@@ -45,23 +47,23 @@ Règles :
 
 | ID | Sujet | Options envisagées | Statut | ADR | Bloquant pour |
 |---|---|---|---|---|---|
-| TD-001 | Langage principal | À étudier | **Ouvert** | — | Tout le code |
-| TD-002 | Type d'application (web, desktop, hybride) | À étudier | **Ouvert** | — | UI, distribution |
-| TD-003 | Moteur de jeu / rendu stratégique | Moteur existant, rendu custom, 2D | **Ouvert** | — | UI, assets |
-| TD-004 | Architecture applicative | Monolithe modulaire, services | **Ouvert** | — | Déploiement |
-| TD-005 | Base de données / persistance | Relationnel, document, événementiel, fichiers | **Ouvert** | — | Sauvegardes, reprise |
-| TD-006 | Format de sauvegarde | À étudier | **Ouvert** | — | Replay, compatibilité |
+| TD-001 | Langage principal | Python 3.12, bibliothèque standard | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | Tout le code |
+| TD-002 | Type d'application (web, desktop, hybride) | Application web locale servie par HTTP | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | UI, distribution |
+| TD-003 | Moteur de jeu / rendu stratégique | Rendu SVG/DOM natif, sans moteur externe | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | UI, assets |
+| TD-004 | Architecture applicative | Monolithe modulaire (noyau, IA, serveur, interface) | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | Déploiement |
+| TD-005 | Base de données / persistance | Fichiers JSON versionnés, sans base de données | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | Sauvegardes, reprise |
+| TD-006 | Format de sauvegarde | JSON versionné avec graine explicite | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | Replay, compatibilité |
 | TD-007 | Journal d'événements | Append-only, event sourcing complet, autre | **Ouvert** | — | Audit, replay, IA |
 | TD-008 | Transport client-serveur | HTTP, WebSocket, autre | **Ouvert** | — | Multijoueur |
 | TD-009 | Authentification / comptes | À étudier | **Ouvert** | — | Multijoueur |
 | TD-010 | Intégration LLM | API distante, local, hybride, abstraction multi-fournisseur | **Ouvert** | — | IA |
-| TD-011 | Framework de test | À étudier selon le langage | **Ouvert** | — | Qualité |
-| TD-012 | Format de carte stratégique | JSON/YAML déclaratif, binaire, éditeur dédié | **Ouvert** | — | Gameplay |
+| TD-011 | Framework de test | `unittest` de la bibliothèque standard | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | Qualité |
+| TD-012 | Format de carte stratégique | JSON déclaratif (`game/data/map.json`) | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | Gameplay |
 | TD-013 | CI/CD | À étudier | **Ouvert** | — | Qualité, releases |
 | TD-014 | Hébergement | À étudier | **Ouvert** | — | Exploitation |
 | TD-015 | Observabilité | Logs, métriques, traces | **Ouvert** | — | Exploitation, debug IA |
-| TD-016 | Formatage / lint | À étudier selon le langage | **Ouvert** | — | Style |
-| TD-017 | Gestion des dépendances | À étudier selon le langage | **Ouvert** | — | Sécurité |
+| TD-016 | Formatage / lint | PEP 8 et conventions du dépôt ; aucun linter imposé | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | Style |
+| TD-017 | Gestion des dépendances | Aucune dépendance externe (bibliothèque standard uniquement) | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | Sécurité |
 | TD-018 | Stratégie de versionnement du jeu et des règles | SemVer, version de règles séparée | **Ouvert** | — | Compatibilité des sauvegardes |
 | TD-019 | Licence du code et des assets | À étudier | **Ouvert** | — | Publication |
 | TD-020 | Modèle économique / accès | À définir par le propriétaire | **Ouvert** | — | Produit |
@@ -69,7 +71,7 @@ Règles :
 | TD-022 | Contrat de session de bataille | Instantané + commandes + résultat ; événements ; replay | **Ouvert** | ADR-0005 (proposé) | Synchronisation stratégique/tactique |
 | TD-023 | Conversion stratégique ↔ tactique | Points de force, table, coefficients | **Ouvert** | — | Batailles, pertes, équilibre |
 | TD-024 | Modèle de temps réel | Pas fixes, horloge serveur, pause, timers | **Ouvert** | — | Bataille, replay, multijoueur |
-| TD-025 | Rendu 2D de la carte | Bibliothèque, moteur 2D, rendu custom | **Ouvert** | — | UI stratégique |
+| TD-025 | Rendu 2D de la carte | SVG généré côté client à partir du JSON de carte | **Décidé pour le MVP** | [ADR-0006](../decisions/0006-pile-technique-mvp.md) | UI stratégique |
 | TD-026 | Sous-système de renseignement | Messages chiffrés, accès, journal d'interception | **Ouvert** | — | Confidentialité, équité |
 | TD-027 | Format des données historiques | Sources, licences, noms, provinces | **Ouvert** | — | Carte, nations, publication |
 
@@ -118,7 +120,9 @@ TD-010 (LLM)
 
 Une décision peut être prise indépendamment si ses dépendances sont explicitement provisionnées.
 
-## 7. Questions à trancher avant toute implémentation
+## 7. Questions à trancher avant la version 1.0
+
+Le MVP a apporté des réponses provisoires à certaines d'entre elles (voir ADR-0006), sans les figer.
 
 1. Le jeu est-il jouable sans interface graphique lourde (MVP web ou CLI) ?
 2. Une partie doit-elle pouvoir être rejouée à l'identique des années plus tard ?

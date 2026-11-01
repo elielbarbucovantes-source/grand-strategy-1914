@@ -1,9 +1,9 @@
 # Stratégie de test
 
-> **Statut :** Cadrage — aucun test n'existe, aucun framework choisi
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP testé avec `unittest` ; stratégie cible encore ouverte
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
-> **Documents liés :** [coding-standards.md](coding-standards.md) · [contribution-guide.md](contribution-guide.md) · [AGENTS.md](../../AGENTS.md) · [ai/decision-making.md](../ai/decision-making.md)
+> **Documents liés :** [coding-standards.md](coding-standards.md) · [contribution-guide.md](contribution-guide.md) · [AGENTS.md](../../AGENTS.md) · [ai/decision-making.md](../ai/decision-making.md) · [ADR-0006](../decisions/0006-pile-technique-mvp.md)
 
 ---
 
@@ -12,6 +12,17 @@
 Définir comment le projet prouve qu'une fonctionnalité fonctionne, et comment éviter les fausses déclarations de réussite.
 
 **Règle fondatrice :** un résultat de test non exécuté n'existe pas. Un test qui n'a pas été lancé ne peut pas être déclaré « OK ».
+
+## 1.1 État du MVP (2026-11-01)
+
+- **Framework :** `unittest` de la bibliothèque standard Python (ADR-0006).
+- **Commande :** `python3 -m unittest discover -s tests -v`.
+- **Résultat réel :** 24 tests, 0 échec.
+- **Périmètre couvert :** scénario, économie, recherche, militaire, diplomatie, événements, IA, victoires, sauvegarde/chargement.
+- **Tests manuels :** parcours navigateur Firefox/geckodriver consignés dans [PROGRESS.md](../../PROGRESS.md) section G (sélection, observation, prise de contrôle, ordres, fin de tour, sauvegarde/chargement, événement de Sarajevo).
+- **Non couvert :** batailles tactiques (absentes), multijoueur (absent), performance à grande échelle, sécurité réseau, qualité subjective des IA.
+
+Les sections suivantes décrivent la stratégie cible ; elles ne doivent pas être lues comme un état déjà réalisé.
 
 ## 2. Niveaux de test prévus
 

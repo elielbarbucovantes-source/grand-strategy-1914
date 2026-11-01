@@ -1,7 +1,7 @@
 # Interactions multi-agents
 
-> **Statut :** Cadrage — non conçu, non implémenté
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : interactions limitées ; protocole cible non conçu
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [ai-architecture.md](ai-architecture.md) · [decision-making.md](decision-making.md) · [diplomacy/negotiations.md](../diplomacy/negotiations.md) · [diplomacy/alliances.md](../diplomacy/alliances.md)
 

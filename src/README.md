@@ -1,10 +1,14 @@
-# src/ — Code source
+# src/ — Ancien emplacement du code source
 
-**Ce dossier est vide volontairement.**
+**Ce dossier n'accueille plus le code du MVP.** Depuis l'[ADR-0006](../docs/decisions/0006-pile-technique-mvp.md), le code exécutable vit dans [`game/`](../game/) :
 
-Aucune pile technique n'a été choisie (voir [ADR-0003](../docs/decisions/0003-report-du-choix-de-pile-technique.md)). Aucune mécanique de jeu ne doit être programmée avant validation du périmètre et de l'architecture.
+- `game/` : moteur, données, serveur et interface web ;
+- `tests/` : tests `unittest` du moteur ;
+- `tools/` : outillage de génération de l'atlas provisoire.
 
-Lorsque le code commencera :
+Ce dossier est conservé comme pointeur pour ne pas casser les liens historiques et le script de vérification. Ne pas y ajouter de nouveau code sans ADR.
+
+## Règles pour la suite
 
 - respecter les frontières décrites dans [docs/architecture/overview.md](../docs/architecture/overview.md) ;
 - respecter les [conventions de programmation](../docs/development/coding-standards.md) ;
@@ -12,4 +16,4 @@ Lorsque le code commencera :
 - documenter les décisions structurantes par ADR ;
 - mettre à jour [PROGRESS.md](../PROGRESS.md).
 
-Ne pas créer de structure de dossiers définitive avant l'ADR de pile technique.
+Voir [README.md](../README.md) pour lancer le jeu et exécuter les tests.

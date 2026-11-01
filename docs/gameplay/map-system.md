@@ -1,7 +1,7 @@
 # Système de carte
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — carte non conçue, non validée, non implémentée
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : atlas provisoire de 90 provinces ; carte définitive non validée
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 4, § 8.4, § 15.1 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 4
 > **Documents liés :** [rules.md](rules.md) · [military/strategic-warfare.md](../military/strategic-warfare.md) · [military/tactical-battles.md](../military/tactical-battles.md) · [economy/economy-system.md](../economy/economy-system.md) · [nations/nations.md](../nations/nations.md) · [architecture/data-model.md](../architecture/data-model.md)

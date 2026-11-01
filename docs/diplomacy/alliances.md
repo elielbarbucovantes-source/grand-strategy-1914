@@ -1,7 +1,7 @@
 # Alliances et coalitions
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — mécaniques non validées, non implémentées
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : alliances simples livrées ; mécaniques cibles non validées
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 6, § 13 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 6
 > **Documents liés :** [treaties.md](treaties.md) · [negotiations.md](negotiations.md) · [reputation.md](reputation.md) · [../gameplay/rules.md](../gameplay/rules.md) · [../nations/nations.md](../nations/nations.md)

@@ -1,10 +1,10 @@
 # Architecture — vue d'ensemble
 
-> **Statut :** Cadrage — **aucune architecture technique validée**
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP implémenté (ADR-0006) ; architecture cible encore ouverte
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 5, § 8, § 16, § 21 · [founding-document-v0.1.md](../founding-document-v0.1.md)
-> **Documents liés :** [technical-decisions.md](technical-decisions.md) · [data-model.md](data-model.md) · [PROJECT.md](../../PROJECT.md) · [ADR-0003](../decisions/0003-report-du-choix-de-pile-technique.md) · [ADR-0005](../decisions/0005-integration-strategique-tactique.md) · [../gameplay/rules.md](../gameplay/rules.md) · [../military/tactical-battles.md](../military/tactical-battles.md) · [../ai/ai-architecture.md](../ai/ai-architecture.md)
+> **Documents liés :** [technical-decisions.md](technical-decisions.md) · [data-model.md](data-model.md) · [PROJECT.md](../../PROJECT.md) · [ADR-0003](../decisions/0003-report-du-choix-de-pile-technique.md) · [ADR-0005](../decisions/0005-integration-strategique-tactique.md) · [ADR-0006](../decisions/0006-pile-technique-mvp.md) · [../gameplay/rules.md](../gameplay/rules.md) · [../military/tactical-battles.md](../military/tactical-battles.md) · [../ai/ai-architecture.md](../ai/ai-architecture.md)
 
 ---
 
@@ -12,7 +12,7 @@
 
 Décrire la décomposition **logique** envisagée du système, ses frontières, ses flux principaux et ses risques, sans choisir de langage, de moteur, de framework ni de base de données.
 
-**Tout contenu de ce document est une [PROPOSITION]** sauf mention explicite. Aucune couche n'est implémentée.
+**Tout contenu de ce document est une [PROPOSITION]** sauf mention explicite. Le MVP n'implémente qu'un sous-ensemble de cette vue cible : un noyau Python, une IA heuristique, un serveur HTTP local et une interface web native ([ADR-0006](../decisions/0006-pile-technique-mvp.md)). Les couches tactique, multijoueur, LLM et hébergement restent à concevoir.
 
 ## 2. Cadre validé qui contraint l'architecture
 

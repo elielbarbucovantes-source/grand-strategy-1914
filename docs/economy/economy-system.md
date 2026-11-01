@@ -1,7 +1,7 @@
 # Système économique et industriel
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — **existence validée**, mécaniques non conçues, non implémentées
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : économie provisoire livrée ; mécaniques cibles non validées
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 9, § 13 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 9
 > **Documents liés :** [../gameplay/map-system.md](../gameplay/map-system.md) · [../military/strategic-warfare.md](../military/strategic-warfare.md) · [../technology/research-system.md](../technology/research-system.md) · [../nations/nations.md](../nations/nations.md) · [../diplomacy/treaties.md](../diplomacy/treaties.md) · [../design-review-v0.1.md](../design-review-v0.1.md)

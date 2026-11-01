@@ -1,7 +1,7 @@
 # Négociations
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — protocole non conçu, non validé, non implémenté
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : pas de messagerie libre ; protocole cible non conçu
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 6 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 6
 > **Documents liés :** [treaties.md](treaties.md) · [alliances.md](alliances.md) · [reputation.md](reputation.md) · [../gameplay/rules.md](../gameplay/rules.md) · [../intelligence/intelligence-system.md](../intelligence/intelligence-system.md) · [../ai/multi-agent-interactions.md](../ai/multi-agent-interactions.md)

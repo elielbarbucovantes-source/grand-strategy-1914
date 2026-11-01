@@ -1,7 +1,7 @@
 # Mémoire des IA
 
-> **Statut :** Cadrage — non conçu, non implémenté
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : pas de mémoire longue ; système cible non conçu
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [ai-architecture.md](ai-architecture.md) · [personalities.md](personalities.md) · [decision-making.md](decision-making.md) · [diplomacy/reputation.md](../diplomacy/reputation.md) · [architecture/data-model.md](../architecture/data-model.md)
 

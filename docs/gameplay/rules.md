@@ -1,7 +1,7 @@
 # Règles du jeu
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — règles détaillées non conçues, non validées, non implémentées
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP jouable livré (boucle mensuelle) ; règles détaillées non validées
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 5, § 13, § 20.1 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 5, § 13
 > **Documents liés :** [map-system.md](map-system.md) · [military/strategic-warfare.md](../military/strategic-warfare.md) · [military/tactical-battles.md](../military/tactical-battles.md) · [economy/economy-system.md](../economy/economy-system.md) · [technology/research-system.md](../technology/research-system.md) · [diplomacy/treaties.md](../diplomacy/treaties.md) · [architecture/overview.md](../architecture/overview.md) · [design-review-v0.1.md](../design-review-v0.1.md)

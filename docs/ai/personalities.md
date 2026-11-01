@@ -1,7 +1,7 @@
 # Personnalités des IA
 
-> **Statut :** Cadrage — non conçu, non implémenté
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : traits simples utilisés par l'IA ; modèle cible non conçu
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [ai-architecture.md](ai-architecture.md) · [memory-system.md](memory-system.md) · [decision-making.md](decision-making.md) · [diplomacy/reputation.md](../diplomacy/reputation.md)
 

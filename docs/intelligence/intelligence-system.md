@@ -1,7 +1,7 @@
 # Renseignement et espionnage
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — système non conçu, non validé, non implémenté
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : estimation simple livrée ; système cible non validé
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 11 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 11
 > **Documents liés :** [../diplomacy/negotiations.md](../diplomacy/negotiations.md) · [../technology/research-system.md](../technology/research-system.md) · [../military/strategic-warfare.md](../military/strategic-warfare.md) · [../ai/decision-making.md](../ai/decision-making.md) · [../design-review-v0.1.md](../design-review-v0.1.md)

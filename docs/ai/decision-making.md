@@ -1,7 +1,7 @@
 # Prise de décision des IA
 
-> **Statut :** Cadrage — non conçue, non implémentée
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : heuristiques déterministes ; méthode cible non validée
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [ai-architecture.md](ai-architecture.md) · [personalities.md](personalities.md) · [memory-system.md](memory-system.md) · [multi-agent-interactions.md](multi-agent-interactions.md) · [gameplay/rules.md](../gameplay/rules.md)
 

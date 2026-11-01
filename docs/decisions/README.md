@@ -1,9 +1,9 @@
 # Architecture Decision Records (ADR)
 
 > **Statut :** Opérationnel (document de gouvernance)
-> **Dernière mise à jour :** 2026-10-31
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
-> **Index :** 5 ADR (4 acceptés, dont 1 avec réserve ; 1 proposé)
+> **Index :** 6 ADR (5 acceptés, dont 1 avec réserve ; 1 proposé)
 
 ---
 
@@ -58,6 +58,7 @@ Mise à jour de l'index, des documents impactés et de PROGRESS.md
 | [0003](0003-report-du-choix-de-pile-technique.md) | Report du choix de pile technique | Accepté | 2026-10-31 | OpenCode | Propriétaire (via brief) |
 | [0004](0004-adoption-du-document-fondateur.md) | Adoption du document fondateur v0.1 comme source de conception | Accepté | 2026-10-31 | OpenCode | Propriétaire (document remis) |
 | [0005](0005-integration-strategique-tactique.md) | Intégration du temps stratégique et du temps tactique | **Proposé** — ne vaut pas décision | 2026-10-31 | OpenCode | Arbitrage du propriétaire attendu |
+| [0006](0006-pile-technique-mvp.md) | Pile technique du premier MVP jouable | Accepté (MVP) | 2026-11-01 | OpenCode | Propriétaire (délégation technique du 2026-10-31) |
 
 ## 5. Modèle
 

@@ -1,7 +1,7 @@
 # Guide de contribution
 
-> **Statut :** Opérationnel pour la documentation ; à compléter pour le code
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** Opérationnel pour la documentation et le MVP ; à compléter pour la cible
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [AGENTS.md](../../AGENTS.md) · [PROGRESS.md](../../PROGRESS.md) · [coding-standards.md](coding-standards.md) · [testing-strategy.md](testing-strategy.md)
 

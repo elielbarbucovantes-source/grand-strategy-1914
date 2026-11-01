@@ -1,7 +1,7 @@
 # Architecture des IA
 
-> **Statut :** Cadrage — non conçue, non implémentée
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : IA heuristique livrée ; architecture cible non conçue
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Documents liés :** [personalities.md](personalities.md) · [memory-system.md](memory-system.md) · [decision-making.md](decision-making.md) · [multi-agent-interactions.md](multi-agent-interactions.md) · [architecture/overview.md](../architecture/overview.md)
 

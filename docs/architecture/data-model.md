@@ -1,7 +1,7 @@
 # Modèle de données — modèle conceptuel préliminaire
 
-> **Statut :** Cadrage — aucun schéma validé, aucune base de données choisie
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : modèle JSON provisoire (`game/model.py`, `game/data/`) ; schéma cible non validé
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 4, § 8, § 9, § 10, § 11, § 12 · [founding-document-v0.1.md](../founding-document-v0.1.md)
 > **Documents liés :** [overview.md](overview.md) · [technical-decisions.md](technical-decisions.md) · [../gameplay/rules.md](../gameplay/rules.md) · [../gameplay/map-system.md](../gameplay/map-system.md) · [../military/tactical-battles.md](../military/tactical-battles.md) · [../diplomacy/treaties.md](../diplomacy/treaties.md)

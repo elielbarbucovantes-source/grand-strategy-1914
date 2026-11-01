@@ -1,7 +1,7 @@
 # Traités et accords
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — types non validés, non implémentés
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : alliance, non-agression, commerce et transit ; types cibles non validés
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 6.3 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 6.3
 > **Documents liés :** [negotiations.md](negotiations.md) · [alliances.md](alliances.md) · [reputation.md](reputation.md) · [../gameplay/rules.md](../gameplay/rules.md) · [../military/strategic-warfare.md](../military/strategic-warfare.md) · [../architecture/data-model.md](../architecture/data-model.md)

@@ -1,12 +1,12 @@
 # Index de la documentation
 
-> **Dernière mise à jour :** 2026-10-31
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
-> **Cadre de référence :** [PROJECT.md](../PROJECT.md) v0.2.2
+> **Cadre de référence :** [PROJECT.md](../PROJECT.md) v0.2.4
 
-Ce dossier contient la documentation de conception et de gouvernance du projet. **Aucun système décrit ici n'est implémenté.** Les documents de cadrage listent les objectifs, les hypothèses, les questions ouvertes et les éléments à définir.
+Ce dossier contient la documentation de conception et de gouvernance du projet. **Un MVP jouable est implémenté** dans [`game/`](../game/) depuis le 2026-11-01 (voir [ADR-0006](decisions/0006-pile-technique-mvp.md)) : il couvre la boucle stratégique, une IA minimale et une interface web. Les documents de cadrage décrivent la cible, pas l'état exact du MVP ; les valeurs provisoires sont dans [DECISIONS_PENDING.md](../DECISIONS_PENDING.md).
 
-**Cohérence :** la fiche maîtresse du propriétaire (PROJECT.md v0.2.2) fixe le cadre du jeu. Les documents thématiques ont été alignés sur ce cadre en 2026-10-31 (tâche **T-031**) : ils reprennent les décisions validées D-001 à D-029, signalent les tensions C-01 à C-18 de la [revue de conception](design-review-v0.1.md) et distinguent explicitement ce qui reste **[À DÉFINIR]**. Ils restent des documents de **cadrage** : aucun système n'est spécifié ni validé.
+**Cohérence :** la fiche maîtresse du propriétaire (PROJECT.md v0.2.4) fixe le cadre du jeu. Les documents thématiques ont été alignés sur ce cadre en 2026-10-31 (tâche **T-031**) : ils reprennent les décisions validées D-001 à D-029, signalent les tensions C-01 à C-18 de la [revue de conception](design-review-v0.1.md) et distinguent explicitement ce qui reste **[À DÉFINIR]**. La décision D-031 autorise le MVP et délègue les choix techniques ordinaires. Les documents thématiques restent des documents de **cadrage** : aucun système complet n'est spécifié ni validé.
 
 ## Règles de lecture
 
@@ -31,13 +31,14 @@ Ce dossier contient la documentation de conception et de gouvernance du projet. 
 | [decisions/0003-report-du-choix-de-pile-technique.md](decisions/0003-report-du-choix-de-pile-technique.md) | Report du choix de pile technique. |
 | [decisions/0004-adoption-du-document-fondateur.md](decisions/0004-adoption-du-document-fondateur.md) | Adoption du document fondateur comme source de conception (accepté, avec réserve sur le cahier des charges). |
 | [decisions/0005-integration-strategique-tactique.md](decisions/0005-integration-strategique-tactique.md) | Intégration du temps stratégique et tactique (**proposé**, ne vaut pas décision). |
+| [decisions/0006-pile-technique-mvp.md](decisions/0006-pile-technique-mvp.md) | Pile technique du premier MVP jouable (Python 3.12, web natif, JSON, `unittest`). |
 
 ### Architecture
 
 | Document | Objet |
 |---|---|
 | [architecture/overview.md](architecture/overview.md) | Décomposition logique proposée, frontières, flux, moteur de bataille isolé, risques. |
-| [architecture/technical-decisions.md](architecture/technical-decisions.md) | Registre des choix techniques ouverts (TD-001 à TD-027) et contraintes fixées (CT-001 à CT-010). |
+| [architecture/technical-decisions.md](architecture/technical-decisions.md) | Registre des choix techniques : décisions provisoires du MVP (ADR-0006), choix encore ouverts (TD-001 à TD-027) et contraintes fixées (CT-001 à CT-010). |
 | [architecture/data-model.md](architecture/data-model.md) | Modèle conceptuel préliminaire, invariants, visibilité, questions ouvertes. |
 
 ### Nations et politique intérieure

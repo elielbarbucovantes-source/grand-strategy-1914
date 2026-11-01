@@ -1,15 +1,17 @@
 # Conventions de programmation
 
-> **Statut :** Cadrage — la pile technique n'étant pas choisie, ce document fixe des principes et non des règles de syntaxe
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP en Python 3.12 (ADR-0006) ; les règles cibles restent ouvertes
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
-> **Documents liés :** [testing-strategy.md](testing-strategy.md) · [contribution-guide.md](contribution-guide.md) · [AGENTS.md](../../AGENTS.md) · [architecture/technical-decisions.md](../architecture/technical-decisions.md)
+> **Documents liés :** [testing-strategy.md](testing-strategy.md) · [contribution-guide.md](contribution-guide.md) · [AGENTS.md](../../AGENTS.md) · [architecture/technical-decisions.md](../architecture/technical-decisions.md) · [ADR-0006](../decisions/0006-pile-technique-mvp.md)
 
 ---
 
 ## 1. Portée
 
-Ce document s'appliquera dès le premier fichier de code. Tant que le langage n'est pas choisi (TD-001), les règles spécifiques à un langage restent **à définir**. Les principes ci-dessous sont indépendants du langage.
+Le MVP est écrit en **Python 3.12**, bibliothèque standard uniquement ([ADR-0006](../decisions/0006-pile-technique-mvp.md)). Les conventions effectivement appliquées dans `game/` sont : modules courts, docstrings brèves, fonctions nommées explicitement, données séparées dans `game/data/`, aucune dépendance externe, pas d'état global caché. Le style suit PEP 8 dans les grandes lignes, sans outil de lint automatisé à ce stade (TD-016).
+
+Les règles spécifiques à la future version 1.0 restent **à définir**. Les principes ci-dessous sont indépendants du langage.
 
 ## 2. Principes généraux
 

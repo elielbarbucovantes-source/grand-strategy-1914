@@ -1,7 +1,7 @@
 # Guerre stratégique
 
-> **Statut :** Cadrage aligné sur la fiche maîtresse — règles non conçues, non validées, non implémentées
-> **Dernière mise à jour :** 2026-10-31
+> **Statut :** MVP : combat stratégique automatique livré ; règles cibles non validées
+> **Dernière mise à jour :** 2026-11-01
 > **Dernière modification par :** OpenCode
 > **Source de conception :** [PROJECT.md](../../PROJECT.md) § 8 · [founding-document-v0.1.md](../founding-document-v0.1.md) § 8
 > **Documents liés :** [tactical-battles.md](tactical-battles.md) · [../gameplay/rules.md](../gameplay/rules.md) · [../gameplay/map-system.md](../gameplay/map-system.md) · [../economy/economy-system.md](../economy/economy-system.md) · [../technology/research-system.md](../technology/research-system.md) · [../diplomacy/treaties.md](../diplomacy/treaties.md)
