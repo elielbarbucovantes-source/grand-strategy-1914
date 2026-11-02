@@ -1,6 +1,6 @@
 # PROGRESS — État du projet
 
-Dernière mise à jour : inventaire cible et recherche initiale de l’atlas à 90 régions
+Dernière mise à jour : audit documentaire des données thématiques des lots cartographiques (worktree isolé)
 Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION EXPLICITE**
 
 ## 1. État général
@@ -10,7 +10,7 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 | Vision et piliers | VALIDÉ | Profondeur stratégique, autonomie de l’IA, réalisme historique |
 | Campagne et puissances | Principes VALIDÉS | Europe 1914, sept puissances jouables, autres États IA |
 | Boucle et temps | VALIDÉ | Mois par tour, ordres secrets simultanés, résolution simultanée |
-| Carte | 69 décisions VALIDÉES ; inventaire cible de 90 régions saisi; atlas géométrique non construit | Répartition zonale et noms de travail consignés; pays de Galles distinct suite à clarification; sources candidates documentées; aucune géométrie/ville/infrastructure/zone maritime n’a été créée |
+| Carte | 69 décisions VALIDÉES ; audit thématique des deux lots terminé; atlas canonique non validé | Lots examinés en worktree isolé; routes et ressources manquantes, corrections historiques et harmonisations requises; aucun fichier canonique intégré; voir `docs/map/corrections/THEMATIC_DATA_AUDIT.md` |
 | Diplomatie | Principes VALIDÉS ; règles À DÉFINIR | Accords, confiance, acceptation, sanctions, confidentialité |
 | Économie / industrie | Principes VALIDÉS ; valeurs À DÉFINIR | Trois ressources, stock national centralisé, cinq industries |
 | Armée / logistique | Principes VALIDÉS ; modèle À DÉFINIR | Hiérarchie, mouvement/logistique et batailles d’offensive ; détails ouverts |
@@ -99,7 +99,8 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 - [x] Recherche initiale des sources historiques et licences documentée.
 - [x] Index éditorial `region_001`–`region_090` préparé sans polygones.
 - [x] Validateur réutilisable ajouté pour l’index et les futures géométries.
-- [ ] Géométries historiques, couverture, adjacences, villes, relief, infrastructures et zones maritimes — non réalisées; atlas non validé.
+- [ ] Géométries historiques, couverture et cohérence topologique — validation finale requise avant intégration canonique.
+- [x] Audit documentaire et structurel des données thématiques des lots agent_1 et agent_2 consigné dans `docs/map/corrections/THEMATIC_DATA_AUDIT.md`; routes et ressources naturelles identifiées absentes, aucune géométrie modifiée.
 - [x] Registre des décisions ouvertes créé.
 - [x] Huit spécifications de domaine comparées aux sources jointes ; contenu identique.
 - [ ] Conception de l’atlas cartographique validée par le directeur.
@@ -109,4 +110,4 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 
 ## 6. Vérification et limites
 
-Pour cette mission : le validateur confirme 90 IDs uniques, champs éditoriaux obligatoires et comptes zonaux (6/13/6/18/8/18/10/7/4). Il signale explicitement `regions.geojson` absent et sort avec statut incomplet; aucune validation géométrique/topologique n’a donc eu lieu. Le schéma JSON parse correctement. Les liens Markdown relatifs des fichiers ajoutés ont été contrôlés par inspection; `git diff --check` doit être relancé avant commit. L’archive REGIS téléchargée était altérée et n’a pas été importée. Aucune géométrie, ville, infrastructure, zone maritime ou logique de gameplay n’a été créée. L’atlas n’est pas validé ni jouable.
+Pour l’audit thématique, inventaire et références JSON des deux lots vérifiés par inspection et contrôles programmatiques; les validateurs `validate_agent_1.py` et `validate_agent_2.py` ont été tentés avec `PYTHONPATH=/tmp/gs1914-gis-packages` mais n’ont pas démarré faute de `shapely`. Les anomalies géométriques sont reprises de `docs/map/audit/GLOBAL_AUDIT.md` et `ISSUES.json`, sans reproduction indépendante. Aucune donnée source, géométrie, topologie, adjacence ou fichier canonique n’a été modifié. Vérifications de format et diff à effectuer avant commit.

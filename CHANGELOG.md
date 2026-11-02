@@ -3,6 +3,12 @@
 
 Toutes les évolutions importantes du projet sont consignées ici.
 
+## [1.4.1] — Audit thématique documentaire des lots cartographiques
+
+- Ajout de `docs/map/corrections/THEMATIC_DATA_AUDIT.md` : inventaire, anomalies, données manquantes, références historiques et état de préparation à l’intégration.
+- Audit effectué dans le worktree et la branche `audit/map-thematic-data`; aucune donnée source, géométrie, topologie ou adjacence n’a été modifiée.
+- Mise à jour de `PROGRESS.md`; les validateurs géométriques n’ont pas pu démarrer, `shapely` étant indisponible.
+
 ## [1.4] — Inventaire et recherche initiale de l’atlas à 90 régions
 
 - Inscription de la répartition cible de 90 régions et des identifiants de travail dans `data/world/map/tables/region_plan.csv`; le pays de Galles est distinct selon clarification du directeur.
