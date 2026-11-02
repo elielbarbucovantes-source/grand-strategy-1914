@@ -1,0 +1,3718 @@
+{
+  "type": "FeatureCollection",
+  "schema_version": "1.0.0",
+  "agent_id": "agent_2",
+  "reference_date": "1914-01-01",
+  "total_cities": 72,
+  "capital_count": 11,
+  "cities": [
+    {
+      "id": "city_copenhagen",
+      "name_fr": "Copenhague",
+      "name_key": "site.city_copenhagen.name",
+      "region_id": "region_044",
+      "sovereign_1914": "Danemark",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        12.565611,
+        55.678156
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_aarhus",
+      "name_fr": "Aarhus (Esbjerg)",
+      "name_key": "site.city_aarhus.name",
+      "region_id": "region_044",
+      "sovereign_1914": "Danemark",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        10.2039,
+        56.1629
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_christiania",
+      "name_fr": "Christiania (Oslo)",
+      "name_key": "site.city_christiania.name",
+      "region_id": "region_045",
+      "sovereign_1914": "Norvège",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        10.7522,
+        59.9139
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kristiansand",
+      "name_fr": "Kristiansand (Horten)",
+      "name_key": "site.city_kristiansand.name",
+      "region_id": "region_045",
+      "sovereign_1914": "Norvège",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        7.9956,
+        58.1599
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_bergen",
+      "name_fr": "Bergen",
+      "name_key": "site.city_bergen.name",
+      "region_id": "region_046",
+      "sovereign_1914": "Norvège",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        5.3221,
+        60.3913
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_trondhjem",
+      "name_fr": "Trondhjem (Trondheim)",
+      "name_key": "site.city_trondhjem.name",
+      "region_id": "region_046",
+      "sovereign_1914": "Norvège",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        10.3951,
+        63.4305
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_narvik",
+      "name_fr": "Narvik (Tromsø)",
+      "name_key": "site.city_narvik.name",
+      "region_id": "region_047",
+      "sovereign_1914": "Norvège",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        17.4272,
+        68.4385
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_gothenburg",
+      "name_fr": "Göteborg",
+      "name_key": "site.city_gothenburg.name",
+      "region_id": "region_048",
+      "sovereign_1914": "Suède",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        11.9746,
+        57.7089
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_malmo_karlskrona",
+      "name_fr": "Malmö (Karlskrona)",
+      "name_key": "site.city_malmo_karlskrona.name",
+      "region_id": "region_048",
+      "sovereign_1914": "Suède",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        13.0038,
+        55.605
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_stockholm",
+      "name_fr": "Stockholm",
+      "name_key": "site.city_stockholm.name",
+      "region_id": "region_049",
+      "sovereign_1914": "Suède",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        18.068627,
+        59.327128
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_bofors_orebro",
+      "name_fr": "Örebro (Bofors/Karlskoga)",
+      "name_key": "site.city_bofors_orebro.name",
+      "region_id": "region_049",
+      "sovereign_1914": "Suède",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        15.2134,
+        59.2753
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_lulea_boden",
+      "name_fr": "Luleå (Boden / Kiruna)",
+      "name_key": "site.city_lulea_boden.name",
+      "region_id": "region_050",
+      "sovereign_1914": "Suède",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        22.1567,
+        65.5848
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_sundsvall_gavle",
+      "name_fr": "Gävle (Sundsvall)",
+      "name_key": "site.city_sundsvall_gavle.name",
+      "region_id": "region_050",
+      "sovereign_1914": "Suède",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        17.1413,
+        60.6749
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_reykjavik",
+      "name_fr": "Reykjavik",
+      "name_key": "site.city_reykjavik.name",
+      "region_id": "region_051",
+      "sovereign_1914": "Danemark",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -21.9426,
+        64.1466
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_helsingfors",
+      "name_fr": "Helsingfors (Helsinki / Sveaborg)",
+      "name_key": "site.city_helsingfors.name",
+      "region_id": "region_052",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.9384,
+        60.1699
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_viborg_abo",
+      "name_fr": "Viborg (Viipuri / Åbo)",
+      "name_key": "site.city_viborg_abo.name",
+      "region_id": "region_052",
+      "sovereign_1914": "Empire russe",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.7497,
+        60.7107
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_riga",
+      "name_fr": "Riga (Dünamünde)",
+      "name_key": "site.city_riga.name",
+      "region_id": "region_053",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.1052,
+        56.9496
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_reval",
+      "name_fr": "Reval (Tallinn)",
+      "name_key": "site.city_reval.name",
+      "region_id": "region_053",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.7536,
+        59.437
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kovno",
+      "name_fr": "Kovno (Kaunas)",
+      "name_key": "site.city_kovno.name",
+      "region_id": "region_054",
+      "sovereign_1914": "Empire russe",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        23.9036,
+        54.8985
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_libau",
+      "name_fr": "Libau (Liepāja)",
+      "name_key": "site.city_libau.name",
+      "region_id": "region_054",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        21.0108,
+        56.5047
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_warsaw",
+      "name_fr": "Varsovie (Novogeorgievsk/Modlin)",
+      "name_key": "site.city_warsaw.name",
+      "region_id": "region_055",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        21.0122,
+        52.2297
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_lodz",
+      "name_fr": "Łódź",
+      "name_key": "site.city_lodz.name",
+      "region_id": "region_055",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        19.456,
+        51.7592
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_lublin_ivangorod",
+      "name_fr": "Lublin (Ivangorod / Dęblin)",
+      "name_key": "site.city_lublin_ivangorod.name",
+      "region_id": "region_056",
+      "sovereign_1914": "Empire russe",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        22.5684,
+        51.2465
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_lomza_osowiec",
+      "name_fr": "Łomża (Ossovets / Suwałki)",
+      "name_key": "site.city_lomza_osowiec.name",
+      "region_id": "region_056",
+      "sovereign_1914": "Empire russe",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        22.0725,
+        53.1781
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_minsk",
+      "name_fr": "Minsk (Baranovitchi)",
+      "name_key": "site.city_minsk.name",
+      "region_id": "region_057",
+      "sovereign_1914": "Empire russe",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        27.5615,
+        53.9006
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_brest_litovsk",
+      "name_fr": "Brest-Litovsk",
+      "name_key": "site.city_brest_litovsk.name",
+      "region_id": "region_057",
+      "sovereign_1914": "Empire russe",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        23.6877,
+        52.0976
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_vilna_grodno",
+      "name_fr": "Vilna (Grodno)",
+      "name_key": "site.city_vilna_grodno.name",
+      "region_id": "region_057",
+      "sovereign_1914": "Empire russe",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        25.2797,
+        54.6872
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_zhitomir_rovno",
+      "name_fr": "Jitomir (Rovno / Loutsk / Doubno)",
+      "name_key": "site.city_zhitomir_rovno.name",
+      "region_id": "region_058",
+      "sovereign_1914": "Empire russe",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.6587,
+        50.2547
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kamenets_podolski",
+      "name_fr": "Kamenets-Podolski (Proskourov)",
+      "name_key": "site.city_kamenets_podolski.name",
+      "region_id": "region_058",
+      "sovereign_1914": "Empire russe",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        26.5852,
+        48.6788
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kiev",
+      "name_fr": "Kiev",
+      "name_key": "site.city_kiev.name",
+      "region_id": "region_059",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        30.5234,
+        50.4501
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kharkov",
+      "name_fr": "Kharkov",
+      "name_key": "site.city_kharkov.name",
+      "region_id": "region_059",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        36.2304,
+        49.9935
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_odessa",
+      "name_fr": "Odessa (Nikolaïev)",
+      "name_key": "site.city_odessa.name",
+      "region_id": "region_060",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        30.7233,
+        46.4825
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_ekaterinoslav",
+      "name_fr": "Ekaterinoslav (Dniepropetrovsk)",
+      "name_key": "site.city_ekaterinoslav.name",
+      "region_id": "region_060",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        35.0462,
+        48.4647
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_yuzovka_lugansk",
+      "name_fr": "Iouzovka (Lougansk / Bakhmout)",
+      "name_key": "site.city_yuzovka_lugansk.name",
+      "region_id": "region_061",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        37.8028,
+        48.0159
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_taganrog_mariupol",
+      "name_fr": "Taganrog (Marioupol)",
+      "name_key": "site.city_taganrog_mariupol.name",
+      "region_id": "region_061",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        38.814422,
+        47.287748
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kishinev",
+      "name_fr": "Kichinev (Bender)",
+      "name_key": "site.city_kishinev.name",
+      "region_id": "region_062",
+      "sovereign_1914": "Empire russe",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.8638,
+        47.0105
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_sevastopol",
+      "name_fr": "Sébastopol (Simferopol / Kertch)",
+      "name_key": "site.city_sevastopol.name",
+      "region_id": "region_063",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        33.5254,
+        44.6166
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_st_petersburg",
+      "name_fr": "Saint-Pétersbourg (Kronstadt)",
+      "name_key": "site.city_st_petersburg.name",
+      "region_id": "region_064",
+      "sovereign_1914": "Empire russe",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        30.3351,
+        59.9343
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_pskov_novgorod",
+      "name_fr": "Pskov (Novgorod)",
+      "name_key": "site.city_pskov_novgorod.name",
+      "region_id": "region_064",
+      "sovereign_1914": "Empire russe",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.3344,
+        57.8193
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_arkhangelsk",
+      "name_fr": "Arkhangelsk",
+      "name_key": "site.city_arkhangelsk.name",
+      "region_id": "region_065",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        40.5152,
+        64.5393
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_vologda",
+      "name_fr": "Vologda",
+      "name_key": "site.city_vologda.name",
+      "region_id": "region_065",
+      "sovereign_1914": "Empire russe",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        39.8845,
+        59.2205
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_moscow",
+      "name_fr": "Moscou",
+      "name_key": "site.city_moscow.name",
+      "region_id": "region_066",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        37.6173,
+        55.7558
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_tula",
+      "name_fr": "Toula (Briansk / Orel)",
+      "name_key": "site.city_tula.name",
+      "region_id": "region_066",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        37.6178,
+        54.1931
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_nizhny_novgorod",
+      "name_fr": "Nijni Novgorod (Iaroslavl)",
+      "name_key": "site.city_nizhny_novgorod.name",
+      "region_id": "region_066",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        44.0059,
+        56.3269
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_smolensk_voronezh",
+      "name_fr": "Smolensk (Voronej)",
+      "name_key": "site.city_smolensk_voronezh.name",
+      "region_id": "region_066",
+      "sovereign_1914": "Empire russe",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        32.0453,
+        54.7826
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kazan",
+      "name_fr": "Kazan (Simbirsk)",
+      "name_key": "site.city_kazan.name",
+      "region_id": "region_067",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        49.1064,
+        55.7961
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_perm_ekaterinburg",
+      "name_fr": "Perm (Ekaterinbourg / Oufa)",
+      "name_key": "site.city_perm_ekaterinburg.name",
+      "region_id": "region_067",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        56.2294,
+        58.0105
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_saratov_samara",
+      "name_fr": "Saratov (Samara / Tsaritsyne)",
+      "name_key": "site.city_saratov_samara.name",
+      "region_id": "region_068",
+      "sovereign_1914": "Empire russe",
+      "site_type": "industrial_centre",
+      "strategic_roles": [
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        46.0342,
+        51.5336
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_astrakhan_orenburg",
+      "name_fr": "Astrakhan (Orenbourg)",
+      "name_key": "site.city_astrakhan_orenburg.name",
+      "region_id": "region_068",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        48.0408,
+        46.3497
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_rostov_on_don",
+      "name_fr": "Rostov-sur-le-Don (Novotcherkassk)",
+      "name_key": "site.city_rostov_on_don.name",
+      "region_id": "region_069",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        39.7015,
+        47.2357
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_novorossiysk_ekaterinodar",
+      "name_fr": "Novorossiïsk (Ekaterinodar / Vladikavkaz)",
+      "name_key": "site.city_novorossiysk_ekaterinodar.name",
+      "region_id": "region_069",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        37.7689,
+        44.7239
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_bucharest",
+      "name_fr": "Bucarest (Ploiești)",
+      "name_key": "site.city_bucharest.name",
+      "region_id": "region_070",
+      "sovereign_1914": "Roumanie",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        26.1025,
+        44.4268
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_constanta",
+      "name_fr": "Constanța (Cernavodă)",
+      "name_key": "site.city_constanta.name",
+      "region_id": "region_070",
+      "sovereign_1914": "Roumanie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.6348,
+        44.1792
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_iasi",
+      "name_fr": "Iași",
+      "name_key": "site.city_iasi.name",
+      "region_id": "region_071",
+      "sovereign_1914": "Roumanie",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        27.6014,
+        47.1585
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_galati_focsani",
+      "name_fr": "Galați (Focșani)",
+      "name_key": "site.city_galati_focsani.name",
+      "region_id": "region_071",
+      "sovereign_1914": "Roumanie",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.0425,
+        45.4353
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_sofia",
+      "name_fr": "Sofia (Vidin)",
+      "name_key": "site.city_sofia.name",
+      "region_id": "region_072",
+      "sovereign_1914": "Bulgarie",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        23.3219,
+        42.6977
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_plovdiv",
+      "name_fr": "Plovdiv (Philippopoli)",
+      "name_key": "site.city_plovdiv.name",
+      "region_id": "region_073",
+      "sovereign_1914": "Bulgarie",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub",
+        "industrial_centre"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.7453,
+        42.1354
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_varna_burgas",
+      "name_fr": "Varna (Bourgas / Choumen / Dedeağaç)",
+      "name_key": "site.city_varna_burgas.name",
+      "region_id": "region_073",
+      "sovereign_1914": "Bulgarie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        27.9147,
+        43.2141
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_belgrade",
+      "name_fr": "Belgrade",
+      "name_key": "site.city_belgrade.name",
+      "region_id": "region_074",
+      "sovereign_1914": "Serbie",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        20.4489,
+        44.7866
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_nis_kragujevac",
+      "name_fr": "Niš (Kragujevac)",
+      "name_key": "site.city_nis_kragujevac.name",
+      "region_id": "region_074",
+      "sovereign_1914": "Serbie",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub",
+        "industrial_centre",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        21.8958,
+        43.3209
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_skopje_bitola",
+      "name_fr": "Skopje (Üsküb / Bitola)",
+      "name_key": "site.city_skopje_bitola.name",
+      "region_id": "region_074",
+      "sovereign_1914": "Serbie",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        21.4254,
+        41.9981
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_cetinje",
+      "name_fr": "Cetinje (Antivari/Bar)",
+      "name_key": "site.city_cetinje.name",
+      "region_id": "region_075",
+      "sovereign_1914": "Monténégro",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "fortress"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        18.9238,
+        42.3931
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_durres",
+      "name_fr": "Durrës (Scutari / Vlora)",
+      "name_key": "site.city_durres.name",
+      "region_id": "region_076",
+      "sovereign_1914": "Albanie",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        19.4564,
+        41.3246
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_athens_piraeus",
+      "name_fr": "Athènes (Le Pirée)",
+      "name_key": "site.city_athens_piraeus.name",
+      "region_id": "region_077",
+      "sovereign_1914": "Grèce",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        23.7275,
+        37.9838
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_salonika",
+      "name_fr": "Salonique (Thessalonique / Kavala)",
+      "name_key": "site.city_salonika.name",
+      "region_id": "region_078",
+      "sovereign_1914": "Grèce",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        22.9444,
+        40.6401
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_larissa_ioannina",
+      "name_fr": "Larissa (Volos / Ioannina)",
+      "name_key": "site.city_larissa_ioannina.name",
+      "region_id": "region_078",
+      "sovereign_1914": "Grèce",
+      "site_type": "railway_hub",
+      "strategic_roles": [
+        "railway_hub",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        22.4191,
+        39.639
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_patras",
+      "name_fr": "Patras (Corinthe)",
+      "name_key": "site.city_patras.name",
+      "region_id": "region_079",
+      "sovereign_1914": "Grèce",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        21.746429,
+        38.235187
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_chania_suda",
+      "name_fr": "La Canée (Baie de la Soude / Syros / Moudros)",
+      "name_key": "site.city_chania_suda.name",
+      "region_id": "region_079",
+      "sovereign_1914": "Grèce",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.025536,
+        35.499895
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_constantinople",
+      "name_fr": "Constantinople (Istanbul)",
+      "name_key": "site.city_constantinople.name",
+      "region_id": "region_087",
+      "sovereign_1914": "Empire ottoman",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        28.9784,
+        41.0082
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_tekirdag_catalca",
+      "name_fr": "Tekirdağ (Rodosto / Çatalca / Çorlu)",
+      "name_key": "site.city_tekirdag_catalca.name",
+      "region_id": "region_088",
+      "sovereign_1914": "Empire ottoman",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        27.5117,
+        40.9833
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_edirne",
+      "name_fr": "Edirne (Andrinople / Kırklareli)",
+      "name_key": "site.city_edirne.name",
+      "region_id": "region_089",
+      "sovereign_1914": "Empire ottoman",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        26.5557,
+        41.6771
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_gallipoli",
+      "name_fr": "Gallipoli (Gelibolu / Kilidulbahir)",
+      "name_key": "site.city_gallipoli.name",
+      "region_id": "region_090",
+      "sovereign_1914": "Empire ottoman",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        26.6708,
+        40.4103
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "city_copenhagen",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.565611,
+          55.678156
+        ]
+      },
+      "properties": {
+        "id": "city_copenhagen",
+        "name_fr": "Copenhague",
+        "name_key": "site.city_copenhagen.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_044",
+        "sovereign_1914": "Danemark",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_aarhus",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2039,
+          56.1629
+        ]
+      },
+      "properties": {
+        "id": "city_aarhus",
+        "name_fr": "Aarhus (Esbjerg)",
+        "name_key": "site.city_aarhus.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_044",
+        "sovereign_1914": "Danemark",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_christiania",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7522,
+          59.9139
+        ]
+      },
+      "properties": {
+        "id": "city_christiania",
+        "name_fr": "Christiania (Oslo)",
+        "name_key": "site.city_christiania.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_045",
+        "sovereign_1914": "Norvège",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_kristiansand",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.9956,
+          58.1599
+        ]
+      },
+      "properties": {
+        "id": "city_kristiansand",
+        "name_fr": "Kristiansand (Horten)",
+        "name_key": "site.city_kristiansand.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress"
+        ],
+        "region_id": "region_045",
+        "sovereign_1914": "Norvège",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_bergen",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.3221,
+          60.3913
+        ]
+      },
+      "properties": {
+        "id": "city_bergen",
+        "name_fr": "Bergen",
+        "name_key": "site.city_bergen.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_046",
+        "sovereign_1914": "Norvège",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_trondhjem",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.3951,
+          63.4305
+        ]
+      },
+      "properties": {
+        "id": "city_trondhjem",
+        "name_fr": "Trondhjem (Trondheim)",
+        "name_key": "site.city_trondhjem.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_046",
+        "sovereign_1914": "Norvège",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_narvik",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          17.4272,
+          68.4385
+        ]
+      },
+      "properties": {
+        "id": "city_narvik",
+        "name_fr": "Narvik (Tromsø)",
+        "name_key": "site.city_narvik.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_047",
+        "sovereign_1914": "Norvège",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_gothenburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.9746,
+          57.7089
+        ]
+      },
+      "properties": {
+        "id": "city_gothenburg",
+        "name_fr": "Göteborg",
+        "name_key": "site.city_gothenburg.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_048",
+        "sovereign_1914": "Suède",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_malmo_karlskrona",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0038,
+          55.605
+        ]
+      },
+      "properties": {
+        "id": "city_malmo_karlskrona",
+        "name_fr": "Malmö (Karlskrona)",
+        "name_key": "site.city_malmo_karlskrona.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_048",
+        "sovereign_1914": "Suède",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_stockholm",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.068627,
+          59.327128
+        ]
+      },
+      "properties": {
+        "id": "city_stockholm",
+        "name_fr": "Stockholm",
+        "name_key": "site.city_stockholm.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_049",
+        "sovereign_1914": "Suède",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_bofors_orebro",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.2134,
+          59.2753
+        ]
+      },
+      "properties": {
+        "id": "city_bofors_orebro",
+        "name_fr": "Örebro (Bofors/Karlskoga)",
+        "name_key": "site.city_bofors_orebro.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_049",
+        "sovereign_1914": "Suède",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_lulea_boden",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.1567,
+          65.5848
+        ]
+      },
+      "properties": {
+        "id": "city_lulea_boden",
+        "name_fr": "Luleå (Boden / Kiruna)",
+        "name_key": "site.city_lulea_boden.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress",
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_050",
+        "sovereign_1914": "Suède",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_sundsvall_gavle",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          17.1413,
+          60.6749
+        ]
+      },
+      "properties": {
+        "id": "city_sundsvall_gavle",
+        "name_fr": "Gävle (Sundsvall)",
+        "name_key": "site.city_sundsvall_gavle.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_050",
+        "sovereign_1914": "Suède",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_reykjavik",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.9426,
+          64.1466
+        ]
+      },
+      "properties": {
+        "id": "city_reykjavik",
+        "name_fr": "Reykjavik",
+        "name_key": "site.city_reykjavik.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port"
+        ],
+        "region_id": "region_051",
+        "sovereign_1914": "Danemark",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_helsingfors",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9384,
+          60.1699
+        ]
+      },
+      "properties": {
+        "id": "city_helsingfors",
+        "name_fr": "Helsingfors (Helsinki / Sveaborg)",
+        "name_key": "site.city_helsingfors.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_052",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_viborg_abo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7497,
+          60.7107
+        ]
+      },
+      "properties": {
+        "id": "city_viborg_abo",
+        "name_fr": "Viborg (Viipuri / Åbo)",
+        "name_key": "site.city_viborg_abo.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_052",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_riga",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.1052,
+          56.9496
+        ]
+      },
+      "properties": {
+        "id": "city_riga",
+        "name_fr": "Riga (Dünamünde)",
+        "name_key": "site.city_riga.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_053",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_reval",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7536,
+          59.437
+        ]
+      },
+      "properties": {
+        "id": "city_reval",
+        "name_fr": "Reval (Tallinn)",
+        "name_key": "site.city_reval.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress",
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_053",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_kovno",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.9036,
+          54.8985
+        ]
+      },
+      "properties": {
+        "id": "city_kovno",
+        "name_fr": "Kovno (Kaunas)",
+        "name_key": "site.city_kovno.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_054",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_libau",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.0108,
+          56.5047
+        ]
+      },
+      "properties": {
+        "id": "city_libau",
+        "name_fr": "Libau (Liepāja)",
+        "name_key": "site.city_libau.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_054",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_warsaw",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.0122,
+          52.2297
+        ]
+      },
+      "properties": {
+        "id": "city_warsaw",
+        "name_fr": "Varsovie (Novogeorgievsk/Modlin)",
+        "name_key": "site.city_warsaw.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_055",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_lodz",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.456,
+          51.7592
+        ]
+      },
+      "properties": {
+        "id": "city_lodz",
+        "name_fr": "Łódź",
+        "name_key": "site.city_lodz.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_055",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_lublin_ivangorod",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.5684,
+          51.2465
+        ]
+      },
+      "properties": {
+        "id": "city_lublin_ivangorod",
+        "name_fr": "Lublin (Ivangorod / Dęblin)",
+        "name_key": "site.city_lublin_ivangorod.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_056",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_lomza_osowiec",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0725,
+          53.1781
+        ]
+      },
+      "properties": {
+        "id": "city_lomza_osowiec",
+        "name_fr": "Łomża (Ossovets / Suwałki)",
+        "name_key": "site.city_lomza_osowiec.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_056",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_minsk",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.5615,
+          53.9006
+        ]
+      },
+      "properties": {
+        "id": "city_minsk",
+        "name_fr": "Minsk (Baranovitchi)",
+        "name_key": "site.city_minsk.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub",
+          "industrial_centre"
+        ],
+        "region_id": "region_057",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_brest_litovsk",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.6877,
+          52.0976
+        ]
+      },
+      "properties": {
+        "id": "city_brest_litovsk",
+        "name_fr": "Brest-Litovsk",
+        "name_key": "site.city_brest_litovsk.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_057",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_vilna_grodno",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2797,
+          54.6872
+        ]
+      },
+      "properties": {
+        "id": "city_vilna_grodno",
+        "name_fr": "Vilna (Grodno)",
+        "name_key": "site.city_vilna_grodno.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub",
+          "fortress"
+        ],
+        "region_id": "region_057",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_zhitomir_rovno",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6587,
+          50.2547
+        ]
+      },
+      "properties": {
+        "id": "city_zhitomir_rovno",
+        "name_fr": "Jitomir (Rovno / Loutsk / Doubno)",
+        "name_key": "site.city_zhitomir_rovno.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_058",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_kamenets_podolski",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.5852,
+          48.6788
+        ]
+      },
+      "properties": {
+        "id": "city_kamenets_podolski",
+        "name_fr": "Kamenets-Podolski (Proskourov)",
+        "name_key": "site.city_kamenets_podolski.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub"
+        ],
+        "region_id": "region_058",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_kiev",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5234,
+          50.4501
+        ]
+      },
+      "properties": {
+        "id": "city_kiev",
+        "name_fr": "Kiev",
+        "name_key": "site.city_kiev.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_059",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_kharkov",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.2304,
+          49.9935
+        ]
+      },
+      "properties": {
+        "id": "city_kharkov",
+        "name_fr": "Kharkov",
+        "name_key": "site.city_kharkov.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_059",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_odessa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.7233,
+          46.4825
+        ]
+      },
+      "properties": {
+        "id": "city_odessa",
+        "name_fr": "Odessa (Nikolaïev)",
+        "name_key": "site.city_odessa.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_060",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_ekaterinoslav",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0462,
+          48.4647
+        ]
+      },
+      "properties": {
+        "id": "city_ekaterinoslav",
+        "name_fr": "Ekaterinoslav (Dniepropetrovsk)",
+        "name_key": "site.city_ekaterinoslav.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_060",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_yuzovka_lugansk",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8028,
+          48.0159
+        ]
+      },
+      "properties": {
+        "id": "city_yuzovka_lugansk",
+        "name_fr": "Iouzovka (Lougansk / Bakhmout)",
+        "name_key": "site.city_yuzovka_lugansk.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_061",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_taganrog_mariupol",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.814422,
+          47.287748
+        ]
+      },
+      "properties": {
+        "id": "city_taganrog_mariupol",
+        "name_fr": "Taganrog (Marioupol)",
+        "name_key": "site.city_taganrog_mariupol.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_061",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_kishinev",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.8638,
+          47.0105
+        ]
+      },
+      "properties": {
+        "id": "city_kishinev",
+        "name_fr": "Kichinev (Bender)",
+        "name_key": "site.city_kishinev.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub",
+          "fortress"
+        ],
+        "region_id": "region_062",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_sevastopol",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.5254,
+          44.6166
+        ]
+      },
+      "properties": {
+        "id": "city_sevastopol",
+        "name_fr": "Sébastopol (Simferopol / Kertch)",
+        "name_key": "site.city_sevastopol.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_063",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_st_petersburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.3351,
+          59.9343
+        ]
+      },
+      "properties": {
+        "id": "city_st_petersburg",
+        "name_fr": "Saint-Pétersbourg (Kronstadt)",
+        "name_key": "site.city_st_petersburg.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_064",
+        "sovereign_1914": "Empire russe",
+        "is_capital": true,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_pskov_novgorod",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3344,
+          57.8193
+        ]
+      },
+      "properties": {
+        "id": "city_pskov_novgorod",
+        "name_fr": "Pskov (Novgorod)",
+        "name_key": "site.city_pskov_novgorod.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub"
+        ],
+        "region_id": "region_064",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_arkhangelsk",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.5152,
+          64.5393
+        ]
+      },
+      "properties": {
+        "id": "city_arkhangelsk",
+        "name_fr": "Arkhangelsk",
+        "name_key": "site.city_arkhangelsk.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_065",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_vologda",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.8845,
+          59.2205
+        ]
+      },
+      "properties": {
+        "id": "city_vologda",
+        "name_fr": "Vologda",
+        "name_key": "site.city_vologda.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub"
+        ],
+        "region_id": "region_065",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_moscow",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6173,
+          55.7558
+        ]
+      },
+      "properties": {
+        "id": "city_moscow",
+        "name_fr": "Moscou",
+        "name_key": "site.city_moscow.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_066",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_tula",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6178,
+          54.1931
+        ]
+      },
+      "properties": {
+        "id": "city_tula",
+        "name_fr": "Toula (Briansk / Orel)",
+        "name_key": "site.city_tula.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_066",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_nizhny_novgorod",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.0059,
+          56.3269
+        ]
+      },
+      "properties": {
+        "id": "city_nizhny_novgorod",
+        "name_fr": "Nijni Novgorod (Iaroslavl)",
+        "name_key": "site.city_nizhny_novgorod.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_066",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_smolensk_voronezh",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.0453,
+          54.7826
+        ]
+      },
+      "properties": {
+        "id": "city_smolensk_voronezh",
+        "name_fr": "Smolensk (Voronej)",
+        "name_key": "site.city_smolensk_voronezh.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub"
+        ],
+        "region_id": "region_066",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_kazan",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.1064,
+          55.7961
+        ]
+      },
+      "properties": {
+        "id": "city_kazan",
+        "name_fr": "Kazan (Simbirsk)",
+        "name_key": "site.city_kazan.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_067",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_perm_ekaterinburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          56.2294,
+          58.0105
+        ]
+      },
+      "properties": {
+        "id": "city_perm_ekaterinburg",
+        "name_fr": "Perm (Ekaterinbourg / Oufa)",
+        "name_key": "site.city_perm_ekaterinburg.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_067",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_saratov_samara",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.0342,
+          51.5336
+        ]
+      },
+      "properties": {
+        "id": "city_saratov_samara",
+        "name_fr": "Saratov (Samara / Tsaritsyne)",
+        "name_key": "site.city_saratov_samara.name",
+        "site_type": "industrial_centre",
+        "strategic_roles": [
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_068",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_astrakhan_orenburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.0408,
+          46.3497
+        ]
+      },
+      "properties": {
+        "id": "city_astrakhan_orenburg",
+        "name_fr": "Astrakhan (Orenbourg)",
+        "name_key": "site.city_astrakhan_orenburg.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_068",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_rostov_on_don",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.7015,
+          47.2357
+        ]
+      },
+      "properties": {
+        "id": "city_rostov_on_don",
+        "name_fr": "Rostov-sur-le-Don (Novotcherkassk)",
+        "name_key": "site.city_rostov_on_don.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "railway_hub"
+        ],
+        "region_id": "region_069",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_novorossiysk_ekaterinodar",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7689,
+          44.7239
+        ]
+      },
+      "properties": {
+        "id": "city_novorossiysk_ekaterinodar",
+        "name_fr": "Novorossiïsk (Ekaterinodar / Vladikavkaz)",
+        "name_key": "site.city_novorossiysk_ekaterinodar.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_069",
+        "sovereign_1914": "Empire russe",
+        "is_capital": false,
+        "source_refs": [
+          "ristat_1897_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_bucharest",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.1025,
+          44.4268
+        ]
+      },
+      "properties": {
+        "id": "city_bucharest",
+        "name_fr": "Bucarest (Ploiești)",
+        "name_key": "site.city_bucharest.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_070",
+        "sovereign_1914": "Roumanie",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_constanta",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6348,
+          44.1792
+        ]
+      },
+      "properties": {
+        "id": "city_constanta",
+        "name_fr": "Constanța (Cernavodă)",
+        "name_key": "site.city_constanta.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_070",
+        "sovereign_1914": "Roumanie",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_iasi",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6014,
+          47.1585
+        ]
+      },
+      "properties": {
+        "id": "city_iasi",
+        "name_fr": "Iași",
+        "name_key": "site.city_iasi.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub",
+          "industrial_centre"
+        ],
+        "region_id": "region_071",
+        "sovereign_1914": "Roumanie",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_galati_focsani",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0425,
+          45.4353
+        ]
+      },
+      "properties": {
+        "id": "city_galati_focsani",
+        "name_fr": "Galați (Focșani)",
+        "name_key": "site.city_galati_focsani.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_071",
+        "sovereign_1914": "Roumanie",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_sofia",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.3219,
+          42.6977
+        ]
+      },
+      "properties": {
+        "id": "city_sofia",
+        "name_fr": "Sofia (Vidin)",
+        "name_key": "site.city_sofia.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_072",
+        "sovereign_1914": "Bulgarie",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_plovdiv",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7453,
+          42.1354
+        ]
+      },
+      "properties": {
+        "id": "city_plovdiv",
+        "name_fr": "Plovdiv (Philippopoli)",
+        "name_key": "site.city_plovdiv.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub",
+          "industrial_centre"
+        ],
+        "region_id": "region_073",
+        "sovereign_1914": "Bulgarie",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_varna_burgas",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9147,
+          43.2141
+        ]
+      },
+      "properties": {
+        "id": "city_varna_burgas",
+        "name_fr": "Varna (Bourgas / Choumen / Dedeağaç)",
+        "name_key": "site.city_varna_burgas.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_073",
+        "sovereign_1914": "Bulgarie",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_belgrade",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4489,
+          44.7866
+        ]
+      },
+      "properties": {
+        "id": "city_belgrade",
+        "name_fr": "Belgrade",
+        "name_key": "site.city_belgrade.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_074",
+        "sovereign_1914": "Serbie",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_nis_kragujevac",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.8958,
+          43.3209
+        ]
+      },
+      "properties": {
+        "id": "city_nis_kragujevac",
+        "name_fr": "Niš (Kragujevac)",
+        "name_key": "site.city_nis_kragujevac.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub",
+          "industrial_centre",
+          "fortress"
+        ],
+        "region_id": "region_074",
+        "sovereign_1914": "Serbie",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_skopje_bitola",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.4254,
+          41.9981
+        ]
+      },
+      "properties": {
+        "id": "city_skopje_bitola",
+        "name_fr": "Skopje (Üsküb / Bitola)",
+        "name_key": "site.city_skopje_bitola.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub"
+        ],
+        "region_id": "region_074",
+        "sovereign_1914": "Serbie",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_cetinje",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.9238,
+          42.3931
+        ]
+      },
+      "properties": {
+        "id": "city_cetinje",
+        "name_fr": "Cetinje (Antivari/Bar)",
+        "name_key": "site.city_cetinje.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "fortress"
+        ],
+        "region_id": "region_075",
+        "sovereign_1914": "Monténégro",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_durres",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.4564,
+          41.3246
+        ]
+      },
+      "properties": {
+        "id": "city_durres",
+        "name_fr": "Durrës (Scutari / Vlora)",
+        "name_key": "site.city_durres.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "major_port",
+          "fortress"
+        ],
+        "region_id": "region_076",
+        "sovereign_1914": "Albanie",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_athens_piraeus",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.7275,
+          37.9838
+        ]
+      },
+      "properties": {
+        "id": "city_athens_piraeus",
+        "name_fr": "Athènes (Le Pirée)",
+        "name_key": "site.city_athens_piraeus.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_077",
+        "sovereign_1914": "Grèce",
+        "is_capital": true,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_salonika",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.9444,
+          40.6401
+        ]
+      },
+      "properties": {
+        "id": "city_salonika",
+        "name_fr": "Salonique (Thessalonique / Kavala)",
+        "name_key": "site.city_salonika.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_078",
+        "sovereign_1914": "Grèce",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_larissa_ioannina",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.4191,
+          39.639
+        ]
+      },
+      "properties": {
+        "id": "city_larissa_ioannina",
+        "name_fr": "Larissa (Volos / Ioannina)",
+        "name_key": "site.city_larissa_ioannina.name",
+        "site_type": "railway_hub",
+        "strategic_roles": [
+          "railway_hub",
+          "fortress"
+        ],
+        "region_id": "region_078",
+        "sovereign_1914": "Grèce",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_patras",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.746429,
+          38.235187
+        ]
+      },
+      "properties": {
+        "id": "city_patras",
+        "name_fr": "Patras (Corinthe)",
+        "name_key": "site.city_patras.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_079",
+        "sovereign_1914": "Grèce",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_chania_suda",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.025536,
+          35.499895
+        ]
+      },
+      "properties": {
+        "id": "city_chania_suda",
+        "name_fr": "La Canée (Baie de la Soude / Syros / Moudros)",
+        "name_key": "site.city_chania_suda.name",
+        "site_type": "major_port",
+        "strategic_roles": [
+          "major_port",
+          "fortress"
+        ],
+        "region_id": "region_079",
+        "sovereign_1914": "Grèce",
+        "is_capital": false,
+        "source_refs": [
+          "regis_2026_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_constantinople",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9784,
+          41.0082
+        ]
+      },
+      "properties": {
+        "id": "city_constantinople",
+        "name_fr": "Constantinople (Istanbul)",
+        "name_key": "site.city_constantinople.name",
+        "site_type": "capital",
+        "strategic_roles": [
+          "capital",
+          "major_port",
+          "industrial_centre",
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_087",
+        "sovereign_1914": "Empire ottoman",
+        "is_capital": true,
+        "source_refs": [
+          "geoboundaries_tur_v6",
+          "kavanagh_1914_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_tekirdag_catalca",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.5117,
+          40.9833
+        ]
+      },
+      "properties": {
+        "id": "city_tekirdag_catalca",
+        "name_fr": "Tekirdağ (Rodosto / Çatalca / Çorlu)",
+        "name_key": "site.city_tekirdag_catalca.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "major_port",
+          "railway_hub"
+        ],
+        "region_id": "region_088",
+        "sovereign_1914": "Empire ottoman",
+        "is_capital": false,
+        "source_refs": [
+          "geoboundaries_tur_v6",
+          "kavanagh_1914_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_edirne",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.5557,
+          41.6771
+        ]
+      },
+      "properties": {
+        "id": "city_edirne",
+        "name_fr": "Edirne (Andrinople / Kırklareli)",
+        "name_key": "site.city_edirne.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "railway_hub"
+        ],
+        "region_id": "region_089",
+        "sovereign_1914": "Empire ottoman",
+        "is_capital": false,
+        "source_refs": [
+          "geoboundaries_tur_v6",
+          "kavanagh_1914_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "city_gallipoli",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.6708,
+          40.4103
+        ]
+      },
+      "properties": {
+        "id": "city_gallipoli",
+        "name_fr": "Gallipoli (Gelibolu / Kilidulbahir)",
+        "name_key": "site.city_gallipoli.name",
+        "site_type": "fortress",
+        "strategic_roles": [
+          "fortress",
+          "major_port"
+        ],
+        "region_id": "region_090",
+        "sovereign_1914": "Empire ottoman",
+        "is_capital": false,
+        "source_refs": [
+          "geoboundaries_tur_v6",
+          "kavanagh_1914_v1",
+          "baedeker_bradshaw_1914"
+        ]
+      }
+    }
+  ]
+}
