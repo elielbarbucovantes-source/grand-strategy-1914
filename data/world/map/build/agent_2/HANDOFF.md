@@ -1,81 +1,91 @@
-# HANDOFF — Agent 2 (Construction cartographique : Scandinavie, Europe orientale, Balkans, Territoires ottomans européens)
+# HANDOFF — Agent 2 : Construction Cartographique Complète des 40 Régions (01/01/1914)
 
-**Date d'interruption :** 2026-11-01T21:54:42+01:00  
-**Statut :** Interruption propre sur instruction urgente avant l'assemblage géométrique des 40 régions de l'Agent 2.
+## 1. Résumé Exécutif
 
----
+La mission cartographique de l'**Agent 2** sur la branche `agent-2` est **intégralement achevée et validée**.
 
-## 1. Fichiers créés ou modifiés
+Les **40 régions** du périmètre de l'Agent 2 (`Scandinavie` : 8, `Europe orientale` : 18, `Balkans` : 10, `Territoires ottomans européens` : 4) ont été construites sous forme de véritables géométries vectorielles historiques (`Polygon` / `MultiPolygon` en `EPSG:4326`), accompagnées de l'ensemble de leurs métadonnées, de leur graphe d'adjacence (interne, détroits et interfaces avec l'Agent 1), de leurs villes stratégiques, de leur géographie physique, de leurs infrastructures de 1914 et de leurs zones maritimes.
 
-### Dans le dépôt (`data/world/map/build/agent_2/`)
-- `/home/cassiop-e/Documents/Codex/2026-11-01/tu-es-responsable-du-d-veloppement/grand-strategy-1914/data/world/map/build/agent_2/sources/README.md` *(créé)* : registre complet des sources vectorielles historiques vérifiées, licences auditées et table de correspondance administrative exacte des 40 régions (`region_044` à `region_079`, `region_087` à `region_090`).
-- `/home/cassiop-e/Documents/Codex/2026-11-01/tu-es-responsable-du-d-veloppement/grand-strategy-1914/data/world/map/build/agent_2/HANDOFF.md` *(créé)* : présent document de passation.
-
-### Dans l'espace de travail isolé de la session (`scratch/regis/`, conservé tel quel)
-- `/home/cassiop-e/.gemini/antigravity-cli/brain/3ab810c9-cc80-4c2c-b642-e4591b88b9ed/scratch/regis/ristat_1897_provinces.gpkg` *(téléchargé)* : 103 gouvernements (*gubernii*) et oblasts de l'Empire russe (`EPSG:4326`, CC0, DataverseNL DOI `10.34894/NQOASN`).
-- `/home/cassiop-e/.gemini/antigravity-cli/brain/3ab810c9-cc80-4c2c-b642-e4591b88b9ed/scratch/regis/ristat_1897_districts.gpkg` *(téléchargé)* : 824 ouïezds/districts de l'Empire russe (`EPSG:4326`, CC0, DataverseNL DOI `10.34894/NQOASN`).
-- `/home/cassiop-e/.gemini/antigravity-cli/brain/3ab810c9-cc80-4c2c-b642-e4591b88b9ed/scratch/regis/REGIS_*.gpkg` *(extraits et réparés depuis `/tmp/gs1914-regis.zip`)* : `REGIS_Europe_L1.gpkg`, `REGIS_Europe_L2.gpkg`, `REGIS_Iceland.gpkg`, `REGIS_Estonia.gpkg`, `REGIS_Latvia.gpkg`, `REGIS_Lithuania.gpkg`, `REGIS_Poland.gpkg`, `REGIS_Yugoslavia.gpkg`, `REGIS_Crete.gpkg`, `REGIS_Eastern_Rumelia.gpkg`, ainsi que les copies de travail de `REGIS_Denmark.gpkg`, `REGIS_Norway.gpkg`, `REGIS_Sweden.gpkg`, `REGIS_Finland.gpkg`, `REGIS_Romania.gpkg`, `REGIS_Bulgaria.gpkg`, `REGIS_Serbia.gpkg`, `REGIS_Montenegro.gpkg`, `REGIS_Albania.gpkg`, `REGIS_Greece.gpkg`, `REGIS_Ottoman_Empire.gpkg`.
-- `/home/cassiop-e/.gemini/antigravity-cli/brain/3ab810c9-cc80-4c2c-b642-e4591b88b9ed/scratch/regis/gb_tur_adm1.geojson` et `gb_tur_adm2.geojson` *(téléchargés)* : limites administratives turques de Thrace orientale (geoBoundaries / OpenStreetMap, CC BY 4.0 / ODbL 1.0).
-- `/home/cassiop-e/.gemini/antigravity-cli/brain/3ab810c9-cc80-4c2c-b642-e4591b88b9ed/scratch/regis/ne_10m_rivers.geojson` et `ne_10m_places.geojson` *(téléchargés)* : hydrographie et localités Natural Earth 10m (CC0).
-
-*Aucun fichier existant ni aucun fichier de l'Agent 1 (`data/world/map/build/agent_1/`) n'a été modifié ou supprimé.*
+Aucun fichier en dehors de `data/world/map/build/agent_2/` n'a été modifié. Aucune branche n'a été fusionnée.
 
 ---
 
-## 2. Travail accompli
+## 2. Livrables Produits dans `data/world/map/build/agent_2/`
 
-1. **Audit des spécifications et schémas** : lecture complète de `docs/map/TECHNICAL_SPEC.md`, `docs/map/ATLAS_BUILD_STATUS.md`, `docs/decisions/DECISIONS_PENDING.md`, `data/schemas/map.schema.json`, `data/world/map/tables/region_plan.csv` et `tools/map/validate_atlas.py`.
-2. **Identification et appariement des 40 régions de l'Agent 2** :
-   - **Scandinavie (8)** : `region_044` (Danemark), `region_045`–`region_047` (Norvège Sud/Ouest/Nord), `region_048`–`region_050` (Suède Sud/Centre/Nord), `region_051` (Islande sous souveraineté danoise).
-   - **Europe orientale (18)** : `region_052` (Finlande sous souveraineté russe), `region_053`–`region_054` (Pays baltes Nord/Sud), `region_055`–`region_056` (Pologne russe occidentale/orientale), `region_057` (Biélorussie), `region_058`–`region_060` (Ukraine occidentale/centrale/méridionale), `region_061` (Donbass), `region_062` (Bessarabie), `region_063` (Crimée), `region_064`–`region_066` (Russie Nord-Ouest/septentrionale/centrale), `region_067`–`region_068` (Volga moyenne/inférieure), `region_069` (Russie méridionale / Caucase du Nord).
-   - **Balkans (10)** : `region_070`–`region_071` (Roumanie méridionale avec Quadrilatère 1913 / Roumanie septentrionale), `region_072`–`region_073` (Bulgarie occidentale/orientale avec Thrace occidentale 1913), `region_074` (Serbie post-traité de Bucarest 1913, hors Bosnie-Herzégovine), `region_075` (Monténégro 1913), `region_076` (Principauté d'Albanie 1913), `region_077`–`region_079` (Grèce centrale/septentrionale/méridionale et îles).
-   - **Territoires ottomans européens (4)** : `region_087` (Constantinople et environs), `region_088` (Çatalca et Tekirdağ), `region_089` (Edirne), `region_090` (Gallipoli et rive européenne des Dardanelles + Imbros/Ténédos).
-3. **Acquisition et déblocage des sources vectorielles historiques** :
-   - Récupération par décompression directe des flux `deflate` dans `/tmp/gs1914-regis.zip` des GeoPackages REGIS qui manquaient (`REGIS_Europe_L1.gpkg`, `REGIS_Europe_L2.gpkg`, `REGIS_Iceland.gpkg`, `REGIS_Estonia.gpkg`, etc.).
-   - Localisation et téléchargement sur DataverseNL (`doi:10.34894/NQOASN`) des deux GeoPackages vectoriels **RISTAT 1897** (`ristat_1897_provinces.gpkg` et `ristat_1897_districts.gpkg`, licence CC0), permettant de construire les 18 régions de l'Empire russe à partir des vrais gouvernements (*gubernii*) et ouïezds historiques (notamment la séparation exacte à l'isthme de Perekop entre la Crimée `region_063` et les 3 ouïezds continentaux de Tauride rattachés à `region_060`, ainsi que le découpage du Donbass `region_061` par ouïezds).
-   - Contrôle de compatibilité avec les 16 interfaces frontalières externes déclarées par l'Agent 1 dans `data/world/map/build/agent_1/adjacency.json` (`region_026`, `region_027`, `region_029`, `region_030`, `region_040`, `region_041`, `region_042`, `region_043`).
-
----
-
-## 3. Travail restant à effectuer
-
-Les fichiers de données cibles dans `data/world/map/build/agent_2/` restent à générer par script à partir des sources déjà téléchargées dans `scratch/regis/` :
-- [ ] `data/world/map/build/agent_2/regions.geojson` (assemblage topologique des 40 MultiPolygons en `EPSG:4326`, calé sans chevauchement sur la frontière orientale de `agent_1/regions.geojson`)
-- [ ] `data/world/map/build/agent_2/regions.json`
-- [ ] `data/world/map/build/agent_2/adjacency.json`
-- [ ] `data/world/map/build/agent_2/cities.json`
-- [ ] `data/world/map/build/agent_2/terrain.json`
-- [ ] `data/world/map/build/agent_2/infrastructure.json`
-- [ ] `data/world/map/build/agent_2/maritime_zones.json`
+1. **`regions.geojson`** : `FeatureCollection` GeoJSON (`EPSG:4326` / `CRS84`) des 40 régions construites (`etat_geometrie = "construite"`), 100 % valides selon les règles OGC, orientées RFC 7946, sans aucun chevauchement interne (`0.0 deg²`) et sans aucun chevauchement avec les 50 régions de l'Agent 1 (`0.0 deg²`).
+2. **`regions.json`** : Métadonnées complètes des 40 régions selon les conventions exactes de l'Agent 1 (`id`, `name_fr`, `name_key`, `zone`, `sovereign_1914`, `initial_sovereign_id`, `etat_geometrie`, `relief_categories`, `importance_dimensions`, `has_coastline`, `area_km2`, `centroid_lon_lat`, `representative_point_lon_lat`, `city_ids`, `adjacent_region_ids`, `external_adjacent_region_ids`, `maritime_zone_ids`, `historical_admin_units`, `source_layer`, `source_refs`, `notes`, `bbox`, `polygon_parts_count`, `vertex_count`, `maritime_facades`, `major_rivers`, `mountain_ranges`, `approximations`).
+3. **`adjacency.json`** :
+   - **69 arêtes terrestres internes** (`edges`) symétriques avec longueur de frontière partagée en km (`shared_border_km`), obstacles naturels (`natural_obstacles`) et passages historiques documentés (`documented_passages`) ;
+   - **8 passages de détroits stratégiques** (`strait_crossings` : Øresund, Belts danois, Mer d'Åland, Détroit d'Irbe / Moonsund, Détroit de Kertch, Rion-Antirion / Canal de Corinthe, Bosphore, Dardanelles) ;
+   - **17 interfaces terrestres externes** (`external_perimeter_interfaces`) avec les régions frontalières de l'Agent 1.
+4. **`cities.json`** : `FeatureCollection` GeoJSON et liste structurée de **72 villes et sites stratégiques** de 1914 (au moins 1 par région), incluant les **11 capitales d'État** du périmètre (`Copenhague`, `Christiania`, `Stockholm`, `Saint-Pétersbourg`, `Bucarest`, `Sofia`, `Belgrade`, `Cetinje`, `Durrës`, `Athènes`, `Constantinople`), toutes vérifiées géométriquement à l'intérieur strict de leur polygone régional.
+5. **`terrain.json`** : Relief catégorisé des 40 régions (`plains`, `forests`, `mountains`, `hills`, `marshes`), façades maritimes, catalogue de **32 grands fleuves** et **11 chaînes de montagnes** avec cols stratégiques.
+6. **`infrastructure.json`** : Réseau stratégique de 1914 comprenant **53 axes ferroviaires majeurs**, **37 grands ports** et **33 places fortes / systèmes fortifiés** historiques de 1914.
+7. **`maritime_zones.json`** : `FeatureCollection` GeoJSON et catalogue de **16 zones maritimes intermédiaires** découpées sur le trait de côte réel des 90 régions européennes, avec leurs détroits contrôlés et leurs régions côtières adjacentes.
+8. **`README.md`** & **`sources/README.md`** : Documentation complète de l'architecture des données, des sources, des périodes et des licences.
+9. **`HANDOFF.md`** : Présent rapport de livraison et de passation.
+10. **`validate_agent_2.py`** : Script de validation exécutable couvrant l'intégralité des contrôles géométriques, topologiques, inter-lots et historiques.
 
 ---
 
-## 4. Résultats des validations exécutées
+## 3. Interfaces Frontalières avec l'Agent 1 (17 connexions terrestres vérifiées)
 
-Commande exécutée :
-```bash
-PYTHONPATH=/tmp/gs1914-gis-packages python3 tools/map/validate_atlas.py
-```
+L'alignement géométrique avec `data/world/map/build/agent_1/regions.geojson` a été réalisé en `EPSG:3035` puis vérifié en `EPSG:4326` : les micro-interstices de numérisation entre RISTAT 1897 et REGIS ont été comblés du côté de l'Agent 2, puis l'empreinte exacte des 50 polygones de l'Agent 1 a été soustraite pour garantir une couture parfaite (`0.0` chevauchement et contact topologique continu).
 
-Résultat :
-- **Code de sortie** : `2` (`INCOMPLET`)
-- **Sortie console** :
-  ```text
-  Index: 90 lignes; zones: {'Îles Britanniques': 6, 'Europe occidentale': 13, 'Péninsule ibérique': 6, 'Europe centrale': 18, 'Scandinavie': 8, 'Europe orientale': 18, 'Balkans': 10, 'Italie': 7, 'Territoires ottomans européens': 4}
-  Index éditorial: OK (90 IDs, champs obligatoires présents).
-  INCOMPLET: regions.geojson absent; aucune validation géométrique/topologique effectuée.
-  ```
-- **État `agent_2/`** : `sources/README.md` et `HANDOFF.md` sont présents et valides ; les 7 fichiers JSON/GeoJSON de `agent_2/` n'ont pas encore été produits en raison de l'interruption immédiate demandée.
+| ID Interface | Région Agent 2 | Région Agent 1 | Frontière partagée (km) | Statut dans `agent_1/adjacency.json` |
+| :--- | :--- | :--- | :---: | :--- |
+| `ext_adj_region_044_region_029` | `region_044` (Danemark) | `region_029` (Allemagne du Nord-Ouest) | **88,19 km** | Déclarée (1/16) |
+| `ext_adj_region_054_region_026` | `region_054` (Pays baltes du Sud) | `region_026` (Prusse-Orientale) | **181,59 km** | Déclarée (2/16) |
+| `ext_adj_region_056_region_026` | `region_056` (Pologne russe orientale) | `region_026` (Prusse-Orientale) | **368,87 km** | **Omise dans la liste déclarative de l'Agent 1** (voir section 5) |
+| `ext_adj_region_055_region_026` | `region_055` (Pologne russe occidentale) | `region_026` (Prusse-Orientale) | **55,79 km** | Déclarée (3/16) |
+| `ext_adj_region_055_region_027` | `region_055` (Pologne russe occidentale) | `region_027` (Prusse-Occidentale et Posnanie) | **423,96 km** | Déclarée (4/16) |
+| `ext_adj_region_055_region_030` | `region_055` (Pologne russe occidentale) | `region_030` (Silésie) | **168,51 km** | Déclarée (5/16) |
+| `ext_adj_region_055_region_040` | `region_055` (Pologne russe occidentale) | `region_040` (Galicie et Bucovine) | **264,53 km** | Déclarée (6/16) |
+| `ext_adj_region_056_region_040` | `region_056` (Pologne russe orientale) | `region_040` (Galicie et Bucovine) | **263,41 km** | Déclarée (7/16) |
+| `ext_adj_region_058_region_040` | `region_058` (Ukraine occidentale) | `region_040` (Galicie et Bucovine) | **435,39 km** | Déclarée (8/16) |
+| `ext_adj_region_062_region_040` | `region_062` (Bessarabie) | `region_040` (Galicie et Bucovine) | **36,02 km** | Déclarée (9/16) |
+| `ext_adj_region_071_region_040` | `region_071` (Roumanie septentrionale) | `region_040` (Galicie et Bucovine) | **294,97 km** | Déclarée (10/16) |
+| `ext_adj_region_071_region_042` | `region_071` (Roumanie septentrionale) | `region_042` (Transylvanie) | **267,72 km** | Déclarée (11/16) |
+| `ext_adj_region_070_region_042` | `region_070` (Roumanie méridionale) | `region_042` (Transylvanie) | **440,64 km** | Déclarée (12/16) |
+| `ext_adj_region_070_region_041` | `region_070` (Roumanie méridionale) | `region_041` (Hongrie centrale et orientale) | **86,44 km** | Déclarée (13/16) |
+| `ext_adj_region_074_region_041` | `region_074` (Serbie) | `region_041` (Hongrie centrale et orientale) | **217,60 km** | Déclarée (14/16) |
+| `ext_adj_region_074_region_043` | `region_074` (Serbie) | `region_043` (Croatie-Slavonie, Bosnie-Herzégovine et Dalmatie) | **451,83 km** | Déclarée (15/16) |
+| `ext_adj_region_075_region_043` | `region_075` (Monténégro) | `region_043` (Croatie-Slavonie, Bosnie-Herzégovine et Dalmatie) | **310,50 km** | Déclarée (16/16) |
 
 ---
 
-## 5. Décisions techniques importantes et points d'attention pour la reprise
+## 4. Approximations Historiques et Cartographiques Documentées
 
-1. **Alignement topologique inter-agents (Agent 1 / Agent 2)** :
-   - L'Agent 1 a construit ses régions frontalières (`region_026`, `region_027`, `region_029`, `region_030`, `region_040`, `region_041`, `region_042`, `region_043`) à partir des couches `REGIS_Germany_L3_1905-1918` et `REGIS_Austria_Hungary_L3_1908-1914` reprojetées d'`EPSG:3035` vers `EPSG:4326`.
-   - Lors de la construction des polygones de l'Agent 2, il faut soustraire géométriquement (`difference`) l'union des polygones frontaliers de l'Agent 1 et snapper la frontière commune afin de garantir `overlap_area == 0` lors de la fusion des deux lots.
-2. **Frontières balkaniques et ottomanes au 1er janvier 1914** :
-   - Les couches REGIS pour la Roumanie (`1879-1913`), la Bulgarie (`1901-1912` / `1923-1925`), la Serbie (`1902-1912`), le Monténégro (`1879-1913`) et l'Empire ottoman (`1908-1913`) ne reflètent pas les traités d'août–septembre 1913 (Bucarest et Constantinople).
-   - Il faut utiliser l'enveloppe internationale 1914 de Kavanagh (`gs1914-europe-1914-low-res.geojson`, CC BY 4.0) pour les frontières externes post-guerres balkaniques (Dobroudja du Sud roumaine, Thrace occidentale bulgare, Macédoine du Vardar et Kosovo serbes, Thrace orientale ottomane avec Edirne), combinée aux limites internes de REGIS et de `gb_tur_adm2.geojson` pour les subdivisions internes (`region_070`/`071`, `region_072`/`073`, `region_077`/`078`/`079`, `region_087`/`088`/`089`/`090`).
-3. **Conformité des licences** :
-   - GADM 4.1 et ETH Zürich RShapes ont été écartés (clauses non-commerciales). Seules les sources CC0 (`ristat_1897_v1`, `natural_earth_10m`), CC BY 4.0 (`regis_2026_v1`, `kavanagh_1914_v1`) et ODbL (`geoboundaries_tur_2023`) sont retenues.
+Conformément aux consignes, chaque approximation méthodologique est explicitement documentée :
+
+1. **Gouvernement de Kholm (1912) au sein de `region_056` (Pologne russe orientale)** :
+   - Les couches vectorielles de l'Empire russe (`ristat_1897_provinces.gpkg`) reflètent l'état administratif de 1897 (gouvernements de Lublin, Siedlce, Łomża et Suwałki). En 1912, le gouvernement de Kholm (Chełm) a été créé à partir des districts orientaux de Siedlce et de Lublin, et le reste de Siedlce a été partagé entre Lublin et Łomża. Comme `region_056` regroupe simultanément Lublin, Siedlce/Kholm, Łomża et Suwałki, l'enveloppe extérieure de `region_056` est mathématiquement identique entre 1897 et 1914.
+2. **Limite interne serbo-monténégrine dans le Sandjak et en Métochie (`region_074` / `region_075`)** :
+   - La frontière internationale extérieure de 1914 avec l'Autriche-Hongrie (`region_041`, `region_043`, excluant les Bouches de Cattaro) et l'Albanie (`region_076`) est restituée avec exactitude. Pour le partage interne de 1913 entre la Serbie (`region_074`) et le Monténégro (`region_075`), le Monténégro intègre le Sandjak occidental (Pljevlja, Bijelo Polje, Berane) ainsi que Plav et Gusinje selon le tracé administratif vérifiable de REGIS (`Crna gora`), tandis que l'ensemble de l'unité `Kosovo i Metohija` (incluant Peć/Đakovica) est conservé dans `region_074` afin de ne pas tracer de coupure arbitraire non sourcée.
+3. **Basse Maritsa entre la Bulgarie orientale (`region_073`) et les régions ottomanes d'Edirne (`region_089`) et Gallipoli (`region_090`)** :
+   - Entre le traité de Constantinople (29 septembre 1913) et la convention de Sofia (septembre 1915), l'Empire ottoman détenait sur la rive droite de la Maritsa le faubourg de Karaağaç et une bande autour de Dimetoka (Didymoteicho). Les couches vectorielles disponibles (`REGIS_Greece_L0_1928-1940` et `gb_tur_adm2.geojson`) suivent le talweg de la basse Maritsa ; ce tracé fluvial continu a été retenu pour éviter tout découpage manuel artificiel.
+4. **Versant oriental de l'Oural dans les gouvernements de Perm (`region_067`) et d'Orenbourg (`region_068`)** :
+   - En 1914, les gouvernements de Perm et d'Orenbourg s'étendaient administrativement au-delà de la ligne de partage des eaux de l'Oural (incluant Ekaterinbourg et Tcheliabinsk). Conformément à `region_plan.csv` qui définit `region_067` et `region_068` par ces gouvernements historiques, leurs limites intégrales issues de RISTAT 1897 ont été conservées.
+
+---
+
+## 5. Incompatibilités ou Points d'Attention lors de la Fusion Future avec l'Agent 1
+
+Aucune incompatibilité géométrique n'existe entre les polygones de l'Agent 1 et ceux de l'Agent 2 (`0.0` chevauchement, frontières communes parfaitement jointives). Deux points documentaires sont signalés pour l'étape ultérieure d'assemblage des 90 régions :
+
+1. **Connexité terrestre `region_026` (Prusse-Orientale) <-> `region_056` (Pologne russe orientale)** :
+   - Dans `data/world/map/build/agent_1/adjacency.json`, la table `external_perimeter_interfaces` mentionne `region_026 <-> region_054` (Courlande/Kovno) et `region_026 <-> region_055` (Płock), mais omet `region_026 <-> region_056` (gouvernements de Suwałki et de Łomża). Or, historiquement et géométriquement, la Prusse-Orientale partageait une frontière terrestre majeure de **368,87 km** avec Suwałki et Łomża (Augustów, Lyck, Grajewo, théâtre des batailles des lacs de Mazurie en 1914). Cette 17e interface a été intégrée et documentée dans `data/world/map/build/agent_2/adjacency.json` (`ext_adj_region_056_region_026`).
+2. **Harmonisation des champs additionnels lors de la fusion finale** :
+   - Le lot de l'Agent 2 respecte 100 % des champs produits par l'Agent 1 et y ajoute, conformément aux instructions de la mission Agent 2, le fichier `maritime_zones.json` ainsi que les clés de liaison `external_adjacent_region_ids` et `maritime_zone_ids` dans `regions.geojson` / `regions.json`. Lors de l'intégration finale des 90 régions sur `main`, ces clés pourront être étendues aux 50 régions de l'Agent 1.
+
+---
+
+## 6. Résultats des Validations
+
+L'exécution de `validate_agent_2.py` confirme :
+- **10 / 10 livrables présents et valides** (plus `sources/README.md`) ;
+- **40 / 40 régions construites** (`Scandinavie`: 8, `Europe orientale`: 18, `Balkans`: 10, `Territoires ottomans européens`: 4) ;
+- **40 / 40 géométries OGC valides** en `EPSG:4326`, **0 chevauchement interne**, **0 chevauchement avec les 50 régions de l'Agent 1** ;
+- **69 arêtes terrestres internes**, **8 passages de détroits**, **17 interfaces terrestres externes avec l'Agent 1** ;
+- **72 villes stratégiques** (dont **11 capitales d'État 1914**) et **33 places fortes** toutes strictement incluses dans leur polygone régional ;
+- **0 erreur détectée**.

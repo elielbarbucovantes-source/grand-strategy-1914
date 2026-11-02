@@ -1,0 +1,4348 @@
+{
+  "schema_version": "1.0.0",
+  "agent_id": "agent_2",
+  "reference_date": "1914-01-01",
+  "total_regions": 40,
+  "total_railway_axes": 53,
+  "total_major_ports": 37,
+  "total_fortifications": 33,
+  "regional_infrastructure": {
+    "region_044": {
+      "region_id": "region_044",
+      "name_fr": "Danemark",
+      "sovereign_1914": "Danemark",
+      "strategic_site_ids": [
+        "city_copenhagen",
+        "city_aarhus"
+      ],
+      "major_port_ids": [
+        "city_copenhagen",
+        "city_aarhus"
+      ],
+      "fortification_ids": [
+        "fort_copenhagen"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_dk_copenhagen_aarhus",
+        "rail_sc_copenhagen_malmo_stockholm"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_045": {
+      "region_id": "region_045",
+      "name_fr": "Norvège — Sud",
+      "sovereign_1914": "Norvège",
+      "strategic_site_ids": [
+        "city_christiania",
+        "city_kristiansand"
+      ],
+      "major_port_ids": [
+        "city_christiania",
+        "city_kristiansand"
+      ],
+      "fortification_ids": [
+        "fort_oscarsborg_grense"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_sc_gothenburg_christiania",
+        "rail_sc_christiania_stockholm",
+        "rail_no_bergensbanen",
+        "rail_no_roros_trondhjem"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_046": {
+      "region_id": "region_046",
+      "name_fr": "Norvège — Ouest",
+      "sovereign_1914": "Norvège",
+      "strategic_site_ids": [
+        "city_bergen",
+        "city_trondhjem"
+      ],
+      "major_port_ids": [
+        "city_bergen",
+        "city_trondhjem"
+      ],
+      "fortification_ids": [
+        "fort_bergen_agdenes"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_no_bergensbanen",
+        "rail_no_roros_trondhjem",
+        "rail_sc_trondhjem_sundsvall"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_047": {
+      "region_id": "region_047",
+      "name_fr": "Norvège — Nord",
+      "sovereign_1914": "Norvège",
+      "strategic_site_ids": [
+        "city_narvik"
+      ],
+      "major_port_ids": [
+        "city_narvik"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_sc_lulea_narvik"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_048": {
+      "region_id": "region_048",
+      "name_fr": "Suède — Sud",
+      "sovereign_1914": "Suède",
+      "strategic_site_ids": [
+        "city_gothenburg",
+        "city_malmo_karlskrona"
+      ],
+      "major_port_ids": [
+        "city_gothenburg",
+        "city_malmo_karlskrona"
+      ],
+      "fortification_ids": [
+        "fort_karlskrona_gothenburg"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_se_malmo_gothenburg",
+        "rail_sc_gothenburg_christiania",
+        "rail_se_gothenburg_stockholm"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_049": {
+      "region_id": "region_049",
+      "name_fr": "Suède — Centre",
+      "sovereign_1914": "Suède",
+      "strategic_site_ids": [
+        "city_stockholm",
+        "city_bofors_orebro"
+      ],
+      "major_port_ids": [
+        "city_stockholm"
+      ],
+      "fortification_ids": [
+        "fort_vaxholm_stockholm"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_sc_copenhagen_malmo_stockholm",
+        "rail_se_gothenburg_stockholm",
+        "rail_sc_christiania_stockholm",
+        "rail_se_stockholm_gavle_lulea"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_050": {
+      "region_id": "region_050",
+      "name_fr": "Suède — Nord",
+      "sovereign_1914": "Suède",
+      "strategic_site_ids": [
+        "city_lulea_boden",
+        "city_sundsvall_gavle"
+      ],
+      "major_port_ids": [
+        "city_lulea_boden",
+        "city_sundsvall_gavle"
+      ],
+      "fortification_ids": [
+        "fort_boden"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_sc_trondhjem_sundsvall",
+        "rail_se_stockholm_gavle_lulea",
+        "rail_sc_lulea_narvik"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_051": {
+      "region_id": "region_051",
+      "name_fr": "Islande (sous souveraineté danoise)",
+      "sovereign_1914": "Danemark",
+      "strategic_site_ids": [
+        "city_reykjavik"
+      ],
+      "major_port_ids": [
+        "city_reykjavik"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_052": {
+      "region_id": "region_052",
+      "name_fr": "Finlande",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_helsingfors",
+        "city_viborg_abo"
+      ],
+      "major_port_ids": [
+        "city_helsingfors",
+        "city_viborg_abo"
+      ],
+      "fortification_ids": [
+        "fort_sveaborg_vyborg"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_helsingfors_viborg_stpetersburg"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_053": {
+      "region_id": "region_053",
+      "name_fr": "Pays baltes du Nord",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_riga",
+        "city_reval"
+      ],
+      "major_port_ids": [
+        "city_riga",
+        "city_reval"
+      ],
+      "fortification_ids": [
+        "fort_reval_ust_dvinsk"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_stpetersburg_reval",
+        "rail_ru_pskov_riga"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_054": {
+      "region_id": "region_054",
+      "name_fr": "Pays baltes du Sud",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_kovno",
+        "city_libau"
+      ],
+      "major_port_ids": [
+        "city_libau"
+      ],
+      "fortification_ids": [
+        "fort_kovno_libau"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_riga_libau_romny",
+        "rail_ru_kovno_vilna"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_055": {
+      "region_id": "region_055",
+      "name_fr": "Pologne russe occidentale",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_warsaw",
+        "city_lodz"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_warsaw_novogeorgievsk"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_stpetersburg_pskov_vilna_warsaw",
+        "rail_ru_warsaw_lodz",
+        "rail_ru_warsaw_lomza_grodno",
+        "rail_ru_warsaw_ivangorod_lublin",
+        "rail_ru_warsaw_brest_minsk_moscow"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_056": {
+      "region_id": "region_056",
+      "name_fr": "Pologne russe orientale",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_lublin_ivangorod",
+        "city_lomza_osowiec"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_ivangorod_osowiec"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_warsaw_lomza_grodno",
+        "rail_ru_warsaw_ivangorod_lublin"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_057": {
+      "region_id": "region_057",
+      "name_fr": "Biélorussie",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_minsk",
+        "city_brest_litovsk",
+        "city_vilna_grodno"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_brest_litovsk_grodno"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_riga_libau_romny",
+        "rail_ru_kovno_vilna",
+        "rail_ru_brest_rovno_kiev"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_058": {
+      "region_id": "region_058",
+      "name_fr": "Ukraine occidentale",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_zhitomir_rovno",
+        "city_kamenets_podolski"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_volhynia_triangle"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_zhitomir_kamenets"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_059": {
+      "region_id": "region_059",
+      "name_fr": "Ukraine centrale",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_kiev",
+        "city_kharkov"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_kiev_pechersk"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_brest_rovno_kiev",
+        "rail_ru_kiev_odessa",
+        "rail_ru_kiev_poltava_kharkov",
+        "rail_ru_kharkov_ekaterinoslav",
+        "rail_ru_kharkov_donbass_taganrog"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_060": {
+      "region_id": "region_060",
+      "name_fr": "Ukraine méridionale",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_odessa",
+        "city_ekaterinoslav"
+      ],
+      "major_port_ids": [
+        "city_odessa"
+      ],
+      "fortification_ids": [
+        "fort_ochakov_odessa"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_kiev_odessa",
+        "rail_ru_odessa_kishinev",
+        "rail_ru_kharkov_ekaterinoslav"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_061": {
+      "region_id": "region_061",
+      "name_fr": "Donbass",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_yuzovka_lugansk",
+        "city_taganrog_mariupol"
+      ],
+      "major_port_ids": [
+        "city_taganrog_mariupol"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ru_kharkov_donbass_taganrog",
+        "rail_ru_yuzovka_rostov"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_062": {
+      "region_id": "region_062",
+      "name_fr": "Bessarabie",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_kishinev"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_bender"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_odessa_kishinev"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_063": {
+      "region_id": "region_063",
+      "name_fr": "Crimée",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_sevastopol"
+      ],
+      "major_port_ids": [
+        "city_sevastopol"
+      ],
+      "fortification_ids": [
+        "fort_sevastopol_kerch"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_moscow_tula_kharkov_sevastopol"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_064": {
+      "region_id": "region_064",
+      "name_fr": "Russie du Nord-Ouest",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_st_petersburg",
+        "city_pskov_novgorod"
+      ],
+      "major_port_ids": [
+        "city_st_petersburg"
+      ],
+      "fortification_ids": [
+        "fort_kronstadt"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_helsingfors_viborg_stpetersburg",
+        "rail_ru_stpetersburg_reval",
+        "rail_ru_stpetersburg_pskov_vilna_warsaw",
+        "rail_ru_pskov_riga",
+        "rail_ru_stpetersburg_moscow",
+        "rail_ru_stpetersburg_vologda_perm"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_065": {
+      "region_id": "region_065",
+      "name_fr": "Russie septentrionale",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_arkhangelsk",
+        "city_vologda"
+      ],
+      "major_port_ids": [
+        "city_arkhangelsk"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ru_moscow_vologda_arkhangelsk"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_066": {
+      "region_id": "region_066",
+      "name_fr": "Russie centrale",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_moscow",
+        "city_tula",
+        "city_nizhny_novgorod",
+        "city_smolensk_voronezh"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ru_warsaw_brest_minsk_moscow",
+        "rail_ru_moscow_tula_kharkov_sevastopol",
+        "rail_ru_stpetersburg_moscow",
+        "rail_ru_moscow_vologda_arkhangelsk",
+        "rail_ru_moscow_nizhny_kazan",
+        "rail_ru_moscow_saratov_astrakhan",
+        "rail_ru_moscow_samara_ufa_transsiberian",
+        "rail_ru_moscow_voronezh_rostov"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_067": {
+      "region_id": "region_067",
+      "name_fr": "Volga moyenne",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_kazan",
+        "city_perm_ekaterinburg"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ru_stpetersburg_vologda_perm",
+        "rail_ru_moscow_nizhny_kazan",
+        "rail_ru_moscow_samara_ufa_transsiberian"
+      ],
+      "has_major_port": false,
+      "has_fortification": false,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_068": {
+      "region_id": "region_068",
+      "name_fr": "Volga inférieure",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_saratov_samara",
+        "city_astrakhan_orenburg"
+      ],
+      "major_port_ids": [
+        "city_astrakhan_orenburg"
+      ],
+      "fortification_ids": [],
+      "connected_railway_axis_ids": [
+        "rail_ru_moscow_saratov_astrakhan",
+        "rail_ru_saratov_astrakhan_orenburg"
+      ],
+      "has_major_port": true,
+      "has_fortification": false,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_069": {
+      "region_id": "region_069",
+      "name_fr": "Russie méridionale",
+      "sovereign_1914": "Empire russe",
+      "strategic_site_ids": [
+        "city_rostov_on_don",
+        "city_novorossiysk_ekaterinodar"
+      ],
+      "major_port_ids": [
+        "city_rostov_on_don",
+        "city_novorossiysk_ekaterinodar"
+      ],
+      "fortification_ids": [
+        "fort_kars_vladikavkaz_derbent"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ru_yuzovka_rostov",
+        "rail_ru_moscow_voronezh_rostov",
+        "rail_ru_rostov_novorossiysk_vladikavkaz"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_070": {
+      "region_id": "region_070",
+      "name_fr": "Roumanie méridionale",
+      "sovereign_1914": "Roumanie",
+      "strategic_site_ids": [
+        "city_bucharest",
+        "city_constanta"
+      ],
+      "major_port_ids": [
+        "city_constanta"
+      ],
+      "fortification_ids": [
+        "fort_bucharest_ring"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ro_bucharest_constanta",
+        "rail_ro_bucharest_focsani_iasi"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_071": {
+      "region_id": "region_071",
+      "name_fr": "Roumanie septentrionale",
+      "sovereign_1914": "Roumanie",
+      "strategic_site_ids": [
+        "city_iasi",
+        "city_galati_focsani"
+      ],
+      "major_port_ids": [
+        "city_galati_focsani"
+      ],
+      "fortification_ids": [
+        "fort_focsani_namoloasa_galati"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ro_bucharest_focsani_iasi",
+        "rail_ro_galati_iasi"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_072": {
+      "region_id": "region_072",
+      "name_fr": "Bulgarie occidentale",
+      "sovereign_1914": "Bulgarie",
+      "strategic_site_ids": [
+        "city_sofia"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_sofia_vidin"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_rs_belgrade_nis_sofia",
+        "rail_bg_sofia_plovdiv_edirne",
+        "rail_bg_sofia_pleven_varna"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_073": {
+      "region_id": "region_073",
+      "name_fr": "Bulgarie orientale",
+      "sovereign_1914": "Bulgarie",
+      "strategic_site_ids": [
+        "city_plovdiv",
+        "city_varna_burgas"
+      ],
+      "major_port_ids": [
+        "city_varna_burgas"
+      ],
+      "fortification_ids": [
+        "fort_shumen_varna"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_bg_sofia_pleven_varna",
+        "rail_bg_plovdiv_burgas"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_074": {
+      "region_id": "region_074",
+      "name_fr": "Serbie",
+      "sovereign_1914": "Serbie",
+      "strategic_site_ids": [
+        "city_belgrade",
+        "city_nis_kragujevac",
+        "city_skopje_bitola"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_belgrade_nis"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_rs_belgrade_nis_sofia",
+        "rail_rs_belgrade_nis_skopje_salonika",
+        "rail_gr_salonika_bitola"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_075": {
+      "region_id": "region_075",
+      "name_fr": "Monténégro",
+      "sovereign_1914": "Monténégro",
+      "strategic_site_ids": [
+        "city_cetinje"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_lovcen_cetinje"
+      ],
+      "connected_railway_axis_ids": [],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_076": {
+      "region_id": "region_076",
+      "name_fr": "Albanie",
+      "sovereign_1914": "Albanie",
+      "strategic_site_ids": [
+        "city_durres"
+      ],
+      "major_port_ids": [
+        "city_durres"
+      ],
+      "fortification_ids": [
+        "fort_shkoder_durres"
+      ],
+      "connected_railway_axis_ids": [],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_077": {
+      "region_id": "region_077",
+      "name_fr": "Grèce centrale",
+      "sovereign_1914": "Grèce",
+      "strategic_site_ids": [
+        "city_athens_piraeus"
+      ],
+      "major_port_ids": [
+        "city_athens_piraeus"
+      ],
+      "fortification_ids": [
+        "fort_salamis_piraeus"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_gr_athens_larissa_salonika",
+        "rail_gr_athens_corinth_patras"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_078": {
+      "region_id": "region_078",
+      "name_fr": "Grèce septentrionale",
+      "sovereign_1914": "Grèce",
+      "strategic_site_ids": [
+        "city_salonika",
+        "city_larissa_ioannina"
+      ],
+      "major_port_ids": [
+        "city_salonika"
+      ],
+      "fortification_ids": [
+        "fort_salonika_ioannina"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_rs_belgrade_nis_skopje_salonika",
+        "rail_gr_salonika_bitola",
+        "rail_gr_salonika_dedeagac_edirne",
+        "rail_gr_athens_larissa_salonika"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_079": {
+      "region_id": "region_079",
+      "name_fr": "Grèce méridionale et îles",
+      "sovereign_1914": "Grèce",
+      "strategic_site_ids": [
+        "city_patras",
+        "city_chania_suda"
+      ],
+      "major_port_ids": [
+        "city_patras",
+        "city_chania_suda"
+      ],
+      "fortification_ids": [
+        "fort_suda_bay"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_gr_athens_corinth_patras"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_087": {
+      "region_id": "region_087",
+      "name_fr": "Constantinople et environs",
+      "sovereign_1914": "Empire ottoman",
+      "strategic_site_ids": [
+        "city_constantinople"
+      ],
+      "major_port_ids": [
+        "city_constantinople"
+      ],
+      "fortification_ids": [
+        "fort_bosphorus_constantinople"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ot_edirne_catalca_constantinople",
+        "rail_ot_tekirdag_catalca"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_088": {
+      "region_id": "region_088",
+      "name_fr": "Çatalca et Tekirdağ",
+      "sovereign_1914": "Empire ottoman",
+      "strategic_site_ids": [
+        "city_tekirdag_catalca"
+      ],
+      "major_port_ids": [
+        "city_tekirdag_catalca"
+      ],
+      "fortification_ids": [
+        "fort_catalca_lines"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_ot_tekirdag_catalca"
+      ],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_089": {
+      "region_id": "region_089",
+      "name_fr": "Edirne",
+      "sovereign_1914": "Empire ottoman",
+      "strategic_site_ids": [
+        "city_edirne"
+      ],
+      "major_port_ids": [],
+      "fortification_ids": [
+        "fort_edirne_kirklareli"
+      ],
+      "connected_railway_axis_ids": [
+        "rail_bg_sofia_plovdiv_edirne",
+        "rail_gr_salonika_dedeagac_edirne",
+        "rail_ot_edirne_catalca_constantinople"
+      ],
+      "has_major_port": false,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    },
+    "region_090": {
+      "region_id": "region_090",
+      "name_fr": "Gallipoli et rive européenne des Dardanelles",
+      "sovereign_1914": "Empire ottoman",
+      "strategic_site_ids": [
+        "city_gallipoli"
+      ],
+      "major_port_ids": [
+        "city_gallipoli"
+      ],
+      "fortification_ids": [
+        "fort_dardanelles_gallipoli"
+      ],
+      "connected_railway_axis_ids": [],
+      "has_major_port": true,
+      "has_fortification": true,
+      "source_refs": [
+        "baedeker_bradshaw_1914",
+        "regis_2026_v1"
+      ]
+    }
+  },
+  "railways": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "rail_dk_copenhagen_aarhus",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              12.565611,
+              55.678156
+            ],
+            [
+              10.2039,
+              56.1629
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_dk_copenhagen_aarhus",
+          "name_fr": "Danske Statsbaner DSB (Copenhague — Korsør/Nyborg — Odense — Fredericia — Aarhus / Esbjerg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_044",
+          "to_region_id": "region_044",
+          "from_site_id": "city_copenhagen",
+          "to_site_id": "city_aarhus",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_sc_copenhagen_malmo_stockholm",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              12.565611,
+              55.678156
+            ],
+            [
+              18.068627,
+              59.327128
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_sc_copenhagen_malmo_stockholm",
+          "name_fr": "Södra stambanan & ferry de l'Øresund (Copenhague — Malmö — Nässjö — Linköping — Stockholm)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_044",
+          "to_region_id": "region_049",
+          "from_site_id": "city_copenhagen",
+          "to_site_id": "city_stockholm",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_se_malmo_gothenburg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              13.0038,
+              55.605
+            ],
+            [
+              11.9746,
+              57.7089
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_se_malmo_gothenburg",
+          "name_fr": "Västkustbanan (Malmö — Helsingborg — Halmstad — Göteborg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_048",
+          "to_region_id": "region_048",
+          "from_site_id": "city_malmo_karlskrona",
+          "to_site_id": "city_gothenburg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_sc_gothenburg_christiania",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              11.9746,
+              57.7089
+            ],
+            [
+              10.7522,
+              59.9139
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_sc_gothenburg_christiania",
+          "name_fr": "Smaalensbanen / Bohus-Dalslandsbanan (Göteborg — Halden — Christiania)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_048",
+          "to_region_id": "region_045",
+          "from_site_id": "city_gothenburg",
+          "to_site_id": "city_christiania",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_se_gothenburg_stockholm",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              11.9746,
+              57.7089
+            ],
+            [
+              18.068627,
+              59.327128
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_se_gothenburg_stockholm",
+          "name_fr": "Västra stambanan (Göteborg — Skövde — Hallsberg/Örebro — Stockholm)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_048",
+          "to_region_id": "region_049",
+          "from_site_id": "city_gothenburg",
+          "to_site_id": "city_stockholm",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_sc_christiania_stockholm",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              10.7522,
+              59.9139
+            ],
+            [
+              18.068627,
+              59.327128
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_sc_christiania_stockholm",
+          "name_fr": "Kongsvingerbanen & Nordvästra stambanan (Christiania — Charlottenberg — Karlstad — Örebro — Stockholm)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_045",
+          "to_region_id": "region_049",
+          "from_site_id": "city_christiania",
+          "to_site_id": "city_stockholm",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_no_bergensbanen",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              10.7522,
+              59.9139
+            ],
+            [
+              5.3221,
+              60.3913
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_no_bergensbanen",
+          "name_fr": "Bergensbanen (Christiania — Drammen — Finse — Voss — Bergen, inaugurée en 1909)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_045",
+          "to_region_id": "region_046",
+          "from_site_id": "city_christiania",
+          "to_site_id": "city_bergen",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_no_roros_trondhjem",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              10.7522,
+              59.9139
+            ],
+            [
+              10.3951,
+              63.4305
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_no_roros_trondhjem",
+          "name_fr": "Rørosbanen & Gudbrandsdalsbanen (Christiania — Hamar — Røros — Trondhjem)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_045",
+          "to_region_id": "region_046",
+          "from_site_id": "city_christiania",
+          "to_site_id": "city_trondhjem",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_sc_trondhjem_sundsvall",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              10.3951,
+              63.4305
+            ],
+            [
+              17.1413,
+              60.6749
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_sc_trondhjem_sundsvall",
+          "name_fr": "Meråkerbanen & Mittbanan (Trondhjem — Storlien — Östersund — Sundsvall/Gävle)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_046",
+          "to_region_id": "region_050",
+          "from_site_id": "city_trondhjem",
+          "to_site_id": "city_sundsvall_gavle",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_se_stockholm_gavle_lulea",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              18.068627,
+              59.327128
+            ],
+            [
+              22.1567,
+              65.5848
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_se_stockholm_gavle_lulea",
+          "name_fr": "Norra stambanan & Stambanan genom övre Norrland (Stockholm — Uppsala — Gävle — Bräcke — Boden — Luleå)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_049",
+          "to_region_id": "region_050",
+          "from_site_id": "city_stockholm",
+          "to_site_id": "city_lulea_boden",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_sc_lulea_narvik",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              22.1567,
+              65.5848
+            ],
+            [
+              17.4272,
+              68.4385
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_sc_lulea_narvik",
+          "name_fr": "Malmbanan / Ofotbanen — ligne stratégique du minerai de fer (Luleå — Boden — Kiruna — Riksgränsen — Narvik)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_050",
+          "to_region_id": "region_047",
+          "from_site_id": "city_lulea_boden",
+          "to_site_id": "city_narvik",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_helsingfors_viborg_stpetersburg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              24.9384,
+              60.1699
+            ],
+            [
+              30.3351,
+              59.9343
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_helsingfors_viborg_stpetersburg",
+          "name_fr": "Chemins de fer de l'État de Finlande (Helsingfors — Riihimäki — Viborg — Beloostrov — Saint-Pétersbourg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_052",
+          "to_region_id": "region_064",
+          "from_site_id": "city_helsingfors",
+          "to_site_id": "city_st_petersburg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_stpetersburg_reval",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              30.3351,
+              59.9343
+            ],
+            [
+              24.7536,
+              59.437
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_stpetersburg_reval",
+          "name_fr": "Chemin de fer de la Baltique (Saint-Pétersbourg — Gatchina — Narva — Reval / Port Pierre-le-Grand)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_064",
+          "to_region_id": "region_053",
+          "from_site_id": "city_st_petersburg",
+          "to_site_id": "city_reval",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_stpetersburg_pskov_vilna_warsaw",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              30.3351,
+              59.9343
+            ],
+            [
+              21.0122,
+              52.2297
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_stpetersburg_pskov_vilna_warsaw",
+          "name_fr": "Chemin de fer Saint-Pétersbourg — Varsovie (Saint-Pétersbourg — Pskov — Dvinsk — Vilna — Grodno — Białystok — Varsovie)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_064",
+          "to_region_id": "region_055",
+          "from_site_id": "city_st_petersburg",
+          "to_site_id": "city_warsaw",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_pskov_riga",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              28.3344,
+              57.8193
+            ],
+            [
+              24.1052,
+              56.9496
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_pskov_riga",
+          "name_fr": "Ligne Pskov — Walk (Valga) — Riga",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_064",
+          "to_region_id": "region_053",
+          "from_site_id": "city_pskov_novgorod",
+          "to_site_id": "city_riga",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_riga_libau_romny",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              21.0108,
+              56.5047
+            ],
+            [
+              27.5615,
+              53.9006
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_riga_libau_romny",
+          "name_fr": "Chemin de fer Libau — Romny (Libau — Mitau/Riga — Dvinsk/Vilna — Minsk — Homel)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_054",
+          "to_region_id": "region_057",
+          "from_site_id": "city_libau",
+          "to_site_id": "city_minsk",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_kovno_vilna",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              23.9036,
+              54.8985
+            ],
+            [
+              25.2797,
+              54.6872
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_kovno_vilna",
+          "name_fr": "Branche frontalière Eydtkuhnen (Prusse) — Kovno — Vilna",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_054",
+          "to_region_id": "region_057",
+          "from_site_id": "city_kovno",
+          "to_site_id": "city_vilna_grodno",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_warsaw_lodz",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              21.0122,
+              52.2297
+            ],
+            [
+              19.456,
+              51.7592
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_warsaw_lodz",
+          "name_fr": "Chemin de fer Varsovie — Vienne & branche industrielle de Łódź / Kalisz",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_055",
+          "to_region_id": "region_055",
+          "from_site_id": "city_warsaw",
+          "to_site_id": "city_lodz",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_warsaw_lomza_grodno",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              21.0122,
+              52.2297
+            ],
+            [
+              22.0725,
+              53.1781
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_warsaw_lomza_grodno",
+          "name_fr": "Axe fortifié de la Narew (Varsovie/Modlin — Ostrołęka — Łomża — Ossovets — Grodno)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_055",
+          "to_region_id": "region_056",
+          "from_site_id": "city_warsaw",
+          "to_site_id": "city_lomza_osowiec",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_warsaw_ivangorod_lublin",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              21.0122,
+              52.2297
+            ],
+            [
+              22.5684,
+              51.2465
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_warsaw_ivangorod_lublin",
+          "name_fr": "Chemin de fer de la Vistule (Varsovie — Ivangorod/Dęblin — Lublin — Kholm — Kovel)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_055",
+          "to_region_id": "region_056",
+          "from_site_id": "city_warsaw",
+          "to_site_id": "city_lublin_ivangorod",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_warsaw_brest_minsk_moscow",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              21.0122,
+              52.2297
+            ],
+            [
+              37.6173,
+              55.7558
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_warsaw_brest_minsk_moscow",
+          "name_fr": "Magistrale Alexandre Moscou — Brest (Varsovie — Siedlce — Brest-Litovsk — Baranovitchi — Minsk — Orcha — Smolensk — Moscou)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_055",
+          "to_region_id": "region_066",
+          "from_site_id": "city_warsaw",
+          "to_site_id": "city_moscow",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_brest_rovno_kiev",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              23.6877,
+              52.0976
+            ],
+            [
+              30.5234,
+              50.4501
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_brest_rovno_kiev",
+          "name_fr": "Chemins de fer du Sud-Ouest (Brest-Litovsk — Kovel — Rovno — Berditchev/Kazatine — Kiev)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_057",
+          "to_region_id": "region_059",
+          "from_site_id": "city_brest_litovsk",
+          "to_site_id": "city_kiev",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_zhitomir_kamenets",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              28.6587,
+              50.2547
+            ],
+            [
+              26.5852,
+              48.6788
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_zhitomir_kamenets",
+          "name_fr": "Réseau stratégique de Volhynie-Podolie (Rovno/Chepetovka — Proskourov — Kamenets-Podolski face à la Galicie)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_058",
+          "to_region_id": "region_058",
+          "from_site_id": "city_zhitomir_rovno",
+          "to_site_id": "city_kamenets_podolski",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_kiev_odessa",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              30.5234,
+              50.4501
+            ],
+            [
+              30.7233,
+              46.4825
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_kiev_odessa",
+          "name_fr": "Magistrale des Chemins de fer du Sud-Ouest (Kiev — Kazatine — Jmerinka — Birzula — Odessa)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_059",
+          "to_region_id": "region_060",
+          "from_site_id": "city_kiev",
+          "to_site_id": "city_odessa",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_odessa_kishinev",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              30.7233,
+              46.4825
+            ],
+            [
+              28.8638,
+              47.0105
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_odessa_kishinev",
+          "name_fr": "Ligne de Bessarabie (Odessa — Tiraspol — Bender — Kichinev — Ungheni/Iași)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_060",
+          "to_region_id": "region_062",
+          "from_site_id": "city_odessa",
+          "to_site_id": "city_kishinev",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_kiev_poltava_kharkov",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              30.5234,
+              50.4501
+            ],
+            [
+              36.2304,
+              49.9935
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_kiev_poltava_kharkov",
+          "name_fr": "Ligne transversale ukrainienne (Kiev — Poltava — Kharkov)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_059",
+          "to_region_id": "region_059",
+          "from_site_id": "city_kiev",
+          "to_site_id": "city_kharkov",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_moscow_tula_kharkov_sevastopol",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              37.6173,
+              55.7558
+            ],
+            [
+              33.5254,
+              44.6166
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_moscow_tula_kharkov_sevastopol",
+          "name_fr": "Magistrale du Sud (Moscou — Toula — Orel — Koursk — Kharkov — Lozovaïa — Mélitopol — Simferopol — Sébastopol)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_066",
+          "to_region_id": "region_063",
+          "from_site_id": "city_moscow",
+          "to_site_id": "city_sevastopol",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_kharkov_ekaterinoslav",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              36.2304,
+              49.9935
+            ],
+            [
+              35.0462,
+              48.4647
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_kharkov_ekaterinoslav",
+          "name_fr": "Ligne Kharkov — Lozovaïa — Sinelnikovo — Ekaterinoslav — Krivoï Rog",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_059",
+          "to_region_id": "region_060",
+          "from_site_id": "city_kharkov",
+          "to_site_id": "city_ekaterinoslav",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_kharkov_donbass_taganrog",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              36.2304,
+              49.9935
+            ],
+            [
+              37.8028,
+              48.0159
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_kharkov_donbass_taganrog",
+          "name_fr": "Réseau industriel du Donets / Catherine (Kharkov — Koupiansk/Slaviansk — Lougansk — Bakhmout — Iouzovka — Marioupol/Taganrog)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_059",
+          "to_region_id": "region_061",
+          "from_site_id": "city_kharkov",
+          "to_site_id": "city_yuzovka_lugansk",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_yuzovka_rostov",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              37.8028,
+              48.0159
+            ],
+            [
+              39.7015,
+              47.2357
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_yuzovka_rostov",
+          "name_fr": "Ligne du Donets inférieur (Iouzovka — Taganrog — Rostov-sur-le-Don)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_061",
+          "to_region_id": "region_069",
+          "from_site_id": "city_yuzovka_lugansk",
+          "to_site_id": "city_rostov_on_don",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_stpetersburg_moscow",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              30.3351,
+              59.9343
+            ],
+            [
+              37.6173,
+              55.7558
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_stpetersburg_moscow",
+          "name_fr": "Chemin de fer Nicolas (Saint-Pétersbourg — Bologoïé — Tver — Moscou)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_064",
+          "to_region_id": "region_066",
+          "from_site_id": "city_st_petersburg",
+          "to_site_id": "city_moscow",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_stpetersburg_vologda_perm",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              30.3351,
+              59.9343
+            ],
+            [
+              56.2294,
+              58.0105
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_stpetersburg_vologda_perm",
+          "name_fr": "Chemin de fer du Nord (Saint-Pétersbourg — Tcherepovets — Vologda — Viatka — Perm — Ekaterinbourg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_064",
+          "to_region_id": "region_067",
+          "from_site_id": "city_st_petersburg",
+          "to_site_id": "city_perm_ekaterinburg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_moscow_vologda_arkhangelsk",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              37.6173,
+              55.7558
+            ],
+            [
+              40.5152,
+              64.5393
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_moscow_vologda_arkhangelsk",
+          "name_fr": "Chemin de fer du Nord vers la mer Blanche (Moscou — Iaroslavl — Vologda — Arkhangelsk)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_066",
+          "to_region_id": "region_065",
+          "from_site_id": "city_moscow",
+          "to_site_id": "city_arkhangelsk",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_moscow_nizhny_kazan",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              37.6173,
+              55.7558
+            ],
+            [
+              49.1064,
+              55.7961
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_moscow_nizhny_kazan",
+          "name_fr": "Ligne Moscou — Vladimir — Nijni Novgorod / Moscou — Mourom — Kazan",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_066",
+          "to_region_id": "region_067",
+          "from_site_id": "city_moscow",
+          "to_site_id": "city_kazan",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_moscow_saratov_astrakhan",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              37.6173,
+              55.7558
+            ],
+            [
+              46.0342,
+              51.5336
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_moscow_saratov_astrakhan",
+          "name_fr": "Chemin de fer Riazan — Oural (Moscou — Riazan — Tambov — Rtichtchevo — Saratov — Astrakhan)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_066",
+          "to_region_id": "region_068",
+          "from_site_id": "city_moscow",
+          "to_site_id": "city_saratov_samara",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_moscow_samara_ufa_transsiberian",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              37.6173,
+              55.7558
+            ],
+            [
+              56.2294,
+              58.0105
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_moscow_samara_ufa_transsiberian",
+          "name_fr": "Magistrale Transsibérienne / Samara — Zlatoust (Moscou — Riazan — Syzran — Samara — Oufa — Tcheliabinsk / Ekaterinbourg)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_066",
+          "to_region_id": "region_067",
+          "from_site_id": "city_moscow",
+          "to_site_id": "city_perm_ekaterinburg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_saratov_astrakhan_orenburg",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              46.0342,
+              51.5336
+            ],
+            [
+              48.0408,
+              46.3497
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_saratov_astrakhan_orenburg",
+          "name_fr": "Lignes de la Basse-Volga et de Tachkent (Samara — Orenbourg et Saratov — Astrakhan)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_068",
+          "to_region_id": "region_068",
+          "from_site_id": "city_saratov_samara",
+          "to_site_id": "city_astrakhan_orenburg",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_moscow_voronezh_rostov",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              37.6173,
+              55.7558
+            ],
+            [
+              39.7015,
+              47.2357
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_moscow_voronezh_rostov",
+          "name_fr": "Chemin de fer du Sud-Est (Moscou — Riazan — Kozlov — Voronej — Millerovo — Novotcherkassk — Rostov-sur-le-Don)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_066",
+          "to_region_id": "region_069",
+          "from_site_id": "city_moscow",
+          "to_site_id": "city_rostov_on_don",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ru_rostov_novorossiysk_vladikavkaz",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              39.7015,
+              47.2357
+            ],
+            [
+              37.7689,
+              44.7239
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ru_rostov_novorossiysk_vladikavkaz",
+          "name_fr": "Chemin de fer de Vladikavkaz (Rostov-sur-le-Don — Tikhoretskaïa — Ekaterinodar — Novorossiïsk et Mineralnye Vody — Grozny — Derbent — Bakou)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_069",
+          "to_region_id": "region_069",
+          "from_site_id": "city_rostov_on_don",
+          "to_site_id": "city_novorossiysk_ekaterinodar",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ro_bucharest_constanta",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              26.1025,
+              44.4268
+            ],
+            [
+              28.6348,
+              44.1792
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ro_bucharest_constanta",
+          "name_fr": "CFR Ligne de la Mer Noire et pont Carol Ier de Cernavodă (Bucarest — Fetești — Cernavodă — Constanța)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_070",
+          "to_region_id": "region_070",
+          "from_site_id": "city_bucharest",
+          "to_site_id": "city_constanta",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ro_bucharest_focsani_iasi",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              26.1025,
+              44.4268
+            ],
+            [
+              27.6014,
+              47.1585
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ro_bucharest_focsani_iasi",
+          "name_fr": "CFR Magistrale de Moldavie (Bucarest — Ploiești — Buzău — Focșani — Roman — Iași / Galați)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_070",
+          "to_region_id": "region_071",
+          "from_site_id": "city_bucharest",
+          "to_site_id": "city_iasi",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ro_galati_iasi",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              28.0425,
+              45.4353
+            ],
+            [
+              27.6014,
+              47.1585
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ro_galati_iasi",
+          "name_fr": "CFR Ligne du Prout et du Siret (Galați — Bârlad — Vaslui — Iași)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_071",
+          "to_region_id": "region_071",
+          "from_site_id": "city_galati_focsani",
+          "to_site_id": "city_iasi",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_rs_belgrade_nis_sofia",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              20.4489,
+              44.7866
+            ],
+            [
+              23.3219,
+              42.6977
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_rs_belgrade_nis_sofia",
+          "name_fr": "Axe de l'Orient-Express (Belgrade — Velika Plana — Niš — Pirot — Tsaribrod — Sofia)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_074",
+          "to_region_id": "region_072",
+          "from_site_id": "city_belgrade",
+          "to_site_id": "city_sofia",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_bg_sofia_plovdiv_edirne",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              23.3219,
+              42.6977
+            ],
+            [
+              26.5557,
+              41.6771
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_bg_sofia_plovdiv_edirne",
+          "name_fr": "Chemins de fer de l'État bulgare BDŽ & Chemin de fer d'Orient (Sofia — Ihtiman — Plovdiv — Svilengrad — Edirne)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_072",
+          "to_region_id": "region_089",
+          "from_site_id": "city_sofia",
+          "to_site_id": "city_edirne",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_bg_sofia_pleven_varna",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              23.3219,
+              42.6977
+            ],
+            [
+              27.9147,
+              43.2141
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_bg_sofia_pleven_varna",
+          "name_fr": "BDŽ Magistrale du Nord bulgare (Sofia — Mezdra — Pleven — Gorna Oryahovitsa — Choumen — Varna)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_072",
+          "to_region_id": "region_073",
+          "from_site_id": "city_sofia",
+          "to_site_id": "city_varna_burgas",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_bg_plovdiv_burgas",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              24.7453,
+              42.1354
+            ],
+            [
+              27.9147,
+              43.2141
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_bg_plovdiv_burgas",
+          "name_fr": "BDŽ Ligne de Thrace du Nord (Plovdiv — Stara Zagora — Yambol — Bourgas)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_073",
+          "to_region_id": "region_073",
+          "from_site_id": "city_plovdiv",
+          "to_site_id": "city_varna_burgas",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_rs_belgrade_nis_skopje_salonika",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              20.4489,
+              44.7866
+            ],
+            [
+              22.9444,
+              40.6401
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_rs_belgrade_nis_skopje_salonika",
+          "name_fr": "Magistrale Morava — Vardar (Belgrade — Niš — Leskovac — Vranje — Kumanovo — Skopje — Vélès — Gevgelija — Salonique)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_074",
+          "to_region_id": "region_078",
+          "from_site_id": "city_belgrade",
+          "to_site_id": "city_salonika",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_gr_salonika_bitola",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              22.9444,
+              40.6401
+            ],
+            [
+              21.4254,
+              41.9981
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_gr_salonika_bitola",
+          "name_fr": "Ligne de Macédoine occidentale (Salonique — Édessa — Florina — Monastir/Bitola)",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_078",
+          "to_region_id": "region_074",
+          "from_site_id": "city_salonika",
+          "to_site_id": "city_skopje_bitola",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_gr_salonika_dedeagac_edirne",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              22.9444,
+              40.6401
+            ],
+            [
+              26.5557,
+              41.6771
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_gr_salonika_dedeagac_edirne",
+          "name_fr": "Ligne de Jonction Salonique — Constantinople JSC (Salonique — Serrès — Drama — Xanthi — Gümülcine — Dedeağaç — Pythion — Edirne)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_078",
+          "to_region_id": "region_089",
+          "from_site_id": "city_salonika",
+          "to_site_id": "city_edirne",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_gr_athens_larissa_salonika",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              23.7275,
+              37.9838
+            ],
+            [
+              22.4191,
+              39.639
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_gr_athens_larissa_salonika",
+          "name_fr": "Chemins de fer helléniques (Le Pirée — Athènes — Thèbes — Lamia — Larissa ; jonction Papapouli — Platy en travaux/achèvement 1914-1916)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_077",
+          "to_region_id": "region_078",
+          "from_site_id": "city_athens_piraeus",
+          "to_site_id": "city_larissa_ioannina",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_gr_athens_corinth_patras",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              23.7275,
+              37.9838
+            ],
+            [
+              21.746429,
+              38.235187
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_gr_athens_corinth_patras",
+          "name_fr": "SPAP (Le Pirée — Athènes — Canal de Corinthe — Patras / Kalamata)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_077",
+          "to_region_id": "region_079",
+          "from_site_id": "city_athens_piraeus",
+          "to_site_id": "city_patras",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ot_edirne_catalca_constantinople",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              26.5557,
+              41.6771
+            ],
+            [
+              28.9784,
+              41.0082
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ot_edirne_catalca_constantinople",
+          "name_fr": "Chemin de fer d'Orient (Edirne — Babaeski — Lüleburgaz — Çorlu — Çatalca — Constantinople Sirkeci)",
+          "network_type": "railway",
+          "network_class": "main",
+          "is_major_axis": true,
+          "from_region_id": "region_089",
+          "to_region_id": "region_087",
+          "from_site_id": "city_edirne",
+          "to_site_id": "city_constantinople",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "rail_ot_tekirdag_catalca",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              27.5117,
+              40.9833
+            ],
+            [
+              28.9784,
+              41.0082
+            ]
+          ]
+        },
+        "properties": {
+          "id": "rail_ot_tekirdag_catalca",
+          "name_fr": "Branche Muratlı — Tekirdağ (Rodosto) — Çatalca — Constantinople",
+          "network_type": "railway",
+          "network_class": "secondary",
+          "is_major_axis": false,
+          "from_region_id": "region_088",
+          "to_region_id": "region_087",
+          "from_site_id": "city_tekirdag_catalca",
+          "to_site_id": "city_constantinople",
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      }
+    ]
+  },
+  "major_ports": [
+    {
+      "id": "city_copenhagen",
+      "name_fr": "Copenhague",
+      "name_key": "site.city_copenhagen.name",
+      "region_id": "region_044",
+      "sovereign_1914": "Danemark",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        12.565611,
+        55.678156
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_aarhus",
+      "name_fr": "Aarhus (Esbjerg)",
+      "name_key": "site.city_aarhus.name",
+      "region_id": "region_044",
+      "sovereign_1914": "Danemark",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        10.2039,
+        56.1629
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_christiania",
+      "name_fr": "Christiania (Oslo)",
+      "name_key": "site.city_christiania.name",
+      "region_id": "region_045",
+      "sovereign_1914": "Norvège",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        10.7522,
+        59.9139
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_kristiansand",
+      "name_fr": "Kristiansand (Horten)",
+      "name_key": "site.city_kristiansand.name",
+      "region_id": "region_045",
+      "sovereign_1914": "Norvège",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        7.9956,
+        58.1599
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_bergen",
+      "name_fr": "Bergen",
+      "name_key": "site.city_bergen.name",
+      "region_id": "region_046",
+      "sovereign_1914": "Norvège",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        5.3221,
+        60.3913
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_trondhjem",
+      "name_fr": "Trondhjem (Trondheim)",
+      "name_key": "site.city_trondhjem.name",
+      "region_id": "region_046",
+      "sovereign_1914": "Norvège",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        10.3951,
+        63.4305
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_narvik",
+      "name_fr": "Narvik (Tromsø)",
+      "name_key": "site.city_narvik.name",
+      "region_id": "region_047",
+      "sovereign_1914": "Norvège",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        17.4272,
+        68.4385
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_gothenburg",
+      "name_fr": "Göteborg",
+      "name_key": "site.city_gothenburg.name",
+      "region_id": "region_048",
+      "sovereign_1914": "Suède",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        11.9746,
+        57.7089
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_malmo_karlskrona",
+      "name_fr": "Malmö (Karlskrona)",
+      "name_key": "site.city_malmo_karlskrona.name",
+      "region_id": "region_048",
+      "sovereign_1914": "Suède",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        13.0038,
+        55.605
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_stockholm",
+      "name_fr": "Stockholm",
+      "name_key": "site.city_stockholm.name",
+      "region_id": "region_049",
+      "sovereign_1914": "Suède",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        18.068627,
+        59.327128
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_lulea_boden",
+      "name_fr": "Luleå (Boden / Kiruna)",
+      "name_key": "site.city_lulea_boden.name",
+      "region_id": "region_050",
+      "sovereign_1914": "Suède",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        22.1567,
+        65.5848
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_sundsvall_gavle",
+      "name_fr": "Gävle (Sundsvall)",
+      "name_key": "site.city_sundsvall_gavle.name",
+      "region_id": "region_050",
+      "sovereign_1914": "Suède",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        17.1413,
+        60.6749
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_reykjavik",
+      "name_fr": "Reykjavik",
+      "name_key": "site.city_reykjavik.name",
+      "region_id": "region_051",
+      "sovereign_1914": "Danemark",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        -21.9426,
+        64.1466
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_helsingfors",
+      "name_fr": "Helsingfors (Helsinki / Sveaborg)",
+      "name_key": "site.city_helsingfors.name",
+      "region_id": "region_052",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.9384,
+        60.1699
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_viborg_abo",
+      "name_fr": "Viborg (Viipuri / Åbo)",
+      "name_key": "site.city_viborg_abo.name",
+      "region_id": "region_052",
+      "sovereign_1914": "Empire russe",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.7497,
+        60.7107
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_riga",
+      "name_fr": "Riga (Dünamünde)",
+      "name_key": "site.city_riga.name",
+      "region_id": "region_053",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.1052,
+        56.9496
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_reval",
+      "name_fr": "Reval (Tallinn)",
+      "name_key": "site.city_reval.name",
+      "region_id": "region_053",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.7536,
+        59.437
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_libau",
+      "name_fr": "Libau (Liepāja)",
+      "name_key": "site.city_libau.name",
+      "region_id": "region_054",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        21.0108,
+        56.5047
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_odessa",
+      "name_fr": "Odessa (Nikolaïev)",
+      "name_key": "site.city_odessa.name",
+      "region_id": "region_060",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        30.7233,
+        46.4825
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_taganrog_mariupol",
+      "name_fr": "Taganrog (Marioupol)",
+      "name_key": "site.city_taganrog_mariupol.name",
+      "region_id": "region_061",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        38.814422,
+        47.287748
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_sevastopol",
+      "name_fr": "Sébastopol (Simferopol / Kertch)",
+      "name_key": "site.city_sevastopol.name",
+      "region_id": "region_063",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        33.5254,
+        44.6166
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_st_petersburg",
+      "name_fr": "Saint-Pétersbourg (Kronstadt)",
+      "name_key": "site.city_st_petersburg.name",
+      "region_id": "region_064",
+      "sovereign_1914": "Empire russe",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        30.3351,
+        59.9343
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_arkhangelsk",
+      "name_fr": "Arkhangelsk",
+      "name_key": "site.city_arkhangelsk.name",
+      "region_id": "region_065",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        40.5152,
+        64.5393
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_astrakhan_orenburg",
+      "name_fr": "Astrakhan (Orenbourg)",
+      "name_key": "site.city_astrakhan_orenburg.name",
+      "region_id": "region_068",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        48.0408,
+        46.3497
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_rostov_on_don",
+      "name_fr": "Rostov-sur-le-Don (Novotcherkassk)",
+      "name_key": "site.city_rostov_on_don.name",
+      "region_id": "region_069",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        39.7015,
+        47.2357
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_novorossiysk_ekaterinodar",
+      "name_fr": "Novorossiïsk (Ekaterinodar / Vladikavkaz)",
+      "name_key": "site.city_novorossiysk_ekaterinodar.name",
+      "region_id": "region_069",
+      "sovereign_1914": "Empire russe",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        37.7689,
+        44.7239
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_constanta",
+      "name_fr": "Constanța (Cernavodă)",
+      "name_key": "site.city_constanta.name",
+      "region_id": "region_070",
+      "sovereign_1914": "Roumanie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.6348,
+        44.1792
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_galati_focsani",
+      "name_fr": "Galați (Focșani)",
+      "name_key": "site.city_galati_focsani.name",
+      "region_id": "region_071",
+      "sovereign_1914": "Roumanie",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        28.0425,
+        45.4353
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_varna_burgas",
+      "name_fr": "Varna (Bourgas / Choumen / Dedeağaç)",
+      "name_key": "site.city_varna_burgas.name",
+      "region_id": "region_073",
+      "sovereign_1914": "Bulgarie",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        27.9147,
+        43.2141
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_durres",
+      "name_fr": "Durrës (Scutari / Vlora)",
+      "name_key": "site.city_durres.name",
+      "region_id": "region_076",
+      "sovereign_1914": "Albanie",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        19.4564,
+        41.3246
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_athens_piraeus",
+      "name_fr": "Athènes (Le Pirée)",
+      "name_key": "site.city_athens_piraeus.name",
+      "region_id": "region_077",
+      "sovereign_1914": "Grèce",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        23.7275,
+        37.9838
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_salonika",
+      "name_fr": "Salonique (Thessalonique / Kavala)",
+      "name_key": "site.city_salonika.name",
+      "region_id": "region_078",
+      "sovereign_1914": "Grèce",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        22.9444,
+        40.6401
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_patras",
+      "name_fr": "Patras (Corinthe)",
+      "name_key": "site.city_patras.name",
+      "region_id": "region_079",
+      "sovereign_1914": "Grèce",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        21.746429,
+        38.235187
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_chania_suda",
+      "name_fr": "La Canée (Baie de la Soude / Syros / Moudros)",
+      "name_key": "site.city_chania_suda.name",
+      "region_id": "region_079",
+      "sovereign_1914": "Grèce",
+      "site_type": "major_port",
+      "strategic_roles": [
+        "major_port",
+        "fortress"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        24.025536,
+        35.499895
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_constantinople",
+      "name_fr": "Constantinople (Istanbul)",
+      "name_key": "site.city_constantinople.name",
+      "region_id": "region_087",
+      "sovereign_1914": "Empire ottoman",
+      "site_type": "capital",
+      "strategic_roles": [
+        "capital",
+        "major_port",
+        "industrial_centre",
+        "fortress",
+        "railway_hub"
+      ],
+      "is_capital": true,
+      "capital_names_always_visible": true,
+      "coordinates": [
+        28.9784,
+        41.0082
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_tekirdag_catalca",
+      "name_fr": "Tekirdağ (Rodosto / Çatalca / Çorlu)",
+      "name_key": "site.city_tekirdag_catalca.name",
+      "region_id": "region_088",
+      "sovereign_1914": "Empire ottoman",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port",
+        "railway_hub"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        27.5117,
+        40.9833
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    },
+    {
+      "id": "city_gallipoli",
+      "name_fr": "Gallipoli (Gelibolu / Kilidulbahir)",
+      "name_key": "site.city_gallipoli.name",
+      "region_id": "region_090",
+      "sovereign_1914": "Empire ottoman",
+      "site_type": "fortress",
+      "strategic_roles": [
+        "fortress",
+        "major_port"
+      ],
+      "is_capital": false,
+      "capital_names_always_visible": false,
+      "coordinates": [
+        26.6708,
+        40.4103
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1",
+        "baedeker_bradshaw_1914"
+      ]
+    }
+  ],
+  "fortifications": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "fort_copenhagen",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            12.565611,
+            55.678156
+          ]
+        },
+        "properties": {
+          "id": "fort_copenhagen",
+          "name_fr": "Befæstning de Copenhague (Vestvolden, forts terrestres et maritimes de Middelgrunden/Flakfortet)",
+          "name_key": "fort.fort_copenhagen.name",
+          "region_id": "region_044",
+          "sovereign_1914": "Danemark",
+          "historical_type": "capital_and_coastal_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_oscarsborg_grense",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            10.618845,
+            59.676674
+          ]
+        },
+        "properties": {
+          "id": "fort_oscarsborg_grense",
+          "name_fr": "Forteresse maritime d'Oscarsborg (Oslofjord) et forts frontaliers de Fredriksten/Kongsvinger",
+          "name_key": "fort.fort_oscarsborg_grense.name",
+          "region_id": "region_045",
+          "sovereign_1914": "Norvège",
+          "historical_type": "coastal_and_border_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_bergen_agdenes",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            5.241,
+            60.398
+          ]
+        },
+        "properties": {
+          "id": "fort_bergen_agdenes",
+          "name_fr": "Défenses côtières de Bergen (Kvarven) et du fjord de Trondhjem (Agdenes)",
+          "name_key": "fort.fort_bergen_agdenes.name",
+          "region_id": "region_046",
+          "sovereign_1914": "Norvège",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_karlskrona_gothenburg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.591184,
+            56.173683
+          ]
+        },
+        "properties": {
+          "id": "fort_karlskrona_gothenburg",
+          "name_fr": "Base navale fortifiée de Karlskrona et forteresse d'Älvsborg (Göteborg)",
+          "name_key": "fort.fort_karlskrona_gothenburg.name",
+          "region_id": "region_048",
+          "sovereign_1914": "Suède",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_vaxholm_stockholm",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            18.349497,
+            59.410257
+          ]
+        },
+        "properties": {
+          "id": "fort_vaxholm_stockholm",
+          "name_fr": "Ligne fortifiée de Vaxholm et de l'archipel de Stockholm",
+          "name_key": "fort.fort_vaxholm_stockholm.name",
+          "region_id": "region_049",
+          "sovereign_1914": "Suède",
+          "historical_type": "coastal_archipelago_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_boden",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            21.6886,
+            65.8252
+          ]
+        },
+        "properties": {
+          "id": "fort_boden",
+          "name_fr": "Forteresse de Boden (Bodens fästning — « Gibraltar du Nord » protégeant la ligne du minerai)",
+          "name_key": "fort.fort_boden.name",
+          "region_id": "region_050",
+          "sovereign_1914": "Suède",
+          "historical_type": "modern_armored_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_sveaborg_vyborg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            24.983102,
+            60.151311
+          ]
+        },
+        "properties": {
+          "id": "fort_sveaborg_vyborg",
+          "name_fr": "Forteresse maritime de Sveaborg (Viapori/Helsingfors), Forteresse de Pierre-le-Grand et place forte de Viborg",
+          "name_key": "fort.fort_sveaborg_vyborg.name",
+          "region_id": "region_052",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_reval_ust_dvinsk",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            24.7536,
+            59.437
+          ]
+        },
+        "properties": {
+          "id": "fort_reval_ust_dvinsk",
+          "name_fr": "Forteresse navale Pierre-le-Grand de Reval (Tallinn) et forteresse d'Oust-Dvinsk (Dünamünde / Riga)",
+          "name_key": "fort.fort_reval_ust_dvinsk.name",
+          "region_id": "region_053",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_kovno_libau",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            23.9036,
+            54.8985
+          ]
+        },
+        "properties": {
+          "id": "fort_kovno_libau",
+          "name_fr": "Forteresse de 1re classe de Kovno (Kaunas) et port militaire fortifié de Libau",
+          "name_key": "fort.fort_kovno_libau.name",
+          "region_id": "region_054",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "first_class_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_warsaw_novogeorgievsk",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            20.7167,
+            52.4383
+          ]
+        },
+        "properties": {
+          "id": "fort_warsaw_novogeorgievsk",
+          "name_fr": "Triangle fortifié de la Vistule : Citadelle de Varsovie et Forteresse de 1re classe de Novogeorgievsk (Modlin)",
+          "name_key": "fort.fort_warsaw_novogeorgievsk.name",
+          "region_id": "region_055",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "first_class_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_ivangorod_osowiec",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            21.8483,
+            51.5586
+          ]
+        },
+        "properties": {
+          "id": "fort_ivangorod_osowiec",
+          "name_fr": "Forteresses d'Ivangorod (Dęblin sur la Vistule) et d'Ossovets (Osowiec sur la Biebrza/Narew)",
+          "name_key": "fort.fort_ivangorod_osowiec.name",
+          "region_id": "region_056",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "river_barrier_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_brest_litovsk_grodno",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            23.6877,
+            52.0976
+          ]
+        },
+        "properties": {
+          "id": "fort_brest_litovsk_grodno",
+          "name_fr": "Forteresses de 1re classe de Brest-Litovsk (Boug) et de Grodno (Niémen)",
+          "name_key": "fort.fort_brest_litovsk_grodno.name",
+          "region_id": "region_057",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "first_class_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_volhynia_triangle",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            25.735,
+            50.418
+          ]
+        },
+        "properties": {
+          "id": "fort_volhynia_triangle",
+          "name_fr": "Triangle fortifié de Volhynie (Loutsk, Doubno, Rovno)",
+          "name_key": "fort.fort_volhynia_triangle.name",
+          "region_id": "region_058",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "entrenched_fortress_triangle",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_kiev_pechersk",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            30.557,
+            50.434
+          ]
+        },
+        "properties": {
+          "id": "fort_kiev_pechersk",
+          "name_fr": "Forteresse de Kiev (Petchersk et tête de pont de Lyssogorsk sur le Dniepr)",
+          "name_key": "fort.fort_kiev_pechersk.name",
+          "region_id": "region_059",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "river_bridgehead_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_ochakov_odessa",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            31.541443,
+            46.628331
+          ]
+        },
+        "properties": {
+          "id": "fort_ochakov_odessa",
+          "name_fr": "Forteresse maritime d'Otchakov (entrée du liman Dniepr-Boug / Nikolaïev) et batteries d'Odessa",
+          "name_key": "fort.fort_ochakov_odessa.name",
+          "region_id": "region_060",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_bender",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            29.473405,
+            46.83138
+          ]
+        },
+        "properties": {
+          "id": "fort_bender",
+          "name_fr": "Forteresse de Bender (Tighina sur le Dniestr)",
+          "name_key": "fort.fort_bender.name",
+          "region_id": "region_062",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "river_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_sevastopol_kerch",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            33.5254,
+            44.6166
+          ]
+        },
+        "properties": {
+          "id": "fort_sevastopol_kerch",
+          "name_fr": "Place forte maritime de 1re classe de Sébastopol (base de la Flotte de la mer Noire) et forteresse de Kertch",
+          "name_key": "fort.fort_sevastopol_kerch.name",
+          "region_id": "region_063",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_kronstadt",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            29.728416,
+            59.936975
+          ]
+        },
+        "properties": {
+          "id": "fort_kronstadt",
+          "name_fr": "Forteresse insulaire et base navale de Kronstadt (Krasnaïa Gorka / Ino, défense de Saint-Pétersbourg)",
+          "name_key": "fort.fort_kronstadt.name",
+          "region_id": "region_064",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_kars_vladikavkaz_derbent",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            44.6678,
+            43.0231
+          ]
+        },
+        "properties": {
+          "id": "fort_kars_vladikavkaz_derbent",
+          "name_fr": "Forteresses de Vladikavkaz, Grozny et batteries côtières de Novorossiïsk",
+          "name_key": "fort.fort_kars_vladikavkaz_derbent.name",
+          "region_id": "region_069",
+          "sovereign_1914": "Empire russe",
+          "historical_type": "mountain_and_coastal_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_bucharest_ring",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            26.1025,
+            44.4268
+          ]
+        },
+        "properties": {
+          "id": "fort_bucharest_ring",
+          "name_fr": "Camp retranché de Bucarest (ceinture de 18 forts et 18 batteries, système Brialmont) et tête de pont de Cernavodă/Turtucaia",
+          "name_key": "fort.fort_bucharest_ring.name",
+          "region_id": "region_070",
+          "sovereign_1914": "Roumanie",
+          "historical_type": "brialmont_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_focsani_namoloasa_galati",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            27.1867,
+            45.6964
+          ]
+        },
+        "properties": {
+          "id": "fort_focsani_namoloasa_galati",
+          "name_fr": "Ligne fortifiée Focșani — Nămoloasa — Galați (barrière cuirassée du Siret inférieur)",
+          "name_key": "fort.fort_focsani_namoloasa_galati.name",
+          "region_id": "region_071",
+          "sovereign_1914": "Roumanie",
+          "historical_type": "fortified_defensive_line",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_sofia_vidin",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            23.3219,
+            42.6977
+          ]
+        },
+        "properties": {
+          "id": "fort_sofia_vidin",
+          "name_fr": "Ceinture fortifiée de Sofia (Slivnitsa) et forteresse danubienne de Vidin (Belogradchik)",
+          "name_key": "fort.fort_sofia_vidin.name",
+          "region_id": "region_072",
+          "sovereign_1914": "Bulgarie",
+          "historical_type": "capital_and_river_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_shumen_varna",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            26.9361,
+            43.2712
+          ]
+        },
+        "properties": {
+          "id": "fort_shumen_varna",
+          "name_fr": "Camp retranché de Choumen (Shumen) et défenses côtières de Varna et Bourgas",
+          "name_key": "fort.fort_shumen_varna.name",
+          "region_id": "region_073",
+          "sovereign_1914": "Bulgarie",
+          "historical_type": "entrenched_camp_and_coastal_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_belgrade_nis",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            20.4489,
+            44.7866
+          ]
+        },
+        "properties": {
+          "id": "fort_belgrade_nis",
+          "name_fr": "Forteresses de Belgrade (Kalemegdan) et camp retranché de Niš / Pirot",
+          "name_key": "fort.fort_belgrade_nis.name",
+          "region_id": "region_074",
+          "sovereign_1914": "Serbie",
+          "historical_type": "river_and_border_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_lovcen_cetinje",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            18.841,
+            42.399
+          ]
+        },
+        "properties": {
+          "id": "fort_lovcen_cetinje",
+          "name_fr": "Positions fortifiées du Mont Lovćen (surplombant les Bouches de Cattaro) et de Cetinje",
+          "name_key": "fort.fort_lovcen_cetinje.name",
+          "region_id": "region_075",
+          "sovereign_1914": "Monténégro",
+          "historical_type": "mountain_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_shkoder_durres",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            19.5126,
+            42.0465
+          ]
+        },
+        "properties": {
+          "id": "fort_shkoder_durres",
+          "name_fr": "Citadelle de Scutari (Rozafa / Tarabosh) et défenses côtières de Durrës et Vlora",
+          "name_key": "fort.fort_shkoder_durres.name",
+          "region_id": "region_076",
+          "sovereign_1914": "Albanie",
+          "historical_type": "mountain_and_coastal_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_salamis_piraeus",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            23.5333,
+            37.9667
+          ]
+        },
+        "properties": {
+          "id": "fort_salamis_piraeus",
+          "name_fr": "Base navale fortifiée de Salamine et défenses du Pirée",
+          "name_key": "fort.fort_salamis_piraeus.name",
+          "region_id": "region_077",
+          "sovereign_1914": "Grèce",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_salonika_ioannina",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            22.9444,
+            40.6401
+          ]
+        },
+        "properties": {
+          "id": "fort_salonika_ioannina",
+          "name_fr": "Camp retranché de Salonique (Karabournou), forts de Roupel et de Bizani (Ioannina)",
+          "name_key": "fort.fort_salonika_ioannina.name",
+          "region_id": "region_078",
+          "sovereign_1914": "Grèce",
+          "historical_type": "entrenched_camp_and_pass_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_suda_bay",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            24.075,
+            35.485
+          ]
+        },
+        "properties": {
+          "id": "fort_suda_bay",
+          "name_fr": "Rade fortifiée de la Baie de la Soude (Crète) et rade de Moudros (Lemnos)",
+          "name_key": "fort.fort_suda_bay.name",
+          "region_id": "region_079",
+          "sovereign_1914": "Grèce",
+          "historical_type": "coastal_naval_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_bosphorus_constantinople",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            29.055,
+            41.18
+          ]
+        },
+        "properties": {
+          "id": "fort_bosphorus_constantinople",
+          "name_fr": "Batteries côtières du Bosphore (Rumeli Kavak / Kilyos) et enceinte de Constantinople",
+          "name_key": "fort.fort_bosphorus_constantinople.name",
+          "region_id": "region_087",
+          "sovereign_1914": "Empire ottoman",
+          "historical_type": "strait_and_capital_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_catalca_lines",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            28.45,
+            41.15
+          ]
+        },
+        "properties": {
+          "id": "fort_catalca_lines",
+          "name_fr": "Lignes fortifiées de Çatalca (barrière stratégique de la mer de Marmara à la mer Noire)",
+          "name_key": "fort.fort_catalca_lines.name",
+          "region_id": "region_088",
+          "sovereign_1914": "Empire ottoman",
+          "historical_type": "fortified_isthmus_line",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_edirne_kirklareli",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            26.5557,
+            41.6771
+          ]
+        },
+        "properties": {
+          "id": "fort_edirne_kirklareli",
+          "name_fr": "Place forte d'Edirne (Andrinople — ceinture de 24 forts) et camp retranché de Kırklareli (Kirk-Kilissé)",
+          "name_key": "fort.fort_edirne_kirklareli.name",
+          "region_id": "region_089",
+          "sovereign_1914": "Empire ottoman",
+          "historical_type": "first_class_ring_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "fort_dardanelles_gallipoli",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            26.379,
+            40.147
+          ]
+        },
+        "properties": {
+          "id": "fort_dardanelles_gallipoli",
+          "name_fr": "Forteresses des Dardanelles (Seddülbahir, Kilidulbahir, Nagara) et lignes de Bolayır (Gallipoli)",
+          "name_key": "fort.fort_dardanelles_gallipoli.name",
+          "region_id": "region_090",
+          "sovereign_1914": "Empire ottoman",
+          "historical_type": "strait_coastal_fortress",
+          "reference_year": 1914,
+          "source_refs": [
+            "baedeker_bradshaw_1914",
+            "regis_2026_v1"
+          ]
+        }
+      }
+    ]
+  }
+}
