@@ -1,0 +1,899 @@
+{
+  "audit_metadata": {
+    "project": "Grand Strategy-1914",
+    "audit_date": "2026-11-02",
+    "historical_reference_date": "1914-01-01",
+    "audit_branch": "audit/map-1914",
+    "sources": {
+      "main_commit": "4ffdb8a09981b8d51f103bd2c2088fed9506a71f",
+      "agent_1": {
+        "branch": "agent_1",
+        "commit": "286975a96fc2238040a9bf09163c664740ee3854",
+        "region_count": 50,
+        "scope": [
+          "region_001..region_043",
+          "region_080..region_086"
+        ],
+        "build_path": "data/world/map/build/agent_1"
+      },
+      "agent_2": {
+        "branch": "agent-2",
+        "initial_commit_reported": "494abe0c6c8641c02ea9fd613d9045c8eeb242e8",
+        "final_audited_commit": "baa0c90932c74a39ae8745add9a07a7686cd770e",
+        "region_count": 40,
+        "scope": [
+          "region_044..region_079",
+          "region_087..region_090"
+        ],
+        "build_path": "data/world/map/build/agent_2"
+      }
+    },
+    "global_metrics": {
+      "total_regions_expected": 90,
+      "total_regions_validated_inventory": 90,
+      "total_regions_valid_ogc_geometry": 90,
+      "total_regions_historically_and_geometrically_conformant_without_fix": 88,
+      "missing_region_ids": 0,
+      "duplicate_region_ids": 0,
+      "region_plan_csv_matches": 90,
+      "total_area_km2_epsg3035": 10026806.13,
+      "agent_1_area_km2_epsg3035": 3053472.8,
+      "agent_2_area_km2_epsg3035": 6973333.33,
+      "global_bbox_wgs84": [
+        -24.6044,
+        34.7925,
+        66.2664,
+        71.1905
+      ],
+      "significant_overlaps_gt_1e6_deg2": 0,
+      "rounding_micro_overlaps_gt_1e10_deg2": 15,
+      "rounding_micro_overlaps_total_area_m2": 375.18,
+      "cross_lot_overlaps": 0,
+      "internal_land_edges_agent_1": 97,
+      "internal_land_edges_agent_2": 69,
+      "cross_lot_geometric_land_interfaces": 17,
+      "cross_lot_shared_border_km": 4335.96,
+      "adjacency_discrepancies_total": 5,
+      "total_cities": 175,
+      "cities_inside_region_polygon": 175,
+      "duplicate_city_ids_or_names": 0,
+      "total_railways": 129,
+      "cross_lot_railways": 0,
+      "total_ports": 84,
+      "total_fortifications": 65,
+      "fortifications_inside_region_polygon": 65
+    },
+    "summary_by_severity": {
+      "erreurs_bloquantes": 3,
+      "erreurs_importantes": 7,
+      "approximations_acceptables": 8,
+      "ameliorations_facultatives": 5,
+      "total_issues": 23
+    }
+  },
+  "issues": [
+    {
+      "id": "BLK-001",
+      "severity": "erreur_bloquante",
+      "category": "geometrie_et_histoire",
+      "lot": "agent-2",
+      "affected_regions": [
+        "region_088",
+        "region_089"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/regions.geojson",
+        "data/world/map/build/agent_2/regions.json",
+        "data/world/map/build/agent_2/build_agent_2.py"
+      ],
+      "title": "Homonymie du district 'Saray' dans region_088 (Çatalca et Tekirdağ) : trou de 684,40 km² en Thrace orientale et exclave parasite de 938,36 km² dans la province de Van (Anatolie orientale)",
+      "description": "Dans la source gb_tur_adm2.geojson (geoBoundaries TUR ADM2), deux districts portent exactement le même shapeName 'Saray' : le district thrace de Saray dans la province de Tekirdağ (shapeID 54988432B91991689904144, bbox [27.6246, 41.2836, 28.1369, 41.6130], 684,40 km²) et le district anatolien de Saray dans la province de Van à la frontière iranienne (shapeID 54988432B48034047733274, bbox [43.9912, 38.2994, 44.3316, 38.7536], 938,36 km²). Le script build_agent_2.py (ligne 153) ayant indexé gb_tur_adm2.geojson par un dictionnaire {f['properties']['shapeName']: shape(f['geometry'])}, la seconde occurrence (Van) a écrasé la première (Tekirdağ). En conséquence, region_088 comporte : (1) un trou intérieur non attribué de 684,40 km² en plein cœur de la Thrace orientale autour de [27.9001, 41.4436] entre region_088 et region_089, et (2) un polygone détaché de 938,36 km² situé à 1 326,4 km à l'est (longitude 44,16°E), ce qui étend artificiellement la bounding box de region_088 jusqu'à la frontière perso-ottomane.",
+      "metrics": {
+        "missing_thracian_saray_shape_id": "54988432B91991689904144",
+        "missing_thracian_saray_area_km2": 684.4,
+        "missing_thracian_saray_centroid": [
+          27.9001,
+          41.4436
+        ],
+        "erroneous_van_saray_shape_id": "54988432B48034047733274",
+        "erroneous_van_saray_area_km2": 938.36,
+        "erroneous_van_saray_centroid": [
+          44.1558,
+          38.5162
+        ],
+        "exclave_distance_km": 1326.4
+      },
+      "recommended_fix": "Filtrer gb_tur_adm2.geojson avec une contrainte longitudinale (shape(f['geometry']).centroid.x < 30.0) ou sélectionner explicitement shapeID == '54988432B91991689904144' pour Saray, puis recalculer l'union de region_088, son aire (qui passera de 6 704,61 km² à 6 450,65 km²), son centroïde, son representative_point et la longueur de frontière partagée adj_region_088_region_089."
+    },
+    {
+      "id": "BLK-002",
+      "severity": "erreur_bloquante",
+      "category": "geometrie_validation",
+      "lot": "agent_1",
+      "affected_regions": [
+        "region_011",
+        "region_012",
+        "region_013",
+        "region_014",
+        "region_015",
+        "region_016",
+        "region_017",
+        "region_018",
+        "region_019",
+        "region_030",
+        "region_031",
+        "region_032",
+        "region_034",
+        "region_035",
+        "region_037",
+        "region_038",
+        "region_039",
+        "region_040",
+        "region_080",
+        "region_081"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/regions.geojson",
+        "tools/map/validate_atlas.py"
+      ],
+      "title": "15 micro-chevauchements d'arrondi de coordonnées dans agent_1 (> 1e-10 deg², max 1,132e-08 deg² / 115,29 m²) faisant échouer tools/map/validate_atlas.py",
+      "description": "Aucun chevauchement significatif (> 1e-6 deg² ou > 120 m²) n'existe dans les 90 régions. Toutefois, l'arrondi des coordonnées à 6 décimales dans agent_1/regions.geojson sans passe finale de soustraction topologique (difference) après arrondi a créé 15 micro-intersections de rubans d'arrondi comprises entre 2,47e-10 deg² (1,94 m²) et 1,132e-08 deg² (115,29 m²), pour un total cumulé de 375,18 m² sur l'ensemble de l'Europe occidentale et centrale. Le validateur officiel tools/map/validate_atlas.py (ligne 80) appliquant un seuil strict inter.area > 1e-10 deg², il lève 15 erreurs bloquantes sur ces paires.",
+      "metrics": {
+        "pair_count": 15,
+        "max_overlap_deg2": 1.132e-08,
+        "max_overlap_m2": 115.29,
+        "total_overlap_m2": 375.18,
+        "pairs": [
+          {
+            "a": "region_011",
+            "b": "region_035",
+            "area_deg2": 4.04e-10,
+            "area_m2": 3.42
+          },
+          {
+            "a": "region_012",
+            "b": "region_080",
+            "area_deg2": 5.149e-09,
+            "area_m2": 55.91
+          },
+          {
+            "a": "region_013",
+            "b": "region_015",
+            "area_deg2": 9.94e-10,
+            "area_m2": 7.75
+          },
+          {
+            "a": "region_013",
+            "b": "region_016",
+            "area_deg2": 1.805e-09,
+            "area_m2": 15.31
+          },
+          {
+            "a": "region_014",
+            "b": "region_016",
+            "area_deg2": 2.47e-10,
+            "area_m2": 1.94
+          },
+          {
+            "a": "region_014",
+            "b": "region_019",
+            "area_deg2": 4.17e-10,
+            "area_m2": 3.35
+          },
+          {
+            "a": "region_014",
+            "b": "region_032",
+            "area_deg2": 3.356e-09,
+            "area_m2": 26.63
+          },
+          {
+            "a": "region_017",
+            "b": "region_080",
+            "area_deg2": 2.353e-09,
+            "area_m2": 20.69
+          },
+          {
+            "a": "region_018",
+            "b": "region_080",
+            "area_deg2": 1.132e-08,
+            "area_m2": 115.29
+          },
+          {
+            "a": "region_030",
+            "b": "region_038",
+            "area_deg2": 7.83e-10,
+            "area_m2": 6.22
+          },
+          {
+            "a": "region_030",
+            "b": "region_039",
+            "area_deg2": 9.8e-10,
+            "area_m2": 7.81
+          },
+          {
+            "a": "region_030",
+            "b": "region_040",
+            "area_deg2": 1.547e-09,
+            "area_m2": 9.4
+          },
+          {
+            "a": "region_031",
+            "b": "region_038",
+            "area_deg2": 1.564e-09,
+            "area_m2": 11.73
+          },
+          {
+            "a": "region_034",
+            "b": "region_037",
+            "area_deg2": 4.941e-09,
+            "area_m2": 48.81
+          },
+          {
+            "a": "region_037",
+            "b": "region_081",
+            "area_deg2": 8.468e-09,
+            "area_m2": 40.85
+          }
+        ]
+      },
+      "recommended_fix": "Lors de l'assemblage de data/world/map/regions.geojson, exécuter une passe déterministe d'élimination de micro-intersections après arrondi à 6 décimales (geom[b] = make_valid(geom[b].difference(geom[a])) avec ré-arrondi à 6 décimales et filtre polygonal), exactement comme implémenté dans build_agent_2.py."
+    },
+    {
+      "id": "BLK-003",
+      "severity": "erreur_bloquante",
+      "category": "adjacences_inter_lots",
+      "lot": "inter-lots",
+      "affected_regions": [
+        "region_026",
+        "region_027",
+        "region_029",
+        "region_030",
+        "region_040",
+        "region_041",
+        "region_042",
+        "region_043",
+        "region_044",
+        "region_054",
+        "region_055",
+        "region_056",
+        "region_058",
+        "region_062",
+        "region_070",
+        "region_071",
+        "region_074",
+        "region_075"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/adjacency.json",
+        "data/world/map/build/agent_2/adjacency.json",
+        "data/world/map/build/agent_1/regions.json",
+        "data/world/map/build/agent_2/regions.json",
+        "data/world/map/build/agent_1/regions.geojson",
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Omission asymétrique de la frontière inter-lots region_026 <-> region_056 (368,87 km) dans agent_1 et absence des voisins inter-lots dans adjacent_region_ids / neighbors_by_region",
+      "description": "1) La frontière terrestre de 368,87 km entre region_026 (Prusse-Orientale) et region_056 (Pologne russe orientale — gouvernement de Suwałki et Łomża) est bien déclarée dans agent_2/adjacency.json (ext_adj_region_056_region_026), mais est absente de external_perimeter_interfaces dans agent_1/adjacency.json (qui n'en compte que 16 au lieu de 17). De plus, agent_1/HANDOFF.md évoque par erreur 14 interfaces et validate_agent_1.py (ligne 344) lit une clé inexistante external_border_interfaces_to_agent_2. 2) Aucun des deux agents n'inclut ses voisins de l'autre lot dans adjacent_region_ids (regions.json / regions.geojson) ni dans neighbors_by_region / edges (adjacency.json). En particulier, region_044 (Danemark) se retrouve avec adjacent_region_ids = [] dans agent-2 car son unique voisin terrestre (region_029 Schleswig-Holstein) est stocké dans external_adjacent_region_ids.",
+      "metrics": {
+        "missing_interface_in_agent_1": "region_026 <-> region_056",
+        "missing_interface_shared_border_km": 368.87,
+        "agent_1_declared_external_interfaces": 16,
+        "agent_2_declared_external_interfaces": 17,
+        "true_geometric_cross_lot_interfaces": 17,
+        "total_cross_lot_border_km": 4335.96
+      },
+      "recommended_fix": "Promouvoir les 17 interfaces terrestres inter-lots (4 335,96 km cumulés, incluant region_026 <-> region_056) en arêtes standard dans adjacency.json (edges : 97 + 69 + 17 = 183 arêtes, plus region_033 <-> region_037 = 184 arêtes), fusionner external_neighbors_by_region dans neighbors_by_region et dans adjacent_region_ids des 18 régions frontalières (region_026, 027, 029, 030, 040, 041, 042, 043, 044, 054, 055, 056, 058, 062, 070, 071, 074, 075), puis supprimer les clés temporaires de chantier external_*."
+    },
+    {
+      "id": "MAJ-001",
+      "severity": "erreur_importante",
+      "category": "compatibilite_fichiers",
+      "lot": "inter-lots",
+      "affected_regions": [
+        "region_001..region_043",
+        "region_080..region_086"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/maritime_zones.json",
+        "data/world/map/build/agent_1/regions.json",
+        "data/world/map/build/agent_1/terrain.json"
+      ],
+      "title": "Fichier maritime_zones.json et champ maritime_zone_ids présents dans agent-2 mais absents dans agent_1",
+      "description": "L'Agent 2 a produit data/world/map/build/agent_2/maritime_zones.json définissant 16 zones maritimes (Mer du Nord, Skagerrak, Kattegat, Détroits danois, Baltique occidentale/centrale, golfes de Botnie/Finlande/Riga, mer de Norvège, mer de Barents, mer Blanche, Adriatique orientale, mer Ionienne, mer Égée, Marmara, mer Noire occidentale/orientale, mer d'Azov) et a référencé maritime_zone_ids dans regions.json, regions.geojson et terrain.json. L'Agent 1 n'a pas créé maritime_zones.json et ses 39 régions côtières n'ont pas de propriété maritime_zone_ids.",
+      "metrics": {
+        "agent_2_maritime_zones_count": 16,
+        "agent_1_maritime_zones_count": 0,
+        "agent_1_coastal_regions_without_maritime_zone_ids": 39
+      },
+      "recommended_fix": "Compléter maritime_zones.json avec les bassins occidentaux et méditerranéens (Manche, mer d'Irlande, Atlantique Nord-Est, golfe de Gascogne, détroit de Gibraltar, Méditerranée occidentale, golfe du Lion, mer Ligurienne, mer Tyrrhénienne, canal de Sicile, Adriatique septentrionale/centrale) ou rattacher les régions côtières d'agent_1 aux zones maritimes unifiées lors de l'intégration."
+    },
+    {
+      "id": "MAJ-002",
+      "severity": "erreur_importante",
+      "category": "compatibilite_infrastructures",
+      "lot": "inter-lots",
+      "affected_regions": [
+        "region_026",
+        "region_027",
+        "region_029",
+        "region_030",
+        "region_040",
+        "region_041",
+        "region_042",
+        "region_043",
+        "region_044",
+        "region_054",
+        "region_055",
+        "region_056",
+        "region_058",
+        "region_070",
+        "region_071",
+        "region_074"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/infrastructure.json",
+        "data/world/map/build/agent_2/infrastructure.json"
+      ],
+      "title": "Absence d'axes ferroviaires transfrontaliers reliant les villes du lot 1 et du lot 2",
+      "description": "Les 76 axes ferroviaires d'agent_1 et les 53 axes ferroviaires d'agent_2 s'arrêtent chacun aux dernières villes de leur lot respectif (0 axe reliant une ville d'agent_1 à une ville d'agent_2). Sans interconnexion lors de la fusion, le graphe ferroviaire européen est scindé en deux composantes déconnectées le long du rideau Jutland–Prusse–Galicie–Carpates–Danube–Save.",
+      "metrics": {
+        "agent_1_railways": 76,
+        "agent_2_railways": 53,
+        "cross_lot_railways_present": 0,
+        "recommended_cross_lot_railways_count": 10
+      },
+      "recommended_fix": "Ajouter lors de l'intégration 10 axes ferroviaires internationaux 1914 reliant les nœuds frontaliers des deux lots : (1) Hambourg/Kiel -> Aarhus (Jutland), (2) Königsberg -> Kaunas (Eydtkuhnen–Virbalis), (3) Posen/Thorn -> Varsovie, (4) Kattowitz/Breslau -> Łódź/Varsovie (chemin de fer Varsovie-Vienne), (5) Cracovie -> Varsovie, (6) Lemberg -> Kiev/Odessa (par Brody/Podwoloczyska), (7) Czernowitz -> Iași, (8) Brassó -> Bucarest (col de Predeal), (9) Temesvár -> Bucarest (Orșova / Portes de Fer), (10) Újvidék/Budapest -> Belgrade (ligne de l'Orient-Express)."
+    },
+    {
+      "id": "MAJ-003",
+      "severity": "erreur_importante",
+      "category": "donnees_historiques_1914",
+      "lot": "agent-2",
+      "affected_regions": [
+        "region_072",
+        "region_074"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/regions.geojson",
+        "data/world/map/build/agent_2/build_agent_2.py"
+      ],
+      "title": "Saillant de Strumica (post-1919) inclus dans region_074 (Serbie) au lieu de region_072 (Bulgarie occidentale)",
+      "description": "Au 1er janvier 1914 (traité de Bucarest du 10 août 1913), la ville et le saillant de Strumica (Струмица, [22.6427, 41.4378]) appartenaient au Royaume de Bulgarie et n'ont été cédés au Royaume des Serbes, Croates et Slovènes qu'au traité de Neuilly-sur-Seine (27 novembre 1919). Parce que region_074 a été assemblée à partir de REGIS_Yugoslavia_L2_1948-1954 (entité Makedonija dans ses frontières post-1919), le saillant de Strumica se trouve actuellement inclus dans region_074 (Serbie) à 13,5 km à l'ouest de la frontière de region_072 (Bulgarie occidentale).",
+      "metrics": {
+        "strumica_coordinates": [
+          22.6427,
+          41.4378
+        ],
+        "current_region": "region_074",
+        "historical_1914_region": "region_072",
+        "distance_to_border_km": 13.5
+      },
+      "recommended_fix": "Transférer la poche de Strumica (~950 km² autour de [22.64, 41.44]) de region_074 (Serbie) vers region_072 (Bulgarie occidentale) par découpe géométrique, ou documenter explicitement cette approximation de source (REGIS 1948) si le découpage sub-régional n'est pas modifié."
+    },
+    {
+      "id": "MAJ-004",
+      "severity": "erreur_importante",
+      "category": "geometrie_coutures",
+      "lot": "inter-lots_et_agent-2",
+      "affected_regions": [
+        "region_040",
+        "region_047",
+        "region_052",
+        "region_062",
+        "region_064",
+        "region_065",
+        "region_071"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/regions.geojson",
+        "data/world/map/build/agent_1/regions.geojson",
+        "data/world/map/build/agent_2/build_agent_2.py"
+      ],
+      "title": "4 lacunes de couture inter-sources (92 à 662 km²) entre régions terrestres adjacentes",
+      "description": "Outre le trou bloquant de Saray (BLK-001) et les plans d'eau légitimes (lac Ladoga, Sivach, Ratzeburger See), l'analyse topologique en projection EPSG:3035 met en évidence 4 interstices de numérisation entre sources hétérogènes : (1) 662,47 km² à [32.3258, 62.6315] entre region_052 (Finlande, source REGIS_Finland) et region_064 (Russie du Nord-Ouest, source RISTAT 1897, secteur de Suojärvi/Olonets), non comblé car supérieur au plafond max_sliver_m2 = 500 km² de fill_seam_slivers() ; (2) 225,88 km² à [26.1997, 48.3030] au tripoint inter-lots region_040 (Galicie-Bucovine) / region_062 (Bessarabie) / region_071 (Roumanie septentrionale, secteur de Khotin/Herța) ; (3) 117,05 km² à [30.5256, 69.5879] et (4) 92,09 km² à [29.7994, 69.4143] entre region_047 (Norvège — Nord, source geoBoundaries NOR) et region_065 (Russie septentrionale, source RISTAT 1897, vallée de la Pasvik), paire absente de la liste seam_pairs de build_agent_2.py.",
+      "metrics": {
+        "sliver_count": 4,
+        "slivers": [
+          {
+            "regions": [
+              "region_052",
+              "region_064"
+            ],
+            "area_km2": 662.47,
+            "centroid": [
+              32.3258,
+              62.6315
+            ],
+            "location": "Frontière Finlande (Suojärvi) / Gouvernement d'Olonets"
+          },
+          {
+            "regions": [
+              "region_040",
+              "region_062",
+              "region_071"
+            ],
+            "area_km2": 225.88,
+            "centroid": [
+              26.1997,
+              48.303
+            ],
+            "location": "Tripoint Bucovine / Bessarabie (Khotin) / Moldavie (Dorohoi-Herța)"
+          },
+          {
+            "regions": [
+              "region_047",
+              "region_065"
+            ],
+            "area_km2": 117.05,
+            "centroid": [
+              30.5256,
+              69.5879
+            ],
+            "location": "Frontière Norvège (Finnmark) / Russie (Petsamo-Pasvik Nord)"
+          },
+          {
+            "regions": [
+              "region_047",
+              "region_065"
+            ],
+            "area_km2": 92.09,
+            "centroid": [
+              29.7994,
+              69.4143
+            ],
+            "location": "Frontière Norvège (Finnmark) / Russie (Pasvik Sud)"
+          }
+        ]
+      },
+      "recommended_fix": "Étendre la fonction fill_seam_slivers() lors de l'intégration aux paires (region_052, region_064) avec max_sliver_m2 = 750e6, (region_047, region_065), et au tripoint (region_040, region_062, region_071) avec buffer_m = 10000."
+    },
+    {
+      "id": "MAJ-005",
+      "severity": "erreur_importante",
+      "category": "compatibilite_schemas_json",
+      "lot": "inter-lots",
+      "affected_regions": [
+        "region_001..region_090"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/regions.geojson",
+        "data/world/map/build/agent_2/regions.geojson",
+        "data/world/map/build/agent_1/regions.json",
+        "data/world/map/build/agent_2/regions.json",
+        "data/world/map/build/agent_1/adjacency.json",
+        "data/world/map/build/agent_2/adjacency.json",
+        "data/world/map/build/agent_1/terrain.json",
+        "data/world/map/build/agent_2/terrain.json",
+        "data/schemas/map.schema.json"
+      ],
+      "title": "Divergences de clés JSON entre agent_1 et agent-2 et champ island_class: null non conforme à map.schema.json",
+      "description": "1) Dans regions.geojson et regions.json, agent-2 ajoute external_adjacent_region_ids et maritime_zone_ids (25 clés) alors qu'agent_1 ne les a pas (23 clés). 2) Dans adjacency.json, agent-2 ajoute external_neighbors_by_region et total_external_perimeter_interfaces, et structure chaque entrée de external_perimeter_interfaces avec 12 clés contre 4 dans agent_1. 3) Dans terrain.json, 54 régions continentales (36 dans agent_1 et 18 dans agent-2) définissent \"island_class\": null, alors que data/schemas/map.schema.json (ligne 115) exige que island_class soit une chaîne enum [\"continental_island\", \"archipelago\", \"mixed_continental_insular\"] ou soit omise lorsque la région est purement continentale.",
+      "metrics": {
+        "agent_1_region_keys": 23,
+        "agent_2_region_keys": 25,
+        "regions_with_null_island_class": 54
+      },
+      "recommended_fix": "Lors de la génération des fichiers unifiés dans data/world/map/, supprimer les clés transitoires external_*, harmoniser maritime_zone_ids sur les 90 régions, et omettre la clé island_class lorsqu'elle vaut null afin de respecter strictement data/schemas/map.schema.json."
+    },
+    {
+      "id": "MAJ-006",
+      "severity": "erreur_importante",
+      "category": "compatibilite_terrain",
+      "lot": "inter-lots",
+      "affected_regions": [
+        "region_026",
+        "region_027",
+        "region_030",
+        "region_034",
+        "region_036",
+        "region_040",
+        "region_041",
+        "region_042",
+        "region_043",
+        "region_054",
+        "region_055",
+        "region_056",
+        "region_057",
+        "region_058",
+        "region_062",
+        "region_070",
+        "region_071",
+        "region_072",
+        "region_074",
+        "region_075",
+        "region_076"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/terrain.json",
+        "data/world/map/build/agent_2/terrain.json"
+      ],
+      "title": "Doublons d'identifiants pour 6 grands fleuves et 2 chaînes de montagnes transfrontaliers entre agent_1 et agent-2",
+      "description": "Les entités hydrographiques et orographiques qui traversent la limite entre le lot 1 et le lot 2 ont reçu des identifiants distincts dans terrain.json : Danube (river_danube dans agent_1 vs river_danube_lower dans agent-2), Vistule (river_vistula vs river_vistula_middle), Dniestr (river_dniester présent dans les deux fichiers), Niémen (river_niemen présent dans les deux fichiers), Save (river_sava présent dans les deux fichiers), Drina (river_drina présent dans les deux fichiers), Carpates (mtn_carpathians vs mtn_carpathians_east_south) et Alpes dinariques (mtn_dinaric_alps vs mtn_dinaric_prokletije_sar).",
+      "metrics": {
+        "duplicated_or_split_rivers": [
+          {
+            "agent_1_id": "river_danube",
+            "agent_2_id": "river_danube_lower"
+          },
+          {
+            "agent_1_id": "river_vistula",
+            "agent_2_id": "river_vistula_middle"
+          },
+          {
+            "agent_1_id": "river_dniester",
+            "agent_2_id": "river_dniester"
+          },
+          {
+            "agent_1_id": "river_niemen",
+            "agent_2_id": "river_niemen"
+          },
+          {
+            "agent_1_id": "river_sava",
+            "agent_2_id": "river_sava"
+          },
+          {
+            "agent_1_id": "river_drina",
+            "agent_2_id": "river_drina"
+          }
+        ],
+        "duplicated_or_split_mountain_chains": [
+          {
+            "agent_1_id": "mtn_carpathians",
+            "agent_2_id": "mtn_carpathians_east_south"
+          },
+          {
+            "agent_1_id": "mtn_dinaric_alps",
+            "agent_2_id": "mtn_dinaric_prokletije_sar"
+          }
+        ]
+      },
+      "recommended_fix": "Unifier ces entités dans terrain.json lors de la fusion en concaténant dans l'ordre amont->aval leurs régions traversées (major_river_courses) et leurs listes region_ids (mountain_chains)."
+    },
+    {
+      "id": "MAJ-007",
+      "severity": "erreur_importante",
+      "category": "adjacences_et_detroits",
+      "lot": "agent_1_et_agent-2",
+      "affected_regions": [
+        "region_001",
+        "region_003",
+        "region_004",
+        "region_005",
+        "region_006",
+        "region_007",
+        "region_012",
+        "region_025",
+        "region_033",
+        "region_037",
+        "region_044",
+        "region_084",
+        "region_085",
+        "region_086",
+        "region_087",
+        "region_090"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/adjacency.json",
+        "data/world/map/build/agent_2/adjacency.json"
+      ],
+      "title": "Arête terrestre manquante region_033 <-> region_037 (1,43 km), 3 détroits en auto-boucle dans agent-2 et détroits ouest-européens omis dans agent_1",
+      "description": "1) Dans agent_1, region_033 (Allemagne du Sud-Ouest) et region_037 (Alpes autrichiennes — Vorarlberg) partagent 1,43 km de frontière terrestre géométrique près de Bregenz/Lindau, mais cette arête n'est pas déclarée dans agent_1/adjacency.json. 2) Dans agent-2, 3 entrées de strait_crossings sont des auto-boucles (region_a_id == region_b_id) : strait_danish_belts_044_044 (region_044 <-> region_044), strait_bosphorus_087 (region_087 <-> region_087) et strait_dardanelles_090 (region_090 <-> region_090), car les deux rives appartiennent à la même région. 3) Dans agent_1, seul le détroit de Messine (strait_messina_084_085) est déclaré dans strait_crossings ; les passages maritimes stratégiques de l'Ouest (Pas de Calais 001<->007, Canal du Nord 003<->005, Canal Saint-Georges 004<->006, Bouches de Bonifacio 012<->086) ne sont pas renseignés.",
+      "metrics": {
+        "missing_internal_land_edge": "region_033 <-> region_037 (1.43 km)",
+        "self_loop_straits_in_agent_2": [
+          "strait_danish_belts_044_044",
+          "strait_bosphorus_087",
+          "strait_dardanelles_090"
+        ],
+        "agent_1_declared_straits": 1,
+        "agent_2_declared_straits": 8
+      },
+      "recommended_fix": "1) Ajouter l'arête adj_region_033_region_037 (shared_border_km: 1.43) dans adjacency.json et dans adjacent_region_ids de region_033 et region_037. 2) Relier strait_danish_belts à region_044 <-> region_028 (ou conserver un attribut internal_waterway: true pour Bosphore/Dardanelles/Belts si le moteur l'accepte, ou relier Bosphore/Dardanelles aux zones maritimes mer Égée <-> Marmara <-> mer Noire). 3) Ajouter les 4 détroits ouest-européens (Pas de Calais, Canal du Nord, Canal Saint-Georges, Bouches de Bonifacio) dans strait_crossings."
+    },
+    {
+      "id": "APP-001",
+      "severity": "approximation_acceptable",
+      "category": "geometrie_historique",
+      "lot": "agent-2",
+      "affected_regions": [
+        "region_055",
+        "region_056",
+        "region_057",
+        "region_058"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Gouvernement de Kholm (1912) représenté via l'enveloppe des gouvernements de Lublin et Siedlce (RISTAT 1897)",
+      "description": "Le gouvernement de Kholm (Холмская губерния), détaché des gouvernements de Lublin et de Siedlce en 1912, est intégralement inclus dans region_056 (Pologne russe orientale) via l'union des gouvernements RISTAT 1897 de Lublin et Siedlce. La frontière orientale de region_056 suit donc le Bug occidental sans découpe fine des districts orientaux transférés en 1912, tout en restant sous la même souveraineté (Empire russe) et dans la bonne région cible.",
+      "metrics": {
+        "kholm_coordinates": [
+          23.4716,
+          51.1431
+        ],
+        "assigned_region": "region_056"
+      },
+      "recommended_fix": "Aucune modification requise ; approximation documentée dans agent_2/HANDOFF.md."
+    },
+    {
+      "id": "APP-002",
+      "severity": "approximation_acceptable",
+      "category": "geometrie_historique",
+      "lot": "agent-2",
+      "affected_regions": [
+        "region_065",
+        "region_068",
+        "region_069"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Frontière orientale de l'Europe (Oural et Caucase) suivie par gouvernements et ouïezds RISTAT 1897 avec clip à 66,5°E",
+      "description": "Les limites orientales de region_065 (Russie septentrionale), region_068 (Oural et Volga orientale) et region_069 (Ciscaucasie et Kouban) suivent les subdivisions administratives RISTAT 1897 (gouvernements d'Arkhangelsk, Perm, Oufa, Orenbourg, Astrakhan, Stavropol, Kouban, Terek, Daguestan) avec une coupure nette à 66,5°E pour l'ouïezd sibérien de Verkhotourié/Irbit.",
+      "metrics": {
+        "max_longitude_deg": 66.2664,
+        "min_latitude_caucasus_deg": 40.9163
+      },
+      "recommended_fix": "Aucune modification requise ; conforme au périmètre géographique européen de TECHNICAL_SPEC.md."
+    },
+    {
+      "id": "APP-003",
+      "severity": "approximation_acceptable",
+      "category": "geometrie_historique",
+      "lot": "agent_1",
+      "affected_regions": [
+        "region_019",
+        "region_032"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/regions.geojson"
+      ],
+      "title": "Reconstruction d'Eupen-Malmedy (Prusse rhénane) par les communes belges des Cantons de l'Est",
+      "description": "Les cercles prussiens d'Eupen et de Malmedy (rattachés à la Belgique en 1920) ont été soustraits de region_019 (Belgique) et intégrés à region_032 (Rhénanie et Westphalie) à partir des limites communales des 9 communes des Cantons de l'Est (Eupen, Kelmis, Lontzen, Raeren, Malmedy, Waimes, Bütgenbach, Büllingen, Amel, St. Vith, Burg-Reuland).",
+      "metrics": {
+        "eupen_coordinates": [
+          6.0365,
+          50.6292
+        ],
+        "malmedy_coordinates": [
+          6.0279,
+          50.4268
+        ],
+        "assigned_region": "region_032"
+      },
+      "recommended_fix": "Aucune modification requise ; reconstruction historiquement fidèle au 1er janvier 1914."
+    },
+    {
+      "id": "APP-004",
+      "severity": "approximation_acceptable",
+      "category": "geometrie_historique",
+      "lot": "agent_1",
+      "affected_regions": [
+        "region_001",
+        "region_004"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/regions.geojson"
+      ],
+      "title": "Monmouthshire rattaché à region_001 (Angleterre du Sud et Londres) selon la nomenclature de recensement de 1911",
+      "description": "La source historique britannique (1911 Census / Vision of Britain) classe le Monmouthshire avec les comtés d'Angleterre, ce qui place Newport dans region_001 tandis que Cardiff et Swansea sont dans region_004 (Pays de Galles), les deux régions partageant la souveraineté Royaume-Uni.",
+      "metrics": {
+        "cardiff_region": "region_004",
+        "swansea_region": "region_004"
+      },
+      "recommended_fix": "Aucune modification requise ; conforme au découpage statistique britannique de 1911."
+    },
+    {
+      "id": "APP-005",
+      "severity": "approximation_acceptable",
+      "category": "geometrie_historique",
+      "lot": "agent-2",
+      "affected_regions": [
+        "region_073",
+        "region_078",
+        "region_089"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Frontière bulgaro-ottomane de Thrace (traité de Constantinople, septembre 1913) suivie sur la Maritsa et l'Istranca moderne",
+      "description": "La frontière entre region_073 (Bulgarie orientale et Thrace occidentale) et region_089 (Andrinople et Kirklareli) suit les limites provinciales modernes d'Edirne et de Kırklareli. Le faubourg ferroviaire de Karaağaç (rive droite de la Maritsa face à Edirne, cédé à la Bulgarie en octobre 1915 mais encore ottoman le 1er janvier 1914) est correctement inclus dans region_089 ; seule la bande frontalière de Svilengrad/Malko Tarnovo présente de légers écarts de tracé liés à la convention de Sofia de 1915.",
+      "metrics": {
+        "edirne_region": "region_089",
+        "kirklareli_region": "region_089",
+        "komotini_region": "region_073",
+        "dedeagac_region": "region_073"
+      },
+      "recommended_fix": "Aucune modification requise."
+    },
+    {
+      "id": "APP-006",
+      "severity": "approximation_acceptable",
+      "category": "geometrie_hydrographie",
+      "lot": "agent_1_et_agent-2",
+      "affected_regions": [
+        "region_028",
+        "region_029",
+        "region_052",
+        "region_060",
+        "region_063",
+        "region_064"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/regions.geojson",
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Plans d'eau intérieurs représentés comme vides non terrestres (lac Ladoga, mer Putride / Sivach, lac de Ratzebourg)",
+      "description": "Trois vides intérieurs à l'enveloppe continentale correspondent à des plans d'eau réels non rattachés aux polygones terrestres : le lac Ladoga (8 566,74 km² entre region_052 et region_064), la lagune du Sivach / mer Putride (1 019,25 km² entre region_060 et region_063) et le lac de Ratzebourg / Schaalsee (17,75 km² entre region_028 et region_029).",
+      "metrics": {
+        "lake_ladoga_km2": 8566.74,
+        "sivash_lagoon_km2": 1019.25,
+        "ratzeburger_see_km2": 17.75
+      },
+      "recommended_fix": "Aucune modification requise ; comportement cartographique normal pour des masses d'eau."
+    },
+    {
+      "id": "APP-007",
+      "severity": "approximation_acceptable",
+      "category": "geometrie_insulaire",
+      "lot": "agent_1",
+      "affected_regions": [
+        "region_001",
+        "region_007",
+        "region_024",
+        "region_025",
+        "region_034",
+        "region_035",
+        "region_036",
+        "region_082",
+        "region_084"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/regions.geojson"
+      ],
+      "title": "Micro-exclaves légitimes et îles côtières en Europe occidentale et centrale",
+      "description": "Certaines régions continentales d'agent_1 sont de type MultiPolygon en raison d'îles côtières légitimes (île de Wight dans region_001, îles Chausey dans region_007, îles Galice/Berlengas dans region_024, île d'Elbe dans region_082, Ischia/Capri dans region_084) ou de micro-enclaves administratives historiques allemandes et autrichiennes (1,2 à 18 km² dans region_034, region_035, region_036).",
+      "metrics": {
+        "legitimate_multipolygons_in_agent_1": 33
+      },
+      "recommended_fix": "Aucune modification requise."
+    },
+    {
+      "id": "APP-008",
+      "severity": "approximation_acceptable",
+      "category": "perimetre_europeen",
+      "lot": "agent_1_et_agent-2",
+      "affected_regions": [
+        "region_022",
+        "region_023",
+        "region_025",
+        "region_044",
+        "region_047",
+        "region_079"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/regions.geojson",
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Exclusion des territoires extra-européens et arctiques hors cadre (Canaries, Açores, Madère, Svalbard, Dodécanèse, Chypre, Anatolie)",
+      "description": "Conformément au périmètre géographique européen 1914 (TECHNICAL_SPEC.md), les archipels atlantiques ou arctiques hors cadre (Açores, Madère, Canaries, Féroé, Svalbard, Jan Mayen), l'Anatolie asiatique, Chypre et le Dodécanèse occupé par l'Italie depuis 1912 sont exclus des 90 régions.",
+      "metrics": {
+        "global_bbox": [
+          -24.6044,
+          34.7925,
+          66.2664,
+          71.1905
+        ]
+      },
+      "recommended_fix": "Aucune modification requise."
+    },
+    {
+      "id": "OPT-001",
+      "severity": "amelioration_facultative",
+      "category": "toponymie_historique_1914",
+      "lot": "agent-2",
+      "affected_regions": [
+        "region_045",
+        "region_059",
+        "region_087",
+        "region_088",
+        "region_089",
+        "region_090"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/cities.json",
+        "data/world/map/build/agent_2/terrain.json",
+        "data/world/map/build/agent_2/regions.json",
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Toponymes ou parenthèses post-1914 dans quelques métadonnées d'agent-2 (Dniepropetrovsk, Oslofjord, districts turcs modernes)",
+      "description": "1) Dans agent_2/cities.json, city_ekaterinoslav a pour name_fr \"Ekaterinoslav (Dniepropetrovsk)\", alors que le nom soviétique Dniepropetrovsk date de 1926. 2) Dans agent_2/terrain.json (region_045), un élément côtier est nommé \"Oslofjord\" (nom adopté en 1925, appelé Kristianiafjord en 1914). 3) Dans regions.json et regions.geojson (region_087 à region_090), le tableau historical_admin_units énumère les noms des districts turcs modernes issus de gb_tur_adm2.geojson (Beylikdüzü, Esenyurt, Süleymanpaşa, Kapaklı, Bozcaada, etc.) à côté des sandjaks ottomans de 1914.",
+      "metrics": {
+        "anachronistic_strings_count": 3
+      },
+      "recommended_fix": "Remplacer \"Ekaterinoslav (Dniepropetrovsk)\" par \"Ekaterinoslav\", \"Oslofjord\" par \"Kristianiafjord (Oslofjord)\", et ne conserver dans historical_admin_units de region_087..090 que les sandjaks et kazas ottomans de 1914."
+    },
+    {
+      "id": "OPT-002",
+      "severity": "amelioration_facultative",
+      "category": "suivi_projet",
+      "lot": "global",
+      "affected_regions": [
+        "region_001..region_090"
+      ],
+      "affected_files": [
+        "data/world/map/tables/region_plan.csv",
+        "docs/map/ATLAS_BUILD_STATUS.md"
+      ],
+      "title": "Mise à jour de etat_geometrie dans region_plan.csv et de ATLAS_BUILD_STATUS.md lors de l'intégration",
+      "description": "Dans data/world/map/tables/region_plan.csv (sur main et sur les branches des agents), la colonne etat_geometrie indique encore \"non_construite\" pour les 90 régions. De même, docs/map/ATLAS_BUILD_STATUS.md reflète l'état initial pré-construction (0 / 90).",
+      "metrics": {
+        "rows_with_non_construite": 90
+      },
+      "recommended_fix": "Passer etat_geometrie à \"construite\" pour les 90 lignes de data/world/map/tables/region_plan.csv et mettre à jour docs/map/ATLAS_BUILD_STATUS.md à 90 / 90 lors du commit d'intégration finale."
+    },
+    {
+      "id": "OPT-003",
+      "severity": "amelioration_facultative",
+      "category": "qualite_code_validation",
+      "lot": "agent_1",
+      "affected_regions": [],
+      "affected_files": [
+        "data/world/map/build/agent_1/validate_agent_1.py",
+        "data/world/map/build/agent_1/HANDOFF.md"
+      ],
+      "title": "Incohérence de clé dans validate_agent_1.py et décompte erroné (14 au lieu de 16/17) dans agent_1/HANDOFF.md",
+      "description": "Dans data/world/map/build/agent_1/validate_agent_1.py (ligne 344), le script lit adj_data.get('external_border_interfaces_to_agent_2', []) alors que la clé écrite dans agent_1/adjacency.json est 'external_perimeter_interfaces'. Par ailleurs, agent_1/HANDOFF.md mentionne 14 interfaces avec le lot 2 alors que agent_1/adjacency.json en contient 16 (et que la géométrie réelle en compte 17 avec region_026 <-> region_056).",
+      "metrics": {
+        "handoff_claimed_interfaces": 14,
+        "json_recorded_interfaces": 16,
+        "actual_geometric_interfaces": 17
+      },
+      "recommended_fix": "Utiliser le validateur global docs/map/audit/validate_global_atlas.py et tools/map/validate_atlas.py comme référence unique après l'intégration."
+    },
+    {
+      "id": "OPT-004",
+      "severity": "amelioration_facultative",
+      "category": "geometrie_historique",
+      "lot": "agent-2",
+      "affected_regions": [
+        "region_061",
+        "region_069"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Extrémité du cap de Taganrog dans RISTAT 1897 (entre region_061 et region_069)",
+      "description": "L'okroug de Taganrog (Distr_ID 546 de l'oblast de l'armée du Don dans RISTAT 1897) et le point de la ville city_taganrog_mariupol ([38.8144, 47.2877]) sont bien intégrés à region_061 (Donbass et Russie méridionale). Toutefois, en raison de la généralisation côtière du polygone RISTAT 1897 de l'okroug de Rostov (Distr_ID 547, rattaché à region_069), l'extrémité sud-est de la pointe portuaire de Taganrog ([38.8969, 47.2096]) déborde légèrement dans Distr_ID 547.",
+      "metrics": {
+        "city_pin_coordinates": [
+          38.8144,
+          47.2877
+        ],
+        "city_pin_region": "region_061"
+      },
+      "recommended_fix": "Facultatif : ajuster localement la limite entre Distr_ID 546 et Distr_ID 547 sur l'embouchure du Don si l'on souhaite que la pointe du cap de Taganrog soit à 100 % dans region_061."
+    },
+    {
+      "id": "OPT-005",
+      "severity": "amelioration_facultative",
+      "category": "precision_geometrique",
+      "lot": "agent_1_et_agent-2",
+      "affected_regions": [
+        "region_001..region_090"
+      ],
+      "affected_files": [
+        "data/world/map/build/agent_1/regions.geojson",
+        "data/world/map/build/agent_2/regions.geojson"
+      ],
+      "title": "Hétérogénéité modérée de densité de sommets entre sources (de 64 à 4 798 sommets par région)",
+      "description": "La densité de sommets est globalement très homogène pour le rendu (moyenne de 812 sommets par région dans agent_1 et 898 dans agent-2), mais varie de 64 sommets (region_087 Constantinople et Bosphore) à 4 798 sommets (region_052 Finlande) selon la finesse de la source primaire (geoBoundaries vs RISTAT 1897 vs REGIS).",
+      "metrics": {
+        "agent_1_mean_vertices": 812,
+        "agent_2_mean_vertices": 898,
+        "min_vertices_region": "region_087 (64)",
+        "max_vertices_region": "region_052 (4798)"
+      },
+      "recommended_fix": "Aucune action requise pour la jouabilité ; un lissage optionnel de region_052 (4 798 sommets) peut être envisagé si l'on souhaite plafonner toutes les régions sous 3 000 sommets."
+    }
+  ]
+}
