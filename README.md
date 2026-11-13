@@ -13,6 +13,7 @@ Projet en conception. La documentation a été intégrée et l’architecture te
 - `PROJECT.md` — vision, périmètre et principes de conception.
 - `PROGRESS.md` — statut actuel, priorités, jalons et limites.
 - `AGENTS.md` — règles de travail et interdiction de développer le gameplay sans autorisation.
+- `CONTRIBUTING.md` — guide de contribution multi-IA, multi-ordinateurs et worktrees Git.
 - `CHANGELOG.md` — évolutions documentaires.
 - `STRUCTURE.md` — arborescence documentaire.
 - `docs/architecture/PRINCIPLES.md` — principes fournis dans le dossier de conception.

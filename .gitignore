@@ -14,14 +14,37 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+*.swp
+*~
 
 # Python virtual environment and bytecode (GIS validators)
 .venv/
+venv/
+ENV/
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
 
 # Local consolidation staging (transient, never committed)
 .consolidation-stage/
+.consolidation-stage-*/
 
-# Local backups
+# Local backups (kept outside git history)
 /backups/
+*.bundle
+
+# Secrets, credentials, tokens and private keys (NEVER COMMIT)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*secret*
+*credentials*.json
+*token*.txt
+gh-token*
