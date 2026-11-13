@@ -24,18 +24,34 @@
       "Vyborg governorate"
     ]
   },
+  "strumica": {
+    "file": "gs1914_strumica_1913_salient.geojson",
+    "layer": "REGIS_Yugoslavia_L1_1920-1923",
+    "features": 3,
+    "units": [
+      "640-1.290",
+      "640-1.300"
+    ],
+    "regis_vertices": 32,
+    "watershed_vertices": 9,
+    "full_frontier_vertices": 40
+  },
   "sources": {
     "gb_tur": {
-      "path": "/home/cassiop-e/.gemini/antigravity-cli/brain/3ab810c9-cc80-4c2c-b642-e4591b88b9ed/scratch/regis/gb_tur_adm2.geojson",
+      "path": "/home/cassiop-e/backups/gs1914-2026-11-13/sources/external/regis/gb_tur_adm2.geojson",
       "sha256": "17af9a6bff9bed53390e49cbbf66569e0d296f134cd4528e1dc3c0d204e358f3"
     },
     "europe1914": {
-      "path": "/home/cassiop-e/.gemini/antigravity-cli/brain/3ab810c9-cc80-4c2c-b642-e4591b88b9ed/scratch/regis/gs1914-europe-1914-low-res.geojson",
+      "path": "/home/cassiop-e/backups/gs1914-2026-11-13/sources/external/regis/gs1914-europe-1914-low-res.geojson",
       "sha256": "994128599eb14a93261e7010c38da010f5dad16e5c197d741296bacca1a61d75"
     },
     "ristat": {
-      "path": "/home/cassiop-e/.gemini/antigravity-cli/brain/3ab810c9-cc80-4c2c-b642-e4591b88b9ed/scratch/regis/ristat_1897_provinces.gpkg",
+      "path": "/home/cassiop-e/backups/gs1914-2026-11-13/sources/external/regis/ristat_1897_provinces.gpkg",
       "sha256": "807a7e531950a8f0c57517d13e43dfe781d09ac5309f7f4f02ab4cd3fe09c600"
+    },
+    "regis_yugoslavia": {
+      "path": "/home/cassiop-e/backups/gs1914-2026-11-13/sources/external/regis/REGIS_Yugoslavia.gpkg",
+      "sha256": "88bcfdfa4b77b921e43a30d4bf65aaf16eeadb3fca6490514622fb8361ce395a"
     }
   }
 }

@@ -1,0 +1,310 @@
+{
+  "mission": "MAJ-003",
+  "target_date": "1914-01-01",
+  "salient": {
+    "area_km2_epsg3035": 1151.510051,
+    "area_km2_rounded": 1151.51,
+    "bounds_epsg4326": [
+      22.48993,
+      41.328,
+      22.990592,
+      41.642207
+    ],
+    "vertex_count_ring": 88,
+    "anchors": {
+      "north_divergence_1913_1919_cote_1445": [
+        22.968377,
+        41.579668
+      ],
+      "west_tripoint_plavus": [
+        22.502811,
+        41.458667
+      ],
+      "south_tripoint_1913_belasica_peak_1494": [
+        22.811499,
+        41.328567
+      ],
+      "southeast_tripoint_1919_mount_tumba": [
+        22.950025,
+        41.33346
+      ]
+    },
+    "segments": {
+      "regis_l1_1920_1923_bregalnitsa_bitoly_vertices": 32,
+      "watershed_plavus_kosturino_belasica_vertices": 8,
+      "full_1913_bucharest_frontier_vertices": 40,
+      "replaced_1919_neuilly_frontier_vertices": 40,
+      "belasica_crest_1494_to_tumba_vertices": 10
+    }
+  },
+  "regions": {
+    "region_072": {
+      "area_km2_before": 40498.905093,
+      "area_km2_after": 41650.415144,
+      "area_km2_published_before": 40498.91,
+      "area_km2_published_after": 41650.42,
+      "delta_km2": 1151.510051,
+      "vertex_count_before": 984,
+      "vertex_count_after": 993,
+      "strumica_contains_before": false,
+      "strumica_contains_after": true
+    },
+    "region_074": {
+      "area_km2_before": 89797.378328,
+      "area_km2_after": 88645.868277,
+      "area_km2_published_before": 89797.38,
+      "area_km2_published_after": 88645.87,
+      "delta_km2": -1151.510051,
+      "vertex_count_before": 1709,
+      "vertex_count_after": 1700,
+      "strumica_contains_before": true,
+      "strumica_contains_after": false
+    }
+  },
+  "conservation": {
+    "sum_072_074_before_km2": 130296.283421,
+    "sum_072_074_after_km2": 130296.283421,
+    "envelope_symmetric_difference_deg2": 0.0,
+    "overlap_072_074_deg2": 0.0,
+    "overlap_072_078_deg2": 0.0,
+    "overlap_074_078_deg2": 0.0
+  },
+  "locality_checks": {
+    "bulgarian_salient_in_072": {
+      "Strumica (chef-lieu)": {
+        "lon_lat": [
+          22.6427,
+          41.4378
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Novo Selo": {
+        "lon_lat": [
+          22.8811,
+          41.4139
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Bosilovo": {
+        "lon_lat": [
+          22.7278,
+          41.4406
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Vasilevo": {
+        "lon_lat": [
+          22.6419,
+          41.4756
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Kosturino": {
+        "lon_lat": [
+          22.5714,
+          41.3572
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Kuklish": {
+        "lon_lat": [
+          22.6653,
+          41.4053
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Veljusa": {
+        "lon_lat": [
+          22.5675,
+          41.4761
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Bansko": {
+        "lon_lat": [
+          22.7436,
+          41.3833
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Koleshino": {
+        "lon_lat": [
+          22.8058,
+          41.3822
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Mokrino": {
+        "lon_lat": [
+          22.8422,
+          41.3806
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Gabrovo": {
+        "lon_lat": [
+          22.7897,
+          41.3811
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Dabilje": {
+        "lon_lat": [
+          22.6858,
+          41.4461
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Murtino": {
+        "lon_lat": [
+          22.7753,
+          41.4153
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Monospitovo": {
+        "lon_lat": [
+          22.7556,
+          41.4178
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Popchevo": {
+        "lon_lat": [
+          22.5889,
+          41.4194
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Raborci": {
+        "lon_lat": [
+          22.5964,
+          41.3917
+        ],
+        "in_072": true,
+        "in_074": false
+      },
+      "Badolen": {
+        "lon_lat": [
+          22.91,
+          41.52
+        ],
+        "in_072": true,
+        "in_074": false
+      }
+    },
+    "serbian_border_in_074": {
+      "Radoviš (haute vallée / Stara Reka)": {
+        "lon_lat": [
+          22.4647,
+          41.6381
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Konče (bassin de la Kriva Lakavica)": {
+        "lon_lat": [
+          22.3836,
+          41.4956
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Berovo (Maleš / haute Bregalnica)": {
+        "lon_lat": [
+          22.8578,
+          41.7031
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Valandovo (Bojmija / Anska Reka)": {
+        "lon_lat": [
+          22.5606,
+          41.3174
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Rabrovo": {
+        "lon_lat": [
+          22.5597,
+          41.3292
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Čalaklija": {
+        "lon_lat": [
+          22.6078,
+          41.3075
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Prsten": {
+        "lon_lat": [
+          22.6258,
+          41.3025
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Bašibos": {
+        "lon_lat": [
+          22.6908,
+          41.3056
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Bajrambos": {
+        "lon_lat": [
+          22.7153,
+          41.3125
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Kurtamzali": {
+        "lon_lat": [
+          22.6606,
+          41.2889
+        ],
+        "in_074": true,
+        "in_072": false
+      },
+      "Dojran (Stari Dojran)": {
+        "lon_lat": [
+          22.7206,
+          41.1864
+        ],
+        "in_074": true,
+        "in_072": false
+      }
+    }
+  },
+  "atlas": {
+    "features": 90,
+    "valid": 90,
+    "overlap_pairs_gt_1e-10_deg2": 0,
+    "max_overlap_deg2": 0.0,
+    "total_area_km2_published_sum": 10027649.63,
+    "total_area_km2_unrounded_sum": 10027649.640645
+  }
+}

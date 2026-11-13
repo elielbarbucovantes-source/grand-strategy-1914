@@ -707722,156 +707722,192 @@
               41.579668
             ],
             [
-              22.973936,
-              41.574664
+              22.875271,
+              41.575631
             ],
             [
-              22.979219,
-              41.565482
+              22.782708,
+              41.602754
             ],
             [
-              22.980052,
-              41.562144
+              22.707196,
+              41.642207
             ],
             [
-              22.98422,
-              41.556308
+              22.660424,
+              41.634211
             ],
             [
-              22.985608,
-              41.549357
+              22.659388,
+              41.632626
             ],
             [
-              22.984497,
-              41.544629
+              22.657329,
+              41.633379
             ],
             [
-              22.982273,
-              41.541291
+              22.645129,
+              41.631921
             ],
             [
-              22.979768,
-              41.538511
+              22.638106,
+              41.628631
             ],
             [
-              22.973095,
-              41.534334
+              22.629059,
+              41.623213
             ],
             [
-              22.97031,
-              41.526551
+              22.624596,
+              41.620793
             ],
             [
-              22.973297,
-              41.516765
+              22.617696,
+              41.62581
             ],
             [
-              22.975035,
-              41.513482
+              22.616329,
+              41.630735
             ],
             [
-              22.98004,
-              41.507921
+              22.617302,
+              41.632029
             ],
             [
-              22.981429,
-              41.500962
+              22.607821,
+              41.631789
             ],
             [
-              22.97976,
-              41.496792
+              22.597051,
+              41.629554
             ],
             [
-              22.974476,
-              41.491232
+              22.586223,
+              41.623163
             ],
             [
-              22.972808,
-              41.487061
+              22.573913,
+              41.613388
             ],
             [
-              22.973635,
-              41.467874
+              22.571478,
+              41.605366
             ],
             [
-              22.976414,
-              41.457585
+              22.529273,
+              41.578793
             ],
             [
-              22.979196,
-              41.451184
+              22.514845,
+              41.561479
             ],
             [
-              22.988924,
-              41.440618
+              22.501944,
+              41.540214
             ],
             [
-              22.990592,
-              41.437556
+              22.497743,
+              41.531219
             ],
             [
-              22.990312,
-              41.433385
+              22.496566,
+              41.525419
             ],
             [
-              22.973625,
-              41.416705
+              22.493911,
+              41.516234
             ],
             [
-              22.971402,
-              41.413085
+              22.492265,
+              41.508114
             ],
             [
-              22.970286,
-              41.40864
+              22.491222,
+              41.495164
             ],
             [
-              22.976401,
-              41.39612
+              22.48993,
+              41.488784
             ],
             [
-              22.978905,
-              41.393339
+              22.493923,
+              41.48116
             ],
             [
-              22.979737,
-              41.390001
+              22.499458,
+              41.473346
             ],
             [
-              22.979457,
-              41.385831
+              22.504993,
+              41.465533
             ],
             [
-              22.977234,
-              41.382493
+              22.502811,
+              41.458667
             ],
             [
-              22.976397,
-              41.378881
+              22.525,
+              41.425
             ],
             [
-              22.981122,
-              41.365528
+              22.55,
+              41.385
             ],
             [
-              22.979176,
-              41.357463
+              22.562,
+              41.345
             ],
             [
-              22.97528,
-              41.349955
+              22.595,
+              41.335
             ],
             [
-              22.969997,
-              41.344395
+              22.64,
+              41.328
             ],
             [
-              22.963708,
-              41.340384
+              22.675,
+              41.331
             ],
             [
-              22.956925,
-              41.336056
+              22.74,
+              41.329
+            ],
+            [
+              22.811499,
+              41.328567
+            ],
+            [
+              22.818172,
+              41.338297
+            ],
+            [
+              22.827348,
+              41.339969
+            ],
+            [
+              22.831519,
+              41.338853
+            ],
+            [
+              22.833186,
+              41.335797
+            ],
+            [
+              22.839302,
+              41.331344
+            ],
+            [
+              22.844866,
+              41.330785
+            ],
+            [
+              22.903815,
+              41.33523
+            ],
+            [
+              22.940798,
+              41.334385
             ],
             [
               22.950025,
@@ -709306,10 +709342,10 @@
           "strategic"
         ],
         "has_coastline": false,
-        "area_km2": 40498.91,
+        "area_km2": 41650.42,
         "centroid_lon_lat": [
-          23.563199,
-          42.838059
+          23.540956,
+          42.801077
         ],
         "representative_point_lon_lat": [
           23.428425,
@@ -709332,15 +709368,15 @@
           "Pléven (Pleven)",
           "Sophia (Sofia, Sofija)",
           "Kustendil (Kjustendil)",
-          "Pétritch (Petrich)",
+          "Stroumitsa / Pétritch (Strumica / Petrich)",
           "Confins occidentaux bulgares de 1914 (Tsaribrod, Bosilegrad)"
         ],
-        "source_layer": "REGIS_Bulgaria.gpkg:REGIS_Bulgaria_L2_1923-1925 + REGIS_Bulgaria_L0_1886-1912",
+        "source_layer": "REGIS_Bulgaria.gpkg:REGIS_Bulgaria_L2_1923-1925 + REGIS_Bulgaria_L0_1886-1912 + REGIS_Yugoslavia.gpkg:REGIS_Yugoslavia_L1_1920-1923 (saillant de Stroumitsa 1913)",
         "source_refs": [
           "regis_2026_v1",
           "kavanagh_1914_v1"
         ],
-        "notes": "Regroupe les okrugs occidentaux de Vidin, Vratsa, Pleven, Sofia, Kyoustendil (incluant Tsaribrod et Bosilegrad, bulgares en 1914) et Pétritch (Macédoine du Pirin acquise en 1913).",
+        "notes": "Regroupe les okrugs occidentaux de Vidin, Vratsa, Pleven, Sofia, Kyoustendil (incluant Tsaribrod et Bosilegrad, bulgares en 1914) et Stroumitsa/Pétritch (Macédoine du Pirin et saillant de Stroumitsa acquis au traité de Bucarest du 10 août 1913).",
         "bbox": [
           22.241577,
           41.311837,
@@ -709348,7 +709384,10 @@
           44.219417
         ],
         "polygon_parts_count": 1,
-        "vertex_count": 984
+        "vertex_count": 993,
+        "approximations": [
+          "MAJ-003 : rattachement du saillant de Stroumitsa (1151.51 km², okoliya de Stroumitsa et villages frontaliers occidentaux de l'okoliya de Pétritch) à region_072 d'après le traité de Bucarest du 10 août 1913 (art. III et V, protocole n° 9), la limite REGIS_Yugoslavia_L1_1920-1923 (Bregalnitsa/Bitoly) entre la Cote 1445 et le mont Plavuš, et la ligne de partage des eaux Vardar-Strouma par le col de Kosturino jusqu'à la Cote 1494 sur la Belasica."
+        ]
       }
     },
     {
@@ -716181,164 +716220,160 @@
         "coordinates": [
           [
             [
-              22.940798,
-              41.334385
+              22.811499,
+              41.328567
             ],
             [
-              22.950025,
-              41.33346
+              22.74,
+              41.329
             ],
             [
-              22.956925,
-              41.336056
+              22.675,
+              41.331
             ],
             [
-              22.963708,
-              41.340384
+              22.64,
+              41.328
             ],
             [
-              22.969997,
-              41.344395
+              22.595,
+              41.335
             ],
             [
-              22.97528,
-              41.349955
+              22.562,
+              41.345
             ],
             [
-              22.979176,
-              41.357463
+              22.55,
+              41.385
             ],
             [
-              22.981122,
-              41.365528
+              22.525,
+              41.425
             ],
             [
-              22.976397,
-              41.378881
+              22.502811,
+              41.458667
             ],
             [
-              22.977234,
-              41.382493
+              22.504993,
+              41.465533
             ],
             [
-              22.979457,
-              41.385831
+              22.499458,
+              41.473346
             ],
             [
-              22.979737,
-              41.390001
+              22.493923,
+              41.48116
             ],
             [
-              22.978905,
-              41.393339
+              22.48993,
+              41.488784
             ],
             [
-              22.976401,
-              41.39612
+              22.491222,
+              41.495164
             ],
             [
-              22.970286,
-              41.40864
+              22.492265,
+              41.508114
             ],
             [
-              22.971402,
-              41.413085
+              22.493911,
+              41.516234
             ],
             [
-              22.973625,
-              41.416705
+              22.496566,
+              41.525419
             ],
             [
-              22.990312,
-              41.433385
+              22.497743,
+              41.531219
             ],
             [
-              22.990592,
-              41.437556
+              22.501944,
+              41.540214
             ],
             [
-              22.988924,
-              41.440618
+              22.514845,
+              41.561479
             ],
             [
-              22.979196,
-              41.451184
+              22.529273,
+              41.578793
             ],
             [
-              22.976414,
-              41.457585
+              22.571478,
+              41.605366
             ],
             [
-              22.973635,
-              41.467874
+              22.573913,
+              41.613388
             ],
             [
-              22.972808,
-              41.487061
+              22.586223,
+              41.623163
             ],
             [
-              22.974476,
-              41.491232
+              22.597051,
+              41.629554
             ],
             [
-              22.97976,
-              41.496792
+              22.607821,
+              41.631789
             ],
             [
-              22.981429,
-              41.500962
+              22.617302,
+              41.632029
             ],
             [
-              22.98004,
-              41.507921
+              22.616329,
+              41.630735
             ],
             [
-              22.975035,
-              41.513482
+              22.617696,
+              41.62581
             ],
             [
-              22.973297,
-              41.516765
+              22.624596,
+              41.620793
             ],
             [
-              22.97031,
-              41.526551
+              22.629059,
+              41.623213
             ],
             [
-              22.973095,
-              41.534334
+              22.638106,
+              41.628631
             ],
             [
-              22.979768,
-              41.538511
+              22.645129,
+              41.631921
             ],
             [
-              22.982273,
-              41.541291
+              22.657329,
+              41.633379
             ],
             [
-              22.984497,
-              41.544629
+              22.659388,
+              41.632626
             ],
             [
-              22.985608,
-              41.549357
+              22.660424,
+              41.634211
             ],
             [
-              22.98422,
-              41.556308
+              22.707196,
+              41.642207
             ],
             [
-              22.980052,
-              41.562144
+              22.782708,
+              41.602754
             ],
             [
-              22.979219,
-              41.565482
-            ],
-            [
-              22.973936,
-              41.574664
+              22.875271,
+              41.575631
             ],
             [
               22.968377,
@@ -722983,38 +723018,6 @@
             [
               22.811499,
               41.328567
-            ],
-            [
-              22.818172,
-              41.338297
-            ],
-            [
-              22.827348,
-              41.339969
-            ],
-            [
-              22.831519,
-              41.338853
-            ],
-            [
-              22.833186,
-              41.335797
-            ],
-            [
-              22.839302,
-              41.331344
-            ],
-            [
-              22.844866,
-              41.330785
-            ],
-            [
-              22.903815,
-              41.33523
-            ],
-            [
-              22.940798,
-              41.334385
             ]
           ]
         ]
@@ -723038,10 +723041,10 @@
           "strategic"
         ],
         "has_coastline": false,
-        "area_km2": 89797.38,
+        "area_km2": 88645.87,
         "centroid_lon_lat": [
-          21.226882,
-          43.04215
+          21.20769,
+          43.062038
         ],
         "representative_point_lon_lat": [
           21.419665,
@@ -723069,12 +723072,12 @@
           "Sandjak de Novi Pazar oriental (Raška) et Kosovo (Pristina, Prizren, Mitrovica)",
           "Macédoine du Vardar annexée au traité de Bucarest d'août 1913 (Skopje, Kumanovo, Tetovo, Štip/Bregalnica, Bitola/Monastir, Ohrid, Tikveš)"
         ],
-        "source_layer": "REGIS_Yugoslavia.gpkg:REGIS_Yugoslavia_L2_1948-1954 + REGIS_Serbia_L1_1900-1901",
+        "source_layer": "REGIS_Yugoslavia.gpkg:REGIS_Yugoslavia_L2_1948-1954 + REGIS_Yugoslavia_L1_1920-1923 + REGIS_Serbia_L1_1900-1901",
         "source_refs": [
           "regis_2026_v1",
           "kavanagh_1914_v1"
         ],
-        "notes": "Royaume de Serbie dans ses frontières du 1er janvier 1914 (issues du traité de Bucarest du 10 août 1913) : Vieille Serbie au sud du Danube et de la Save (hors Voïvodine/Syrmie austro-hongroise), Sandjak oriental, Kosovo et Macédoine du Vardar (Skopje, Bitola), sans les confins de Tsaribrod/Bosilegrad (conservés dans la Bulgarie occidentale region_072).",
+        "notes": "Royaume de Serbie dans ses frontières du 1er janvier 1914 (issues du traité de Bucarest du 10 août 1913) : Vieille Serbie au sud du Danube et de la Save (hors Voïvodine/Syrmie austro-hongroise), Sandjak oriental, Kosovo et Macédoine du Vardar (Skopje, Bitola, Radoviš, Valandovo, Dojran), sans les confins de Tsaribrod/Bosilegrad ni le saillant de Stroumitsa (conservés dans la Bulgarie occidentale region_072).",
         "bbox": [
           19.112797,
           40.846903,
@@ -723082,7 +723085,10 @@
           44.991732
         ],
         "polygon_parts_count": 1,
-        "vertex_count": 1709
+        "vertex_count": 1700,
+        "approximations": [
+          "MAJ-003 : retrait du saillant de Stroumitsa (1151.51 km², cédé au Royaume des Serbes, Croates et Slovènes seulement au traité de Neuilly-sur-Seine du 27 novembre 1919) au profit de region_072 ; maintien de la haute vallée de la Stroumitsa (bassin de Radoviš / Stara Reka) et de la Bojmija (Valandovo, Rabrovo) en territoire serbe conformément à l'article III du traité de Bucarest (10 août 1913)."
+        ]
       }
     },
     {
