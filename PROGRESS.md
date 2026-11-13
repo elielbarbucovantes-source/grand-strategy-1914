@@ -1,6 +1,6 @@
 # PROGRESS — État du projet
 
-Dernière mise à jour : inventaire cible et recherche initiale de l’atlas à 90 régions
+Dernière mise à jour : sécurisation des acquis et première base géographique consolidée (90 régions)
 Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION EXPLICITE**
 
 ## 1. État général
@@ -10,7 +10,7 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 | Vision et piliers | VALIDÉ | Profondeur stratégique, autonomie de l’IA, réalisme historique |
 | Campagne et puissances | Principes VALIDÉS | Europe 1914, sept puissances jouables, autres États IA |
 | Boucle et temps | VALIDÉ | Mois par tour, ordres secrets simultanés, résolution simultanée |
-| Carte | 69 décisions VALIDÉES ; inventaire cible de 90 régions saisi; atlas géométrique non construit | Répartition zonale et noms de travail consignés; pays de Galles distinct suite à clarification; sources candidates documentées; aucune géométrie/ville/infrastructure/zone maritime n’a été créée |
+| Carte | 69 décisions VALIDÉES ; base géographique consolidée de 90 régions construite et validée (hors Strumica) | Répartition zonale et noms de travail consignés; pays de Galles distinct suite à clarification; BLK-001/BLK-002/MAJ-004 corrigées et versionnées; Strumica (MAJ-003) non corrigée (hors périmètre) |
 | Diplomatie | Principes VALIDÉS ; règles À DÉFINIR | Accords, confiance, acceptation, sanctions, confidentialité |
 | Économie / industrie | Principes VALIDÉS ; valeurs À DÉFINIR | Trois ressources, stock national centralisé, cinq industries |
 | Armée / logistique | Principes VALIDÉS ; modèle À DÉFINIR | Hiérarchie, mouvement/logistique et batailles d’offensive ; détails ouverts |
@@ -99,7 +99,10 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 - [x] Recherche initiale des sources historiques et licences documentée.
 - [x] Index éditorial `region_001`–`region_090` préparé sans polygones.
 - [x] Validateur réutilisable ajouté pour l’index et les futures géométries.
-- [ ] Géométries historiques, couverture, adjacences, villes, relief, infrastructures et zones maritimes — non réalisées; atlas non validé.
+- [x] Sécurisation des acquis : bundle Git (toutes branches), archive d’arbre de travail, sauvegarde des sources externes et environnement GIS persistant `.venv`.
+- [x] Base géographique consolidée de 90 régions construite et versionnée (BLK-001 Saray, BLK-002 micro-chevauchements, MAJ-004 quatre lacunes) ; reproduction déterministe depuis les fichiers versionnés, indépendante de `/tmp`.
+- [ ] Strumica (MAJ-003) : attribution bulgare 1913 non corrigée ; nécessite un arbitrage historique et géométrique (blocage connu).
+- [ ] Couverture de référence, adjacences, villes, relief, infrastructures et zones maritimes — non réalisées; atlas non validé par le directeur.
 - [x] Registre des décisions ouvertes créé.
 - [x] Huit spécifications de domaine comparées aux sources jointes ; contenu identique.
 - [ ] Conception de l’atlas cartographique validée par le directeur.
@@ -109,4 +112,4 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 
 ## 6. Vérification et limites
 
-Pour cette mission : le validateur confirme 90 IDs uniques, champs éditoriaux obligatoires et comptes zonaux (6/13/6/18/8/18/10/7/4). Il signale explicitement `regions.geojson` absent et sort avec statut incomplet; aucune validation géométrique/topologique n’a donc eu lieu. Le schéma JSON parse correctement. Les liens Markdown relatifs des fichiers ajoutés ont été contrôlés par inspection; `git diff --check` doit être relancé avant commit. L’archive REGIS téléchargée était altérée et n’a pas été importée. Aucune géométrie, ville, infrastructure, zone maritime ou logique de gameplay n’a été créée. L’atlas n’est pas validé ni jouable.
+Pour cette mission : `validate_geometry.py` confirme 90/90 régions, 90/90 géométries valides, 0 chevauchement supérieur à 1e-10 deg², 0/4 lacune MAJ-004 restante et Saray correctement située ; il sort en erreur (`1`) uniquement pour Strumica (MAJ-003), non corrigée volontairement. `validate_atlas.py` sort `0`. La chaîne `tools/map/consolidate_geometry.sh` a été exécutée deux fois et produit des artefacts identiques octet pour octet. Les sauvegardes ont été vérifiées (bundle Git restauré par `git clone`, SHA-256 origine ↔ copie identiques). L’écart de surface total (+0,94 km²) avec la cible documentée provient d’un changement de version de GEOS sur la couture Saray (`region_088`/`region_089`) et est documenté dans `docs/map/audit/GEOMETRY_CONSOLIDATION_REPORT.md`. Le fichier Kavanagh d’origine `europe_1914.gpkg` reste introuvable ; un substitut documenté est utilisé. Aucun remote Git n’est configuré et rien n’a été poussé. Aucune logique de gameplay n’a été créée ou modifiée ; les données thématiques n’ont pas été touchées. L’atlas n’est pas validé par le directeur.

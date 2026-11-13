@@ -1,0 +1,199 @@
+{
+  "gaps": {
+    "finland": {
+      "sentinel": [
+        32.3258,
+        62.6315
+      ],
+      "area_km2_before": 662.474739,
+      "bounds": [
+        31.599994,
+        62.274354,
+        32.813663,
+        62.950827
+      ],
+      "ristat_coverage_km2": {
+        "Kuopio governorate": 268.48204,
+        "Vyborg governorate": 393.98058
+      },
+      "ristat_uncovered_km2": 0.004623
+    },
+    "tripoint": {
+      "sentinel": [
+        26.1997,
+        48.303
+      ],
+      "area_km2_before": 225.876731,
+      "bounds": [
+        26.02642,
+        48.14401,
+        26.473991,
+        48.572255
+      ],
+      "kavanagh_coverage_km2": {
+        "Austria-Hungary": 61.639366,
+        "Romania": 6.433374,
+        "Russia": 157.803976
+      }
+    },
+    "pasvik_north": {
+      "sentinel": [
+        30.5256,
+        69.5879
+      ],
+      "area_km2_before": 117.048461,
+      "bounds": [
+        30.120838,
+        69.526602,
+        30.94856,
+        69.69075
+      ],
+      "kavanagh_coverage_km2": {
+        "Norway": 81.774557,
+        "Russia": 35.274601
+      }
+    },
+    "pasvik_south": {
+      "sentinel": [
+        29.7994,
+        69.4143
+      ],
+      "area_km2_before": 92.08523,
+      "bounds": [
+        29.340019,
+        69.321363,
+        30.216158,
+        69.583963
+      ],
+      "kavanagh_coverage_km2": {
+        "Norway": 91.483189,
+        "Russia": 0.603966
+      }
+    }
+  },
+  "assignments": [
+    {
+      "gap": "finland",
+      "region_id": "region_052",
+      "country": "whole",
+      "area_km2": 662.474739
+    },
+    {
+      "gap": "tripoint",
+      "region_id": "region_040",
+      "country": "Austria-Hungary",
+      "area_km2": 62.609266
+    },
+    {
+      "gap": "tripoint",
+      "region_id": "region_062",
+      "country": "Russia",
+      "area_km2": 156.80079
+    },
+    {
+      "gap": "tripoint",
+      "region_id": "region_071",
+      "country": "Romania",
+      "area_km2": 6.46666
+    },
+    {
+      "gap": "pasvik_north",
+      "region_id": "region_047",
+      "country": "Norway",
+      "area_km2": 81.774557
+    },
+    {
+      "gap": "pasvik_north",
+      "region_id": "region_065",
+      "country": "Russia",
+      "area_km2": 35.273912
+    },
+    {
+      "gap": "pasvik_south",
+      "region_id": "region_047",
+      "country": "Norway",
+      "area_km2": 91.483189
+    },
+    {
+      "gap": "pasvik_south",
+      "region_id": "region_065",
+      "country": "Russia",
+      "area_km2": 0.601842
+    }
+  ],
+  "contiguity_adjustments": [
+    {
+      "from_region": "region_040",
+      "to_region": "region_062",
+      "area_km2": 0.079381,
+      "reason": "frontière commune avec region_062 (0.0179025°)",
+      "bounds": [
+        26.073919,
+        48.481777,
+        26.077381,
+        48.490113
+      ],
+      "gap": "tripoint"
+    },
+    {
+      "from_region": "region_062",
+      "to_region": "region_071",
+      "area_km2": 0.033286,
+      "reason": "frontière commune avec region_071 (0.00751482°)",
+      "bounds": [
+        26.381001,
+        48.190098,
+        26.38529,
+        48.192597
+      ],
+      "gap": "tripoint"
+    },
+    {
+      "from_region": "region_062",
+      "to_region": "region_040",
+      "area_km2": 1.049281,
+      "reason": "région la plus proche region_040 à 0°",
+      "bounds": [
+        26.02642,
+        48.416532,
+        26.04852,
+        48.428685
+      ],
+      "gap": "tripoint"
+    }
+  ],
+  "rounding_repairs": [],
+  "gaps_after": {
+    "finland": {
+      "residual_area_km2": 0.0,
+      "sentinel_covered_by": [
+        "region_052"
+      ]
+    },
+    "tripoint": {
+      "residual_area_km2": 0.0,
+      "sentinel_covered_by": [
+        "region_062"
+      ]
+    },
+    "pasvik_north": {
+      "residual_area_km2": 0.0,
+      "sentinel_covered_by": [
+        "region_047"
+      ]
+    },
+    "pasvik_south": {
+      "residual_area_km2": 0.0,
+      "sentinel_covered_by": [
+        "region_065"
+      ]
+    }
+  },
+  "atlas": {
+    "features": 90,
+    "valid": 90,
+    "overlap_pairs_gt_1e-10_deg2": 0,
+    "max_overlap_deg2": 0.0,
+    "total_area_km2": 10027649.63
+  }
+}

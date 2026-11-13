@@ -14,3 +14,14 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+
+# Python virtual environment and bytecode (GIS validators)
+.venv/
+__pycache__/
+*.pyc
+
+# Local consolidation staging (transient, never committed)
+.consolidation-stage/
+
+# Local backups
+/backups/

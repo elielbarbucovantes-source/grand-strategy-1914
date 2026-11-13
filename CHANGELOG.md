@@ -3,6 +3,17 @@
 
 Toutes les évolutions importantes du projet sont consignées ici.
 
+## [1.5] — Sécurisation des acquis et base géographique consolidée
+
+- Sauvegarde locale complète : bundle Git de toutes les branches et worktrees, archive de l’arbre de travail (fichiers suivis et non suivis) et copie des sources externes non versionnées (≈ 373 Mo) ; intégrité vérifiée (bundle restauré par `git clone`, SHA-256 origine ↔ copie identiques).
+- Environnement GIS persistant créé dans le projet (`<dépôt>/.venv`) avec versions figées dans `tools/map/requirements.lock` ; `.gitignore` complété (`.venv/`, bytecode, `.consolidation-stage/`, `/backups/`).
+- Première base géographique consolidée et versionnée des 90 régions de 1914 : BLK-001 (Saray), BLK-002 (micro-chevauchements) et MAJ-004 (quatre lacunes de couture) reproduites dans le dépôt.
+- Extraction de sources minimales versionnées sous `data/world/map/sources/derived/` (Saray, pays 1914, provinces finlandaises RISTAT 1897), vérifiées géométriquement identiques aux originaux, pour rendre la reconstruction autonome sans committer les sources lourdes.
+- Ajout de `tools/map/build_source_extracts.py`, `tools/map/consolidate_geometry.sh` et `tools/map/requirements.lock` ; `build_geometry.py` et `close_geometry_gaps.py` restent inchangés.
+- Validateurs : 90/90 régions, 90/90 géométries valides, 0 chevauchement > 1e-10 deg², 0/4 lacune MAJ-004, Saray correcte ; reproduction déterministe (artefacts identiques octet pour octet). Strumica (MAJ-003) reste non corrigée (hors périmètre).
+- Ajout de `docs/map/audit/DATA_RECOVERY_REPORT.md`, `docs/map/audit/GEOMETRY_CONSOLIDATION_REPORT.md` et `docs/map/corrections/geometry_gaps_report.json`.
+- Aucune branche fusionnée, `main` non modifié, aucune source supprimée, aucune donnée thématique modifiée, aucun remote configuré, aucun push. Aucun gameplay créé ou modifié.
+
 ## [1.4] — Inventaire et recherche initiale de l’atlas à 90 régions
 
 - Inscription de la répartition cible de 90 régions et des identifiants de travail dans `data/world/map/tables/region_plan.csv`; le pays de Galles est distinct selon clarification du directeur.

@@ -2621,10 +2621,10 @@
         "strategic"
       ],
       "has_coastline": false,
-      "area_km2": 89432.34,
+      "area_km2": 89494.94,
       "centroid_lon_lat": [
-        23.496141,
-        49.36421
+        23.498002,
+        49.36346
       ],
       "representative_point_lon_lat": [
         24.548644,
@@ -2646,8 +2646,8 @@
       ],
       "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
       "source_refs": [
-        "regis_2026_v1",
-        "kavanagh_1914_v1"
+        "kavanagh_1914_v1",
+        "regis_2026_v1"
       ],
       "notes": "",
       "bbox": [
@@ -2657,7 +2657,10 @@
         50.807939
       ],
       "polygon_parts_count": 1,
-      "vertex_count": 1496
+      "vertex_count": 1541,
+      "approximations": [
+        "MAJ-004 : 62.61 km² de la lacune du tripoint Khotin/Herța attribués à la Bucovine (Autriche-Hongrie) d'après la frontière nationale Kavanagh 1914. La répartition inclut un ajustement de contiguïté topologique documenté dans geometry_gaps_report.json."
+      ]
     },
     {
       "id": "region_041",
@@ -3122,10 +3125,10 @@
         "strategic"
       ],
       "has_coastline": true,
-      "area_km2": 109863.17,
+      "area_km2": 110036.43,
       "centroid_lon_lat": [
-        21.031594,
-        68.878166
+        21.046299,
+        68.879179
       ],
       "representative_point_lon_lat": [
         17.430676,
@@ -3152,8 +3155,8 @@
       ],
       "source_layer": "REGIS_Norway.gpkg:REGIS_Norway_L1_1880-1919",
       "source_refs": [
-        "regis_2026_v1",
-        "kavanagh_1914_v1"
+        "kavanagh_1914_v1",
+        "regis_2026_v1"
       ],
       "notes": "Regroupe les 3 amter septentrionaux (Nordland, Tromsø, Finnmarken) incluant l'archipel des Lofoten-Vesterålen.",
       "island_class": "major",
@@ -3164,7 +3167,10 @@
         71.190515
       ],
       "polygon_parts_count": 52,
-      "vertex_count": 14948
+      "vertex_count": 14953,
+      "approximations": [
+        "MAJ-004 : 81.77 km² (Pasvik nord) et 91.48 km² (Pasvik sud) de lacune attribués à la Norvège d'après la frontière nationale Kavanagh 1914, qui reprend la frontière norvégio-russe de 1826."
+      ]
     },
     {
       "id": "region_048",
@@ -3440,10 +3446,10 @@
         "strategic"
       ],
       "has_coastline": true,
-      "area_km2": 369406.96,
+      "area_km2": 370069.44,
       "centroid_lon_lat": [
-        26.642555,
-        64.389624
+        26.652109,
+        64.386668
       ],
       "representative_point_lon_lat": [
         27.563925,
@@ -3476,19 +3482,23 @@
       ],
       "source_layer": "REGIS_Finland.gpkg:REGIS_Finland_L1_1870-1918",
       "source_refs": [
+        "kavanagh_1914_v1",
         "regis_2026_v1",
-        "kavanagh_1914_v1"
+        "ristat_1897_v1"
       ],
       "notes": "Grand-Duché de Finlande sous souveraineté de l'Empire russe en 1914 (8 gouvernements/lääni : Uusimaa/Nyland, Åbo-Björneborg, Tavastehus/Häme, Viborg/Viipuri, Saint-Michel/Mikkeli, Kuopio, Vasa/Vaasa, Uleåborg/Oulu, incluant l'archipel d'Åland ; sans Petsamo, acquis en 1920).",
       "island_class": "small_strategic",
       "bbox": [
         19.527108,
         59.817658,
-        32.624097,
+        32.813663,
         70.112635
       ],
       "polygon_parts_count": 61,
-      "vertex_count": 7370
+      "vertex_count": 7393,
+      "approximations": [
+        "MAJ-004 : lacune de couture de 662.47 km² au sud-est de la frontière finlandaise (secteur de Suojärvi) comblée au profit de la Finlande d'après la limite Vyborg/Olonets de RISTAT 1897."
+      ]
     },
     {
       "id": "region_053",
@@ -4074,10 +4084,10 @@
         "strategic"
       ],
       "has_coastline": true,
-      "area_km2": 45446.92,
+      "area_km2": 45603.73,
       "centroid_lon_lat": [
-        28.556194,
-        46.898204
+        28.547825,
+        46.903231
       ],
       "representative_point_lon_lat": [
         28.787128,
@@ -4103,18 +4113,21 @@
       ],
       "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
       "source_refs": [
-        "ristat_1897_v1",
-        "kavanagh_1914_v1"
+        "kavanagh_1914_v1",
+        "ristat_1897_v1"
       ],
       "notes": "Gouvernement de Bessarabie entre le Prout, le Dniestr, le bras de Chilia (delta du Danube) et la mer Noire.",
       "bbox": [
-        26.054894,
+        26.04821,
         45.214837,
         30.475454,
         48.64883
       ],
       "polygon_parts_count": 1,
-      "vertex_count": 1409
+      "vertex_count": 1451,
+      "approximations": [
+        "MAJ-004 : 156.80 km² de la lacune du tripoint Khotin/Herța attribués à la Bessarabie (Russie) d'après la frontière nationale Kavanagh 1914. La répartition inclut un ajustement de contiguïté topologique documenté dans geometry_gaps_report.json."
+      ]
     },
     {
       "id": "region_063",
@@ -4242,7 +4255,10 @@
         64.499823
       ],
       "polygon_parts_count": 1,
-      "vertex_count": 1737
+      "vertex_count": 1737,
+      "approximations": [
+        "MAJ-004 : la lacune adjacente de 662.47 km² (secteur de Suojärvi) a été attribuée à region_052 d'après la limite Vyborg/Olonets de RISTAT 1897 ; la limite occidentale de la Russie du Nord-Ouest reste inchangée."
+      ]
     },
     {
       "id": "region_065",
@@ -4262,10 +4278,10 @@
         "strategic"
       ],
       "has_coastline": true,
-      "area_km2": 1165520.39,
+      "area_km2": 1165556.26,
       "centroid_lon_lat": [
-        47.652398,
-        64.79772
+        47.651762,
+        64.797898
       ],
       "representative_point_lon_lat": [
         48.7708,
@@ -4292,8 +4308,8 @@
       ],
       "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
       "source_refs": [
-        "ristat_1897_v1",
-        "kavanagh_1914_v1"
+        "kavanagh_1914_v1",
+        "ristat_1897_v1"
       ],
       "notes": "Regroupe les gouvernements d'Arkhangelsk (incluant la péninsule de Kola, la mer Blanche et la Nouvelle-Zemble) et de Vologda jusqu'à l'Oural septentrional.",
       "island_class": "major",
@@ -4304,7 +4320,10 @@
         69.964524
       ],
       "polygon_parts_count": 1,
-      "vertex_count": 4526
+      "vertex_count": 4563,
+      "approximations": [
+        "MAJ-004 : 35.27 km² (Pasvik nord) et 0.60 km² (Pasvik sud) de lacune attribués à la Russie d'après la frontière nationale Kavanagh 1914, qui reprend la frontière norvégio-russe de 1826."
+      ]
     },
     {
       "id": "region_066",
@@ -4678,10 +4697,10 @@
         "strategic"
       ],
       "has_coastline": false,
-      "area_km2": 38904.39,
+      "area_km2": 38910.86,
       "centroid_lon_lat": [
-        27.006125,
-        46.787875
+        27.006018,
+        46.788113
       ],
       "representative_point_lon_lat": [
         27.030878,
@@ -4717,8 +4736,8 @@
       ],
       "source_layer": "REGIS_Romania.gpkg:REGIS_Romania_L1_1879-1913 (Moldavia, 13 județe L2)",
       "source_refs": [
-        "regis_2026_v1",
-        "kavanagh_1914_v1"
+        "kavanagh_1914_v1",
+        "regis_2026_v1"
       ],
       "notes": "Correspond à la Moldavie roumaine de 1914 (13 județe entre les Carpates orientales et le Prout, sans la Bucovine austro-hongroise ni la Bessarabie russe).",
       "bbox": [
@@ -4728,7 +4747,10 @@
         48.262137
       ],
       "polygon_parts_count": 1,
-      "vertex_count": 1176
+      "vertex_count": 1190,
+      "approximations": [
+        "MAJ-004 : 6.47 km² de la lacune du tripoint Khotin/Herța attribués à la Moldavie (Roumanie) d'après la frontière nationale Kavanagh 1914. La répartition inclut un ajustement de contiguïté topologique documenté dans geometry_gaps_report.json."
+      ]
     },
     {
       "id": "region_072",
@@ -5741,10 +5763,10 @@
         "strategic"
       ],
       "has_coastline": true,
-      "area_km2": 7933.51,
+      "area_km2": 7934.35,
       "centroid_lon_lat": [
-        27.667445,
-        41.152895
+        27.66747,
+        41.152926
       ],
       "representative_point_lon_lat": [
         27.758781,
@@ -5796,7 +5818,7 @@
         41.609741
       ],
       "polygon_parts_count": 1,
-      "vertex_count": 1525
+      "vertex_count": 948
     },
     {
       "id": "region_089",
@@ -5817,9 +5839,9 @@
         "strategic"
       ],
       "has_coastline": true,
-      "area_km2": 11025.13,
+      "area_km2": 11025.23,
       "centroid_lon_lat": [
-        27.111099,
+        27.111108,
         41.569129
       ],
       "representative_point_lon_lat": [
@@ -5868,7 +5890,7 @@
         42.104801
       ],
       "polygon_parts_count": 1,
-      "vertex_count": 1139
+      "vertex_count": 1120
     },
     {
       "id": "region_090",

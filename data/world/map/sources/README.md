@@ -1,6 +1,6 @@
 # Registre des sources cartographiques
 
-Cette liste distingue les sources candidates examinées des données réellement importées. **Aucune source ci-dessous n’a encore été intégrée dans les géométries du jeu.** Avant toute dérivation distribuée, relire les conditions de licence sur la version téléchargée et conserver attribution, version/date et empreinte du fichier.
+Cette liste distingue les sources candidates examinées des données réellement importées. **Seuls les extraits minimaux décrits dans la section « Extraits dérivés versionnés » ci-dessous sont utilisés par la chaîne de consolidation ; le reste demeure candidat.** Avant toute dérivation distribuée, relire les conditions de licence sur la version téléchargée et conserver attribution, version/date et empreinte du fichier.
 
 | Source | Contenu et période | Format / licence | Usage possible et limites |
 |---|---|---|---|
@@ -15,3 +15,13 @@ Cette liste distingue les sources candidates examinées des données réellement
 ## Recommandation de provenance
 
 Le socle territorial doit être multi-source et par pays : frontières d’État historiques pour le cadre souverain, unités administratives historiques pour dériver les regroupements régionaux, puis contrôle visuel contre cartes d’époque. Pour chaque couche dérivée, enregistrer `source_id`, date représentée, licence, transformation et niveau d’incertitude. La licence d’une source ne confère pas les droits d’une carte historique sous-jacente, et chaque source doit être réexaminée à la version réellement utilisée.
+
+## Extraits dérivés versionnés
+
+Les sources brutes (≈ 373 Mo, non versionnées) sont réduites aux seules entités lues par la chaîne de consolidation et stockées dans `data/world/map/sources/derived/`. Le script `tools/map/build_source_extracts.py` produit ces extraits ; chaque géométrie a été vérifiée **identique** à l’entité d’origine (`equals_exact`, différence symétrique nulle). Le manifeste `SOURCE_EXTRACTS.json` enregistre chemins, empreintes SHA-256 et noms.
+
+| Extrait versionné | Source d’origine | Usage | Réserve |
+|---|---|---|---|
+| `gs1914_saray_tekirdag.geojson` | geoBoundaries TUR ADM2 (`gb_tur_adm2.geojson`), `shapeID 54988432B91991689904144` | Correction BLK-001 (Saray, Thrace) | Licence geoBoundaries à reconfirmer avant distribution. |
+| `gs1914_kavanagh_1914_countries.gpkg` | Substitut pays 1914 `gs1914-europe-1914-low-res.geojson` (dérivé Kavanagh, CC BY 4.0), couche `europe_1914`, 4 pays | Arbitrage MAJ-004 (tripoint Khotin/Herța, Pasvik) | **Le fichier Kavanagh original `europe_1914.gpkg` est introuvable** ; le substitut basse résolution reproduit les surfaces de lacune documentées mais pas les découpages internes au bit près. |
+| `gs1914_ristat_1897_finland_provinces.gpkg` | RISTAT 1897 (`ristat_1897_provinces.gpkg`), couche `provinces_1897`, gouvernements de Kuopio et Vyborg | Arbitrage MAJ-004 (lacune Finlande/Olonets) | Source de 1897, pas de 1914 ; usage auxiliaire documenté. |
