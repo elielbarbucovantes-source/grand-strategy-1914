@@ -3,6 +3,21 @@
 
 Toutes les évolutions importantes du projet sont consignées ici.
 
+## [1.7] — Audit approfondi (14/11/2026)
+
+- Livrables `docs/project/audit-2026-11/` : état général, registre des contradictions R-01 à R-14 et des décisions D-001 à D-030, plan cartographique de la phase 2, comparaison technologique et protocole des prototypes neutres, feuille de route, audit de l'alignement de `main`, audit documentaire, questionnaire au directeur.
+- Scripts d'audit en lecture seule : `tools/audit/map_audit.py`, `tools/audit/link_check.py`.
+- Corrections documentaires : erratum R-06 (contradiction apparente) ; bandeaux « obsolète » ou « historique » sur les documents d'état périmés ; erratum au §10 de `TECHNICAL_SPEC.md` (les MAP-DEC sont inchangées) ; `docs/map/audit/ISSUES_STATUS.md` ; index `docs/README.md` ; `docs/legacy/oct31/LINK_MAP.md`.
+- Aucune donnée cartographique, aucune décision ni aucun statut officiel modifiés. Aucune fusion.
+
+## [1.6] — Phase 1 : consolidation technique et documentaire (14/11/2026)
+
+- Environnement GIS durable (`~/.venvs/gs1914-gis`), `tools/map/validate_all.sh`, empreintes de référence et CI GitHub Actions (géométrie et topologie reproduites octet pour octet).
+- `AGENTS.md` et `CONTRIBUTING.md` mis à jour sur la lignée cartographique validée.
+- Rapatriement octet pour octet de T-029, des ADR 0000 à 0006 et du document fondateur, statuts inchangés.
+- Archivage des répertoires obsolètes ; inventaire du prototype Python ; plan d'alignement de `main`.
+- Rapport : `docs/project/PHASE_1_CONSOLIDATION_REPORT.md`.
+
 ## [1.5] — Sécurisation des acquis et base géographique consolidée
 
 - Sauvegarde locale complète : bundle Git de toutes les branches et worktrees, archive de l’arbre de travail (fichiers suivis et non suivis) et copie des sources externes non versionnées (≈ 373 Mo) ; intégrité vérifiée (bundle restauré par `git clone`, SHA-256 origine ↔ copie identiques).

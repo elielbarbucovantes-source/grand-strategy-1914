@@ -1,5 +1,7 @@
 # Atlas historique — données cartographiques
 
+> **⚠ OBSOLÈTE (bandeau ajouté le 14/11/2026).** Ce document décrit l'état au 01/11/2026. Depuis, la géométrie des 90 régions et la topologie ont été construites et validées (`40a3117`, `tools/map/validate_all.sh`). État courant : `PROGRESS.md` et `docs/project/audit-2026-11/01_ETAT_GENERAL.md`. Le texte ci-dessous est conservé sans modification.
+
 ## État
 
 La répartition éditoriale cible de **90 régions terrestres** est enregistrée dans [`tables/region_plan.csv`](tables/region_plan.csv), avec IDs stables provisoires `region_001` à `region_090`, zone, nom français et souveraineté de 1914. Cette table n’est pas une carte : aucune géométrie n’y est jointe et les régions ne sont pas encore cartographiquement construites. L’atlas n’est donc pas validé ni utilisable comme carte jouable.

@@ -10,6 +10,7 @@ Projet en conception. La documentation a été intégrée et l’architecture te
 
 ## Où lire
 
+- `docs/README.md` — **commencer ici** : ordre de lecture et carte des documents (en vigueur ou historiques).
 - `PROJECT.md` — vision, périmètre et principes de conception.
 - `PROGRESS.md` — statut actuel, priorités, jalons et limites.
 - `AGENTS.md` — règles de travail et interdiction de développer le gameplay sans autorisation.

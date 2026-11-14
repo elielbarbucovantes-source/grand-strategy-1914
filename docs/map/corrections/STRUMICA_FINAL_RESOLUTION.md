@@ -1,5 +1,7 @@
 # RÉSOLUTION FINALE ET AUDIT INDÉPENDANT — SAILLANT DE STROUMITSA (`MAJ-003`)
 
+> **Erratum de forme (14/11/2026).** Ce rapport validé contient six liens `file://` et `conversation://` produits par l'outil de l'auditeur. Ils ne sont pas utilisables hors de la machine d'origine. Les fichiers visés sont versionnés dans le dépôt aux mêmes chemins relatifs (`data/world/map/regions.geojson`, `data/world/map/sources/derived/gs1914_strumica_1913_salient.geojson`, `tools/map/*.py`, `tools/map/consolidate_geometry.sh`). Le contenu et les conclusions du rapport ne sont pas modifiés.
+
 - **Projet** : Grand Strategy-1914 (Atlas européen de 90 régions au 1er janvier 1914)
 - **Anomalie traitée** : `MAJ-003` — Attribution erronée du saillant de Stroumitsa (*Strumica* / *Струмица*, `Point(22.6427, 41.4378)`) à `region_074` (*Serbie*) au lieu de `region_072` (*Bulgarie occidentale*)
 - **Branche corrigée** : `fix/map-strumica-final` (commit `03bce804d3da26783b444eb50e8979a58c325738`, parent `a7983e72730f0a80d6e00ca2add74f94b717ff5d`)

@@ -1,7 +1,17 @@
 # PROGRESS — État du projet
 
-Dernière mise à jour : sécurisation des acquis et première base géographique consolidée (90 régions)
+Dernière mise à jour : 14/11/2026 — phase 1 (consolidation) et audit approfondi (`docs/project/audit-2026-11/`)
 Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION EXPLICITE**
+
+## 0. Point au 14/11/2026
+
+- **Cartographie :** géométrie définitive des 90 régions, Strumica (MAJ-003) **validée par audit indépendant** (`47bc6fe`), topologie reconstruite (`40a3117` : 184 arêtes, 10 + 3 détroits, 16 zones maritimes). Contrôle `tools/map/validate_all.sh --full` vert en local et en CI (GitHub Actions).
+- **Restant :** réseau maritime occidental absent (26 façades sans zone), `mz_norwegian_sea` invalide après reprojection, villes et couches thématiques à réintégrer, attributs dérivés obsolètes. Plan : `docs/project/audit-2026-11/04_PLAN_CARTOGRAPHIQUE.md`.
+- **Conception :** T-029 ouvert ; contradictions R-01 à R-14 entre les deux lignées (`docs/project/audit-2026-11/03_REGISTRE_CONTRADICTIONS.md`) ; questions au directeur dans `docs/project/audit-2026-11/QUESTIONS_DIRECTEUR.md`.
+- **Dépôt :** public ; `main` sur la lignée du 31/10 (`1ec985f`), alignement préparé et non exécuté (`docs/project/MAIN_ALIGNMENT_PLAN.md`) ; base de travail `consolidate/phase-1`.
+- **Moteur :** Godot 4.7.2 candidat privilégié, non décidé ; prototype Python gelé comme référence d'étude.
+
+Les sections suivantes sont conservées telles qu'elles étaient au 13/11/2026, sauf les lignes marquées « (14/11) ».
 
 ## 1. État général
 
@@ -10,16 +20,16 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 | Vision et piliers | VALIDÉ | Profondeur stratégique, autonomie de l’IA, réalisme historique |
 | Campagne et puissances | Principes VALIDÉS | Europe 1914, sept puissances jouables, autres États IA |
 | Boucle et temps | VALIDÉ | Mois par tour, ordres secrets simultanés, résolution simultanée |
-| Carte | 69 décisions VALIDÉES ; base géographique consolidée de 90 régions construite et validée (hors Strumica) | Répartition zonale et noms de travail consignés; pays de Galles distinct suite à clarification; BLK-001/BLK-002/MAJ-004 corrigées et versionnées; Strumica (MAJ-003) non corrigée (hors périmètre) |
+| Carte | 69 décisions VALIDÉES ; géométrie des 90 régions et topologie construites et validées, Strumica comprise (14/11) ; réseau maritime incomplet | Répartition zonale et noms de travail consignés; pays de Galles distinct suite à clarification; BLK-001/BLK-002/MAJ-004 corrigées et versionnées; Strumica (MAJ-003) non corrigée (hors périmètre) |
 | Diplomatie | Principes VALIDÉS ; règles À DÉFINIR | Accords, confiance, acceptation, sanctions, confidentialité |
 | Économie / industrie | Principes VALIDÉS ; valeurs À DÉFINIR | Trois ressources, stock national centralisé, cinq industries |
 | Armée / logistique | Principes VALIDÉS ; modèle À DÉFINIR | Hiérarchie, mouvement/logistique et batailles d’offensive ; détails ouverts |
 | Politique, recherche, renseignement | Périmètres VALIDÉS ; règles À DÉFINIR | Pas de formules ni de catalogues complets |
 | IA autonome | Vision VALIDÉE ; architecture technique proposée | IA limitée à ses informations, non omnisciente ; objectifs et cognition à définir |
-| Architecture logicielle | PROPOSITION TECHNIQUE DOCUMENTÉE | Godot 4.7.2 stable + GDScript typé ; simulation pure et domaines modulaires |
+| Architecture logicielle | PROPOSITION TECHNIQUE DOCUMENTÉE | Godot 4.7.2 stable + GDScript typé ; simulation pure et domaines modulaires ; moteur non décidé, prototype Python archivé (14/11) |
 | Multijoueur | Orientation VALIDÉE | Après le solo ; interfaces préparées, aucun réseau en V1 |
 | Code de gameplay | INTERDIT | Attendre l’autorisation explicite du directeur |
-| Dépôt Git | INITIALISÉ sur `main` | Commit documentaire de fondation `5d8579f`; modifications de cette mission à committer |
+| Dépôt Git | Centralisé sur GitHub (public) | `main` = lignée du 31/10 ; lignée de référence `consolidate/phase-1` ; alignement préparé (14/11) |
 
 ## 2. Documentation intégrée
 
@@ -101,8 +111,9 @@ Les valeurs historiques indicatives et évaluations provisoires des fiches natio
 - [x] Validateur réutilisable ajouté pour l’index et les futures géométries.
 - [x] Sécurisation des acquis : bundle Git (toutes branches), archive d’arbre de travail, sauvegarde des sources externes et environnement GIS persistant `.venv`.
 - [x] Base géographique consolidée de 90 régions construite et versionnée (BLK-001 Saray, BLK-002 micro-chevauchements, MAJ-004 quatre lacunes) ; reproduction déterministe depuis les fichiers versionnés, indépendante de `/tmp`.
-- [ ] Strumica (MAJ-003) : attribution bulgare 1913 non corrigée ; nécessite un arbitrage historique et géométrique (blocage connu).
-- [ ] Couverture de référence, adjacences, villes, relief, infrastructures et zones maritimes — non réalisées; atlas non validé par le directeur.
+- [x] Strumica (MAJ-003) : corrigée (`03bce80`) et validée par audit indépendant (`47bc6fe`) (14/11).
+- [x] Adjacences reconstruites depuis la géométrie définitive (`6d30a51`) (14/11).
+- [ ] Couverture de référence, villes (réintégration), relief, infrastructures et zones maritimes occidentales — à réaliser (phase 2) ; atlas non validé par le directeur.
 - [x] Registre des décisions ouvertes créé.
 - [x] Huit spécifications de domaine comparées aux sources jointes ; contenu identique.
 - [ ] Conception de l’atlas cartographique validée par le directeur.

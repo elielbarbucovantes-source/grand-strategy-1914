@@ -1,5 +1,7 @@
 # PLAN DE CONTINUATION — ATLAS GRAND STRATEGY-1914
 
+> **HISTORIQUE (bandeau ajouté le 14/11/2026).** Rapport daté, exact à sa date (13/11/2026). Les opérations qu'il prévoit ont depuis été réalisées : géométrie consolidée, Strumica validée (`47bc6fe`), topologie reconstruite (`40a3117`). État courant : `docs/project/audit-2026-11/01_ETAT_GENERAL.md`. Texte conservé sans modification.
+
 - **Date** : 13 novembre 2026
 - **Objet** : feuille de route opérationnelle pour réunir les travaux fragmentés en un atlas canonique unique, sans recommencer le travail des agents.
 - **Prérequis de lecture** : `docs/map/audit/PROJECT_STATUS.md` (état des lieux) et `docs/map/audit/INTEGRATION_CHECKLIST.md` (procédure d'origine).

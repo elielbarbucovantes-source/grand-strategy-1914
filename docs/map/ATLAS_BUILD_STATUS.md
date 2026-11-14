@@ -1,5 +1,7 @@
 # Atlas 90 régions — état de construction
 
+> **⚠ OBSOLÈTE (bandeau ajouté le 14/11/2026).** Ce document décrit l'état au 01/11/2026. Depuis, la géométrie des 90 régions et la topologie ont été construites et validées (`40a3117`, `tools/map/validate_all.sh`). État courant : `PROGRESS.md` et `docs/project/audit-2026-11/01_ETAT_GENERAL.md`. Le texte ci-dessous est conservé sans modification.
+
 **Statut au 2026-11-01 : inventaire et recherche de sources préparés; atlas géométrique non construit.** Cette mission autorise la définition cartographique, mais ne permet pas de simuler des limites. Les sources identifiées ne donnent pas un jeu cohérent et librement réutilisable des 90 régions au 1er janvier 1914. Les critères de livraison géométrique ne sont donc pas atteints.
 
 ## Répartition cible

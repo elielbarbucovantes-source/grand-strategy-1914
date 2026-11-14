@@ -98,6 +98,12 @@ Les liens vers `PROJECT.md`, `PROGRESS.md`, `AGENTS.md` et `CLAUDE.md` se résol
 | R-11 | D-030 : le répertoire Git reste `GrandStrategy` | Le répertoire de travail de référence est désormais `…/grand-strategy-1914` (dossier Codex) | Information obsolète, sans effet de conception. |
 | R-12 | Design review v0.1 : questions C-01 à C-18 | Registre B : identifiants MAP-OPEN, NAT, TURN, ECO, MIL, DIP | Deux systèmes d'identifiants, sans table de concordance. |
 
+**Erratum du 14/11/2026 (audit approfondi) :**
+- **R-06 est une contradiction apparente.** `docs/nations/PLAYABLE_POWERS.md:44` (lignée de référence) reprend expressément D-028 : « Simplification de conception validée : l'Allemagne est traitée comme ne disposant pas d'un empire colonial exploitable… ». Le classement « absent de B » ci-dessus est erroné.
+- **R-07 et R-09 sont des lacunes** de la lignée de référence (règles « À DÉFINIR »), non des contradictions frontales.
+- **Deux contradictions nouvelles :** **R-13**, mois de départ de la campagne (fondateur « 1914 », atlas au 1/1/1914, prototype en juin) ; **R-14**, piliers (fondateur §2 : diplomatie et militaire ; lignée de référence : trois piliers).
+- Les fiches complètes et le tableau D-001 à D-030 sont dans `docs/project/audit-2026-11/03_REGISTRE_CONTRADICTIONS.md`.
+
 **Proposition, sans décision :** le directeur pourrait indiquer pour chaque D-001 à D-030 si elle est « reprise telle quelle », « remplacée par… » ou « à rediscuter ». Une table de concordance C-xx ↔ identifiants du registre B serait ensuite établie (travail technique).
 
 ## 7. Ce qui n'a pas été fait volontairement

@@ -239,6 +239,8 @@ Précisions validées dans le dossier de mission : le pays de Galles est distinc
 
 Le registre des sources candidates est `data/world/map/sources/README.md`. Les sources examinées sont complémentaires et incomplètes : frontières nationales « c. 1914 », unités administratives à différentes dates (par ex. 1910/1920), carte russe raster au 1er janvier 1914 et données régionales à d’autres dates. Aucune ne livre seule les 90 géométries. L’archive REGIS obtenue pendant la recherche a échoué au contrôle d’intégrité et n’a pas été importée. Par conséquent, aucune géométrie, frontière partagée, adjacence, ville, infrastructure ou zone maritime n’est déclarée construite.
 
+> **Erratum d'état (14/11/2026).** Le paragraphe précédent décrit l'état du 01/11/2026. Depuis, les 90 géométries ont été construites à partir des sources documentées dans `data/world/map/build/*/sources/README.md` et `data/world/map/sources/README.md`, consolidées et validées (`40a3117`). Cet erratum ne modifie **aucune** décision MAP-DEC.
+
 La table `region_plan.csv` constitue un index éditorial, et non une donnée de carte. Les IDs `region_001`–`region_090` sont réservés dans cet inventaire, mais les polygones et leur topologie restent à produire à partir de sources réutilisables et datées. Ne pas fabriquer de subdivisions pour atteindre le compte. `tools/map/validate_atlas.py` vérifie l’index et, lorsque le GeoJSON existera, les identifiants, attributs minimaux, validité et chevauchements géométriques. Il ne peut pas prouver l’exactitude historique ou l’absence de lacunes de couverture sans emprise de référence appropriée.
 
 ## 11. Points de conception / données cartographiques encore ouverts

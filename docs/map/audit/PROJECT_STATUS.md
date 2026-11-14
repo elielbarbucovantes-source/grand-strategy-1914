@@ -1,5 +1,7 @@
 # TABLEAU DE BORD — ÉTAT RÉEL DE L'ATLAS GRAND STRATEGY-1914
 
+> **HISTORIQUE (bandeau ajouté le 14/11/2026).** Rapport daté, exact à sa date (13/11/2026). Les opérations qu'il prévoit ont depuis été réalisées : géométrie consolidée, Strumica validée (`47bc6fe`), topologie reconstruite (`40a3117`). État courant : `docs/project/audit-2026-11/01_ETAT_GENERAL.md`. Texte conservé sans modification.
+
 - **Date du diagnostic** : 13 novembre 2026
 - **Dépôt audité** : `/home/cassiop-e/Documents/Codex/2026-11-01/tu-es-responsable-du-d-veloppement/grand-strategy-1914`
 - **HEAD au moment du diagnostic** : branche `fix/map-thematic-data`, commit `b5a07ae` (commit d'audit global)
