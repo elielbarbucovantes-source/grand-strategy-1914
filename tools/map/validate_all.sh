@@ -4,6 +4,7 @@
 #
 # Étapes (arrêt au premier échec, code de sortie non nul) :
 #   1. Empreintes SHA-256 de référence (tools/map/REFERENCE_SHA256SUMS)
+#   1b. Zones maritimes densifiées et valides en WGS 84 / EPSG:3035
 #   2. validate_geometry.py
 #   3. validate_atlas.py
 #   4. validate_topology.py
@@ -55,6 +56,9 @@ EOF
 
 echo "== 1/6  Empreintes de référence"
 sha256sum --check --strict tools/map/REFERENCE_SHA256SUMS
+
+echo "== 1b    Zones maritimes densifiées (repair_maritime_zones.py --check)"
+"$PY" tools/map/repair_maritime_zones.py --check
 
 echo "== 2/6  validate_geometry.py"
 "$PY" tools/map/validate_geometry.py

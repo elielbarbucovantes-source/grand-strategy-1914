@@ -26,7 +26,7 @@
     },
     "maritime_catalogue": {
       "path": "data/world/map/build/agent_2/maritime_zones.json",
-      "sha256": "6bf861ad5930453c3a5144f70446d369bd68ee4f71052b08076ce555f283995b"
+      "sha256": "c04e0decc44a1cd441d34d3032699d8313d7833297641d1ae56f136c81af7f9d"
     },
     "builder": {
       "path": "tools/map/rebuild_topology.py",
@@ -6549,7 +6549,7 @@
     {
       "id": "mz_norwegian_sea",
       "name_fr": "Mer de Norvège",
-      "geometry_valid": false,
+      "geometry_valid": true,
       "catalogue_coastal_region_count": 3
     },
     {
@@ -7134,7 +7134,7 @@
       "connection_type": "region_maritime_zone",
       "derivation": "catalogue_only",
       "geometry_contact": false,
-      "min_distance_km": 170.22,
+      "min_distance_km": 166.05,
       "shared_boundary_km": 0.0,
       "catalogue_declared": true,
       "source_refs": [
