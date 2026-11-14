@@ -116,8 +116,10 @@ MARITIME_TOUCH_TOLERANCE_M = 200.0
 MARITIME_SHARED_BOUNDARY_MIN_M = 50.0
 PROXIMITY_THRESHOLD_KM = 20.0
 STRAIT_MAX_DISTANCE_KM = 100.0
+# Lot 2 (C8, 15/11/2026) : attributs dérivés régénérés depuis adjacency.json
+# (tools/map/sync_region_attributes.py). Ancienne empreinte : 4b26f0bd133dd9d8…
 EXPECTED_REGIONS_INDEX_SHA256 = (
-    "4b26f0bd133dd9d85dbac6a7d3319aa27da82569af94533e453ac1d76734e771"
+    "a6b5a8e479c1604526008ecdeddfcf1e293d836cc17559385abda3cf76f61f97"
 )
 
 
@@ -698,7 +700,7 @@ def main() -> int:
           "Empreinte de regions.json exacte")
     check(generated_from.get("regions_index", {}).get("sha256")
           == EXPECTED_REGIONS_INDEX_SHA256,
-          "regions.json conserve l'empreinte auditée 4b26f0bd…",
+          "regions.json conserve l'empreinte de référence a6b5a8e4… (lot 2, C8)",
           str(generated_from.get("regions_index", {}).get("sha256")))
     check(generated_from.get("maritime_catalogue", {}).get("sha256")
           == sha256_file(MARITIME_ZONES_PATH),

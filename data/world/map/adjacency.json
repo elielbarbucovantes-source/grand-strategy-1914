@@ -5,12 +5,12 @@
   "generated_from": {
     "geometry": {
       "path": "data/world/map/regions.geojson",
-      "sha256": "183e5e8073006f32a72b7fdd43774861f8a98f649ef24ee71a49e6be47ee3623",
+      "sha256": "10a274e80504007c02e9f91b9adaea2511a749cd07adc5596388a5102c8d5de3",
       "total_regions": 90
     },
     "regions_index": {
       "path": "data/world/map/regions.json",
-      "sha256": "4b26f0bd133dd9d85dbac6a7d3319aa27da82569af94533e453ac1d76734e771"
+      "sha256": "a6b5a8e479c1604526008ecdeddfcf1e293d836cc17559385abda3cf76f61f97"
     },
     "lot_builds": {
       "agent_1": {

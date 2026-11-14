@@ -9,6 +9,7 @@
 #        |-- tools/map/build_geometry.py       -> BLK-001 (Saray) + BLK-002 (micro-overlaps)
 #        |-- tools/map/close_geometry_gaps.py  -> MAJ-004 (four seam gaps)
 #        |-- tools/map/fix_strumica_salient.py -> MAJ-003 (1913 Strumica salient)
+#        |-- tools/map/sync_region_attributes.py -> C8 (attributs dérivés depuis adjacency.json)
 #        v
 #   data/world/map/regions.geojson + regions.json          (consolidated atlas)
 #
@@ -51,6 +52,9 @@ cp "$STAGE_MAJ003/regions.json" data/world/map/regions.json
 cp "$STAGE/geometry_gaps_report.json" docs/map/corrections/geometry_gaps_report.json
 cp "$STAGE_MAJ003/strumica_salient_report.json" docs/map/corrections/strumica_salient_report.json
 rm -rf "$STAGE" "$STAGE_MAJ003"
+
+echo "== 4b/5 attributs dérivés depuis adjacency.json (C8) : sync_region_attributes.py =="
+"$PY" tools/map/sync_region_attributes.py
 
 echo "== 5/5  validate =="
 "$PY" tools/map/validate_geometry.py

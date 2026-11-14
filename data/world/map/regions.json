@@ -75,6 +75,7 @@
         "region_002",
         "region_004"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Bedfordshire",
         "Berkshire",
@@ -164,6 +165,7 @@
         "region_003",
         "region_004"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Chester",
         "Cumberland",
@@ -235,6 +237,7 @@
       "adjacent_region_ids": [
         "region_002"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Aberdeenshire incl. City",
         "Angus (Forfar), incl. Dundee City",
@@ -319,6 +322,7 @@
         "region_001",
         "region_002"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Anglesey",
         "Brecknock / Brecknockshire / Breconshire",
@@ -382,6 +386,7 @@
       "adjacent_region_ids": [
         "region_006"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Antrim",
         "Armagh",
@@ -443,6 +448,7 @@
       "adjacent_region_ids": [
         "region_005"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Carlow",
         "Clare",
@@ -522,6 +528,7 @@
         "region_013",
         "region_014"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Aisne",
         "Nord",
@@ -583,6 +590,7 @@
         "region_011",
         "region_012"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Cher",
         "Eure",
@@ -647,6 +655,7 @@
         "region_008",
         "region_010"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Calvados",
         "Charente",
@@ -719,6 +728,7 @@
         "region_012",
         "region_022"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Ariège",
         "Aveyron",
@@ -795,6 +805,7 @@
         "region_019",
         "region_035"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Ardennes",
         "Aube",
@@ -868,6 +879,7 @@
         "region_022",
         "region_080"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Ain",
         "Allier",
@@ -948,6 +960,7 @@
         "region_015",
         "region_016"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Antwerpen",
         "Limburg (B)",
@@ -1009,6 +1022,7 @@
         "region_019",
         "region_032"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Hainaut",
         "Liege",
@@ -1066,6 +1080,7 @@
         "region_013",
         "region_016"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Noordholland",
         "Utrecht",
@@ -1124,6 +1139,7 @@
         "region_029",
         "region_032"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Drenthe",
         "Friesland",
@@ -1186,6 +1202,7 @@
         "region_035",
         "region_080"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Basel-Landschaft",
         "Basel-Stadt",
@@ -1247,6 +1264,7 @@
         "region_037",
         "region_080"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Aargau",
         "Appenzell Ausserrhoden",
@@ -1316,6 +1334,7 @@
         "region_032",
         "region_035"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Grand-Duché de Luxembourg"
       ],
@@ -1370,6 +1389,7 @@
         "region_023",
         "region_025"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Aveiro",
         "Beja",
@@ -1440,6 +1460,7 @@
         "region_022",
         "region_023"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Burgos",
         "La Coruna / Coruna (A)",
@@ -1509,6 +1530,7 @@
         "region_023",
         "region_024"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Barcelona",
         "Gerona / Girona",
@@ -1576,6 +1598,7 @@
         "region_024",
         "region_025"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Badajoz",
         "Ciudad Real",
@@ -1639,6 +1662,7 @@
         "region_023",
         "region_025"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Albacete",
         "Alicante / Alacant",
@@ -1699,6 +1723,7 @@
         "region_023",
         "region_024"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Almería",
         "Cádiz",
@@ -1754,7 +1779,13 @@
         "city_konigsberg"
       ],
       "adjacent_region_ids": [
-        "region_027"
+        "region_027",
+        "region_054",
+        "region_055",
+        "region_056"
+      ],
+      "maritime_zone_ids": [
+        "mz_baltic_south_central"
       ],
       "historical_admin_units": [
         "Allenstein (130-3.120)",
@@ -1808,7 +1839,11 @@
       "adjacent_region_ids": [
         "region_026",
         "region_028",
-        "region_030"
+        "region_030",
+        "region_055"
+      ],
+      "maritime_zone_ids": [
+        "mz_baltic_south_central"
       ],
       "historical_admin_units": [
         "Bromberg (130-3.230)",
@@ -1868,6 +1903,10 @@
         "region_029",
         "region_030",
         "region_031"
+      ],
+      "maritime_zone_ids": [
+        "mz_baltic_south_central",
+        "mz_skagerrak_kattegat"
       ],
       "historical_admin_units": [
         "Berlin (Stadt) (130-2.130)",
@@ -1934,7 +1973,12 @@
         "region_028",
         "region_031",
         "region_032",
-        "region_033"
+        "region_033",
+        "region_044"
+      ],
+      "maritime_zone_ids": [
+        "mz_north_sea_eastern",
+        "mz_skagerrak_kattegat"
       ],
       "historical_admin_units": [
         "Aurich (130-3.370)",
@@ -2007,8 +2051,10 @@
         "region_031",
         "region_038",
         "region_039",
-        "region_040"
+        "region_040",
+        "region_055"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Breslau (130-3.250)",
         "Liegnitz (130-3.260)",
@@ -2070,6 +2116,7 @@
         "region_034",
         "region_038"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Anhalt (130-1.360)",
         "Bautzen (130-3.610)",
@@ -2137,6 +2184,7 @@
         "region_033",
         "region_035"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Aachen (130-3.470)",
         "Arnsberg (130-3.400)",
@@ -2205,8 +2253,10 @@
         "region_031",
         "region_032",
         "region_034",
-        "region_035"
+        "region_035",
+        "region_037"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Donaukreis (130-3.690)",
         "Freiburg (130-3.710)",
@@ -2279,6 +2329,7 @@
         "region_037",
         "region_038"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Mittelfranken (130-3.550)",
         "Niederbayern (130-3.510)",
@@ -2342,6 +2393,7 @@
         "region_032",
         "region_033"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Lothringen (130-3.920)",
         "Obererelsaß (130-3.900)",
@@ -2403,6 +2455,7 @@
         "region_041",
         "region_043"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Niederösterreich / Lower Austria",
         "Oberösterreich / Upper Austria",
@@ -2456,12 +2509,14 @@
       ],
       "adjacent_region_ids": [
         "region_018",
+        "region_033",
         "region_034",
         "region_036",
         "region_043",
         "region_080",
         "region_081"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Görz und Gradiska / Goerz and Gradisca",
         "Istrien / Istria",
@@ -2527,6 +2582,7 @@
         "region_036",
         "region_039"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Böhmen / Bohemia"
       ],
@@ -2583,6 +2639,7 @@
         "region_040",
         "region_041"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Mähren / Moravia",
         "Schlesien / Silesia"
@@ -2638,8 +2695,14 @@
         "region_030",
         "region_039",
         "region_041",
-        "region_042"
+        "region_042",
+        "region_055",
+        "region_056",
+        "region_058",
+        "region_062",
+        "region_071"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Bukowina / Bukovina",
         "Galizien und Lodomerien / Galizia and Lodomeria"
@@ -2700,8 +2763,11 @@
         "region_039",
         "region_040",
         "region_042",
-        "region_043"
+        "region_043",
+        "region_070",
+        "region_074"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Abauj-Torna",
         "Arad",
@@ -2798,8 +2864,11 @@
       ],
       "adjacent_region_ids": [
         "region_040",
-        "region_041"
+        "region_041",
+        "region_070",
+        "region_071"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Alsó-Feher",
         "Besztercze-Naszód",
@@ -2867,7 +2936,12 @@
       "adjacent_region_ids": [
         "region_036",
         "region_037",
-        "region_041"
+        "region_041",
+        "region_074",
+        "region_075"
+      ],
+      "maritime_zone_ids": [
+        "mz_adriatic_south_otranto"
       ],
       "historical_admin_units": [
         "Belovár-Körös megye",
@@ -2929,14 +3003,13 @@
         "city_copenhagen",
         "city_aarhus"
       ],
-      "adjacent_region_ids": [],
-      "external_adjacent_region_ids": [
+      "adjacent_region_ids": [
         "region_029"
       ],
       "maritime_zone_ids": [
+        "mz_baltic_south_central",
         "mz_north_sea_eastern",
-        "mz_skagerrak_kattegat",
-        "mz_baltic_south_central"
+        "mz_skagerrak_kattegat"
       ],
       "historical_admin_units": [
         "Aalborg",
@@ -3013,8 +3086,8 @@
         "region_049",
         "region_050"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
+        "mz_north_sea_eastern",
         "mz_skagerrak_kattegat"
       ],
       "historical_admin_units": [
@@ -3079,7 +3152,6 @@
         "region_047",
         "region_050"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_north_sea_eastern",
         "mz_norwegian_sea"
@@ -3143,10 +3215,9 @@
         "region_052",
         "region_065"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_norwegian_sea",
-        "mz_barents_white_sea"
+        "mz_barents_white_sea",
+        "mz_norwegian_sea"
       ],
       "historical_admin_units": [
         "Finnmarken",
@@ -3208,10 +3279,9 @@
         "region_045",
         "region_049"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_skagerrak_kattegat",
-        "mz_baltic_south_central"
+        "mz_baltic_south_central",
+        "mz_skagerrak_kattegat"
       ],
       "historical_admin_units": [
         "Blekinge",
@@ -3280,7 +3350,6 @@
         "region_048",
         "region_050"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_baltic_south_central",
         "mz_gulf_of_bothnia"
@@ -3348,9 +3417,10 @@
         "region_049",
         "region_052"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_gulf_of_bothnia"
+        "mz_barents_white_sea",
+        "mz_gulf_of_bothnia",
+        "mz_norwegian_sea"
       ],
       "historical_admin_units": [
         "Gävleborg",
@@ -3404,7 +3474,6 @@
         "city_reykjavik"
       ],
       "adjacent_region_ids": [],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_north_atlantic_iceland",
         "mz_norwegian_sea"
@@ -3465,8 +3534,8 @@
         "region_064",
         "region_065"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
+        "mz_barents_white_sea",
         "mz_gulf_of_bothnia",
         "mz_gulf_of_finland_riga"
       ],
@@ -3536,10 +3605,10 @@
         "region_057",
         "region_064"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_gulf_of_finland_riga",
-        "mz_baltic_south_central"
+        "mz_baltic_south_central",
+        "mz_gulf_of_bothnia",
+        "mz_gulf_of_finland_riga"
       ],
       "historical_admin_units": [
         "Estonia governorate (Эстляндская губерния)",
@@ -3592,12 +3661,10 @@
         "city_libau"
       ],
       "adjacent_region_ids": [
+        "region_026",
         "region_053",
         "region_056",
         "region_057"
-      ],
-      "external_adjacent_region_ids": [
-        "region_026"
       ],
       "maritime_zone_ids": [
         "mz_baltic_south_central",
@@ -3655,13 +3722,11 @@
         "city_lodz"
       ],
       "adjacent_region_ids": [
-        "region_056"
-      ],
-      "external_adjacent_region_ids": [
         "region_026",
         "region_027",
         "region_030",
-        "region_040"
+        "region_040",
+        "region_056"
       ],
       "maritime_zone_ids": [],
       "historical_admin_units": [
@@ -3719,14 +3784,12 @@
         "city_lomza_osowiec"
       ],
       "adjacent_region_ids": [
+        "region_026",
+        "region_040",
         "region_054",
         "region_055",
         "region_057",
         "region_058"
-      ],
-      "external_adjacent_region_ids": [
-        "region_026",
-        "region_040"
       ],
       "maritime_zone_ids": [],
       "historical_admin_units": [
@@ -3791,7 +3854,6 @@
         "region_064",
         "region_066"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [],
       "historical_admin_units": [
         "Vitebsk governorate (Витебская губерния)",
@@ -3848,14 +3910,12 @@
         "city_kamenets_podolski"
       ],
       "adjacent_region_ids": [
+        "region_040",
         "region_056",
         "region_057",
         "region_059",
         "region_060",
         "region_062"
-      ],
-      "external_adjacent_region_ids": [
-        "region_040"
       ],
       "maritime_zone_ids": [],
       "historical_admin_units": [
@@ -3916,7 +3976,6 @@
         "region_061",
         "region_066"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [],
       "historical_admin_units": [
         "Kiev governorate (Киевская губерния)",
@@ -3977,7 +4036,6 @@
         "region_062",
         "region_063"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_black_sea_west",
         "mz_sea_of_azov"
@@ -4039,7 +4097,6 @@
         "region_066",
         "region_069"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_sea_of_azov"
       ],
@@ -4097,13 +4154,11 @@
         "city_kishinev"
       ],
       "adjacent_region_ids": [
+        "region_040",
         "region_058",
         "region_060",
         "region_070",
         "region_071"
-      ],
-      "external_adjacent_region_ids": [
-        "region_040"
       ],
       "maritime_zone_ids": [
         "mz_black_sea_west"
@@ -4162,10 +4217,9 @@
       "adjacent_region_ids": [
         "region_060"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_black_sea_west",
         "mz_black_sea_east",
+        "mz_black_sea_west",
         "mz_sea_of_azov"
       ],
       "historical_admin_units": [
@@ -4231,7 +4285,6 @@
         "region_065",
         "region_066"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_gulf_of_finland_riga"
       ],
@@ -4298,7 +4351,6 @@
         "region_066",
         "region_067"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_barents_white_sea"
       ],
@@ -4369,7 +4421,6 @@
         "region_068",
         "region_069"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [],
       "historical_admin_units": [
         "Tver governorate (Тверская губерния)",
@@ -4440,7 +4491,6 @@
         "region_066",
         "region_068"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [],
       "historical_admin_units": [
         "Viatka governorate (Вятская губерния)",
@@ -4501,7 +4551,6 @@
         "region_067",
         "region_069"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_caspian_sea"
       ],
@@ -4564,11 +4613,10 @@
         "region_066",
         "region_068"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_sea_of_azov",
         "mz_black_sea_east",
-        "mz_caspian_sea"
+        "mz_caspian_sea",
+        "mz_sea_of_azov"
       ],
       "historical_admin_units": [
         "Don Cossack Host excl. Taganrog & Donetsk okrugs (Cherkasskii, Rostovskii, 1st Donskoi, 2nd Donskoi, Ust-Medveditskii, Khoperskii, Salskii)",
@@ -4627,15 +4675,13 @@
         "city_constanta"
       ],
       "adjacent_region_ids": [
+        "region_041",
+        "region_042",
         "region_062",
         "region_071",
         "region_072",
         "region_073",
         "region_074"
-      ],
-      "external_adjacent_region_ids": [
-        "region_041",
-        "region_042"
       ],
       "maritime_zone_ids": [
         "mz_black_sea_west"
@@ -4711,12 +4757,10 @@
         "city_galati_focsani"
       ],
       "adjacent_region_ids": [
+        "region_040",
+        "region_042",
         "region_062",
         "region_070"
-      ],
-      "external_adjacent_region_ids": [
-        "region_040",
-        "region_042"
       ],
       "maritime_zone_ids": [],
       "historical_admin_units": [
@@ -4788,7 +4832,6 @@
         "region_074",
         "region_078"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [],
       "historical_admin_units": [
         "Vidin",
@@ -4855,10 +4898,9 @@
         "region_089",
         "region_090"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_black_sea_west",
-        "mz_aegean_sea"
+        "mz_aegean_sea",
+        "mz_black_sea_west"
       ],
       "historical_admin_units": [
         "Tarnovo (Trnovo, Tirnovo)",
@@ -4922,15 +4964,13 @@
         "city_skopje_bitola"
       ],
       "adjacent_region_ids": [
+        "region_041",
+        "region_043",
         "region_070",
         "region_072",
         "region_075",
         "region_076",
         "region_078"
-      ],
-      "external_adjacent_region_ids": [
-        "region_041",
-        "region_043"
       ],
       "maritime_zone_ids": [],
       "historical_admin_units": [
@@ -4985,11 +5025,9 @@
         "city_cetinje"
       ],
       "adjacent_region_ids": [
+        "region_043",
         "region_074",
         "region_076"
-      ],
-      "external_adjacent_region_ids": [
-        "region_043"
       ],
       "maritime_zone_ids": [
         "mz_adriatic_south_otranto"
@@ -5048,7 +5086,6 @@
         "region_075",
         "region_078"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_adriatic_south_otranto",
         "mz_ionian_sea"
@@ -5115,10 +5152,10 @@
         "region_078",
         "region_079"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_ionian_sea",
-        "mz_aegean_sea"
+        "mz_adriatic_south_otranto",
+        "mz_aegean_sea",
+        "mz_ionian_sea"
       ],
       "historical_admin_units": [
         "Attiki and Voiotia (510-3.620)",
@@ -5183,10 +5220,9 @@
         "region_076",
         "region_077"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_ionian_sea",
-        "mz_aegean_sea"
+        "mz_aegean_sea",
+        "mz_ionian_sea"
       ],
       "historical_admin_units": [
         "Arta (510-3.400)",
@@ -5254,7 +5290,6 @@
       "adjacent_region_ids": [
         "region_077"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_aegean_sea",
         "mz_ionian_sea"
@@ -5331,6 +5366,7 @@
         "region_081",
         "region_082"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Liguria",
         "Lombardia",
@@ -5390,6 +5426,7 @@
         "region_082",
         "region_083"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Emilia",
         "Veneto"
@@ -5448,6 +5485,7 @@
         "region_083",
         "region_084"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Roma",
         "Toscana",
@@ -5502,6 +5540,7 @@
         "region_082",
         "region_084"
       ],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Abruzzi e Molise",
         "Marche",
@@ -5557,6 +5596,9 @@
         "region_082",
         "region_083"
       ],
+      "maritime_zone_ids": [
+        "mz_adriatic_south_otranto"
+      ],
       "historical_admin_units": [
         "Basilicata",
         "Calabria",
@@ -5610,6 +5652,7 @@
         "city_palermo"
       ],
       "adjacent_region_ids": [],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Sicilia"
       ],
@@ -5659,6 +5702,7 @@
         "city_cagliari"
       ],
       "adjacent_region_ids": [],
+      "maritime_zone_ids": [],
       "historical_admin_units": [
         "Sardegna"
       ],
@@ -5711,10 +5755,9 @@
       "adjacent_region_ids": [
         "region_088"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_marmara_straits",
-        "mz_black_sea_west"
+        "mz_black_sea_west",
+        "mz_marmara_straits"
       ],
       "historical_admin_units": [
         "Arnavutköy",
@@ -5786,10 +5829,9 @@
         "region_089",
         "region_090"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_marmara_straits",
-        "mz_black_sea_west"
+        "mz_black_sea_west",
+        "mz_marmara_straits"
       ],
       "historical_admin_units": [
         "Beylikdüzü",
@@ -5862,7 +5904,6 @@
         "region_088",
         "region_090"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
         "mz_black_sea_west"
       ],
@@ -5931,10 +5972,9 @@
         "region_088",
         "region_089"
       ],
-      "external_adjacent_region_ids": [],
       "maritime_zone_ids": [
-        "mz_marmara_straits",
-        "mz_aegean_sea"
+        "mz_aegean_sea",
+        "mz_marmara_straits"
       ],
       "historical_admin_units": [
         "Bozcaada",
