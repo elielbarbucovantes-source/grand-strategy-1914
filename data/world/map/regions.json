@@ -1,0 +1,5965 @@
+{
+  "schema_version": "1.0.0",
+  "reference_date": "1914-01-01",
+  "total_regions": 90,
+  "zone_counts": {
+    "Îles Britanniques": 6,
+    "Europe occidentale": 13,
+    "Péninsule ibérique": 6,
+    "Europe centrale": 18,
+    "Scandinavie": 8,
+    "Europe orientale": 18,
+    "Balkans": 10,
+    "Italie": 7,
+    "Territoires ottomans européens": 4
+  },
+  "sovereign_counts_1914": {
+    "Royaume-Uni": 6,
+    "France": 6,
+    "Belgique": 2,
+    "Pays-Bas": 2,
+    "Suisse": 2,
+    "Luxembourg": 1,
+    "Portugal": 1,
+    "Espagne": 5,
+    "Empire allemand": 10,
+    "Autriche-Hongrie": 8,
+    "Danemark": 2,
+    "Norvège": 3,
+    "Suède": 3,
+    "Empire russe": 18,
+    "Roumanie": 2,
+    "Bulgarie": 2,
+    "Serbie": 1,
+    "Monténégro": 1,
+    "Albanie": 1,
+    "Grèce": 3,
+    "Italie": 7,
+    "Empire ottoman": 4
+  },
+  "regions": [
+    {
+      "id": "region_001",
+      "name_fr": "Angleterre du Sud",
+      "name_key": "region.region_001.name",
+      "zone": "Îles Britanniques",
+      "sovereign_1914": "Royaume-Uni",
+      "initial_sovereign_id": "united_kingdom",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 74429.55,
+      "centroid_lon_lat": [
+        -1.282886,
+        51.576123
+      ],
+      "representative_point_lon_lat": [
+        -1.202006,
+        51.472082
+      ],
+      "city_ids": [
+        "city_london",
+        "city_portsmouth",
+        "city_birmingham",
+        "city_plymouth"
+      ],
+      "adjacent_region_ids": [
+        "region_002",
+        "region_004"
+      ],
+      "historical_admin_units": [
+        "Bedfordshire",
+        "Berkshire",
+        "Buckinghamshire",
+        "Cambridgeshire",
+        "Cornwall",
+        "Devonshire / Devon",
+        "Dorsetshire",
+        "East Suffolk",
+        "East Sussex",
+        "Essex",
+        "Gloucestershire",
+        "Herefordshire",
+        "Hertfordshire",
+        "Huntingdonshire",
+        "Isle of Ely",
+        "Isle of Wight",
+        "Kent",
+        "London",
+        "Middlesex (metrop.)",
+        "Monmouthshire",
+        "Norfolk",
+        "Northampton",
+        "Oxfordshire",
+        "Soke of Peterborough",
+        "Somerset",
+        "Southampton",
+        "Surrey",
+        "Warwickshire",
+        "West Suffolk",
+        "West Sussex",
+        "Wilts",
+        "Worcestershire",
+        "Bailiwick of Guernsey",
+        "Bailiwick of Jersey"
+      ],
+      "source_layer": "REGIS_UK.gpkg:REGIS_UK_England_L2_1911-1921 + Channel Islands L0",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupement de 32 comtés administratifs du Sud, de l'Est et des Midlands du Sud (1911-1921), incluant le Monmouthshire (rattaché administrativement aux comtés anglais dans REGIS 1911-1921) et les îles Anglo-Normandes simplifiées (MAP-DEC-20).",
+      "island_class": "major",
+      "bbox": [
+        -5.736347,
+        49.168502,
+        1.761892,
+        52.987635
+      ],
+      "polygon_parts_count": 7,
+      "vertex_count": 2742
+    },
+    {
+      "id": "region_002",
+      "name_fr": "Angleterre du Nord",
+      "name_key": "region.region_002.name",
+      "zone": "Îles Britanniques",
+      "sovereign_1914": "Royaume-Uni",
+      "initial_sovereign_id": "united_kingdom",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial"
+      ],
+      "has_coastline": true,
+      "area_km2": 58885.55,
+      "centroid_lon_lat": [
+        -1.776674,
+        53.819173
+      ],
+      "representative_point_lon_lat": [
+        -1.555094,
+        54.064488
+      ],
+      "city_ids": [
+        "city_manchester",
+        "city_liverpool",
+        "city_sheffield",
+        "city_newcastle"
+      ],
+      "adjacent_region_ids": [
+        "region_001",
+        "region_003",
+        "region_004"
+      ],
+      "historical_admin_units": [
+        "Chester",
+        "Cumberland",
+        "Derbyshire",
+        "Durham",
+        "Lancashire",
+        "Leicestershire",
+        "Lincolnshire: Parts of Holland",
+        "Lincolnshire: Parts of Kesteven",
+        "Lincolnshire: Parts of Lindsey",
+        "Northumberland",
+        "Nottinghamshire",
+        "Rutland",
+        "Shropshire",
+        "Stafford / Staffordshire",
+        "Westmorland",
+        "York, East Riding",
+        "York, North Riding",
+        "York, West Riding",
+        "Isle of Man"
+      ],
+      "source_layer": "REGIS_UK.gpkg:REGIS_UK_England_L2_1911-1921 + REGIS_Isle_of_Man_L0_1870-2020",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupement de 18 comtés administratifs du Nord et des Midlands du Nord (1911-1921) ainsi que de l'île de Man rattachée selon MAP-DEC-20.",
+      "island_class": "major",
+      "bbox": [
+        -4.806832,
+        52.309461,
+        0.346581,
+        55.822807
+      ],
+      "polygon_parts_count": 3,
+      "vertex_count": 1671
+    },
+    {
+      "id": "region_003",
+      "name_fr": "Écosse",
+      "name_key": "region.region_003.name",
+      "zone": "Îles Britanniques",
+      "sovereign_1914": "Royaume-Uni",
+      "initial_sovereign_id": "united_kingdom",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 78465.13,
+      "centroid_lon_lat": [
+        -4.193749,
+        56.839129
+      ],
+      "representative_point_lon_lat": [
+        -3.919314,
+        56.658951
+      ],
+      "city_ids": [
+        "city_glasgow",
+        "city_edinburgh"
+      ],
+      "adjacent_region_ids": [
+        "region_002"
+      ],
+      "historical_admin_units": [
+        "Aberdeenshire incl. City",
+        "Angus (Forfar), incl. Dundee City",
+        "Argyll",
+        "Ayr",
+        "Banffshire",
+        "Berwickshire",
+        "Buteshire",
+        "Caithness",
+        "Clackmannanshire",
+        "Dumfries",
+        "Dunbartonshire",
+        "East Lothian (Haddington)",
+        "Fife",
+        "Inverness",
+        "Kincardineshire",
+        "Kinross",
+        "Kirkcudbrightshire",
+        "Lanark (incl. Glasgow City)",
+        "Midlothian  (incl. Edinburgh City)",
+        "Moray (Elgin)",
+        "Nairnshire",
+        "Orkney",
+        "Peeblesshire",
+        "Perthshire",
+        "Renfrewshire",
+        "Ross and Cromarty",
+        "Roxburghshire",
+        "Selkirkshire",
+        "Stirlingshire",
+        "Sutherland",
+        "West Lothian (Linlithgow)",
+        "Wigtownshire",
+        "Zetland (Shetland)"
+      ],
+      "source_layer": "REGIS_UK.gpkg:REGIS_UK_Scotland_L1_1871-2020 (33 comtés L2 1901-1975)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "major",
+      "bbox": [
+        -7.683894,
+        54.633893,
+        -0.768634,
+        60.858859
+      ],
+      "polygon_parts_count": 54,
+      "vertex_count": 10576
+    },
+    {
+      "id": "region_004",
+      "name_fr": "Pays de Galles",
+      "name_key": "region.region_004.name",
+      "zone": "Îles Britanniques",
+      "sovereign_1914": "Royaume-Uni",
+      "initial_sovereign_id": "united_kingdom",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 19154.43,
+      "centroid_lon_lat": [
+        -3.841774,
+        52.379032
+      ],
+      "representative_point_lon_lat": [
+        -3.606472,
+        52.364528
+      ],
+      "city_ids": [
+        "city_cardiff"
+      ],
+      "adjacent_region_ids": [
+        "region_001",
+        "region_002"
+      ],
+      "historical_admin_units": [
+        "Anglesey",
+        "Brecknock / Brecknockshire / Breconshire",
+        "Cardigan / Cardiganshire",
+        "Carmarthen / Carmarthenshire",
+        "Carnarvon / Carnarvonshire / Caernarvonshire / Cae",
+        "Denbigh / Denbighshire",
+        "Flint / Flintshire",
+        "Glamorgan",
+        "Merioneth",
+        "Montgomery",
+        "Pembroke",
+        "Radnor"
+      ],
+      "source_layer": "REGIS_UK.gpkg:REGIS_UK_Wales_L1_1871-1921 (12 comtés historiques L2 1889-1921)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Correspond aux 12 comtés historiques du Pays de Galles dans REGIS (Anglesey, Brecknockshire, Caernarvonshire, Cardiganshire, Carmarthenshire, Denbighshire, Flintshire, Glamorganshire, Merionethshire, Montgomeryshire, Pembrokeshire, Radnorshire) ; le Monmouthshire voisin figure dans la couche England L2 1911-1921.",
+      "island_class": "major",
+      "bbox": [
+        -5.327382,
+        51.381737,
+        -2.813719,
+        53.430345
+      ],
+      "polygon_parts_count": 3,
+      "vertex_count": 1440
+    },
+    {
+      "id": "region_005",
+      "name_fr": "Ulster géographique",
+      "name_key": "region.region_005.name",
+      "zone": "Îles Britanniques",
+      "sovereign_1914": "Royaume-Uni",
+      "initial_sovereign_id": "united_kingdom",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 22384.11,
+      "centroid_lon_lat": [
+        -7.047402,
+        54.59664
+      ],
+      "representative_point_lon_lat": [
+        -6.981073,
+        54.566432
+      ],
+      "city_ids": [
+        "city_belfast"
+      ],
+      "adjacent_region_ids": [
+        "region_006"
+      ],
+      "historical_admin_units": [
+        "Antrim",
+        "Armagh",
+        "Cavan",
+        "Donegal",
+        "Down",
+        "Fermanagh",
+        "Londonderry",
+        "Monoghan",
+        "Tyrone"
+      ],
+      "source_layer": "REGIS_UK.gpkg:REGIS_UK_Ireland_L2_1871-1921 (Ulster, 9 comtés L3 1901-1921)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Province historique complète des neuf comtés ; aucune frontière de partition de 1921. Province historique complète de l'Ulster (9 comtés : Antrim, Armagh, Cavan, Donegal, Down, Fermanagh, Londonderry, Monaghan, Tyrone) sous souveraineté britannique en 1914, sans aucune frontière de partition de 1921.",
+      "island_class": "major",
+      "bbox": [
+        -8.824664,
+        53.745426,
+        -5.448984,
+        55.387408
+      ],
+      "polygon_parts_count": 3,
+      "vertex_count": 1686
+    },
+    {
+      "id": "region_006",
+      "name_fr": "Irlande hors Ulster",
+      "name_key": "region.region_006.name",
+      "zone": "Îles Britanniques",
+      "sovereign_1914": "Royaume-Uni",
+      "initial_sovereign_id": "united_kingdom",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 61534.69,
+      "centroid_lon_lat": [
+        -8.241413,
+        52.989748
+      ],
+      "representative_point_lon_lat": [
+        -7.736192,
+        52.963971
+      ],
+      "city_ids": [
+        "city_dublin",
+        "city_cork_queenstown"
+      ],
+      "adjacent_region_ids": [
+        "region_005"
+      ],
+      "historical_admin_units": [
+        "Carlow",
+        "Clare",
+        "Cork",
+        "Dublin",
+        "Galway",
+        "Kerry",
+        "Kildare",
+        "Kilkenny",
+        "King's",
+        "Leitrim",
+        "Limerick",
+        "Longford",
+        "Louth",
+        "Mayo",
+        "Meath",
+        "Queen's",
+        "Roscommon",
+        "Sligo",
+        "Tipperary",
+        "Waterford",
+        "Westmeath",
+        "Wexford",
+        "Wicklow"
+      ],
+      "source_layer": "REGIS_UK.gpkg:REGIS_UK_Ireland_L2_1871-1921 (Leinster, Munster, Connaught — 23 comtés)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "major",
+      "bbox": [
+        -10.499208,
+        51.422461,
+        -6.013719,
+        54.477833
+      ],
+      "polygon_parts_count": 10,
+      "vertex_count": 4201
+    },
+    {
+      "id": "region_007",
+      "name_fr": "France — Nord",
+      "name_key": "region.region_007.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "France",
+      "initial_sovereign_id": "france",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 31867.03,
+      "centroid_lon_lat": [
+        2.769628,
+        49.979264
+      ],
+      "representative_point_lon_lat": [
+        2.878036,
+        49.979501
+      ],
+      "city_ids": [
+        "city_lille",
+        "city_calais",
+        "city_amiens"
+      ],
+      "adjacent_region_ids": [
+        "region_008",
+        "region_011",
+        "region_013",
+        "region_014"
+      ],
+      "historical_admin_units": [
+        "Aisne",
+        "Nord",
+        "Oise",
+        "Pas-de-Calais",
+        "Somme"
+      ],
+      "source_layer": "REGIS_France.gpkg:REGIS_France_L2_1871-1913",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        1.40775,
+        48.866522,
+        4.267511,
+        51.094482
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 717
+    },
+    {
+      "id": "region_008",
+      "name_fr": "France — Bassin parisien",
+      "name_key": "region.region_008.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "France",
+      "initial_sovereign_id": "france",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 63754.39,
+      "centroid_lon_lat": [
+        1.706632,
+        48.09807
+      ],
+      "representative_point_lon_lat": [
+        1.863666,
+        48.218632
+      ],
+      "city_ids": [
+        "city_paris",
+        "city_le_havre",
+        "city_bourges"
+      ],
+      "adjacent_region_ids": [
+        "region_007",
+        "region_009",
+        "region_010",
+        "region_011",
+        "region_012"
+      ],
+      "historical_admin_units": [
+        "Cher",
+        "Eure",
+        "Eure-et-Loire",
+        "Indre",
+        "Indre-et-Loire",
+        "Loir-et-Cher",
+        "Loiret",
+        "Seine",
+        "Seine-Inférieure",
+        "Seine-et-Marne",
+        "Seine-et-Oise"
+      ],
+      "source_layer": "REGIS_France.gpkg:REGIS_France_L2_1871-1913",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        0.045388,
+        46.353477,
+        3.525861,
+        50.089554
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 521
+    },
+    {
+      "id": "region_009",
+      "name_fr": "France — Ouest",
+      "name_key": "region.region_009.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "France",
+      "initial_sovereign_id": "france",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 103614.44,
+      "centroid_lon_lat": [
+        -1.130303,
+        47.611188
+      ],
+      "representative_point_lon_lat": [
+        -1.118119,
+        47.418394
+      ],
+      "city_ids": [
+        "city_nantes",
+        "city_brest",
+        "city_cherbourg"
+      ],
+      "adjacent_region_ids": [
+        "region_008",
+        "region_010"
+      ],
+      "historical_admin_units": [
+        "Calvados",
+        "Charente",
+        "Charente-Inférieur",
+        "Côtes-du-Nord",
+        "Deux-Sèvres",
+        "Finistère",
+        "Ille-et-Vilaine",
+        "Loire-Inférieure",
+        "Maine-et-Loire",
+        "Manche",
+        "Mayenne",
+        "Morbihan",
+        "Orne",
+        "Sarthe",
+        "Vendée",
+        "Vienne"
+      ],
+      "source_layer": "REGIS_France.gpkg:REGIS_France_L2_1871-1913",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "simplified",
+      "bbox": [
+        -4.806358,
+        45.10813,
+        1.216484,
+        49.728887
+      ],
+      "polygon_parts_count": 7,
+      "vertex_count": 3715
+    },
+    {
+      "id": "region_010",
+      "name_fr": "France — Sud-Ouest",
+      "name_key": "region.region_010.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "France",
+      "initial_sovereign_id": "france",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 104343.61,
+      "centroid_lon_lat": [
+        0.821066,
+        44.337363
+      ],
+      "representative_point_lon_lat": [
+        0.898628,
+        44.506263
+      ],
+      "city_ids": [
+        "city_bordeaux",
+        "city_toulouse"
+      ],
+      "adjacent_region_ids": [
+        "region_008",
+        "region_009",
+        "region_012",
+        "region_022"
+      ],
+      "historical_admin_units": [
+        "Ariège",
+        "Aveyron",
+        "Basses-Pyrénées",
+        "Corrèze",
+        "Creuse",
+        "Dordogne",
+        "Gers",
+        "Gironde",
+        "Haute-Garonne",
+        "Haute-Vienne",
+        "Hautes-Pyrénées",
+        "Landes",
+        "Lot",
+        "Lot-et-Garonne",
+        "Tarn",
+        "Tarn-et-Garonne"
+      ],
+      "source_layer": "REGIS_France.gpkg:REGIS_France_L2_1871-1913",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        -1.797361,
+        42.570287,
+        3.391124,
+        46.449062
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1405
+    },
+    {
+      "id": "region_011",
+      "name_fr": "France — Est",
+      "name_key": "region.region_011.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "France",
+      "initial_sovereign_id": "france",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "forests",
+        "plains",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 91922.12,
+      "centroid_lon_lat": [
+        4.944651,
+        47.937248
+      ],
+      "representative_point_lon_lat": [
+        5.068564,
+        48.158141
+      ],
+      "city_ids": [
+        "city_verdun",
+        "city_nancy",
+        "city_belfort",
+        "city_le_creusot"
+      ],
+      "adjacent_region_ids": [
+        "region_007",
+        "region_008",
+        "region_012",
+        "region_014",
+        "region_017",
+        "region_019",
+        "region_035"
+      ],
+      "historical_admin_units": [
+        "Ardennes",
+        "Aube",
+        "Côte-d'Or",
+        "Doubs",
+        "Haut-Rhin (1871 / Territoire de Belfort (1872-)",
+        "Haute-Marne",
+        "Haute-Saône",
+        "Jura",
+        "Marne",
+        "Meurthe-et-Moselle",
+        "Meuse",
+        "Nièvre",
+        "Saône-et-Loire",
+        "Vosges",
+        "Yonne"
+      ],
+      "source_layer": "REGIS_France.gpkg:REGIS_France_L2_1871-1913",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Frontière orientale conforme au traité de Francfort (1871-1914) : inclut Meurthe-et-Moselle, Meuse, Vosges et Territoire de Belfort ; exclut l'Alsace-Lorraine (region_035).",
+      "bbox": [
+        2.831285,
+        46.144362,
+        7.201492,
+        50.171037
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 886
+    },
+    {
+      "id": "region_012",
+      "name_fr": "France — Sud-Est",
+      "name_key": "region.region_012.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "France",
+      "initial_sovereign_id": "france",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 138700.19,
+      "centroid_lon_lat": [
+        4.872808,
+        44.583063
+      ],
+      "representative_point_lon_lat": [
+        4.980396,
+        44.565161
+      ],
+      "city_ids": [
+        "city_lyon",
+        "city_marseille",
+        "city_toulon"
+      ],
+      "adjacent_region_ids": [
+        "region_008",
+        "region_010",
+        "region_011",
+        "region_017",
+        "region_022",
+        "region_080"
+      ],
+      "historical_admin_units": [
+        "Ain",
+        "Allier",
+        "Alpes-Maritimes",
+        "Ardèche",
+        "Aude",
+        "Basses-Alpes",
+        "Bouches-du-Rhône",
+        "Cantal",
+        "Corse",
+        "Drôme",
+        "Gard",
+        "Haute-Loire",
+        "Haute-Savoie",
+        "Hautes-Alpes",
+        "Hérault",
+        "Isère",
+        "Loire",
+        "Lozère",
+        "Puy-de-Dôme",
+        "Pyrénées Orientales",
+        "Rhône",
+        "Savoie",
+        "Var",
+        "Vaucluse",
+        "Principauté de Monaco (micro-État simplifié, MAP-DEC-04)"
+      ],
+      "source_layer": "REGIS_France.gpkg:REGIS_France_L2_1871-1913",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Inclut le département de la Corse (affectée à France — Sud-Est) et simplifie le micro-État de Monaco dans l'emprise régionale selon MAP-DEC-04.",
+      "island_class": "major",
+      "bbox": [
+        1.665378,
+        41.356459,
+        9.562812,
+        46.80396
+      ],
+      "polygon_parts_count": 4,
+      "vertex_count": 3268
+    },
+    {
+      "id": "region_013",
+      "name_fr": "Flandre (Bruxelles incluse)",
+      "name_key": "region.region_013.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "Belgique",
+      "initial_sovereign_id": "belgium",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 13736.14,
+      "centroid_lon_lat": [
+        4.217747,
+        51.041002
+      ],
+      "representative_point_lon_lat": [
+        4.195933,
+        51.101318
+      ],
+      "city_ids": [
+        "city_brussels",
+        "city_antwerp"
+      ],
+      "adjacent_region_ids": [
+        "region_007",
+        "region_014",
+        "region_015",
+        "region_016"
+      ],
+      "historical_admin_units": [
+        "Antwerpen",
+        "Limburg (B)",
+        "Oost Vlaanderen",
+        "West Vlaanderen",
+        "Brabant (arrondissements de Bruxelles et Louvain)"
+      ],
+      "source_layer": "REGIS_Belgium.gpkg:REGIS_Belgium_L2_1870-1919 (découpe Brabant nord/Bruxelles)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Simplification cartographique de jeu explicitement fournie. Simplification cartographique de jeu explicitement demandée : Bruxelles et le Brabant flamand sont intégrés à la Flandre (avec Flandre-Occidentale, Flandre-Orientale, Anvers et Limbourg belge).",
+      "bbox": [
+        2.533683,
+        50.69506,
+        5.851216,
+        51.507582
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 763
+    },
+    {
+      "id": "region_014",
+      "name_fr": "Wallonie",
+      "name_key": "region.region_014.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "Belgique",
+      "initial_sovereign_id": "belgium",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "forests",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 15857.22,
+      "centroid_lon_lat": [
+        4.938857,
+        50.313965
+      ],
+      "representative_point_lon_lat": [
+        5.39448,
+        50.160474
+      ],
+      "city_ids": [
+        "city_liege",
+        "city_namur"
+      ],
+      "adjacent_region_ids": [
+        "region_007",
+        "region_011",
+        "region_013",
+        "region_016",
+        "region_019",
+        "region_032"
+      ],
+      "historical_admin_units": [
+        "Hainaut",
+        "Liege",
+        "Luxembourg(B)",
+        "Namur",
+        "Brabant (arrondissement de Nivelles / Brabant wallon)"
+      ],
+      "source_layer": "REGIS_Belgium.gpkg:REGIS_Belgium_L2_1870-1919 (frontière 1914 sans Eupen-Malmedy)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Frontière orientale de la province de Liège conforme à 1914 (les cantons d'Eupen-Malmedy restent dans l'Empire allemand, region_032).",
+      "bbox": [
+        3.235169,
+        49.505847,
+        6.132214,
+        50.814497
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 935
+    },
+    {
+      "id": "region_015",
+      "name_fr": "Pays-Bas — Ouest",
+      "name_key": "region.region_015.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "Pays-Bas",
+      "initial_sovereign_id": "netherlands",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 9134.37,
+      "centroid_lon_lat": [
+        4.588711,
+        52.079793
+      ],
+      "representative_point_lon_lat": [
+        4.844347,
+        52.083049
+      ],
+      "city_ids": [
+        "city_amsterdam",
+        "city_rotterdam"
+      ],
+      "adjacent_region_ids": [
+        "region_013",
+        "region_016"
+      ],
+      "historical_admin_units": [
+        "Noordholland",
+        "Utrecht",
+        "Zeeland",
+        "Zuidholland"
+      ],
+      "source_layer": "REGIS_Netherlands.gpkg:REGIS_Netherlands_L1_1870-1932",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Littoral de 1914 avant les grands polders du Zuiderzee/Flevoland.",
+      "island_class": "simplified",
+      "bbox": [
+        3.354661,
+        51.208861,
+        5.625049,
+        53.194265
+      ],
+      "polygon_parts_count": 9,
+      "vertex_count": 1116
+    },
+    {
+      "id": "region_016",
+      "name_fr": "Pays-Bas — Est et Nord",
+      "name_key": "region.region_016.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "Pays-Bas",
+      "initial_sovereign_id": "netherlands",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "marshes",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 24328.19,
+      "centroid_lon_lat": [
+        5.99797,
+        52.302108
+      ],
+      "representative_point_lon_lat": [
+        6.116845,
+        52.114868
+      ],
+      "city_ids": [
+        "city_arnhem"
+      ],
+      "adjacent_region_ids": [
+        "region_013",
+        "region_014",
+        "region_015",
+        "region_029",
+        "region_032"
+      ],
+      "historical_admin_units": [
+        "Drenthe",
+        "Friesland",
+        "Gelderland",
+        "Groningen",
+        "Limburg",
+        "Noordbrabant",
+        "Overijssel"
+      ],
+      "source_layer": "REGIS_Netherlands.gpkg:REGIS_Netherlands_L1_1870-1932",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "simplified",
+      "bbox": [
+        4.186808,
+        50.756754,
+        7.21574,
+        53.517744
+      ],
+      "polygon_parts_count": 5,
+      "vertex_count": 1641
+    },
+    {
+      "id": "region_017",
+      "name_fr": "Suisse — Ouest",
+      "name_key": "region.region_017.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "Suisse",
+      "initial_sovereign_id": "switzerland",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 19361.78,
+      "centroid_lon_lat": [
+        7.335853,
+        46.669129
+      ],
+      "representative_point_lon_lat": [
+        7.415707,
+        46.741004
+      ],
+      "city_ids": [
+        "city_bern",
+        "city_basel"
+      ],
+      "adjacent_region_ids": [
+        "region_011",
+        "region_012",
+        "region_018",
+        "region_033",
+        "region_035",
+        "region_080"
+      ],
+      "historical_admin_units": [
+        "Basel-Landschaft",
+        "Basel-Stadt",
+        "Bern",
+        "Fribourg",
+        "Genève",
+        "Neuchâtel",
+        "Solothurn",
+        "Valais",
+        "Vaud"
+      ],
+      "source_layer": "REGIS_Switzerland.gpkg:REGIS_Switzerland_L1_1870-1978",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Le canton de Berne inclut le Jura bernois conformément aux limites cantonales de 1914.",
+      "bbox": [
+        5.962706,
+        45.876689,
+        8.489813,
+        47.605919
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1086
+    },
+    {
+      "id": "region_018",
+      "name_fr": "Suisse — Est",
+      "name_key": "region.region_018.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "Suisse",
+      "initial_sovereign_id": "switzerland",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 22189.18,
+      "centroid_lon_lat": [
+        9.01539,
+        46.919461
+      ],
+      "representative_point_lon_lat": [
+        9.188781,
+        46.811803
+      ],
+      "city_ids": [
+        "city_zurich"
+      ],
+      "adjacent_region_ids": [
+        "region_017",
+        "region_033",
+        "region_037",
+        "region_080"
+      ],
+      "historical_admin_units": [
+        "Aargau",
+        "Appenzell Ausserrhoden",
+        "Appenzell Innerrhoden",
+        "Glarus",
+        "Graubünden",
+        "Luzern",
+        "Nidwalden",
+        "Obwalden",
+        "Schaffhausen",
+        "Schwyz",
+        "St. Gallen",
+        "Thurgau",
+        "Ticino",
+        "Uri",
+        "Zug",
+        "Zürich",
+        "Principauté de Liechtenstein (micro-État simplifié, MAP-DEC-04)"
+      ],
+      "source_layer": "REGIS_Switzerland.gpkg:REGIS_Switzerland_L1_1870-1978 + Liechtenstein L0",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Simplifie le micro-État du Liechtenstein et l'enclave de Büsingen am Hochrhein (6,6 km²) selon MAP-DEC-04.",
+      "bbox": [
+        7.699894,
+        45.818303,
+        10.490605,
+        47.806713
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1282
+    },
+    {
+      "id": "region_019",
+      "name_fr": "Luxembourg",
+      "name_key": "region.region_019.name",
+      "zone": "Europe occidentale",
+      "sovereign_1914": "Luxembourg",
+      "initial_sovereign_id": "luxembourg",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 2608.86,
+      "centroid_lon_lat": [
+        6.085409,
+        49.776837
+      ],
+      "representative_point_lon_lat": [
+        6.077227,
+        49.816513
+      ],
+      "city_ids": [
+        "city_luxembourg"
+      ],
+      "adjacent_region_ids": [
+        "region_011",
+        "region_014",
+        "region_032",
+        "region_035"
+      ],
+      "historical_admin_units": [
+        "Grand-Duché de Luxembourg"
+      ],
+      "source_layer": "REGIS_Luxembourg.gpkg:REGIS_Luxembourg_L0_1870-2020",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        5.726615,
+        49.448854,
+        6.521744,
+        50.184707
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 501
+    },
+    {
+      "id": "region_020",
+      "name_fr": "Portugal",
+      "name_key": "region.region_020.name",
+      "zone": "Péninsule ibérique",
+      "sovereign_1914": "Portugal",
+      "initial_sovereign_id": "portugal",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 88923.32,
+      "centroid_lon_lat": [
+        -7.979114,
+        39.677729
+      ],
+      "representative_point_lon_lat": [
+        -8.295381,
+        39.562813
+      ],
+      "city_ids": [
+        "city_lisbon",
+        "city_porto"
+      ],
+      "adjacent_region_ids": [
+        "region_021",
+        "region_023",
+        "region_025"
+      ],
+      "historical_admin_units": [
+        "Aveiro",
+        "Beja",
+        "Braga",
+        "Bragança",
+        "Castelo Branco",
+        "Coimbra",
+        "Faro",
+        "Guarda",
+        "Leiria",
+        "Lisboa",
+        "Portalegre",
+        "Porto",
+        "Santarém",
+        "Viana do Castelo",
+        "Vila Real",
+        "Vizeu / Viseu",
+        "Évora"
+      ],
+      "source_layer": "REGIS_Portugal.gpkg:REGIS_Portugal_L0_1870-2020 (17 districts continentaux L1 1870-1925)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        -9.513187,
+        36.981242,
+        -6.202984,
+        42.14452
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 2759
+    },
+    {
+      "id": "region_021",
+      "name_fr": "Espagne — Nord-Ouest",
+      "name_key": "region.region_021.name",
+      "zone": "Péninsule ibérique",
+      "sovereign_1914": "Espagne",
+      "initial_sovereign_id": "spain",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 115301.65,
+      "centroid_lon_lat": [
+        -5.916595,
+        42.334918
+      ],
+      "representative_point_lon_lat": [
+        -5.552977,
+        41.991963
+      ],
+      "city_ids": [
+        "city_ferrol_coruna",
+        "city_oviedo"
+      ],
+      "adjacent_region_ids": [
+        "region_020",
+        "region_022",
+        "region_023"
+      ],
+      "historical_admin_units": [
+        "Burgos",
+        "La Coruna / Coruna (A)",
+        "León",
+        "Lugo",
+        "Orense / Ourense",
+        "Oviedo / Asturias",
+        "Palencia",
+        "Pontevedra",
+        "Salamanca",
+        "Santander / Cantabria",
+        "Valladolid",
+        "Zamora"
+      ],
+      "source_layer": "REGIS_Spain.gpkg:REGIS_Spain_L2_1870-1979",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        -9.312675,
+        40.196235,
+        -2.878917,
+        43.786525
+      ],
+      "polygon_parts_count": 5,
+      "vertex_count": 2966
+    },
+    {
+      "id": "region_022",
+      "name_fr": "Espagne — Nord-Est",
+      "name_key": "region.region_022.name",
+      "zone": "Péninsule ibérique",
+      "sovereign_1914": "Espagne",
+      "initial_sovereign_id": "spain",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 104830.52,
+      "centroid_lon_lat": [
+        -0.330877,
+        41.857884
+      ],
+      "representative_point_lon_lat": [
+        0.388934,
+        41.621574
+      ],
+      "city_ids": [
+        "city_barcelona",
+        "city_bilbao",
+        "city_zaragoza"
+      ],
+      "adjacent_region_ids": [
+        "region_010",
+        "region_012",
+        "region_021",
+        "region_023",
+        "region_024"
+      ],
+      "historical_admin_units": [
+        "Barcelona",
+        "Gerona / Girona",
+        "Guipúzcoa",
+        "Huesca",
+        "Logrono / La Rioja",
+        "Lérida / Lleida",
+        "Navarra",
+        "Tarragona",
+        "Teruel",
+        "Vizcaya",
+        "Zaragoza",
+        "Álava",
+        "Principauté d'Andorre (micro-État simplifié, MAP-DEC-04)"
+      ],
+      "source_layer": "REGIS_Spain.gpkg:REGIS_Spain_L2_1870-1979",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Intègre le micro-État d'Andorre (MAP-DEC-04) ainsi que l'enclave interne du Condado de Treviño (province de Burgos enclavée dans Álava) pour éviter un trou interne intra-espagnol.",
+      "bbox": [
+        -3.454334,
+        39.793212,
+        3.313191,
+        43.449045
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 2294
+    },
+    {
+      "id": "region_023",
+      "name_fr": "Espagne — Centre",
+      "name_key": "region.region_023.name",
+      "zone": "Péninsule ibérique",
+      "sovereign_1914": "Espagne",
+      "initial_sovereign_id": "spain",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 139796.93,
+      "centroid_lon_lat": [
+        -4.24179,
+        39.847485
+      ],
+      "representative_point_lon_lat": [
+        -4.170226,
+        40.014944
+      ],
+      "city_ids": [
+        "city_madrid"
+      ],
+      "adjacent_region_ids": [
+        "region_020",
+        "region_021",
+        "region_022",
+        "region_024",
+        "region_025"
+      ],
+      "historical_admin_units": [
+        "Badajoz",
+        "Ciudad Real",
+        "Cuenca",
+        "Cáceres",
+        "Guadalajara",
+        "Madrid",
+        "Segovia",
+        "Soria",
+        "Toledo",
+        "Ávila"
+      ],
+      "source_layer": "REGIS_Spain.gpkg:REGIS_Spain_L2_1870-1979",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        -7.54921,
+        37.907568,
+        -1.200998,
+        42.122707
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 975
+    },
+    {
+      "id": "region_024",
+      "name_fr": "Espagne — Méditerranée",
+      "name_key": "region.region_024.name",
+      "zone": "Péninsule ibérique",
+      "sovereign_1914": "Espagne",
+      "initial_sovereign_id": "spain",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 54956.4,
+      "centroid_lon_lat": [
+        -0.84035,
+        38.932959
+      ],
+      "representative_point_lon_lat": [
+        -1.521932,
+        39.028351
+      ],
+      "city_ids": [
+        "city_valencia",
+        "city_cartagena"
+      ],
+      "adjacent_region_ids": [
+        "region_022",
+        "region_023",
+        "region_025"
+      ],
+      "historical_admin_units": [
+        "Albacete",
+        "Alicante / Alacant",
+        "Baleares (Islas)",
+        "Castellón de la Plana / Castelló",
+        "Murcia",
+        "Valencia / València"
+      ],
+      "source_layer": "REGIS_Spain.gpkg:REGIS_Spain_L2_1870-1979",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "major",
+      "bbox": [
+        -2.921435,
+        37.324231,
+        4.331928,
+        40.735037
+      ],
+      "polygon_parts_count": 7,
+      "vertex_count": 1879
+    },
+    {
+      "id": "region_025",
+      "name_fr": "Espagne — Sud",
+      "name_key": "region.region_025.name",
+      "zone": "Péninsule ibérique",
+      "sovereign_1914": "Espagne",
+      "initial_sovereign_id": "spain",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 85391.24,
+      "centroid_lon_lat": [
+        -4.607111,
+        37.426467
+      ],
+      "representative_point_lon_lat": [
+        -4.582387,
+        37.326533
+      ],
+      "city_ids": [
+        "city_seville",
+        "city_cadiz"
+      ],
+      "adjacent_region_ids": [
+        "region_020",
+        "region_023",
+        "region_024"
+      ],
+      "historical_admin_units": [
+        "Almería",
+        "Cádiz",
+        "Córdoba",
+        "Granada",
+        "Huelva",
+        "Jaén",
+        "Málaga",
+        "Sevilla"
+      ],
+      "source_layer": "REGIS_Spain.gpkg:REGIS_Spain_L2_1870-1979",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        -7.540712,
+        35.98504,
+        -1.700696,
+        38.666644
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1358
+    },
+    {
+      "id": "region_026",
+      "name_fr": "Prusse-Orientale",
+      "name_key": "region.region_026.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 37373.77,
+      "centroid_lon_lat": [
+        21.200291,
+        54.293756
+      ],
+      "representative_point_lon_lat": [
+        21.341041,
+        54.533779
+      ],
+      "city_ids": [
+        "city_konigsberg"
+      ],
+      "adjacent_region_ids": [
+        "region_027"
+      ],
+      "historical_admin_units": [
+        "Allenstein (130-3.120)",
+        "Gumbinnen (130-3.110)",
+        "Königsberg (130-3.100)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        19.32062,
+        53.154069,
+        22.887843,
+        55.917311
+      ],
+      "polygon_parts_count": 2,
+      "vertex_count": 781
+    },
+    {
+      "id": "region_027",
+      "name_fr": "Prusse-Occidentale et Posnanie",
+      "name_key": "region.region_027.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 55226.78,
+      "centroid_lon_lat": [
+        17.642556,
+        53.064044
+      ],
+      "representative_point_lon_lat": [
+        17.360865,
+        52.993006
+      ],
+      "city_ids": [
+        "city_danzig",
+        "city_posen"
+      ],
+      "adjacent_region_ids": [
+        "region_026",
+        "region_028",
+        "region_030"
+      ],
+      "historical_admin_units": [
+        "Bromberg (130-3.230)",
+        "Danzig (130-3.140)",
+        "Marienwerder (130-3.150)",
+        "Posen (130-3.220)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        15.269544,
+        51.127781,
+        19.9915,
+        54.844414
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1115
+    },
+    {
+      "id": "region_028",
+      "name_fr": "Poméranie, Mecklembourg et Brandebourg",
+      "name_key": "region.region_028.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 86502.95,
+      "centroid_lon_lat": [
+        14.127231,
+        53.228911
+      ],
+      "representative_point_lon_lat": [
+        13.635231,
+        53.142889
+      ],
+      "city_ids": [
+        "city_berlin",
+        "city_stettin"
+      ],
+      "adjacent_region_ids": [
+        "region_027",
+        "region_029",
+        "region_030",
+        "region_031"
+      ],
+      "historical_admin_units": [
+        "Berlin (Stadt) (130-2.130)",
+        "Frankfurt (130-3.180)",
+        "Köslin (130-3.200)",
+        "Mecklenburg-Schwerin (130-1.310)",
+        "Mecklenburg-Strelitz (130-1.320)",
+        "Potsdam (130-3.170)",
+        "Stettin (130-3.190)",
+        "Stralsund (130-3.210)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "simplified",
+      "bbox": [
+        10.599754,
+        51.442748,
+        18.159277,
+        54.841943
+      ],
+      "polygon_parts_count": 8,
+      "vertex_count": 3148
+    },
+    {
+      "id": "region_029",
+      "name_fr": "Allemagne du Nord-Ouest",
+      "name_key": "region.region_029.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "marshes",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 68597.49,
+      "centroid_lon_lat": [
+        9.340891,
+        53.240786
+      ],
+      "representative_point_lon_lat": [
+        9.570565,
+        53.379012
+      ],
+      "city_ids": [
+        "city_hamburg",
+        "city_kiel",
+        "city_wilhelmshaven",
+        "city_hanover"
+      ],
+      "adjacent_region_ids": [
+        "region_016",
+        "region_028",
+        "region_031",
+        "region_032",
+        "region_033"
+      ],
+      "historical_admin_units": [
+        "Aurich (130-3.370)",
+        "Braunschweig (130-1.350)",
+        "Bremen (130-1.430)",
+        "Hamburg (130-1.440)",
+        "Hannover (130-3.320)",
+        "Hildesheim (130-3.330)",
+        "Lübeck (130-1.420)",
+        "Lübeck (130-3.810)",
+        "Lüneburg (130-3.340)",
+        "Oldenburg (130-3.800)",
+        "Osnabrück (130-3.360)",
+        "Schaumburg-Lippe (130-1.380)",
+        "Schleswig (130-3.310)",
+        "Stade (130-3.350)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Inclut le Schleswig du Nord (allemand en 1914 avant le plébiscite de 1920).",
+      "island_class": "small_strategic",
+      "bbox": [
+        6.655263,
+        51.297889,
+        11.593569,
+        55.459717
+      ],
+      "polygon_parts_count": 17,
+      "vertex_count": 3308
+    },
+    {
+      "id": "region_030",
+      "name_fr": "Silésie",
+      "name_key": "region.region_030.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 40492.77,
+      "centroid_lon_lat": [
+        16.900794,
+        50.955266
+      ],
+      "representative_point_lon_lat": [
+        16.968056,
+        50.946961
+      ],
+      "city_ids": [
+        "city_breslau",
+        "city_kattowitz"
+      ],
+      "adjacent_region_ids": [
+        "region_027",
+        "region_028",
+        "region_031",
+        "region_038",
+        "region_039",
+        "region_040"
+      ],
+      "historical_admin_units": [
+        "Breslau (130-3.250)",
+        "Liegnitz (130-3.260)",
+        "Oppeln (130-3.270)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        13.757972,
+        49.834107,
+        19.267069,
+        52.062538
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1538
+    },
+    {
+      "id": "region_031",
+      "name_fr": "Saxe et Thuringe",
+      "name_key": "region.region_031.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 55486.9,
+      "centroid_lon_lat": [
+        12.021316,
+        51.375551
+      ],
+      "representative_point_lon_lat": [
+        12.192559,
+        51.597462
+      ],
+      "city_ids": [
+        "city_leipzig",
+        "city_dresden"
+      ],
+      "adjacent_region_ids": [
+        "region_028",
+        "region_029",
+        "region_030",
+        "region_033",
+        "region_034",
+        "region_038"
+      ],
+      "historical_admin_units": [
+        "Anhalt (130-1.360)",
+        "Bautzen (130-3.610)",
+        "Chemnitz (130-3.640)",
+        "Dresden (130-3.600)",
+        "Erfurt (130-3.300)",
+        "Leipzig (130-3.650)",
+        "Magdeburg (130-3.280)",
+        "Merseburg (130-3.290)",
+        "Thüringische Staaten (130-1-201)",
+        "Zwickau (130-3.630)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        9.889453,
+        50.151785,
+        15.027976,
+        53.043272
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1328
+    },
+    {
+      "id": "region_032",
+      "name_fr": "Rhénanie-Westphalie",
+      "name_key": "region.region_032.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 49706.72,
+      "centroid_lon_lat": [
+        7.42379,
+        51.059506
+      ],
+      "representative_point_lon_lat": [
+        7.091991,
+        50.821627
+      ],
+      "city_ids": [
+        "city_essen",
+        "city_cologne"
+      ],
+      "adjacent_region_ids": [
+        "region_014",
+        "region_016",
+        "region_019",
+        "region_029",
+        "region_033",
+        "region_035"
+      ],
+      "historical_admin_units": [
+        "Aachen (130-3.470)",
+        "Arnsberg (130-3.400)",
+        "Birkenfeld (130-3.820)",
+        "Düsseldorf (130-3.440)",
+        "Koblenz (130-3.430)",
+        "Köln (130-3.450)",
+        "Lippe (130-1.390)",
+        "Minden (130-3.390)",
+        "Münster (130-3.380)",
+        "Trier (130-3.460)",
+        "Waldeck (130-1.370)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Inclut Eupen-Malmedy (allemand en 1914) et la principauté de Birkenfeld (exclave oldenbourgeoise en Rhénanie) ; l'exclave de Wetzlar est absorbée dans Allemagne du Sud-Ouest (region_033) pour la continuité topologique.",
+      "bbox": [
+        5.860292,
+        49.112934,
+        9.448116,
+        52.531588
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1532
+    },
+    {
+      "id": "region_033",
+      "name_fr": "Allemagne du Sud-Ouest",
+      "name_key": "region.region_033.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "forests",
+        "plains",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 65504.52,
+      "centroid_lon_lat": [
+        8.882233,
+        49.359095
+      ],
+      "representative_point_lon_lat": [
+        8.256977,
+        49.596883
+      ],
+      "city_ids": [
+        "city_frankfurt",
+        "city_stuttgart"
+      ],
+      "adjacent_region_ids": [
+        "region_017",
+        "region_018",
+        "region_029",
+        "region_031",
+        "region_032",
+        "region_034",
+        "region_035"
+      ],
+      "historical_admin_units": [
+        "Donaukreis (130-3.690)",
+        "Freiburg (130-3.710)",
+        "Jagstkreis (130-3.680)",
+        "Karlsruhe (130-3.720)",
+        "Kassel (130-3.410)",
+        "Konstanz (130-3.700)",
+        "Mannheim (130-3.730)",
+        "Neckarkreis (130-3.660)",
+        "Oberhessen (130-3.760)",
+        "Pfalz (Saar) (130-3.590)",
+        "Rheinhessen (130-3.770)",
+        "Schwarzwaldkreis (130-3.670)",
+        "Sigmaringen (130-3.480)",
+        "Starkenburg (130-3.750)",
+        "Wiesbaden (130-3.420)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Inclut le Palatinat rhénan (Pfalz, exclave bavaroise sur la rive gauche du Rhin) avec Bade, Wurtemberg, Hesse, Hesse-Nassau et Hohenzollern pour la continuité géographique du Sud-Ouest allemand.",
+      "bbox": [
+        7.063016,
+        47.535998,
+        10.485133,
+        52.417889
+      ],
+      "polygon_parts_count": 2,
+      "vertex_count": 1836
+    },
+    {
+      "id": "region_034",
+      "name_fr": "Bavière",
+      "name_key": "region.region_034.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "forests",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 70333.78,
+      "centroid_lon_lat": [
+        11.42066,
+        48.940787
+      ],
+      "representative_point_lon_lat": [
+        12.037355,
+        48.923772
+      ],
+      "city_ids": [
+        "city_munich",
+        "city_nuremberg"
+      ],
+      "adjacent_region_ids": [
+        "region_031",
+        "region_033",
+        "region_036",
+        "region_037",
+        "region_038"
+      ],
+      "historical_admin_units": [
+        "Mittelfranken (130-3.550)",
+        "Niederbayern (130-3.510)",
+        "Oberbayern (130-3.500)",
+        "Oberfranken (130-3.540)",
+        "Oberpfalz (130-3.520)",
+        "Schwaben (130-3.580)",
+        "Unterfranken (130-3.570)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Correspond à la Bavière de la rive droite du Rhin (7 districts : Haute-Bavière, Basse-Bavière, Haut-Palatinat, Haute-Franconie, Moyenne-Franconie, Basse-Franconie, Souabe).",
+      "bbox": [
+        8.975679,
+        47.273871,
+        13.840405,
+        50.571315
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1852
+    },
+    {
+      "id": "region_035",
+      "name_fr": "Alsace-Lorraine",
+      "name_key": "region.region_035.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Empire allemand",
+      "initial_sovereign_id": "german_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 14459.14,
+      "centroid_lon_lat": [
+        7.101823,
+        48.635325
+      ],
+      "representative_point_lon_lat": [
+        7.434674,
+        48.465289
+      ],
+      "city_ids": [
+        "city_strasbourg",
+        "city_metz"
+      ],
+      "adjacent_region_ids": [
+        "region_011",
+        "region_017",
+        "region_019",
+        "region_032",
+        "region_033"
+      ],
+      "historical_admin_units": [
+        "Lothringen (130-3.920)",
+        "Obererelsaß (130-3.900)",
+        "Unterelsaß (130-3.910)"
+      ],
+      "source_layer": "REGIS_Germany.gpkg:REGIS_Germany_L3_1905-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Souveraineté allemande en 1914. Reichsland Elsaß-Lothringen (Unterelsaß, Oberelsaß, Lothringen) sous souveraineté de l'Empire allemand en 1914.",
+      "bbox": [
+        5.912983,
+        47.420142,
+        8.22447,
+        49.510042
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 762
+    },
+    {
+      "id": "region_036",
+      "name_fr": "Autriche centrale",
+      "name_key": "region.region_036.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "initial_sovereign_id": "austria_hungary",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 54461.52,
+      "centroid_lon_lat": [
+        15.113634,
+        47.739591
+      ],
+      "representative_point_lon_lat": [
+        14.920661,
+        47.44695
+      ],
+      "city_ids": [
+        "city_vienna",
+        "city_graz"
+      ],
+      "adjacent_region_ids": [
+        "region_034",
+        "region_037",
+        "region_038",
+        "region_039",
+        "region_041",
+        "region_043"
+      ],
+      "historical_admin_units": [
+        "Niederösterreich / Lower Austria",
+        "Oberösterreich / Upper Austria",
+        "Steiermark / Styria"
+      ],
+      "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        12.757694,
+        45.866523,
+        17.079368,
+        49.01988
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1358
+    },
+    {
+      "id": "region_037",
+      "name_fr": "Alpes autrichiennes",
+      "name_key": "region.region_037.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "initial_sovereign_id": "austria_hungary",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 64587.7,
+      "centroid_lon_lat": [
+        12.716577,
+        46.595457
+      ],
+      "representative_point_lon_lat": [
+        11.22929,
+        46.404296
+      ],
+      "city_ids": [
+        "city_trieste",
+        "city_pola",
+        "city_innsbruck_trento"
+      ],
+      "adjacent_region_ids": [
+        "region_018",
+        "region_034",
+        "region_036",
+        "region_043",
+        "region_080",
+        "region_081"
+      ],
+      "historical_admin_units": [
+        "Görz und Gradiska / Goerz and Gradisca",
+        "Istrien / Istria",
+        "Krain / Carniola",
+        "Kärnten / Carinthia",
+        "Salzburg",
+        "Tirol / Tyrol",
+        "Triest / Trieste",
+        "Vorarlberg"
+      ],
+      "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Inclut le comté princier du Tyrol (Tyrol du Nord, Tyrol du Sud et Trentin), le Vorarlberg, Salzbourg, la Carinthie, la Carniole et le Littoral autrichien (Trieste, Görz et Gradisca, Istrie) sous souveraineté austro-hongroise en 1914.",
+      "island_class": "simplified",
+      "bbox": [
+        9.534179,
+        44.437385,
+        15.707191,
+        48.040747
+      ],
+      "polygon_parts_count": 12,
+      "vertex_count": 3242
+    },
+    {
+      "id": "region_038",
+      "name_fr": "Bohême",
+      "name_key": "region.region_038.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "initial_sovereign_id": "austria_hungary",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "forests",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 52073.14,
+      "centroid_lon_lat": [
+        14.459256,
+        49.895326
+      ],
+      "representative_point_lon_lat": [
+        14.525186,
+        49.801048
+      ],
+      "city_ids": [
+        "city_prague"
+      ],
+      "adjacent_region_ids": [
+        "region_030",
+        "region_031",
+        "region_034",
+        "region_036",
+        "region_039"
+      ],
+      "historical_admin_units": [
+        "Böhmen / Bohemia"
+      ],
+      "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        12.097649,
+        48.55689,
+        16.874528,
+        51.057002
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1780
+    },
+    {
+      "id": "region_039",
+      "name_fr": "Moravie et Silésie autrichienne",
+      "name_key": "region.region_039.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "initial_sovereign_id": "austria_hungary",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 27115.66,
+      "centroid_lon_lat": [
+        17.120343,
+        49.451466
+      ],
+      "representative_point_lon_lat": [
+        17.451079,
+        49.563271
+      ],
+      "city_ids": [
+        "city_brunn"
+      ],
+      "adjacent_region_ids": [
+        "region_030",
+        "region_036",
+        "region_038",
+        "region_040",
+        "region_041"
+      ],
+      "historical_admin_units": [
+        "Mähren / Moravia",
+        "Schlesien / Silesia"
+      ],
+      "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        15.153887,
+        48.688216,
+        19.090816,
+        50.442788
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 980
+    },
+    {
+      "id": "region_040",
+      "name_fr": "Galicie et Bucovine",
+      "name_key": "region.region_040.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "initial_sovereign_id": "austria_hungary",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 89494.94,
+      "centroid_lon_lat": [
+        23.498002,
+        49.36346
+      ],
+      "representative_point_lon_lat": [
+        24.548644,
+        49.003456
+      ],
+      "city_ids": [
+        "city_lemberg",
+        "city_przemysl"
+      ],
+      "adjacent_region_ids": [
+        "region_030",
+        "region_039",
+        "region_041",
+        "region_042"
+      ],
+      "historical_admin_units": [
+        "Bukowina / Bukovina",
+        "Galizien und Lodomerien / Galizia and Lodomeria"
+      ],
+      "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
+      "source_refs": [
+        "kavanagh_1914_v1",
+        "regis_2026_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        18.947122,
+        47.19911,
+        26.465174,
+        50.807939
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1541,
+      "approximations": [
+        "MAJ-004 : 62.61 km² de la lacune du tripoint Khotin/Herța attribués à la Bucovine (Autriche-Hongrie) d'après la frontière nationale Kavanagh 1914. La répartition inclut un ajustement de contiguïté topologique documenté dans geometry_gaps_report.json."
+      ]
+    },
+    {
+      "id": "region_041",
+      "name_fr": "Hongrie et Slovaquie",
+      "name_key": "region.region_041.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "initial_sovereign_id": "austria_hungary",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 225268.05,
+      "centroid_lon_lat": [
+        20.198143,
+        47.306027
+      ],
+      "representative_point_lon_lat": [
+        19.634286,
+        47.042862
+      ],
+      "city_ids": [
+        "city_budapest",
+        "city_pozsony"
+      ],
+      "adjacent_region_ids": [
+        "region_036",
+        "region_039",
+        "region_040",
+        "region_042",
+        "region_043"
+      ],
+      "historical_admin_units": [
+        "Abauj-Torna",
+        "Arad",
+        "Baranya",
+        "Bars",
+        "Bereg",
+        "Bihar",
+        "Borsod",
+        "Bács",
+        "Békés",
+        "Csanád",
+        "Csongrád",
+        "Esztergom",
+        "Fehér / Fejer",
+        "Gyór",
+        "Gömör és k.-Hont",
+        "Hajdú",
+        "Heves",
+        "Hont",
+        "Jász-Nagy-Szolnok",
+        "Komárom",
+        "Krassó-Szörény",
+        "Lipto",
+        "Marmaros",
+        "Moson medgye",
+        "Nyitra",
+        "Nógrád",
+        "Pest-Pilis-Solt-Kis-Kún",
+        "Pozsony",
+        "Somogy",
+        "Sopron",
+        "Szabolcs",
+        "Szatmár",
+        "Szepes",
+        "Szilágy",
+        "Sáros",
+        "Temes",
+        "Tolna",
+        "Torontál",
+        "Trencsén",
+        "Turócs",
+        "Ugocsa",
+        "Ung",
+        "Vas",
+        "Veszprém",
+        "Zala",
+        "Zemplén",
+        "Zólyom",
+        "Árva"
+      ],
+      "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        15.993473,
+        44.473681,
+        25.091874,
+        49.612975
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 2393
+    },
+    {
+      "id": "region_042",
+      "name_fr": "Transylvanie",
+      "name_key": "region.region_042.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "initial_sovereign_id": "austria_hungary",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 56832.63,
+      "centroid_lon_lat": [
+        24.355465,
+        46.375619
+      ],
+      "representative_point_lon_lat": [
+        24.369906,
+        46.461781
+      ],
+      "city_ids": [
+        "city_kolozsvar"
+      ],
+      "adjacent_region_ids": [
+        "region_040",
+        "region_041"
+      ],
+      "historical_admin_units": [
+        "Alsó-Feher",
+        "Besztercze-Naszód",
+        "Brassó",
+        "Csik",
+        "Fogaras",
+        "Hunyad",
+        "Három",
+        "Kis-Küküllö",
+        "Kolozs",
+        "Maros-Torda",
+        "Nagy-Küküllö",
+        "Szeben",
+        "Szolnok-Doboka",
+        "Torda-Aranyos",
+        "Udvarhely"
+      ],
+      "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Correspond aux 15 comitats historiques de Transylvanie propre (Erdély / Királyhágón innen) au sein des pays de la Couronne de saint Étienne en 1914.",
+      "bbox": [
+        22.409015,
+        45.257302,
+        26.455184,
+        47.663769
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 893
+    },
+    {
+      "id": "region_043",
+      "name_fr": "Croatie et territoires méridionaux",
+      "name_key": "region.region_043.name",
+      "zone": "Europe centrale",
+      "sovereign_1914": "Autriche-Hongrie",
+      "initial_sovereign_id": "austria_hungary",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 107005.24,
+      "centroid_lon_lat": [
+        17.286808,
+        44.579403
+      ],
+      "representative_point_lon_lat": [
+        17.438277,
+        44.254903
+      ],
+      "city_ids": [
+        "city_zagreb",
+        "city_sarajevo",
+        "city_fiume_cattaro"
+      ],
+      "adjacent_region_ids": [
+        "region_036",
+        "region_037",
+        "region_041"
+      ],
+      "historical_admin_units": [
+        "Belovár-Körös megye",
+        "Bosnien",
+        "Dalmatien / Dalmatia",
+        "Fiume város és kerülete",
+        "Hercegowina",
+        "Lika-Korbava megye",
+        "Modrus-Fiume (-1910) / Modrus-Rijeka (1911-)",
+        "Pozsega megye",
+        "Szerém megye",
+        "Varasd mgye",
+        "Veröcze megye",
+        "Zágráb megye"
+      ],
+      "source_layer": "REGIS_Austria_Hungary.gpkg:REGIS_Austria_Hungary_L3_1908-1914",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe le royaume de Croatie-Slavonie (8 comitats), le corpus separatum de Fiume, le royaume de Dalmatie et le condominium de Bosnie-Herzégovine (annexé en 1908).",
+      "island_class": "simplified",
+      "bbox": [
+        14.394476,
+        42.099661,
+        20.475676,
+        46.409453
+      ],
+      "polygon_parts_count": 60,
+      "vertex_count": 5070
+    },
+    {
+      "id": "region_044",
+      "name_fr": "Danemark",
+      "name_key": "region.region_044.name",
+      "zone": "Scandinavie",
+      "sovereign_1914": "Danemark",
+      "initial_sovereign_id": "denmark",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 38881.68,
+      "centroid_lon_lat": [
+        10.134808,
+        56.053284
+      ],
+      "representative_point_lon_lat": [
+        9.184769,
+        56.181984
+      ],
+      "city_ids": [
+        "city_copenhagen",
+        "city_aarhus"
+      ],
+      "adjacent_region_ids": [],
+      "external_adjacent_region_ids": [
+        "region_029"
+      ],
+      "maritime_zone_ids": [
+        "mz_north_sea_eastern",
+        "mz_skagerrak_kattegat",
+        "mz_baltic_south_central"
+      ],
+      "historical_admin_units": [
+        "Aalborg",
+        "Aarhus",
+        "Bornholm",
+        "Frederiksborg",
+        "Hjørring",
+        "Holbaek",
+        "Kjøbenhavn Amt incl. Kjøbenhavn Kommune",
+        "Maribo",
+        "Odense",
+        "Praestø",
+        "Randers",
+        "Ribe",
+        "Ringkøbing",
+        "Sorø",
+        "Svendborg",
+        "Thisted",
+        "Veile/Vejle",
+        "Viborg"
+      ],
+      "source_layer": "REGIS_Denmark.gpkg:REGIS_Denmark_L1_1870-1919",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Frontière méridionale sur la Kongeå au 1er janvier 1914 (exclut le Schleswig du Nord, rattaché à l'Empire allemand dans region_029). Inclut le Jutland, la Fionie, le Seeland, Lolland-Falster et Bornholm.",
+      "island_class": "major",
+      "bbox": [
+        8.085963,
+        54.569234,
+        15.158368,
+        57.757987
+      ],
+      "polygon_parts_count": 18,
+      "vertex_count": 4756
+    },
+    {
+      "id": "region_045",
+      "name_fr": "Norvège — Sud",
+      "name_key": "region.region_045.name",
+      "zone": "Scandinavie",
+      "sovereign_1914": "Norvège",
+      "initial_sovereign_id": "norway",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "forests",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 109000.92,
+      "centroid_lon_lat": [
+        9.681509,
+        60.475575
+      ],
+      "representative_point_lon_lat": [
+        10.139377,
+        60.351098
+      ],
+      "city_ids": [
+        "city_christiania",
+        "city_kristiansand"
+      ],
+      "adjacent_region_ids": [
+        "region_046",
+        "region_048",
+        "region_049",
+        "region_050"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_skagerrak_kattegat"
+      ],
+      "historical_admin_units": [
+        "Akershus incl. Kristiana",
+        "Bratsberg",
+        "Buskerud",
+        "Hedemarken",
+        "Jarlsberg og Larvik",
+        "Kristians",
+        "Lister og Mandal",
+        "Nedenæs",
+        "Smaalenene"
+      ],
+      "source_layer": "REGIS_Norway.gpkg:REGIS_Norway_L1_1880-1919",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 9 amter de l'Østlandet et du Sørlandet (dont Christiania/Oslo).",
+      "island_class": "simplified",
+      "bbox": [
+        6.343639,
+        57.999373,
+        12.862441,
+        62.70331
+      ],
+      "polygon_parts_count": 7,
+      "vertex_count": 2166
+    },
+    {
+      "id": "region_046",
+      "name_fr": "Norvège — Ouest",
+      "name_key": "region.region_046.name",
+      "zone": "Scandinavie",
+      "sovereign_1914": "Norvège",
+      "initial_sovereign_id": "norway",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 99251.26,
+      "centroid_lon_lat": [
+        8.755227,
+        62.23804
+      ],
+      "representative_point_lon_lat": [
+        6.455663,
+        61.710036
+      ],
+      "city_ids": [
+        "city_bergen",
+        "city_trondhjem"
+      ],
+      "adjacent_region_ids": [
+        "region_045",
+        "region_047",
+        "region_050"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_north_sea_eastern",
+        "mz_norwegian_sea"
+      ],
+      "historical_admin_units": [
+        "Nordre Bergenhus",
+        "Nordre Trondhjem",
+        "Romsdal",
+        "Stavanger",
+        "Søndre Bergenhus incl. Bergen",
+        "Søndre Trondhjem"
+      ],
+      "source_layer": "REGIS_Norway.gpkg:REGIS_Norway_L1_1880-1919",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 6 amter du Vestlandet et du Trøndelag (Stavanger, Bergen, Romsdal, Trondhjem).",
+      "island_class": "simplified",
+      "bbox": [
+        4.61289,
+        58.282692,
+        14.300527,
+        65.138003
+      ],
+      "polygon_parts_count": 52,
+      "vertex_count": 10396
+    },
+    {
+      "id": "region_047",
+      "name_fr": "Norvège — Nord",
+      "name_key": "region.region_047.name",
+      "zone": "Scandinavie",
+      "sovereign_1914": "Norvège",
+      "initial_sovereign_id": "norway",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "forests",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 110036.43,
+      "centroid_lon_lat": [
+        21.046299,
+        68.879179
+      ],
+      "representative_point_lon_lat": [
+        17.430676,
+        69.326227
+      ],
+      "city_ids": [
+        "city_narvik"
+      ],
+      "adjacent_region_ids": [
+        "region_046",
+        "region_050",
+        "region_052",
+        "region_065"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_norwegian_sea",
+        "mz_barents_white_sea"
+      ],
+      "historical_admin_units": [
+        "Finnmarken",
+        "Nordland",
+        "Tromsø"
+      ],
+      "source_layer": "REGIS_Norway.gpkg:REGIS_Norway_L1_1880-1919",
+      "source_refs": [
+        "kavanagh_1914_v1",
+        "regis_2026_v1"
+      ],
+      "notes": "Regroupe les 3 amter septentrionaux (Nordland, Tromsø, Finnmarken) incluant l'archipel des Lofoten-Vesterålen.",
+      "island_class": "major",
+      "bbox": [
+        11.763924,
+        64.945436,
+        31.130048,
+        71.190515
+      ],
+      "polygon_parts_count": 52,
+      "vertex_count": 14953,
+      "approximations": [
+        "MAJ-004 : 81.77 km² (Pasvik nord) et 91.48 km² (Pasvik sud) de lacune attribués à la Norvège d'après la frontière nationale Kavanagh 1914, qui reprend la frontière norvégio-russe de 1826."
+      ]
+    },
+    {
+      "id": "region_048",
+      "name_fr": "Suède — Sud",
+      "name_key": "region.region_048.name",
+      "zone": "Scandinavie",
+      "sovereign_1914": "Suède",
+      "initial_sovereign_id": "sweden",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 96639.42,
+      "centroid_lon_lat": [
+        14.283298,
+        57.528123
+      ],
+      "representative_point_lon_lat": [
+        14.32702,
+        57.309517
+      ],
+      "city_ids": [
+        "city_gothenburg",
+        "city_malmo_karlskrona"
+      ],
+      "adjacent_region_ids": [
+        "region_045",
+        "region_049"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_skagerrak_kattegat",
+        "mz_baltic_south_central"
+      ],
+      "historical_admin_units": [
+        "Blekinge",
+        "Gotlands",
+        "Göteborg och Bohus",
+        "Halland",
+        "Jönköping",
+        "Kalmar",
+        "Kristianstad",
+        "Kronoberg",
+        "Malmöhus",
+        "Skaraborg",
+        "Älvsborg",
+        "Östergötland"
+      ],
+      "source_layer": "REGIS_Sweden.gpkg:REGIS_Sweden_L1_1870-1967",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 12 län du Götaland (Scanie, Blekinge, Småland, Västergötland, Östergötland, Bohuslän, Halland) ainsi que les îles d'Öland et de Gotland.",
+      "island_class": "major",
+      "bbox": [
+        11.110144,
+        55.347589,
+        19.350756,
+        59.275925
+      ],
+      "polygon_parts_count": 8,
+      "vertex_count": 3670
+    },
+    {
+      "id": "region_049",
+      "name_fr": "Suède — Centre",
+      "name_key": "region.region_049.name",
+      "zone": "Scandinavie",
+      "sovereign_1914": "Suède",
+      "initial_sovereign_id": "sweden",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "forests",
+        "plains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 88374.41,
+      "centroid_lon_lat": [
+        14.943733,
+        60.12095
+      ],
+      "representative_point_lon_lat": [
+        14.467277,
+        60.45491
+      ],
+      "city_ids": [
+        "city_stockholm",
+        "city_bofors_orebro"
+      ],
+      "adjacent_region_ids": [
+        "region_045",
+        "region_048",
+        "region_050"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_baltic_south_central",
+        "mz_gulf_of_bothnia"
+      ],
+      "historical_admin_units": [
+        "Kopparberg",
+        "Stockholm (Stad + Län)",
+        "Södermanland",
+        "Uppsala",
+        "Värmland",
+        "Västmanland",
+        "Örebro"
+      ],
+      "source_layer": "REGIS_Sweden.gpkg:REGIS_Sweden_L1_1870-1967",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 7 län du Svealand (Stockholm, Uppsala, Södermanland, Västmanland, Örebro, Värmland, Kopparberg/Dalécarlie).",
+      "island_class": "simplified",
+      "bbox": [
+        11.670381,
+        58.628111,
+        19.097896,
+        62.285491
+      ],
+      "polygon_parts_count": 27,
+      "vertex_count": 3590
+    },
+    {
+      "id": "region_050",
+      "name_fr": "Suède — Nord",
+      "name_key": "region.region_050.name",
+      "zone": "Scandinavie",
+      "sovereign_1914": "Suède",
+      "initial_sovereign_id": "sweden",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "forests",
+        "mountains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 262096.11,
+      "centroid_lon_lat": [
+        17.990382,
+        65.102159
+      ],
+      "representative_point_lon_lat": [
+        17.479917,
+        64.644191
+      ],
+      "city_ids": [
+        "city_lulea_boden",
+        "city_sundsvall_gavle"
+      ],
+      "adjacent_region_ids": [
+        "region_045",
+        "region_046",
+        "region_047",
+        "region_049",
+        "region_052"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_gulf_of_bothnia"
+      ],
+      "historical_admin_units": [
+        "Gävleborg",
+        "Jämtland",
+        "Norrbotten",
+        "Västerbotten",
+        "Västernorrland"
+      ],
+      "source_layer": "REGIS_Sweden.gpkg:REGIS_Sweden_L1_1870-1967",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 5 län du Norrland (Gävleborg, Västernorrland, Jämtland, Västerbotten, Norrbotten).",
+      "island_class": "simplified",
+      "bbox": [
+        11.941549,
+        60.202641,
+        24.197885,
+        69.084197
+      ],
+      "polygon_parts_count": 22,
+      "vertex_count": 4271
+    },
+    {
+      "id": "region_051",
+      "name_fr": "Islande (sous souveraineté danoise)",
+      "name_key": "region.region_051.name",
+      "zone": "Scandinavie",
+      "sovereign_1914": "Danemark",
+      "initial_sovereign_id": "denmark",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 102700.9,
+      "centroid_lon_lat": [
+        -18.646475,
+        65.009613
+      ],
+      "representative_point_lon_lat": [
+        -18.502333,
+        64.978769
+      ],
+      "city_ids": [
+        "city_reykjavik"
+      ],
+      "adjacent_region_ids": [],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_north_atlantic_iceland",
+        "mz_norwegian_sea"
+      ],
+      "historical_admin_units": [
+        "Danish Iceland (Territoire autonome sous la Couronne danoise en 1914)"
+      ],
+      "source_layer": "REGIS_Iceland.gpkg:REGIS_Iceland_L0_1870-1918",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Royaume danois en 1914 ; ne pas coder comme souveraineté islandaise indépendante. Territoire autonome islandais sous souveraineté du Royaume de Danemark au 1er janvier 1914 (avant l'Acte d'Union dano-islandais de décembre 1918).",
+      "island_class": "major",
+      "bbox": [
+        -24.604389,
+        63.403541,
+        -13.539276,
+        66.582681
+      ],
+      "polygon_parts_count": 21,
+      "vertex_count": 7451
+    },
+    {
+      "id": "region_052",
+      "name_fr": "Finlande",
+      "name_key": "region.region_052.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "forests",
+        "plains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 370069.44,
+      "centroid_lon_lat": [
+        26.652109,
+        64.386668
+      ],
+      "representative_point_lon_lat": [
+        27.563925,
+        64.964156
+      ],
+      "city_ids": [
+        "city_helsingfors",
+        "city_viborg_abo"
+      ],
+      "adjacent_region_ids": [
+        "region_047",
+        "region_050",
+        "region_064",
+        "region_065"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_gulf_of_bothnia",
+        "mz_gulf_of_finland_riga"
+      ],
+      "historical_admin_units": [
+        "Hämeen / Tavastehus",
+        "Kuopion / Kuopio",
+        "Mikkelin / St. Michel",
+        "Oulun / Uleåborg",
+        "Turun ja Porin / Åbo och Björneborg",
+        "Uudenman / Nyland",
+        "Vaasan / Vasa",
+        "Vipurin / Viborg"
+      ],
+      "source_layer": "REGIS_Finland.gpkg:REGIS_Finland_L1_1870-1918",
+      "source_refs": [
+        "kavanagh_1914_v1",
+        "regis_2026_v1",
+        "ristat_1897_v1"
+      ],
+      "notes": "Grand-Duché de Finlande sous souveraineté de l'Empire russe en 1914 (8 gouvernements/lääni : Uusimaa/Nyland, Åbo-Björneborg, Tavastehus/Häme, Viborg/Viipuri, Saint-Michel/Mikkeli, Kuopio, Vasa/Vaasa, Uleåborg/Oulu, incluant l'archipel d'Åland ; sans Petsamo, acquis en 1920).",
+      "island_class": "small_strategic",
+      "bbox": [
+        19.527108,
+        59.817658,
+        32.813663,
+        70.112635
+      ],
+      "polygon_parts_count": 61,
+      "vertex_count": 7393,
+      "approximations": [
+        "MAJ-004 : lacune de couture de 662.47 km² au sud-est de la frontière finlandaise (secteur de Suojärvi) comblée au profit de la Finlande d'après la limite Vyborg/Olonets de RISTAT 1897."
+      ]
+    },
+    {
+      "id": "region_053",
+      "name_fr": "Pays baltes du Nord",
+      "name_key": "region.region_053.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 65759.54,
+      "centroid_lon_lat": [
+        25.584464,
+        58.202788
+      ],
+      "representative_point_lon_lat": [
+        26.030035,
+        58.124553
+      ],
+      "city_ids": [
+        "city_riga",
+        "city_reval"
+      ],
+      "adjacent_region_ids": [
+        "region_054",
+        "region_057",
+        "region_064"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_gulf_of_finland_riga",
+        "mz_baltic_south_central"
+      ],
+      "historical_admin_units": [
+        "Estonia governorate (Эстляндская губерния)",
+        "Livonia governorate (Лифляндская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les gouvernements d'Estonie (Estland) et de Livonie (Livland), incluant les îles d'Ösel (Saaremaa) et Dagö (Hiiumaa).",
+      "island_class": "major",
+      "bbox": [
+        21.816646,
+        56.583771,
+        28.168279,
+        59.680158
+      ],
+      "polygon_parts_count": 2,
+      "vertex_count": 871
+    },
+    {
+      "id": "region_054",
+      "name_fr": "Pays baltes du Sud",
+      "name_key": "region.region_054.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 67929.68,
+      "centroid_lon_lat": [
+        23.569184,
+        56.132036
+      ],
+      "representative_point_lon_lat": [
+        23.586431,
+        56.291051
+      ],
+      "city_ids": [
+        "city_kovno",
+        "city_libau"
+      ],
+      "adjacent_region_ids": [
+        "region_053",
+        "region_056",
+        "region_057"
+      ],
+      "external_adjacent_region_ids": [
+        "region_026"
+      ],
+      "maritime_zone_ids": [
+        "mz_baltic_south_central",
+        "mz_gulf_of_finland_riga"
+      ],
+      "historical_admin_units": [
+        "Kurland governorate (Курляндская губерния)",
+        "Kovno governorate (Ковенская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les gouvernements de Courlande (Kurland) et de Kovno (Kaunas).",
+      "bbox": [
+        20.958213,
+        54.809462,
+        27.39241,
+        57.764692
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 543
+    },
+    {
+      "id": "region_055",
+      "name_fr": "Pologne russe occidentale",
+      "name_key": "region.region_055.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 73532.17,
+      "centroid_lon_lat": [
+        20.01747,
+        51.731324
+      ],
+      "representative_point_lon_lat": [
+        19.79381,
+        51.690061
+      ],
+      "city_ids": [
+        "city_warsaw",
+        "city_lodz"
+      ],
+      "adjacent_region_ids": [
+        "region_056"
+      ],
+      "external_adjacent_region_ids": [
+        "region_026",
+        "region_027",
+        "region_030",
+        "region_040"
+      ],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Płock governorate (Плоцкая губерния)",
+        "Warsaw governorate (Варшавская губерния)",
+        "Kalisz governorate (Калишская губерния)",
+        "Piotrków governorate (Петроковская губерния)",
+        "Kielce governorate (Келецкая губерния)",
+        "Radom governorate (Радомская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 6 gouvernements de la rive gauche et du nord-ouest de la Vistule du Royaume du Congrès (Varsovie, Kalisz, Piotrków, Radom, Kielce, Płock).",
+      "bbox": [
+        17.646599,
+        50.06049,
+        22.168743,
+        53.322643
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 795
+    },
+    {
+      "id": "region_056",
+      "name_fr": "Pologne russe orientale",
+      "name_key": "region.region_056.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 53156.4,
+      "centroid_lon_lat": [
+        22.741231,
+        52.480116
+      ],
+      "representative_point_lon_lat": [
+        21.998969,
+        52.701486
+      ],
+      "city_ids": [
+        "city_lublin_ivangorod",
+        "city_lomza_osowiec"
+      ],
+      "adjacent_region_ids": [
+        "region_054",
+        "region_055",
+        "region_057",
+        "region_058"
+      ],
+      "external_adjacent_region_ids": [
+        "region_026",
+        "region_040"
+      ],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Suwałki governorate (Сувалкская губерния)",
+        "Łomża governorate (Ломжинская губерния)",
+        "Lublin governorate (Люблинская губерния)",
+        "Siedlce governorate (Седлецкая губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les gouvernements de Suwałki, Łomża, Lublin et Siedlce. Le gouvernement de Kholm (Chełm), créé en 1912 par détachement des parties orientales de Siedlce et Lublin après suppression du gouvernement de Siedlce, est intégralement couvert par l'union des gouvernements de Lublin et Siedlce (RISTAT 1897).",
+      "bbox": [
+        20.495897,
+        50.292846,
+        24.254907,
+        55.108085
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1083
+    },
+    {
+      "id": "region_057",
+      "name_fr": "Biélorussie",
+      "name_key": "region.region_057.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 265414.74,
+      "centroid_lon_lat": [
+        27.780945,
+        53.862541
+      ],
+      "representative_point_lon_lat": [
+        27.694104,
+        54.368399
+      ],
+      "city_ids": [
+        "city_minsk",
+        "city_brest_litovsk",
+        "city_vilna_grodno"
+      ],
+      "adjacent_region_ids": [
+        "region_053",
+        "region_054",
+        "region_056",
+        "region_058",
+        "region_059",
+        "region_064",
+        "region_066"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Vitebsk governorate (Витебская губерния)",
+        "Vilna governorate (Виленская губерния)",
+        "Grodno governorate (Гродненская губерния)",
+        "Minsk governorate (Минская губерния)",
+        "Mogilev governorate (Могилевская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 5 gouvernements du Nord-Ouest (Minsk, Grodno, Vilna, Vitebsk, Moguilev).",
+      "bbox": [
+        22.408544,
+        51.282823,
+        32.751087,
+        57.458633
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1599
+    },
+    {
+      "id": "region_058",
+      "name_fr": "Ukraine occidentale",
+      "name_key": "region.region_058.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 112895.74,
+      "centroid_lon_lat": [
+        27.247684,
+        50.054594
+      ],
+      "representative_point_lon_lat": [
+        27.329973,
+        49.714934
+      ],
+      "city_ids": [
+        "city_zhitomir_rovno",
+        "city_kamenets_podolski"
+      ],
+      "adjacent_region_ids": [
+        "region_056",
+        "region_057",
+        "region_059",
+        "region_060",
+        "region_062"
+      ],
+      "external_adjacent_region_ids": [
+        "region_040"
+      ],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Volhynian governorate (Волынская губерния)",
+        "Podolsk governorate (Подольская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les gouvernements de Volhynie et de Podolie (rive droite du Dniepr, face à la Galicie austro-hongroise).",
+      "bbox": [
+        23.606496,
+        47.339473,
+        30.886136,
+        52.088209
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1112
+    },
+    {
+      "id": "region_059",
+      "name_fr": "Ukraine centrale",
+      "name_key": "region.region_059.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 194721.86,
+      "centroid_lon_lat": [
+        32.904915,
+        50.395596
+      ],
+      "representative_point_lon_lat": [
+        32.33869,
+        50.884349
+      ],
+      "city_ids": [
+        "city_kiev",
+        "city_kharkov"
+      ],
+      "adjacent_region_ids": [
+        "region_057",
+        "region_058",
+        "region_060",
+        "region_061",
+        "region_066"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Kiev governorate (Киевская губерния)",
+        "Poltava governorate (Полтавская губерния)",
+        "Chernigov governorate (Черниговская губерния)",
+        "Kharkov governorate excl. Starobelskii uyezd (Харьковская губерния без Старобельского уезда: Kharkov, Sumy, Akhtyrka, Lebedin, Bogodukhov, Valki, Zmiev, Volchansk, Izium, Kupiansk)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897 + ristat_1897_districts.gpkg",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les gouvernements de Kiev, Poltava, Tchernigov et Kharkov (à l'exclusion de l'ouïezd oriental de Starobelsk, rattaché au Donbass region_061 conformément à region_plan.csv).",
+      "bbox": [
+        28.370674,
+        48.454251,
+        38.509076,
+        53.319284
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1392
+    },
+    {
+      "id": "region_060",
+      "name_fr": "Ukraine méridionale",
+      "name_key": "region.region_060.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 153881.77,
+      "centroid_lon_lat": [
+        33.543544,
+        47.597674
+      ],
+      "representative_point_lon_lat": [
+        33.491473,
+        47.60865
+      ],
+      "city_ids": [
+        "city_odessa",
+        "city_ekaterinoslav"
+      ],
+      "adjacent_region_ids": [
+        "region_058",
+        "region_059",
+        "region_061",
+        "region_062",
+        "region_063"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_black_sea_west",
+        "mz_sea_of_azov"
+      ],
+      "historical_admin_units": [
+        "Kherson governorate (Херсонская губерния: Kherson, Odessa, Tiraspol, Ananiev, Elisavetgrad, Aleksandriia)",
+        "Western Ekaterinoslav uyezds (Ekaterinoslavskii, Verkhne-Dneprovskii, Novomoskovskii, Pavlogradskii, Aleksandrovskii)",
+        "Northern continental Taurida uyezds (Dneprovskii, Melitopolskii, Berdianskii)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897 + ristat_1897_districts.gpkg",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe le gouvernement de Kherson, les 5 ouïezds occidentaux d'Ekaterinoslav et les 3 ouïezds continentaux du Nord de la Tauride (Dnieprovsk, Mélitopol, Berdiansk).",
+      "bbox": [
+        29.047319,
+        45.997691,
+        37.817681,
+        49.20443
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1165
+    },
+    {
+      "id": "region_061",
+      "name_fr": "Donbass",
+      "name_key": "region.region_061.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 64270.65,
+      "centroid_lon_lat": [
+        39.241577,
+        48.515488
+      ],
+      "representative_point_lon_lat": [
+        39.32045,
+        48.439932
+      ],
+      "city_ids": [
+        "city_yuzovka_lugansk",
+        "city_taganrog_mariupol"
+      ],
+      "adjacent_region_ids": [
+        "region_059",
+        "region_060",
+        "region_066",
+        "region_069"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_sea_of_azov"
+      ],
+      "historical_admin_units": [
+        "Bakhmutskii uyezd (Ekaterinoslav gov.)",
+        "Slavianoserbskii uyezd / Lugansk (Ekaterinoslav gov.)",
+        "Mariupolskii uyezd (Ekaterinoslav gov.)",
+        "Starobelskii uyezd (Kharkov gov.)",
+        "Taganrogskii okrug (Don Cossack Host)",
+        "Donetskii okrug (Don Cossack Host)"
+      ],
+      "source_layer": "ristat_1897_districts.gpkg",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Découpage par ouïezds et okrougs historiques du bassin houiller et métallurgique du Donets : Bakhmout, Slavianoserbsk (Lougansk), Marioupol, Starobelsk, Taganrog et Donets.",
+      "bbox": [
+        36.721058,
+        46.864522,
+        42.187205,
+        50.014546
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 679
+    },
+    {
+      "id": "region_062",
+      "name_fr": "Bessarabie",
+      "name_key": "region.region_062.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 45603.73,
+      "centroid_lon_lat": [
+        28.547825,
+        46.903231
+      ],
+      "representative_point_lon_lat": [
+        28.787128,
+        46.932376
+      ],
+      "city_ids": [
+        "city_kishinev"
+      ],
+      "adjacent_region_ids": [
+        "region_058",
+        "region_060",
+        "region_070",
+        "region_071"
+      ],
+      "external_adjacent_region_ids": [
+        "region_040"
+      ],
+      "maritime_zone_ids": [
+        "mz_black_sea_west"
+      ],
+      "historical_admin_units": [
+        "Bessarabia governorate (Бессарабская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "kavanagh_1914_v1",
+        "ristat_1897_v1"
+      ],
+      "notes": "Gouvernement de Bessarabie entre le Prout, le Dniestr, le bras de Chilia (delta du Danube) et la mer Noire.",
+      "bbox": [
+        26.04821,
+        45.214837,
+        30.475454,
+        48.64883
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1451,
+      "approximations": [
+        "MAJ-004 : 156.80 km² de la lacune du tripoint Khotin/Herța attribués à la Bessarabie (Russie) d'après la frontière nationale Kavanagh 1914. La répartition inclut un ajustement de contiguïté topologique documenté dans geometry_gaps_report.json."
+      ]
+    },
+    {
+      "id": "region_063",
+      "name_fr": "Crimée",
+      "name_key": "region.region_063.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 27444.94,
+      "centroid_lon_lat": [
+        34.381432,
+        45.307197
+      ],
+      "representative_point_lon_lat": [
+        34.26218,
+        45.30538
+      ],
+      "city_ids": [
+        "city_sevastopol"
+      ],
+      "adjacent_region_ids": [
+        "region_060"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_black_sea_west",
+        "mz_black_sea_east",
+        "mz_sea_of_azov"
+      ],
+      "historical_admin_units": [
+        "Simferopolskii uyezd (Taurida gov.)",
+        "Evpatoriiskii uyezd (Taurida gov.)",
+        "Perekopskii uyezd (Taurida gov.)",
+        "Ialtinskii uyezd (Taurida gov.)",
+        "Feodosiiskii uyezd (Taurida gov.)",
+        "Kerch-Enikalskoe gradonachalstvo (Taurida gov.)",
+        "Sevastopolskoe gradonachalstvo (Taurida gov.)"
+      ],
+      "source_layer": "ristat_1897_districts.gpkg",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 5 ouïezds péninsulaires de Tauride (Perekop, Eupatoria, Simferopol, Yalta, Féodosie) et les 2 municipalités autonomes (gradonachalstva) de Sébastopol et Kertch-Iénikalé.",
+      "bbox": [
+        32.491561,
+        44.372036,
+        36.666325,
+        46.243647
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 484
+    },
+    {
+      "id": "region_064",
+      "name_fr": "Russie du Nord-Ouest",
+      "name_key": "region.region_064.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "forests",
+        "plains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 368914.81,
+      "centroid_lon_lat": [
+        33.879204,
+        60.260097
+      ],
+      "representative_point_lon_lat": [
+        34.455641,
+        60.216613
+      ],
+      "city_ids": [
+        "city_st_petersburg",
+        "city_pskov_novgorod"
+      ],
+      "adjacent_region_ids": [
+        "region_052",
+        "region_053",
+        "region_057",
+        "region_065",
+        "region_066"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_gulf_of_finland_riga"
+      ],
+      "historical_admin_units": [
+        "St. Petersburg governorate (Санкт-Петербургская губерния)",
+        "Novgorod governorate (Новгородская губерния)",
+        "Olonets governorate (Олонецкая губерния)",
+        "Pskov governorate (Псковская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les gouvernements de Saint-Pétersbourg (Ingrie), Pskov, Novgorod et Olonets.",
+      "island_class": "small_strategic",
+      "bbox": [
+        27.288936,
+        55.949688,
+        41.736589,
+        64.499823
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1737,
+      "approximations": [
+        "MAJ-004 : la lacune adjacente de 662.47 km² (secteur de Suojärvi) a été attribuée à region_052 d'après la limite Vyborg/Olonets de RISTAT 1897 ; la limite occidentale de la Russie du Nord-Ouest reste inchangée."
+      ]
+    },
+    {
+      "id": "region_065",
+      "name_fr": "Russie septentrionale",
+      "name_key": "region.region_065.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "forests",
+        "marshes",
+        "plains",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 1165556.26,
+      "centroid_lon_lat": [
+        47.651762,
+        64.797898
+      ],
+      "representative_point_lon_lat": [
+        48.7708,
+        64.249979
+      ],
+      "city_ids": [
+        "city_arkhangelsk",
+        "city_vologda"
+      ],
+      "adjacent_region_ids": [
+        "region_047",
+        "region_052",
+        "region_064",
+        "region_066",
+        "region_067"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_barents_white_sea"
+      ],
+      "historical_admin_units": [
+        "Arkhangelsk governorate (Архангельская губерния)",
+        "Vologda governorate (Вологодская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "kavanagh_1914_v1",
+        "ristat_1897_v1"
+      ],
+      "notes": "Regroupe les gouvernements d'Arkhangelsk (incluant la péninsule de Kola, la mer Blanche et la Nouvelle-Zemble) et de Vologda jusqu'à l'Oural septentrional.",
+      "island_class": "major",
+      "bbox": [
+        28.499651,
+        58.534419,
+        66.266428,
+        69.964524
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 4563,
+      "approximations": [
+        "MAJ-004 : 35.27 km² (Pasvik nord) et 0.60 km² (Pasvik sud) de lacune attribués à la Russie d'après la frontière nationale Kavanagh 1914, qui reprend la frontière norvégio-russe de 1826."
+      ]
+    },
+    {
+      "id": "region_066",
+      "name_fr": "Russie centrale",
+      "name_key": "region.region_066.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 703745.15,
+      "centroid_lon_lat": [
+        39.00838,
+        54.972402
+      ],
+      "representative_point_lon_lat": [
+        37.334402,
+        54.462351
+      ],
+      "city_ids": [
+        "city_moscow",
+        "city_tula",
+        "city_nizhny_novgorod",
+        "city_smolensk_voronezh"
+      ],
+      "adjacent_region_ids": [
+        "region_057",
+        "region_059",
+        "region_061",
+        "region_064",
+        "region_065",
+        "region_067",
+        "region_068",
+        "region_069"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Tver governorate (Тверская губерния)",
+        "Yaroslavl governorate (Ярославская губерния)",
+        "Kostroma governorate (Костромская губерния)",
+        "Vladimir governorate (Владимирская губерния)",
+        "Smolensk governorate (Смоленская губерния)",
+        "Kaluga governorate (Калужская губерния)",
+        "Moscow governorate (Московская губерния)",
+        "Tula governorate (Тульская губерния)",
+        "Orel governorate (Орловская губерния)",
+        "Kursk governorate (Курская губерния)",
+        "Ryazan governorate (Рязанская губерния)",
+        "Tambov governorate (Тамбовская губерния)",
+        "Voronezh governorate (Воронежская губерния)",
+        "Nizhny Novgorod governorate (Нижегородская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les 14 gouvernements du centre industriel et du Tchernoziom central : Moscou, Tver, Iaroslavl, Kostroma, Vladimir, Nijni Novgorod, Smolensk, Kalouga, Toula, Riazan, Orel, Koursk, Voronej et Tambov.",
+      "bbox": [
+        30.801246,
+        49.563639,
+        47.719585,
+        59.359014
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 2282
+    },
+    {
+      "id": "region_067",
+      "name_fr": "Volga moyenne",
+      "name_key": "region.region_067.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 756332.69,
+      "centroid_lon_lat": [
+        54.506873,
+        57.148848
+      ],
+      "representative_point_lon_lat": [
+        55.605056,
+        57.463742
+      ],
+      "city_ids": [
+        "city_kazan",
+        "city_perm_ekaterinburg"
+      ],
+      "adjacent_region_ids": [
+        "region_065",
+        "region_066",
+        "region_068"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Viatka governorate (Вятская губерния)",
+        "Penza governorate (Пензенская губерния)",
+        "Kazan governorate (Казанская губерния)",
+        "Simbirsk governorate (Симбирская губерния)",
+        "Ufa governorate (Уфимская губерния)",
+        "Perm governorate (Пермская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les gouvernements de Kazan, Simbirsk, Penza, Viatka, Oufa et Perm (incluant le versant oriental minier de l'Oural appartenant administrativement au gouvernement de Perm en 1914).",
+      "bbox": [
+        42.595837,
+        52.637428,
+        64.978832,
+        62.27495
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 2032
+    },
+    {
+      "id": "region_068",
+      "name_fr": "Volga inférieure",
+      "name_key": "region.region_068.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 656127.7,
+      "centroid_lon_lat": [
+        51.334724,
+        51.158732
+      ],
+      "representative_point_lon_lat": [
+        46.719512,
+        50.344582
+      ],
+      "city_ids": [
+        "city_saratov_samara",
+        "city_astrakhan_orenburg"
+      ],
+      "adjacent_region_ids": [
+        "region_066",
+        "region_067",
+        "region_069"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_caspian_sea"
+      ],
+      "historical_admin_units": [
+        "Saratov governorate (Саратовская губерния)",
+        "Astrakhan governorate (Астраханская губерния)",
+        "Samara governorate (Самарская губерния)",
+        "Orenburg governorate (Оренбургская губерния)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les gouvernements de Saratov, Samara, Astrakhan et Orenbourg jusqu'au fleuve Oural et à la mer Caspienne.",
+      "bbox": [
+        42.525584,
+        44.823963,
+        65.346026,
+        55.858909
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 2593
+    },
+    {
+      "id": "region_069",
+      "name_fr": "Russie méridionale",
+      "name_key": "region.region_069.name",
+      "zone": "Europe orientale",
+      "sovereign_1914": "Empire russe",
+      "initial_sovereign_id": "russian_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 392543.68,
+      "centroid_lon_lat": [
+        42.633653,
+        45.851227
+      ],
+      "representative_point_lon_lat": [
+        40.852306,
+        46.240892
+      ],
+      "city_ids": [
+        "city_rostov_on_don",
+        "city_novorossiysk_ekaterinodar"
+      ],
+      "adjacent_region_ids": [
+        "region_061",
+        "region_066",
+        "region_068"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_sea_of_azov",
+        "mz_black_sea_east",
+        "mz_caspian_sea"
+      ],
+      "historical_admin_units": [
+        "Don Cossack Host excl. Taganrog & Donetsk okrugs (Cherkasskii, Rostovskii, 1st Donskoi, 2nd Donskoi, Ust-Medveditskii, Khoperskii, Salskii)",
+        "Kuban oblast (Кубанская область)",
+        "Black Sea governorate (Черноморская губерния / Novorossiisk)",
+        "Stavropol governorate (Ставропольская губерния)",
+        "Terek oblast (Терская область)",
+        "Dagestan oblast (Дагестанская область)"
+      ],
+      "source_layer": "ristat_1897_provinces.gpkg:provinces_1897 + ristat_1897_districts.gpkg",
+      "source_refs": [
+        "ristat_1897_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe l'oblast des Cosaques du Don (hors Taganrog et Donets rattachés au Donbass), l'oblast du Kouban, le gouvernement de la mer Noire (Novorossiïsk), le gouvernement de Stavropol, l'oblast du Terek et l'oblast du Daghestan jusqu'à la ligne de crête du Grand Caucase.",
+      "bbox": [
+        36.585423,
+        41.210251,
+        48.636645,
+        51.266911
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1641
+    },
+    {
+      "id": "region_070",
+      "name_fr": "Roumanie méridionale",
+      "name_key": "region.region_070.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Roumanie",
+      "initial_sovereign_id": "romania",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 99603.67,
+      "centroid_lon_lat": [
+        25.957713,
+        44.631824
+      ],
+      "representative_point_lon_lat": [
+        25.774188,
+        44.572249
+      ],
+      "city_ids": [
+        "city_bucharest",
+        "city_constanta"
+      ],
+      "adjacent_region_ids": [
+        "region_062",
+        "region_071",
+        "region_072",
+        "region_073",
+        "region_074"
+      ],
+      "external_adjacent_region_ids": [
+        "region_041",
+        "region_042"
+      ],
+      "maritime_zone_ids": [
+        "mz_black_sea_west"
+      ],
+      "historical_admin_units": [
+        "Arges",
+        "Braila",
+        "Buzau",
+        "Constanta",
+        "Dambovita",
+        "Dolj",
+        "Gorj",
+        "Ialomita",
+        "Ilfov",
+        "Mehedinti",
+        "Muscel",
+        "Olt",
+        "Prahova",
+        "Ramnicu Sarat",
+        "Romanati",
+        "Teleorman",
+        "Tulcea",
+        "Valcea",
+        "Vlasca",
+        "Durostor / Silistra (Quadrilatère annexé au traité de Bucarest, août 1913)",
+        "Caliacra / Dobritch (Quadrilatère annexé au traité de Bucarest, août 1913)"
+      ],
+      "source_layer": "REGIS_Romania.gpkg:REGIS_Romania_L1_1879-1913 + Quadrilatère (REGIS_Bulgaria_L0_1886-1912 \\ L0_1923-1940)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Inclut la Valachie (Olténie et Munténie), la Dobroudja du Nord (Constanța, Tulcea) et la Dobroudja méridionale (Quadrilatère : Durostor et Caliacra) annexée par la Roumanie au traité de Bucarest du 10 août 1913.",
+      "bbox": [
+        22.430568,
+        43.347234,
+        29.7217,
+        45.797251
+      ],
+      "polygon_parts_count": 4,
+      "vertex_count": 1675
+    },
+    {
+      "id": "region_071",
+      "name_fr": "Roumanie septentrionale",
+      "name_key": "region.region_071.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Roumanie",
+      "initial_sovereign_id": "romania",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "mountains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 38910.86,
+      "centroid_lon_lat": [
+        27.006018,
+        46.788113
+      ],
+      "representative_point_lon_lat": [
+        27.030878,
+        46.827821
+      ],
+      "city_ids": [
+        "city_iasi",
+        "city_galati_focsani"
+      ],
+      "adjacent_region_ids": [
+        "region_062",
+        "region_070"
+      ],
+      "external_adjacent_region_ids": [
+        "region_040",
+        "region_042"
+      ],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Bacau",
+        "Botosani",
+        "Covurlui",
+        "Dorohoi",
+        "Falciu",
+        "Iasi",
+        "Neamtu",
+        "Putna",
+        "Roman",
+        "Suceava",
+        "Tecuci",
+        "Tutova",
+        "Vaslui"
+      ],
+      "source_layer": "REGIS_Romania.gpkg:REGIS_Romania_L1_1879-1913 (Moldavia, 13 județe L2)",
+      "source_refs": [
+        "kavanagh_1914_v1",
+        "regis_2026_v1"
+      ],
+      "notes": "Correspond à la Moldavie roumaine de 1914 (13 județe entre les Carpates orientales et le Prout, sans la Bucovine austro-hongroise ni la Bessarabie russe).",
+      "bbox": [
+        25.177557,
+        45.390454,
+        28.274049,
+        48.262137
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1190,
+      "approximations": [
+        "MAJ-004 : 6.47 km² de la lacune du tripoint Khotin/Herța attribués à la Moldavie (Roumanie) d'après la frontière nationale Kavanagh 1914. La répartition inclut un ajustement de contiguïté topologique documenté dans geometry_gaps_report.json."
+      ]
+    },
+    {
+      "id": "region_072",
+      "name_fr": "Bulgarie occidentale",
+      "name_key": "region.region_072.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Bulgarie",
+      "initial_sovereign_id": "bulgaria",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 41650.42,
+      "centroid_lon_lat": [
+        23.540956,
+        42.801077
+      ],
+      "representative_point_lon_lat": [
+        23.428425,
+        42.763934
+      ],
+      "city_ids": [
+        "city_sofia"
+      ],
+      "adjacent_region_ids": [
+        "region_070",
+        "region_073",
+        "region_074",
+        "region_078"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Vidin",
+        "Vratza (Vracha, Vratca)",
+        "Pléven (Pleven)",
+        "Sophia (Sofia, Sofija)",
+        "Kustendil (Kjustendil)",
+        "Stroumitsa / Pétritch (Strumica / Petrich)",
+        "Confins occidentaux bulgares de 1914 (Tsaribrod, Bosilegrad)"
+      ],
+      "source_layer": "REGIS_Bulgaria.gpkg:REGIS_Bulgaria_L2_1923-1925 + REGIS_Bulgaria_L0_1886-1912 + REGIS_Yugoslavia.gpkg:REGIS_Yugoslavia_L1_1920-1923 (saillant de Stroumitsa 1913)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les okrugs occidentaux de Vidin, Vratsa, Pleven, Sofia, Kyoustendil (incluant Tsaribrod et Bosilegrad, bulgares en 1914) et Stroumitsa/Pétritch (Macédoine du Pirin et saillant de Stroumitsa acquis au traité de Bucarest du 10 août 1913).",
+      "bbox": [
+        22.241577,
+        41.311837,
+        25.260706,
+        44.219417
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 993,
+      "approximations": [
+        "MAJ-003 : rattachement du saillant de Stroumitsa (1151.51 km², okoliya de Stroumitsa et villages frontaliers occidentaux de l'okoliya de Pétritch) à region_072 d'après le traité de Bucarest du 10 août 1913 (art. III et V, protocole n° 9), la limite REGIS_Yugoslavia_L1_1920-1923 (Bregalnitsa/Bitoly) entre la Cote 1445 et le mont Plavuš, et la ligne de partage des eaux Vardar-Strouma par le col de Kosturino jusqu'à la Cote 1494 sur la Belasica."
+      ]
+    },
+    {
+      "id": "region_073",
+      "name_fr": "Bulgarie orientale",
+      "name_key": "region.region_073.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Bulgarie",
+      "initial_sovereign_id": "bulgaria",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 72828.38,
+      "centroid_lon_lat": [
+        25.961537,
+        42.4375
+      ],
+      "representative_point_lon_lat": [
+        25.893468,
+        42.38288
+      ],
+      "city_ids": [
+        "city_plovdiv",
+        "city_varna_burgas"
+      ],
+      "adjacent_region_ids": [
+        "region_070",
+        "region_072",
+        "region_078",
+        "region_089",
+        "region_090"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_black_sea_west",
+        "mz_aegean_sea"
+      ],
+      "historical_admin_units": [
+        "Tarnovo (Trnovo, Tirnovo)",
+        "Roussé (Ruse)",
+        "Choumen (Shumen)",
+        "Varna",
+        "Plovdiv",
+        "Stara-Zagora",
+        "Bourgas (Burgas)",
+        "Haskovo",
+        "Pachmakly (Pachmakli)",
+        "Mastanly (Mastanli)",
+        "Thrace occidentale / Gümülcine (Komotini, Xanthi, Dedeağaç/Alexandroupoli — littoral égéen bulgare de 1914)"
+      ],
+      "source_layer": "REGIS_Bulgaria.gpkg:REGIS_Bulgaria_L2_1923-1925 + Thrace occidentale (REGIS_Greece_L0_1928-1940 \\ L0_1914-1919)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les okrugs orientaux (Tarnovo, Roussé, Choumen, Varna sans le Quadrilatère cédé à la Roumanie, Plovdiv, Stara Zagora, Bourgas, Haskovo, Pachmakly, Mastanly) ainsi que la Thrace occidentale égéenne (Gümülcine/Komotini, Xanthi, Dedeağaç/Alexandroupoli) acquise par la Bulgarie en 1913.",
+      "bbox": [
+        23.780173,
+        40.727465,
+        28.103065,
+        44.038359
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1682
+    },
+    {
+      "id": "region_074",
+      "name_fr": "Serbie",
+      "name_key": "region.region_074.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Serbie",
+      "initial_sovereign_id": "serbia",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": false,
+      "area_km2": 88645.87,
+      "centroid_lon_lat": [
+        21.20769,
+        43.062038
+      ],
+      "representative_point_lon_lat": [
+        21.419665,
+        42.917228
+      ],
+      "city_ids": [
+        "city_belgrade",
+        "city_nis_kragujevac",
+        "city_skopje_bitola"
+      ],
+      "adjacent_region_ids": [
+        "region_070",
+        "region_072",
+        "region_075",
+        "region_076",
+        "region_078"
+      ],
+      "external_adjacent_region_ids": [
+        "region_041",
+        "region_043"
+      ],
+      "maritime_zone_ids": [],
+      "historical_admin_units": [
+        "Vieille Serbie / Serbie centrale (Belgrade, Podrinje, Valjevo, Šumadija, Morava, Požarevac, Krajina, Timok, Kruševac, Niš, Pirot, Toplica, Vranje, Užice, Rudnik)",
+        "Sandjak de Novi Pazar oriental (Raška) et Kosovo (Pristina, Prizren, Mitrovica)",
+        "Macédoine du Vardar annexée au traité de Bucarest d'août 1913 (Skopje, Kumanovo, Tetovo, Štip/Bregalnica, Bitola/Monastir, Ohrid, Tikveš)"
+      ],
+      "source_layer": "REGIS_Yugoslavia.gpkg:REGIS_Yugoslavia_L2_1948-1954 + REGIS_Yugoslavia_L1_1920-1923 + REGIS_Serbia_L1_1900-1901",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Royaume de Serbie dans ses frontières du 1er janvier 1914 (issues du traité de Bucarest du 10 août 1913) : Vieille Serbie au sud du Danube et de la Save (hors Voïvodine/Syrmie austro-hongroise), Sandjak oriental, Kosovo et Macédoine du Vardar (Skopje, Bitola, Radoviš, Valandovo, Dojran), sans les confins de Tsaribrod/Bosilegrad ni le saillant de Stroumitsa (conservés dans la Bulgarie occidentale region_072).",
+      "bbox": [
+        19.112797,
+        40.846903,
+        23.047377,
+        44.991732
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1700,
+      "approximations": [
+        "MAJ-003 : retrait du saillant de Stroumitsa (1151.51 km², cédé au Royaume des Serbes, Croates et Slovènes seulement au traité de Neuilly-sur-Seine du 27 novembre 1919) au profit de region_072 ; maintien de la haute vallée de la Stroumitsa (bassin de Radoviš / Stara Reka) et de la Bojmija (Valandovo, Rabrovo) en territoire serbe conformément à l'article III du traité de Bucarest (10 août 1913)."
+      ]
+    },
+    {
+      "id": "region_075",
+      "name_fr": "Monténégro",
+      "name_key": "region.region_075.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Monténégro",
+      "initial_sovereign_id": "montenegro",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 12950.19,
+      "centroid_lon_lat": [
+        19.289086,
+        42.80292
+      ],
+      "representative_point_lon_lat": [
+        19.295065,
+        42.700327
+      ],
+      "city_ids": [
+        "city_cetinje"
+      ],
+      "adjacent_region_ids": [
+        "region_074",
+        "region_076"
+      ],
+      "external_adjacent_region_ids": [
+        "region_043"
+      ],
+      "maritime_zone_ids": [
+        "mz_adriatic_south_otranto"
+      ],
+      "historical_admin_units": [
+        "Ancien Monténégro (Cetinje, Nikšić, Podgorica, Bar, Ulcinj, Kolašin, Andrijevica)",
+        "Sandjak occidental et Métochie monténégrine annexés en 1913 (Pljevlja, Bijelo Polje, Berane, Plav, Gusinje)"
+      ],
+      "source_layer": "REGIS_Yugoslavia.gpkg:REGIS_Yugoslavia_L2_1948-1954 (Crna gora hors Bouches de Cattaro autrichiennes)",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Royaume du Monténégro dans ses frontières du 1er janvier 1914 après les traités de Londres et de Bucarest (1913), incluant le Sandjak occidental (Pljevlja, Bijelo Polje, Berane) et excluant les Bouches de Cattaro (rattachées à la Dalmatie austro-hongroise, region_043). La Métochie (Peć/Đakovica) est intégrée au bloc Kosovo-Métochie de region_074 pour préserver les limites administratives vérifiables de REGIS.",
+      "bbox": [
+        18.494764,
+        41.841245,
+        20.355697,
+        43.557002
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 567
+    },
+    {
+      "id": "region_076",
+      "name_fr": "Albanie",
+      "name_key": "region.region_076.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Albanie",
+      "initial_sovereign_id": "albania",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 29799.96,
+      "centroid_lon_lat": [
+        20.094517,
+        41.157787
+      ],
+      "representative_point_lon_lat": [
+        20.034979,
+        41.143324
+      ],
+      "city_ids": [
+        "city_durres"
+      ],
+      "adjacent_region_ids": [
+        "region_074",
+        "region_075",
+        "region_078"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_adriatic_south_otranto",
+        "mz_ionian_sea"
+      ],
+      "historical_admin_units": [
+        "Berat",
+        "Dibre",
+        "Durres",
+        "Elbasan",
+        "Gjirokaster",
+        "Korce",
+        "Kosove",
+        "Shkoder",
+        "Tirane",
+        "Vlore"
+      ],
+      "source_layer": "REGIS_Albania.gpkg:REGIS_Albania_L1_1921-1926",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Principauté d'Albanie reconnue par la Conférence des ambassadeurs de Londres (1913) et le Protocole de Florence (décembre 1913), comprenant 10 préfectures historiques.",
+      "bbox": [
+        19.293362,
+        39.634417,
+        21.066527,
+        42.655187
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1329
+    },
+    {
+      "id": "region_077",
+      "name_fr": "Grèce centrale",
+      "name_key": "region.region_077.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Grèce",
+      "initial_sovereign_id": "greece",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 26726.9,
+      "centroid_lon_lat": [
+        22.461719,
+        38.526692
+      ],
+      "representative_point_lon_lat": [
+        23.006482,
+        38.435605
+      ],
+      "city_ids": [
+        "city_athens_piraeus"
+      ],
+      "adjacent_region_ids": [
+        "region_078",
+        "region_079"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_ionian_sea",
+        "mz_aegean_sea"
+      ],
+      "historical_admin_units": [
+        "Attiki and Voiotia (510-3.620)",
+        "Fthiotida and Fokida (510-3.670)",
+        "Evvoia (510-3.630)",
+        "Aitoloakarnania (510-3.500)",
+        "Zakynthos (510-3.450)",
+        "Kerkyra (510-3.460)",
+        "Kefallinia (510-3.470)"
+      ],
+      "source_layer": "REGIS_Greece.gpkg:REGIS_Greece_L3_1914-1919",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe l'Attique-Béotie, la Phthiotide-Phocide, l'Étolie-Acarnanie, l'île d'Eubée et les îles Ioniennes (Corfou, Céphalonie, Zante, Leucade).",
+      "island_class": "major",
+      "bbox": [
+        19.38664,
+        35.807365,
+        24.699283,
+        39.888103
+      ],
+      "polygon_parts_count": 23,
+      "vertex_count": 4178
+    },
+    {
+      "id": "region_078",
+      "name_fr": "Grèce septentrionale",
+      "name_key": "region.region_078.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Grèce",
+      "initial_sovereign_id": "greece",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "plains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 58082.71,
+      "centroid_lon_lat": [
+        22.352147,
+        40.233354
+      ],
+      "representative_point_lon_lat": [
+        21.667691,
+        40.250457
+      ],
+      "city_ids": [
+        "city_salonika",
+        "city_larissa_ioannina"
+      ],
+      "adjacent_region_ids": [
+        "region_072",
+        "region_073",
+        "region_074",
+        "region_076",
+        "region_077"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_ionian_sea",
+        "mz_aegean_sea"
+      ],
+      "historical_admin_units": [
+        "Arta (510-3.400)",
+        "Ioannina (510-3.420)",
+        "Preveza (510-3.430)",
+        "Larissa (510-3.360)",
+        "Trikala (510-3.380)",
+        "Kozani (510-3.320)",
+        "Florina (510-3.330)",
+        "Thessaloniki (510-3.210)",
+        "Pella (510-3.230)",
+        "Serres (510-3.250)",
+        "Chalkidiki (510-3.260)",
+        "Drama (510-3.170)",
+        "Kavala (510-3.180)",
+        "Autonomous Monastic State (Athos) (510-9.999)"
+      ],
+      "source_layer": "REGIS_Greece.gpkg:REGIS_Greece_L3_1914-1919",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe la Thessalie (Larissa, Trikala), l'Épire (Ioannina, Arta, Prévéza) et la Macédoine grecque acquise en 1913 (Florina, Kozani, Pella, Salonique, Chalcidique, Mont Athos, Serrès, Drama, Kavala et île de Thasos).",
+      "island_class": "simplified",
+      "bbox": [
+        20.021067,
+        38.938543,
+        24.874995,
+        41.56196
+      ],
+      "polygon_parts_count": 6,
+      "vertex_count": 2985
+    },
+    {
+      "id": "region_079",
+      "name_fr": "Grèce méridionale et îles",
+      "name_key": "region.region_079.name",
+      "zone": "Balkans",
+      "sovereign_1914": "Grèce",
+      "initial_sovereign_id": "greece",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 36097.84,
+      "centroid_lon_lat": [
+        23.472838,
+        37.097126
+      ],
+      "representative_point_lon_lat": [
+        24.48149,
+        35.290187
+      ],
+      "city_ids": [
+        "city_patras",
+        "city_chania_suda"
+      ],
+      "adjacent_region_ids": [
+        "region_077"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_aegean_sea",
+        "mz_ionian_sea"
+      ],
+      "historical_admin_units": [
+        "Argolida and Korinthia (510-3.720)",
+        "Arkadia (510-3.730)",
+        "Lakonia (510-3.740)",
+        "Messinia (510-3.750)",
+        "Achaia and IIeia (510-3.530)",
+        "Kyklades (510-3.860)",
+        "Lesvos (510-3.810)",
+        "Samos (510-3.820)",
+        "Chios (510-3.830)",
+        "Iraklio (510-3.900)",
+        "Lassithi (510-3.910)",
+        "Rethymno (510-3.920)",
+        "Chania (510-3.930)"
+      ],
+      "source_layer": "REGIS_Greece.gpkg:REGIS_Greece_L3_1914-1919",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe le Péloponnèse (Argolide-Corinthie, Achaïe-Élide, Arcadie, Messénie, Laconie), les Cyclades, la Crète (La Canée, Réthymnon, Héraklion, Lassithi) et les îles du Nord-Est de l'Égée sous contrôle grec en 1914 (Lesbos, Chios, Samos, Lemnos) ; exclut le Dodécanèse occupé par l'Italie depuis 1912.",
+      "island_class": "major",
+      "bbox": [
+        21.118362,
+        34.792462,
+        27.087254,
+        40.023329
+      ],
+      "polygon_parts_count": 43,
+      "vertex_count": 5721
+    },
+    {
+      "id": "region_080",
+      "name_fr": "Italie — Nord-Ouest",
+      "name_key": "region.region_080.name",
+      "zone": "Italie",
+      "sovereign_1914": "Italie",
+      "initial_sovereign_id": "italy",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 58630.13,
+      "centroid_lon_lat": [
+        8.708958,
+        45.247034
+      ],
+      "representative_point_lon_lat": [
+        8.91197,
+        45.205792
+      ],
+      "city_ids": [
+        "city_milan",
+        "city_turin",
+        "city_genoa"
+      ],
+      "adjacent_region_ids": [
+        "region_012",
+        "region_017",
+        "region_018",
+        "region_037",
+        "region_081",
+        "region_082"
+      ],
+      "historical_admin_units": [
+        "Liguria",
+        "Lombardia",
+        "Piemonte"
+      ],
+      "source_layer": "REGIS_Italia.gpkg:REGIS_Italia_L1_1872-1915",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "bbox": [
+        6.559698,
+        43.774252,
+        11.425275,
+        46.638414
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1907
+    },
+    {
+      "id": "region_081",
+      "name_fr": "Italie — Nord-Est",
+      "name_key": "region.region_081.name",
+      "zone": "Italie",
+      "sovereign_1914": "Italie",
+      "initial_sovereign_id": "italy",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills",
+        "marshes"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 45737.07,
+      "centroid_lon_lat": [
+        11.602644,
+        45.214383
+      ],
+      "representative_point_lon_lat": [
+        11.531771,
+        45.251762
+      ],
+      "city_ids": [
+        "city_venice",
+        "city_bologna"
+      ],
+      "adjacent_region_ids": [
+        "region_037",
+        "region_080",
+        "region_082",
+        "region_083"
+      ],
+      "historical_admin_units": [
+        "Emilia",
+        "Veneto"
+      ],
+      "source_layer": "REGIS_Italia.gpkg:REGIS_Italia_L1_1872-1915",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Frontière nord-orientale conforme au 1er janvier 1914 : inclut la Vénétie (avec Udine/Frioul occidental) et l'Émilie ; exclut le Trentin, le Tyrol du Sud, Trieste et l'Istrie (rattachés à l'Autriche-Hongrie, region_037).",
+      "island_class": "simplified",
+      "bbox": [
+        9.171319,
+        43.815428,
+        13.6744,
+        46.686612
+      ],
+      "polygon_parts_count": 2,
+      "vertex_count": 1315
+    },
+    {
+      "id": "region_082",
+      "name_fr": "Italie — Centre-Ouest",
+      "name_key": "region.region_082.name",
+      "zone": "Italie",
+      "sovereign_1914": "Italie",
+      "initial_sovereign_id": "italy",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "mountains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 45649.45,
+      "centroid_lon_lat": [
+        11.805574,
+        42.948245
+      ],
+      "representative_point_lon_lat": [
+        12.018277,
+        42.844142
+      ],
+      "city_ids": [
+        "city_rome",
+        "city_la_spezia"
+      ],
+      "adjacent_region_ids": [
+        "region_080",
+        "region_081",
+        "region_083",
+        "region_084"
+      ],
+      "historical_admin_units": [
+        "Roma",
+        "Toscana",
+        "Umbria"
+      ],
+      "source_layer": "REGIS_Italia.gpkg:REGIS_Italia_L1_1872-1915",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "simplified",
+      "bbox": [
+        9.691544,
+        40.873875,
+        13.532457,
+        44.474216
+      ],
+      "polygon_parts_count": 7,
+      "vertex_count": 1044
+    },
+    {
+      "id": "region_083",
+      "name_fr": "Italie — Centre-Est",
+      "name_key": "region.region_083.name",
+      "zone": "Italie",
+      "sovereign_1914": "Italie",
+      "initial_sovereign_id": "italy",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 26799.16,
+      "centroid_lon_lat": [
+        13.6511,
+        42.577226
+      ],
+      "representative_point_lon_lat": [
+        13.572623,
+        42.675094
+      ],
+      "city_ids": [
+        "city_ancona"
+      ],
+      "adjacent_region_ids": [
+        "region_081",
+        "region_082",
+        "region_084"
+      ],
+      "historical_admin_units": [
+        "Abruzzi e Molise",
+        "Marche",
+        "République de Saint-Marin (micro-État simplifié, MAP-DEC-04)"
+      ],
+      "source_layer": "REGIS_Italia.gpkg:REGIS_Italia_L1_1872-1915",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Simplifie le micro-État enclavé de Saint-Marin selon MAP-DEC-04.",
+      "bbox": [
+        12.091774,
+        41.366164,
+        15.174095,
+        43.984452
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 516
+    },
+    {
+      "id": "region_084",
+      "name_fr": "Italie — Sud",
+      "name_key": "region.region_084.name",
+      "zone": "Italie",
+      "sovereign_1914": "Italie",
+      "initial_sovereign_id": "italy",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "mountains",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 60679.3,
+      "centroid_lon_lat": [
+        15.950075,
+        40.416557
+      ],
+      "representative_point_lon_lat": [
+        16.181098,
+        39.920704
+      ],
+      "city_ids": [
+        "city_naples",
+        "city_taranto"
+      ],
+      "adjacent_region_ids": [
+        "region_082",
+        "region_083"
+      ],
+      "historical_admin_units": [
+        "Basilicata",
+        "Calabria",
+        "Campania",
+        "Puglia"
+      ],
+      "source_layer": "REGIS_Italia.gpkg:REGIS_Italia_L1_1872-1915",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "simplified",
+      "bbox": [
+        13.270823,
+        37.904996,
+        18.524691,
+        41.939955
+      ],
+      "polygon_parts_count": 3,
+      "vertex_count": 1785
+    },
+    {
+      "id": "region_085",
+      "name_fr": "Sicile",
+      "name_key": "region.region_085.name",
+      "zone": "Italie",
+      "sovereign_1914": "Italie",
+      "initial_sovereign_id": "italy",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "mountains",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 25909.93,
+      "centroid_lon_lat": [
+        14.154414,
+        37.57731
+      ],
+      "representative_point_lon_lat": [
+        14.140071,
+        37.461928
+      ],
+      "city_ids": [
+        "city_palermo"
+      ],
+      "adjacent_region_ids": [],
+      "historical_admin_units": [
+        "Sicilia"
+      ],
+      "source_layer": "REGIS_Italia.gpkg:REGIS_Italia_L1_1872-1915",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "major",
+      "bbox": [
+        11.924525,
+        36.63578,
+        15.660511,
+        38.800797
+      ],
+      "polygon_parts_count": 12,
+      "vertex_count": 1327
+    },
+    {
+      "id": "region_086",
+      "name_fr": "Sardaigne",
+      "name_key": "region.region_086.name",
+      "zone": "Italie",
+      "sovereign_1914": "Italie",
+      "initial_sovereign_id": "italy",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 24135.58,
+      "centroid_lon_lat": [
+        9.029734,
+        40.077259
+      ],
+      "representative_point_lon_lat": [
+        9.098677,
+        40.051048
+      ],
+      "city_ids": [
+        "city_cagliari"
+      ],
+      "adjacent_region_ids": [],
+      "historical_admin_units": [
+        "Sardegna"
+      ],
+      "source_layer": "REGIS_Italia.gpkg:REGIS_Italia_L1_1872-1915",
+      "source_refs": [
+        "regis_2026_v1",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "",
+      "island_class": "major",
+      "bbox": [
+        8.131608,
+        38.85382,
+        9.826679,
+        41.26357
+      ],
+      "polygon_parts_count": 5,
+      "vertex_count": 1593
+    },
+    {
+      "id": "region_087",
+      "name_fr": "Constantinople et environs",
+      "name_key": "region.region_087.name",
+      "zone": "Territoires ottomans européens",
+      "sovereign_1914": "Empire ottoman",
+      "initial_sovereign_id": "ottoman_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "industrial",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 1322.06,
+      "centroid_lon_lat": [
+        28.807681,
+        41.162573
+      ],
+      "representative_point_lon_lat": [
+        28.835525,
+        41.18307
+      ],
+      "city_ids": [
+        "city_constantinople"
+      ],
+      "adjacent_region_ids": [
+        "region_088"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_marmara_straits",
+        "mz_black_sea_west"
+      ],
+      "historical_admin_units": [
+        "Arnavutköy",
+        "Avcılar",
+        "Bahçelievler",
+        "Bakırköy",
+        "Bayrampaşa",
+        "Bağcılar",
+        "Başakşehir",
+        "Beyoğlu",
+        "Beşiktaş",
+        "Esenler",
+        "Eyüpsultan",
+        "Fatih",
+        "Gaziosmanpaşa",
+        "Güngören",
+        "Kağıthane",
+        "Küçükçekmece",
+        "Sarıyer",
+        "Sultangazi",
+        "Zeytinburnu",
+        "Şişli"
+      ],
+      "source_layer": "gb_tur_adm2.geojson (geoBoundaries TUR ADM2, Thrace orientale européenne)",
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Correspond à la rive européenne du vilayet/préfecture de Constantinople à l'est des lignes de Çatalca et de la lagune de Büyükçekmece (Stamboul/Fatih, Péra/Beyoğlu, Corne d'Or/Eyüp, Bakırköy/San Stefano et rive européenne du Bosphore jusqu'à la mer Noire).",
+      "bbox": [
+        28.491152,
+        40.954521,
+        29.116232,
+        41.407646
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 376
+    },
+    {
+      "id": "region_088",
+      "name_fr": "Çatalca et Tekirdağ",
+      "name_key": "region.region_088.name",
+      "zone": "Territoires ottomans européens",
+      "sovereign_1914": "Empire ottoman",
+      "initial_sovereign_id": "ottoman_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 7934.35,
+      "centroid_lon_lat": [
+        27.66747,
+        41.152926
+      ],
+      "representative_point_lon_lat": [
+        27.758781,
+        41.165326
+      ],
+      "city_ids": [
+        "city_tekirdag_catalca"
+      ],
+      "adjacent_region_ids": [
+        "region_087",
+        "region_089",
+        "region_090"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_marmara_straits",
+        "mz_black_sea_west"
+      ],
+      "historical_admin_units": [
+        "Beylikdüzü",
+        "Büyükçekmece",
+        "Ergene",
+        "Esenyurt",
+        "Hayrabolu",
+        "Kapaklı",
+        "Malkara",
+        "Marmaraereğlisi",
+        "Muratlı",
+        "Saray",
+        "Silivri",
+        "Süleymanpaşa",
+        "Çatalca",
+        "Çerkezköy",
+        "Çorlu"
+      ],
+      "source_layer": "gb_tur_adm2.geojson: shapeID 54988432B91991689904144 (Saray, Tekirdağ)",
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe le sandjak indépendant de Çatalca (lignes fortifiées de Çatalca et Silivri) et le sandjak de Tekirdağ/Rodosto (Tekirdağ, Çorlu, Malkara, Hayrabolu, Saray, Marmaraereğlisi).",
+      "approximations": [
+        "Le district thrace de Saray a été rétabli à partir du shapeID 54988432B91991689904144 de geoBoundaries TUR ADM2; la composante de Van portant l'homonyme Saray a été retirée."
+      ],
+      "bbox": [
+        26.693293,
+        40.723,
+        28.701899,
+        41.609741
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 948
+    },
+    {
+      "id": "region_089",
+      "name_fr": "Edirne",
+      "name_key": "region.region_089.name",
+      "zone": "Territoires ottomans européens",
+      "sovereign_1914": "Empire ottoman",
+      "initial_sovereign_id": "ottoman_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "importance_dimensions": [
+        "demographic",
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 11025.23,
+      "centroid_lon_lat": [
+        27.111108,
+        41.569129
+      ],
+      "representative_point_lon_lat": [
+        27.119164,
+        41.416334
+      ],
+      "city_ids": [
+        "city_edirne"
+      ],
+      "adjacent_region_ids": [
+        "region_073",
+        "region_088",
+        "region_090"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_black_sea_west"
+      ],
+      "historical_admin_units": [
+        "Babaeski",
+        "Demirköy",
+        "Edirne merkez",
+        "Havsa",
+        "Kofçaz",
+        "Kırklareli merkez",
+        "Lalapaşa",
+        "Lüleburgaz",
+        "Meriç",
+        "Pehlivanköy",
+        "Pınarhisar",
+        "Süloğlu",
+        "Uzunköprü",
+        "Vize",
+        "İpsala"
+      ],
+      "source_layer": "gb_tur_adm2.geojson (geoBoundaries TUR ADM2, Thrace orientale européenne)",
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Regroupe les sandjaks d'Edirne (Andrinople, Uzunköprü, Havsa, Meriç, İpsala) et de Kırklareli (Kirk-Kilissé, Lüleburgaz, Babaeski, Vize, Demirköy/İğneada) reconquis par l'Empire ottoman et confirmés par le traité de Constantinople du 29 septembre 1913.",
+      "bbox": [
+        26.167117,
+        40.730642,
+        28.146799,
+        42.104801
+      ],
+      "polygon_parts_count": 1,
+      "vertex_count": 1120
+    },
+    {
+      "id": "region_090",
+      "name_fr": "Gallipoli et rive européenne des Dardanelles",
+      "name_key": "region.region_090.name",
+      "zone": "Territoires ottomans européens",
+      "sovereign_1914": "Empire ottoman",
+      "initial_sovereign_id": "ottoman_empire",
+      "etat_geometrie": "construite",
+      "relief_categories": [
+        "hills",
+        "plains"
+      ],
+      "importance_dimensions": [
+        "strategic"
+      ],
+      "has_coastline": true,
+      "area_km2": 3653.75,
+      "centroid_lon_lat": [
+        26.547482,
+        40.575692
+      ],
+      "representative_point_lon_lat": [
+        25.83158,
+        40.165652
+      ],
+      "city_ids": [
+        "city_gallipoli"
+      ],
+      "adjacent_region_ids": [
+        "region_073",
+        "region_088",
+        "region_089"
+      ],
+      "external_adjacent_region_ids": [],
+      "maritime_zone_ids": [
+        "mz_marmara_straits",
+        "mz_aegean_sea"
+      ],
+      "historical_admin_units": [
+        "Bozcaada",
+        "Eceabat",
+        "Enez",
+        "Gelibolu",
+        "Imbros",
+        "Keşan",
+        "Şarköy"
+      ],
+      "source_layer": "gb_tur_adm2.geojson (geoBoundaries TUR ADM2, Thrace orientale européenne)",
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "kavanagh_1914_v1"
+      ],
+      "notes": "Correspond au sandjak historique de Gelibolu (péninsule de Gallipoli/Gelibolu et Eceabat/Maïdos sur la rive européenne des Dardanelles, avec son arrière-pays de Şarköy, Keşan et Enez/Énos) ainsi qu'aux îles stratégiques d'Imbros (Gökçeada) et Ténédos (Bozcaada) à l'entrée des Dardanelles.",
+      "island_class": "small_strategic",
+      "bbox": [
+        25.665449,
+        39.787344,
+        27.404106,
+        41.045421
+      ],
+      "polygon_parts_count": 3,
+      "vertex_count": 896
+    }
+  ]
+}

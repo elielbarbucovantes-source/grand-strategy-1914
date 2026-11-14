@@ -1,0 +1,2177 @@
+{
+  "schema_version": "1.0.0",
+  "agent_id": "agent_1",
+  "reference_date": "1914-01-01",
+  "total_regions": 50,
+  "total_internal_land_edges": 97,
+  "total_internal_strait_crossings": 1,
+  "neighbors_by_region": {
+    "region_001": [
+      "region_002",
+      "region_004"
+    ],
+    "region_002": [
+      "region_001",
+      "region_003",
+      "region_004"
+    ],
+    "region_003": [
+      "region_002"
+    ],
+    "region_004": [
+      "region_001",
+      "region_002"
+    ],
+    "region_005": [
+      "region_006"
+    ],
+    "region_006": [
+      "region_005"
+    ],
+    "region_007": [
+      "region_008",
+      "region_011",
+      "region_013",
+      "region_014"
+    ],
+    "region_008": [
+      "region_007",
+      "region_009",
+      "region_010",
+      "region_011",
+      "region_012"
+    ],
+    "region_009": [
+      "region_008",
+      "region_010"
+    ],
+    "region_010": [
+      "region_008",
+      "region_009",
+      "region_012",
+      "region_022"
+    ],
+    "region_011": [
+      "region_007",
+      "region_008",
+      "region_012",
+      "region_014",
+      "region_017",
+      "region_019",
+      "region_035"
+    ],
+    "region_012": [
+      "region_008",
+      "region_010",
+      "region_011",
+      "region_017",
+      "region_022",
+      "region_080"
+    ],
+    "region_013": [
+      "region_007",
+      "region_014",
+      "region_015",
+      "region_016"
+    ],
+    "region_014": [
+      "region_007",
+      "region_011",
+      "region_013",
+      "region_016",
+      "region_019",
+      "region_032"
+    ],
+    "region_015": [
+      "region_013",
+      "region_016"
+    ],
+    "region_016": [
+      "region_013",
+      "region_014",
+      "region_015",
+      "region_029",
+      "region_032"
+    ],
+    "region_017": [
+      "region_011",
+      "region_012",
+      "region_018",
+      "region_033",
+      "region_035",
+      "region_080"
+    ],
+    "region_018": [
+      "region_017",
+      "region_033",
+      "region_037",
+      "region_080"
+    ],
+    "region_019": [
+      "region_011",
+      "region_014",
+      "region_032",
+      "region_035"
+    ],
+    "region_020": [
+      "region_021",
+      "region_023",
+      "region_025"
+    ],
+    "region_021": [
+      "region_020",
+      "region_022",
+      "region_023"
+    ],
+    "region_022": [
+      "region_010",
+      "region_012",
+      "region_021",
+      "region_023",
+      "region_024"
+    ],
+    "region_023": [
+      "region_020",
+      "region_021",
+      "region_022",
+      "region_024",
+      "region_025"
+    ],
+    "region_024": [
+      "region_022",
+      "region_023",
+      "region_025"
+    ],
+    "region_025": [
+      "region_020",
+      "region_023",
+      "region_024"
+    ],
+    "region_026": [
+      "region_027"
+    ],
+    "region_027": [
+      "region_026",
+      "region_028",
+      "region_030"
+    ],
+    "region_028": [
+      "region_027",
+      "region_029",
+      "region_030",
+      "region_031"
+    ],
+    "region_029": [
+      "region_016",
+      "region_028",
+      "region_031",
+      "region_032",
+      "region_033"
+    ],
+    "region_030": [
+      "region_027",
+      "region_028",
+      "region_031",
+      "region_038",
+      "region_039",
+      "region_040"
+    ],
+    "region_031": [
+      "region_028",
+      "region_029",
+      "region_030",
+      "region_033",
+      "region_034",
+      "region_038"
+    ],
+    "region_032": [
+      "region_014",
+      "region_016",
+      "region_019",
+      "region_029",
+      "region_033",
+      "region_035"
+    ],
+    "region_033": [
+      "region_017",
+      "region_018",
+      "region_029",
+      "region_031",
+      "region_032",
+      "region_034",
+      "region_035"
+    ],
+    "region_034": [
+      "region_031",
+      "region_033",
+      "region_036",
+      "region_037",
+      "region_038"
+    ],
+    "region_035": [
+      "region_011",
+      "region_017",
+      "region_019",
+      "region_032",
+      "region_033"
+    ],
+    "region_036": [
+      "region_034",
+      "region_037",
+      "region_038",
+      "region_039",
+      "region_041",
+      "region_043"
+    ],
+    "region_037": [
+      "region_018",
+      "region_034",
+      "region_036",
+      "region_043",
+      "region_080",
+      "region_081"
+    ],
+    "region_038": [
+      "region_030",
+      "region_031",
+      "region_034",
+      "region_036",
+      "region_039"
+    ],
+    "region_039": [
+      "region_030",
+      "region_036",
+      "region_038",
+      "region_040",
+      "region_041"
+    ],
+    "region_040": [
+      "region_030",
+      "region_039",
+      "region_041",
+      "region_042"
+    ],
+    "region_041": [
+      "region_036",
+      "region_039",
+      "region_040",
+      "region_042",
+      "region_043"
+    ],
+    "region_042": [
+      "region_040",
+      "region_041"
+    ],
+    "region_043": [
+      "region_036",
+      "region_037",
+      "region_041"
+    ],
+    "region_080": [
+      "region_012",
+      "region_017",
+      "region_018",
+      "region_037",
+      "region_081",
+      "region_082"
+    ],
+    "region_081": [
+      "region_037",
+      "region_080",
+      "region_082",
+      "region_083"
+    ],
+    "region_082": [
+      "region_080",
+      "region_081",
+      "region_083",
+      "region_084"
+    ],
+    "region_083": [
+      "region_081",
+      "region_082",
+      "region_084"
+    ],
+    "region_084": [
+      "region_082",
+      "region_083"
+    ],
+    "region_085": [],
+    "region_086": []
+  },
+  "edges": [
+    {
+      "id": "adj_region_001_region_002",
+      "region_a_id": "region_001",
+      "region_b_id": "region_002",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Royaume-Uni",
+      "sovereign_b": "Royaume-Uni",
+      "shared_border_km": 358.04,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_001_region_004",
+      "region_a_id": "region_001",
+      "region_b_id": "region_004",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Royaume-Uni",
+      "sovereign_b": "Royaume-Uni",
+      "shared_border_km": 128.55,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_002_region_003",
+      "region_a_id": "region_002",
+      "region_b_id": "region_003",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Royaume-Uni",
+      "sovereign_b": "Royaume-Uni",
+      "shared_border_km": 138.11,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_002_region_004",
+      "region_a_id": "region_002",
+      "region_b_id": "region_004",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Royaume-Uni",
+      "sovereign_b": "Royaume-Uni",
+      "shared_border_km": 185.71,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_005_region_006",
+      "region_a_id": "region_005",
+      "region_b_id": "region_006",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Royaume-Uni",
+      "sovereign_b": "Royaume-Uni",
+      "shared_border_km": 255.95,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_007_region_008",
+      "region_a_id": "region_007",
+      "region_b_id": "region_008",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 294.11,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_007_region_011",
+      "region_a_id": "region_007",
+      "region_b_id": "region_011",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 180.01,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_007_region_013",
+      "region_a_id": "region_007",
+      "region_b_id": "region_013",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Belgique",
+      "shared_border_km": 99.29,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_007_region_014",
+      "region_a_id": "region_007",
+      "region_b_id": "region_014",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Belgique",
+      "shared_border_km": 181.41,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_008_region_009",
+      "region_a_id": "region_008",
+      "region_b_id": "region_009",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 537.1,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_008_region_010",
+      "region_a_id": "region_008",
+      "region_b_id": "region_010",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 99.04,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_008_region_011",
+      "region_a_id": "region_008",
+      "region_b_id": "region_011",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 311.3,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_008_region_012",
+      "region_a_id": "region_008",
+      "region_b_id": "region_012",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 90.2,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_009_region_010",
+      "region_a_id": "region_009",
+      "region_b_id": "region_010",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 286.58,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_010_region_012",
+      "region_a_id": "region_010",
+      "region_b_id": "region_012",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 841.77,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_010_region_022",
+      "region_a_id": "region_010",
+      "region_b_id": "region_022",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 484.27,
+      "natural_obstacles": [
+        "Pyrénées"
+      ],
+      "documented_passages": [
+        "Hendaye-Irún",
+        "Col du Somport",
+        "Col de Roncevaux"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_011_region_012",
+      "region_a_id": "region_011",
+      "region_b_id": "region_012",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "France",
+      "sovereign_b": "France",
+      "shared_border_km": 399.81,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_011_region_014",
+      "region_a_id": "region_011",
+      "region_b_id": "region_014",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Belgique",
+      "shared_border_km": 222.83,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_011_region_017",
+      "region_a_id": "region_011",
+      "region_b_id": "region_017",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Suisse",
+      "shared_border_km": 203.77,
+      "natural_obstacles": [
+        "Jura"
+      ],
+      "documented_passages": [
+        "Delle-Porrentruy",
+        "Pontarlier-Les Verrières"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_011_region_019",
+      "region_a_id": "region_011",
+      "region_b_id": "region_019",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Luxembourg",
+      "shared_border_km": 12.82,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_011_region_035",
+      "region_a_id": "region_011",
+      "region_b_id": "region_035",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 328.76,
+      "natural_obstacles": [
+        "Vosges"
+      ],
+      "documented_passages": [
+        "Col de Saverne (externe)",
+        "Trouée de Belfort",
+        "Seuil de Lorraine (Nancy-Metz)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_012_region_017",
+      "region_a_id": "region_012",
+      "region_b_id": "region_017",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Suisse",
+      "shared_border_km": 223.27,
+      "natural_obstacles": [
+        "Jura",
+        "Alpes lémaniques"
+      ],
+      "documented_passages": [
+        "Trouée de Genève / Bellegarde",
+        "Vallorbe"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_012_region_022",
+      "region_a_id": "region_012",
+      "region_b_id": "region_022",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 177.88,
+      "natural_obstacles": [
+        "Pyrénées orientales"
+      ],
+      "documented_passages": [
+        "Col du Perthus",
+        "Cerbère-Portbou"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_012_region_080",
+      "region_a_id": "region_012",
+      "region_b_id": "region_080",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "France",
+      "sovereign_b": "Italie",
+      "shared_border_km": 439.26,
+      "natural_obstacles": [
+        "Alpes occidentales"
+      ],
+      "documented_passages": [
+        "Tunnel du Fréjus / Col du Mont-Cenis",
+        "Col du Petit-Saint-Bernard",
+        "Col de Tende",
+        "Corniche ligure (Vintimille)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_013_region_014",
+      "region_a_id": "region_013",
+      "region_b_id": "region_014",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Belgique",
+      "sovereign_b": "Belgique",
+      "shared_border_km": 267.44,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_013_region_015",
+      "region_a_id": "region_013",
+      "region_b_id": "region_015",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Belgique",
+      "sovereign_b": "Pays-Bas",
+      "shared_border_km": 94.1,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_013_region_016",
+      "region_a_id": "region_013",
+      "region_b_id": "region_016",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Belgique",
+      "sovereign_b": "Pays-Bas",
+      "shared_border_km": 253.87,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_014_region_016",
+      "region_a_id": "region_014",
+      "region_b_id": "region_016",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Belgique",
+      "sovereign_b": "Pays-Bas",
+      "shared_border_km": 35.57,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_014_region_019",
+      "region_a_id": "region_014",
+      "region_b_id": "region_019",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Belgique",
+      "sovereign_b": "Luxembourg",
+      "shared_border_km": 105.64,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_014_region_032",
+      "region_a_id": "region_014",
+      "region_b_id": "region_032",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Belgique",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 81.89,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_015_region_016",
+      "region_a_id": "region_015",
+      "region_b_id": "region_016",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Pays-Bas",
+      "sovereign_b": "Pays-Bas",
+      "shared_border_km": 170.5,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_016_region_029",
+      "region_a_id": "region_016",
+      "region_b_id": "region_029",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Pays-Bas",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 168.95,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_016_region_032",
+      "region_a_id": "region_016",
+      "region_b_id": "region_032",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Pays-Bas",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 339.92,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_017_region_018",
+      "region_a_id": "region_017",
+      "region_b_id": "region_018",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Suisse",
+      "sovereign_b": "Suisse",
+      "shared_border_km": 223.9,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_017_region_033",
+      "region_a_id": "region_017",
+      "region_b_id": "region_033",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Suisse",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 23.25,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_017_region_035",
+      "region_a_id": "region_017",
+      "region_b_id": "region_035",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Suisse",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 64.1,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_017_region_080",
+      "region_a_id": "region_017",
+      "region_b_id": "region_080",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "Suisse",
+      "sovereign_b": "Italie",
+      "shared_border_km": 168.1,
+      "natural_obstacles": [
+        "Alpes pennines et lépontines"
+      ],
+      "documented_passages": [
+        "Tunnel du Simplon",
+        "Col du Grand-Saint-Bernard"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_018_region_033",
+      "region_a_id": "region_018",
+      "region_b_id": "region_033",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Suisse",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 271.12,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_018_region_037",
+      "region_a_id": "region_018",
+      "region_b_id": "region_037",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "Suisse",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 225.96,
+      "natural_obstacles": [
+        "Alpes rhétiques",
+        "Rhin alpin"
+      ],
+      "documented_passages": [
+        "Buchs-Feldkirch (Arlberg)",
+        "Basse-Engadine"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_018_region_080",
+      "region_a_id": "region_018",
+      "region_b_id": "region_080",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "Suisse",
+      "sovereign_b": "Italie",
+      "shared_border_km": 431.11,
+      "natural_obstacles": [
+        "Alpes lépontines et rhétiques"
+      ],
+      "documented_passages": [
+        "Tunnel du Saint-Gothard",
+        "Col du Splügen",
+        "Chiasso"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_019_region_032",
+      "region_a_id": "region_019",
+      "region_b_id": "region_032",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Luxembourg",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 130.96,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_019_region_035",
+      "region_a_id": "region_019",
+      "region_b_id": "region_035",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Luxembourg",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 44.83,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_020_region_021",
+      "region_a_id": "region_020",
+      "region_b_id": "region_021",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Portugal",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 607.96,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_020_region_023",
+      "region_a_id": "region_020",
+      "region_b_id": "region_023",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Portugal",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 391.93,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_020_region_025",
+      "region_a_id": "region_020",
+      "region_b_id": "region_025",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Portugal",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 148.92,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_021_region_022",
+      "region_a_id": "region_021",
+      "region_b_id": "region_022",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Espagne",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 326.22,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_021_region_023",
+      "region_a_id": "region_021",
+      "region_b_id": "region_023",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Espagne",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 582.82,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_022_region_023",
+      "region_a_id": "region_022",
+      "region_b_id": "region_023",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Espagne",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 486.46,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_022_region_024",
+      "region_a_id": "region_022",
+      "region_b_id": "region_024",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Espagne",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 355.73,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_023_region_024",
+      "region_a_id": "region_023",
+      "region_b_id": "region_024",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Espagne",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 367.9,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_023_region_025",
+      "region_a_id": "region_023",
+      "region_b_id": "region_025",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Espagne",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 524.14,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_024_region_025",
+      "region_a_id": "region_024",
+      "region_b_id": "region_025",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Espagne",
+      "sovereign_b": "Espagne",
+      "shared_border_km": 223.2,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_026_region_027",
+      "region_a_id": "region_026",
+      "region_b_id": "region_027",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 211.62,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_027_region_028",
+      "region_a_id": "region_027",
+      "region_b_id": "region_028",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 664.54,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_027_region_030",
+      "region_a_id": "region_027",
+      "region_b_id": "region_030",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 302.03,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_028_region_029",
+      "region_a_id": "region_028",
+      "region_b_id": "region_029",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 207.94,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_028_region_030",
+      "region_a_id": "region_028",
+      "region_b_id": "region_030",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 285.87,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_028_region_031",
+      "region_a_id": "region_028",
+      "region_b_id": "region_031",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 413.99,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_029_region_031",
+      "region_a_id": "region_029",
+      "region_b_id": "region_031",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 522.97,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_029_region_032",
+      "region_a_id": "region_029",
+      "region_b_id": "region_032",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 422.19,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_029_region_033",
+      "region_a_id": "region_029",
+      "region_b_id": "region_033",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 239.83,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_030_region_031",
+      "region_a_id": "region_030",
+      "region_b_id": "region_031",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 153.56,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_030_region_038",
+      "region_a_id": "region_030",
+      "region_b_id": "region_038",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 284.58,
+      "natural_obstacles": [
+        "Sudètes (Riesengebirge)"
+      ],
+      "documented_passages": [
+        "Trouée de Glatz / Nachod",
+        "Reichenberg"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_030_region_039",
+      "region_a_id": "region_030",
+      "region_b_id": "region_039",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 322.75,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_030_region_040",
+      "region_a_id": "region_030",
+      "region_b_id": "region_040",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 45.36,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_031_region_033",
+      "region_a_id": "region_031",
+      "region_b_id": "region_033",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 184.55,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_031_region_034",
+      "region_a_id": "region_031",
+      "region_b_id": "region_034",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 267.11,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_031_region_038",
+      "region_a_id": "region_031",
+      "region_b_id": "region_038",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 395.14,
+      "natural_obstacles": [
+        "Monts Métallifères (Erzgebirge)"
+      ],
+      "documented_passages": [
+        "Vallée de l'Elbe (Dresde-Tetschen)",
+        "Cheb (Eger)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_032_region_033",
+      "region_a_id": "region_032",
+      "region_b_id": "region_033",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 604.48,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_032_region_035",
+      "region_a_id": "region_032",
+      "region_b_id": "region_035",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 107.07,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_033_region_034",
+      "region_a_id": "region_033",
+      "region_b_id": "region_034",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 723.45,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_033_region_035",
+      "region_a_id": "region_033",
+      "region_b_id": "region_035",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "river_obstacle",
+      "is_international_border_1914": false,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Empire allemand",
+      "shared_border_km": 291.28,
+      "natural_obstacles": [
+        "Rhin supérieur"
+      ],
+      "documented_passages": [
+        "Ponts de Strasbourg-Kehl",
+        "Ponts de Germersheim",
+        "Palatinat-Sarre"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_034_region_036",
+      "region_a_id": "region_034",
+      "region_b_id": "region_036",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 162.47,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_034_region_037",
+      "region_a_id": "region_034",
+      "region_b_id": "region_037",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 537.69,
+      "natural_obstacles": [
+        "Alpes bavaroises et tyroliennes",
+        "Inn"
+      ],
+      "documented_passages": [
+        "Trouée de l'Inn (Kufstein)",
+        "Salzbourg-Freilassing",
+        "Col de Mittenwald"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_034_region_038",
+      "region_a_id": "region_034",
+      "region_b_id": "region_038",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "national",
+      "is_international_border_1914": true,
+      "sovereign_a": "Empire allemand",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 286.96,
+      "natural_obstacles": [
+        "Forêt de Bohême (Böhmerwald)"
+      ],
+      "documented_passages": [
+        "Trouée de Furth im Wald",
+        "Cheb-Marktredwitz"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_036_region_037",
+      "region_a_id": "region_036",
+      "region_b_id": "region_037",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 643.42,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_036_region_038",
+      "region_a_id": "region_036",
+      "region_b_id": "region_038",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 192.64,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_036_region_039",
+      "region_a_id": "region_036",
+      "region_b_id": "region_039",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 164.35,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_036_region_041",
+      "region_a_id": "region_036",
+      "region_b_id": "region_041",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 410.98,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_036_region_043",
+      "region_a_id": "region_036",
+      "region_b_id": "region_043",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 111.66,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_037_region_043",
+      "region_a_id": "region_037",
+      "region_b_id": "region_043",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 247.74,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_037_region_080",
+      "region_a_id": "region_037",
+      "region_b_id": "region_080",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 150.85,
+      "natural_obstacles": [
+        "Alpes rhétiques (Stelvio/Tonale)",
+        "Lac de Garde"
+      ],
+      "documented_passages": [
+        "Col du Tonale",
+        "Vallée de l'Adige / Riva"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_037_region_081",
+      "region_a_id": "region_037",
+      "region_b_id": "region_081",
+      "connection_type": "land",
+      "boundary_kind": "national",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": true,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 493.64,
+      "natural_obstacles": [
+        "Dolomites",
+        "Alpes carniques",
+        "Isonzo"
+      ],
+      "documented_passages": [
+        "Vallée de l'Adige (Vérone-Trente)",
+        "Col de Tarvis / Pontebba",
+        "Seuil de Gorizia / Isonzo"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_038_region_039",
+      "region_a_id": "region_038",
+      "region_b_id": "region_039",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 323.06,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_039_region_040",
+      "region_a_id": "region_039",
+      "region_b_id": "region_040",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 63.93,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_039_region_041",
+      "region_a_id": "region_039",
+      "region_b_id": "region_041",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 210.42,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_040_region_041",
+      "region_a_id": "region_040",
+      "region_b_id": "region_041",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 797.7,
+      "natural_obstacles": [
+        "Carpates septentrionales"
+      ],
+      "documented_passages": [
+        "Passe de Dukla",
+        "Passe de Lupków",
+        "Passe d'Uzsok",
+        "Passe de Verecke"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_040_region_042",
+      "region_a_id": "region_040",
+      "region_b_id": "region_042",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "mountain_obstacle",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 68.02,
+      "natural_obstacles": [
+        "Carpates orientales"
+      ],
+      "documented_passages": [
+        "Passe de Prislop / Borgo"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_041_region_042",
+      "region_a_id": "region_041",
+      "region_b_id": "region_042",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 601.21,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_041_region_043",
+      "region_a_id": "region_041",
+      "region_b_id": "region_043",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Autriche-Hongrie",
+      "sovereign_b": "Autriche-Hongrie",
+      "shared_border_km": 564.41,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_080_region_081",
+      "region_a_id": "region_080",
+      "region_b_id": "region_081",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Italie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 524.76,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_080_region_082",
+      "region_a_id": "region_080",
+      "region_b_id": "region_082",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Italie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 61.27,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_081_region_082",
+      "region_a_id": "region_081",
+      "region_b_id": "region_082",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Italie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 295.95,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_081_region_083",
+      "region_a_id": "region_081",
+      "region_b_id": "region_083",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Italie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 93.75,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_082_region_083",
+      "region_a_id": "region_082",
+      "region_b_id": "region_083",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Italie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 429.42,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_082_region_084",
+      "region_a_id": "region_082",
+      "region_b_id": "region_084",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Italie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 76.53,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "adj_region_083_region_084",
+      "region_a_id": "region_083",
+      "region_b_id": "region_084",
+      "connection_type": "land",
+      "boundary_kind": "regional",
+      "terrain_boundary_class": "regional",
+      "is_international_border_1914": false,
+      "sovereign_a": "Italie",
+      "sovereign_b": "Italie",
+      "shared_border_km": 263.33,
+      "natural_obstacles": [],
+      "documented_passages": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    }
+  ],
+  "strait_crossings": [
+    {
+      "id": "strait_messina_084_085",
+      "region_a_id": "region_084",
+      "region_b_id": "region_085",
+      "connection_type": "strait",
+      "boundary_kind": "strait",
+      "name_fr": "Détroit de Messine (Villa San Giovanni — Messine)",
+      "is_international_border_1914": false,
+      "sovereign_a": "Italie",
+      "sovereign_b": "Italie",
+      "width_km": 3.1,
+      "documented_passages": [
+        "Ferry ferroviaire Villa San Giovanni — Messine (Ferrovie dello Stato, en service en 1914)"
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "ciccarelli_groote_1913"
+      ]
+    }
+  ],
+  "external_perimeter_interfaces": [
+    {
+      "from_region_id": "region_029",
+      "to_external_region_id": "region_044",
+      "external_name_fr": "Danemark",
+      "notes": "Frontière germano-danoise de 1914 au nord du Schleswig (Kongeå)."
+    },
+    {
+      "from_region_id": "region_026",
+      "to_external_region_id": "region_054",
+      "external_name_fr": "Pays baltes du Sud",
+      "notes": "Frontière germano-russe entre la Prusse-Orientale et la Courlande/Kovno."
+    },
+    {
+      "from_region_id": "region_026",
+      "to_external_region_id": "region_055",
+      "external_name_fr": "Pologne russe occidentale",
+      "notes": "Frontière germano-russe au sud de la Prusse-Orientale (Mazurie)."
+    },
+    {
+      "from_region_id": "region_027",
+      "to_external_region_id": "region_055",
+      "external_name_fr": "Pologne russe occidentale",
+      "notes": "Frontière germano-russe (Prusse-Occidentale / Posnanie — Royaume du Congrès)."
+    },
+    {
+      "from_region_id": "region_030",
+      "to_external_region_id": "region_055",
+      "external_name_fr": "Pologne russe occidentale",
+      "notes": "Frontière germano-russe en Haute-Silésie (Coin des Trois Empereurs à Myslowitz)."
+    },
+    {
+      "from_region_id": "region_040",
+      "to_external_region_id": "region_055",
+      "external_name_fr": "Pologne russe occidentale",
+      "notes": "Frontière austro-russe en Galicie occidentale."
+    },
+    {
+      "from_region_id": "region_040",
+      "to_external_region_id": "region_056",
+      "external_name_fr": "Pologne russe orientale",
+      "notes": "Frontière austro-russe en Galicie centrale (Lublin/Chełm)."
+    },
+    {
+      "from_region_id": "region_040",
+      "to_external_region_id": "region_058",
+      "external_name_fr": "Ukraine occidentale",
+      "notes": "Frontière austro-russe en Galicie orientale / Volhynie-Podolie."
+    },
+    {
+      "from_region_id": "region_040",
+      "to_external_region_id": "region_062",
+      "external_name_fr": "Bessarabie",
+      "notes": "Frontière austro-russe en Bucovine."
+    },
+    {
+      "from_region_id": "region_040",
+      "to_external_region_id": "region_071",
+      "external_name_fr": "Roumanie septentrionale",
+      "notes": "Frontière austro-roumaine en Bucovine / Moldavie."
+    },
+    {
+      "from_region_id": "region_042",
+      "to_external_region_id": "region_071",
+      "external_name_fr": "Roumanie septentrionale",
+      "notes": "Frontière austro-roumaine le long des Carpates orientales."
+    },
+    {
+      "from_region_id": "region_042",
+      "to_external_region_id": "region_070",
+      "external_name_fr": "Roumanie méridionale",
+      "notes": "Frontière austro-roumaine le long des Alpes de Transylvanie (Predeal, Tour Rouge)."
+    },
+    {
+      "from_region_id": "region_041",
+      "to_external_region_id": "region_070",
+      "external_name_fr": "Roumanie méridionale",
+      "notes": "Frontière austro-roumaine aux Portes de Fer (Orșova / Banat)."
+    },
+    {
+      "from_region_id": "region_041",
+      "to_external_region_id": "region_074",
+      "external_name_fr": "Serbie",
+      "notes": "Frontière austro-serbe sur le Danube (Banat / Belgrade)."
+    },
+    {
+      "from_region_id": "region_043",
+      "to_external_region_id": "region_074",
+      "external_name_fr": "Serbie",
+      "notes": "Frontière austro-serbe sur la Save et la Drina (Syrmie et Bosnie)."
+    },
+    {
+      "from_region_id": "region_043",
+      "to_external_region_id": "region_075",
+      "external_name_fr": "Monténégro",
+      "notes": "Frontière austro-monténégrine en Herzégovine et aux bouches de Cattaro."
+    }
+  ]
+}

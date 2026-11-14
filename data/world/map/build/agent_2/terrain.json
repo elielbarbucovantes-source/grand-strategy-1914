@@ -1,0 +1,1886 @@
+{
+  "schema_version": "1.0.0",
+  "agent_id": "agent_2",
+  "reference_date": "1914-01-01",
+  "allowed_relief_categories": [
+    "plains",
+    "forests",
+    "mountains",
+    "hills",
+    "marshes"
+  ],
+  "regions_terrain": {
+    "region_044": {
+      "region_id": "region_044",
+      "name_fr": "Danemark",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer du Nord",
+        "Skagerrak et Kattegat",
+        "Détroits danois (Øresund, Grand Belt, Petit Belt)",
+        "Mer Baltique"
+      ],
+      "maritime_zone_ids": [
+        "mz_north_sea_eastern",
+        "mz_skagerrak_kattegat",
+        "mz_baltic_south_central"
+      ],
+      "major_rivers": [
+        "Gudenå",
+        "Kongeå"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_045": {
+      "region_id": "region_045",
+      "name_fr": "Norvège — Sud",
+      "relief_categories": [
+        "mountains",
+        "forests",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Skagerrak et Kattegat",
+        "Oslofjord"
+      ],
+      "maritime_zone_ids": [
+        "mz_skagerrak_kattegat"
+      ],
+      "major_rivers": [
+        "Glomma",
+        "Drammenselva",
+        "Numedalslågen"
+      ],
+      "mountain_ranges": [
+        "Alpes scandinaves méridionales (Langfjella, Jotunheimen, Dovrefjell)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_046": {
+      "region_id": "region_046",
+      "name_fr": "Norvège — Ouest",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "forests"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer du Nord",
+        "Mer de Norvège"
+      ],
+      "maritime_zone_ids": [
+        "mz_north_sea_eastern",
+        "mz_norwegian_sea"
+      ],
+      "major_rivers": [
+        "Nidelva",
+        "Orkla",
+        "Rauma"
+      ],
+      "mountain_ranges": [
+        "Alpes scandinaves (Jostedalsbreen, Dovrefjell, Trollheimen)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_047": {
+      "region_id": "region_047",
+      "name_fr": "Norvège — Nord",
+      "relief_categories": [
+        "mountains",
+        "forests",
+        "marshes"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer de Norvège",
+        "Mer de Barents"
+      ],
+      "maritime_zone_ids": [
+        "mz_norwegian_sea",
+        "mz_barents_white_sea"
+      ],
+      "major_rivers": [
+        "Tana (Teno)",
+        "Altaelva",
+        "Målselva"
+      ],
+      "mountain_ranges": [
+        "Alpes scandinaves septentrionales (Lyngen, Kjølen)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_048": {
+      "region_id": "region_048",
+      "name_fr": "Suède — Sud",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Skagerrak et Kattegat",
+        "Øresund",
+        "Mer Baltique"
+      ],
+      "maritime_zone_ids": [
+        "mz_skagerrak_kattegat",
+        "mz_baltic_south_central"
+      ],
+      "major_rivers": [
+        "Göta älv",
+        "Motala ström",
+        "Lagan",
+        "Nissan"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_049": {
+      "region_id": "region_049",
+      "name_fr": "Suède — Centre",
+      "relief_categories": [
+        "forests",
+        "plains",
+        "hills"
+      ],
+      "dominant_relief": "forests",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer Baltique",
+        "Mer d'Åland"
+      ],
+      "maritime_zone_ids": [
+        "mz_baltic_south_central",
+        "mz_gulf_of_bothnia"
+      ],
+      "major_rivers": [
+        "Dalälven",
+        "Klarälven",
+        "Norrström (Lac Mälar)"
+      ],
+      "mountain_ranges": [
+        "Alpes scandinaves orientales (Dalécarlie)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_050": {
+      "region_id": "region_050",
+      "name_fr": "Suède — Nord",
+      "relief_categories": [
+        "forests",
+        "mountains",
+        "marshes"
+      ],
+      "dominant_relief": "forests",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Golfe de Botnie"
+      ],
+      "maritime_zone_ids": [
+        "mz_gulf_of_bothnia"
+      ],
+      "major_rivers": [
+        "Torne älv (Tornionjoki)",
+        "Lule älv",
+        "Ångermanälven",
+        "Indalsälven",
+        "Ljusnan"
+      ],
+      "mountain_ranges": [
+        "Alpes scandinaves (Kebnekaise, Sarek, Jämtland)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_051": {
+      "region_id": "region_051",
+      "name_fr": "Islande (sous souveraineté danoise)",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Atlantique Nord",
+        "Mer de Norvège",
+        "Détroit de Danemark"
+      ],
+      "maritime_zone_ids": [
+        "mz_north_atlantic_iceland",
+        "mz_norwegian_sea"
+      ],
+      "major_rivers": [
+        "Þjórsá",
+        "Jökulsá á Fjöllum",
+        "Hvítá"
+      ],
+      "mountain_ranges": [
+        "Hautes Terres d'Islande (Vatnajökull, Hofsjökull, Langjökull)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_052": {
+      "region_id": "region_052",
+      "name_fr": "Finlande",
+      "relief_categories": [
+        "forests",
+        "plains",
+        "marshes"
+      ],
+      "dominant_relief": "forests",
+      "has_coastline": true,
+      "island_class": "small_strategic",
+      "maritime_facades": [
+        "Golfe de Botnie",
+        "Mer d'Åland",
+        "Golfe de Finlande"
+      ],
+      "maritime_zone_ids": [
+        "mz_gulf_of_bothnia",
+        "mz_gulf_of_finland_riga"
+      ],
+      "major_rivers": [
+        "Kymijoki",
+        "Kokemäenjoki",
+        "Oulujoki",
+        "Kemijoki",
+        "Vuoksi"
+      ],
+      "mountain_ranges": [
+        "Alpes scandinaves (Enontekiö / Laponie finlandaise)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_053": {
+      "region_id": "region_053",
+      "name_fr": "Pays baltes du Nord",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Golfe de Finlande",
+        "Golfe de Riga",
+        "Mer Baltique"
+      ],
+      "maritime_zone_ids": [
+        "mz_gulf_of_finland_riga",
+        "mz_baltic_south_central"
+      ],
+      "major_rivers": [
+        "Daugava (Dvina occidentale)",
+        "Narva",
+        "Gauja",
+        "Emajõgi"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_054": {
+      "region_id": "region_054",
+      "name_fr": "Pays baltes du Sud",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Baltique",
+        "Golfe de Riga"
+      ],
+      "maritime_zone_ids": [
+        "mz_baltic_south_central",
+        "mz_gulf_of_finland_riga"
+      ],
+      "major_rivers": [
+        "Niémen (Neman)",
+        "Daugava (Dvina occidentale)",
+        "Lielupe",
+        "Venta",
+        "Neris (Viliya)"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_055": {
+      "region_id": "region_055",
+      "name_fr": "Pologne russe occidentale",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Vistule",
+        "Warta",
+        "Pilica",
+        "Bzura"
+      ],
+      "mountain_ranges": [
+        "Monts Sainte-Croix (Góry Świętokrzyskie)"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_056": {
+      "region_id": "region_056",
+      "name_fr": "Pologne russe orientale",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Vistule",
+        "Boug occidental",
+        "Narew",
+        "Wieprz",
+        "Niémen"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_057": {
+      "region_id": "region_057",
+      "name_fr": "Biélorussie",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Dniepr",
+        "Bérézina",
+        "Pripiat",
+        "Dvina occidentale",
+        "Niémen",
+        "Boug occidental"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_058": {
+      "region_id": "region_058",
+      "name_fr": "Ukraine occidentale",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Dniestr",
+        "Boug méridional",
+        "Styr",
+        "Horyn",
+        "Sloutch"
+      ],
+      "mountain_ranges": [
+        "Plateau de Podolie et de Volhynie"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_059": {
+      "region_id": "region_059",
+      "name_fr": "Ukraine centrale",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Dniepr",
+        "Desna",
+        "Psel",
+        "Vorskla",
+        "Donets (Severski Donets)",
+        "Ros"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_060": {
+      "region_id": "region_060",
+      "name_fr": "Ukraine méridionale",
+      "relief_categories": [
+        "plains",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Noire",
+        "Mer d'Azov"
+      ],
+      "maritime_zone_ids": [
+        "mz_black_sea_west",
+        "mz_sea_of_azov"
+      ],
+      "major_rivers": [
+        "Dniepr",
+        "Boug méridional",
+        "Dniestr",
+        "Ingoulets",
+        "Samara"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_061": {
+      "region_id": "region_061",
+      "name_fr": "Donbass",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer d'Azov"
+      ],
+      "maritime_zone_ids": [
+        "mz_sea_of_azov"
+      ],
+      "major_rivers": [
+        "Donets (Severski Donets)",
+        "Don (bas)",
+        "Kalmius",
+        "Mius"
+      ],
+      "mountain_ranges": [
+        "Plateau du Donets"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_062": {
+      "region_id": "region_062",
+      "name_fr": "Bessarabie",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Noire"
+      ],
+      "maritime_zone_ids": [
+        "mz_black_sea_west"
+      ],
+      "major_rivers": [
+        "Dniestr",
+        "Prout",
+        "Danube (bras de Chilia)"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_063": {
+      "region_id": "region_063",
+      "name_fr": "Crimée",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Noire",
+        "Mer d'Azov",
+        "Détroit de Kertch"
+      ],
+      "maritime_zone_ids": [
+        "mz_black_sea_west",
+        "mz_black_sea_east",
+        "mz_sea_of_azov"
+      ],
+      "major_rivers": [
+        "Salguir",
+        "Alma",
+        "Katcha"
+      ],
+      "mountain_ranges": [
+        "Monts de Crimée (Yayla)"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_064": {
+      "region_id": "region_064",
+      "name_fr": "Russie du Nord-Ouest",
+      "relief_categories": [
+        "forests",
+        "plains",
+        "marshes"
+      ],
+      "dominant_relief": "forests",
+      "has_coastline": true,
+      "island_class": "small_strategic",
+      "maritime_facades": [
+        "Golfe de Finlande",
+        "Lac Ladoga",
+        "Lac Onega"
+      ],
+      "maritime_zone_ids": [
+        "mz_gulf_of_finland_riga"
+      ],
+      "major_rivers": [
+        "Neva",
+        "Volkhov",
+        "Svir",
+        "Lovat",
+        "Velikaïa",
+        "Msta"
+      ],
+      "mountain_ranges": [
+        "Collines de Valdaï"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_065": {
+      "region_id": "region_065",
+      "name_fr": "Russie septentrionale",
+      "relief_categories": [
+        "forests",
+        "marshes",
+        "plains",
+        "mountains"
+      ],
+      "dominant_relief": "forests",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer Blanche",
+        "Mer de Barents"
+      ],
+      "maritime_zone_ids": [
+        "mz_barents_white_sea"
+      ],
+      "major_rivers": [
+        "Dvina septentrionale",
+        "Petchora",
+        "Mezen",
+        "Onega",
+        "Soukhona",
+        "Vytchegda"
+      ],
+      "mountain_ranges": [
+        "Oural septentrional et polaire",
+        "Massif des Khibiny (Kola)"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_066": {
+      "region_id": "region_066",
+      "name_fr": "Russie centrale",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Volga",
+        "Oka",
+        "Moskova",
+        "Don (haut)",
+        "Dniepr (haut)",
+        "Kliazma",
+        "Voronej"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_067": {
+      "region_id": "region_067",
+      "name_fr": "Volga moyenne",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "hills",
+        "mountains"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Volga",
+        "Kama",
+        "Viatka",
+        "Belaïa",
+        "Oufa",
+        "Soura",
+        " Tchoussovaïa"
+      ],
+      "mountain_ranges": [
+        "Oural moyen et méridional"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_068": {
+      "region_id": "region_068",
+      "name_fr": "Volga inférieure",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Caspienne"
+      ],
+      "maritime_zone_ids": [
+        "mz_caspian_sea"
+      ],
+      "major_rivers": [
+        "Volga",
+        "Oural",
+        "Samara",
+        "Bolchoï Irguiz"
+      ],
+      "mountain_ranges": [
+        "Oural méridional (Orenbourg)"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_069": {
+      "region_id": "region_069",
+      "name_fr": "Russie méridionale",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer d'Azov",
+        "Mer Noire",
+        "Mer Caspienne"
+      ],
+      "maritime_zone_ids": [
+        "mz_sea_of_azov",
+        "mz_black_sea_east",
+        "mz_caspian_sea"
+      ],
+      "major_rivers": [
+        "Don",
+        "Kouban",
+        "Terek",
+        "Kouma",
+        "Manytch",
+        "Soulak"
+      ],
+      "mountain_ranges": [
+        "Grand Caucase (Elbrouz, Kazbek, Daghestan)"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    "region_070": {
+      "region_id": "region_070",
+      "name_fr": "Roumanie méridionale",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Noire"
+      ],
+      "maritime_zone_ids": [
+        "mz_black_sea_west"
+      ],
+      "major_rivers": [
+        "Danube",
+        "Olt",
+        "Jiu",
+        "Argeș",
+        "Ialomița",
+        "Dâmbovița"
+      ],
+      "mountain_ranges": [
+        "Carpates méridionales (Alpes de Transylvanie)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_071": {
+      "region_id": "region_071",
+      "name_fr": "Roumanie septentrionale",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "mountains",
+        "forests"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Siret",
+        "Prout",
+        "Bistrița",
+        "Moldova",
+        "Bârlad",
+        "Danube (Galați)"
+      ],
+      "mountain_ranges": [
+        "Carpates orientales"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_072": {
+      "region_id": "region_072",
+      "name_fr": "Bulgarie occidentale",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Danube",
+        "Iskar",
+        "Strouma",
+        "Ogosta",
+        "Lom"
+      ],
+      "mountain_ranges": [
+        "Grand Balkan occidental (Stara Planina)",
+        "Massif du Rila",
+        "Massif du Pirin",
+        "Vitocha"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_073": {
+      "region_id": "region_073",
+      "name_fr": "Bulgarie orientale",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Noire",
+        "Mer Égée (Thrace occidentale)"
+      ],
+      "maritime_zone_ids": [
+        "mz_black_sea_west",
+        "mz_aegean_sea"
+      ],
+      "major_rivers": [
+        "Danube",
+        "Maritsa (Evros)",
+        "Toundja",
+        "Arda",
+        "Mesta (Nestos)",
+        "Kamchia"
+      ],
+      "mountain_ranges": [
+        "Grand Balkan central et oriental (Stara Planina / Passe de Chipka)",
+        "Massif des Rhodopes",
+        "Strandja"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_074": {
+      "region_id": "region_074",
+      "name_fr": "Serbie",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains",
+        "forests"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "maritime_zone_ids": [],
+      "major_rivers": [
+        "Danube",
+        "Save",
+        "Morava (Grande, Occidentale et Méridionale)",
+        "Drina",
+        "Vardar",
+        "Timok",
+        "Ibar"
+      ],
+      "mountain_ranges": [
+        "Monts Šar (Šar Planina)",
+        "Kopaonik",
+        "Balkan occidental",
+        "Monts de Macédoine"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_075": {
+      "region_id": "region_075",
+      "name_fr": "Monténégro",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Adriatique"
+      ],
+      "maritime_zone_ids": [
+        "mz_adriatic_south_otranto"
+      ],
+      "major_rivers": [
+        "Morača",
+        "Tara",
+        "Lim",
+        "Zeta",
+        "Bojana"
+      ],
+      "mountain_ranges": [
+        "Alpes dinariques (Durmitor, Lovćen, Prokletije)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_076": {
+      "region_id": "region_076",
+      "name_fr": "Albanie",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains",
+        "marshes"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Adriatique",
+        "Canal d'Otrante",
+        "Mer Ionienne"
+      ],
+      "maritime_zone_ids": [
+        "mz_adriatic_south_otranto",
+        "mz_ionian_sea"
+      ],
+      "major_rivers": [
+        "Drin",
+        "Shkumbin",
+        "Semani",
+        "Vjosë (Aoös)",
+        "Mat"
+      ],
+      "mountain_ranges": [
+        "Alpes albanaises (Prokletije)",
+        "Chaîne du Pinde septentrional"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_077": {
+      "region_id": "region_077",
+      "name_fr": "Grèce centrale",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer Ionienne",
+        "Golfe de Corinthe",
+        "Mer Égée"
+      ],
+      "maritime_zone_ids": [
+        "mz_ionian_sea",
+        "mz_aegean_sea"
+      ],
+      "major_rivers": [
+        "Achéloos",
+        "Spercheios",
+        "Céphise"
+      ],
+      "mountain_ranges": [
+        "Pinde méridional",
+        "Mont Parnasse",
+        "Mont Hymette et Pentélique"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_078": {
+      "region_id": "region_078",
+      "name_fr": "Grèce septentrionale",
+      "relief_categories": [
+        "mountains",
+        "plains",
+        "hills"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer Ionienne",
+        "Mer Égée",
+        "Golfe Thermaïque"
+      ],
+      "maritime_zone_ids": [
+        "mz_ionian_sea",
+        "mz_aegean_sea"
+      ],
+      "major_rivers": [
+        "Vardar (Axios)",
+        "Aliakmon",
+        "Strymon (Strouma)",
+        "Pénée (Pinios)",
+        "Nestos",
+        "Arachthos"
+      ],
+      "mountain_ranges": [
+        "Massif du Pinde",
+        "Mont Olympe",
+        "Mont Athos",
+        "Rhodopes méridionales"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_079": {
+      "region_id": "region_079",
+      "name_fr": "Grèce méridionale et îles",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer Égée",
+        "Mer Ionienne",
+        "Mer de Crète"
+      ],
+      "maritime_zone_ids": [
+        "mz_aegean_sea",
+        "mz_ionian_sea"
+      ],
+      "major_rivers": [
+        "Alphée",
+        "Eurotas",
+        "Pénée (Élide)"
+      ],
+      "mountain_ranges": [
+        "Mont Taygète",
+        "Mont Cyllène",
+        "Montagnes Blanches et Mont Ida (Crète)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_087": {
+      "region_id": "region_087",
+      "name_fr": "Constantinople et environs",
+      "relief_categories": [
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Détroit du Bosphore",
+        "Mer de Marmara",
+        "Corne d'Or",
+        "Mer Noire"
+      ],
+      "maritime_zone_ids": [
+        "mz_marmara_straits",
+        "mz_black_sea_west"
+      ],
+      "major_rivers": [
+        "Eaux-Douces d'Europe (Kağıthane / Alibey)"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "geoboundaries_tur_v6"
+      ]
+    },
+    "region_088": {
+      "region_id": "region_088",
+      "name_fr": "Çatalca et Tekirdağ",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer de Marmara",
+        "Mer Noire"
+      ],
+      "maritime_zone_ids": [
+        "mz_marmara_straits",
+        "mz_black_sea_west"
+      ],
+      "major_rivers": [
+        "Ergene (haut)",
+        "Çorlu"
+      ],
+      "mountain_ranges": [
+        "Collines de Çatalca et d'Istranca méridionales",
+        "Tekir Dağ"
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6"
+      ]
+    },
+    "region_089": {
+      "region_id": "region_089",
+      "name_fr": "Edirne",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Noire"
+      ],
+      "maritime_zone_ids": [
+        "mz_black_sea_west"
+      ],
+      "major_rivers": [
+        "Maritsa (Meriç)",
+        "Toundja (Tunca)",
+        "Ergene",
+        "Arda"
+      ],
+      "mountain_ranges": [
+        "Massif d'Istranca (Strandja / Yıldız Dağları)"
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6"
+      ]
+    },
+    "region_090": {
+      "region_id": "region_090",
+      "name_fr": "Gallipoli et rive européenne des Dardanelles",
+      "relief_categories": [
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": true,
+      "island_class": "small_strategic",
+      "maritime_facades": [
+        "Détroit des Dardanelles",
+        "Mer Égée (Golfe de Saros)",
+        "Mer de Marmara"
+      ],
+      "maritime_zone_ids": [
+        "mz_marmara_straits",
+        "mz_aegean_sea"
+      ],
+      "major_rivers": [
+        "Maritsa (embouchure d'Énos/Enez)",
+        "Kavak"
+      ],
+      "mountain_ranges": [
+        "Collines de Gallipoli (Koru Dağ, Sari Bair / Achi Baba)"
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6"
+      ]
+    }
+  },
+  "major_rivers": [
+    {
+      "id": "river_volga",
+      "name_fr": "Volga",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_066",
+        "region_067",
+        "region_068"
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ]
+    },
+    {
+      "id": "river_kama",
+      "name_fr": "Kama",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_067"
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ]
+    },
+    {
+      "id": "river_oka",
+      "name_fr": "Oka",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_066"
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ]
+    },
+    {
+      "id": "river_ural",
+      "name_fr": "Oural",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_068"
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ]
+    },
+    {
+      "id": "river_don",
+      "name_fr": "Don",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_066",
+        "region_061",
+        "region_069"
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ]
+    },
+    {
+      "id": "river_donets",
+      "name_fr": "Donets (Severski Donets)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_066",
+        "region_059",
+        "region_061",
+        "region_069"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_kuban",
+      "name_fr": "Kouban",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_069"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_terek",
+      "name_fr": "Terek",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_069"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_dnieper",
+      "name_fr": "Dniepr",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_066",
+        "region_057",
+        "region_059",
+        "region_060"
+      ],
+      "source_refs": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ]
+    },
+    {
+      "id": "river_pripyat",
+      "name_fr": "Pripiat",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_057",
+        "region_058",
+        "region_059"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_berezina",
+      "name_fr": "Bérézina",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_057"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_southern_bug",
+      "name_fr": "Boug méridional",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_058",
+        "region_060"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_dniester",
+      "name_fr": "Dniestr",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_058",
+        "region_062",
+        "region_060"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_western_dvina",
+      "name_fr": "Dvina occidentale (Daugava)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_066",
+        "region_057",
+        "region_053",
+        "region_054"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_niemen",
+      "name_fr": "Niémen (Neman)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_057",
+        "region_056",
+        "region_054"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_vistula_middle",
+      "name_fr": "Vistule (cours moyen polonais)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_055",
+        "region_056"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_western_bug_narew",
+      "name_fr": "Boug occidental et Narew",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_058",
+        "region_056",
+        "region_057",
+        "region_055"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_neva_volkhov",
+      "name_fr": "Neva et Volkhov",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_064"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_northern_dvina",
+      "name_fr": "Dvina septentrionale",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_065"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_pechora",
+      "name_fr": "Petchora",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_065"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "river_glomma",
+      "name_fr": "Glomma",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_045"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_gota_alv",
+      "name_fr": "Göta älv et Canal Göta",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_048",
+        "region_049"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_dalalven",
+      "name_fr": "Dalälven",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_049"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_torne_lule",
+      "name_fr": "Torne älv (Tornionjoki) et Lule älv",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_050",
+        "region_052"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_danube_lower",
+      "name_fr": "Danube inférieur (Portes de Fer — Delta)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_074",
+        "region_070",
+        "region_072",
+        "region_073",
+        "region_071",
+        "region_062"
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "natural_earth_10m_v5"
+      ]
+    },
+    {
+      "id": "river_prut_siret",
+      "name_fr": "Prout et Siret",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_071",
+        "region_062",
+        "region_070"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_olt",
+      "name_fr": "Olt (cours inférieur)",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_070"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_morava_serbia",
+      "name_fr": "Morava (Grande, Occidentale et Méridionale)",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_074"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_drina",
+      "name_fr": "Drina",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_074",
+        "region_075"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_vardar",
+      "name_fr": "Vardar (Axios)",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_074",
+        "region_078"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_struma",
+      "name_fr": "Strouma (Strymon)",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_072",
+        "region_078"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_maritsa",
+      "name_fr": "Maritsa (Evros / Meriç)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_073",
+        "region_089",
+        "region_090"
+      ],
+      "source_refs": [
+        "regis_2026_v1",
+        "geoboundaries_tur_v6"
+      ]
+    }
+  ],
+  "mountain_chains": [
+    {
+      "id": "mtn_scandinavian_alps",
+      "name_fr": "Alpes scandinaves (Scandes / Kjølen / Langfjella)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_045",
+        "region_046",
+        "region_047",
+        "region_049",
+        "region_050",
+        "region_052"
+      ],
+      "strategic_passes": [
+        "Bergensbanen (Finse)",
+        "Dovrebanen (Dombås)",
+        "Seuil du Jämtland (Storlien)",
+        "Col de Riksgränsen (Ofotbanen / Malmbanan)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_icelandic_highlands",
+      "name_fr": "Hautes Terres et glaciers d'Islande (Vatnajökull)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_051"
+      ],
+      "strategic_passes": [
+        "Pistes côtières islandaises"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_urals",
+      "name_fr": "Chaîne de l'Oural (Polaire, Septentrional, Moyen et Méridional)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_065",
+        "region_067",
+        "region_068"
+      ],
+      "strategic_passes": [
+        "Seuil d'Ekaterinbourg — Perm",
+        "Trouée d'Oufa — Tcheliabinsk (Transsibérien)",
+        "Porte d'Orenbourg"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "mtn_crimean_mountains",
+      "name_fr": "Monts de Crimée (Yayla)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_063"
+      ],
+      "strategic_passes": [
+        "Col de Baïdar (Sébastopol — Yalta)",
+        "Col d'Angarsky (Simferopol — Alouchta)"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "mtn_greater_caucasus",
+      "name_fr": "Grand Caucase (versant nord : Elbrouz, Kazbek, Daghestan)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_069"
+      ],
+      "strategic_passes": [
+        "Route militaire géorgienne (Vladikavkaz — Col de Darial / Croix)",
+        "Corridor littoral caspien de Derbent",
+        "Route militaire d'Ossétie (Col de Mamison)"
+      ],
+      "source_refs": [
+        "ristat_1897_v1"
+      ]
+    },
+    {
+      "id": "mtn_carpathians_east_south",
+      "name_fr": "Carpates orientales et méridionales (versant roumain)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_070",
+        "region_071"
+      ],
+      "strategic_passes": [
+        "Passe de Predeal (Ploiești — Brașov)",
+        "Défilé de la Tour Rouge (Vallée de l'Olt)",
+        "Passe de Ghimeș-Palanca",
+        "Passe d'Oituz",
+        "Portes de Fer (Orșova)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_balkan_stara_planina",
+      "name_fr": "Grand Balkan (Stara Planina)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_072",
+        "region_073",
+        "region_074"
+      ],
+      "strategic_passes": [
+        "Gorges de l'Iskar",
+        "Passe de Chipka (Gabrovo — Kazanlak)",
+        "Col d'Arabakonak",
+        "Porte de Trajan (Sofia — Plovdiv)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_rila_pirin_rhodopes",
+      "name_fr": "Massifs du Rila, du Pirin et des Rhodopes",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_072",
+        "region_073",
+        "region_078"
+      ],
+      "strategic_passes": [
+        "Défilé de Roupel (vallée de la Strouma)",
+        "Col de Makaza (Haskovo — Komotini/Gümülcine)",
+        "Vallée de la Mesta (Nestos)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_dinaric_prokletije_sar",
+      "name_fr": "Alpes dinariques méridionales, Prokletije (Alpes albanaises) et Monts Šar",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_074",
+        "region_075",
+        "region_076"
+      ],
+      "strategic_passes": [
+        "Couloir Morava — Vardar (Preševo / Kumanovo)",
+        "Gorges de Kačanik (Kosovo — Skopje)",
+        "Vallée du Drin (Prizren — Scutari)",
+        "Col de Čakor"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_pindus_olympus_taygetus",
+      "name_fr": "Chaîne du Pinde, Mont Olympe et Mont Taygète",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_076",
+        "region_077",
+        "region_078",
+        "region_079"
+      ],
+      "strategic_passes": [
+        "Vallée de Tempé (Larissa — Salonique)",
+        "Défilé des Thermopyles",
+        "Col de Metsovo (Thessalie — Épire)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_istranca_strandja",
+      "name_fr": "Massif d'Istranca (Strandja / Yıldız Dağları) et collines de Gallipoli",
+      "relief_type": "hills",
+      "region_ids": [
+        "region_073",
+        "region_088",
+        "region_089",
+        "region_090"
+      ],
+      "strategic_passes": [
+        "Trouée de l'Ergene / Lüleburgaz",
+        "Lignes de Çatalca",
+        "Col de Koru Dağ (isthme de Bolayır / Gallipoli)"
+      ],
+      "source_refs": [
+        "geoboundaries_tur_v6",
+        "regis_2026_v1"
+      ]
+    }
+  ]
+}

@@ -1,171 +1,83 @@
-# Changelog
 
-Toutes les modifications notables de ce projet sont documentées dans ce fichier.
+# CHANGELOG
 
-Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et le projet utilise le [versionnement sémantique](https://semver.org/lang/fr/).
+Toutes les évolutions importantes du projet sont consignées ici.
 
-**Important :** ce changelog décrit les versions livrées. Il ne remplace pas le journal détaillé des interventions, tenu dans [PROGRESS.md](PROGRESS.md) section G.
+## [1.5] — Sécurisation des acquis et base géographique consolidée
 
-Le projet ne contient encore **aucune version jouable**. La version `0.1.0` correspond à l'infrastructure documentaire.
+- Sauvegarde locale complète : bundle Git de toutes les branches et worktrees, archive de l’arbre de travail (fichiers suivis et non suivis) et copie des sources externes non versionnées (≈ 373 Mo) ; intégrité vérifiée (bundle restauré par `git clone`, SHA-256 origine ↔ copie identiques).
+- Environnement GIS persistant créé dans le projet (`<dépôt>/.venv`) avec versions figées dans `tools/map/requirements.lock` ; `.gitignore` complété (`.venv/`, bytecode, `.consolidation-stage/`, `/backups/`).
+- Première base géographique consolidée et versionnée des 90 régions de 1914 : BLK-001 (Saray), BLK-002 (micro-chevauchements) et MAJ-004 (quatre lacunes de couture) reproduites dans le dépôt.
+- Extraction de sources minimales versionnées sous `data/world/map/sources/derived/` (Saray, pays 1914, provinces finlandaises RISTAT 1897), vérifiées géométriquement identiques aux originaux, pour rendre la reconstruction autonome sans committer les sources lourdes.
+- Ajout de `tools/map/build_source_extracts.py`, `tools/map/consolidate_geometry.sh` et `tools/map/requirements.lock` ; `build_geometry.py` et `close_geometry_gaps.py` restent inchangés.
+- Validateurs : 90/90 régions, 90/90 géométries valides, 0 chevauchement > 1e-10 deg², 0/4 lacune MAJ-004, Saray correcte ; reproduction déterministe (artefacts identiques octet pour octet). Strumica (MAJ-003) reste non corrigée (hors périmètre).
+- Ajout de `docs/map/audit/DATA_RECOVERY_REPORT.md`, `docs/map/audit/GEOMETRY_CONSOLIDATION_REPORT.md` et `docs/map/corrections/geometry_gaps_report.json`.
+- Aucune branche fusionnée, `main` non modifié, aucune source supprimée, aucune donnée thématique modifiée, aucun remote configuré, aucun push. Aucun gameplay créé ou modifié.
 
----
+## [1.4] — Inventaire et recherche initiale de l’atlas à 90 régions
 
-## [Unreleased]
+- Inscription de la répartition cible de 90 régions et des identifiants de travail dans `data/world/map/tables/region_plan.csv`; le pays de Galles est distinct selon clarification du directeur.
+- Documentation des sources historiques candidates, périodes, licences connues et limites; aucune donnée externe n’a été intégrée aux fichiers de carte.
+- Ajout d’un statut de construction qui distingue l’index éditorial de l’atlas géométrique incomplet et décrit les livrables restants.
+- Ajout d’un validateur de l’index et du futur GeoJSON; l’exécution confirme les 90 entrées mais signale que les géométries sont absentes.
+- Mise à jour de `PROJECT.md`, `PROGRESS.md`, `AGENTS.md`, du registre et de la spécification cartographique. Aucun gameplay créé ou modifié.
 
-### Added
+## [1.3] — Intégration des décisions cartographiques et contrats d’affichage
 
-- **Document fondateur gelé** : `docs/founding-document-v0.1.md` conserve intégralement le document remis par le propriétaire, avec empreinte SHA-256 `6de617ca12d9b9028b72ddae6ec85a41b394f1875a4b6af0cabfeb553e1a25ce`. Toute correction doit créer une version distincte.
-- **Revue de conception** : `docs/design-review-v0.1.md` consigne les tensions internes C-01 à C-18 et les points de vigilance V-01 à V-08. Elle ne tranche aucune règle.
-- **ADR-0004** : adoption du document fondateur comme source de conception (accepté, avec réserve explicite sur le cahier des charges détaillé).
-- **ADR-0005** : intégration du temps stratégique et tactique (`proposé`, ne vaut pas décision).
-- **Nouveaux documents thématiques** : `docs/military/tactical-battles.md`, `docs/technology/research-system.md`, `docs/intelligence/intelligence-system.md`, `docs/nations/regimes.md`.
-- **Dossier des puissances jouables** : `docs/nations/nations.md` fixe les profils initiaux des sept nations en 1914 — identité, douze caractéristiques nationales, forces, faiblesses, armées, marine, économie, diplomatie, ambitions et possessions — avec une annexe d'intégration et de questions ouvertes (Q-027 à Q-031).
-- **Décisions** : D-027 (douze caractéristiques nationales), D-028 (colonies simplifiées, Allemagne sans empire colonial exploitable), D-029 (ambitions initiales non contraignantes).
-- **Tâches de suivi** : T-029 (arbitrage stratégique/tactique), T-030 (validation du cahier des charges), T-031 (alignement documentaire), T-032 (modélisation des profils), T-033 (relations et traités initiaux), T-034 (évolution des caractéristiques).
-- **Nom officiel du jeu** : *Grand Strategy-1914*, arrêté par le propriétaire le 2026-10-31 (D-030). Il remplace la dénomination provisoire `GrandStrategy`, qui ne subsiste que comme nom du répertoire Git.
+- Intégration individuelle des décisions validées MAP-DEC-27 à MAP-DEC-69, en complément des 26 décisions déjà documentées.
+- Audit des contradictions et précisions ouvertes : masquage des noms vs capitales toujours nommées (MAP-OPEN-15), dénominateur de victoire (MAP-OPEN-16), visibilité selon l’observateur et agrégation/présentation (MAP-OPEN-17 à 19).
+- Extension du modèle et du schéma structurel aux ressources et infrastructures régionales, préférences d’affichage, flèches d’ordres, unités, renseignement daté, combats, marqueurs d’événements et états maritimes/diplomatiques/logistiques.
+- Mise à jour du document maître, de l’état d’avancement, des règles de contribution et du guide des données cartographiques.
+- Aucun atlas, région, géométrie, donnée historique ou gameplay créé.
 
-### Changed
+## [1.2] — Décisions cartographiques et préparation de l’atlas
 
-- **Réorganisation de `docs/`** : `docs/artificial-intelligence/` devient `docs/ai/` ; `docs/gameplay/military-system.md` devient `docs/military/strategic-warfare.md` ; `docs/gameplay/economy-system.md` devient `docs/economy/economy-system.md` (déplacements via `git mv`).
-- **Alignement thématique (T-031)** : réécriture de `docs/gameplay/rules.md`, `docs/gameplay/map-system.md`, `docs/military/strategic-warfare.md`, `docs/economy/economy-system.md`, des quatre documents de `docs/diplomacy/`, des trois documents de `docs/architecture/` et ajout d'une section « Cadre validé » aux cinq documents de `docs/ai/`.
-- `PROJECT.md` passe en version 0.2.2 : tableau de correspondance documentaire mis à jour, ajout du document fondateur, de la revue de conception et des ADR-0004/0005. Aucune décision de jeu ajoutée.
-- `README.md` et `docs/README.md` : index enrichi (nations, régimes, militaire, économie, technologie, renseignement, IA, cadre de conception) et chemins alignés sur l'arborescence réelle.
-- `AGENTS.md` : document fondateur et revue de conception ajoutés aux documents de référence ; ordre de lecture obligatoire étendu.
-- `PROGRESS.md` passe en version 0.2.0 puis 0.2.1 (clôture du commit) : phase 1 en cours, T-019 clôturée, backlog T-020 à T-034, constats mis à jour, journal complété et L-007 résolu.
-- `scripts/check-infrastructure.sh` : fichiers obligatoires alignés sur la réorganisation, vérification de l'empreinte SHA-256 du document fondateur.
-- `PROJECT.md` passe en version 0.2.3 et `README.md` porte le titre *Grand Strategy-1914* : Q-001 est close, D-030 ajoutée. Aucune règle de jeu modifiée.
+- Intégration des 26 décisions cartographiques validées le 2026-11-01 dans la spécification dédiée et le document maître.
+- Clarification de la victoire territoriale : contrôle militaire de 90 % de la carte ; dénominateur exact laissé en attente.
+- Ajout d’un modèle de couches pour régions, frontières/topologie, relief, sites, réseaux, fortifications, zones maritimes et états dynamiques.
+- Choix de GeoJSON RFC 7946 comme format géographique d’échange et QGIS comme outil recommandé d’édition ; projection de rendu et données sources restent ouvertes.
+- Ajout du schéma structurel avec plafond de 100 régions terrestres, sans données ni géométries d’exemple.
+- Ajout du flux d’import/édition, de l’inventaire des données nécessaires et de l’analyse des risques du plafond de 100 régions.
+- Aucun gameplay et aucune région concrète créés.
 
-### Fixed
+## [1.1] — Documentation intégrée et préparation technique
 
-- `scripts/check-infrastructure.sh` reconnaît désormais un dépôt Git dans un worktree (`.git` y est un fichier et non un dossier) : le contrôle Git ne produit plus de faux échec hors du checkout principal.
-- Liens relatifs cassés vers `docs/artificial-intelligence/`, `docs/gameplay/military-system.md` et `docs/gameplay/economy-system.md` dans les documents de référence et d'architecture.
-- Référence obsolète `docs/artificial-intelligence/` dans `AGENTS.md`.
-- Collision d'identifiants `C-001…C-005` renommée `CT-001…CT-010` pour laisser `C-01…C-18` à la revue de conception ; sources incorrectes corrigées dans le registre technique.
+- Intégration du corpus 1.0 dans une arborescence de projet cohérente.
+- Harmonisation de `PROJECT.md`, `PROGRESS.md` et `AGENTS.md` avec l’instruction du directeur : aucun développement gameplay avant autorisation explicite.
+- Suppression de la contradiction issue des consignes finales demandant une partie jouable immédiatement.
+- Ajout de l’architecture technique proposée Godot 4/GDScript, incluant tours simultanés, modules indépendants, données, IA, sauvegarde et multijoueur futur.
+- Ajout d’une spécification technique cartographique provisoire qui laisse l’atlas de conception ouvert.
+- Création du registre des décisions restant à définir.
+- Initialisation d’un dépôt Git local sur `main` et ajout d’une coquille `project.godot` sans scène ni logique de jeu, ainsi que `.gitignore` et des répertoires techniques vides.
+- Aucun code de jeu ou mécanique de gameplay modifiés/implémentés.
 
-### Removed
+## \[1.0\] --- Documentation initiale
 
-- —
+-   Création du document maître `PROJECT.md`.
+-   Formalisation des trois piliers : profondeur stratégique, IA
+    autonome, réalisme historique.
+-   Définition du périmètre européen et des sept puissances jouables.
+-   Formalisation des douze statistiques nationales.
+-   Documentation des principes de carte, provinces, zones maritimes et
+    villes stratégiques.
+-   Validation du tour mensuel et de la résolution simultanée.
+-   Formalisation des principes de déplacement, transit et logistique.
+-   Formalisation du modèle économique à trois ressources et du stock
+    national centralisé.
+-   Définition des cinq catégories industrielles.
+-   Formalisation de l'organisation militaire hiérarchique et des
+    batailles tactiques déclenchées par les offensives.
+-   Définition des principes de politique intérieure, recherche,
+    renseignement et événements historiques.
+-   Formalisation de l'autonomie maximale des États contrôlés par l'IA.
+-   Définition des conditions de victoire et des modes de jeu.
+-   Ajout des règles de gouvernance et d'utilisation des agents.
+-   Ajout des documents de domaine et du prompt OpenCode.
 
-### Deprecated
+## Convention de version
 
-- Les hypothèses de cadrage antérieures à la fiche maîtresse (existence de l'économie incertaine, reprise fidèle de Diplomacy, temps réel global, victoire unique) sont conservées comme historique mais ne font plus autorité.
-
-### Security
-
-- Aucun secret n'est versionné.
-
----
-
-## [0.2.0] — 2026-10-31
-
-### Added
-
-- **Fiche maîtresse intégrée** : `PROJECT.md` reprend la fiche maîtresse v0.1 remise par le propriétaire (Europe 1914, sept grandes puissances, tours mensuels à résolution simultanée, diplomatie, IA autonomes, batailles tactiques, économie, recherche 1914-1945, renseignement, régimes, victoire, interface, multijoueur).
-- **Décisions tracées** : D-001 à D-026 (décisions du propriétaire), tableau des questions tranchées (Q-003, Q-004, Q-005, Q-006, Q-013 à Q-016) et nouvelle question Q-026 (périmètre juridique des inspirations).
-- **Priorité de développement** : séquence de conception en onze étapes, avec la définition des sept grandes puissances comme prochaine étape.
-- **Correspondance documentation** : tableau liant chaque système de la fiche maîtresse à son document thématique et à son état de révision.
-
-### Changed
-
-- `PROJECT.md` passe en version 0.2.0. La formulation antérieure « jeu inspiré de webDiplomacy » est remplacée par la description combinée de la fiche maîtresse (D-001 révisée).
-- `PROGRESS.md` : phase 1 (conception) démarrée, backlog réorganisé selon la priorité de la fiche maîtresse, tâches T-020 à T-031 ajoutées, T-002 et T-003 marquées tranchées, T-005 remplacée par T-023.
-- `README.md` : présentation et état du projet alignés sur la fiche maîtresse.
-- `docs/README.md` : économie confirmée, avertissement de cohérence sur les documents thématiques antérieurs.
-- `docs/gameplay/rules.md`, `map-system.md`, `military-system.md`, `economy-system.md`, `docs/diplomacy/treaties.md` : note de cohérence renvoyant à la fiche maîtresse et à la tâche d'alignement T-031.
-
-### Fixed
-
-- Suppression de l'affirmation « existence de l'économie non confirmée », contredite par la fiche maîtresse.
-
-### Removed
-
-- —
-
-### Deprecated
-
-- Le contenu de cadrage des documents thématiques antérieurs à la fiche maîtresse est conservé pour historique mais n'est plus la référence : voir `PROJECT.md` § 22.
-
-### Security
-
-- Aucun secret n'est versionné.
-
----
-
-## [0.1.0] — 2026-10-31
-
-### Added
-
-- **Documents de référence** : `AGENTS.md` (constitution des agents), `PROJECT.md` (vision, décisions, questions ouvertes), `PROGRESS.md` (tableau de bord), `README.md` (prise en main), `CHANGELOG.md`.
-- **Interopérabilité multi-agents** : `CLAUDE.md` comme pointeur vers `AGENTS.md`.
-- **Protection du dépôt** : `.gitignore`, `.env.example` sans secret.
-- **Documentation d'architecture** : vue d'ensemble, registre des décisions techniques, modèle de données conceptuel.
-- **Documentation de gameplay** : règles, carte, militaire, économie (existence non confirmée).
-- **Documentation de diplomatie** : traités, négociations, alliances, réputation.
-- **Documentation d'IA** : architecture, personnalités, mémoire, décision, interactions multi-agents.
-- **Documentation de développement** : conventions, stratégie de test, guide de contribution.
-- **ADR** : modèle, index, ADR-0001 (documentation et Git), ADR-0002 (interopérabilité), ADR-0003 (report du choix de pile).
-- **Outillage** : `scripts/check-infrastructure.sh` pour vérifier la structure, les sections obligatoires, les liens et l'absence de secrets.
-- **Arborescence** : `src/`, `tests/`, `assets/` avec fichiers de cadrage ; aucun code de jeu.
-
-### Changed
-
-- Aucun changement antérieur : version initiale.
-
-### Fixed
-
-- Aucun.
-
-### Removed
-
-- Aucun.
-
-### Deprecated
-
-- Aucun.
-
-### Security
-
-- Aucun secret n'est versionné.
-- `.env` et les fichiers de clés sont ignorés par Git.
-
-### Notes
-
-- Aucune technologie de jeu n'est choisie.
-- Aucune fonctionnalité de jeu n'est implémentée.
-- Les documents de conception sont des documents de **cadrage** : ils listent des hypothèses et des questions ouvertes, pas des spécifications validées.
-
----
-
-## Modèle pour les prochaines versions
-
-```markdown
-## [X.Y.Z] — AAAA-MM-JJ
-
-### Added
-- ...
-
-### Changed
-- ...
-
-### Fixed
-- ...
-
-### Removed
-- ...
-
-### Deprecated
-- ...
-
-### Security
-- ...
-
-### Breaking changes
-- ...
-```
-
-Règles :
-
-- une entrée par version livrée, de la plus récente à la plus ancienne ;
-- ne pas confondre correction interne et changement visible ;
-- signaler explicitement les changements incompatibles ;
-- ne jamais inventer une version ou une date.
+-   **MAJOR** : modification importante de la vision ou d'une règle
+    structurante.
+-   **MINOR** : ajout ou modification substantielle d'un système.
+-   **PATCH** : correction, clarification ou amélioration documentaire
+    sans changement de règle.

@@ -1,0 +1,1982 @@
+{
+  "schema_version": "1.0.0",
+  "agent_id": "agent_1",
+  "reference_date": "1914-01-01",
+  "allowed_relief_categories": [
+    "plains",
+    "forests",
+    "mountains",
+    "hills",
+    "marshes"
+  ],
+  "regions_terrain": {
+    "region_001": {
+      "region_id": "region_001",
+      "name_fr": "Angleterre du Sud",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer du Nord",
+        "Manche",
+        "Canal de Bristol"
+      ],
+      "major_rivers": [
+        "Tamise",
+        "Severn",
+        "Great Ouse"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_002": {
+      "region_id": "region_002",
+      "name_fr": "Angleterre du Nord",
+      "relief_categories": [
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer du Nord",
+        "Mer d'Irlande"
+      ],
+      "major_rivers": [
+        "Mersey",
+        "Trent",
+        "Ouse (Yorkshire)",
+        "Tyne"
+      ],
+      "mountain_ranges": [
+        "Pennines",
+        "Cumbrian Mountains"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_003": {
+      "region_id": "region_003",
+      "name_fr": "Écosse",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer du Nord",
+        "Atlantique Nord",
+        "Canal du Nord"
+      ],
+      "major_rivers": [
+        "Clyde",
+        "Forth",
+        "Tay"
+      ],
+      "mountain_ranges": [
+        "Scottish Highlands",
+        "Grampian Mountains",
+        "Southern Uplands"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_004": {
+      "region_id": "region_004",
+      "name_fr": "Pays de Galles",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer d'Irlande",
+        "Canal de Saint-Georges",
+        "Canal de Bristol"
+      ],
+      "major_rivers": [
+        "Severn",
+        "Taff",
+        "Dee"
+      ],
+      "mountain_ranges": [
+        "Cambrian Mountains",
+        "Snowdonia",
+        "Brecon Beacons"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_005": {
+      "region_id": "region_005",
+      "name_fr": "Ulster géographique",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "marshes"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Canal du Nord",
+        "Atlantique Nord",
+        "Mer d'Irlande"
+      ],
+      "major_rivers": [
+        "Bann",
+        "Foyle",
+        "Erne"
+      ],
+      "mountain_ranges": [
+        "Mourne Mountains",
+        "Sperrin Mountains"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_006": {
+      "region_id": "region_006",
+      "name_fr": "Irlande hors Ulster",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer d'Irlande",
+        "Mer Celtique",
+        "Atlantique Nord"
+      ],
+      "major_rivers": [
+        "Shannon",
+        "Liffey",
+        "Lee",
+        "Barrow"
+      ],
+      "mountain_ranges": [
+        "Wicklow Mountains",
+        "MacGillycuddy's Reeks"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_007": {
+      "region_id": "region_007",
+      "name_fr": "France — Nord",
+      "relief_categories": [
+        "plains",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer du Nord",
+        "Pas de Calais",
+        "Manche"
+      ],
+      "major_rivers": [
+        "Somme",
+        "Escaut",
+        "Oise",
+        "Aisne"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_008": {
+      "region_id": "region_008",
+      "name_fr": "France — Bassin parisien",
+      "relief_categories": [
+        "plains",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Manche"
+      ],
+      "major_rivers": [
+        "Seine",
+        "Loire",
+        "Marne",
+        "Oise",
+        "Cher"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_009": {
+      "region_id": "region_009",
+      "name_fr": "France — Ouest",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Manche",
+        "Golfe de Gascogne"
+      ],
+      "major_rivers": [
+        "Loire",
+        "Vilaine",
+        "Charente",
+        "Vienne",
+        "Sarthe"
+      ],
+      "mountain_ranges": [
+        "Massif armoricain"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_010": {
+      "region_id": "region_010",
+      "name_fr": "France — Sud-Ouest",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Golfe de Gascogne"
+      ],
+      "major_rivers": [
+        "Garonne",
+        "Dordogne",
+        "Adour",
+        "Lot",
+        "Tarn"
+      ],
+      "mountain_ranges": [
+        "Pyrénées",
+        "Massif central (Limousin)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_011": {
+      "region_id": "region_011",
+      "name_fr": "France — Est",
+      "relief_categories": [
+        "hills",
+        "forests",
+        "plains",
+        "mountains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Meuse",
+        "Moselle",
+        "Marne",
+        "Saône",
+        "Doubs"
+      ],
+      "mountain_ranges": [
+        "Vosges",
+        "Jura",
+        "Ardennes"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_012": {
+      "region_id": "region_012",
+      "name_fr": "France — Sud-Est",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer Méditerranée",
+        "Golfe du Lion",
+        "Mer Ligurienne"
+      ],
+      "major_rivers": [
+        "Rhône",
+        "Isère",
+        "Durance",
+        "Allier",
+        "Loire"
+      ],
+      "mountain_ranges": [
+        "Alpes occidentales",
+        "Massif central",
+        "Pyrénées orientales",
+        "Massif corse"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_013": {
+      "region_id": "region_013",
+      "name_fr": "Flandre (Bruxelles incluse)",
+      "relief_categories": [
+        "plains",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer du Nord"
+      ],
+      "major_rivers": [
+        "Escaut",
+        "Lys",
+        "Yser",
+        "Dyle"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_014": {
+      "region_id": "region_014",
+      "name_fr": "Wallonie",
+      "relief_categories": [
+        "hills",
+        "forests",
+        "plains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Meuse",
+        "Sambre",
+        "Ourthe"
+      ],
+      "mountain_ranges": [
+        "Ardennes"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_015": {
+      "region_id": "region_015",
+      "name_fr": "Pays-Bas — Ouest",
+      "relief_categories": [
+        "plains",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer du Nord",
+        "Zuiderzee"
+      ],
+      "major_rivers": [
+        "Rhin (Nederrijn/Lek)",
+        "Meuse (Maas)",
+        "Waal",
+        "Escaut occidental"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_016": {
+      "region_id": "region_016",
+      "name_fr": "Pays-Bas — Est et Nord",
+      "relief_categories": [
+        "plains",
+        "marshes",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer du Nord",
+        "Mer des Wadden",
+        "Zuiderzee"
+      ],
+      "major_rivers": [
+        "IJssel",
+        "Meuse (Maas)",
+        "Waal",
+        "Rhin"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_017": {
+      "region_id": "region_017",
+      "name_fr": "Suisse — Ouest",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Rhône",
+        "Aar",
+        "Rhin"
+      ],
+      "mountain_ranges": [
+        "Alpes bernoises et valaisannes",
+        "Jura"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_018": {
+      "region_id": "region_018",
+      "name_fr": "Suisse — Est",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Rhin",
+        "Reuss",
+        "Limmat",
+        "Inn",
+        "Tessin"
+      ],
+      "mountain_ranges": [
+        "Alpes suisses centrales et orientales",
+        "Massif du Saint-Gothard"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_019": {
+      "region_id": "region_019",
+      "name_fr": "Luxembourg",
+      "relief_categories": [
+        "hills",
+        "forests"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Moselle",
+        "Sûre",
+        "Alzette"
+      ],
+      "mountain_ranges": [
+        "Ardennes (Ösling)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_020": {
+      "region_id": "region_020",
+      "name_fr": "Portugal",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Océan Atlantique"
+      ],
+      "major_rivers": [
+        "Tage",
+        "Douro",
+        "Guadiana",
+        "Mondego",
+        "Minho"
+      ],
+      "mountain_ranges": [
+        "Serra da Estrela"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_021": {
+      "region_id": "region_021",
+      "name_fr": "Espagne — Nord-Ouest",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Océan Atlantique",
+        "Golfe de Gascogne"
+      ],
+      "major_rivers": [
+        "Douro (Duero)",
+        "Minho (Miño)",
+        "Èbre (haut)"
+      ],
+      "mountain_ranges": [
+        "Cordillère Cantabrique",
+        "Massif galicien"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_022": {
+      "region_id": "region_022",
+      "name_fr": "Espagne — Nord-Est",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Golfe de Gascogne",
+        "Mer Méditerranée"
+      ],
+      "major_rivers": [
+        "Èbre",
+        "Sègre",
+        "Llobregat"
+      ],
+      "mountain_ranges": [
+        "Pyrénées",
+        "Système ibérique"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_023": {
+      "region_id": "region_023",
+      "name_fr": "Espagne — Centre",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Tage (Tajo)",
+        "Guadiana",
+        "Júcar"
+      ],
+      "mountain_ranges": [
+        "Système central (Sierra de Guadarrama)",
+        "Monts de Tolède"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_024": {
+      "region_id": "region_024",
+      "name_fr": "Espagne — Méditerranée",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer Méditerranée",
+        "Mer des Baléares"
+      ],
+      "major_rivers": [
+        "Turia",
+        "Júcar",
+        "Segura"
+      ],
+      "mountain_ranges": [
+        "Système bétique oriental"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_025": {
+      "region_id": "region_025",
+      "name_fr": "Espagne — Sud",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Océan Atlantique",
+        "Détroit de Gibraltar",
+        "Mer d'Alboran"
+      ],
+      "major_rivers": [
+        "Guadalquivir",
+        "Guadiana"
+      ],
+      "mountain_ranges": [
+        "Sierra Nevada",
+        "Sierra Morena",
+        "Cordillère Bétique"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_026": {
+      "region_id": "region_026",
+      "name_fr": "Prusse-Orientale",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Baltique"
+      ],
+      "major_rivers": [
+        "Pregel",
+        "Niémen (Memel)"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_027": {
+      "region_id": "region_027",
+      "name_fr": "Prusse-Occidentale et Posnanie",
+      "relief_categories": [
+        "plains",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Baltique"
+      ],
+      "major_rivers": [
+        "Vistule (Weichsel)",
+        "Warthe",
+        "Netze"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_028": {
+      "region_id": "region_028",
+      "name_fr": "Poméranie, Mecklembourg et Brandebourg",
+      "relief_categories": [
+        "plains",
+        "forests",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer Baltique"
+      ],
+      "major_rivers": [
+        "Oder",
+        "Spree",
+        "Havel",
+        "Elbe"
+      ],
+      "mountain_ranges": [],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_029": {
+      "region_id": "region_029",
+      "name_fr": "Allemagne du Nord-Ouest",
+      "relief_categories": [
+        "plains",
+        "marshes",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "small_strategic",
+      "maritime_facades": [
+        "Mer du Nord",
+        "Mer Baltique"
+      ],
+      "major_rivers": [
+        "Elbe",
+        "Weser",
+        "Ems",
+        "Aller"
+      ],
+      "mountain_ranges": [
+        "Harz"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_030": {
+      "region_id": "region_030",
+      "name_fr": "Silésie",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Oder",
+        "Neisse"
+      ],
+      "mountain_ranges": [
+        "Sudètes (Riesengebirge)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_031": {
+      "region_id": "region_031",
+      "name_fr": "Saxe et Thuringe",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests",
+        "mountains"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Elbe",
+        "Saale",
+        "Mulde"
+      ],
+      "mountain_ranges": [
+        "Monts Métallifères (Erzgebirge)",
+        "Forêt de Thuringe",
+        "Harz"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_032": {
+      "region_id": "region_032",
+      "name_fr": "Rhénanie-Westphalie",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Rhin",
+        "Ruhr",
+        "Lippe",
+        "Moselle",
+        "Weser"
+      ],
+      "mountain_ranges": [
+        "Massif schisteux rhénan (Eifel, Sauerland, Hunsrück)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_033": {
+      "region_id": "region_033",
+      "name_fr": "Allemagne du Sud-Ouest",
+      "relief_categories": [
+        "hills",
+        "forests",
+        "plains",
+        "mountains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Rhin",
+        "Main",
+        "Neckar",
+        "Lahn",
+        "Danube (haut)"
+      ],
+      "mountain_ranges": [
+        "Forêt-Noire (Schwarzwald)",
+        "Odenwald",
+        "Taunus",
+        "Jura souabe"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_034": {
+      "region_id": "region_034",
+      "name_fr": "Bavière",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "forests",
+        "mountains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Danube",
+        "Isar",
+        "Inn",
+        "Main",
+        "Lech"
+      ],
+      "mountain_ranges": [
+        "Alpes bavaroises",
+        "Forêt de Bavière (Bayerischer Wald)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_035": {
+      "region_id": "region_035",
+      "name_fr": "Alsace-Lorraine",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "forests",
+        "mountains"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Rhin",
+        "Moselle",
+        "Ill",
+        "Sarre"
+      ],
+      "mountain_ranges": [
+        "Vosges"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_036": {
+      "region_id": "region_036",
+      "name_fr": "Autriche centrale",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Danube",
+        "Enns",
+        "Mur",
+        "Traun"
+      ],
+      "mountain_ranges": [
+        "Alpes orientales (Basse-Autriche et Styrie)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_037": {
+      "region_id": "region_037",
+      "name_fr": "Alpes autrichiennes",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "forests"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer Adriatique"
+      ],
+      "major_rivers": [
+        "Inn",
+        "Drave",
+        "Save",
+        "Adige (Etsch)",
+        "Isonzo (Soča)"
+      ],
+      "mountain_ranges": [
+        "Alpes autrichiennes (Tyrol, Tauern)",
+        "Dolomites",
+        "Alpes juliennes et carniques",
+        "Karst"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_038": {
+      "region_id": "region_038",
+      "name_fr": "Bohême",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "forests",
+        "mountains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Elbe (Labe)",
+        "Moldau (Vltava)",
+        "Eger (Ohře)"
+      ],
+      "mountain_ranges": [
+        "Monts Métallifères",
+        "Sudètes",
+        "Forêt de Bohême (Böhmerwald)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_039": {
+      "region_id": "region_039",
+      "name_fr": "Moravie et Silésie autrichienne",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Morava (March)",
+        "Oder (haut)"
+      ],
+      "mountain_ranges": [
+        "Sudètes orientales (Jeseniky)",
+        "Beskides"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_040": {
+      "region_id": "region_040",
+      "name_fr": "Galicie et Bucovine",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "forests"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Vistule (haut)",
+        "San",
+        "Dniestr",
+        "Prout",
+        "Boug"
+      ],
+      "mountain_ranges": [
+        "Carpates septentrionales et orientales"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_041": {
+      "region_id": "region_041",
+      "name_fr": "Hongrie et Slovaquie",
+      "relief_categories": [
+        "plains",
+        "hills",
+        "mountains",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Danube",
+        "Tisza",
+        "Váh",
+        "Drave",
+        "Maros (Mureș)"
+      ],
+      "mountain_ranges": [
+        "Carpates occidentales (Tatras)",
+        "Carpates du Nord-Est"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_042": {
+      "region_id": "region_042",
+      "name_fr": "Transylvanie",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "forests"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": false,
+      "island_class": null,
+      "maritime_facades": [],
+      "major_rivers": [
+        "Maros (Mureș)",
+        "Olt",
+        "Someș (Szamos)"
+      ],
+      "mountain_ranges": [
+        "Carpates orientales",
+        "Carpates méridionales (Alpes de Transylvanie)",
+        "Monts Apuseni"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_043": {
+      "region_id": "region_043",
+      "name_fr": "Croatie et territoires méridionaux",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains",
+        "forests"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer Adriatique"
+      ],
+      "major_rivers": [
+        "Save",
+        "Drave",
+        "Danube",
+        "Drina",
+        "Neretva",
+        "Bosna"
+      ],
+      "mountain_ranges": [
+        "Alpes dinariques",
+        "Velebit"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_080": {
+      "region_id": "region_080",
+      "name_fr": "Italie — Nord-Ouest",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Ligurienne"
+      ],
+      "major_rivers": [
+        "Pô",
+        "Tessin",
+        "Adda",
+        "Tanaro"
+      ],
+      "mountain_ranges": [
+        "Alpes occidentales et centrales",
+        "Apennin ligure"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_081": {
+      "region_id": "region_081",
+      "name_fr": "Italie — Nord-Est",
+      "relief_categories": [
+        "plains",
+        "mountains",
+        "hills",
+        "marshes"
+      ],
+      "dominant_relief": "plains",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer Adriatique"
+      ],
+      "major_rivers": [
+        "Pô",
+        "Adige",
+        "Piave",
+        "Tagliamento",
+        "Brenta",
+        "Reno"
+      ],
+      "mountain_ranges": [
+        "Alpes carniques et préalpes vénitiennes",
+        "Apennin tosco-émilien"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_082": {
+      "region_id": "region_082",
+      "name_fr": "Italie — Centre-Ouest",
+      "relief_categories": [
+        "hills",
+        "plains",
+        "mountains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer Tyrrhénienne",
+        "Mer Ligurienne"
+      ],
+      "major_rivers": [
+        "Tibre",
+        "Arno",
+        "Ombrone"
+      ],
+      "mountain_ranges": [
+        "Apennin central et toscan"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_083": {
+      "region_id": "region_083",
+      "name_fr": "Italie — Centre-Est",
+      "relief_categories": [
+        "mountains",
+        "hills"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": null,
+      "maritime_facades": [
+        "Mer Adriatique"
+      ],
+      "major_rivers": [
+        "Pescara",
+        "Tronto",
+        "Sangro"
+      ],
+      "mountain_ranges": [
+        "Apennin central (Gran Sasso, Majella)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_084": {
+      "region_id": "region_084",
+      "name_fr": "Italie — Sud",
+      "relief_categories": [
+        "hills",
+        "mountains",
+        "plains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": true,
+      "island_class": "simplified",
+      "maritime_facades": [
+        "Mer Tyrrhénienne",
+        "Mer Ionienne",
+        "Mer Adriatique"
+      ],
+      "major_rivers": [
+        "Volturno",
+        "Ofanto"
+      ],
+      "mountain_ranges": [
+        "Apennin méridional (Campanie, Lucanie, Calabre)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_085": {
+      "region_id": "region_085",
+      "name_fr": "Sicile",
+      "relief_categories": [
+        "hills",
+        "mountains",
+        "plains"
+      ],
+      "dominant_relief": "hills",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer Méditerranée",
+        "Mer Tyrrhénienne",
+        "Mer Ionienne"
+      ],
+      "major_rivers": [
+        "Simeto",
+        "Salso"
+      ],
+      "mountain_ranges": [
+        "Etna",
+        "Monts Nébrodes et Madonies"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    "region_086": {
+      "region_id": "region_086",
+      "name_fr": "Sardaigne",
+      "relief_categories": [
+        "mountains",
+        "hills",
+        "plains"
+      ],
+      "dominant_relief": "mountains",
+      "has_coastline": true,
+      "island_class": "major",
+      "maritime_facades": [
+        "Mer Méditerranée",
+        "Mer Tyrrhénienne"
+      ],
+      "major_rivers": [
+        "Tirso",
+        "Flumendosa"
+      ],
+      "mountain_ranges": [
+        "Massif du Gennargentu"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    }
+  },
+  "major_rivers": [
+    {
+      "id": "river_rhine",
+      "name_fr": "Rhin",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_017",
+        "region_018",
+        "region_035",
+        "region_033",
+        "region_032",
+        "region_016",
+        "region_015"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_danube",
+      "name_fr": "Danube",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_033",
+        "region_034",
+        "region_036",
+        "region_041",
+        "region_043"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_meuse",
+      "name_fr": "Meuse",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_011",
+        "region_014",
+        "region_016",
+        "region_015"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_scheldt",
+      "name_fr": "Escaut",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_007",
+        "region_014",
+        "region_013",
+        "region_015"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_seine",
+      "name_fr": "Seine",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_011",
+        "region_008"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_somme",
+      "name_fr": "Somme",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_007"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_marne",
+      "name_fr": "Marne",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_011",
+        "region_008"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_moselle",
+      "name_fr": "Moselle",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_011",
+        "region_035",
+        "region_019",
+        "region_032"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_loire",
+      "name_fr": "Loire",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_012",
+        "region_011",
+        "region_008",
+        "region_009"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_garonne",
+      "name_fr": "Garonne",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_022",
+        "region_010"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_rhone",
+      "name_fr": "Rhône",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_017",
+        "region_012"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_thames",
+      "name_fr": "Tamise",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_001"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_severn",
+      "name_fr": "Severn",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_004",
+        "region_002",
+        "region_001"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_shannon",
+      "name_fr": "Shannon",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_005",
+        "region_006"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_tagus",
+      "name_fr": "Tage (Tajo / Tejo)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_023",
+        "region_020"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_douro",
+      "name_fr": "Douro (Duero)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_021",
+        "region_020"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_ebro",
+      "name_fr": "Èbre",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_021",
+        "region_022"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_guadalquivir",
+      "name_fr": "Guadalquivir",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_025"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_elbe",
+      "name_fr": "Elbe (Labe)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_038",
+        "region_031",
+        "region_028",
+        "region_029"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_weser",
+      "name_fr": "Weser",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_033",
+        "region_032",
+        "region_029"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_oder",
+      "name_fr": "Oder",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_039",
+        "region_030",
+        "region_028"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_vistula",
+      "name_fr": "Vistule",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_039",
+        "region_040",
+        "region_027"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_tisza",
+      "name_fr": "Tisza (Theiß)",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_041"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_sava",
+      "name_fr": "Save",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_037",
+        "region_043"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_drava",
+      "name_fr": "Drave",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_037",
+        "region_036",
+        "region_041",
+        "region_043"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_isonzo",
+      "name_fr": "Isonzo (Soča)",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_037"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_po",
+      "name_fr": "Pô",
+      "relief_type": "major_river",
+      "is_navigable": true,
+      "region_ids": [
+        "region_080",
+        "region_081"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_adige",
+      "name_fr": "Adige (Etsch)",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_037",
+        "region_081"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "river_tiber",
+      "name_fr": "Tibre",
+      "relief_type": "major_river",
+      "is_navigable": false,
+      "region_ids": [
+        "region_082"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    }
+  ],
+  "mountain_chains": [
+    {
+      "id": "mtn_pyrenees",
+      "name_fr": "Pyrénées",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_010",
+        "region_012",
+        "region_022"
+      ],
+      "strategic_passes": [
+        "Hendaye-Irún",
+        "Col de Roncevaux",
+        "Col du Somport",
+        "Col du Perthus",
+        "Cerbère-Portbou"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_western_alps",
+      "name_fr": "Alpes occidentales",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_012",
+        "region_017",
+        "region_080"
+      ],
+      "strategic_passes": [
+        "Tunnel du Fréjus / Col du Mont-Cenis",
+        "Col du Petit-Saint-Bernard",
+        "Col du Grand-Saint-Bernard",
+        "Col de Tende"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_central_alps",
+      "name_fr": "Alpes centrales et suisses",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_017",
+        "region_018",
+        "region_080"
+      ],
+      "strategic_passes": [
+        "Tunnel du Simplon",
+        "Tunnel et col du Saint-Gothard",
+        "Col du Splügen",
+        "Tunnel de l'Arlberg"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_eastern_alps",
+      "name_fr": "Alpes orientales, Dolomites et Alpes juliennes",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_034",
+        "region_036",
+        "region_037",
+        "region_080",
+        "region_081"
+      ],
+      "strategic_passes": [
+        "Col du Brenner",
+        "Col du Stelvio",
+        "Col du Tonale",
+        "Col de Tarvis / Pontebba",
+        "Col du Semmering",
+        "Seuil de Gorizia"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_vosges",
+      "name_fr": "Massif des Vosges",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_011",
+        "region_035"
+      ],
+      "strategic_passes": [
+        "Col de Saverne",
+        "Col de la Schlucht",
+        "Col du Bonhomme",
+        "Trouée de Belfort"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_jura",
+      "name_fr": "Massif du Jura",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_011",
+        "region_012",
+        "region_017"
+      ],
+      "strategic_passes": [
+        "Cluse de Pontarlier-Vallorbe",
+        "Cluse de Bellegarde"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_ardennes_eifel",
+      "name_fr": "Ardennes et Eifel",
+      "relief_type": "hills",
+      "region_ids": [
+        "region_011",
+        "region_014",
+        "region_019",
+        "region_032"
+      ],
+      "strategic_passes": [
+        "Trouée de l'Oise / Chimay",
+        "Vallée de la Meuse (Dinant-Namur-Liège)",
+        "Trouée de Trèves-Luxembourg"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_bohemian_massif",
+      "name_fr": "Quadrilatère de Bohême (Erzgebirge, Sudètes, Böhmerwald)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_030",
+        "region_031",
+        "region_034",
+        "region_038",
+        "region_039"
+      ],
+      "strategic_passes": [
+        "Porte de l'Elbe (Dresde-Tetschen)",
+        "Trouée de Glatz (Nachod)",
+        "Porte de Moravie (Ostrava-Oderberg)",
+        "Trouée de Cheb (Eger)"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_carpathians",
+      "name_fr": "Arc des Carpates (Tatras, Carpates orientales et méridionales)",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_039",
+        "region_040",
+        "region_041",
+        "region_042"
+      ],
+      "strategic_passes": [
+        "Passe de Jablunkov",
+        "Passe de Dukla",
+        "Passe de Lupków",
+        "Passe d'Uzsok",
+        "Passe de Verecke",
+        "Passe de Predeal",
+        "Défilé de la Tour Rouge"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_dinaric_alps",
+      "name_fr": "Alpes dinariques",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_037",
+        "region_043"
+      ],
+      "strategic_passes": [
+        "Vallée de la Neretva (Mostar-Sarajevo)",
+        "Col d'Ivan"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    },
+    {
+      "id": "mtn_apennines",
+      "name_fr": "Chaîne des Apennins",
+      "relief_type": "mountains",
+      "region_ids": [
+        "region_080",
+        "region_081",
+        "region_082",
+        "region_083",
+        "region_084"
+      ],
+      "strategic_passes": [
+        "Col des Giovi (Gênes-Milan)",
+        "Porretta / Bologne-Florence",
+        "Terni-Ancône",
+        "Bénévent-Foggia"
+      ],
+      "source_refs": [
+        "regis_2026_v1"
+      ]
+    }
+  ]
+}
