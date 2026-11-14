@@ -1,0 +1,76 @@
+# ---------------------------------------------------------------------------
+# .gitignore — GrandStrategy
+# Objectif : ne jamais versionner de secrets, de dépendances installées,
+# d'artefacts de build ou de fichiers locaux d'éditeur.
+# Les règles seront complétées lorsque la pile technique sera choisie (ADR).
+# ---------------------------------------------------------------------------
+
+# --- Secrets et configuration locale -------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+secrets/
+credentials*
+config.local.*
+
+# --- Systèmes d'exploitation ---------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Éditeurs et IDE ------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Dépendances (génériques, à préciser selon la pile) ------------------
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+target/
+bin/
+obj/
+packages/
+*.csproj.user
+
+# --- Build, artefacts, caches --------------------------------------------
+build/
+dist/
+out/
+coverage/
+.coverage
+htmlcov/
+*.log
+logs/
+tmp/
+.cache/
+
+# --- Sauvegardes et données locales de jeu -------------------------------
+saves/
+*.save
+*.sqlite
+*.sqlite3
+*.db
+
+# --- Assets lourds générés (à réévaluer ; les assets sources sont versionnés)
+*.tmp
+*.bak
+*.zip
+*.7z
+*.tar.gz
+
+# --- Divers ---------------------------------------------------------------
+.direnv/
+.envrc
+*.local
