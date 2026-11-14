@@ -1,5 +1,12 @@
 # Sources Géographiques et Historiques — Lot Cartographique Agent 2 (40 régions)
 
+> **Erratum de licence (14/11/2026, audit approfondi — voir `docs/project/audit-2026-11/02_LICENCES_PROVENANCE.md`).** Vérification faite aux sources officielles :
+> - **REGIS / REThM** : le *livre* est sous CC BY 4.0, mais les **données** sont sous **CC BY-NC 4.0**, et tout usage commercial est interdit sans accord écrit des auteurs (annexe « License and Terms of Use » du livre, DOI 10.1007/978-3-032-14932-9). La mention « CC BY 4.0 » ci-dessous est erronée pour les données.
+> - **geoBoundaries TUR ADM2** (`TUR-ADM2-54988432`) : **ODbL 1.0**, source OpenStreetMap. **TUR ADM1** : **CC BY-SA 2.0**, source OSM. La mention « CC BY 4.0 » ci-dessous est erronée.
+> - **Kavanagh** : *Map of Europe, c. 1914*, auteur **Jack Kavanagh** (University College Dublin), Zenodo, DOI 10.5281/zenodo.21341486, v1.0, CC BY 4.0. La page officielle ne mentionne aucune dérivation de CShapes 2.0.
+> - **RISTAT 1897** : CC0 (DataverseNL, DOI 10.34894/NQOASN), avec citation demandée.
+> Le texte d'origine ci-dessous est conservé sans modification.
+
 Ce document recense l'ensemble des sources géographiques, administratives, physiques et d'infrastructures effectivement vérifiées et utilisées pour construire les **40 régions** du périmètre de l'**Agent 2** au **1er janvier 1914** (`Scandinavie` 8, `Europe orientale` 18, `Balkans` 10, `Territoires ottomans européens` 4).
 
 Pour chaque source sont précisés :
