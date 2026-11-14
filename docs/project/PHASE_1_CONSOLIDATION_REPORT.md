@@ -152,7 +152,7 @@ Ils sont détaillés dans `RAPATRIEMENT_LIGNEE_OCT31.md` §6 :
 | `75b9cc8` | docs(project) : inventaire du prototype et plan d'alignement de `main` |
 | *(commit suivant)* | docs(project) : le présent rapport |
 
-`git diff --stat 40a3117..consolidate/phase-1 -- data/ tools/map/*.py tools/map/*.sh` est **vide** : aucune donnée ni aucun script cartographique existant n'a été modifié.
+`git diff --stat 40a3117..consolidate/phase-1 -- data/ 'tools/map/*.py' 'tools/map/*.sh'` ne liste que l'**ajout** de `tools/map/validate_all.sh`. Aucune donnée ni aucun script cartographique existant n'a été modifié.
 
 ### Historique préservé
 
