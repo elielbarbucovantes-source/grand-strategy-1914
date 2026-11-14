@@ -1,0 +1,5 @@
+; Prototype technique neutre NP-2/NP-4 (aucune règle de jeu)
+config_version=5
+
+[application]
+config/name="gs1914-np-benchmarks"
