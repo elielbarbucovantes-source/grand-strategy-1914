@@ -3,6 +3,7 @@
 - **Date :** 14 novembre 2026
 - **Objet :** mission 23 du dossier de reprise. Audit intégral du dépôt, état réel du projet et plan de reprise.
 - **Branche :** `docs/project-handover-audit`, créée depuis `40a3117` (`consolidate/map-1914-topology`).
+- **Correctif (14/11/2026, phase 1) :** la visibilité du dépôt est désormais PUBLIC ; voir `PHASE_1_CONSOLIDATION_REPORT.md`.
 - **Statut du document :** RAPPORT D'AUDIT ET PROPOSITIONS. Ce document **ne vaut décision sur aucun point de conception**. Les recommandations y sont marquées comme telles.
 - **Périmètre respecté :**
   - aucune modification de fichier cartographique ;
@@ -40,7 +41,7 @@
    - l'alignement de `main` ;
    - l'arbitrage T-029 ;
    - le statut du prototype Python face à Godot ;
-   - la visibilité du dépôt, qui est toujours **privé**.
+   - ~~la visibilité du dépôt~~ : rendu **public** par son propriétaire le 14/11/2026 (correctif ajouté en phase 1).
 
 ---
 
@@ -54,7 +55,7 @@
 | Worktree cartographique validé | `…/worktrees/consolidate-map-1914-topology` | `40a3117`, propre |
 | Ancien dépôt (lignée oct.) | `~/Projets/GrandStrategy` (+ worktree `GrandStrategy-opencode`) | `main` = `2a341d1`, pas de fetch depuis le 1er nov. : **obsolète**, ne plus y travailler |
 | Sauvegarde | `~/backups/gs1914-2026-11-13/` | 2 bundles, archive de l'arbre, sources GIS (373 Mo), notes de recherche, prototypes de scripts |
-| Dépôt distant | `github.com/elielbarbucovantes-source/grand-strategy-1914` | **PRIVATE**, branche par défaut `main`, 30 branches |
+| Dépôt distant | `github.com/elielbarbucovantes-source/grand-strategy-1914` | PRIVATE au moment de l'audit ; **PUBLIC depuis le 14/11/2026** (vérifié par `gh repo view`, correctif de phase 1). Branche par défaut `main`, 30 branches. |
 
 ### 2.2 Empreintes de référence (vérifiées le 14/11/2026)
 
@@ -136,7 +137,7 @@ Lignée A (31 oct., racine 459375a)          Lignée B (1er nov., racine 5d8579f
 | `consolidate/map-1914-geometry` = `a7983e7` | La branche a avancé à **`47bc6fe`** (Strumica et audit) |
 | `AGENTS.md`/`CONTRIBUTING.md` « sur une branche dédiée » | Ils n'existent que sur `2d7bb5c`, basé sur `a7983e7` et donc **sans** Strumica ni topologie. Le `AGENTS.md` de `40a3117` est l'ancienne version. |
 | Prototypes à rechercher | Un prototype **jouable** de grande taille existe dans la lignée A (`cdd3ab1`) |
-| Dépôt « envisagé public » | `gh repo view` : **PRIVATE** |
+| Dépôt « envisagé public » | PRIVATE lors de l'audit ; **PUBLIC depuis le 14/11/2026** (correctif de phase 1) |
 | Manifeste de sauvegarde | Il indique « aucun remote configuré ». Ce n'est plus exact depuis la centralisation. |
 
 ### 3.4 Worktrees
@@ -304,7 +305,7 @@ Ces anomalies sont reprises du rapport final, §9, et sont toujours d'actualité
 1. **Alignement de `main`** (T1). La décision est déjà soumise dans `GITHUB_CENTRALIZATION_AND_BRANCH_AUDIT.md` §3.
 2. **T-029, questions D1 à D5.** Le package recommandé (D1 = A, D2 = E+F, D3 = I, D4 = journal et pas fixes, D5 = moteur isolé et contrat de session) reste **non approuvé**.
 3. **Moteur et prototype** : confirmer Godot et le statut de `cdd3ab1` ou de l'ADR-0006 (T12).
-4. **Visibilité du dépôt** : public ou privé.
+4. ~~**Visibilité du dépôt**~~ : tranchée, le dépôt est public depuis le 14/11/2026.
 5. **Arbitrages cartographiques ayant un effet sur le jeu :**
    - traversées de l'Islande (051) ;
    - canal de Corfou ;
