@@ -2,7 +2,9 @@
 
 Cochez une option par question, ou répondez librement. Toutes les questions techniques ordinaires ont été tranchées par l'équipe technique et ne figurent pas ici. Les recommandations sont des **propositions**.
 
-## U1 — Licences et provenance des données (URGENT)
+## U1 — Licences et provenance des données — **TRANCHÉE le 14/11/2026**
+
+> Décision : jeu gratuit et open source au départ ; données REGIS conservées ; attributions autorisées et publiées (`DATA_LICENSES.md`, `NOTICE`) ; avis juridique indépendant avant toute éventuelle commercialisation.
 
 L'audit des licences a été remis directement au directeur. Il ne sera publié dans le dépôt public qu'après sa décision.
 
@@ -41,7 +43,9 @@ L'audit des licences a été remis directement au directeur. Il ne sera publié 
 - [ ] C5 — Huit proximités : statu quo ?
 - [ ] C6b — Séparer les sites des capitales à nom composite (par exemple Kronstadt, Ploiești) ; capitale albanaise de référence ?
 
-## U8 — Licence du code
+## U8 — Licence du code — **orientation donnée le 14/11/2026 : gratuit et open source**
+
+> Reste à choisir la licence open source précise du code (par exemple Apache-2.0, MIT, GPL-3.0 ; voir `02_LICENCES_PROVENANCE.md` §5). Aucune licence de code n'est ajoutée sans ce choix.
 - [ ] Le jeu sera-t-il ☐ vendu ☐ gratuit et libre ☐ indécis ? *(détermine les licences possibles du code)*
 
 ## U9 — Anciens répertoires

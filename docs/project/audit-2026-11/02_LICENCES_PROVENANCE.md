@@ -1,6 +1,7 @@
 # Livrable 2 — Audit des licences et de la provenance des données
 
-- **Date :** 14/11/2026. **Diffusion :** document **non publié**, remis au directeur. Il sera publié seulement après la décision U1.
+- **Date :** 14/11/2026. **Diffusion :** publié avec l'autorisation du directeur (14/11/2026).
+- **Décision du directeur (14/11/2026, U1 et U8) :** jeu gratuit et open source au départ, sans commercialisation prévue ; données REGIS conservées (pas de reconstruction des 69 régions) ; attributions autorisées et publiées (`DATA_LICENSES.md`, `NOTICE`) ; avis juridique indépendant avant toute éventuelle commercialisation. Cela correspond à l'orientation **A** (§3) avec avis juridique différé. **Les attributions ne valent pas autorisation commerciale.**
 - **Avertissement :** il s'agit d'une analyse technique, **pas d'une certification juridique**. Les points marqués **[AVIS JURIDIQUE]** doivent être soumis à un juriste.
 - **Méthode :**
   - inventaire des sources citées dans toutes les branches (registres de sources, `source_refs` et `source_layer` des 90 régions, `SOURCE_EXTRACTS.json`, rapports) ;

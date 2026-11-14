@@ -1,0 +1,32 @@
+Grand Strategy-1914 — avis sur les données tierces
+==================================================
+
+Ce dépôt contient des données géographiques dérivées de sources tierces.
+Détails, fichiers concernés et modifications : DATA_LICENSES.md
+
+ATTENTION — USAGE NON COMMERCIAL
+Une partie des données géographiques (data/world/map/) dérive de REGIS/REThM,
+distribué sous licence Creative Commons Attribution-NonCommercial 4.0 International
+(CC BY-NC 4.0). Ces attributions NE CONSTITUENT PAS une autorisation d'usage
+commercial. Tout usage commercial exige l'accord écrit préalable des auteurs de REGIS.
+
+1. REGIS/REThM — Schweikart, J., Martí-Henneberg, J., Pieper, J., Morillas-Torné, M.
+   & Schulte, B. (2026). Regional European Geographic Information System (REGIS),
+   1870–2020. Springer Nature. https://doi.org/10.1007/978-3-032-14932-9
+   Licence des données : CC BY-NC 4.0 — https://creativecommons.org/licenses/by-nc/4.0/
+   Modifications : agrégation en 90 régions de jeu, reprojection, corrections
+   topologiques et historiques (voir DATA_LICENSES.md, section 3).
+
+2. © OpenStreetMap contributors, via geoBoundaries (William & Mary geoLab),
+   Turquie ADM2 v6. Données disponibles sous Open Database License (ODbL) 1.0 :
+   https://www.openstreetmap.org/copyright — https://opendatacommons.org/licenses/odbl/1-0/
+   Concerne les régions region_087 à region_090 et l'extrait
+   data/world/map/sources/derived/gs1914_saray_tekirdag.geojson.
+
+3. Kavanagh, J. (2026). Map of Europe, c. 1914. University College Dublin. Zenodo.
+   https://doi.org/10.5281/zenodo.21341486 — CC BY 4.0.
+
+4. Kessler, G. & Markevich, A. (2026). Russian Empire Historical GIS Maps (1897),
+   RISTAT. DataverseNL. https://doi.org/10.34894/NQOASN — CC0 1.0.
+
+5. Natural Earth (naturalearthdata.com) — domaine public.

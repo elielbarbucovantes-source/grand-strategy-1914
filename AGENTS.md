@@ -202,6 +202,7 @@ Le dépôt GitHub `origin` (`https://github.com/elielbarbucovantes-source/grand-
 ## 7. Règles de sécurité et de fiabilité
 
 - **Dépôt public** : le dépôt GitHub `grand-strategy-1914` est **public** depuis le 14/11/2026, par décision de son propriétaire. Tout ce qui est poussé est lisible par tous et peut être indexé. **Aucun agent ne modifie la visibilité du dépôt.**
+- **Licences des données** : les données géographiques dérivent en partie de REGIS (**CC BY-NC 4.0, usage non commercial**) et d'OpenStreetMap (**ODbL 1.0**). Toute nouvelle donnée dérivée doit porter ses attributions dans `DATA_LICENSES.md`. Les attributions **ne valent pas autorisation commerciale**. Aucune source nouvelle ne s'intègre sans vérifier sa licence sur la page officielle.
 - **Aucune donnée personnelle ni confidentielle** : ne pas committer d'adresse électronique, de nom, de chemin ou de document privé non nécessaire au projet, ni de source sous licence incompatible avec une diffusion publique.
 - **Zéro secret dans Git** : ne jamais inscrire de mot de passe, token GitHub (`ghp_`, `gho_`, `github_pat_`), clé privée SSH/TLS ou identifiant sensible dans un fichier suivi, un script ou une URL de remote. Utiliser `gh auth login` (keyring système) ou SSH.
 - **Propreté du versionnement** : respecter `.gitignore` (ne jamais committer `.venv/`, `__pycache__/`, `.godot/`, `/backups/`, `.consolidation-stage*/`, ni de fichiers temporaires).
