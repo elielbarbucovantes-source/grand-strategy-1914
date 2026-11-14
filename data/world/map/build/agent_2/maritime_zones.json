@@ -57,6 +57,7 @@
       "coastal_region_ids": [
         "region_046",
         "region_047",
+        "region_050",
         "region_051"
       ],
       "external_coastal_region_ids": [
@@ -95,6 +96,8 @@
       ],
       "coastal_region_ids": [
         "region_047",
+        "region_050",
+        "region_052",
         "region_065"
       ],
       "external_coastal_region_ids": [],
@@ -129,7 +132,9 @@
         57.567625
       ],
       "coastal_region_ids": [
+        "region_029",
         "region_044",
+        "region_045",
         "region_046"
       ],
       "external_coastal_region_ids": [
@@ -137,8 +142,7 @@
         "region_002",
         "region_003",
         "region_015",
-        "region_016",
-        "region_029"
+        "region_016"
       ],
       "adjacent_maritime_zone_ids": [
         "mz_norwegian_sea",
@@ -169,13 +173,13 @@
         57.207725
       ],
       "coastal_region_ids": [
+        "region_028",
+        "region_029",
         "region_044",
         "region_045",
         "region_048"
       ],
-      "external_coastal_region_ids": [
-        "region_029"
-      ],
+      "external_coastal_region_ids": [],
       "adjacent_maritime_zone_ids": [
         "mz_north_sea_eastern",
         "mz_baltic_south_central"
@@ -209,6 +213,9 @@
         56.646965
       ],
       "coastal_region_ids": [
+        "region_026",
+        "region_027",
+        "region_028",
         "region_044",
         "region_048",
         "region_049",
@@ -216,9 +223,6 @@
         "region_054"
       ],
       "external_coastal_region_ids": [
-        "region_026",
-        "region_027",
-        "region_028",
         "region_029"
       ],
       "adjacent_maritime_zone_ids": [
@@ -256,7 +260,8 @@
       "coastal_region_ids": [
         "region_049",
         "region_050",
-        "region_052"
+        "region_052",
+        "region_053"
       ],
       "external_coastal_region_ids": [],
       "adjacent_maritime_zone_ids": [
@@ -330,13 +335,14 @@
         41.198665
       ],
       "coastal_region_ids": [
+        "region_043",
         "region_075",
-        "region_076"
+        "region_076",
+        "region_077",
+        "region_084"
       ],
       "external_coastal_region_ids": [
-        "region_043",
-        "region_083",
-        "region_084"
+        "region_083"
       ],
       "adjacent_maritime_zone_ids": [
         "mz_ionian_sea"
@@ -99310,6 +99316,7 @@
         "coastal_region_ids": [
           "region_046",
           "region_047",
+          "region_050",
           "region_051"
         ],
         "external_coastal_region_ids": [
@@ -143879,6 +143886,8 @@
         ],
         "coastal_region_ids": [
           "region_047",
+          "region_050",
+          "region_052",
           "region_065"
         ],
         "external_coastal_region_ids": [],
@@ -163684,7 +163693,9 @@
           57.567625
         ],
         "coastal_region_ids": [
+          "region_029",
           "region_044",
+          "region_045",
           "region_046"
         ],
         "external_coastal_region_ids": [
@@ -163692,8 +163703,7 @@
           "region_002",
           "region_003",
           "region_015",
-          "region_016",
-          "region_029"
+          "region_016"
         ],
         "adjacent_maritime_zone_ids": [
           "mz_norwegian_sea",
@@ -191537,13 +191547,13 @@
           57.207725
         ],
         "coastal_region_ids": [
+          "region_028",
+          "region_029",
           "region_044",
           "region_045",
           "region_048"
         ],
-        "external_coastal_region_ids": [
-          "region_029"
-        ],
+        "external_coastal_region_ids": [],
         "adjacent_maritime_zone_ids": [
           "mz_north_sea_eastern",
           "mz_baltic_south_central"
@@ -216420,6 +216430,9 @@
           56.646965
         ],
         "coastal_region_ids": [
+          "region_026",
+          "region_027",
+          "region_028",
           "region_044",
           "region_048",
           "region_049",
@@ -216427,9 +216440,6 @@
           "region_054"
         ],
         "external_coastal_region_ids": [
-          "region_026",
-          "region_027",
-          "region_028",
           "region_029"
         ],
         "adjacent_maritime_zone_ids": [
@@ -252630,7 +252640,8 @@
         "coastal_region_ids": [
           "region_049",
           "region_050",
-          "region_052"
+          "region_052",
+          "region_053"
         ],
         "external_coastal_region_ids": [],
         "adjacent_maritime_zone_ids": [
@@ -269652,13 +269663,14 @@
           41.198665
         ],
         "coastal_region_ids": [
+          "region_043",
           "region_075",
-          "region_076"
+          "region_076",
+          "region_077",
+          "region_084"
         ],
         "external_coastal_region_ids": [
-          "region_043",
-          "region_083",
-          "region_084"
+          "region_083"
         ],
         "adjacent_maritime_zone_ids": [
           "mz_ionian_sea"

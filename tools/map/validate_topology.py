@@ -10,7 +10,8 @@ Contrôles indépendants (le graphe est recalculé depuis les géométries) :
 - 10 détroits inter-régionaux et 3 détroits internes, cohérents avec la
   géométrie et avec les frontières terrestres (cumuls signalés) ;
 - 8 proximités non connectées, jamais transformées en adjacence ;
-- 16 zones maritimes, 14 connexions réciproques, 67 liens région/zone ;
+- 16 zones maritimes, 14 connexions réciproques, 67 liens région/zone,
+  tous déclarés au catalogue (66 géométriques + 1 catalogue_only : 051) ;
 - 26 régions côtières sans zone, documentées comme limite de couverture ;
 - empreintes SHA-256 des sources et du constructeur ;
 - reproductibilité octet pour octet (option `--rebuild-check`).
@@ -662,8 +663,12 @@ def main() -> int:
     check(derivation_counts == {"geometry": 66, "catalogue_only": 1},
           "Répartition des liens : 66 géométriques + 1 catalogue_only",
           str(derivation_counts))
-    check(sum(1 for link in links if link["catalogue_declared"]) == 53,
-          "53 liens région/zone sont déclarés au catalogue")
+    # Lot 2 (C2a, 15/11/2026) : les 14 liens géométriques non catalogués ont été
+    # ajoutés au catalogue (tools/map/sync_maritime_catalogue.py) ; 53 -> 67.
+    check(sum(1 for link in links if link["catalogue_declared"]) == 67,
+          "67 liens région/zone sont déclarés au catalogue")
+    check(all(link["catalogue_declared"] for link in links),
+          "Aucun lien géométrique n'est absent du catalogue")
 
     unlinked = adjacency.get("coastal_regions_without_maritime_zone", [])
     check(len(unlinked) == EXPECTED_COASTAL_WITHOUT_ZONE,

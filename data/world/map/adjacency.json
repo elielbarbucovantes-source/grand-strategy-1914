@@ -26,7 +26,7 @@
     },
     "maritime_catalogue": {
       "path": "data/world/map/build/agent_2/maritime_zones.json",
-      "sha256": "c04e0decc44a1cd441d34d3032699d8313d7833297641d1ae56f136c81af7f9d"
+      "sha256": "55ec4a7e72688cd7d14b8d118c23308b6aaaf7e18b9eaefbbc10075948f8012b"
     },
     "builder": {
       "path": "tools/map/rebuild_topology.py",
@@ -6472,7 +6472,7 @@
       "id": "mz_adriatic_south_otranto",
       "name_fr": "Mer Adriatique méridionale et Canal d'Otrante",
       "geometry_valid": true,
-      "catalogue_coastal_region_count": 2
+      "catalogue_coastal_region_count": 5
     },
     {
       "id": "mz_aegean_sea",
@@ -6484,13 +6484,13 @@
       "id": "mz_baltic_south_central",
       "name_fr": "Mer Baltique méridionale et centrale",
       "geometry_valid": true,
-      "catalogue_coastal_region_count": 5
+      "catalogue_coastal_region_count": 8
     },
     {
       "id": "mz_barents_white_sea",
       "name_fr": "Mer de Barents et Mer Blanche",
       "geometry_valid": true,
-      "catalogue_coastal_region_count": 2
+      "catalogue_coastal_region_count": 4
     },
     {
       "id": "mz_black_sea_east",
@@ -6514,7 +6514,7 @@
       "id": "mz_gulf_of_bothnia",
       "name_fr": "Golfe de Botnie et Mer d'Åland",
       "geometry_valid": true,
-      "catalogue_coastal_region_count": 3
+      "catalogue_coastal_region_count": 4
     },
     {
       "id": "mz_gulf_of_finland_riga",
@@ -6544,13 +6544,13 @@
       "id": "mz_north_sea_eastern",
       "name_fr": "Mer du Nord orientale (Jutland et côte de Bergen)",
       "geometry_valid": true,
-      "catalogue_coastal_region_count": 2
+      "catalogue_coastal_region_count": 4
     },
     {
       "id": "mz_norwegian_sea",
       "name_fr": "Mer de Norvège",
       "geometry_valid": true,
-      "catalogue_coastal_region_count": 3
+      "catalogue_coastal_region_count": 4
     },
     {
       "id": "mz_sea_of_azov",
@@ -6562,7 +6562,7 @@
       "id": "mz_skagerrak_kattegat",
       "name_fr": "Skagerrak, Kattegat et Détroits danois",
       "geometry_valid": true,
-      "catalogue_coastal_region_count": 3
+      "catalogue_coastal_region_count": 5
     }
   ],
   "maritime_zone_ids": [
@@ -6752,7 +6752,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -6768,7 +6768,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -6784,7 +6784,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -6800,7 +6800,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -6816,7 +6816,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -6832,7 +6832,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.32,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -6848,7 +6848,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -6912,7 +6912,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -7072,7 +7072,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -7104,7 +7104,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -7152,7 +7152,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -7216,7 +7216,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -7584,7 +7584,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"
@@ -7696,7 +7696,7 @@
       "geometry_contact": true,
       "min_distance_km": 0.0,
       "shared_boundary_km": 0.0,
-      "catalogue_declared": false,
+      "catalogue_declared": true,
       "source_refs": [
         "regions.geojson",
         "maritime_zones.json"

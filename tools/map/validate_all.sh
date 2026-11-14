@@ -57,8 +57,9 @@ EOF
 echo "== 1/6  Empreintes de référence"
 sha256sum --check --strict tools/map/REFERENCE_SHA256SUMS
 
-echo "== 1b    Zones maritimes densifiées (repair_maritime_zones.py --check)"
+echo "== 1b    Zones maritimes densifiées et catalogue aligné sur la géométrie"
 "$PY" tools/map/repair_maritime_zones.py --check
+"$PY" tools/map/sync_maritime_catalogue.py --check
 
 echo "== 2/6  validate_geometry.py"
 "$PY" tools/map/validate_geometry.py
