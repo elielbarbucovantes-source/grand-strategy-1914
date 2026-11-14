@@ -2,7 +2,7 @@
 
 Ce document explique comment connecter un nouvel ordinateur ou un nouvel agent IA au dépôt central de **Grand Strategy-1914**, comment travailler simultanément sans perte de données et comment publier proprement chaque contribution.
 
-> **Prérequis d'accès :** Le dépôt `https://github.com/elielbarbucovantes-source/grand-strategy-1914` est **strictement privé**. L'existence du dépôt distant ne donne pas automatiquement accès à tous les agents : chaque ordinateur ou environnement d'exécution IA doit être explicitement authentifié auprès de GitHub avec un compte ou un jeton disposant des droits `repo` sur ce dépôt.
+> **Prérequis d'accès :** le dépôt `https://github.com/elielbarbucovantes-source/grand-strategy-1914` est **public** depuis le 14 novembre 2026. La lecture et le clonage sont libres. **La publication de branches exige** un compte GitHub authentifié avec les droits d'écriture (scope `repo`, plus `workflow` pour modifier `.github/workflows/`). Tout ce qui est poussé devient public : aucune donnée personnelle, aucun secret.
 
 ---
 
@@ -12,6 +12,7 @@ Ce document explique comment connecter un nouvel ordinateur ou un nouvel agent I
 ```bash
 sudo apt update
 sudo apt install -y git python3 python3-venv python3-pip
+# Variante sans droits administrateur : uv (https://docs.astral.sh/uv/), voir tools/map/README.md
 ```
 
 ### Étape 2 — Installer GitHub CLI (`gh`)
@@ -41,28 +42,33 @@ git fetch origin --prune
 git branch -a -vv
 ```
 
-> **Note importante sur les branches de référence actuelles :**
-> - Socle documentaire du 1er novembre 2026 (90 régions, 69 décisions cartographiques) : branche `foundation/main-2026-11-01` (commit `4ffdb8a`).
-> - Socle géométrique consolidé (`BLK-001`, `BLK-002`, `MAJ-004`) : branche `consolidate/map-1914-geometry` (commit `a7983e7`).
-> - Correction géométrique de Stroumitsa (`MAJ-003`, en attente d'audit indépendant) : branche `fix/map-strumica-final` (commit `03bce80`).
-> - Documentation centralisée multi-IA (présent guide) : branche `docs/github-central-infrastructure`.
+> **Branches de référence (état au 14/11/2026) :**
+> - **`origin/main` (`1ec985f`) n'est PAS la référence.** Il appartient à l'historique du 31 octobre, sans ancêtre commun avec la cartographie. Son alignement est en attente de validation du directeur (`docs/project/MAIN_ALIGNMENT_PLAN.md`).
+> - **Cartographie validée :** `consolidate/map-1914-topology` (`40a3117`) : géométrie définitive, Stroumitsa validée par audit indépendant, topologie reconstruite.
+> - **Consolidation de la phase 1** (CI, AGENTS/CONTRIBUTING à jour, ADR et T-029 rapatriés) : `consolidate/phase-1`, construite sur la précédente. **Base recommandée pour toute nouvelle branche** tant que `main` n'est pas aligné.
+> - Historique : `foundation/main-2026-11-01` (`4ffdb8a`), `consolidate/map-1914-geometry` (`47bc6fe`), `fix/map-strumica-final` (`03bce80`), `archive/oct31-*` (lignée du 31 octobre, dont le prototype Python **gelé** `archive/oct31-mvp-playable`).
 
-Pour basculer sur la branche consolidée de référence après le clone :
+Pour basculer sur la branche de référence après le clone :
 ```bash
-git checkout consolidate/map-1914-geometry
+git checkout consolidate/phase-1
 ```
 
-### Étape 5 — Installer les dépendances Python GIS (`.venv`)
+### Étape 5 — Installer les dépendances Python GIS (environnement durable)
+Environnement de référence : `~/.venvs/gs1914-gis`, hors du dépôt et **jamais dans `/tmp`**. Les versions sont épinglées par `tools/map/requirements.lock`.
 ```bash
-python3 -m venv .venv
-.venv/bin/pip install --upgrade pip
-.venv/bin/pip install -r tools/map/requirements.lock
+# Avec uv (fonctionne même sans python3-venv) :
+uv venv --python /usr/bin/python3 ~/.venvs/gs1914-gis
+VIRTUAL_ENV=~/.venvs/gs1914-gis uv pip install -r tools/map/requirements.lock
+# Ou avec la bibliothèque standard :
+python3 -m venv ~/.venvs/gs1914-gis && ~/.venvs/gs1914-gis/bin/pip install --no-deps -r tools/map/requirements.lock
 ```
+Détails et variantes (`.venv/` local) : `tools/map/README.md`.
 
 ### Étape 6 — Lire `AGENTS.md` et vérifier les validateurs
 Avant toute action, lire impérativement `AGENTS.md`, `PROJECT.md` et `PROGRESS.md`, puis vérifier que l'outillage fonctionne :
 ```bash
-.venv/bin/python tools/map/validate_atlas.py
+tools/map/validate_all.sh          # empreintes + 4 validateurs : 93/0 et 95/0 attendus
+tools/map/validate_all.sh --full   # + reconstruction géométrique octet pour octet (≈ 3 min)
 ```
 
 ### Étape 7 — Vérifier la récupération et la publication
@@ -120,8 +126,7 @@ Aucune IA ne doit travailler directement sur `main`. Toute tâche doit utiliser 
    ```bash
    git status --short --branch
    git diff --stat
-   .venv/bin/python tools/map/validate_geometry.py
-   .venv/bin/python tools/map/validate_atlas.py
+   tools/map/validate_all.sh          # --full si la géométrie ou ses sources sont touchées
    ```
 5. **Effectuer un commit explicite** :
    ```bash
@@ -149,10 +154,10 @@ mkdir -p ../worktrees
 git fetch origin --prune
 
 # Créer un worktree isolé pour l'agent A :
-git worktree add -b fix/nom-tache-a ../worktrees/fix-nom-tache-a origin/consolidate/map-1914-geometry
+git worktree add -b fix/nom-tache-a ../worktrees/fix-nom-tache-a origin/consolidate/phase-1
 
 # Créer un second worktree isolé pour l'agent B :
-git worktree add -b audit/nom-tache-b ../worktrees/audit-nom-tache-b origin/consolidate/map-1914-geometry
+git worktree add -b audit/nom-tache-b ../worktrees/audit-nom-tache-b origin/consolidate/phase-1
 
 # Lister les worktrees actifs :
 git worktree list -v
@@ -175,3 +180,19 @@ En cas de divergence ou de conflit entre deux branches ou deux agents :
 3. **Identifier précisément les différences** (`git log --graph --oneline <branche-A>...<branche-B>`, `git diff <branche-A>...<branche-B>`).
 4. **Documenter le conflit** dans un rapport sous `docs/map/audit/` ou `docs/decisions/`.
 5. **Demander un arbitrage explicite** au directeur de conception avant toute fusion.
+
+---
+
+## 6. Intégration continue (GitHub Actions)
+
+Le workflow `.github/workflows/map-validation.yml` exécute `tools/map/validate_all.sh --full` puis `git diff --exit-code`. Il se déclenche sur tout push ou toute pull request qui touche `data/world/map/**`, `tools/map/**`, `docs/map/corrections/**` ou le workflow lui-même, et peut être lancé à la main depuis l'onglet *Actions*.
+
+- Une CI rouge bloque la fusion. On analyse l'échec ; on ne contourne jamais un contrôle et on ne modifie jamais une donnée pour le faire passer.
+- Consultation : `gh run list --branch <branche>` puis `gh run view <id> --log`.
+
+## 7. Décisions de conception : ce qu'un agent ne peut pas faire
+
+- Modifier, contredire ou « mettre à jour » une décision **VALIDÉE** (`PROJECT.md`, `MAP-DEC-01` à `69`, `DECISIONS_PENDING.md`) ou une ADR **acceptée** sans autorisation explicite du directeur.
+- Promouvoir une proposition : T-029 et son scénario S1, l'ADR-0005 et l'architecture Godot restent des **propositions** tant que le directeur ne les a pas tranchées.
+- Développer du gameplay (`GATE-01`), y compris dans le prototype Python archivé.
+- Résoudre seul une contradiction documentaire. Il faut la consigner (exemple : `docs/decisions/RAPATRIEMENT_LIGNEE_OCT31.md` §6) et demander l'arbitrage.

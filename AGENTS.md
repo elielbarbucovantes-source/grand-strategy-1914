@@ -1,8 +1,20 @@
 # AGENTS.md — Point d'entrée commun et règles de travail des IA
 
 > **Statut du projet :** CONCEPTION EN COURS — **DÉVELOPPEMENT DU GAMEPLAY STRICTEMENT INTERDIT SANS AUTORISATION EXPLICITE DU DIRECTEUR DE CONCEPTION (`GATE-01`)**
-> **Dépôt central GitHub (privé) :** `https://github.com/elielbarbucovantes-source/grand-strategy-1914` (`origin`)
+> **Dépôt central GitHub (PUBLIC depuis le 14/11/2026) :** `https://github.com/elielbarbucovantes-source/grand-strategy-1914` (`origin`)
 > **Portée :** Ce document constitue la constitution commune de toutes les intelligences artificielles et de tous les environnements de travail (locaux ou multi-ordinateurs) intervenant sur **Grand Strategy-1914**.
+
+---
+
+## 0. Repères immédiats (état au 14 novembre 2026)
+
+- **Répertoire de travail de référence :** `~/Documents/Codex/2026-11-01/tu-es-responsable-du-d-veloppement/grand-strategy-1914`, avec ses worktrees dans `../worktrees/`. L'ancien dépôt `~/Projets/GrandStrategy` (avec `GrandStrategy-opencode`) est **obsolète** : n'y travaillez pas (voir `docs/project/OBSOLETE_WORKSPACES.md`).
+- **Ligne de référence cartographique :** `consolidate/map-1914-topology` (`40a3117`). Elle contient la géométrie définitive (BLK-001, BLK-002, MAJ-004), la correction de Stroumitsa (MAJ-003, validée par audit indépendant `47bc6fe`) et la topologie reconstruite (`6d30a51`). La consolidation de la phase 1 s'y ajoute sur `consolidate/phase-1`.
+- **Deux historiques Git sans ancêtre commun.** `origin/main` (`1ec985f`) appartient à la lignée du 31 octobre ; la cartographie appartient à la lignée du 1er novembre. **Aucune fusion vers `main` sans validation explicite du directeur** (plan : `docs/project/MAIN_ALIGNMENT_PLAN.md`).
+- **Prototype Python** (`archive/oct31-mvp-playable`, `cdd3ab1`) : référence d'étude **archivée**. Il est interdit de le développer, le convertir, le fusionner ou le supprimer.
+- **Moteur :** Godot 4.7.2 avec GDScript typé est le candidat privilégié, mais **non décidé définitivement**.
+- **T-029 :** les cinq décisions D1 à D5 sont **OUVERTES** ; le scénario recommandé S1 n'est **PAS approuvé**.
+- **Contrôle obligatoire après toute modification cartographique :** `tools/map/validate_all.sh` (voir `tools/map/README.md`).
 
 ---
 
@@ -49,12 +61,22 @@ grand-strategy-1914/
 ├── STRUCTURE.md                     # Vue d'ensemble de l'arborescence
 ├── README.md                        # Présentation synthétique du dépôt
 ├── project.godot                    # Coquille Godot (aucune scène ni logique de gameplay)
+├── .github/workflows/
+│   └── map-validation.yml           # CI : validation cartographique complète (GitHub Actions)
 ├── docs/
+│   ├── project/                     # Audit de reprise, rapports de phase, plan d'alignement de main
+│   ├── founding-document-v0.1.md    # Document fondateur (source de D-001 à D-026), rapatrié de la lignée du 31/10
+│   ├── design-review-v0.1.md        # Revue critique v0.1 (non validée, gelée)
+│   ├── legacy/oct31/                # Copies historiques (ancien PROJECT.md : table D-001 à D-030)
 │   ├── architecture/
 │   │   ├── PRINCIPLES.md            # Principes architecturaux sources
 │   │   └── TECHNICAL_ARCHITECTURE.md# Proposition d'architecture modulaire (Godot 4.7.2 + GDScript typé)
 │   ├── decisions/
-│   │   └── DECISIONS_PENDING.md     # Registre des décisions VALIDÉES et À DÉFINIR
+│   │   ├── README.md                # Index des décisions, ADR et dossiers d'arbitrage, avec leurs statuts
+│   │   ├── DECISIONS_PENDING.md     # Registre des décisions VALIDÉES et À DÉFINIR
+│   │   ├── 0000…0006-*.md           # ADR (statuts propres à chaque fichier ; 0005 proposée, 0006 historique)
+│   │   ├── arbitrage-t029-*.md      # Dossier T-029 : document de travail, ne vaut pas décision
+│   │   └── RAPATRIEMENT_LIGNEE_OCT31.md # Provenance et contradictions R-01 à R-12
 │   ├── map/
 │   │   ├── TECHNICAL_SPEC.md        # 69 décisions cartographiques VALIDÉES + spécification technique
 │   │   ├── ATLAS_BUILD_STATUS.md    # Statut éditorial de construction de l'atlas à 90 régions
@@ -68,17 +90,23 @@ grand-strategy-1914/
 │       ├── tables/region_plan.csv   # Référentiel éditorial validé des 90 régions (region_001..090)
 │       ├── sources/                 # Registre des sources et extraits minimaux versionnés (derived/)
 │       ├── build/{agent_1,agent_2}/ # Lots sources audités (50 + 40 régions)
-│       └── regions.geojson / .json  # Géométries et métadonnées consolidées (selon la branche active)
+│       ├── regions.geojson / .json  # Géométrie définitive (90 régions) et index éditorial
+│       └── adjacency.json           # Topologie de référence : 184 arêtes, 10 + 3 détroits, 16 zones maritimes
 ├── tools/
 │   └── map/                         # Scripts reproductibles de construction et validation GIS
 │       ├── build_source_extracts.py # Extraction minimale des sources externes vers sources/derived/
 │       ├── build_geometry.py        # Assemblage 90 régions + corrections BLK-001 (Saray) et BLK-002
 │       ├── close_geometry_gaps.py   # Fermeture reproductible des 4 lacunes MAJ-004
-│       ├── fix_strumica_salient.py  # Correction de la frontière 1913 de Stroumitsa (MAJ-003, sur fix/map-strumica-final)
-│       ├── consolidate_geometry.sh  # Pipeline complet de reconstruction déterministe
+│       ├── fix_strumica_salient.py  # Correction de la frontière de 1913 de Stroumitsa (MAJ-003, validée)
+│       ├── consolidate_geometry.sh  # Pipeline complet de reconstruction déterministe de la géométrie
+│       ├── rebuild_topology.py      # Constructeur déterministe de adjacency.json
 │       ├── validate_atlas.py        # Validateur de l'index éditorial et des géométries
 │       ├── validate_geometry.py     # Validateur géométrique strict (OGC, chevauchements, sentinelles)
-│       └── requirements.txt / .lock # Dépendances Python GIS (shapely, pyogrio, pyproj)
+│       ├── validate_topology.py     # Validateur topologique (93 contrôles ; 95 avec --rebuild-check)
+│       ├── validate_all.sh          # Point d'entrée unique de tous les contrôles (--full : reconstruction géométrique)
+│       ├── REFERENCE_SHA256SUMS     # Empreintes des 5 fichiers de référence
+│       ├── README.md                # Environnement, installation, commandes, CI
+│       └── requirements.txt / .lock # Dépendances Python GIS (shapely, pyogrio, pyproj, numpy)
 ├── prompts/OPENCODE_PROMPT.md       # Instructions harmonisées pour agents
 ├── src/                             # Squelette de répertoires (aucun code de gameplay autorisé)
 ├── tests/                           # Squelette de tests
@@ -95,8 +123,10 @@ Avant toute intervention, chaque IA doit lire dans cet ordre :
 3. **`PROGRESS.md`** — état réel d'avancement, jalons et chantiers en cours.
 4. **`docs/decisions/DECISIONS_PENDING.md`** — registre distinguant les décisions **VALIDÉES** des points **À DÉFINIR** ou **BLOQUÉS**.
 5. **`docs/map/TECHNICAL_SPEC.md`** et **`data/world/map/tables/region_plan.csv`** — pour toute mission touchant à la carte ou à l'atlas de 1914.
-6. **`docs/map/audit/PROJECT_STATUS.md`**, **`docs/map/audit/CONTINUATION_PLAN.md`** et **`docs/map/audit/GITHUB_CENTRALIZATION_AND_BRANCH_AUDIT.md`** — pour connaître l'état exact des branches cartographiques et des audits.
-7. **`CONTRIBUTING.md`** — procédure Git multi-IA, multi-ordinateurs et worktrees.
+6. **`docs/decisions/README.md`** — index des ADR et des dossiers d'arbitrage, avec leur statut exact (T-029 ouvert).
+7. **`docs/project/PROJECT_HANDOVER_AUDIT.md`** et **`docs/project/PHASE_1_CONSOLIDATION_REPORT.md`** — état réel du projet, branches, anomalies et tâches.
+8. **`docs/map/audit/FINAL_GEOMETRY_AND_TOPOLOGY_AUDIT.md`** — rapport de référence sur la géométrie définitive et la topologie. Les rapports antérieurs (`PROJECT_STATUS.md`, `CONTINUATION_PLAN.md`, `GITHUB_CENTRALIZATION_AND_BRANCH_AUDIT.md`) sont historiques et datés.
+9. **`CONTRIBUTING.md`** et **`tools/map/README.md`** — procédure Git multi-IA, worktrees, environnement et validation.
 
 En cas de contradiction entre deux documents, **signaler immédiatement le conflit** sans trancher arbitrairement ; les décisions explicites du directeur de conception et l'interdiction de développer le gameplay priment toujours.
 
@@ -111,6 +141,8 @@ En cas de contradiction entre deux documents, **signaler immédiatement le confl
 - **À DÉFINIR** : paramètre, formule ou règle de conception non encore tranché.
 - **BLOQUÉ** : dépend d'un arbitrage du directeur ou d'une ressource externe.
 - **IMPLÉMENTÉ** / **TESTÉ** : présent dans l'outillage autorisé et vérifié par exécution réelle des tests.
+- Pour les ADR : `proposé`, `accepté`, `remplacé`, `rejeté` (voir `docs/decisions/0000-template.md`). **Une ADR acceptée est immuable** : on la remplace par une nouvelle ADR, sur décision du directeur.
+- Un statut n'est **jamais** promu par un agent. Copier, déplacer ou résumer un document ne change pas son statut.
 
 ### Principales décisions VALIDÉES à préserver impérativement
 - **Identité et boucle** : point de départ au 1er janvier 1914, tours mensuels simultanés à ordres secrets, 7 puissances jouables, mode solo initial + mode observation, absence de multijoueur en V1.
@@ -121,8 +153,17 @@ En cas de contradiction entre deux documents, **signaler immédiatement le confl
   - Occupation militaire représentée par hachures aux couleurs de l'occupant sans déplacement visuel des frontières souveraines ; absence de marquage cartographique dédié pour les revendications contestées (`MAP-DEC-51`).
   - Seuil de victoire militaire fixé au contrôle d'au moins 90 % des régions (`MAP-DEC-13`).
 
+### État technique de l'atlas (vérifié le 14/11/2026, local et CI)
+- **Géométrie définitive des 90 régions :** consolidée (BLK-001 Saray, BLK-002 chevauchements, MAJ-004 lacunes) et reproductible octet pour octet.
+- **Stroumitsa (MAJ-003) :** correction `03bce80`, **validée par audit indépendant** (`47bc6fe`, situation au 1er janvier 1914). La région 072 contient Strumica, pas la 074.
+- **Topologie :** reconstruite de façon déterministe (`6d30a51`) : 184 arêtes terrestres, 10 détroits interrégionaux et 3 internes, 16 zones maritimes. `validate_topology.py` : 93 contrôles et 0 échec ; 95 et 0 avec `--rebuild-check`.
+- **Anomalies connues, non bloquantes et à ne pas « corriger » sans mission :** catalogue maritime incomplet (26 façades orphelines), `mz_norwegian_sea` invalide, région 051 isolée, canal de Corfou et 8 proximités non arbitrés, `regions.json` hérité (166 couples). Voir `FINAL_GEOMETRY_AND_TOPOLOGY_AUDIT.md` §9.
+
 ### Principales décisions EN ATTENTE (`À DÉFINIR` / `BLOQUÉ`)
-- **Atlas et données thématiques** : validation finale de l'atlas par le directeur (`MAP-OPEN-01`), reconstruction de la topologie (`adjacency.json`) sur la géométrie finale, unification des terrains/infrastructures/zones maritimes (`MAJ-001`, `MAJ-002`, `MAJ-006`), inventaire des routes (`MAP-DEC-08`) et arbitrage sur le périmètre des ressources naturelles.
+- **Atlas et données thématiques** : validation finale de l'atlas par le directeur (`MAP-OPEN-01`), arbitrages maritimes (façades, Corfou, région 051), réintégration des 175 villes sur la géométrie définitive, unification des terrains, infrastructures et zones maritimes (`MAJ-001`, `MAJ-002`, `MAJ-006`), inventaire des routes (`MAP-DEC-08`) et périmètre des ressources naturelles.
+- **Temps stratégique et tactique (T-029)** : D1 à D5 **OUVERTES**, scénario S1 **non approuvé**. ADR-0005 : proposée.
+- **Moteur** : Godot 4.7.2 privilégié, **non décidé** ; ADR-0006 (Python) conservée avec son statut historique.
+- **Contradictions entre lignées** R-01 à R-12 (`docs/decisions/RAPATRIEMENT_LIGNEE_OCT31.md`) : signalées, non résolues.
 - **Mécaniques et formules chiffrées** : formules des 12 statistiques nationales (`NAT-01` à `NAT-05`), unités/prix/budgets économiques (`ECO-01` à `ECO-07`), ordre de bataille et règles tactiques (`MIL-01` à `MIL-09`), catalogue diplomatique et cognition IA (`DIP-01` à `AI-05`), arbre technologique (`TECH-01`), calcul détaillé des cas particuliers de victoire à 90 % (`MAP-OPEN-11`/`MAP-OPEN-16`) et formule de victoire socio-économique (`WIN-02`).
 - **Architecture et plateformes** : confirmation des plateformes cibles (`UX-01`) et validation du prototype technique neutre Godot 4.7.2 (`ARCH-01`).
 
@@ -151,7 +192,7 @@ Le dépôt GitHub `origin` (`https://github.com/elielbarbucovantes-source/grand-
 1. **Synchroniser** : `git fetch origin --prune` et inspecter l'état des branches (`git branch -a -vv`).
 2. **Isoler** : créer une branche dédiée (et un worktree dédié si plusieurs tâches coexistent sur la machine) à partir de la branche de référence indiquée par la mission.
 3. **Exécuter dans le périmètre** : modifier uniquement les fichiers relevant de la mission, sans altérer le travail d'une autre mission ni toucher aux régions/données hors périmètre.
-4. **Valider** : exécuter les validateurs et tests requis (ex. `tools/map/validate_geometry.py`, `tools/map/validate_atlas.py`) et vérifier `git diff` / `git status`.
+4. **Valider** : exécuter `tools/map/validate_all.sh` (`--full` si la géométrie ou ses sources sont touchées) et les autres tests requis, puis vérifier `git diff` et `git status`. La CI GitHub Actions doit être verte avant toute fusion.
 5. **Committer** : créer un commit atomique et explicite (`type(portée): description concise`).
 6. **Publier** : pousser la branche vers GitHub (`git push -u origin <nom-branche>`).
 7. **Rendre compte** : fournir à l'utilisateur la liste exacte des fichiers créés/modifiés, le nom de la branche, le hash complet du commit, les résultats des validateurs et les points restant à arbitrer.
@@ -160,7 +201,8 @@ Le dépôt GitHub `origin` (`https://github.com/elielbarbucovantes-source/grand-
 
 ## 7. Règles de sécurité et de fiabilité
 
-- **Confidentialité absolue du dépôt** : le dépôt GitHub `grand-strategy-1914` est **privé** (`PRIVATE`) et ne doit jamais être rendu public.
+- **Dépôt public** : le dépôt GitHub `grand-strategy-1914` est **public** depuis le 14/11/2026, par décision de son propriétaire. Tout ce qui est poussé est lisible par tous et peut être indexé. **Aucun agent ne modifie la visibilité du dépôt.**
+- **Aucune donnée personnelle ni confidentielle** : ne pas committer d'adresse électronique, de nom, de chemin ou de document privé non nécessaire au projet, ni de source sous licence incompatible avec une diffusion publique.
 - **Zéro secret dans Git** : ne jamais inscrire de mot de passe, token GitHub (`ghp_`, `gho_`, `github_pat_`), clé privée SSH/TLS ou identifiant sensible dans un fichier suivi, un script ou une URL de remote. Utiliser `gh auth login` (keyring système) ou SSH.
 - **Propreté du versionnement** : respecter `.gitignore` (ne jamais committer `.venv/`, `__pycache__/`, `.godot/`, `/backups/`, `.consolidation-stage*/`, ni de fichiers temporaires).
 - **Reproductibilité hors `/tmp`** : ne jamais stocker un livrable, une source dérivée ou un rapport uniquement dans `/tmp`. Tout artefact produit par une mission doit être versionné dans le dépôt, accompagné des scripts et extraits sources (`data/world/map/sources/derived/`) nécessaires à sa reproduction déterministe.
@@ -172,5 +214,7 @@ Le dépôt GitHub `origin` (`https://github.com/elielbarbucovantes-source/grand-
 
 - **Honnêteté des vérifications** : ne jamais déclarer qu'un test ou validateur a réussi s'il n'a pas été réellement exécuté. Toujours rapporter la commande exacte et sa sortie.
 - **Distinction entre validation géométrique et validation définitive** :
-  - Le passage des scripts techniques (`tools/map/validate_geometry.py`, `tools/map/validate_atlas.py`) et du test de reproductibilité bit-à-bit (`tools/map/consolidate_geometry.sh`) est **nécessaire mais non suffisant**.
-  - Aucune correction cartographique majeure (telle que la consolidation géométrique ou la résolution de Stroumitsa `MAJ-003` sur `fix/map-strumica-final`) ni l'atlas global ne doivent être déclarés définitivement validés tant que **l'audit indépendant** et **l'approbation du directeur de conception** ne sont pas achevés.
+  - Le passage des contrôles techniques (`tools/map/validate_all.sh --full` : empreintes, `validate_geometry.py`, `validate_atlas.py`, `validate_topology.py`, rejeu topologique et reconstruction géométrique octet pour octet) est **nécessaire mais non suffisant**.
+  - Toute nouvelle correction cartographique majeure exige un **audit indépendant** (un autre agent, une autre branche) et l'**approbation du directeur de conception**, comme pour MAJ-003.
+- **Données de référence** : ne jamais modifier une donnée cartographique pour faire passer un contrôle. Toute modification légitime d'un fichier de référence suit `tools/map/README.md` §5 (justification, reconstruction par script, mise à jour des empreintes dans le même commit).
+- **Un commit n'est pas une validation fonctionnelle** : seuls les contrôles réellement exécutés, avec leur sortie, en tiennent lieu.
