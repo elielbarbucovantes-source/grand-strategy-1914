@@ -1,0 +1,54 @@
+name: Validation cartographique
+
+# Contrôle la géométrie et la topologie validées des 90 régions.
+# Déclenché sur toute modification des données ou outils cartographiques,
+# et manuellement (onglet Actions → Run workflow).
+
+on:
+  push:
+    paths:
+      - "data/world/map/**"
+      - "tools/map/**"
+      - "docs/map/corrections/**"
+      - ".github/workflows/map-validation.yml"
+  pull_request:
+    paths:
+      - "data/world/map/**"
+      - "tools/map/**"
+      - "docs/map/corrections/**"
+      - ".github/workflows/map-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: map-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Empreintes, validateurs et reconstructions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: tools/map/requirements.lock
+
+      - name: Installer les dépendances épinglées
+        run: python -m pip install --no-deps -r tools/map/requirements.lock
+
+      - name: Lancer tous les contrôles (reconstruction géométrique incluse)
+        env:
+          PYTHON: python
+        run: bash tools/map/validate_all.sh --full
+
+      - name: Vérifier qu'aucun fichier suivi n'a été modifié
+        run: git diff --exit-code
