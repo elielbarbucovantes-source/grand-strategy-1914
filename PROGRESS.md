@@ -6,7 +6,8 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 ## 0. Point au 14/11/2026
 
 - **Cartographie :** géométrie définitive des 90 régions, Strumica (MAJ-003) **validée par audit indépendant** (`47bc6fe`), topologie reconstruite (`40a3117` : 184 arêtes, 10 + 3 détroits, 16 zones maritimes). Contrôle `tools/map/validate_all.sh --full` vert en local et en CI (GitHub Actions).
-- **Restant :** réseau maritime occidental absent (26 façades sans zone), `mz_norwegian_sea` invalide après reprojection, villes et couches thématiques à réintégrer, attributs dérivés obsolètes. Plan : `docs/project/audit-2026-11/04_PLAN_CARTOGRAPHIQUE.md`.
+- **Lot 2 (15/11/2026) :** zones maritimes valides (16/16), catalogue complet (67/67 liens), attributs dérivés régénérés, villes, terrain et infrastructures consolidés avec validateur ; licences et attributions publiées (`DATA_LICENSES.md`, `NOTICE`). Rapport : `docs/project/LOT_2_REPORT.md`.
+- **Restant :** réseau maritime occidental absent (26 façades sans zone, décision U3) ; réseau ferré fragmenté (17 composantes, données sourcées nécessaires) ; décisions C3 à C5 et C6b.
 - **Conception :** T-029 ouvert ; contradictions R-01 à R-14 entre les deux lignées (`docs/project/audit-2026-11/03_REGISTRE_CONTRADICTIONS.md`) ; questions au directeur dans `docs/project/audit-2026-11/QUESTIONS_DIRECTEUR.md`.
 - **Dépôt :** public ; `main` sur la lignée du 31/10 (`1ec985f`), alignement préparé et non exécuté (`docs/project/MAIN_ALIGNMENT_PLAN.md`) ; base de travail `consolidate/phase-1`.
 - **Moteur :** Godot 4.7.2 candidat privilégié, non décidé ; prototype Python gelé comme référence d'étude.

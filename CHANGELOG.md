@@ -3,6 +3,14 @@
 
 Toutes les évolutions importantes du projet sont consignées ici.
 
+## [1.8] — Lot 2 : consolidation cartographique et licences (15/11/2026)
+
+- `DATA_LICENSES.md` et `NOTICE` : REGIS CC BY-NC 4.0 (usage non commercial), OpenStreetMap ODbL 1.0, Kavanagh CC BY 4.0, RISTAT CC0, Natural Earth domaine public.
+- C1 : zones maritimes densifiées, `mz_norwegian_sea` valide. C2a : 14 liens géométriques catalogués (67/67). C8 : attributs dérivés des régions régénérés (MAJ-005).
+- C6 et C7 : `cities.json`, `terrain.json` (MAJ-006) et `infrastructure.json` consolidés, avec `validate_thematic.py`. Réseau ferré fragmenté documenté.
+- Fiches : Islande (051), canal de Corfou, proximités.
+- Rapport : `docs/project/LOT_2_REPORT.md`.
+
 ## [1.7] — Audit approfondi (14/11/2026)
 
 - Livrables `docs/project/audit-2026-11/` : état général, registre des contradictions R-01 à R-14 et des décisions D-001 à D-030, plan cartographique de la phase 2, comparaison technologique et protocole des prototypes neutres, feuille de route, audit de l'alignement de `main`, audit documentaire, questionnaire au directeur.

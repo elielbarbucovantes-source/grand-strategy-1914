@@ -67,6 +67,27 @@ Commandes individuelles :
 
 `consolidate_geometry.sh` et `rebuild_topology.py` (sans `--output`) **réécrivent des fichiers suivis**. Ne les lancez directement que sur une branche dédiée, puis vérifiez avec `git diff --exit-code`. Pour un simple contrôle, préférez `validate_all.sh --full`.
 
+## 3b. Outils de maintenance (lot 2)
+
+| Script | Rôle | Vérification dans `validate_all.sh` |
+|---|---|---|
+| `repair_maritime_zones.py` | Densifie les zones maritimes (0,25°) pour qu'elles restent valides en EPSG:3035 | `--check` |
+| `sync_maritime_catalogue.py` | Catalogue = contacts géométriques région/zone | `--check` |
+| `sync_region_attributes.py` | Attributs dérivés des régions depuis `adjacency.json` (étape 4b de `consolidate_geometry.sh`) | `--check` |
+| `build_thematic_layers.py` | `cities.json`, `terrain.json`, `infrastructure.json` depuis les lots | `--check` |
+| `validate_thematic.py` | 34 contrôles sur les couches thématiques | exécuté |
+
+**Ordre de mise à jour** après toute modification cartographique :
+1. `repair_maritime_zones.py` ;
+2. `rebuild_topology.py` ;
+3. `sync_maritime_catalogue.py` ;
+4. `rebuild_topology.py` ;
+5. `sync_region_attributes.py` ;
+6. `rebuild_topology.py` ;
+7. `build_thematic_layers.py` ;
+8. mise à jour de `REFERENCE_SHA256SUMS` ;
+9. `validate_all.sh --full`.
+
 ## 4. Intégration continue
 
 Le workflow `.github/workflows/map-validation.yml` exécute `validate_all.sh --full` sous Ubuntu 24.04 avec Python 3.12 et les dépendances de `requirements.lock`, puis `git diff --exit-code`.
