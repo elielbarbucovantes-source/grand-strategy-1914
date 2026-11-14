@@ -114,3 +114,7 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 ## J. Autorisation de développement
 
 - **GATE-01 — Développement gameplay : BLOQUÉ jusqu’à autorisation explicite du directeur.** La documentation et l’architecture peuvent être préparées ; aucun code de règles, simulation, IA, carte jouable ou interface de jeu ne doit être créé avant le feu vert.
+
+## K. Documents rapatriés de la lignée du 31 octobre 2026 (ajout du 2026-11-14)
+
+Les ADR 0000 à 0006, le dossier d'arbitrage T-029, le document fondateur, la revue de conception v0.1 et l'ancien `PROJECT.md` (table D-001 à D-030) sont désormais présents dans cette lignée. Ce sont des copies octet pour octet, et leur statut est **inchangé** : T-029 reste ouvert, le scénario S1 n'est pas approuvé, ADR-0005 est proposée, ADR-0006 est historique. Ce rapatriement **ne modifie aucune ligne de ce registre**. Les contradictions relevées (R-01 à R-12) sont listées, non résolues, dans `docs/decisions/RAPATRIEMENT_LIGNEE_OCT31.md` §6 ; l'index est dans `docs/decisions/README.md`.
