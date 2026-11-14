@@ -61,6 +61,7 @@ echo "== 1b    Zones maritimes densifiées et catalogue aligné sur la géométr
 "$PY" tools/map/repair_maritime_zones.py --check
 "$PY" tools/map/sync_maritime_catalogue.py --check
 "$PY" tools/map/sync_region_attributes.py --check
+"$PY" tools/map/build_thematic_layers.py --check
 
 echo "== 2/6  validate_geometry.py"
 "$PY" tools/map/validate_geometry.py
@@ -73,6 +74,9 @@ echo "== 4/6  validate_topology.py"
 
 echo "== 5/6  validate_topology.py --rebuild-check"
 "$PY" tools/map/validate_topology.py --rebuild-check
+
+echo "== 5b    validate_thematic.py (villes, terrain, infrastructures)"
+"$PY" tools/map/validate_thematic.py
 
 if [[ "$FULL" -eq 1 ]]; then
   echo "== 6/6  Reconstruction complète de la géométrie (copie temporaire)"
