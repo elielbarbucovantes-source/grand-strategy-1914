@@ -108,7 +108,7 @@ func test_joint_command_and_pause_rules() -> void:
 	runner.check(c["nation"] == "france", "commandement au pays fournissant le plus de soldats")
 	st.formations["army_united_kingdom_1"]["soldiers"] = 1000
 	c = BattleSystem.joint_commander(st, ["army_france_1", "army_united_kingdom_1"])
-	runner.check(c["nation"] == null, "égalité sans prestige connu : indéterminé (pas de choix arbitraire)")
+	runner.check(c["nation"] == "france", "égalité sans prestige connu : départage déterministe documenté (T-029 G ; identifiant croissant)")
 	st.nations["france"]["military_prestige"] = 3
 	st.nations["united_kingdom"]["military_prestige"] = 5
 	c = BattleSystem.joint_commander(st, ["army_france_1", "army_united_kingdom_1"])

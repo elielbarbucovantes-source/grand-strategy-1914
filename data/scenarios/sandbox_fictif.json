@@ -1,0 +1,6335 @@
+{
+ "format": "gs1914.scenario",
+ "format_version": 1,
+ "id": "sandbox_fictif",
+ "name_fr": "Bac à sable FICTIF (forces génériques de test)",
+ "atlas_reference_date": "1914-01-01",
+ "start": {
+  "year": 1914,
+  "month": null,
+  "status": "OUVERTE (R-13) : le mois de départ est choisi à la création de la partie"
+ },
+ "nation_order": [
+  "united_kingdom",
+  "france",
+  "belgium",
+  "netherlands",
+  "switzerland",
+  "luxembourg",
+  "portugal",
+  "spain",
+  "german_empire",
+  "austria_hungary",
+  "denmark",
+  "norway",
+  "sweden",
+  "russian_empire",
+  "romania",
+  "bulgaria",
+  "serbia",
+  "montenegro",
+  "albania",
+  "greece",
+  "italy",
+  "ottoman_empire"
+ ],
+ "nations": {
+  "united_kingdom": {
+   "id": "united_kingdom",
+   "name_fr": "Royaume-Uni",
+   "playable": true,
+   "playable_source": "D-005 / PROJECT.md §4",
+   "capital_city_id": "city_london",
+   "capital_region_id": "region_001",
+   "color": "#c0392b",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "france": {
+   "id": "france",
+   "name_fr": "France",
+   "playable": true,
+   "playable_source": "D-005 / PROJECT.md §4",
+   "capital_city_id": "city_paris",
+   "capital_region_id": "region_008",
+   "color": "#2e5fa8",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "belgium": {
+   "id": "belgium",
+   "name_fr": "Belgique",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_brussels",
+   "capital_region_id": "region_013",
+   "color": "#e0c25c",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "netherlands": {
+   "id": "netherlands",
+   "name_fr": "Pays-Bas",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_amsterdam",
+   "capital_region_id": "region_015",
+   "color": "#e08a3c",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "switzerland": {
+   "id": "switzerland",
+   "name_fr": "Suisse",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_bern",
+   "capital_region_id": "region_017",
+   "color": "#b5505a",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "luxembourg": {
+   "id": "luxembourg",
+   "name_fr": "Luxembourg",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_luxembourg",
+   "capital_region_id": "region_019",
+   "color": "#8fa3c8",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "portugal": {
+   "id": "portugal",
+   "name_fr": "Portugal",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_lisbon",
+   "capital_region_id": "region_020",
+   "color": "#4f8a6e",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "spain": {
+   "id": "spain",
+   "name_fr": "Espagne",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_madrid",
+   "capital_region_id": "region_023",
+   "color": "#e3b53e",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "german_empire": {
+   "id": "german_empire",
+   "name_fr": "Empire allemand",
+   "playable": true,
+   "playable_source": "D-005 / PROJECT.md §4",
+   "capital_city_id": "city_berlin",
+   "capital_region_id": "region_028",
+   "color": "#5b6770",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "austria_hungary": {
+   "id": "austria_hungary",
+   "name_fr": "Autriche-Hongrie",
+   "playable": true,
+   "playable_source": "D-005 / PROJECT.md §4",
+   "capital_city_id": "city_vienna",
+   "capital_region_id": "region_036",
+   "color": "#d4b13a",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "denmark": {
+   "id": "denmark",
+   "name_fr": "Danemark",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_copenhagen",
+   "capital_region_id": "region_044",
+   "color": "#c76b6b",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "norway": {
+   "id": "norway",
+   "name_fr": "Norvège",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_christiania",
+   "capital_region_id": "region_045",
+   "color": "#7aa0c4",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "sweden": {
+   "id": "sweden",
+   "name_fr": "Suède",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_stockholm",
+   "capital_region_id": "region_049",
+   "color": "#4c78b0",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "russian_empire": {
+   "id": "russian_empire",
+   "name_fr": "Empire russe",
+   "playable": true,
+   "playable_source": "D-005 / PROJECT.md §4",
+   "capital_city_id": "city_st_petersburg",
+   "capital_region_id": "region_064",
+   "color": "#3b7d4f",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "romania": {
+   "id": "romania",
+   "name_fr": "Roumanie",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_bucharest",
+   "capital_region_id": "region_070",
+   "color": "#b8a14a",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "bulgaria": {
+   "id": "bulgaria",
+   "name_fr": "Bulgarie",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_sofia",
+   "capital_region_id": "region_072",
+   "color": "#6f9a57",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "serbia": {
+   "id": "serbia",
+   "name_fr": "Serbie",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_belgrade",
+   "capital_region_id": "region_074",
+   "color": "#a35a6e",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "montenegro": {
+   "id": "montenegro",
+   "name_fr": "Monténégro",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_cetinje",
+   "capital_region_id": "region_075",
+   "color": "#8a6fa8",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "albania": {
+   "id": "albania",
+   "name_fr": "Albanie",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_durres",
+   "capital_region_id": "region_076",
+   "color": "#9b4e4e",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "greece": {
+   "id": "greece",
+   "name_fr": "Grèce",
+   "playable": false,
+   "playable_source": null,
+   "capital_city_id": "city_athens_piraeus",
+   "capital_region_id": "region_077",
+   "color": "#6aa6d6",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "italy": {
+   "id": "italy",
+   "name_fr": "Italie",
+   "playable": true,
+   "playable_source": "D-005 / PROJECT.md §4",
+   "capital_city_id": "city_rome",
+   "capital_region_id": "region_082",
+   "color": "#5aa36b",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  },
+  "ottoman_empire": {
+   "id": "ottoman_empire",
+   "name_fr": "Empire ottoman",
+   "playable": true,
+   "playable_source": "D-005 / PROJECT.md §4",
+   "capital_city_id": "city_constantinople",
+   "capital_region_id": "region_087",
+   "color": "#8e5a3c",
+   "color_status": "présentation, personnalisable",
+   "population": {
+    "value": null,
+    "unit": "habitants",
+    "status": "À DÉFINIR (NAT-02)",
+    "source": null
+   },
+   "stats": {
+    "population_totale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "puissance_demographique": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "industrie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "economie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "ressources_naturelles": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "armee_de_terre": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "marine": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "technologie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "infrastructures": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "diplomatie": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "prestige_international": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    },
+    "unite_nationale": {
+     "value": null,
+     "status": "À DÉFINIR (NAT-01)",
+     "source": null
+    }
+   },
+   "stocks": {},
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+  }
+ },
+ "regions": {
+  "region_001": {
+   "sovereign": "united_kingdom",
+   "controller": "united_kingdom",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_002": {
+   "sovereign": "united_kingdom",
+   "controller": "united_kingdom",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_003": {
+   "sovereign": "united_kingdom",
+   "controller": "united_kingdom",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_004": {
+   "sovereign": "united_kingdom",
+   "controller": "united_kingdom",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_005": {
+   "sovereign": "united_kingdom",
+   "controller": "united_kingdom",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_006": {
+   "sovereign": "united_kingdom",
+   "controller": "united_kingdom",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_007": {
+   "sovereign": "france",
+   "controller": "france",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_008": {
+   "sovereign": "france",
+   "controller": "france",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_009": {
+   "sovereign": "france",
+   "controller": "france",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_010": {
+   "sovereign": "france",
+   "controller": "france",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_011": {
+   "sovereign": "france",
+   "controller": "france",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_012": {
+   "sovereign": "france",
+   "controller": "france",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_013": {
+   "sovereign": "belgium",
+   "controller": "belgium",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_014": {
+   "sovereign": "belgium",
+   "controller": "belgium",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_015": {
+   "sovereign": "netherlands",
+   "controller": "netherlands",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_016": {
+   "sovereign": "netherlands",
+   "controller": "netherlands",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_017": {
+   "sovereign": "switzerland",
+   "controller": "switzerland",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_018": {
+   "sovereign": "switzerland",
+   "controller": "switzerland",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_019": {
+   "sovereign": "luxembourg",
+   "controller": "luxembourg",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_020": {
+   "sovereign": "portugal",
+   "controller": "portugal",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_021": {
+   "sovereign": "spain",
+   "controller": "spain",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_022": {
+   "sovereign": "spain",
+   "controller": "spain",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_023": {
+   "sovereign": "spain",
+   "controller": "spain",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_024": {
+   "sovereign": "spain",
+   "controller": "spain",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_025": {
+   "sovereign": "spain",
+   "controller": "spain",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_026": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_027": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_028": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_029": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_030": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_031": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_032": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_033": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_034": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_035": {
+   "sovereign": "german_empire",
+   "controller": "german_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_036": {
+   "sovereign": "austria_hungary",
+   "controller": "austria_hungary",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_037": {
+   "sovereign": "austria_hungary",
+   "controller": "austria_hungary",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_038": {
+   "sovereign": "austria_hungary",
+   "controller": "austria_hungary",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_039": {
+   "sovereign": "austria_hungary",
+   "controller": "austria_hungary",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_040": {
+   "sovereign": "austria_hungary",
+   "controller": "austria_hungary",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_041": {
+   "sovereign": "austria_hungary",
+   "controller": "austria_hungary",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_042": {
+   "sovereign": "austria_hungary",
+   "controller": "austria_hungary",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_043": {
+   "sovereign": "austria_hungary",
+   "controller": "austria_hungary",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_044": {
+   "sovereign": "denmark",
+   "controller": "denmark",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_045": {
+   "sovereign": "norway",
+   "controller": "norway",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_046": {
+   "sovereign": "norway",
+   "controller": "norway",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_047": {
+   "sovereign": "norway",
+   "controller": "norway",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_048": {
+   "sovereign": "sweden",
+   "controller": "sweden",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_049": {
+   "sovereign": "sweden",
+   "controller": "sweden",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_050": {
+   "sovereign": "sweden",
+   "controller": "sweden",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_051": {
+   "sovereign": "denmark",
+   "controller": "denmark",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_052": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_053": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_054": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_055": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_056": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_057": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_058": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_059": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_060": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_061": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_062": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_063": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_064": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_065": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_066": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_067": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_068": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_069": {
+   "sovereign": "russian_empire",
+   "controller": "russian_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_070": {
+   "sovereign": "romania",
+   "controller": "romania",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_071": {
+   "sovereign": "romania",
+   "controller": "romania",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_072": {
+   "sovereign": "bulgaria",
+   "controller": "bulgaria",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_073": {
+   "sovereign": "bulgaria",
+   "controller": "bulgaria",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_074": {
+   "sovereign": "serbia",
+   "controller": "serbia",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_075": {
+   "sovereign": "montenegro",
+   "controller": "montenegro",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_076": {
+   "sovereign": "albania",
+   "controller": "albania",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_077": {
+   "sovereign": "greece",
+   "controller": "greece",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_078": {
+   "sovereign": "greece",
+   "controller": "greece",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_079": {
+   "sovereign": "greece",
+   "controller": "greece",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_080": {
+   "sovereign": "italy",
+   "controller": "italy",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_081": {
+   "sovereign": "italy",
+   "controller": "italy",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_082": {
+   "sovereign": "italy",
+   "controller": "italy",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_083": {
+   "sovereign": "italy",
+   "controller": "italy",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_084": {
+   "sovereign": "italy",
+   "controller": "italy",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_085": {
+   "sovereign": "italy",
+   "controller": "italy",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_086": {
+   "sovereign": "italy",
+   "controller": "italy",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_087": {
+   "sovereign": "ottoman_empire",
+   "controller": "ottoman_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_088": {
+   "sovereign": "ottoman_empire",
+   "controller": "ottoman_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_089": {
+   "sovereign": "ottoman_empire",
+   "controller": "ottoman_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  },
+  "region_090": {
+   "sovereign": "ottoman_empire",
+   "controller": "ottoman_empire",
+   "economy": {
+    "potential": {},
+    "exploitation_capacity": null,
+    "infrastructure_level": null,
+    "status": "À DÉFINIR (ECO-02 ; modèle C validé, données à sourcer)",
+    "source": null
+   }
+  }
+ },
+ "treaties": [
+  {
+   "id": "t_dual_alliance",
+   "type": "alliance",
+   "members": [
+    "german_empire",
+    "austria_hungary"
+   ],
+   "status": "active",
+   "signed": "avant 1914",
+   "terms": null,
+   "terms_status": "OUVERTE (DIP-02 : obligations et effets à définir)",
+   "source": "docs/diplomacy/OVERVIEW.md §4",
+   "note": "Alliance (contexte de 1914)."
+  },
+  {
+   "id": "t_franco_russian",
+   "type": "alliance",
+   "members": [
+    "france",
+    "russian_empire"
+   ],
+   "status": "active",
+   "signed": "avant 1914",
+   "terms": null,
+   "terms_status": "OUVERTE (DIP-02 : obligations et effets à définir)",
+   "source": "docs/diplomacy/OVERVIEW.md §4",
+   "note": "Alliance formelle (contexte de 1914)."
+  },
+  {
+   "id": "t_entente_cordiale",
+   "type": "entente",
+   "members": [
+    "france",
+    "united_kingdom"
+   ],
+   "status": "active",
+   "signed": "avant 1914",
+   "terms": null,
+   "terms_status": "OUVERTE (DIP-02 : obligations et effets à définir)",
+   "source": "docs/diplomacy/OVERVIEW.md §4",
+   "note": "Entente cordiale, sans obligation automatique d'entrée en guerre britannique."
+  },
+  {
+   "id": "t_triple_alliance",
+   "type": "alliance",
+   "members": [
+    "german_empire",
+    "austria_hungary",
+    "italy"
+   ],
+   "status": "active",
+   "signed": "avant 1914",
+   "terms": null,
+   "terms_status": "OUVERTE (DIP-02 : obligations et effets à définir)",
+   "source": "docs/diplomacy/OVERVIEW.md §4",
+   "note": "Triple Alliance ; Italie membre mais neutre au début de 1914."
+  }
+ ],
+ "wars": [],
+ "formations": [
+  {
+   "id": "army_united_kingdom_1",
+   "nation": "united_kingdom",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_001",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_united_kingdom_1_d1",
+   "nation": "united_kingdom",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_united_kingdom_1_d1_r1",
+   "nation": "united_kingdom",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_united_kingdom_1_d1_r1_u1",
+   "nation": "united_kingdom",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_united_kingdom_1_d1_r1_u2",
+   "nation": "united_kingdom",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_united_kingdom_1_d1_r1_u3",
+   "nation": "united_kingdom",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_united_kingdom_1_d1_r2",
+   "nation": "united_kingdom",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_united_kingdom_1_d1_r2_u1",
+   "nation": "united_kingdom",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_united_kingdom_1_d2",
+   "nation": "united_kingdom",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_united_kingdom_1_d2_r1",
+   "nation": "united_kingdom",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_united_kingdom_1_d2_r1_u1",
+   "nation": "united_kingdom",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_united_kingdom_1_d2_r1_u2",
+   "nation": "united_kingdom",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_united_kingdom_1_d2_r1_u3",
+   "nation": "united_kingdom",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_001",
+   "parent": "army_united_kingdom_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_france_1",
+   "nation": "france",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_008",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_france_1_d1",
+   "nation": "france",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_008",
+   "parent": "army_france_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_france_1_d1_r1",
+   "nation": "france",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_008",
+   "parent": "army_france_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_france_1_d1_r1_u1",
+   "nation": "france",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_008",
+   "parent": "army_france_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_france_1_d1_r1_u2",
+   "nation": "france",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_008",
+   "parent": "army_france_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_france_1_d1_r1_u3",
+   "nation": "france",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_008",
+   "parent": "army_france_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_france_1_d1_r2",
+   "nation": "france",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_008",
+   "parent": "army_france_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_france_1_d1_r2_u1",
+   "nation": "france",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_008",
+   "parent": "army_france_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_france_1_d2",
+   "nation": "france",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_008",
+   "parent": "army_france_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_france_1_d2_r1",
+   "nation": "france",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_008",
+   "parent": "army_france_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_france_1_d2_r1_u1",
+   "nation": "france",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_008",
+   "parent": "army_france_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_france_1_d2_r1_u2",
+   "nation": "france",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_008",
+   "parent": "army_france_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_france_1_d2_r1_u3",
+   "nation": "france",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_008",
+   "parent": "army_france_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_belgium_1",
+   "nation": "belgium",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_013",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_belgium_1_d1",
+   "nation": "belgium",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_013",
+   "parent": "army_belgium_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_belgium_1_d1_r1",
+   "nation": "belgium",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_013",
+   "parent": "army_belgium_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_belgium_1_d1_r1_u1",
+   "nation": "belgium",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_013",
+   "parent": "army_belgium_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_belgium_1_d1_r1_u2",
+   "nation": "belgium",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_013",
+   "parent": "army_belgium_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_belgium_1_d1_r1_u3",
+   "nation": "belgium",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_013",
+   "parent": "army_belgium_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_belgium_1_d1_r2",
+   "nation": "belgium",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_013",
+   "parent": "army_belgium_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_belgium_1_d1_r2_u1",
+   "nation": "belgium",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_013",
+   "parent": "army_belgium_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_belgium_1_d2",
+   "nation": "belgium",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_013",
+   "parent": "army_belgium_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_belgium_1_d2_r1",
+   "nation": "belgium",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_013",
+   "parent": "army_belgium_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_belgium_1_d2_r1_u1",
+   "nation": "belgium",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_013",
+   "parent": "army_belgium_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_belgium_1_d2_r1_u2",
+   "nation": "belgium",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_013",
+   "parent": "army_belgium_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_belgium_1_d2_r1_u3",
+   "nation": "belgium",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_013",
+   "parent": "army_belgium_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_netherlands_1",
+   "nation": "netherlands",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_015",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_netherlands_1_d1",
+   "nation": "netherlands",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_015",
+   "parent": "army_netherlands_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_netherlands_1_d1_r1",
+   "nation": "netherlands",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_netherlands_1_d1_r1_u1",
+   "nation": "netherlands",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_netherlands_1_d1_r1_u2",
+   "nation": "netherlands",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_netherlands_1_d1_r1_u3",
+   "nation": "netherlands",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_netherlands_1_d1_r2",
+   "nation": "netherlands",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_netherlands_1_d1_r2_u1",
+   "nation": "netherlands",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_netherlands_1_d2",
+   "nation": "netherlands",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_015",
+   "parent": "army_netherlands_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_netherlands_1_d2_r1",
+   "nation": "netherlands",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_netherlands_1_d2_r1_u1",
+   "nation": "netherlands",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_netherlands_1_d2_r1_u2",
+   "nation": "netherlands",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_netherlands_1_d2_r1_u3",
+   "nation": "netherlands",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_015",
+   "parent": "army_netherlands_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_switzerland_1",
+   "nation": "switzerland",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_017",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_switzerland_1_d1",
+   "nation": "switzerland",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_017",
+   "parent": "army_switzerland_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_switzerland_1_d1_r1",
+   "nation": "switzerland",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_switzerland_1_d1_r1_u1",
+   "nation": "switzerland",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_switzerland_1_d1_r1_u2",
+   "nation": "switzerland",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_switzerland_1_d1_r1_u3",
+   "nation": "switzerland",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_switzerland_1_d1_r2",
+   "nation": "switzerland",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_switzerland_1_d1_r2_u1",
+   "nation": "switzerland",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_switzerland_1_d2",
+   "nation": "switzerland",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_017",
+   "parent": "army_switzerland_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_switzerland_1_d2_r1",
+   "nation": "switzerland",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_switzerland_1_d2_r1_u1",
+   "nation": "switzerland",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_switzerland_1_d2_r1_u2",
+   "nation": "switzerland",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_switzerland_1_d2_r1_u3",
+   "nation": "switzerland",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_017",
+   "parent": "army_switzerland_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_luxembourg_1",
+   "nation": "luxembourg",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_019",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_luxembourg_1_d1",
+   "nation": "luxembourg",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_019",
+   "parent": "army_luxembourg_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_luxembourg_1_d1_r1",
+   "nation": "luxembourg",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_luxembourg_1_d1_r1_u1",
+   "nation": "luxembourg",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_luxembourg_1_d1_r1_u2",
+   "nation": "luxembourg",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_luxembourg_1_d1_r1_u3",
+   "nation": "luxembourg",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_luxembourg_1_d1_r2",
+   "nation": "luxembourg",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_luxembourg_1_d1_r2_u1",
+   "nation": "luxembourg",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_luxembourg_1_d2",
+   "nation": "luxembourg",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_019",
+   "parent": "army_luxembourg_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_luxembourg_1_d2_r1",
+   "nation": "luxembourg",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_luxembourg_1_d2_r1_u1",
+   "nation": "luxembourg",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_luxembourg_1_d2_r1_u2",
+   "nation": "luxembourg",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_luxembourg_1_d2_r1_u3",
+   "nation": "luxembourg",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_019",
+   "parent": "army_luxembourg_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_portugal_1",
+   "nation": "portugal",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_020",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_portugal_1_d1",
+   "nation": "portugal",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_020",
+   "parent": "army_portugal_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_portugal_1_d1_r1",
+   "nation": "portugal",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_020",
+   "parent": "army_portugal_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_portugal_1_d1_r1_u1",
+   "nation": "portugal",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_020",
+   "parent": "army_portugal_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_portugal_1_d1_r1_u2",
+   "nation": "portugal",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_020",
+   "parent": "army_portugal_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_portugal_1_d1_r1_u3",
+   "nation": "portugal",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_020",
+   "parent": "army_portugal_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_portugal_1_d1_r2",
+   "nation": "portugal",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_020",
+   "parent": "army_portugal_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_portugal_1_d1_r2_u1",
+   "nation": "portugal",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_020",
+   "parent": "army_portugal_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_portugal_1_d2",
+   "nation": "portugal",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_020",
+   "parent": "army_portugal_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_portugal_1_d2_r1",
+   "nation": "portugal",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_020",
+   "parent": "army_portugal_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_portugal_1_d2_r1_u1",
+   "nation": "portugal",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_020",
+   "parent": "army_portugal_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_portugal_1_d2_r1_u2",
+   "nation": "portugal",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_020",
+   "parent": "army_portugal_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_portugal_1_d2_r1_u3",
+   "nation": "portugal",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_020",
+   "parent": "army_portugal_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_spain_1",
+   "nation": "spain",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_023",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_spain_1_d1",
+   "nation": "spain",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_023",
+   "parent": "army_spain_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_spain_1_d1_r1",
+   "nation": "spain",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_023",
+   "parent": "army_spain_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_spain_1_d1_r1_u1",
+   "nation": "spain",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_023",
+   "parent": "army_spain_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_spain_1_d1_r1_u2",
+   "nation": "spain",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_023",
+   "parent": "army_spain_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_spain_1_d1_r1_u3",
+   "nation": "spain",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_023",
+   "parent": "army_spain_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_spain_1_d1_r2",
+   "nation": "spain",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_023",
+   "parent": "army_spain_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_spain_1_d1_r2_u1",
+   "nation": "spain",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_023",
+   "parent": "army_spain_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_spain_1_d2",
+   "nation": "spain",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_023",
+   "parent": "army_spain_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_spain_1_d2_r1",
+   "nation": "spain",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_023",
+   "parent": "army_spain_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_spain_1_d2_r1_u1",
+   "nation": "spain",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_023",
+   "parent": "army_spain_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_spain_1_d2_r1_u2",
+   "nation": "spain",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_023",
+   "parent": "army_spain_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_spain_1_d2_r1_u3",
+   "nation": "spain",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_023",
+   "parent": "army_spain_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_german_empire_1",
+   "nation": "german_empire",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_028",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_german_empire_1_d1",
+   "nation": "german_empire",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_028",
+   "parent": "army_german_empire_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_german_empire_1_d1_r1",
+   "nation": "german_empire",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_german_empire_1_d1_r1_u1",
+   "nation": "german_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_german_empire_1_d1_r1_u2",
+   "nation": "german_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_german_empire_1_d1_r1_u3",
+   "nation": "german_empire",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_german_empire_1_d1_r2",
+   "nation": "german_empire",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_german_empire_1_d1_r2_u1",
+   "nation": "german_empire",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_german_empire_1_d2",
+   "nation": "german_empire",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_028",
+   "parent": "army_german_empire_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_german_empire_1_d2_r1",
+   "nation": "german_empire",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_german_empire_1_d2_r1_u1",
+   "nation": "german_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_german_empire_1_d2_r1_u2",
+   "nation": "german_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_german_empire_1_d2_r1_u3",
+   "nation": "german_empire",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_028",
+   "parent": "army_german_empire_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_austria_hungary_1",
+   "nation": "austria_hungary",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_036",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_austria_hungary_1_d1",
+   "nation": "austria_hungary",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_austria_hungary_1_d1_r1",
+   "nation": "austria_hungary",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_austria_hungary_1_d1_r1_u1",
+   "nation": "austria_hungary",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_austria_hungary_1_d1_r1_u2",
+   "nation": "austria_hungary",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_austria_hungary_1_d1_r1_u3",
+   "nation": "austria_hungary",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_austria_hungary_1_d1_r2",
+   "nation": "austria_hungary",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_austria_hungary_1_d1_r2_u1",
+   "nation": "austria_hungary",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_austria_hungary_1_d2",
+   "nation": "austria_hungary",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_austria_hungary_1_d2_r1",
+   "nation": "austria_hungary",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_austria_hungary_1_d2_r1_u1",
+   "nation": "austria_hungary",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_austria_hungary_1_d2_r1_u2",
+   "nation": "austria_hungary",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_austria_hungary_1_d2_r1_u3",
+   "nation": "austria_hungary",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_036",
+   "parent": "army_austria_hungary_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_denmark_1",
+   "nation": "denmark",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_044",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_denmark_1_d1",
+   "nation": "denmark",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_044",
+   "parent": "army_denmark_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_denmark_1_d1_r1",
+   "nation": "denmark",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_044",
+   "parent": "army_denmark_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_denmark_1_d1_r1_u1",
+   "nation": "denmark",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_044",
+   "parent": "army_denmark_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_denmark_1_d1_r1_u2",
+   "nation": "denmark",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_044",
+   "parent": "army_denmark_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_denmark_1_d1_r1_u3",
+   "nation": "denmark",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_044",
+   "parent": "army_denmark_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_denmark_1_d1_r2",
+   "nation": "denmark",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_044",
+   "parent": "army_denmark_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_denmark_1_d1_r2_u1",
+   "nation": "denmark",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_044",
+   "parent": "army_denmark_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_denmark_1_d2",
+   "nation": "denmark",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_044",
+   "parent": "army_denmark_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_denmark_1_d2_r1",
+   "nation": "denmark",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_044",
+   "parent": "army_denmark_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_denmark_1_d2_r1_u1",
+   "nation": "denmark",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_044",
+   "parent": "army_denmark_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_denmark_1_d2_r1_u2",
+   "nation": "denmark",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_044",
+   "parent": "army_denmark_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_denmark_1_d2_r1_u3",
+   "nation": "denmark",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_044",
+   "parent": "army_denmark_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_norway_1",
+   "nation": "norway",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_045",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_norway_1_d1",
+   "nation": "norway",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_045",
+   "parent": "army_norway_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_norway_1_d1_r1",
+   "nation": "norway",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_045",
+   "parent": "army_norway_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_norway_1_d1_r1_u1",
+   "nation": "norway",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_045",
+   "parent": "army_norway_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_norway_1_d1_r1_u2",
+   "nation": "norway",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_045",
+   "parent": "army_norway_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_norway_1_d1_r1_u3",
+   "nation": "norway",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_045",
+   "parent": "army_norway_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_norway_1_d1_r2",
+   "nation": "norway",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_045",
+   "parent": "army_norway_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_norway_1_d1_r2_u1",
+   "nation": "norway",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_045",
+   "parent": "army_norway_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_norway_1_d2",
+   "nation": "norway",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_045",
+   "parent": "army_norway_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_norway_1_d2_r1",
+   "nation": "norway",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_045",
+   "parent": "army_norway_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_norway_1_d2_r1_u1",
+   "nation": "norway",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_045",
+   "parent": "army_norway_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_norway_1_d2_r1_u2",
+   "nation": "norway",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_045",
+   "parent": "army_norway_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_norway_1_d2_r1_u3",
+   "nation": "norway",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_045",
+   "parent": "army_norway_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_sweden_1",
+   "nation": "sweden",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_049",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_sweden_1_d1",
+   "nation": "sweden",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_049",
+   "parent": "army_sweden_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_sweden_1_d1_r1",
+   "nation": "sweden",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_049",
+   "parent": "army_sweden_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_sweden_1_d1_r1_u1",
+   "nation": "sweden",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_049",
+   "parent": "army_sweden_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_sweden_1_d1_r1_u2",
+   "nation": "sweden",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_049",
+   "parent": "army_sweden_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_sweden_1_d1_r1_u3",
+   "nation": "sweden",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_049",
+   "parent": "army_sweden_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_sweden_1_d1_r2",
+   "nation": "sweden",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_049",
+   "parent": "army_sweden_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_sweden_1_d1_r2_u1",
+   "nation": "sweden",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_049",
+   "parent": "army_sweden_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_sweden_1_d2",
+   "nation": "sweden",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_049",
+   "parent": "army_sweden_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_sweden_1_d2_r1",
+   "nation": "sweden",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_049",
+   "parent": "army_sweden_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_sweden_1_d2_r1_u1",
+   "nation": "sweden",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_049",
+   "parent": "army_sweden_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_sweden_1_d2_r1_u2",
+   "nation": "sweden",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_049",
+   "parent": "army_sweden_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_sweden_1_d2_r1_u3",
+   "nation": "sweden",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_049",
+   "parent": "army_sweden_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_russian_empire_1",
+   "nation": "russian_empire",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_064",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_russian_empire_1_d1",
+   "nation": "russian_empire",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_064",
+   "parent": "army_russian_empire_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_russian_empire_1_d1_r1",
+   "nation": "russian_empire",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_russian_empire_1_d1_r1_u1",
+   "nation": "russian_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_russian_empire_1_d1_r1_u2",
+   "nation": "russian_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_russian_empire_1_d1_r1_u3",
+   "nation": "russian_empire",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_russian_empire_1_d1_r2",
+   "nation": "russian_empire",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_russian_empire_1_d1_r2_u1",
+   "nation": "russian_empire",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_russian_empire_1_d2",
+   "nation": "russian_empire",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_064",
+   "parent": "army_russian_empire_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_russian_empire_1_d2_r1",
+   "nation": "russian_empire",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_russian_empire_1_d2_r1_u1",
+   "nation": "russian_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_russian_empire_1_d2_r1_u2",
+   "nation": "russian_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_russian_empire_1_d2_r1_u3",
+   "nation": "russian_empire",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_064",
+   "parent": "army_russian_empire_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_romania_1",
+   "nation": "romania",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_070",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_romania_1_d1",
+   "nation": "romania",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_070",
+   "parent": "army_romania_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_romania_1_d1_r1",
+   "nation": "romania",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_070",
+   "parent": "army_romania_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_romania_1_d1_r1_u1",
+   "nation": "romania",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_070",
+   "parent": "army_romania_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_romania_1_d1_r1_u2",
+   "nation": "romania",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_070",
+   "parent": "army_romania_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_romania_1_d1_r1_u3",
+   "nation": "romania",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_070",
+   "parent": "army_romania_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_romania_1_d1_r2",
+   "nation": "romania",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_070",
+   "parent": "army_romania_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_romania_1_d1_r2_u1",
+   "nation": "romania",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_070",
+   "parent": "army_romania_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_romania_1_d2",
+   "nation": "romania",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_070",
+   "parent": "army_romania_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_romania_1_d2_r1",
+   "nation": "romania",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_070",
+   "parent": "army_romania_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_romania_1_d2_r1_u1",
+   "nation": "romania",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_070",
+   "parent": "army_romania_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_romania_1_d2_r1_u2",
+   "nation": "romania",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_070",
+   "parent": "army_romania_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_romania_1_d2_r1_u3",
+   "nation": "romania",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_070",
+   "parent": "army_romania_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_bulgaria_1",
+   "nation": "bulgaria",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_072",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_bulgaria_1_d1",
+   "nation": "bulgaria",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_072",
+   "parent": "army_bulgaria_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_bulgaria_1_d1_r1",
+   "nation": "bulgaria",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_bulgaria_1_d1_r1_u1",
+   "nation": "bulgaria",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_bulgaria_1_d1_r1_u2",
+   "nation": "bulgaria",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_bulgaria_1_d1_r1_u3",
+   "nation": "bulgaria",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_bulgaria_1_d1_r2",
+   "nation": "bulgaria",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_bulgaria_1_d1_r2_u1",
+   "nation": "bulgaria",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_bulgaria_1_d2",
+   "nation": "bulgaria",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_072",
+   "parent": "army_bulgaria_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_bulgaria_1_d2_r1",
+   "nation": "bulgaria",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_bulgaria_1_d2_r1_u1",
+   "nation": "bulgaria",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_bulgaria_1_d2_r1_u2",
+   "nation": "bulgaria",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_bulgaria_1_d2_r1_u3",
+   "nation": "bulgaria",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_072",
+   "parent": "army_bulgaria_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_serbia_1",
+   "nation": "serbia",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_074",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_serbia_1_d1",
+   "nation": "serbia",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_074",
+   "parent": "army_serbia_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_serbia_1_d1_r1",
+   "nation": "serbia",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_074",
+   "parent": "army_serbia_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_serbia_1_d1_r1_u1",
+   "nation": "serbia",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_074",
+   "parent": "army_serbia_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_serbia_1_d1_r1_u2",
+   "nation": "serbia",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_074",
+   "parent": "army_serbia_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_serbia_1_d1_r1_u3",
+   "nation": "serbia",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_074",
+   "parent": "army_serbia_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_serbia_1_d1_r2",
+   "nation": "serbia",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_074",
+   "parent": "army_serbia_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_serbia_1_d1_r2_u1",
+   "nation": "serbia",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_074",
+   "parent": "army_serbia_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_serbia_1_d2",
+   "nation": "serbia",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_074",
+   "parent": "army_serbia_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_serbia_1_d2_r1",
+   "nation": "serbia",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_074",
+   "parent": "army_serbia_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_serbia_1_d2_r1_u1",
+   "nation": "serbia",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_074",
+   "parent": "army_serbia_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_serbia_1_d2_r1_u2",
+   "nation": "serbia",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_074",
+   "parent": "army_serbia_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_serbia_1_d2_r1_u3",
+   "nation": "serbia",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_074",
+   "parent": "army_serbia_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_montenegro_1",
+   "nation": "montenegro",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_075",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_montenegro_1_d1",
+   "nation": "montenegro",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_075",
+   "parent": "army_montenegro_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_montenegro_1_d1_r1",
+   "nation": "montenegro",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_montenegro_1_d1_r1_u1",
+   "nation": "montenegro",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_montenegro_1_d1_r1_u2",
+   "nation": "montenegro",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_montenegro_1_d1_r1_u3",
+   "nation": "montenegro",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_montenegro_1_d1_r2",
+   "nation": "montenegro",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_montenegro_1_d1_r2_u1",
+   "nation": "montenegro",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_montenegro_1_d2",
+   "nation": "montenegro",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_075",
+   "parent": "army_montenegro_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_montenegro_1_d2_r1",
+   "nation": "montenegro",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_montenegro_1_d2_r1_u1",
+   "nation": "montenegro",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_montenegro_1_d2_r1_u2",
+   "nation": "montenegro",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_montenegro_1_d2_r1_u3",
+   "nation": "montenegro",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_075",
+   "parent": "army_montenegro_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_albania_1",
+   "nation": "albania",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_076",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_albania_1_d1",
+   "nation": "albania",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_076",
+   "parent": "army_albania_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_albania_1_d1_r1",
+   "nation": "albania",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_076",
+   "parent": "army_albania_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_albania_1_d1_r1_u1",
+   "nation": "albania",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_076",
+   "parent": "army_albania_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_albania_1_d1_r1_u2",
+   "nation": "albania",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_076",
+   "parent": "army_albania_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_albania_1_d1_r1_u3",
+   "nation": "albania",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_076",
+   "parent": "army_albania_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_albania_1_d1_r2",
+   "nation": "albania",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_076",
+   "parent": "army_albania_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_albania_1_d1_r2_u1",
+   "nation": "albania",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_076",
+   "parent": "army_albania_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_albania_1_d2",
+   "nation": "albania",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_076",
+   "parent": "army_albania_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_albania_1_d2_r1",
+   "nation": "albania",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_076",
+   "parent": "army_albania_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_albania_1_d2_r1_u1",
+   "nation": "albania",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_076",
+   "parent": "army_albania_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_albania_1_d2_r1_u2",
+   "nation": "albania",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_076",
+   "parent": "army_albania_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_albania_1_d2_r1_u3",
+   "nation": "albania",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_076",
+   "parent": "army_albania_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_greece_1",
+   "nation": "greece",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_077",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_greece_1_d1",
+   "nation": "greece",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_077",
+   "parent": "army_greece_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_greece_1_d1_r1",
+   "nation": "greece",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_077",
+   "parent": "army_greece_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_greece_1_d1_r1_u1",
+   "nation": "greece",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_077",
+   "parent": "army_greece_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_greece_1_d1_r1_u2",
+   "nation": "greece",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_077",
+   "parent": "army_greece_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_greece_1_d1_r1_u3",
+   "nation": "greece",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_077",
+   "parent": "army_greece_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_greece_1_d1_r2",
+   "nation": "greece",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_077",
+   "parent": "army_greece_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_greece_1_d1_r2_u1",
+   "nation": "greece",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_077",
+   "parent": "army_greece_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_greece_1_d2",
+   "nation": "greece",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_077",
+   "parent": "army_greece_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_greece_1_d2_r1",
+   "nation": "greece",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_077",
+   "parent": "army_greece_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_greece_1_d2_r1_u1",
+   "nation": "greece",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_077",
+   "parent": "army_greece_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_greece_1_d2_r1_u2",
+   "nation": "greece",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_077",
+   "parent": "army_greece_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_greece_1_d2_r1_u3",
+   "nation": "greece",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_077",
+   "parent": "army_greece_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_italy_1",
+   "nation": "italy",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_082",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_italy_1_d1",
+   "nation": "italy",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_082",
+   "parent": "army_italy_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_italy_1_d1_r1",
+   "nation": "italy",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_082",
+   "parent": "army_italy_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_italy_1_d1_r1_u1",
+   "nation": "italy",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_082",
+   "parent": "army_italy_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_italy_1_d1_r1_u2",
+   "nation": "italy",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_082",
+   "parent": "army_italy_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_italy_1_d1_r1_u3",
+   "nation": "italy",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_082",
+   "parent": "army_italy_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_italy_1_d1_r2",
+   "nation": "italy",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_082",
+   "parent": "army_italy_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_italy_1_d1_r2_u1",
+   "nation": "italy",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_082",
+   "parent": "army_italy_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_italy_1_d2",
+   "nation": "italy",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_082",
+   "parent": "army_italy_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_italy_1_d2_r1",
+   "nation": "italy",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_082",
+   "parent": "army_italy_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_italy_1_d2_r1_u1",
+   "nation": "italy",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_082",
+   "parent": "army_italy_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_italy_1_d2_r1_u2",
+   "nation": "italy",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_082",
+   "parent": "army_italy_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_italy_1_d2_r1_u3",
+   "nation": "italy",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_082",
+   "parent": "army_italy_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_ottoman_empire_1",
+   "nation": "ottoman_empire",
+   "echelon": "army",
+   "name_fr": "Armée nationale",
+   "region": "region_087",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)",
+   "morale": null
+  },
+  {
+   "id": "army_ottoman_empire_1_d1",
+   "nation": "ottoman_empire",
+   "echelon": "division",
+   "name_fr": "1e division",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_ottoman_empire_1_d1_r1",
+   "nation": "ottoman_empire",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (1e div.)",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_ottoman_empire_1_d1_r1_u1",
+   "nation": "ottoman_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.1",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_ottoman_empire_1_d1_r1_u2",
+   "nation": "ottoman_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 1.1.2",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d1_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_ottoman_empire_1_d1_r1_u3",
+   "nation": "ottoman_empire",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 1.1.3",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d1_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_ottoman_empire_1_d1_r2",
+   "nation": "ottoman_empire",
+   "echelon": "regiment",
+   "name_fr": "2er régiment (1e div.)",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_ottoman_empire_1_d1_r2_u1",
+   "nation": "ottoman_empire",
+   "echelon": "unit",
+   "unit_type": "cavalry",
+   "name_fr": "cavalry 1.2.1",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d1_r2",
+   "soldiers": 900,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_ottoman_empire_1_d2",
+   "nation": "ottoman_empire",
+   "echelon": "division",
+   "name_fr": "2e division",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_ottoman_empire_1_d2_r1",
+   "nation": "ottoman_empire",
+   "echelon": "regiment",
+   "name_fr": "1er régiment (2e div.)",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d2",
+   "soldiers": null,
+   "equipment": null,
+   "status": "FICTIF (bac à sable)"
+  },
+  {
+   "id": "army_ottoman_empire_1_d2_r1_u1",
+   "nation": "ottoman_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.1",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_ottoman_empire_1_d2_r1_u2",
+   "nation": "ottoman_empire",
+   "echelon": "unit",
+   "unit_type": "infantry",
+   "name_fr": "infantry 2.1.2",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d2_r1",
+   "soldiers": 3000,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  },
+  {
+   "id": "army_ottoman_empire_1_d2_r1_u3",
+   "nation": "ottoman_empire",
+   "echelon": "unit",
+   "unit_type": "artillery",
+   "name_fr": "artillery 2.1.3",
+   "region": "region_087",
+   "parent": "army_ottoman_empire_1_d2_r1",
+   "soldiers": 600,
+   "equipment": null,
+   "morale": null,
+   "status": "FICTIF (bac à sable) : effectif de test"
+  }
+ ],
+ "provenance": {
+  "territories_capitals": "atlas validé (data/world/map ; voir DATA_LICENSES.md)",
+  "playable_powers": "D-005, PROJECT.md §4",
+  "diplomacy_start": "docs/diplomacy/OVERVIEW.md §4 (contexte, pas script)",
+  "unknown_values": "null = inconnu ; aucune statistique historique n'est inventée"
+ },
+ "sandbox_warning": "FORCES FICTIVES : composition identique pour tous les États, valeurs rondes de test. Ni historique ni équilibré. Ne pas utiliser comme donnée de jeu."
+}

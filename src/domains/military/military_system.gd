@@ -30,6 +30,10 @@ static func validate_move(state: GameState, world: WorldMap, rules: Dictionary, 
 	var f: Dictionary = state.formations[fid]
 	if f["nation"] != order["nation"]:
 		return "commandement national seulement : cette formation n'appartient pas à %s" % order["nation"]
+	if not state.is_top_level(f):
+		return "seules les armées se déplacent sur la carte stratégique (les unités suivent leur armée)"
+	if state.is_engaged(fid):
+		return "formation engagée dans une bataille en cours : déplacement impossible"
 	var target: String = order.get("target", "")
 	if not world.has_region(target):
 		return "région inconnue"
@@ -56,7 +60,7 @@ static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, 
 	# 1. Tous les mouvements valides sont appliqués en même temps.
 	for order: Dictionary in moves:
 		var f: Dictionary = state.formations[order["formation"]]
-		f["region"] = order["target"]
+		state.move_army(f["id"], order["target"])
 		f["planned_target"] = ""
 		state.log_event("armée", "%s (%s) : %s → %s" % [f["name_fr"], state.nations[f["nation"]]["name_fr"],
 			world.regions[origin[f["id"]]]["name_fr"], world.regions[order["target"]]["name_fr"]], [f["nation"]])
@@ -65,7 +69,7 @@ static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, 
 	var ids := state.regions.keys()
 	ids.sort()
 	for rid: String in ids:
-		var present := state.formations_in(rid)
+		var present := state.armies_in(rid)
 		var hostile_pairs := false
 		for i in present.size():
 			for j in range(i + 1, present.size()):

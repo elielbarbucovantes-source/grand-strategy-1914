@@ -100,18 +100,67 @@ def build() -> dict:
     }
 
 
+# Bac à sable FICTIF : forces génériques identiques pour tous les États. Ni historique ni
+# équilibré. Sert uniquement à jouer et à tester le système de combat tant que les effectifs
+# de 1914 ne sont pas sourcés (MIL-01). Les chiffres sont des valeurs RONDES DE TEST.
+SANDBOX_OUT = ROOT / "data/scenarios/sandbox_fictif.json"
+SANDBOX_COMPOSITION = [  # (division, régiment, type, soldats) : FICTIF
+    (1, 1, "infantry", 3000), (1, 1, "infantry", 3000), (1, 1, "artillery", 600),
+    (1, 2, "cavalry", 900),
+    (2, 1, "infantry", 3000), (2, 1, "infantry", 3000), (2, 1, "artillery", 600),
+]
+
+
+def build_sandbox(campaign: dict) -> dict:
+    scenario = json.loads(json.dumps(campaign))
+    scenario["id"] = "sandbox_fictif"
+    scenario["name_fr"] = "Bac à sable FICTIF (forces génériques de test)"
+    scenario["sandbox_warning"] = ("FORCES FICTIVES : composition identique pour tous les États, valeurs rondes de test. "
+                                   "Ni historique ni équilibré. Ne pas utiliser comme donnée de jeu.")
+    formations = []
+    for army in campaign["formations"]:
+        nid = army["nation"]
+        a = dict(army)
+        a["status"] = "FICTIF (bac à sable)"
+        a["morale"] = None
+        formations.append(a)
+        divisions = {}
+        for div, reg, kind, soldiers in SANDBOX_COMPOSITION:
+            did = f"{a['id']}_d{div}"
+            if did not in divisions:
+                divisions[did] = True
+                formations.append({"id": did, "nation": nid, "echelon": "division", "name_fr": f"{div}e division",
+                                   "region": a["region"], "parent": a["id"], "soldiers": None, "equipment": None,
+                                   "status": "FICTIF (bac à sable)"})
+            rid_ = f"{did}_r{reg}"
+            if not any(f["id"] == rid_ for f in formations):
+                formations.append({"id": rid_, "nation": nid, "echelon": "regiment", "name_fr": f"{reg}er régiment ({div}e div.)",
+                                   "region": a["region"], "parent": did, "soldiers": None, "equipment": None,
+                                   "status": "FICTIF (bac à sable)"})
+            index = sum(1 for f in formations if f.get("parent") == rid_) + 1
+            formations.append({"id": f"{rid_}_u{index}", "nation": nid, "echelon": "unit", "unit_type": kind,
+                               "name_fr": f"{kind} {div}.{reg}.{index}", "region": a["region"], "parent": rid_,
+                               "soldiers": soldiers, "equipment": None, "morale": None,
+                               "status": "FICTIF (bac à sable) : effectif de test"})
+    scenario["formations"] = formations
+    return scenario
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--check", action="store_true")
     arguments = parser.parse_args()
-    text = json.dumps(build(), ensure_ascii=False, indent=1) + "\n"
+    campaign = build()
+    outputs = {OUT: json.dumps(campaign, ensure_ascii=False, indent=1) + "\n",
+               SANDBOX_OUT: json.dumps(build_sandbox(campaign), ensure_ascii=False, indent=1) + "\n"}
     if arguments.check:
-        ok = OUT.exists() and OUT.read_text(encoding="utf-8") == text
-        print("[PASS] scénario à jour" if ok else "[FAIL] scénario obsolète")
+        ok = all(path.exists() and path.read_text(encoding="utf-8") == text for path, text in outputs.items())
+        print("[PASS] scénarios à jour" if ok else "[FAIL] scénario(s) obsolète(s)")
         return 0 if ok else 1
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(text, encoding="utf-8")
-    print(f"{OUT.relative_to(ROOT)} écrit")
+    for path, text in outputs.items():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+        print(f"{path.relative_to(ROOT)} écrit")
     return 0
 
 

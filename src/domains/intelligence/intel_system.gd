@@ -23,9 +23,13 @@ static func view_for(state: GameState, world: WorldMap, nation: String) -> Dicti
 	var formations: Array = []
 	for fid: String in state.sorted_formation_ids():
 		var f: Dictionary = state.formations[fid]
+		if not state.is_top_level(f):
+			continue  # vue stratégique : armées seulement (le détail des unités relève de la bataille)
 		if f["nation"] == nation or seen.has(f["region"]):
 			formations.append({"id": f["id"], "nation": f["nation"], "region": f["region"], "echelon": f["echelon"],
-				"soldiers": f["soldiers"] if f["nation"] == nation else null})
+				"soldiers": state.soldiers_of(f["id"]) if f["nation"] == nation else null,
+				"engaged": state.is_engaged(f["id"]) if f["nation"] == nation else false,
+				"encircled": bool(f.get("encircled", false)) if f["nation"] == nation else false})
 	var political: Dictionary = {}
 	for rid: String in state.regions:
 		political[rid] = {"controller": state.controller(rid), "sovereign": state.sovereign(rid)}

@@ -15,6 +15,10 @@ func _init() -> void:
 		if not file.ends_with(".gd"):
 			continue
 		var script: GDScript = load("res://tests/unit/" + file)
+		if script == null or not script.can_instantiate():
+			failures += 1
+			printerr("  FAIL  %s : script de test illisible (erreur d'analyse)" % file)
+			continue
 		var suite: Object = script.new()
 		suite.set("runner", self)
 		for method: Dictionary in script.get_script_method_list():

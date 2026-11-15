@@ -78,6 +78,7 @@ def build() -> dict:
     adjacency = json.loads((MAP / "adjacency.json").read_text(encoding="utf-8"))
     cities = json.loads((MAP / "cities.json").read_text(encoding="utf-8"))["cities"]
     terrain = json.loads((MAP / "terrain.json").read_text(encoding="utf-8"))
+    infra = json.loads((MAP / "infrastructure.json").read_text(encoding="utf-8"))
     zones = json.loads((MAP / "build/agent_2/maritime_zones.json").read_text(encoding="utf-8"))
 
     features = geo["features"]
@@ -139,6 +140,11 @@ def build() -> dict:
                                    "derivation": l["derivation"]} for l in adjacency["region_maritime_zone_links"]],
         "maritime_zone_connections": [{"a": c["zone_a_id"], "b": c["zone_b_id"]}
                                       for c in adjacency["maritime_zone_connections"]],
+        # Paires de régions reliées par un axe ferroviaire des lots consolidés (réseau fragmenté :
+        # docs/map/decisions/THEMATIC_LAYERS.md). Sert aux délais de renfort et à la retraite.
+        "rail_region_links": sorted({tuple(sorted((r["properties"]["from_region_id"], r["properties"]["to_region_id"])))
+                                     for r in infra["railways"]["features"]
+                                     if r["properties"]["from_region_id"] != r["properties"]["to_region_id"]}),
         "proximity_only_pairs": [{"a": x["region_a_id"], "b": x["region_b_id"], "distance_km": x["distance_km"]}
                                  for x in adjacency["proximity_only_pairs"]],
     }
@@ -147,7 +153,7 @@ def build() -> dict:
         "crs": "EPSG:3035 (ETRS89-LAEA), kilomètres ; y vers le nord",
         "generated_by": "tools/export/build_game_data.py",
         "sources": {name: sha256(MAP / name) for name in
-                    ("regions.geojson", "adjacency.json", "cities.json", "terrain.json")}
+                    ("regions.geojson", "adjacency.json", "cities.json", "terrain.json", "infrastructure.json")}
                    | {"maritime_zones.json": sha256(MAP / "build/agent_2/maritime_zones.json")},
         "transform": {"snap_m": SNAP_M, "simplify_m": SIMPLIFY_M, "zone_simplify_m": ZONE_SIMPLIFY_M,
                       "purpose": "rendu et graphe de jeu ; la géométrie validée fait foi"},

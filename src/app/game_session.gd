@@ -6,6 +6,8 @@ extends RefCounted
 
 const RULES_PATH := "res://data/rules/game_rules.json"
 const SCENARIO_PATH := "res://data/scenarios/campaign_1914.json"
+const SANDBOX_PATH := "res://data/scenarios/sandbox_fictif.json"
+const COMBAT_RULES_PATH := "res://data/rules/combat_rules.json"
 const SAVE_DIR := "user://saves"
 
 var world: WorldMap
@@ -25,7 +27,8 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.world = WorldMap.load_from(world_path)
 	s.rules = load_json(RULES_PATH)
 	s.scenario = load_json(SCENARIO_PATH)
-	if s.world == null or s.rules.is_empty() or s.scenario.is_empty():
+	s.rules["combat"] = load_json(COMBAT_RULES_PATH)
+	if s.world == null or s.rules.is_empty() or s.scenario.is_empty() or (s.rules["combat"] as Dictionary).is_empty():
 		push_error("GameSession : données introuvables")
 		return null
 	return s
@@ -39,7 +42,9 @@ func playable_nations() -> Array:
 	return out
 
 
-func new_game(player: String, start_month: int, seed_value: int = 1914) -> String:
+## `scenario_id` : "campaign_1914" (historique, effectifs inconnus) ou "sandbox_fictif" (forces FICTIVES de test).
+func new_game(player: String, start_month: int, seed_value: int = 1914, scenario_id: String = "campaign_1914") -> String:
+	scenario = load_json(SANDBOX_PATH if scenario_id == "sandbox_fictif" else SCENARIO_PATH)
 	if not GameCalendar.is_valid_month(start_month):
 		return "mois de départ invalide"
 	if not scenario["nations"].has(player):
@@ -66,6 +71,8 @@ func queue_order(order: Dictionary) -> String:
 				reason = ""  # revalidé après la phase diplomatique du tour
 		Orders.SET_INDUSTRY_ALLOCATION:
 			reason = EconomySystem.validate_allocation(rules, order)
+		Orders.BUILD_DEFENSE:
+			reason = DefenseSystem.validate(state, rules["combat"], order)
 		_:
 			reason = DiplomacySystem.validate(state, order)
 	if reason != "":
@@ -95,6 +102,8 @@ func cancel_orders() -> void:
 
 ## Fin du mois : décisions des IA (vues filtrées), puis résolution simultanée de tous les ordres.
 func end_turn() -> Dictionary:
+	if not state.active_battles.is_empty():
+		return {"error": "%d bataille(s) en cours : elles doivent être jouées ou résolues avant le mois suivant (T-029 A)" % state.active_battles.size()}
 	var orders: Dictionary = {state.player_nation: player_orders().duplicate(true)}
 	for nid: String in state.nation_order:
 		if nid == state.player_nation:
@@ -102,6 +111,44 @@ func end_turn() -> Dictionary:
 		orders[nid] = NationAgent.decide(IntelSystem.view_for(state, world, nid), world, rules)
 	last_report = TurnResolver.resolve(state, world, rules, orders)
 	return last_report
+
+
+## Désigne une unité comme réserve pour les prochaines batailles (T-040 B).
+func set_reserve(uid: String, on: bool) -> String:
+	if not state.formations.has(uid) or state.formations[uid]["nation"] != state.player_nation:
+		return "unité inconnue ou étrangère"
+	if state.formations[uid]["echelon"] != "unit":
+		return "seules les unités peuvent être gardées en réserve"
+	if state.formations[uid].get("battle_id", "") != "":
+		return "unité engagée dans une bataille"
+	state.formations[uid]["reserve"] = on
+	return ""
+
+
+# ------------------------------------------------------------------ batailles du joueur
+## Bataille que le joueur doit commander maintenant (une seule à la fois, file T-029).
+func current_battle() -> Dictionary:
+	return BattleManager.next_for(state, state.player_nation)
+
+
+## Avance la bataille courante de `ticks` pas (IA pour les autres pays) ; clôture si terminée.
+func advance_battle(ticks: int) -> Dictionary:
+	var b := current_battle()
+	if b.is_empty():
+		return {}
+	BattleManager.advance(b, rules["combat"], ticks)
+	if b["status"] == "ended":
+		return BattleManager.finish(state, world, rules["combat"], b)
+	return {}
+
+
+## Résolution automatique : l'IA joue aussi les unités du joueur jusqu'à la durée maximale.
+func auto_resolve_battle() -> Dictionary:
+	var b := current_battle()
+	if b.is_empty():
+		return {}
+	BattleManager.run_to_end(b, rules["combat"], true)
+	return BattleManager.finish(state, world, rules["combat"], b)
 
 
 func save_game(name: String) -> String:

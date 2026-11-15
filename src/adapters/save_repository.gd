@@ -27,7 +27,7 @@ static func save(path: String, state: GameState, world: WorldMap, rules: Diction
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
 		return "écriture impossible : %s" % error_string(FileAccess.get_open_error())
-	file.store_string(JSON.stringify(envelope(state, world, rules), "", true))
+	file.store_string(JSON.stringify(envelope(state, world, rules), "", true, true))
 	file.close()
 	return ""
 
@@ -56,13 +56,18 @@ static func load_save(path: String, world: WorldMap, rules: Dictionary) -> Dicti
 	return {"state": state}
 
 
+## Sauvegardes triées de la plus ancienne à la plus récente (date de modification, puis nom).
 static func list_saves(dir_path: String) -> PackedStringArray:
-	var out := PackedStringArray()
+	var entries: Array = []
 	var dir := DirAccess.open(dir_path)
 	if dir == null:
-		return out
+		return PackedStringArray()
 	for name in dir.get_files():
 		if name.ends_with(".json"):
-			out.append(dir_path.path_join(name))
-	out.sort()
+			var path := dir_path.path_join(name)
+			entries.append([FileAccess.get_modified_time(path), path])
+	entries.sort_custom(func(x: Array, y: Array) -> bool: return x[0] < y[0] if x[0] != y[0] else x[1] < y[1])
+	var out := PackedStringArray()
+	for e: Array in entries:
+		out.append(e[1])
 	return out

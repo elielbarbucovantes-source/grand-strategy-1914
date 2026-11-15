@@ -13,6 +13,7 @@ var neighbors: Dictionary = {}          # id -> Array[Dictionary] {"to": String,
 var maritime_links: Dictionary = {}     # region id -> Array[String] (zones)
 var maritime_zones: Dictionary = {}     # zone id -> Dictionary
 var source_sha256: String = ""
+var rail_links: Dictionary = {}         # "a|b" (triés) -> true : axe ferroviaire entre deux régions
 
 
 static func load_from(path: String = DEFAULT_PATH) -> WorldMap:
@@ -47,6 +48,8 @@ func _ingest(data: Dictionary) -> void:
 		_link(edge["a"], edge["b"], "land")
 	for strait: Dictionary in graph["strait_crossings"]:
 		_link(strait["a"], strait["b"], "strait")
+	for pair: Array in graph.get("rail_region_links", []):
+		rail_links["%s|%s" % [pair[0], pair[1]]] = true
 	for link: Dictionary in graph["region_maritime_links"]:
 		(maritime_links[link["region"]] as Array).append(link["zone"])
 	for rid: String in region_ids:
@@ -56,6 +59,10 @@ func _ingest(data: Dictionary) -> void:
 func _link(a: String, b: String, kind: String) -> void:
 	(neighbors[a] as Array).append({"to": b, "kind": kind})
 	(neighbors[b] as Array).append({"to": a, "kind": kind})
+
+
+func has_rail_link(a: String, b: String) -> bool:
+	return rail_links.has("%s|%s" % [a, b] if a < b else "%s|%s" % [b, a])
 
 
 func has_region(rid: String) -> bool:

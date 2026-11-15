@@ -5,6 +5,8 @@ extends CanvasLayer
 ## l'affichage provient de l'état ou de la vue filtrée du joueur.
 
 signal request_menu
+signal request_battle
+signal request_planning(region_id: String)
 
 const NOT_FUNCTIONAL := "[color=#b03a2e][b]NON FONCTIONNEL[/b][/color]"
 
@@ -16,6 +18,7 @@ var status: Label
 var date_label: Label
 var nation_label: Label
 var share_label: Label
+var battle_button: Button
 var pages: Dictionary = {}    # nom -> VBoxContainer
 
 
@@ -41,6 +44,7 @@ func _build() -> void:
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bar.add_child(spacer)
+	battle_button = _button(bar, "⚔ Bataille en cours", func() -> void: request_battle.emit())
 	_button(bar, "Fin du mois ▶", _on_end_turn)
 	_button(bar, "Sauvegarder", _on_save)
 	_button(bar, "Charger", _on_load)
@@ -115,6 +119,7 @@ func refresh() -> void:
 	date_label.text = "  %s  " % st.date_label()
 	nation_label.text = "%s  " % _n(st.player_nation)
 	share_label.text = "Contrôle : %.1f %% des régions (seuil de 90 %% validé ; calcul OUVERT)" % (100.0 * session.territorial_share(st.player_nation))
+	battle_button.visible = not session.current_battle().is_empty()
 	var current := tabs.get_tab_title(tabs.current_tab)
 	match current:
 		"Pays": _page_country()
@@ -254,6 +259,8 @@ func _page_army() -> void:
 	var st := session.state
 	_rich(box, "Hiérarchie VALIDÉE : soldats et équipements → unités → régiments → divisions → armées. Effectifs et composition : [i]inconnus (MIL-01)[/i].\nSélectionnez une formation, puis cliquez une région voisine sur la carte pour ordonner un déplacement (portée provisoire : 1 région par mois).")
 	for f: Dictionary in st.formations_of(st.player_nation):
+		if not st.is_top_level(f):
+			continue
 		var row := HBoxContainer.new()
 		box.add_child(row)
 		var txt := "%s — %s%s%s" % [f["name_fr"], session.world.regions[f["region"]]["name_fr"],
@@ -265,6 +272,24 @@ func _page_army() -> void:
 			refresh())
 		b.toggle_mode = true
 		b.button_pressed = map_view.selected_formation == f["id"]
+		var soldiers: Variant = st.soldiers_of(f["id"])
+		var extra := "Effectif : %s ; moral d'armée : %s%s%s" % ["[i]inconnu (MIL-01)[/i]" if soldiers == null else str(soldiers),
+			"—" if f.get("morale") == null else "%.0f" % float(f["morale"]), " ; [color=#b03a2e]ENCERCLÉE[/color]" if f.get("encircled", false) else "",
+			" ; [color=#b03a2e]ENGAGÉE[/color]" if st.is_engaged(f["id"]) else ""]
+		_rich(box, extra)
+		for uid: String in st.units_of(f["id"]):
+			var su: Dictionary = st.formations[uid]
+			var urow := HBoxContainer.new()
+			box.add_child(urow)
+			_label(urow, "   %s : %s soldats, moral %s" % [su["name_fr"], str(su.get("soldiers")), "—" if su.get("morale") == null else "%.0f" % float(su["morale"])], 11)
+			var rb := CheckBox.new()
+			rb.text = "réserve"
+			rb.button_pressed = bool(su.get("reserve", false))
+			rb.toggled.connect(func(on: bool) -> void:
+				var err := session.set_reserve(uid, on)
+				say(("Réserve : " + ("oui" if on else "non")) if err == "" else ("Refusé : " + err)))
+			urow.add_child(rb)
+		_button(box, "Préparer les défenses de %s" % session.world.regions[f["region"]]["name_fr"], func() -> void: request_planning.emit(f["region"]))
 	_rich(box, "\nMobilisation et création de formations : %s (règles MIL-02 ouvertes).\nBatailles : règles T-029 de synchronisation, commandement et pause implémentées ; [b]résolution du combat OUVERTE[/b] : un affrontement est clos sans issue (résolveur neutre provisoire)." % NOT_FUNCTIONAL)
 	if not st.battles.is_empty():
 		_rich(box, "\n[b]Dernières batailles[/b]")
@@ -359,9 +384,15 @@ func _on_region_clicked(rid: String) -> void:
 
 func _on_end_turn() -> void:
 	var rep := session.end_turn()
+	if rep.has("error"):
+		say(rep["error"])
+		refresh()
+		return
 	var mine := (rep["rejected"] as Array).filter(func(r: Dictionary) -> bool: return r["order"]["nation"] == session.state.player_nation)
 	say("%s résolu : %d ordre(s) exécuté(s) (tous pays), %d bataille(s), %d ordre(s) refusé(s) pour vous." % [rep["resolved_month"], rep["accepted"], rep["battles"], mine.size()])
 	refresh()
+	if not session.current_battle().is_empty():
+		request_battle.emit()
 
 
 func _on_save() -> void:

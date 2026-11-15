@@ -1,0 +1,120 @@
+{
+ "format": "gs1914.combat_rules",
+ "format_version": 1,
+ "_statut": "Décisions T-029 à T-044 VALIDÉES par le directeur (principes). TOUTES les valeurs numériques ci-dessous sont PROVISOIRES (équilibrage à venir) : elles ne sont ni historiques ni définitives.",
+
+ "tick_seconds": 2.0,
+ "battlefield": {"width": 2000.0, "height": 1400.0, "edge_margin": 60.0,
+  "_note": "Champ de bataille abstrait : forme de la région normalisée ; unités abstraites (pas des mètres)."},
+
+ "unit_types": {
+  "infantry":  {"speed": 3.2, "range": 260.0, "lethality": 0.0011, "melee": 1.0, "spot_range": 330.0, "exposure": 1.0, "dig_rate": 1.0, "label_fr": "Infanterie"},
+  "cavalry":   {"speed": 7.0, "range": 160.0, "lethality": 0.0006, "melee": 1.6, "spot_range": 520.0, "exposure": 1.15, "dig_rate": 0.4, "label_fr": "Cavalerie"},
+  "artillery": {"speed": 1.8, "range": 700.0, "lethality": 0.0042, "melee": 0.3, "spot_range": 300.0, "exposure": 0.6, "dig_rate": 0.6, "label_fr": "Artillerie"},
+  "_statut": "PROPOSÉ : types et valeurs provisoires (MIL-01 ouvert)"
+ },
+
+ "formations": {
+  "_statut": "T-031 VALIDÉ : trois formations inspirées du principe de Lines of Battle, adaptées à 1914. Caractéristiques PROPOSÉES et configurables.",
+  "skirmish_line": {"label_fr": "Ligne de tirailleurs", "speed": 0.75, "fire": 1.0, "exposure": 0.65, "charge": 0.6, "morale_resist": 1.0, "spot_stealth": 0.8,
+   "terrain_speed_bonus": {"forests": 1.15, "hills": 1.1}, "description": "Dispersée : bon feu, faible exposition, lente ; charge peu efficace."},
+  "assault_column": {"label_fr": "Colonne d'assaut", "speed": 1.35, "fire": 0.45, "exposure": 1.5, "charge": 1.6, "morale_resist": 1.15, "spot_stealth": 1.2,
+   "terrain_speed_bonus": {"plains": 1.1}, "description": "Concentrée : rapide, charges puissantes, très exposée au feu, tir réduit."},
+  "entrenched": {"label_fr": "Position retranchée", "speed": 0.25, "fire": 1.15, "exposure": 0.45, "charge": 0.3, "morale_resist": 1.35, "spot_stealth": 0.6,
+   "terrain_speed_bonus": {}, "description": "Défensive : quasi immobile, meilleure couverture et meilleur feu ; profite pleinement des tranchées."}
+ },
+
+ "terrain": {
+  "_statut": "PROPOSÉ : modificateurs par catégorie de relief de la région (moyenne des catégories).",
+  "plains":    {"speed": 1.0,  "cover": 0.0,  "dig": 1.0,  "spot": 1.0},
+  "hills":     {"speed": 0.8,  "cover": 0.15, "dig": 0.8,  "spot": 1.15},
+  "mountains": {"speed": 0.55, "cover": 0.3,  "dig": 0.5,  "spot": 0.85},
+  "forests":   {"speed": 0.7,  "cover": 0.25, "dig": 0.75, "spot": 0.6},
+  "marshes":   {"speed": 0.5,  "cover": 0.1,  "dig": 0.4,  "spot": 0.9}
+ },
+
+ "morale": {
+  "_statut": "T-038 VALIDÉ (moral individuel influencé par le moral de l'armée ; remplace D-016 sur ce point). Seuils PROPOSÉS.",
+  "max": 100.0, "army_default": 70.0, "army_influence_per_tick": 0.004,
+  "loss_shock": 260.0, "under_fire_per_tick": 0.02, "objective_hold_per_tick": 0.01,
+  "rout_contagion_radius": 180.0, "rout_contagion_per_tick": 0.05,
+  "command_post_radius": 250.0, "command_post_recovery_per_tick": 0.04,
+  "disorganized_threshold": 40.0, "disorganized_fire": 0.6, "disorganized_speed": 0.8,
+  "effectiveness_floor": 0.45,
+  "victory_army_bonus": 6.0, "defeat_army_penalty": 10.0,
+  "monthly_recovery": 15.0
+ },
+ "rout": {
+  "_statut": "T-039 VALIDÉ (principe de Lines of Battle, déroute individuelle). Seuils PROPOSÉS.",
+  "threshold": 20.0, "rally_threshold": 35.0, "rally_quiet_ticks": 30, "speed_mult": 1.4, "vulnerability": 1.8
+ },
+ "combat": {
+  "_statut": "T-042 VALIDÉ (pertes individuelles par unité). Formules PROPOSÉES.",
+  "falloff_min": 0.35, "melee_range": 40.0, "charge_speed_mult": 1.6, "charge_morale_shock": 18.0,
+  "charge_melee_lethality": 0.008, "role_exposure": {"artillery_rear_factor": 0.7},
+  "min_unit_soldiers": 50, "trench_cover_per_level": 0.12, "installation_radius": 90.0,
+  "fatigue_per_engaged_tick": 0.0004, "fatigue_floor": 0.7, "installation_damage_per_artillery_tick": 0.0015
+ },
+ "fog": {
+  "_statut": "T-035 VALIDÉ. Valeurs PROPOSÉES.",
+  "update_ticks": 3, "stale_ticks": 45, "forget_ticks": 150, "estimate_rounding": 250
+ },
+ "duration": {
+  "_statut": "T-036 VALIDÉ (durée variable, pas de prolongation ; 30 min maximum selon le dossier). Formule PROPOSÉE.",
+  "base_minutes": 10.0, "per_10000_soldiers_minutes": 4.0, "per_extra_nation_minutes": 1.5, "per_objective_minutes": 0.5,
+  "terrain_minutes": {"plains": 0.0, "hills": 1.5, "mountains": 4.0, "forests": 2.5, "marshes": 2.0},
+  "min_minutes": 8.0, "max_minutes": 30.0
+ },
+ "victory": {
+  "_statut": "T-037 VALIDÉ (pertes + contrôle territorial). Pondérations PROPOSÉES.",
+  "weight_losses": 0.55, "weight_territory": 0.45, "decisive_margin": 0.08,
+  "objective_radius": 140.0, "objective_weights": {"capital": 3.0, "city": 1.5, "centre": 1.0}
+ },
+ "reinforcements": {
+  "_statut": "T-040 VALIDÉ (renforts progressifs, réserves, tranchées ; ni illimités ni instantanés). Valeurs PROPOSÉES.",
+  "base_delay_minutes": 3.0, "km_per_minute_road": 9.0, "rail_speed_mult": 2.5, "reserve_delay_minutes": 1.5,
+  "max_reinforcement_units_per_side": 12
+ },
+ "construction": {
+  "_statut": "T-032/T-033 VALIDÉ (tranchées dessinées, installations placées ; hors bataille et en bataille, plus lent sous le feu). Valeurs PROPOSÉES.",
+  "types": {
+   "trench_segment":  {"label_fr": "Tranchée (segment)", "work_per_100_length": 4000.0, "max_level": 3},
+   "machine_gun_nest": {"label_fr": "Nid de mitrailleuses", "work": 6000.0, "fire_bonus": 0.35, "cover": 0.3},
+   "artillery_position": {"label_fr": "Position d'artillerie", "work": 8000.0, "fire_bonus": 0.25, "cover": 0.2},
+   "command_post": {"label_fr": "Poste de commandement", "work": 5000.0, "fire_bonus": 0.0, "cover": 0.15}
+  },
+  "work_per_soldier_per_tick_battle": 0.02,
+  "work_per_soldier_per_month": 4.0,
+  "under_fire_rate": 0.25, "under_fire_memory_ticks": 10, "builder_exposure_mult": 1.3,
+  "trench_capacity_per_soldier": 1.0, "trench_buffer": 45.0,
+  "resource_cost_status": "OUVERT : catégories de ressources non définies (R-03) ; aucun coût en ressources n'est déduit"
+ },
+ "retreat": {
+  "_statut": "T-043 VALIDÉ. Critères de choix PROPOSÉS.",
+  "prefer_connected_to_capital": 3.0, "enemy_neighbor_penalty": 1.0, "rail_bonus": 0.5
+ },
+ "encirclement": {
+  "_statut": "T-044 VALIDÉ (destruction, reddition ou libération). Valeurs PROPOSÉES.",
+  "monthly_morale_loss": 12.0, "monthly_attrition": 0.06, "surrender_morale": 15.0
+ },
+ "priority": {
+  "_statut": "T-029 D : critères de criticité CONFIGURABLES (PROPOSÉS).",
+  "critical_score": 3.0,
+  "criteria": {"capital_region": 3.0, "human_participant": 1.0, "per_10000_soldiers": 0.5, "encircled_units": 1.5}
+ },
+ "joint_command": {
+  "_statut": "T-029 E/F/G VALIDÉ. Départage final PROPOSÉ (déterministe).",
+  "final_tiebreak": "nation_id_ascending"
+ },
+ "disconnection": {
+  "_statut": "T-029 J : NON VALIDÉ par le directeur. Proposition technique configurable.",
+  "policy": "ai_hold_then_takeover", "grace_ticks": 30,
+  "policies_available": ["ai_hold_then_takeover", "hold_position", "auto_resolve"]
+ },
+ "ai": {
+  "_statut": "Comportements PROPOSÉS (niveau 1 tactique), configurables.",
+  "charge_min_morale": 60.0, "charge_target_max_morale": 45.0, "charge_range": 220.0,
+  "reserve_commit_frontline_morale": 45.0, "withdraw_morale": 28.0, "column_distance": 500.0,
+  "reinforce_when_ratio_below": 1.1, "decision_ticks": 5
+ }
+}

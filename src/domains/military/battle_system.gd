@@ -72,11 +72,12 @@ static func joint_commander(state: GameState, formation_ids: Array) -> Dictionar
 	nations.sort_custom(func(a: String, b: String) -> bool: return int(soldiers[a]) > int(soldiers[b]))
 	if int(soldiers[nations[0]]) > int(soldiers[nations[1]]):
 		return {"nation": nations[0], "basis": "plus grand nombre de soldats au début"}
-	var p0: Variant = state.nations[nations[0]].get("military_prestige")
-	var p1: Variant = state.nations[nations[1]].get("military_prestige")
-	if p0 == null or p1 == null or p0 == p1:
-		return {"nation": null, "basis": "égalité d'effectifs ; prestige militaire inconnu ou égal"}
-	return {"nation": nations[0] if p0 > p1 else nations[1], "basis": "égalité d'effectifs, prestige militaire"}
+	var tied: Dictionary = {}
+	for n: String in nations:
+		if int(soldiers[n]) == int(soldiers[nations[0]]):
+			tied[n] = int(soldiers[n])
+	# Règle complète (T-029 G, départage final déterministe) : BattleManager.commander.
+	return BattleManager.commander(state, {"joint_command": {"final_tiebreak": "nation_id_ascending"}}, tied)
 
 
 ## Pause : solo libre ; multijoueur = unanimité des humains participants ; l'IA ne vote pas.

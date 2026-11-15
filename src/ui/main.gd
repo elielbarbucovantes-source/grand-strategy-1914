@@ -4,6 +4,7 @@ extends Node
 var session: GameSession
 var map_view: MapView
 var game_ui: GameUI
+var battle_view: BattleView
 var menu: CanvasLayer
 
 
@@ -46,10 +47,15 @@ func _show_menu() -> void:
 	for i in 12:
 		month.add_item(GameCalendar.MONTHS_FR[i] + " 1914")
 	box.add_child(_row("Mois de départ (R-13 ouvert) :", month))
+	var scen := OptionButton.new()
+	scen.add_item("Campagne historique 1914 (effectifs inconnus : combat non simulable)")
+	scen.add_item("Bac à sable FICTIF (forces génériques de test, combat jouable)")
+	box.add_child(_row("Scénario :", scen))
 	var start := Button.new()
 	start.text = "Nouvelle partie"
 	start.pressed.connect(func() -> void:
-		var err := session.new_game(nation.get_item_metadata(nation.selected), month.selected + 1)
+		var err := session.new_game(nation.get_item_metadata(nation.selected), month.selected + 1, 1914,
+			"sandbox_fictif" if scen.selected == 1 else "campaign_1914")
 		if err == "":
 			_start_game())
 	box.add_child(start)
@@ -87,3 +93,40 @@ func _start_game() -> void:
 	add_child(game_ui)
 	game_ui.setup(session, map_view)
 	game_ui.request_menu.connect(_show_menu)
+	game_ui.request_battle.connect(open_battle)
+	game_ui.request_planning.connect(open_planning)
+
+
+## Bataille du joueur (une seule à la fois) : la carte stratégique est masquée.
+func open_battle() -> void:
+	if session.current_battle().is_empty():
+		return
+	_open_tactical("battle", "")
+
+
+func open_planning(rid: String) -> void:
+	_open_tactical("planning", rid)
+
+
+func _open_tactical(view_mode: String, rid: String) -> void:
+	map_view.visible = false
+	map_view.set_process_unhandled_input(false)
+	game_ui.visible = false
+	battle_view = BattleView.new()
+	add_child(battle_view)
+	battle_view.setup(session, view_mode, rid)
+	battle_view.closed.connect(close_tactical)
+
+
+func close_tactical() -> void:
+	if battle_view != null:
+		battle_view.queue_free()
+		battle_view = null
+	map_view.visible = true
+	map_view.set_process_unhandled_input(true)
+	map_view.camera.make_current()
+	game_ui.visible = true
+	RenderingServer.set_default_clear_color(MapView.SEA_COLOR)
+	game_ui.refresh()
+	if not session.current_battle().is_empty():
+		open_battle.call_deferred()

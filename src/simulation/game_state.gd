@@ -29,6 +29,9 @@ var events: Array = []             # journal {"turn","date","category","text","n
 var orders_history: Array = []     # {"turn","date","orders"}
 var pending_orders: Dictionary = {}  # nation -> Array[Dictionary]
 var next_id: int = 1
+var active_battles: Array = []     # batailles tactiques en cours (sauvegardées ; bloquent le tour suivant)
+var human_nations: Array = []      # pays commandés par des humains (solo : le joueur)
+var defense_orders: Array = []     # constructions défensives stratégiques en cours
 
 
 static func from_scenario(scenario: Dictionary, start_month_value: int, player: String, seed_in: int) -> GameState:
@@ -48,10 +51,16 @@ static func from_scenario(scenario: Dictionary, start_month_value: int, player: 
 		n["research"] = {"projects": [], "status": "OUVERT : arbre technologique non défini"}
 		s.memory[nid] = []
 	s.regions = (scenario["regions"] as Dictionary).duplicate(true)
+	s.human_nations = [player]
 	for f: Dictionary in scenario["formations"]:
 		var copy: Dictionary = f.duplicate(true)
 		copy["supplied"] = true
 		copy["planned_target"] = ""
+		copy["battle_id"] = ""
+		copy["encircled"] = false
+		copy["reserve"] = false
+		if copy["echelon"] == "army" and copy.get("morale") == null:
+			copy["morale"] = null  # moral d'armée : fixé à la première bataille (valeur de règle provisoire)
 		s.formations[copy["id"]] = copy
 	for t: Dictionary in scenario["treaties"]:
 		s.treaties.append(t.duplicate(true))
@@ -139,6 +148,79 @@ func sorted_formation_ids() -> Array:
 	return ids
 
 
+# ------------------------------------------------------------------ hiérarchie militaire
+## Hiérarchie VALIDÉE : soldats et équipements → unités → régiments → divisions → armées.
+func is_top_level(f: Dictionary) -> bool:
+	return f.get("parent") == null or not formations.has(f.get("parent"))
+
+
+func armies_in(rid: String) -> Array:
+	return formations_in(rid).filter(func(f: Dictionary) -> bool: return is_top_level(f))
+
+
+func army_of(fid: String) -> String:
+	var current := fid
+	while formations.has(current) and not is_top_level(formations[current]):
+		current = formations[current]["parent"]
+	return current
+
+
+func descendants(fid: String) -> Array:
+	var out: Array = []
+	for id: String in sorted_formation_ids():
+		var parent: Variant = formations[id].get("parent")
+		while parent != null and formations.has(parent):
+			if parent == fid:
+				out.append(id)
+				break
+			parent = formations[parent].get("parent")
+	return out
+
+
+## Unités combattantes (échelon « unit ») d'une armée.
+func units_of(army_id: String) -> Array:
+	return descendants(army_id).filter(func(id: String) -> bool: return formations[id]["echelon"] == "unit")
+
+
+## Effectif d'une formation : somme des unités ; null si inconnu (MIL-01) ou absent.
+func soldiers_of(fid: String) -> Variant:
+	var f: Dictionary = formations[fid]
+	if f["echelon"] == "unit":
+		return f.get("soldiers")
+	var units := units_of(fid) if is_top_level(f) else descendants(fid).filter(func(id: String) -> bool: return formations[id]["echelon"] == "unit")
+	if units.is_empty():
+		return null
+	var total := 0
+	for uid: String in units:
+		if formations[uid].get("soldiers") == null:
+			return null
+		total += int(formations[uid]["soldiers"])
+	return total
+
+
+func is_engaged(army_id: String) -> bool:
+	if formations[army_id].get("battle_id", "") != "":
+		return true
+	for uid: String in descendants(army_id):
+		if formations[uid].get("battle_id", "") != "":
+			return true
+	return false
+
+
+## Déplace une armée et toutes ses formations subordonnées (même région).
+func move_army(army_id: String, rid: String) -> void:
+	formations[army_id]["region"] = rid
+	for uid: String in descendants(army_id):
+		formations[uid]["region"] = rid
+
+
+## Retire une formation détruite ou capturée (et ses subordonnées) ; vide l'armée si nécessaire.
+func remove_formation(fid: String) -> void:
+	for child: String in descendants(fid):
+		formations.erase(child)
+	formations.erase(fid)
+
+
 func regions_controlled_by(nation: String) -> Array:
 	var out: Array = []
 	var ids := regions.keys()
@@ -159,6 +241,7 @@ func to_dict() -> Dictionary:
 		"treaties": treaties, "proposals": proposals, "wars": wars, "messages": messages,
 		"memory": memory, "battles": battles, "events": events, "orders_history": orders_history,
 		"pending_orders": pending_orders, "next_id": next_id,
+		"active_battles": active_battles, "human_nations": human_nations, "defense_orders": defense_orders,
 	}
 
 
@@ -174,6 +257,8 @@ static func from_dict(d: Dictionary) -> GameState:
 	s.treaties = d["treaties"]; s.proposals = d["proposals"]; s.wars = d["wars"]
 	s.messages = d["messages"]; s.memory = d["memory"]; s.battles = d["battles"]
 	s.events = d["events"]; s.orders_history = d["orders_history"]; s.pending_orders = d["pending_orders"]
+	s.active_battles = d.get("active_battles", []); s.human_nations = d.get("human_nations", [s.player_nation])
+	s.defense_orders = d.get("defense_orders", [])
 	_normalize_numbers(s)
 	return s
 
@@ -191,10 +276,19 @@ static func _normalize_numbers(s: GameState) -> void:
 	for nid: String in s.memory:
 		for m: Dictionary in s.memory[nid]:
 			m["turn"] = int(m["turn"])
+	for fid: String in s.formations:
+		var f: Dictionary = s.formations[fid]
+		if f.get("soldiers") != null:
+			f["soldiers"] = int(f["soldiers"])
+	for b: Dictionary in s.active_battles + s.battles:
+		CombatData.normalize_battle(b)
 
 
+## Forme canonique stable : la relecture JSON transforme les entiers en flottants ; on applique
+## donc ce même aller-retour (précision complète) avant de calculer l'empreinte.
 func canonical_json() -> String:
-	return JSON.stringify(to_dict(), "", true)
+	var once := JSON.stringify(to_dict(), "", true, true)
+	return JSON.stringify(JSON.parse_string(once), "", true, true)
 
 
 func checksum() -> String:

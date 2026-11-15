@@ -10,6 +10,7 @@ const RESPOND_PROPOSAL := "respond_proposal"
 const BREAK_TREATY := "break_treaty"
 const SEND_MESSAGE := "send_message"
 const SET_INDUSTRY_ALLOCATION := "set_industry_allocation"
+const BUILD_DEFENSE := "build_defense"
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
@@ -38,6 +39,16 @@ static func break_treaty(nation: String, treaty_id: String) -> Dictionary:
 
 static func message(nation: String, channel: String, to: Array, text: String) -> Dictionary:
 	return {"type": SEND_MESSAGE, "nation": nation, "channel": channel, "to": to, "text": text}
+
+
+## Ouvrage défensif hors bataille ; coordonnées dans le cadre tactique de la région.
+static func build_trench(nation: String, region: String, a: Vector2, b: Vector2) -> Dictionary:
+	return {"type": BUILD_DEFENSE, "nation": nation, "region": region, "kind": "trench_segment",
+		"a": [a.x, a.y], "b": [b.x, b.y]}
+
+
+static func build_installation(nation: String, region: String, kind: String, pos: Vector2) -> Dictionary:
+	return {"type": BUILD_DEFENSE, "nation": nation, "region": region, "kind": kind, "pos": [pos.x, pos.y]}
 
 
 static func industry_allocation(nation: String, allocation: Dictionary) -> Dictionary:

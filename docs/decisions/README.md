@@ -31,6 +31,8 @@
 
 Le prochain numéro libre est **0008**.
 
+**Combat (T-029 à T-044, décisions du directeur du 15/11/2026)** : implémentation et statuts dans `docs/project/COMBAT_SYSTEM.md` §4. **T-038 (moral) remplace D-016** sur le moral des unités.
+
 ## 3. Dossiers d'arbitrage (non-ADR, ne valent jamais décision)
 
 | Document | Objet | Statut |
