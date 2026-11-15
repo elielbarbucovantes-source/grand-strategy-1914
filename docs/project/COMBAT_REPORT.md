@@ -122,3 +122,23 @@ Voir `COMBAT_SYSTEM.md` §7, en priorité :
 5. coordination multijoueur et couche réseau ;
 6. terrain local du champ de bataille (fleuves, ponts) ;
 7. IA de niveau 2.
+
+## 9. Mise à jour : mission « T-045, T-046 et MIL-01 » (15/11/2026, branche `dev/historical-forces`)
+
+Rapport complet : [`MIL01_T045_T046_REPORT.md`](MIL01_T045_T046_REPORT.md).
+
+**État des points de la section 8 :**
+
+| Point | Avant | Après |
+|---|---|---|
+| 1. Effectifs historiques (MIL-01) | Inconnus ; combat impossible en campagne | Effectifs actifs et réserves **sourcés** pour les 7 puissances ; répartition **estimée** ; batailles tactiques réelles en campagne. **MIL-01 non déclaré terminé** : sièges à vérifier, ventilation ottomane inconnue |
+| 2. Croisements (TURN-03) | Limite non définie | **T-045 validée et implémentée** ; départages symétriques rendus neutres |
+| 3. Équilibrage | Défense très favorisée (sandbox) | Simulations historiques faites, **aucun paramètre de combat modifié** ; létalité jugée trop élevée, calibrage à décider |
+| 4. Politique de déconnexion | Proposition non validée | **T-046 validée et implémentée** dans la simulation ; réseau absent |
+| 5-7 | — | Inchangés |
+
+**Autres corrections apportées au système de combat :**
+- Candidats renforts plafonnés à `max_reinforcement_units_per_side`, les plus rapides d'abord. Auparavant, toutes les unités voisines étaient verrouillées : à l'échelle historique, des armées entières auraient été immobilisées.
+- Commandant conjoint (`BattleSystem.joint_commander`) calculé sur l'effectif réel des unités (`soldiers_of`), et non plus sur le seul champ de l'armée.
+- Historique des batailles tactiques affiché correctement dans l'onglet Armée. L'ancien code lisait un champ `resolution` absent des batailles tactiques.
+- Journal logistique : une entrée par armée coupée, et non plus une par unité.

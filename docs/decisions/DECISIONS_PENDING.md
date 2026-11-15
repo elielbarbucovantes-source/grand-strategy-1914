@@ -48,7 +48,7 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 
 - **TURN-01 — Phases internes : À DÉFINIR.** Ordre exact des systèmes et dépendances en conflit.
 - **TURN-02 — Saisie et verrouillage : principe VALIDÉ, détails À DÉFINIR.** Commandes permises, modifications, abandon et rapports.
-- **TURN-03 — Conflits simultanés : À DÉFINIR.** Résolution contextuelle sans avantage lié à l’ordre technique.
+- **TURN-03 — Conflits simultanés : À DÉFINIR.** Résolution contextuelle sans avantage lié à l’ordre technique. *Ajout du 15/11/2026 : cas des armées qui se croisent tranché par **T-045 (VALIDÉ par le directeur)** ; départages symétriques techniques neutres (PROPOSÉ), voir `docs/gameplay/TOURS_ET_DEPLACEMENTS.md`. Les autres conflits simultanés restent À DÉFINIR.*
 - **TURN-04 — Hasard et reproductibilité : À DÉFINIR côté conception / PROPOSITION technique.** Besoin d’aléatoire, visibilité et reproduction à partir d’une graine.
 - **TURN-05 — Événements simultanés : À DÉFINIR.** Priorités, dépendances et présentation des conséquences.
 
@@ -64,8 +64,8 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 
 ## E. Militaire et logistique
 
-- **MIL-01 — Ordre de bataille : À DÉFINIR.** Types d’unités, équipements, effectifs et correspondance unités/régiments/divisions/armées.
-- **MIL-02 — Recrutement/mobilisation : À DÉFINIR.** Réserves, entraînement, équipement, remplacement et démobilisation.
+- **MIL-01 — Ordre de bataille : À DÉFINIR.** Types d’unités, équipements, effectifs et correspondance unités/régiments/divisions/armées. *Ajout du 15/11/2026 : modèle « armée active / réserves mobilisables » **VALIDÉ par le directeur** ; base historique sourcée des sept puissances dans `data/history/military_forces_1914.json` (répartition territoriale et ventilation par arme ESTIMÉES ; types d’unités et granularité PROPOSÉS) ; voir `docs/history/`. MIL-01 n’est pas déclaré terminé.*
+- **MIL-02 — Recrutement/mobilisation : À DÉFINIR.** Réserves, entraînement, équipement, remplacement et démobilisation. *Ajout du 15/11/2026 : principe de mobilisation progressive des réserves **VALIDÉ** (sans apparition instantanée, dépassement ni double comptage) ; rythme et paramètres PROPOSÉS (`data/rules/forces_rules.json`, `docs/military/MOBILISATION.md`) ; entraînement, équipement, remplacement, démobilisation toujours À DÉFINIR.*
 - **MIL-03 — Mouvement : À DÉFINIR.** Coûts/durées, réseau, capacité, transit, ordres et interruptions.
 - **MIL-04 — Approvisionnement : À DÉFINIR.** Portée, consommation, capacité, priorités, récupérations et isolement.
 - **MIL-05 — Combat défensif stratégique : À DÉFINIR.** Modèle et lien avec offensives tactiques.

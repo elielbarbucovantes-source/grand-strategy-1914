@@ -33,6 +33,13 @@ Le prochain numéro libre est **0008**.
 
 **Combat (T-029 à T-044, décisions du directeur du 15/11/2026)** : implémentation et statuts dans `docs/project/COMBAT_SYSTEM.md` §4. **T-038 (moral) remplace D-016** sur le moral des unités.
 
+**T-045, T-046 et modèle MIL-01 (décisions du directeur du 15/11/2026, mission suivante)** :
+- T-045 (armées qui se croisent sans bataille) : `docs/gameplay/TOURS_ET_DEPLACEMENTS.md` ;
+- T-046 (déconnexions : pause en solo ; délai de grâce puis IA en multijoueur) : `docs/gameplay/DECONNEXIONS.md` ;
+- modèle « armée active / réserves mobilisables » et mobilisation progressive : `docs/history/` et `docs/military/MOBILISATION.md`.
+
+T-046 tranche la question T-029 J (déconnexion), laissée ouverte jusque-là.
+
 ## 3. Dossiers d'arbitrage (non-ADR, ne valent jamais décision)
 
 | Document | Objet | Statut |

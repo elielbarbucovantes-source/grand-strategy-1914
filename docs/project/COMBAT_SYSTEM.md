@@ -1,8 +1,11 @@
 # Système de combat terrestre — documentation technique
 
-- **Branche :** `dev/combat-system`. **Moteur :** Godot 4.7.2, GDScript typé (ADR-0007).
-- **Cahier des charges :** décisions T-029 à T-044 du directeur (mission du 15/11/2026).
-- **Statut :** **fonctionnel et testé sur le bac à sable fictif**. Dans la campagne historique, les effectifs sont inconnus (MIL-01) : le combat tactique n'y est pas simulable (voir §7).
+- **Branches :** `dev/combat-system`, puis `dev/historical-forces` (T-045, T-046, MIL-01). **Moteur :** Godot 4.7.2, GDScript typé (ADR-0007).
+- **Cahier des charges :** décisions T-029 à T-046 du directeur (missions du 15/11/2026).
+- **Statut :**
+  - **fonctionnel et testé dans le bac à sable fictif et dans la campagne historique** ;
+  - la campagne utilise les effectifs historiques documentés des sept puissances jouables (`data/history/military_forces_1914.json`, voir `docs/history/`) ;
+  - les États hors MIL-01 ont des effectifs inconnus ; un affrontement qui les implique garde le repli neutre documenté.
 
 ## 1. Architecture
 
@@ -88,7 +91,9 @@ Légende :
 | T-029 G Désignation (soldats, prestige, départage) | V I T F | Départage final déterministe **PROPOSÉ** : identifiant croissant | `test_queue…`, `test_joint_command…` |
 | T-029 H Durée maximale | V I T F | Voir T-036 | — |
 | T-029 I Pause | V I T F | Solo : accord du seul humain ; multijoueur : unanimité ; l'IA ne vote pas | `test_queue…`, interface |
-| T-029 J Déconnexion | **NON VALIDÉ**, P I T | Politique configurable `ai_hold_then_takeover` (délai de grâce, puis IA) ; autres options : `hold_position`, `auto_resolve` | `test_queue…` |
+| T-029 J / **T-046** Déconnexion | V I T D, délai P ; **réseau non implémenté** | Solo : pause jusqu'au retour ; multijoueur : délai de grâce configurable (ordres conservés), puis IA (brouillard de son camp) ; reconnexion : contrôle restitué ; votes de pause limités aux humains connectés. Voir `docs/gameplay/DECONNEXIONS.md` | `test_disconnect_t046.gd`, `test_queue…` |
+| **T-045** Armées qui se croisent | V I T F D | Contacts évalués sur les positions finales : un échange A ↔ B ne crée aucune bataille ; départages symétriques neutres (graine), jamais l'ordre des pays. Voir `docs/gameplay/TOURS_ET_DEPLACEMENTS.md` | `test_moves_t045.gd` |
+| **MIL-01** Effectifs historiques | Modèle V ; données sourcées ; répartition **estimée** | Armées de garnison par région (districts de corps), unités d'environ 10 000 hommes (P), services non combattants, forces hors carte comptées à part. Voir `docs/history/MIL01_METHODE.md` | `test_forces_mil01.gd`, `test_campaign_integration.gd` |
 
 ## 5. IA tactique (niveau 1, PROPOSÉE)
 
@@ -121,18 +126,44 @@ Tous sont dans `data/rules/combat_rules.json`, et **aucun n'est historique ni d�
 - encerclement (moral, attrition, seuil de reddition) ;
 - priorité (critères, seuil) ;
 - départage final ;
-- déconnexion ;
-- IA.
+- déconnexion (délai de grâce) ;
+- IA ;
+- et, dans `data/rules/forces_rules.json` : taille des unités, rythme d'appel, transit, effectif de guerre, taille des unités de réserve.
 
-**Constat d'équilibrage** (démonstration `tests/demo_battle.gd`) : un assaut frontal contre des troupes retranchées coûte environ 88 % des effectifs à l'attaquant, contre environ 18 % au défenseur, sur 28 minutes. La défense est très favorisée par les valeurs actuelles.
+**Constat d'équilibrage du bac à sable** (`tests/demo_battle.gd`) : un assaut frontal contre des troupes retranchées coûte environ 88 % des effectifs à l'attaquant, contre environ 18 % au défenseur, sur 28 minutes.
+
+**Simulations avec les effectifs historiques** (`tests/balance_report.gd`, 15/11/2026, aucun paramètre de combat modifié) :
+
+| Cas | A / D engagés | Pertes A | Pertes D | Durée | Vainqueur |
+|---|---|---|---|---|---|
+| Lorraine, DE 035 → FR 011 (défense en position) | 57 819 / 127 820 | 66 % | 4 % | 30 min | défenseur |
+| Lorraine, tranchées préparées devant les unités | idem | 50 % | 7 % | 30 min | défenseur |
+| Lorraine inversée, FR 011 → DE 035 | 127 820 / 57 819 | 9 % | 92 % | 8,2 min (camp brisé) | attaquant |
+| Prusse-Orientale, RU 056 → DE 026 | 61 568 / 57 819 | 55 % | 44 % | 30 min | défenseur |
+| Galicie, RU 058 → AH 040 | 61 568 / 69 600 | 78 % | 11 % | 30 min | défenseur |
+| Vénétie, IT 081 → AH 037 | 45 737 / 23 199 | 73 % | 41 % | 30 min | attaquant |
+| Lorraine après mobilisation complète | 344 749 / 496 178 (65 unités) | 53 % | 11 % | 30 min | défenseur |
+
+Constats (détail et recommandations : `docs/project/MIL01_T045_T046_REPORT.md` §8) :
+1. **Létalité très élevée.** 40 à 90 % de pertes en 30 minutes de bataille, ce qui dépasse de loin les pertes journalières historiques de 1914. Une seule bataille peut détruire une armée. Le calibrage dépend de ce que représente une bataille tactique à l'échelle d'un mois : décision du directeur.
+2. **Défense fortement favorisée** à effectifs comparables. Le rapport de forces reste décisif : 2,2 contre 1 en attaque l'emporte.
+3. **Formations et tranchées dans la résolution automatique.** L'IA choisit elle-même les formations, et ses défenseurs se replacent autour des objectifs, abandonnant des tranchées préparées ailleurs. La variante « tranchées » n'est donc pas une mesure propre de leur effet (limite de l'IA de niveau 1). L'effet unitaire des tranchées et des formations est couvert par les tests de `test_combat.gd`.
+4. **Renforts.** Ceux du défenseur arrivent (jusqu'au plafond de 12) ; l'attaquant n'en reçoit aucun dans ces cas, faute d'unités amies voisines hors de la région d'origine.
+5. **Durée.** Presque toutes les batailles atteignent le maximum de 30 minutes : la formule de durée sature dès les effectifs de 1914.
+6. **Performance.** 0,4 à 4,8 s de calcul par bataille résolue automatiquement (32 à 65 unités).
 
 ## 7. Fonctionnalités incomplètes ou limites
 
-- **Campagne historique** : les effectifs sont inconnus (MIL-01), donc la bataille n'y est pas simulable et le repli neutre documenté s'applique. Le combat est jouable uniquement dans le **bac à sable FICTIF** (forces génériques identiques, non historiques).
-- **Croisement** : deux armées ennemies qui échangent leurs positions dans le même mois ne s'affrontent pas (règle de conflit simultané TURN-03 non définie).
+- **Campagne historique** :
+  - combat jouable avec les effectifs documentés des sept puissances jouables ;
+  - répartition territoriale et ventilation par arme **estimées** ;
+  - États hors MIL-01 sans effectifs, avec repli neutre ;
+  - armée ottomane sans ventilation par arme (infanterie générique signalée).
+- **Croisement** : sans bataille, conformément à **T-045** (décision validée), et non plus comme limite.
 - **Terrain du champ** : il est uniforme par région (moyenne des catégories de relief) ; fleuves, ponts et cols ne sont pas représentés sur le champ.
 - **Commandement conjoint multijoueur** : seul l'objectif commun est implémenté. Il n'existe pas de canal de coordination entre joueurs humains alliés, faute de réseau.
-- **Déconnexions** : politique technique proposée, non validée, sans couche réseau.
+- **Déconnexions** : T-046 implémenté dans la simulation ; **aucune couche réseau** (détection et reconnexion réelles non testées).
+- **Performance** : la simulation tactique est quadratique en nombre d'unités (environ 2,5 s pour 40 unités, 20 s pour 170). D'où la taille d'unité d'environ 10 000 hommes et le plafond de 12 renforts candidats par camp.
 - **Renforts** : terrestres uniquement, depuis les régions voisines ; pas de transport naval.
 - **Coût des ouvrages en ressources** : non appliqué (catégories R-03 ouvertes).
 - **Capture des installations** : non modélisée (l'état se dégrade, le propriétaire ne change pas).

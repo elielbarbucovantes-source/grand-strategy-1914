@@ -33,6 +33,10 @@ mobilisation.
 Les règles de recrutement, entraînement, équipement, remplacement et
 démobilisation sont À DÉFINIR.
 
+*Ajout du 15/11/2026 : le directeur a VALIDÉ la distinction entre armée
+active et réserves mobilisables, ainsi que la mobilisation progressive.
+Données : `docs/history/` ; fonctionnement : `docs/military/MOBILISATION.md`.*
+
 ## 4. Déplacements militaires
 
 Le joueur choisit une destination ; le jeu calcule trajet et durée selon
