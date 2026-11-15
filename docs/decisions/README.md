@@ -22,12 +22,14 @@
 | [0000](0000-template.md) | Modèle | Modèle | `2a341d1` |
 | [0001](0001-documentation-et-git-comme-socle.md) | Documentation et Git comme socle | Accepté | `2a341d1` |
 | [0002](0002-interoperabilite-multi-agents.md) | Interopérabilité multi-agents | Accepté | `2a341d1` |
-| [0003](0003-report-du-choix-de-pile-technique.md) | Report du choix de pile technique | Accepté (caduc de fait, non remplacé : voir R-02) | `2a341d1` |
+| [0003](0003-report-du-choix-de-pile-technique.md) | Report du choix de pile technique | **Remplacé** par 0007 (2026-11-15) | `2a341d1` |
 | [0004](0004-adoption-du-document-fondateur.md) | Adoption du document fondateur | Accepté | `2a341d1` |
 | [0005](0005-integration-strategique-tactique.md) | Intégration stratégique/tactique | **Proposé — ne vaut pas décision** | `2a341d1` |
-| [0006](0006-pile-technique-mvp.md) | Pile technique du premier MVP jouable (Python) | Accepté (délégation, 2026-10-31). **Historique** : prototype gelé comme référence d'étude ; moteur définitif non décidé (orientation du 14/11/2026). | `cdd3ab1` |
+| [0006](0006-pile-technique-mvp.md) | Pile technique du premier MVP jouable (Python) | **Remplacé** par 0007 (2026-11-15) ; prototype gelé comme référence d'étude | `cdd3ab1` |
 
-Le prochain numéro libre est **0007**.
+| [0007](0007-moteur-godot.md) | Moteur : Godot 4.7.2 et GDScript typé | **Accepté** (directeur, 2026-11-15) ; remplace 0003 et 0006 | lot de développement |
+
+Le prochain numéro libre est **0008**.
 
 ## 3. Dossiers d'arbitrage (non-ADR, ne valent jamais décision)
 

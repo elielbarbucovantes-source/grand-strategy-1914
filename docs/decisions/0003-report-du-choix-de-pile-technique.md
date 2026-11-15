@@ -1,6 +1,7 @@
 # ADR-0003 — Report du choix de pile technique
 
 > **Statut :** Accepté
+> **Statut mis à jour le 2026-11-15 : REMPLACÉ par [ADR-0007](0007-moteur-godot.md)** (décision du directeur ; contenu d'origine inchangé).
 > **Date :** 2026-10-31
 > **Auteur :** OpenCode
 > **Décideur :** Propriétaire du projet (contrainte explicite du brief)

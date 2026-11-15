@@ -1,6 +1,7 @@
 # ADR-0006 — Pile technique du premier MVP jouable
 
 > **Statut :** accepté (délégation technique du propriétaire, 2026-10-31)
+> **Statut mis à jour le 2026-11-15 : REMPLACÉ par [ADR-0007](0007-moteur-godot.md)** (décision du directeur ; contenu d'origine inchangé).
 > **Date :** 2026-11-01
 > **Auteur :** OpenCode
 > **Décideur :** propriétaire du projet, par la consigne d'exécution du 2026-10-31 (« décide toi-même de l'architecture, des bibliothèques, de l'organisation du code, des tests »)

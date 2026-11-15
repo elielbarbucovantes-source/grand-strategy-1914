@@ -1,0 +1,53 @@
+{
+ "format": "gs1914.rules",
+ "format_version": 1,
+ "_statuts": "Chaque bloc porte son statut. VALIDÉ = décision du directeur ; PROPOSÉ = valeur technique provisoire et configurable ; OUVERT = non tranché (aucun effet appliqué).",
+ "calendar": {
+  "status": "VALIDÉ : tour mensuel, ordres secrets simultanés (D-006, TURN-02)",
+  "start_month_status": "OUVERT (R-13) : choisi à la création de la partie"
+ },
+ "movement": {
+  "status": "PROPOSÉ : la durée des déplacements dépend du terrain, des infrastructures et de la logistique (dossier §5.2), formule non définie",
+  "regions_per_month": 1,
+  "allow_straits": true,
+  "foreign_entry": "VALIDÉ : entrée en territoire étranger seulement en guerre ou avec autorisation de passage (dossier §5.3) ; une entrée non autorisée est refusée par le moteur tant que la règle de crise n'est pas définie (OUVERT)"
+ },
+ "occupation": {
+  "status": "VALIDÉ : occupation distincte de la souveraineté (MAP-DEC-13, MAP-DEC-24/25) ; une région occupée garde sa souveraineté",
+  "occupy_if_undefended": true,
+  "occupy_status": "PROPOSÉ : une région ennemie sans formation adverse passe sous contrôle de l'entrant"
+ },
+ "battles": {
+  "status": "T-029 partiellement VALIDÉ (directeur, 15/11/2026)",
+  "validated": {
+   "resolve_before_next_turn": true,
+   "sequential": true,
+   "one_battle_commanded_at_a_time": true,
+   "national_command_only": true,
+   "joint_command": "le pays fournissant le plus de soldats au début commande ; égalité départagée par le prestige militaire ; mandat jusqu'à la fin",
+   "pause": "solo : libre ; multijoueur : unanimité des humains participants ; l'IA ne vote pas",
+   "priority": "critiques d'abord, puis ordre chronologique"
+  },
+  "open": ["critères de criticité", "formule de durée", "règles de résolution automatique", "déconnexions", "absence", "reprise après interruption", "contestation du commandement"],
+  "auto_resolver": "neutral_no_outcome",
+  "auto_resolver_status": "PROVISOIRE NEUTRE : en l'absence de règles de combat, une bataille est close sans pertes ni changement de contrôle ; l'attaquant reste dans sa région d'origine"
+ },
+ "economy": {
+  "status": "VALIDÉ : modèle C (production régionale selon potentiel, capacités et infrastructures ; stocks nationaux ; accessibilité déterminée par la logistique)",
+  "resource_categories": [],
+  "resource_categories_status": "OUVERT (R-03) : aucune catégorie n'est fixée par le moteur ; les données de scénario les fourniront",
+  "industry_categories": ["industrie_militaire_terrestre", "industrie_aeronautique", "industrie_navale", "industrie_civile", "munitions_et_equipements"],
+  "industry_categories_status": "VALIDÉ : cinq catégories (PROJECT.md §11)",
+  "budget_status": "OUVERT (ECO-05) : structure seulement"
+ },
+ "victory": {
+  "territorial_control_share": 0.9,
+  "territorial_status": "Seuil VALIDÉ (MAP-DEC-13) ; modalités de calcul OUVERTES (MAP-OPEN-16) : affiché, sans fin de partie automatique",
+  "socio_economic_status": "OUVERT (formule)",
+  "collective_treaty_status": "Principe envisagé ; contradiction R-04 à arbitrer"
+ },
+ "ai": {
+  "status": "PROPOSÉ : heuristiques techniques de niveau 1, non validées comme comportement définitif",
+  "level": 1
+ }
+}
