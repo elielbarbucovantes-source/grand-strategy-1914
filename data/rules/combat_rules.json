@@ -107,9 +107,12 @@
   "final_tiebreak": "nation_id_ascending"
  },
  "disconnection": {
-  "_statut": "T-029 J : NON VALIDÉ par le directeur. Proposition technique configurable.",
-  "policy": "ai_hold_then_takeover", "grace_ticks": 30,
-  "policies_available": ["ai_hold_then_takeover", "hold_position", "auto_resolve"]
+  "_statut": "T-046 VALIDÉ (directeur, 15/11/2026) : en solo, pause jusqu'au retour du joueur ; en multijoueur, délai de grâce configurable puis prise de contrôle par l'IA ; restitution du contrôle à la reconnexion, ordres conservés. Valeur du délai PROPOSÉE.",
+  "solo": "pause_until_return",
+  "multiplayer": "grace_then_ai_takeover",
+  "grace_ticks": 30,
+  "grace_note": "30 pas de 2 s = 1 minute de temps de bataille (PROPOSÉ). Le délai court en temps de bataille : il ne s'écoule pas pendant une pause unanime des joueurs restants.",
+  "network_status": "Fondations de simulation seulement : aucune couche réseau n'existe ; la détection d'une déconnexion réelle et la reconnexion par le réseau ne sont PAS implémentées ni testées."
  },
  "ai": {
   "_statut": "Comportements PROPOSÉS (niveau 1 tactique), configurables.",

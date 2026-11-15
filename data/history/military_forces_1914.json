@@ -1,0 +1,1551 @@
+{
+ "format": "gs1914.historical_forces",
+ "format_version": 1,
+ "id": "military_forces_1914",
+ "title_fr": "Effectifs militaires terrestres des sept puissances jouables, 1914 (MIL-01)",
+ "compiled": "2026-11-15",
+ "status": "BASE DE RECHERCHE. Chaque valeur porte sa source, sa page, sa définition et sa fiabilité. Aucune valeur n'est inventée : une donnée introuvable vaut null avec le motif. Les RÉPARTITIONS territoriales et la ventilation hors carte sont des ESTIMATIONS documentées (méthode dans docs/history/MIL01_METHODE.md), pas des faits historiques.",
+ "model": {
+  "_statut": "Modèle VALIDÉ par le directeur (mission du 15/11/2026, §4.1) : (A) armée active ; (B) réserves mobilisables ; le jeu distingue en outre : en cours de mobilisation, incorporés, présents dans les unités.",
+  "active": "Officiers et hommes sous les drapeaux au début de la campagne, en temps de paix (avant la mobilisation de fin juillet 1914).",
+  "reserves": "Hommes instruits susceptibles d'être rappelés à la mobilisation, non présents dans les unités au départ."
+ },
+ "normalisation": {
+  "rule": "Une seule définition par catégorie pour les sept puissances.",
+  "active_definition": "Effectif du temps de paix de l'armée de terre régulière « officiers et hommes sous les drapeaux » (US War Dept 1916, tableau p. 9 : « Only officers and men with colors are considered »), juillet 1914 ou budget 1914. Exclus : réserves, milices territoriales non présentes, troupes coloniales et indigènes servant hors d'Europe.",
+  "reserves_definition": "« Fully trained reserves available for passing from peace to war footing » (US War Dept 1916, tableau p. 9), estimation de 1911 ; pour le Royaume-Uni, Army Reserve + Special Reserve au 1er août 1914 (War Office 1922) ; pour l'Empire ottoman, estimation de l'état-major ottoman rapportée par Erickson.",
+  "why": "Le document américain applique la même définition à six des sept armées, à une date unique (juillet 1914). Les sources nationales, plus précises pour un pays, emploient des définitions différentes (effectif budgétaire, Friedenspräsenzstärke sans officiers, armée métropolitaine avec ou sans Algérie, armée commune sans Landwehr...). Elles sont conservées comme DIVERGENCES et servent de contrôle.",
+  "known_bias": "Les chiffres de réserves du document américain datent de 1911 ; le document précise que les augmentations postérieures n'ont pas été rendues publiques (p. 9). Ce sont donc des minimums probables."
+ },
+ "sources": {
+  "US_WD_1916": {
+   "citation": "United States War Department, Office of the Chief of Staff, War College Division, General Staff, No. 22 : Strength and Organization of the Armies of France, Germany, Austria, Russia, England, Italy, Mexico and Japan (Showing Conditions in July, 1914). Washington, Government Printing Office, 1916 (War Department Document No. 499).",
+   "url": "https://archive.org/details/strengthorganiza00unit",
+   "type": "publication officielle contemporaine (renseignement militaire d'un État neutre)",
+   "reliability": "moyenne",
+   "reliability_note": "Source unique et homogène pour six armées, datée de juillet 1914. L'introduction avertit : « no accurate estimate can be given of the real fighting force of these nations as it existed at the outbreak of the war » (p. 5) et que les chiffres de mobilisation sont des minimums. Le tableau p. 9 a été contrôlé sur le fac-similé (PDF p. 15).",
+   "verified_on": "2026-11-15"
+  },
+  "WO_1922": {
+   "citation": "War Office, Statistics of the Military Effort of the British Empire during the Great War, 1914-1920. Londres, HMSO, mars 1922.",
+   "url": "https://archive.org/details/statisticsofmili00grea",
+   "type": "statistique officielle nationale",
+   "reliability": "haute",
+   "reliability_note": "Tableau (i)(b) p. 30 (PDF p. 40) et Section 10 p. 156-157 (PDF p. 168-169), contrôlés sur le fac-similé.",
+   "verified_on": "2026-11-15"
+  },
+  "ERICKSON_2000": {
+   "citation": "Edward J. Erickson, « Turkey Prepares for War, 1913-1914 », Relevance: The Quarterly Journal of the Great War Society, printemps 2000. Repris sur le blog Roads to the Great War, 7 janvier 2019.",
+   "url": "https://roadstothegreatwar-ww1.blogspot.com/2019/01/turkey-prepares-for-war-19131914.html",
+   "type": "article d'un historien spécialiste (auteur de Ordered to Die, 2001), consulté dans une reprise en ligne",
+   "reliability": "moyenne",
+   "reliability_note": "Chiffres arrondis ; pagination de l'article original non disponible. À recouper avec Erickson, Ordered to Die (Greenwood, 2001), annexe sur l'organisation de 1914.",
+   "verified_on": "2026-11-15"
+  },
+  "BUNDESARCHIV": {
+   "citation": "Bundesarchiv, « Preußische und deutsche Streitkräfte 1867 bis 1918 », guide thématique, rubrique Personalumfang.",
+   "url": "https://www.bundesarchiv.de/im-archiv-recherchieren/archivgut-recherchieren/nach-themen/preussische-und-deutsche-streitkraefte-1867-bis-1918/",
+   "type": "institution d'archives nationale (page de synthèse)",
+   "reliability": "moyenne",
+   "reliability_note": "Chiffres arrondis, sans définition détaillée ni distinction claire entre armée prussienne et contingents bavarois, saxon et wurtembergeois.",
+   "verified_on": "2026-11-15"
+  },
+  "BERNHARDI_1914": {
+   "citation": "Friedrich von Bernhardi, « Das Heerwesen », dans Deutschland unter Kaiser Wilhelm II., t. I, Berlin, Reimar Hobbing, 1914, p. 3-24 (Wikisource).",
+   "url": "https://de.wikisource.org/wiki/Das_Heerwesen_(1914)",
+   "type": "texte contemporain d'un général (source primaire publiée)",
+   "reliability": "moyenne",
+   "verified_on": "2026-11-15"
+  },
+  "WO_HANDBOOK_DE_1914": {
+   "citation": "General Staff, War Office, Handbook of the German Army (Home and Colonial), 4e éd. 1912, amendée en août 1914.",
+   "url": "https://archive.org/details/hndbk-german-army-1914",
+   "type": "manuel officiel de renseignement",
+   "reliability": "haute pour l'organisation",
+   "verified_on": "2026-11-15"
+  },
+  "HQ_GENERAL_KNOWLEDGE": {
+   "citation": "Sièges des commandements de corps du temps de paix : connaissance encyclopédique courante (articles de corps d'armée de Wikipédia et ouvrages d'ordre de bataille), NON revérifiée siège par siège pendant la mission.",
+   "url": null,
+   "type": "référence secondaire non vérifiée",
+   "reliability": "moyenne, À VÉRIFIER",
+   "reliability_note": "N'affecte que la répartition territoriale estimée. Les sièges confirmés par une source consultée portent hq_verification = « vérifié »."
+  }
+ },
+ "nations": {
+  "german_empire": {
+   "name_fr": "Empire allemand",
+   "data_status": "suffisant (répartition estimée)",
+   "active": {
+    "value": 806016,
+    "reference_date": "1914 (« conditions in July, 1914 »)",
+    "definition": "Effectif total du temps de paix, officiers et hommes sous les drapeaux ; hors volontaires d'un an (10 000 à 12 000 selon la source) et hors troupes coloniales.",
+    "source": "US_WD_1916",
+    "page": "p. 9 (tableau) et p. 28 (« The total peace strength amounts to 806,016 officers and men »)",
+    "reliability": "moyenne",
+    "divergences": [
+     {
+      "value": 734000,
+      "source": "BUNDESARCHIV",
+      "definition": "« Juli 1914 734.000 Mann » (armée prussienne ; périmètre non précisé)",
+      "note": "Inférieur de 9 % ; périmètre probablement plus étroit."
+     },
+     {
+      "value": 800000,
+      "source": "US_WD_1916",
+      "page": "p. 29-30",
+      "definition": "Arrondi utilisé dans le même document (« Peace strength, 31,459 officers; 768,540 noncommissioned officers and men, approximately » = 799 999)",
+      "note": "Incohérence interne mineure du document (0,8 %)."
+     },
+     {
+      "value": 661176,
+      "source": "BERNHARDI_1914",
+      "definition": "Hommes du rang (Gemeine) prévus par la loi de 1913, sans officiers ni sous-officiers",
+      "note": "Définition différente : non comparable."
+     }
+    ],
+    "choice": "US_WD_1916, pour l'homogénéité avec les autres puissances."
+   },
+   "arms": {
+    "source": "US_WD_1916",
+    "page": "p. 9",
+    "infantry": 507231,
+    "cavalry": 85792,
+    "field_artillery": 91368,
+    "foot_artillery": 38357,
+    "coast_artillery": null,
+    "technical": 30403,
+    "train": 12600,
+    "sanitary": 6615,
+    "total": 806016,
+    "note": "Artillerie côtière « (?) » dans la source (en partie tenue par la marine)."
+   },
+   "off_map": {
+    "value": 0,
+    "basis": "« No German troops of the army proper serve outside the home country in time of peace » (US_WD_1916, p. 28).",
+    "status": "sourcé"
+   },
+   "reserves": {
+    "value": 4000000,
+    "reference_date": "estimation de 1911 publiée en 1916",
+    "definition": "Réservistes entièrement instruits disponibles pour le passage au pied de guerre",
+    "source": "US_WD_1916",
+    "page": "p. 9 (second tableau)",
+    "reliability": "faible à moyenne",
+    "divergences": [
+     {
+      "value": 4610000,
+      "source": "US_WD_1916",
+      "page": "p. 28",
+      "definition": "« sum total of trained men which she is able to mobilize » (actifs compris)"
+     },
+     {
+      "value": 3800000,
+      "source": "BUNDESARCHIV",
+      "definition": "« August 1914 3,8 Mio. Mann mobil gemacht » (actifs compris)",
+      "note": "Contrôle : 3,8 M mobilisés − 0,8 M actifs ≈ 3,0 M réservistes effectivement rappelés en août 1914, inférieur au réservoir de 4,0 M : cohérent."
+     }
+    ],
+    "on_map_share": {
+     "numerator": 1,
+     "denominator": 1,
+     "basis": "Aucun district hors carte (US_WD_1916 p. 28)."
+    }
+   },
+   "districts": [
+    {
+     "id": "de_garde",
+     "name_fr": "Corps de la Garde",
+     "hq": "Berlin",
+     "lon": 13.4,
+     "lat": 52.52,
+     "hq_verification": "vérifié",
+     "hq_source": "WO_HANDBOOK_DE_1914 (« The Prussian Guard Corps is stationed in Berlin »)"
+    },
+    {
+     "id": "de_i",
+     "name_fr": "Ier corps",
+     "hq": "Königsberg",
+     "lon": 20.51,
+     "lat": 54.71,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_ii",
+     "name_fr": "IIe corps",
+     "hq": "Stettin",
+     "lon": 14.55,
+     "lat": 53.43,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_iii",
+     "name_fr": "IIIe corps",
+     "hq": "Berlin",
+     "lon": 13.4,
+     "lat": 52.52,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_iv",
+     "name_fr": "IVe corps",
+     "hq": "Magdebourg",
+     "lon": 11.63,
+     "lat": 52.13,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_v",
+     "name_fr": "Ve corps",
+     "hq": "Posen",
+     "lon": 16.93,
+     "lat": 52.41,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_vi",
+     "name_fr": "VIe corps",
+     "hq": "Breslau",
+     "lon": 17.04,
+     "lat": 51.11,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_vii",
+     "name_fr": "VIIe corps",
+     "hq": "Münster",
+     "lon": 7.63,
+     "lat": 51.96,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_viii",
+     "name_fr": "VIIIe corps",
+     "hq": "Coblence",
+     "lon": 7.59,
+     "lat": 50.36,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_ix",
+     "name_fr": "IXe corps",
+     "hq": "Altona",
+     "lon": 9.94,
+     "lat": 53.55,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_x",
+     "name_fr": "Xe corps",
+     "hq": "Hanovre",
+     "lon": 9.73,
+     "lat": 52.37,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_xi",
+     "name_fr": "XIe corps",
+     "hq": "Cassel",
+     "lon": 9.49,
+     "lat": 51.31,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_xii",
+     "name_fr": "XIIe corps (1er saxon)",
+     "hq": "Dresde",
+     "lon": 13.74,
+     "lat": 51.05,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_xiii",
+     "name_fr": "XIIIe corps (wurtembergeois)",
+     "hq": "Stuttgart",
+     "lon": 9.18,
+     "lat": 48.78,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_xiv",
+     "name_fr": "XIVe corps (badois)",
+     "hq": "Karlsruhe",
+     "lon": 8.4,
+     "lat": 49.01,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_xv",
+     "name_fr": "XVe corps",
+     "hq": "Strasbourg",
+     "lon": 7.75,
+     "lat": 48.58,
+     "hq_verification": "vérifié",
+     "hq_source": "WO_HANDBOOK_DE_1914 (XVe et XVIe corps « stationed in Alsace-Lorraine »)"
+    },
+    {
+     "id": "de_xvi",
+     "name_fr": "XVIe corps",
+     "hq": "Metz",
+     "lon": 6.18,
+     "lat": 49.12,
+     "hq_verification": "vérifié",
+     "hq_source": "WO_HANDBOOK_DE_1914 (XVe et XVIe corps « stationed in Alsace-Lorraine »)"
+    },
+    {
+     "id": "de_xvii",
+     "name_fr": "XVIIe corps",
+     "hq": "Dantzig",
+     "lon": 18.65,
+     "lat": 54.35,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_xviii",
+     "name_fr": "XVIIIe corps",
+     "hq": "Francfort-sur-le-Main",
+     "lon": 8.68,
+     "lat": 50.11,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_xix",
+     "name_fr": "XIXe corps (2e saxon)",
+     "hq": "Leipzig",
+     "lon": 12.37,
+     "lat": 51.34,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_xx",
+     "name_fr": "XXe corps",
+     "hq": "Allenstein",
+     "lon": 20.48,
+     "lat": 53.78,
+     "hq_verification": "vérifié",
+     "hq_source": "BERNHARDI_1914 (« Das 20. Korps wurde in Allenstein [...] errichtet »)"
+    },
+    {
+     "id": "de_xxi",
+     "name_fr": "XXIe corps",
+     "hq": "Sarrebruck",
+     "lon": 7.0,
+     "lat": 49.23,
+     "hq_verification": "vérifié",
+     "hq_source": "BERNHARDI_1914 (« das 21. in Saarbrücken errichtet »)"
+    },
+    {
+     "id": "de_bay_i",
+     "name_fr": "Ier corps bavarois",
+     "hq": "Munich",
+     "lon": 11.58,
+     "lat": 48.14,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_bay_ii",
+     "name_fr": "IIe corps bavarois",
+     "hq": "Wurtzbourg",
+     "lon": 9.93,
+     "lat": 49.79,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "de_bay_iii",
+     "name_fr": "IIIe corps bavarois",
+     "hq": "Nuremberg",
+     "lon": 11.08,
+     "lat": 49.45,
+     "hq_verification": "à vérifier"
+    }
+   ],
+   "districts_count_check": {
+    "expected": 25,
+    "source": "US_WD_1916 p. 30 (« Germany has at present 25 ») ; WO_HANDBOOK_DE_1914 (« there are 25 Army-Corps in all »)"
+   }
+  },
+  "france": {
+   "name_fr": "France",
+   "data_status": "suffisant (répartition estimée)",
+   "active": {
+    "value": 844188,
+    "reference_date": "budget 1914",
+    "definition": "Armée métropolitaine (Algérie et Tunisie comprises, gendarmerie et garde républicaine comprises) : 818 532 ; plus les troupes coloniales stationnées en France : 2 083 officiers + 23 573 hommes = 25 656.",
+    "source": "US_WD_1916",
+    "page": "p. 9 (818 532) et p. 20 (« Of these, 26,368 officers and 709,796 men are stationed in France. There are, in addition, 2,083 officers and 23,573 men of the colonial army stationed in France »)",
+    "reliability": "moyenne",
+    "derivation": "818 532 + 25 656 = 844 188",
+    "divergences": [
+     {
+      "value": 736000,
+      "source": "US_WD_1916",
+      "page": "p. 9, note 1",
+      "definition": "« Budget estimates metropolitan army, 1914, 736,000 »"
+     },
+     {
+      "value": 792423,
+      "source": "US_WD_1916",
+      "page": "p. 15",
+      "definition": "« Peace strength » rapporté à la population"
+     },
+     {
+      "value": 712000,
+      "source": "US_WD_1916",
+      "page": "p. 15, note 2",
+      "definition": "« Peace strength Metropolitan Army, 712,000, including an extra class of about 200,000 men »"
+     },
+     {
+      "value": 620420,
+      "source": "US_WD_1916",
+      "page": "p. 15 (tableau « Peace establishment and approximate war strength »)",
+      "definition": "Effectif du temps de paix, gendarmerie (21 998) et garde républicaine (2 993) comprises",
+      "note": "Périmètre et date de compilation différents ; illustre la dispersion interne du document (620 420 à 818 532)."
+     }
+    ],
+    "choice": "Total du tableau p. 9 (même définition que les autres puissances) complété par les troupes coloniales stationnées en France, présentes sur la carte. Les écarts internes du document (de 712 000 à 818 532) tiennent au périmètre (gendarmerie, Afrique du Nord, classe supplémentaire) : divergence conservée."
+   },
+   "arms": {
+    "source": "US_WD_1916",
+    "page": "p. 9",
+    "infantry": 509456,
+    "cavalry": 81556,
+    "field_artillery": 118302,
+    "foot_artillery": 4446,
+    "coast_artillery": 7246,
+    "technical": 27866,
+    "train": 11202,
+    "sanitary": 6123,
+    "total": 818532,
+    "note": "Ventilation de l'armée métropolitaine seule (818 532) ; appliquée en proportion aux 25 656 coloniaux stationnés en France (estimation)."
+   },
+   "off_map": {
+    "value": 82368,
+    "basis": "818 532 − (26 368 + 709 796) stationnés en France = 82 368 en Algérie et Tunisie (US_WD_1916, p. 20). Les ~87 000 troupes coloniales outre-mer (p. 21) sont hors du périmètre « actif ».",
+    "status": "dérivé d'une source"
+   },
+   "reserves": {
+    "value": 2300000,
+    "reference_date": "estimation de 1911 publiée en 1916",
+    "definition": "Réservistes entièrement instruits disponibles pour le passage au pied de guerre",
+    "source": "US_WD_1916",
+    "page": "p. 9 (second tableau)",
+    "reliability": "faible à moyenne",
+    "divergences": [
+     {
+      "value": 3800000,
+      "source": "US_WD_1916",
+      "page": "p. 20",
+      "definition": "« sum total of trained men which she is able to mobilize amounts to about 3,800,000 men » (actifs compris)"
+     },
+     {
+      "value": 2869000,
+      "source": "US_WD_1916",
+      "page": "p. 15, note 3",
+      "definition": "Réserves et dépôts 1 600 000 + armée territoriale 818 000 + réserve de la territoriale 451 000 (total de guerre 3 878 000 moins l'actif 1 009 000)",
+      "note": "Inclut l'armée territoriale (classes âgées) ; le tableau p. 9 retient 2,3 M."
+     },
+     {
+      "value": 5500000,
+      "source": "US_WD_1916",
+      "page": "p. 15",
+      "definition": "« About 5,500,000 men have had military training (Veltze) » (ressources totales, guerre défensive)",
+      "note": "Non retenu : inclut toutes les classes instruites."
+     }
+    ],
+    "on_map_share": {
+     "numerator": 21,
+     "denominator": 22,
+     "basis": "ESTIMATION : 21 des 22 districts (corps territoriaux et colonial) sont sur la carte ; le 19e corps (Algérie) est hors carte."
+    }
+   },
+   "districts": [
+    {
+     "id": "fr_i",
+     "name_fr": "1er corps",
+     "hq": "Lille",
+     "lon": 3.06,
+     "lat": 50.63,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_ii",
+     "name_fr": "2e corps",
+     "hq": "Amiens",
+     "lon": 2.3,
+     "lat": 49.89,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_iii",
+     "name_fr": "3e corps",
+     "hq": "Rouen",
+     "lon": 1.1,
+     "lat": 49.44,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_iv",
+     "name_fr": "4e corps",
+     "hq": "Le Mans",
+     "lon": 0.2,
+     "lat": 48.0,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_v",
+     "name_fr": "5e corps",
+     "hq": "Orléans",
+     "lon": 1.91,
+     "lat": 47.9,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_vi",
+     "name_fr": "6e corps",
+     "hq": "Châlons-sur-Marne",
+     "lon": 4.37,
+     "lat": 48.96,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_vii",
+     "name_fr": "7e corps",
+     "hq": "Besançon",
+     "lon": 6.02,
+     "lat": 47.24,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_viii",
+     "name_fr": "8e corps",
+     "hq": "Bourges",
+     "lon": 2.4,
+     "lat": 47.08,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_ix",
+     "name_fr": "9e corps",
+     "hq": "Tours",
+     "lon": 0.69,
+     "lat": 47.39,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_x",
+     "name_fr": "10e corps",
+     "hq": "Rennes",
+     "lon": -1.68,
+     "lat": 48.11,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xi",
+     "name_fr": "11e corps",
+     "hq": "Nantes",
+     "lon": -1.55,
+     "lat": 47.22,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xii",
+     "name_fr": "12e corps",
+     "hq": "Limoges",
+     "lon": 1.26,
+     "lat": 45.83,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xiii",
+     "name_fr": "13e corps",
+     "hq": "Clermont-Ferrand",
+     "lon": 3.08,
+     "lat": 45.78,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xiv",
+     "name_fr": "14e corps",
+     "hq": "Lyon",
+     "lon": 4.84,
+     "lat": 45.76,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xv",
+     "name_fr": "15e corps",
+     "hq": "Marseille",
+     "lon": 5.37,
+     "lat": 43.3,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xvi",
+     "name_fr": "16e corps",
+     "hq": "Montpellier",
+     "lon": 3.88,
+     "lat": 43.61,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xvii",
+     "name_fr": "17e corps",
+     "hq": "Toulouse",
+     "lon": 1.44,
+     "lat": 43.6,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xviii",
+     "name_fr": "18e corps",
+     "hq": "Bordeaux",
+     "lon": -0.58,
+     "lat": 44.84,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xx",
+     "name_fr": "20e corps",
+     "hq": "Nancy",
+     "lon": 6.18,
+     "lat": 48.69,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xxi",
+     "name_fr": "21e corps",
+     "hq": "Épinal",
+     "lon": 6.45,
+     "lat": 48.17,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_colonial",
+     "name_fr": "Corps d'armée colonial (stationné en France)",
+     "hq": "Paris",
+     "lon": 2.35,
+     "lat": 48.86,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "fr_xix",
+     "name_fr": "19e corps (Algérie)",
+     "hq": "Alger",
+     "lon": 3.06,
+     "lat": 36.75,
+     "hq_verification": "à vérifier",
+     "off_map": true
+    }
+   ],
+   "districts_count_check": {
+    "expected": 22,
+    "source": "US_WD_1916 p. 15 (« 20 army corps organized in peace. In addition there is one colonial army corps ») et p. 22 (21 corps dont un en Algérie) : 20 métropolitains numérotés 1 à 18, 20 et 21, plus le 19e en Algérie, plus le corps colonial.",
+    "note": "Le document compte tantôt 20 + 1 colonial, tantôt 21 dont un en Algérie ; la liste retient les 21 corps territoriaux et le corps colonial."
+   }
+  },
+  "austria_hungary": {
+   "name_fr": "Autriche-Hongrie",
+   "data_status": "suffisant (ventilation par arme partielle, répartition estimée)",
+   "active": {
+    "value": 472715,
+    "reference_date": "1914",
+    "definition": "Armée commune + Landwehr autrichienne + Honvéd hongroise + troupes bosniaques : 34 069 officiers (dont certains fonctionnaires assimilés) et 438 646 hommes.",
+    "source": "US_WD_1916",
+    "page": "p. 37 (« The total peace strength is 34,069 officers [...] and 438,646 men ») et p. 38-39 (détail : total 472 716)",
+    "reliability": "moyenne",
+    "divergences": [
+     {
+      "value": 370725,
+      "source": "US_WD_1916",
+      "page": "p. 9",
+      "definition": "Armée commune seule (« Common army only »)",
+      "note": "Périmètre plus étroit : non retenu comme actif total."
+     },
+     {
+      "value": 472716,
+      "source": "US_WD_1916",
+      "page": "p. 38-39",
+      "definition": "Somme détaillée « Peace strength, 1914 » (armée commune 370 725 ; Landwehr autrichienne 55 191 ; Honvéd 42 800 ; Bosniaques 8 000)",
+      "note": "Écart d'une unité avec 34 069 + 438 646."
+     }
+    ]
+   },
+   "arms": {
+    "source": "US_WD_1916",
+    "page": "p. 9",
+    "infantry": 196957,
+    "cavalry": 47151,
+    "field_artillery": 37069,
+    "foot_artillery": 9934,
+    "coast_artillery": null,
+    "technical": 12994,
+    "train": 4914,
+    "sanitary": 2933,
+    "total": 370725,
+    "scope": "armée commune seule",
+    "note": "Ventilation connue pour l'armée commune seulement ; ses proportions sont appliquées à toute l'armée active (ESTIMATION)."
+   },
+   "off_map": {
+    "value": 0,
+    "basis": "Les sièges des XVe (Sarajevo) et XVIe (Raguse) corps sont dans la région 043 du jeu ; aucune troupe active hors de la carte n'est identifiée.",
+    "status": "constat géographique"
+   },
+   "reserves": {
+    "value": 2000000,
+    "reference_date": "estimation publiée en 1916",
+    "definition": "Hommes entièrement instruits rappelables (« fully trained men subject to call »)",
+    "source": "US_WD_1916",
+    "page": "p. 37-38",
+    "reliability": "faible",
+    "divergences": [
+     {
+      "value": 1600000,
+      "source": "US_WD_1916",
+      "page": "p. 9",
+      "definition": "Réserves instruites, armée commune seule (« Figures are approximate »)"
+     },
+     {
+      "value": 4320000,
+      "source": "US_WD_1916",
+      "page": "p. 38-39",
+      "definition": "Effectif de guerre total approximatif, Landsturm (2 000 000) et réserve d'ersatz (500 000) compris",
+      "note": "Inclut des catégories peu ou pas instruites."
+     }
+    ],
+    "choice": "2 000 000 : seul chiffre couvrant toute la monarchie avec la définition « entièrement instruits » ; le document qualifie les données de la Landwehr de « little more than an incomplete guess » (p. 38).",
+    "on_map_share": {
+     "numerator": 1,
+     "denominator": 1,
+     "basis": "Tous les districts sont sur la carte."
+    }
+   },
+   "districts": [
+    {
+     "id": "ah_i",
+     "name_fr": "Ier corps",
+     "hq": "Cracovie",
+     "lon": 19.94,
+     "lat": 50.06,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_ii",
+     "name_fr": "IIe corps",
+     "hq": "Vienne",
+     "lon": 16.37,
+     "lat": 48.21,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_iii",
+     "name_fr": "IIIe corps",
+     "hq": "Graz",
+     "lon": 15.44,
+     "lat": 47.07,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_iv",
+     "name_fr": "IVe corps",
+     "hq": "Budapest",
+     "lon": 19.04,
+     "lat": 47.5,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_v",
+     "name_fr": "Ve corps",
+     "hq": "Pozsony (Presbourg)",
+     "lon": 17.11,
+     "lat": 48.15,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_vi",
+     "name_fr": "VIe corps",
+     "hq": "Kassa (Kaschau)",
+     "lon": 21.26,
+     "lat": 48.72,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_vii",
+     "name_fr": "VIIe corps",
+     "hq": "Temesvár",
+     "lon": 21.23,
+     "lat": 45.75,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_viii",
+     "name_fr": "VIIIe corps",
+     "hq": "Prague",
+     "lon": 14.42,
+     "lat": 50.08,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_ix",
+     "name_fr": "IXe corps",
+     "hq": "Leitmeritz",
+     "lon": 14.13,
+     "lat": 50.53,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_x",
+     "name_fr": "Xe corps",
+     "hq": "Przemyśl",
+     "lon": 22.77,
+     "lat": 49.78,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_xi",
+     "name_fr": "XIe corps",
+     "hq": "Lemberg",
+     "lon": 24.03,
+     "lat": 49.84,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_xii",
+     "name_fr": "XIIe corps",
+     "hq": "Hermannstadt",
+     "lon": 24.15,
+     "lat": 45.79,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_xiii",
+     "name_fr": "XIIIe corps",
+     "hq": "Agram (Zagreb)",
+     "lon": 15.98,
+     "lat": 45.81,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_xiv",
+     "name_fr": "XIVe corps",
+     "hq": "Innsbruck",
+     "lon": 11.4,
+     "lat": 47.27,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_xv",
+     "name_fr": "XVe corps",
+     "hq": "Sarajevo",
+     "lon": 18.41,
+     "lat": 43.86,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ah_xvi",
+     "name_fr": "XVIe corps",
+     "hq": "Raguse (Dubrovnik)",
+     "lon": 18.09,
+     "lat": 42.65,
+     "hq_verification": "à vérifier"
+    }
+   ],
+   "districts_count_check": {
+    "expected": 16,
+    "source": "US_WD_1916 p. 34 (« In the common army there are 16 army corps with 33 divisions »)",
+    "note": "Les 15 divisions de Landwehr sont rattachées aux mêmes districts (estimation : elles suivent la répartition des corps)."
+   }
+  },
+  "russian_empire": {
+   "name_fr": "Empire russe",
+   "data_status": "suffisant (part sur la carte et répartition estimées)",
+   "active": {
+    "value": 1284000,
+    "reference_date": "1914 (données antérieures à la mobilisation)",
+    "definition": "Effectif total du temps de paix, « active troops » et troupes de forteresse, tout l'empire (Europe, Caucase, Asie centrale, Sibérie)",
+    "source": "US_WD_1916",
+    "page": "p. 9 et p. 45 (« The total peace strength amounts all told to about 1,284,000 »)",
+    "reliability": "faible à moyenne",
+    "reliability_note": "Le document juge difficile un résumé fiable de l'armée russe (p. 42) ; plusieurs catégories y sont marquées « (?) ».",
+    "divergences": [
+     {
+      "value": 1000000,
+      "source": "US_WD_1916",
+      "page": "p. 46",
+      "definition": "« Army strength, 1909, 1,000,000 » (année 1909)",
+      "note": "Antérieur aux augmentations : non retenu."
+     }
+    ]
+   },
+   "arms": {
+    "source": "US_WD_1916",
+    "page": "p. 9",
+    "infantry": 815000,
+    "cavalry": 138000,
+    "field_artillery": 153792,
+    "foot_artillery": 18056,
+    "coast_artillery": 14152,
+    "technical": 37448,
+    "train": null,
+    "sanitary": null,
+    "total": 1284000,
+    "note": "Technique « includes miscellaneous organizations, staffs, school detachments » ; train et service de santé inconnus « (?) »."
+   },
+   "off_map": {
+    "value": 347027,
+    "estimate": true,
+    "basis": "ESTIMATION : 10 des 37 corps (3 caucasiens, 2 turkestanais, 5 sibériens) sont hors de la carte européenne du jeu ; part retenue 10/37 de l'actif, à défaut de chiffres par district. 37 corps : US_WD_1916 p. 42.",
+    "status": "estimation"
+   },
+   "reserves": {
+    "value": 3800000,
+    "reference_date": "estimation de 1911 publiée en 1916",
+    "definition": "Réservistes entièrement instruits disponibles pour le passage au pied de guerre (tout l'empire)",
+    "source": "US_WD_1916",
+    "page": "p. 9 (second tableau)",
+    "reliability": "faible",
+    "divergences": [
+     {
+      "value": 2970429,
+      "source": "US_WD_1916",
+      "page": "p. 46",
+      "definition": "« Other trained men available » dans l'estimation de guerre (5 962 306 au total)",
+      "note": "Autre ligne du même document."
+     }
+    ],
+    "on_map_share": {
+     "numerator": 27,
+     "denominator": 37,
+     "basis": "ESTIMATION : 27 des 37 corps sont en Russie d'Europe (carte du jeu)."
+    }
+   },
+   "districts": [
+    {
+     "id": "ru_garde",
+     "name_fr": "Corps de la Garde (district de Saint-Pétersbourg)",
+     "hq": "Saint-Pétersbourg",
+     "lon": 30.32,
+     "lat": 59.94,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_i",
+     "name_fr": "Ier corps (Saint-Pétersbourg)",
+     "hq": "Saint-Pétersbourg",
+     "lon": 30.32,
+     "lat": 59.94,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xviii",
+     "name_fr": "XVIIIe corps (Saint-Pétersbourg)",
+     "hq": "Saint-Pétersbourg",
+     "lon": 30.32,
+     "lat": 59.94,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xxii",
+     "name_fr": "XXIIe corps (Finlande)",
+     "hq": "Helsingfors",
+     "lon": 24.94,
+     "lat": 60.17,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_ii",
+     "name_fr": "IIe corps (Vilna)",
+     "hq": "Grodno",
+     "lon": 23.83,
+     "lat": 53.68,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_iii",
+     "name_fr": "IIIe corps (Vilna)",
+     "hq": "Vilna",
+     "lon": 25.28,
+     "lat": 54.69,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_iv",
+     "name_fr": "IVe corps (Vilna)",
+     "hq": "Minsk",
+     "lon": 27.56,
+     "lat": 53.9,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xx",
+     "name_fr": "XXe corps (Vilna)",
+     "hq": "Riga",
+     "lon": 24.11,
+     "lat": 56.95,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_vi",
+     "name_fr": "VIe corps (Varsovie)",
+     "hq": "Łomża",
+     "lon": 22.07,
+     "lat": 53.18,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xiv",
+     "name_fr": "XIVe corps (Varsovie)",
+     "hq": "Lublin",
+     "lon": 22.57,
+     "lat": 51.25,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xv",
+     "name_fr": "XVe corps (Varsovie)",
+     "hq": "Varsovie",
+     "lon": 21.01,
+     "lat": 52.23,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xix",
+     "name_fr": "XIXe corps (Varsovie)",
+     "hq": "Brest-Litovsk",
+     "lon": 23.69,
+     "lat": 52.1,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xxiii",
+     "name_fr": "XXIIIe corps (Varsovie)",
+     "hq": "Varsovie",
+     "lon": 21.01,
+     "lat": 52.23,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_ix",
+     "name_fr": "IXe corps (Kiev)",
+     "hq": "Kiev",
+     "lon": 30.52,
+     "lat": 50.45,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_x",
+     "name_fr": "Xe corps (Kiev)",
+     "hq": "Kharkov",
+     "lon": 36.23,
+     "lat": 49.99,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xi",
+     "name_fr": "XIe corps (Kiev)",
+     "hq": "Rovno",
+     "lon": 26.25,
+     "lat": 50.62,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xii",
+     "name_fr": "XIIe corps (Kiev)",
+     "hq": "Vinnitsa",
+     "lon": 28.47,
+     "lat": 49.23,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xxi",
+     "name_fr": "XXIe corps (Kiev)",
+     "hq": "Kiev",
+     "lon": 30.52,
+     "lat": 50.45,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_vii",
+     "name_fr": "VIIe corps (Odessa)",
+     "hq": "Iekaterinoslav",
+     "lon": 35.05,
+     "lat": 48.46,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_viii",
+     "name_fr": "VIIIe corps (Odessa)",
+     "hq": "Odessa",
+     "lon": 30.73,
+     "lat": 46.48,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_grenadiers",
+     "name_fr": "Corps des grenadiers (Moscou)",
+     "hq": "Moscou",
+     "lon": 37.62,
+     "lat": 55.75,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_v",
+     "name_fr": "Ve corps (Moscou)",
+     "hq": "Voronej",
+     "lon": 39.2,
+     "lat": 51.67,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xiii",
+     "name_fr": "XIIIe corps (Moscou)",
+     "hq": "Smolensk",
+     "lon": 32.05,
+     "lat": 54.78,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xvii",
+     "name_fr": "XVIIe corps (Moscou)",
+     "hq": "Moscou",
+     "lon": 37.62,
+     "lat": 55.75,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xxv",
+     "name_fr": "XXVe corps (Moscou)",
+     "hq": "Moscou",
+     "lon": 37.62,
+     "lat": 55.75,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xvi",
+     "name_fr": "XVIe corps (Kazan)",
+     "hq": "Kazan",
+     "lon": 49.12,
+     "lat": 55.79,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ru_xxiv",
+     "name_fr": "XXIVe corps (Kazan)",
+     "hq": "Samara",
+     "lon": 50.1,
+     "lat": 53.2,
+     "hq_verification": "à vérifier"
+    }
+   ],
+   "districts_count_check": {
+    "expected": 27,
+    "source": "37 corps au total (US_WD_1916 p. 42) moins 10 corps asiatiques et caucasiens hors carte (connaissance générale, à vérifier)."
+   }
+  },
+  "united_kingdom": {
+   "name_fr": "Royaume-Uni",
+   "data_status": "suffisant (répartition intérieure estimée)",
+   "active": {
+    "value": 247432,
+    "reference_date": "1er août 1914",
+    "definition": "Armée régulière (« Regular Army ») : 10 800 officiers et 236 632 hommes, état-major, services et établissements divers compris ; troupes indigènes de l'armée des Indes exclues.",
+    "source": "WO_1922",
+    "page": "p. 30, tableau (i)(b) ; détail p. 156-157",
+    "reliability": "haute",
+    "divergences": [
+     {
+      "value": 255438,
+      "source": "US_WD_1916",
+      "page": "p. 9",
+      "definition": "Armée régulière seule",
+      "note": "+3 % ; date et périmètre (états-majors) légèrement différents."
+     }
+    ],
+    "choice": "WO_1922 : statistique officielle nationale à la date du 1er août 1914 ; même définition (armée régulière sous les drapeaux)."
+   },
+   "arms": {
+    "source": "US_WD_1916",
+    "page": "p. 9",
+    "infantry": 151261,
+    "cavalry": 20716,
+    "field_artillery": 34694,
+    "foot_artillery": 628,
+    "coast_artillery": 14965,
+    "technical": 9096,
+    "train": 6772,
+    "sanitary": 5069,
+    "total": 255438,
+    "note": "Proportions du document américain appliquées à l'effectif WO_1922 (ESTIMATION de ventilation)."
+   },
+   "off_map": {
+    "value": 121123,
+    "basis": "WO_1922 p. 157 (Section 10, « Strength, 1st August, 1914 ») : Inde 75 000 ; colonies et Égypte 43 486 ; postes divers et dépôts 2 637 (247 432 − 126 309 au Royaume-Uni − 75 000 − 43 486). Métropole : 126 309.",
+    "status": "sourcé",
+    "divergences": [
+     {
+      "value": 76953,
+      "source": "WO_1922",
+      "page": "p. 777 (PDF p. 795), « India's military contribution »",
+      "definition": "Officiers et hommes britanniques de l'armée des Indes au début de la guerre",
+      "note": "Définition différente (contribution de l'Inde)."
+     }
+    ]
+   },
+   "reserves": {
+    "value": 209280,
+    "reference_date": "1er août 1914",
+    "definition": "Army Reserve (145 347) + Special Reserve (63 933) : anciens soldats et réservistes rappelés à la mobilisation pour compléter et alimenter l'armée régulière.",
+    "source": "WO_1922",
+    "page": "p. 30, tableau (i)(b)",
+    "reliability": "haute",
+    "excluded": [
+     {
+      "category": "Territorial Force",
+      "value": 268777,
+      "source": "WO_1922 p. 30",
+      "reason": "Force volontaire à temps partiel de défense intérieure, distincte des réserves de l'armée régulière ; non comptée dans le réservoir (catégorie à modéliser si le directeur le décide)."
+     },
+     {
+      "category": "National Reserve (1er octobre 1913)",
+      "value": 215451,
+      "source": "WO_1922 p. 30",
+      "reason": "Registre d'anciens soldats sans obligation de rappel."
+     }
+    ],
+    "divergences": [
+     {
+      "value": 215000,
+      "source": "US_WD_1916",
+      "page": "p. 9",
+      "definition": "Réserves instruites (« Regulars only »)"
+     }
+    ],
+    "on_map_share": {
+     "numerator": 1,
+     "denominator": 1,
+     "basis": "Les réservistes (Army Reserve, Special Reserve) sont rappelés au Royaume-Uni ; les garnisons d'Inde et des colonies ne concernent que l'armée active."
+    }
+   },
+   "districts": [
+    {
+     "id": "uk_aldershot",
+     "name_fr": "Commandement d'Aldershot",
+     "hq": "Aldershot",
+     "lon": -0.76,
+     "lat": 51.25,
+     "hq_verification": "vérifié",
+     "hq_source": "US_WD_1916 p. 60 (« Aldershot is the station of the expeditionary force »)"
+    },
+    {
+     "id": "uk_southern",
+     "name_fr": "Commandement du Sud",
+     "hq": "Salisbury",
+     "lon": -1.79,
+     "lat": 51.07,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "uk_eastern",
+     "name_fr": "Commandement de l'Est",
+     "hq": "Londres",
+     "lon": -0.13,
+     "lat": 51.51,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "uk_london",
+     "name_fr": "District de Londres",
+     "hq": "Londres",
+     "lon": -0.13,
+     "lat": 51.51,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "uk_northern",
+     "name_fr": "Commandement du Nord",
+     "hq": "York",
+     "lon": -1.08,
+     "lat": 53.96,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "uk_western",
+     "name_fr": "Commandement de l'Ouest",
+     "hq": "Chester",
+     "lon": -2.89,
+     "lat": 53.19,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "uk_scottish",
+     "name_fr": "Commandement d'Écosse",
+     "hq": "Édimbourg",
+     "lon": -3.19,
+     "lat": 55.95,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "uk_irish",
+     "name_fr": "Commandement d'Irlande",
+     "hq": "Dublin",
+     "lon": -6.26,
+     "lat": 53.35,
+     "hq_verification": "à vérifier"
+    }
+   ],
+   "districts_count_check": {
+    "expected": 8,
+    "source": "US_WD_1916 p. 60 : commandements « Aldershot, south, east, north, west, Scotland, Ireland, and London »."
+   }
+  },
+  "italy": {
+   "name_fr": "Italie",
+   "data_status": "suffisant (répartition estimée ; troupes d'Afrique exclues)",
+   "active": {
+    "value": 305033,
+    "reference_date": "1914",
+    "definition": "Armée régulière, effectif budgétaire, hors troupes d'Afrique",
+    "source": "US_WD_1916",
+    "page": "p. 9 (« Exclusive of troops in Africa ») et p. 66 (« The total peace strength of the regular army is 305,000 »)",
+    "reliability": "faible à moyenne",
+    "reliability_note": "Le document précise que l'effectif présent est toujours inférieur de « several thousand » au budget (congés illimités, p. 63).",
+    "divergences": [
+     {
+      "value": 250860,
+      "source": "US_WD_1916",
+      "page": "p. 67",
+      "definition": "« Peace strength » rapporté à la population (budget de 1912)",
+      "note": "Année et définition différentes."
+     },
+     {
+      "value": 252340,
+      "source": "US_WD_1916",
+      "page": "p. 67 (tableau, budget de 1912)",
+      "definition": "« Peace » (budget strength, 1912)"
+     }
+    ]
+   },
+   "arms": {
+    "source": "US_WD_1916",
+    "page": "p. 9",
+    "infantry": 193514,
+    "cavalry": 27410,
+    "field_artillery": 41493,
+    "foot_artillery": 7000,
+    "coast_artillery": 5000,
+    "technical": 15836,
+    "train": 5940,
+    "sanitary": 5666,
+    "total": 305033
+   },
+   "off_map": {
+    "value": 0,
+    "basis": "L'effectif retenu exclut déjà les troupes d'Afrique (US_WD_1916 p. 9, note 5 ; 132 officiers et 4 530 hommes de troupes coloniales, p. 66). Les forces métropolitaines détachées en Libye en 1914 ne sont pas chiffrées par la source : INCONNU.",
+    "status": "partiel"
+   },
+   "reserves": {
+    "value": 1250000,
+    "reference_date": "estimation de 1911 publiée en 1916",
+    "definition": "Réservistes entièrement instruits disponibles pour le passage au pied de guerre",
+    "source": "US_WD_1916",
+    "page": "p. 9 (second tableau)",
+    "reliability": "faible",
+    "divergences": [
+     {
+      "value": 1300000,
+      "source": "US_WD_1916",
+      "page": "p. 66",
+      "definition": "« A conservative estimate would seem to be 1,300,000 fully trained men »"
+     },
+     {
+      "value": 3500000,
+      "source": "US_WD_1916",
+      "page": "p. 66",
+      "definition": "« On paper she could mobilize 3,500,000 men »",
+      "note": "Théorique, non retenu."
+     }
+    ],
+    "on_map_share": {
+     "numerator": 1,
+     "denominator": 1,
+     "basis": "Tous les districts sont sur la carte."
+    }
+   },
+   "districts": [
+    {
+     "id": "it_i",
+     "name_fr": "Ier corps",
+     "hq": "Turin",
+     "lon": 7.69,
+     "lat": 45.07,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_ii",
+     "name_fr": "IIe corps",
+     "hq": "Alexandrie",
+     "lon": 8.62,
+     "lat": 44.91,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_iii",
+     "name_fr": "IIIe corps",
+     "hq": "Milan",
+     "lon": 9.19,
+     "lat": 45.46,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_iv",
+     "name_fr": "IVe corps",
+     "hq": "Gênes",
+     "lon": 8.93,
+     "lat": 44.41,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_v",
+     "name_fr": "Ve corps",
+     "hq": "Vérone",
+     "lon": 10.99,
+     "lat": 45.44,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_vi",
+     "name_fr": "VIe corps",
+     "hq": "Bologne",
+     "lon": 11.34,
+     "lat": 44.49,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_vii",
+     "name_fr": "VIIe corps",
+     "hq": "Ancône",
+     "lon": 13.52,
+     "lat": 43.62,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_viii",
+     "name_fr": "VIIIe corps",
+     "hq": "Florence",
+     "lon": 11.26,
+     "lat": 43.77,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_ix",
+     "name_fr": "IXe corps",
+     "hq": "Rome",
+     "lon": 12.5,
+     "lat": 41.9,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_x",
+     "name_fr": "Xe corps",
+     "hq": "Naples",
+     "lon": 14.27,
+     "lat": 40.85,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_xi",
+     "name_fr": "XIe corps",
+     "hq": "Bari",
+     "lon": 16.87,
+     "lat": 41.12,
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "it_xii",
+     "name_fr": "XIIe corps",
+     "hq": "Palerme",
+     "lon": 13.36,
+     "lat": 38.12,
+     "hq_verification": "à vérifier"
+    }
+   ],
+   "districts_count_check": {
+    "expected": 12,
+    "source": "US_WD_1916 p. 63 (« There are 12 army corps, 25 divisions, and 3 cavalry divisions organized in peace »)."
+   }
+  },
+  "ottoman_empire": {
+   "name_fr": "Empire ottoman",
+   "data_status": "INSUFFISANT pour la ventilation par arme ; effectif et réserves sourcés à fiabilité moyenne ; part européenne estimée",
+   "active": {
+    "value": 208000,
+    "reference_date": "été 1914",
+    "definition": "« peacetime operating strength of about 200,000 men and 8,000 officers » (classes 1893 et 1894 sous les drapeaux)",
+    "source": "ERICKSON_2000",
+    "page": "non disponible (article repris en ligne)",
+    "reliability": "moyenne",
+    "divergences": []
+   },
+   "arms": null,
+   "arms_status": "INCONNU : aucune ventilation par arme sourcée. Le jeu modélise ces soldats en infanterie générique (simplification technique signalée sur chaque unité), sans artillerie ni cavalerie.",
+   "off_map": {
+    "value": 160000,
+    "estimate": true,
+    "basis": "ESTIMATION : la carte ne comprend que la Thrace et Constantinople (régions 087 à 090). Seule la Ire armée (corps I, II et III) y est rattachée, sur 13 corps (connaissance générale, à vérifier dans Erickson 2001) : part sur la carte 3/13 de 208 000 = 48 000 ; hors carte 160 000.",
+    "status": "estimation"
+   },
+   "reserves": {
+    "value": 1000000,
+    "reference_date": "été 1914",
+    "definition": "« approximately 1,000,000 men [...] were easily available for recall » (estimation de l'état-major ottoman)",
+    "source": "ERICKSON_2000",
+    "page": "non disponible",
+    "reliability": "faible à moyenne",
+    "divergences": [
+     {
+      "value": 2000000,
+      "source": "ERICKSON_2000",
+      "definition": "« mobilization potential of about 2,000,000 men » (potentiel total)"
+     },
+     {
+      "value": 477868,
+      "source": "ERICKSON_2000",
+      "definition": "Hommes nécessaires pour compléter les divisions (« 477,868 men and 12,469 officers »)",
+      "note": "Besoin, pas réservoir."
+     }
+    ],
+    "on_map_share": {
+     "numerator": 3,
+     "denominator": 13,
+     "basis": "ESTIMATION : 3 corps (Ire armée) sur 13 sont en Thrace et à Constantinople (à vérifier)."
+    }
+   },
+   "districts": [
+    {
+     "id": "ot_i",
+     "name_fr": "Ier corps (Ire armée)",
+     "hq": "Constantinople",
+     "city_id": "city_constantinople",
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ot_ii",
+     "name_fr": "IIe corps (Ire armée, Thrace)",
+     "hq": "Thrace — siège précis non vérifié, rattaché au QG de la Ire armée",
+     "city_id": "city_constantinople",
+     "hq_verification": "à vérifier"
+    },
+    {
+     "id": "ot_iii",
+     "name_fr": "IIIe corps (Ire armée, Thrace)",
+     "hq": "Thrace — siège précis non vérifié, rattaché au QG de la Ire armée",
+     "city_id": "city_constantinople",
+     "hq_verification": "à vérifier"
+    }
+   ],
+   "districts_count_check": {
+    "expected": 3,
+    "source": "Composition de la Ire armée en août 1914 (corps I, II, III) : article Wikipédia « First Army (Ottoman Empire) » (cite Erickson) — à vérifier."
+   }
+  }
+ }
+}

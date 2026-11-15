@@ -401,19 +401,21 @@ func test_queue_commander_pause_disconnection() -> void:
 	st.active_battles = []
 	var b := _setup(s)
 	b["humans"] = ["france", "german_empire"]
+	b["controllers"]["german_empire"] = "human"
+	b["multiplayer"] = true
 	runner.check(not BattleManager.request_pause(b, "france", true), "multijoueur : une seule voix ne suffit pas")
 	runner.check(BattleManager.request_pause(b, "german_empire", true), "unanimité des humains : pause")
 	BattleManager.request_pause(b, "france", false)
 	b["humans"] = ["france"]
+	b["controllers"]["german_empire"] = "ai"
+	b["multiplayer"] = false
 	runner.check(not BattleManager.request_pause(b, "italy", true), "un pays IA ou non participant ne vote pas")
 	runner.check(BattleManager.request_pause(b, "france", true), "solo : l'accord du seul humain suffit")
 	BattleManager.request_pause(b, "france", false)
-	var t0 := int(b["tick"])
 	BattleManager.on_disconnect(b, cr, "france")
-	runner.check(b["controllers"]["france"] == "disconnected", "déconnexion enregistrée (politique proposée, non validée)")
-	runner.check(not BattleManager._ai_controls(b, cr, "france"), "délai de grâce : unités en position")
-	b["tick"] = t0 + int(cr["disconnection"]["grace_ticks"])
-	runner.check(BattleManager._ai_controls(b, cr, "france"), "puis reprise par l'IA")
+	runner.check(b["controllers"]["france"] == "disconnected" and bool(b["disconnect_pause"]), "déconnexion en solo : bataille en pause (T-046)")
+	BattleManager.on_reconnect(b, "france")
+	runner.check(b["controllers"]["france"] == "human" and not bool(b["disconnect_pause"]), "reconnexion : pause levée (T-046)")
 
 
 func test_player_battle_flow_and_sync() -> void:

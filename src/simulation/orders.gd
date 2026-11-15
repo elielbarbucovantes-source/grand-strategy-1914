@@ -11,6 +11,7 @@ const BREAK_TREATY := "break_treaty"
 const SEND_MESSAGE := "send_message"
 const SET_INDUSTRY_ALLOCATION := "set_industry_allocation"
 const BUILD_DEFENSE := "build_defense"
+const MOBILIZE := "mobilize"
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
@@ -49,6 +50,11 @@ static func build_trench(nation: String, region: String, a: Vector2, b: Vector2)
 
 static func build_installation(nation: String, region: String, kind: String, pos: Vector2) -> Dictionary:
 	return {"type": BUILD_DEFENSE, "nation": nation, "region": region, "kind": kind, "pos": [pos.x, pos.y]}
+
+
+## Mobilisation générale (MIL-01/02) : les réserves rejoignent progressivement les unités.
+static func mobilize(nation: String) -> Dictionary:
+	return {"type": MOBILIZE, "nation": nation}
 
 
 static func industry_allocation(nation: String, allocation: Dictionary) -> Dictionary:

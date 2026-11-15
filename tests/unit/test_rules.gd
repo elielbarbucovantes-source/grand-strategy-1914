@@ -12,7 +12,8 @@ func _session(player: String = "france") -> GameSession:
 
 
 func _army(s: GameSession, nation: String) -> Dictionary:
-	return s.state.formations["army_%s_1" % nation]
+	# Armée de garnison de la région-capitale (campagne historique, MIL-01).
+	return s.state.formations["army_%s_%s" % [nation, s.state.nations[nation]["capital_region_id"]]]
 
 
 func test_foreign_entry_requires_war_or_transit() -> void:
@@ -33,7 +34,7 @@ func test_foreign_entry_requires_war_or_transit() -> void:
 	runner.check(s.queue_order(Orders.move("france", fr["id"], own)) == "", "déplacement intérieur autorisé")
 	if foreign != "":
 		runner.check(s.queue_order(Orders.move("france", fr["id"], foreign)) != "", "entrée non autorisée refusée (dossier §5.3)")
-	runner.check(s.queue_order(Orders.move("france", "army_german_empire_1", own)) != "", "commandement national : formation étrangère refusée")
+	runner.check(s.queue_order(Orders.move("france", "army_german_empire_region_028", own)) != "", "commandement national : formation étrangère refusée")
 	var far := "region_069"
 	runner.check(s.queue_order(Orders.move("france", fr["id"], far)) != "", "portée mensuelle limitée")
 
@@ -85,9 +86,9 @@ func test_simultaneous_clash_creates_neutral_battle() -> void:
 	var st := s.state
 	st.wars.append({"id": "war_t", "a": "france", "b": "belgium", "since_turn": 0})
 	# Placer deux formations dans des régions voisines puis les faire converger.
-	st.formations["army_france_1"]["region"] = "region_007"
+	st.formations["army_france_region_008"]["region"] = "region_007"
 	st.formations["army_belgium_1"]["region"] = "region_014"
-	var moves := [Orders.move("france", "army_france_1", "region_013"), Orders.move("belgium", "army_belgium_1", "region_013")]
+	var moves := [Orders.move("france", "army_france_region_008", "region_013"), Orders.move("belgium", "army_belgium_1", "region_013")]
 	for m: Dictionary in moves:
 		runner.check(MilitarySystem.validate_move(st, s.world, s.rules, m) == "", "mouvement valide : %s" % MilitarySystem.validate_move(st, s.world, s.rules, m))
 	var clashes := MilitarySystem.resolve_moves(st, s.world, s.rules, moves)
@@ -95,27 +96,33 @@ func test_simultaneous_clash_creates_neutral_battle() -> void:
 	var battles := BattleSystem.create_battles(st, clashes)
 	BattleSystem.resolve_all(st, s.world, s.rules, battles)
 	runner.check(st.battles.size() == 1 and st.battles[0]["status"] == "resolved", "bataille close avant le tour suivant")
-	runner.check(st.formations["army_france_1"]["region"] == "region_007", "résolveur neutre : retour à l'origine")
+	runner.check(st.formations["army_france_region_008"]["region"] == "region_007", "résolveur neutre : retour à l'origine")
 	runner.check(st.controller("region_013") == "belgium", "aucun changement de contrôle sans règle de combat")
 
 
 func test_joint_command_and_pause_rules() -> void:
 	var s := _session()
 	var st := s.state
-	st.formations["army_france_1"]["soldiers"] = 1000
-	st.formations["army_united_kingdom_1"]["soldiers"] = 400
-	var c := BattleSystem.joint_commander(st, ["army_france_1", "army_united_kingdom_1"])
-	runner.check(c["nation"] == "france", "commandement au pays fournissant le plus de soldats")
-	st.formations["army_united_kingdom_1"]["soldiers"] = 1000
-	c = BattleSystem.joint_commander(st, ["army_france_1", "army_united_kingdom_1"])
-	runner.check(c["nation"] == "france", "égalité sans prestige connu : départage déterministe documenté (T-029 G ; identifiant croissant)")
-	st.nations["france"]["military_prestige"] = 3
-	st.nations["united_kingdom"]["military_prestige"] = 5
-	c = BattleSystem.joint_commander(st, ["army_france_1", "army_united_kingdom_1"])
-	runner.check(c["nation"] == "united_kingdom", "égalité départagée par le prestige militaire")
-	st.formations["army_france_1"]["soldiers"] = null
-	c = BattleSystem.joint_commander(st, ["army_france_1", "army_united_kingdom_1"])
+	# États hors MIL-01 (effectif déclaré au niveau de l'armée, sans unité) : règle isolée des données.
+	st.formations["army_belgium_1"]["soldiers"] = 1000
+	st.formations["army_netherlands_1"]["soldiers"] = 400
+	var c := BattleSystem.joint_commander(st, ["army_belgium_1", "army_netherlands_1"])
+	runner.check(c["nation"] == "belgium", "commandement au pays fournissant le plus de soldats")
+	st.formations["army_netherlands_1"]["soldiers"] = 1000
+	c = BattleSystem.joint_commander(st, ["army_belgium_1", "army_netherlands_1"])
+	runner.check(c["nation"] == "belgium", "égalité sans prestige connu : départage déterministe documenté (T-029 G ; identifiant croissant)")
+	st.nations["belgium"]["military_prestige"] = 3
+	st.nations["netherlands"]["military_prestige"] = 5
+	c = BattleSystem.joint_commander(st, ["army_belgium_1", "army_netherlands_1"])
+	runner.check(c["nation"] == "netherlands", "égalité départagée par le prestige militaire")
+	st.formations["army_belgium_1"]["soldiers"] = null
+	c = BattleSystem.joint_commander(st, ["army_belgium_1", "army_netherlands_1"])
 	runner.check(c["nation"] == null, "effectifs inconnus : indéterminé")
+	var fr := _army(s, "france")
+	var uk := _army(s, "united_kingdom")
+	c = BattleSystem.joint_commander(st, [fr["id"], uk["id"]])
+	runner.check(c["nation"] == ("france" if int(st.soldiers_of(fr["id"])) > int(st.soldiers_of(uk["id"])) else "united_kingdom"),
+		"campagne historique : effectifs des unités pris en compte (%s)" % c["basis"])
 	runner.check(BattleSystem.pause_allowed(["france"], {}), "solo : pause libre")
 	runner.check(not BattleSystem.pause_allowed(["france", "united_kingdom"], {"france": true}), "multijoueur : unanimité requise")
 	runner.check(BattleSystem.pause_allowed(["france", "united_kingdom"], {"france": true, "united_kingdom": true}), "unanimité atteinte")
@@ -171,14 +178,14 @@ func test_ai_defends_and_counterattacks() -> void:
 	var st := s.state
 	runner.check(st.at_war("france", "belgium"), "guerre déclarée")
 	# Occupation d'une région belge non défendue par la France, puis réaction de l'IA belge.
-	st.formations["army_france_1"]["region"] = "region_007"
+	st.formations["army_france_region_008"]["region"] = "region_007"
 	var belgian_regions := st.regions_controlled_by("belgium")
 	var target := ""
 	for n: String in s.world.neighbor_ids("region_007"):
 		if belgian_regions.has(n) and st.formations_in(n).is_empty():
 			target = n
 	if target != "":
-		s.queue_order(Orders.move("france", "army_france_1", target))
+		s.queue_order(Orders.move("france", "army_france_region_008", target))
 		s.end_turn()
 		runner.check(st.controller(target) == "france", "région belge occupée")
 		var orders := NationAgent.decide(IntelSystem.view_for(st, s.world, "belgium"), s.world, s.rules)
@@ -196,12 +203,12 @@ func test_ai_defends_and_counterattacks() -> void:
 func test_logistics_cut_off() -> void:
 	var s := _session()
 	var st := s.state
-	st.formations["army_france_1"]["region"] = "region_007"
+	st.formations["army_france_region_008"]["region"] = "region_007"
 	LogisticsSystem.update_supply(st, s.world)
-	runner.check(st.formations["army_france_1"]["supplied"], "formation reliée à la capitale")
+	runner.check(st.formations["army_france_region_008"]["supplied"], "formation reliée à la capitale")
 	st.regions["region_008"]["controller"] = "german_empire"  # capitale perdue
 	LogisticsSystem.update_supply(st, s.world)
-	runner.check(not st.formations["army_france_1"]["supplied"], "capitale perdue : formation coupée")
+	runner.check(not st.formations["army_france_region_008"]["supplied"], "capitale perdue : formation coupée")
 	var summary := LogisticsSystem.summary(st, s.world, "france")
 	runner.check(summary["delivered"] == null, "« livré » reste inconnu (capacités non définies)")
 

@@ -182,14 +182,15 @@ func units_of(army_id: String) -> Array:
 	return descendants(army_id).filter(func(id: String) -> bool: return formations[id]["echelon"] == "unit")
 
 
-## Effectif d'une formation : somme des unités ; null si inconnu (MIL-01) ou absent.
+## Effectif d'une formation : somme des unités ; sans unité, effectif déclaré de la formation
+## (null si inconnu : États hors MIL-01).
 func soldiers_of(fid: String) -> Variant:
 	var f: Dictionary = formations[fid]
 	if f["echelon"] == "unit":
 		return f.get("soldiers")
 	var units := units_of(fid) if is_top_level(f) else descendants(fid).filter(func(id: String) -> bool: return formations[id]["echelon"] == "unit")
 	if units.is_empty():
-		return null
+		return f.get("soldiers")
 	var total := 0
 	for uid: String in units:
 		if formations[uid].get("soldiers") == null:
@@ -278,8 +279,21 @@ static func _normalize_numbers(s: GameState) -> void:
 			m["turn"] = int(m["turn"])
 	for fid: String in s.formations:
 		var f: Dictionary = s.formations[fid]
-		if f.get("soldiers") != null:
-			f["soldiers"] = int(f["soldiers"])
+		for key: String in ["soldiers", "services_soldiers", "establishment", "war_cap"]:
+			if f.get(key) != null:
+				f[key] = int(f[key])
+	for nid: String in s.nations:
+		var fo: Dictionary = s.nations[nid].get("forces", {})
+		for key: String in ["active_start", "active_on_map", "active_off_map", "services_active", "reserves_total",
+				"reserves_off_map", "reserve_pool_initial", "reserve_pool", "incorporated", "services_mobilized",
+				"districts_total", "districts_on_map"]:
+			if fo.get(key) != null:
+				fo[key] = int(fo[key])
+		for c: Dictionary in fo.get("mobilizing", []):
+			c["soldiers"] = int(c["soldiers"])
+			c["ready_turn"] = int(c["ready_turn"])
+		if fo.has("mobilization") and fo["mobilization"].get("turn") != null:
+			fo["mobilization"]["turn"] = int(fo["mobilization"]["turn"])
 	for b: Dictionary in s.active_battles + s.battles:
 		CombatData.normalize_battle(b)
 

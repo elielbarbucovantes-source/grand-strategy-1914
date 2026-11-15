@@ -24,6 +24,7 @@ static func create(state: GameState, world: WorldMap, rules: Dictionary, cr: Dic
 		"units": {}, "sides": {}, "fog": {"attackers": {}, "defenders": {}}, "visible": {"attackers": {}, "defenders": {}},
 		"defenses": _region_defenses(state, rid).duplicate(true), "army_morale": {}, "log": [], "origin": clash["origin"],
 		"paused": false, "pause_votes": {}, "controllers": {}, "humans": [], "disconnected": {},
+		"disconnect_pause": false, "multiplayer": state.human_nations.size() > 1,
 	}
 	field.erase("objectives")
 	var by_side := {CombatData.ATTACKERS: clash["attackers"], CombatData.DEFENDERS: clash["defenders"]}
@@ -147,10 +148,14 @@ static func _deploy_point(b: Dictionary, side: String, index: int) -> Vector2:
 ## Renforts possibles (T-040 A) : unités d'armées alliées dans les régions voisines, non engagées
 ## ailleurs, non encerclées. Délai : base + distance / vitesse (terrain ; liaison terrestre plus
 ## rapide qu'un détroit). Elles sont verrouillées pour cette bataille (pas de double emploi).
+## Au plus `max_reinforcement_units_per_side` candidates par camp, les plus rapides d'abord (ordre
+## stable) : à l'échelle de la campagne historique, verrouiller toutes les unités voisines
+## immobiliserait des armées entières et ralentirait la simulation.
 static func _add_reinforcement_candidates(state: GameState, world: WorldMap, cr: Dictionary, b: Dictionary) -> void:
 	var rid: String = b["region"]
 	var rc: Dictionary = cr["reinforcements"]
 	for side: String in CombatData.SIDES:
+		var candidates: Array = []  # [eta, uid, army, neighbor]
 		var nations: Array = b["sides"][side]["nations"]
 		for neighbor: String in world.neighbor_ids(rid, true):
 			for army: Dictionary in state.armies_in(neighbor):
@@ -175,17 +180,25 @@ static func _add_reinforcement_candidates(state: GameState, world: WorldMap, cr:
 					var su: Dictionary = state.formations[uid]
 					if su.get("battle_id", "") != "" or su.get("soldiers") == null:
 						continue
-					_ensure_army_morale(state, cr, army["id"])
-					b["army_morale"][army["id"]] = float(state.formations[army["id"]]["morale"])
-					var u := _tactical_unit(state, b, cr, su, side, army["id"])
-					u["status"] = CombatData.AVAILABLE
-					u["reinforcement"] = true
-					u["eta_ticks"] = eta
-					u["formation"] = "assault_column"
-					u["entry"] = CombatData.a(Battlefield.entry_point(world, b["field"], neighbor))
-					u["pos"] = (u["entry"] as Array).duplicate()
-					b["units"][uid] = u
-					su["battle_id"] = b["id"]
+					candidates.append([eta, uid, army["id"], neighbor])
+		candidates.sort()
+		for c: Array in candidates.slice(0, int(rc["max_reinforcement_units_per_side"])):
+			var uid: String = c[1]
+			var army_id: String = c[2]
+			var su: Dictionary = state.formations[uid]
+			if su.get("battle_id", "") != "":
+				continue
+			_ensure_army_morale(state, cr, army_id)
+			b["army_morale"][army_id] = float(state.formations[army_id]["morale"])
+			var u := _tactical_unit(state, b, cr, su, side, army_id)
+			u["status"] = CombatData.AVAILABLE
+			u["reinforcement"] = true
+			u["eta_ticks"] = int(c[0])
+			u["formation"] = "assault_column"
+			u["entry"] = CombatData.a(Battlefield.entry_point(world, b["field"], c[3]))
+			u["pos"] = (u["entry"] as Array).duplicate()
+			b["units"][uid] = u
+			su["battle_id"] = b["id"]
 
 
 ## Commandant général (T-029 G) : plus de soldats au début ; égalité → prestige militaire le plus
@@ -284,13 +297,15 @@ static func next_for(state: GameState, nation: String) -> Dictionary:
 
 # ------------------------------------------------------------------ déroulement
 ## Avance une bataille : IA pour les pays non humains (ou tous si `auto_all`), puis simulation.
+## Une pause volontaire (T-029 I) ou une pause de déconnexion en solo (T-046) arrête le temps.
 static func advance(b: Dictionary, cr: Dictionary, ticks: int, auto_all: bool = false) -> void:
 	var every := int(cr["ai"]["decision_ticks"])
 	for i in ticks:
 		if b["status"] != "active":
 			return
-		if bool(b["paused"]) and not auto_all:
+		if (bool(b["paused"]) or bool(b.get("disconnect_pause", false))) and not auto_all:
 			return
+		_grace_expiry(b, cr)
 		if int(b["tick"]) % every == 0:
 			var nations: Array = b["sides"]["attackers"]["nations"] + b["sides"]["defenders"]["nations"]
 			for n: String in nations:
@@ -299,16 +314,21 @@ static func advance(b: Dictionary, cr: Dictionary, ticks: int, auto_all: bool = 
 		TacticalSim.step(b, cr, 1)
 
 
+## Contrôleurs (T-046) : "human" (connecté), "disconnected" (délai de grâce : ses unités gardent
+## leurs ordres, personne ne les commande), "ai_takeover" (IA après le délai), "ai" (pays IA).
 static func _ai_controls(b: Dictionary, cr: Dictionary, nation: String) -> bool:
 	var c: String = b["controllers"].get(nation, "ai")
-	if c == "ai":
-		return true
-	if c == "disconnected":
-		var policy: String = cr["disconnection"]["policy"]
-		if policy == "ai_hold_then_takeover":
-			return int(b["tick"]) - int(b["disconnected"].get(nation, 0)) >= int(cr["disconnection"]["grace_ticks"])
-		return false
-	return false
+	return c == "ai" or c == "ai_takeover"
+
+
+## Fin du délai de grâce en multijoueur : l'IA prend le contrôle des unités du joueur absent.
+static func _grace_expiry(b: Dictionary, cr: Dictionary) -> void:
+	var grace := int(cr["disconnection"]["grace_ticks"])
+	for nation: String in b["controllers"]:
+		if b["controllers"][nation] == "disconnected" and bool(b.get("multiplayer", false)) \
+				and int(b["tick"]) - int(b["disconnected"].get(nation, 0)) >= grace:
+			b["controllers"][nation] = "ai_takeover"
+			_log_event(b, "%s : délai de grâce écoulé, l'IA prend le contrôle de ses unités." % nation)
 
 
 static func run_to_end(b: Dictionary, cr: Dictionary, auto_all: bool = true) -> void:
@@ -317,35 +337,66 @@ static func run_to_end(b: Dictionary, cr: Dictionary, auto_all: bool = true) -> 
 		advance(b, cr, 50, auto_all)
 
 
-## Pause (T-029 I) : solo, accord du seul humain ; multijoueur, unanimité des humains participants ;
-## l'IA ne vote pas. Une demande de reprise d'un humain lève la pause.
+## Votants d'une pause : humains participants ACTUELLEMENT connectés (l'IA, y compris l'IA qui
+## remplace un joueur déconnecté, ne vote pas).
+static func voters(b: Dictionary) -> Array:
+	return (b["humans"] as Array).filter(func(n: String) -> bool: return b["controllers"].get(n, "") == "human")
+
+
+## Pause (T-029 I) : solo, accord du seul humain ; multijoueur, unanimité des humains participants
+## connectés ; l'IA ne vote pas. Une demande de reprise d'un humain lève la pause.
 static func request_pause(b: Dictionary, nation: String, wants_pause: bool) -> bool:
-	if not (b["humans"] as Array).has(nation):
-		return bool(b["paused"])  # l'IA et les non-participants ne votent pas
+	if not voters(b).has(nation):
+		return bool(b["paused"])  # l'IA, les absents et les non-participants ne votent pas
 	b["pause_votes"][nation] = wants_pause
 	if not wants_pause:
 		b["paused"] = false
 		b["pause_votes"] = {}
 		return false
-	b["paused"] = BattleSystem.pause_allowed(b["humans"], b["pause_votes"])
+	b["paused"] = BattleSystem.pause_allowed(voters(b), b["pause_votes"])
 	return bool(b["paused"])
 
 
-## Déconnexion (T-029 J, NON VALIDÉE) : politique configurable « disconnection.policy ».
+## Déconnexion d'un joueur humain pendant une bataille (T-046, VALIDÉ).
+## - Solo : la bataille est mise en pause jusqu'au retour du joueur.
+## - Multijoueur : délai de grâce (`disconnection.grace_ticks`, configurable) pendant lequel ses
+##   unités CONSERVENT leurs ordres ; à son expiration, l'IA prend le contrôle (vue filtrée par le
+##   brouillard de son camp, comme toute IA tactique). Les autres joueurs continuent ; une pause
+##   volontaire reste soumise à l'unanimité des humains encore connectés.
+## Aucune unité n'est retirée, dupliquée ou modifiée par la déconnexion elle-même.
 static func on_disconnect(b: Dictionary, cr: Dictionary, nation: String) -> void:
-	if not (b["humans"] as Array).has(nation):
+	if not (b["humans"] as Array).has(nation) or b["controllers"].get(nation, "") != "human":
 		return
 	b["controllers"][nation] = "disconnected"
-	b["disconnected"][nation] = b["tick"]
-	(b["humans"] as Array).erase(nation)
-	b["paused"] = false
-	for uid: String in CombatData.unit_ids(b):
-		var u: Dictionary = b["units"][uid]
-		if u["nation"] == nation and u["status"] == CombatData.ACTIVE:
-			u["order"] = "hold"
-			u["dest"] = null
-	if cr["disconnection"]["policy"] == "auto_resolve" and (b["humans"] as Array).is_empty():
-		run_to_end(b, cr, true)
+	b["disconnected"][nation] = int(b["tick"])
+	(b["pause_votes"] as Dictionary).erase(nation)
+	if not bool(b.get("multiplayer", false)):
+		b["disconnect_pause"] = true
+		_log_event(b, "%s : joueur déconnecté, bataille en pause jusqu'à son retour (solo)." % nation)
+		return
+	var remaining := voters(b)
+	if bool(b["paused"]):
+		b["paused"] = not remaining.is_empty() and BattleSystem.pause_allowed(remaining, b["pause_votes"])
+	_log_event(b, "%s : joueur déconnecté, délai de grâce de %d pas avant reprise par l'IA." % [nation, int(cr["disconnection"]["grace_ticks"])])
+
+
+## Reconnexion (T-046) : le joueur reprend ses unités dans l'état où elles sont, avec les ordres en
+## cours (les siens pendant le délai de grâce, ceux de l'IA ensuite) ; en solo, la pause est levée.
+static func on_reconnect(b: Dictionary, nation: String) -> void:
+	if not (b["humans"] as Array).has(nation):
+		return
+	var c: String = b["controllers"].get(nation, "")
+	if c != "disconnected" and c != "ai_takeover":
+		return
+	b["controllers"][nation] = "human"
+	(b["disconnected"] as Dictionary).erase(nation)
+	if not bool(b.get("multiplayer", false)):
+		b["disconnect_pause"] = false
+	_log_event(b, "%s : joueur reconnecté, contrôle de ses unités restitué." % nation)
+
+
+static func _log_event(b: Dictionary, text: String) -> void:
+	(b["log"] as Array).append({"tick": int(b["tick"]), "text": text, "side": ""})
 
 
 # ------------------------------------------------------------------ clôture et conséquences

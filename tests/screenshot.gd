@@ -15,7 +15,7 @@ func _initialize() -> void:
 	if args.size() > 1:
 		mv.camera.zoom = Vector2.ONE * float(args[1])
 	mv.region_clicked.emit("region_008")
-	mv.selected_formation = "army_france_1"
+	mv.selected_formation = "army_france_region_008"
 	mv.region_clicked.emit("region_007")
 	mv.selected_formation = ""
 	main.session.state.regions["region_035"]["controller"] = "france"  # démonstration visuelle de l'occupation hachurée

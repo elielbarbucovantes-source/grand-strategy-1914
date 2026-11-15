@@ -8,8 +8,12 @@ Uniquement à partir de données VALIDÉES ou DOCUMENTÉES, avec leur statut :
 - statistiques nationales, population, ressources, industrie, effectifs : AUCUNE valeur
   sourcée n'existe encore, donc `null` avec le statut « À DÉFINIR » (NAT-01 à 03,
   ECO-01/02, MIL-01). Le moteur traite `null` comme « inconnu ».
-- formations militaires : un emplacement « armée nationale » par État, à la capitale,
-  **effectifs inconnus** (structure seulement, MIL-01 ouvert) ;
+- formations militaires des SEPT PUISSANCES JOUABLES : générées depuis la base historique
+  data/history/military_forces_1914.json (effectif actif et réserves sourcés ; répartition par
+  district de corps du temps de paix et ventilation par arme ESTIMÉES, voir
+  docs/history/MIL01_METHODE.md) avec les paramètres techniques de data/rules/forces_rules.json ;
+- autres États : un emplacement « armée nationale » à la capitale, **effectifs inconnus**
+  (hors du périmètre MIL-01, qui ne couvre que les puissances jouables) ;
 - couleurs : paramètre de PRÉSENTATION, personnalisable (pas une donnée historique).
 
 Usage : python3 tools/export/build_scenario.py [--check]
@@ -24,6 +28,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 WORLD = ROOT / "data/game/world_map.json"
 OUT = ROOT / "data/scenarios/campaign_1914.json"
+FORCES_DB = ROOT / "data/history/military_forces_1914.json"
+FORCES_RULES = ROOT / "data/rules/forces_rules.json"
 PLAYABLE = ["german_empire", "united_kingdom", "france", "russian_empire", "austria_hungary", "italy", "ottoman_empire"]
 STATS = ["population_totale", "puissance_demographique", "industrie", "economie", "ressources_naturelles",
          "armee_de_terre", "marine", "technologie", "infrastructures", "diplomatie", "prestige_international",
@@ -100,6 +106,167 @@ def build() -> dict:
     }
 
 
+# ------------------------------------------------------------------ effectifs historiques (MIL-01)
+def _sha256(path: Path) -> str:
+    import hashlib
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def locate_districts(world: dict, db: dict) -> dict:
+    """Région du jeu contenant le siège de chaque district (point dans polygone, EPSG:3035 km).
+
+    Un siège peut être donné par `city_id` (ville de l'atlas) ou par lon/lat (WGS 84). Un point
+    situé sur une côte simplifiée (hors de tout polygone) est rattaché à la région la plus proche
+    de la même souveraineté si elle est à moins de 10 km ; sinon le district est signalé.
+    """
+    from pyproj import Transformer
+    from shapely.geometry import MultiPolygon, Point, Polygon
+    tr = Transformer.from_crs("EPSG:4326", "EPSG:3035", always_xy=True)
+    polys = {}
+    for r in world["regions"]:
+        parts = [Polygon(p[0], p[1:]) for p in r["polygons_km"]]
+        polys[r["id"]] = (MultiPolygon(parts).buffer(0), r["initial_sovereign_id"])
+    cities = {c["id"]: c for c in world["cities"]}
+    out = {}
+    for nid, nation in db["nations"].items():
+        for d in nation["districts"]:
+            if d.get("off_map"):
+                out[d["id"]] = None
+                continue
+            if d.get("city_id"):
+                out[d["id"]] = cities[d["city_id"]]["region_id"]
+                continue
+            x, y = tr.transform(d["lon"], d["lat"])
+            pt = Point(x / 1000.0, y / 1000.0)
+            hit = sorted(rid for rid, (g, _) in polys.items() if g.contains(pt))
+            if not hit:
+                near = sorted((g.distance(pt), rid) for rid, (g, sov) in polys.items() if sov == nid)
+                if near and near[0][0] <= 10.0:
+                    hit = [near[0][1]]
+            if len(hit) != 1 or polys[hit[0]][1] != nid:
+                raise SystemExit(f"district {d['id']} ({d['hq']}) : région introuvable ou étrangère {hit}")
+            out[d["id"]] = hit[0]
+    return out
+
+
+def _split(total: int, weights: list) -> list:
+    """Répartition entière exacte (plus forts restes, ordre stable)."""
+    s = sum(weights)
+    raw = [total * w / s for w in weights]
+    base = [int(x) for x in raw]
+    rest = total - sum(base)
+    order = sorted(range(len(raw)), key=lambda i: (-(raw[i] - base[i]), i))
+    for i in order[:rest]:
+        base[i] += 1
+    return base
+
+
+def arm_shares(arms: dict | None, gen: dict) -> dict:
+    """Parts infanterie / cavalerie / artillerie / services d'après la ventilation sourcée."""
+    if not arms:
+        return {gen["unknown_arms_fallback"]: 1.0, "services": 0.0}
+    total = float(arms["total"])
+    out = {}
+    for kind, cols in gen["arms_to_unit_types"].items():
+        out[kind] = sum(float(arms.get(c) or 0) for c in cols) / total
+    out["services"] = max(0.0, 1.0 - sum(out.values()))
+    return out
+
+
+def historical_forces(world: dict, nations: dict) -> tuple[dict, list]:
+    """Forces des puissances documentées : bloc national `forces` et formations du jeu."""
+    db = json.loads(FORCES_DB.read_text(encoding="utf-8"))
+    gen = json.loads(FORCES_RULES.read_text(encoding="utf-8"))["unit_generation"]
+    located = locate_districts(world, db)
+    region_names = {r["id"]: r["name_fr"] for r in world["regions"]}
+    blocks, formations = {}, []
+    for nid, n in db["nations"].items():
+        active = int(n["active"]["value"])
+        off_map = int(n["off_map"]["value"] or 0)
+        on_map = active - off_map
+        reserves = int(n["reserves"]["value"])
+        districts = [d for d in n["districts"] if located[d["id"]]]
+        n_all = len(n["districts"])
+        share = n["reserves"]["on_map_share"]  # part sur la carte, justifiée nation par nation
+        reserves_on_map = reserves * int(share["numerator"]) // int(share["denominator"])
+        shares = arm_shares(n.get("arms"), gen)
+        per_district = _split(on_map, [1] * len(districts))
+        reserve_split = _split(reserves_on_map, [1] * len(districts))
+        weights: dict = {}
+        services_total = 0
+        armies: dict = {}
+        for d, soldiers, pool in zip(districts, per_district, reserve_split):
+            rid = located[d["id"]]
+            weights[rid] = weights.get(rid, 0) + pool
+            army_id = f"army_{nid}_{rid}"
+            if army_id not in armies:
+                armies[army_id] = {
+                    "id": army_id, "nation": nid, "echelon": "army",
+                    "name_fr": f"Forces du temps de paix — {region_names[rid]}", "region": rid, "parent": None,
+                    "soldiers": None, "equipment": None, "morale": None,
+                    "status": "HISTORIQUE : groupement de jeu des corps stationnés dans la région (répartition ESTIMÉE)"}
+            kinds = [k for k in shares if k != "services" and shares[k] > 0]
+            amounts = _split(soldiers, [shares[k] for k in kinds] + [shares["services"]])
+            services = amounts[-1]
+            services_total += services
+            div_id = f"div_{d['id']}"
+            formations.append({
+                "id": div_id, "nation": nid, "echelon": "division", "name_fr": f"{d['name_fr']} — {d['hq']}",
+                "region": rid, "parent": army_id, "soldiers": None, "equipment": None,
+                "services_soldiers": services, "district_id": d["id"], "district_region": rid,
+                "status": f"HISTORIQUE : district de corps du temps de paix (siège {d['hq_verification']}) ; effectif = part égale ESTIMÉE"})
+            for kind, amount in zip(kinds, amounts[:-1]):
+                if amount <= 0:
+                    continue
+                count = max(1, round(amount / gen["peace_unit_soldiers"]))
+                for i, size in enumerate(_split(amount, [1] * count), start=1):
+                    formations.append({
+                        "id": f"{div_id}_{kind[:3]}{i}", "nation": nid, "echelon": "unit", "unit_type": kind,
+                        "name_fr": f"{ {'infantry': 'Infanterie', 'cavalry': 'Cavalerie', 'artillery': 'Artillerie'}[kind] } {i} — {d['name_fr']}",
+                        "region": rid, "parent": div_id, "soldiers": size, "establishment": size,
+                        "equipment": None, "morale": None,
+                        "status": ("HISTORIQUE : effectif national sourcé ; répartition ESTIMÉE"
+                                   + ("" if n.get("arms") else " ; arme INCONNUE, infanterie générique (simplification)"))})
+        formations.extend(armies.values())
+        blocks[nid] = {
+            "source_type": "historical", "database": "data/history/military_forces_1914.json",
+            "data_status": n["data_status"],
+            "active_start": active, "active_reference": f"{n['active']['source']} {n['active']['page']}",
+            "active_off_map": off_map, "active_on_map": on_map, "services_active": services_total,
+            "reserves_total": reserves, "reserves_off_map": reserves - reserves_on_map,
+            "reserve_pool_initial": reserves_on_map, "reserve_pool": reserves_on_map,
+            "mobilizing": [], "incorporated": 0, "mobilization": {"declared": False, "turn": None},
+            "district_pool_weights": dict(sorted(weights.items())),
+            "arm_shares": {k: round(v, 6) for k, v in shares.items()},
+            "districts_total": n_all, "districts_on_map": len(districts),
+            "status": "Effectif actif et réserves SOURCÉS (voir la base) ; répartition territoriale et ventilation par arme ESTIMÉES.",
+        }
+    return blocks, formations
+
+
+def build_campaign(base: dict) -> dict:
+    """Campagne historique : base + effectifs historiques des puissances documentées."""
+    world = json.loads(WORLD.read_text(encoding="utf-8"))
+    campaign = json.loads(json.dumps(base))
+    blocks, formations = historical_forces(world, campaign["nations"])
+    documented = sorted(blocks)
+    for nid, nation in campaign["nations"].items():
+        nation["forces"] = blocks.get(nid, {
+            "source_type": "unknown",
+            "status": "INCONNU : MIL-01 ne couvre que les sept puissances jouables ; aucune valeur n'est fabriquée."})
+    campaign["formations"] = [f for f in base["formations"] if f["nation"] not in blocks] + formations
+    campaign["forces_source"] = {
+        "type": "historical", "database": "data/history/military_forces_1914.json",
+        "database_sha256": _sha256(FORCES_DB), "rules": "data/rules/forces_rules.json",
+        "rules_sha256": _sha256(FORCES_RULES),
+        "nations_documented": documented,
+        "nations_unknown": sorted(n for n in campaign["nations"] if n not in blocks),
+        "warning": "Effectifs nationaux sourcés ; répartitions estimées (docs/history/MIL01_METHODE.md).",
+    }
+    campaign["provenance"]["military_forces"] = "data/history/military_forces_1914.json (MIL-01)"
+    return campaign
+
+
 # Bac à sable FICTIF : forces génériques identiques pour tous les États. Ni historique ni
 # équilibré. Sert uniquement à jouer et à tester le système de combat tant que les effectifs
 # de 1914 ne sont pas sourcés (MIL-01). Les chiffres sont des valeurs RONDES DE TEST.
@@ -111,8 +278,9 @@ SANDBOX_COMPOSITION = [  # (division, régiment, type, soldats) : FICTIF
 ]
 
 
-def build_sandbox(campaign: dict) -> dict:
-    scenario = json.loads(json.dumps(campaign))
+def build_sandbox(base: dict) -> dict:
+    campaign = base
+    scenario = json.loads(json.dumps(base))
     scenario["id"] = "sandbox_fictif"
     scenario["name_fr"] = "Bac à sable FICTIF (forces génériques de test)"
     scenario["sandbox_warning"] = ("FORCES FICTIVES : composition identique pour tous les États, valeurs rondes de test. "
@@ -143,6 +311,11 @@ def build_sandbox(campaign: dict) -> dict:
                                "soldiers": soldiers, "equipment": None, "morale": None,
                                "status": "FICTIF (bac à sable) : effectif de test"})
     scenario["formations"] = formations
+    for nation in scenario["nations"].values():
+        nation["forces"] = {"source_type": "fictitious",
+                            "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."}
+    scenario["forces_source"] = {"type": "fictitious", "database": None,
+                                 "warning": "FORCES FICTIVES de test : ne pas utiliser comme donnée de jeu."}
     return scenario
 
 
@@ -150,9 +323,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--check", action="store_true")
     arguments = parser.parse_args()
-    campaign = build()
-    outputs = {OUT: json.dumps(campaign, ensure_ascii=False, indent=1) + "\n",
-               SANDBOX_OUT: json.dumps(build_sandbox(campaign), ensure_ascii=False, indent=1) + "\n"}
+    base = build()
+    outputs = {OUT: json.dumps(build_campaign(base), ensure_ascii=False, indent=1) + "\n",
+               SANDBOX_OUT: json.dumps(build_sandbox(base), ensure_ascii=False, indent=1) + "\n"}
     if arguments.check:
         ok = all(path.exists() and path.read_text(encoding="utf-8") == text for path, text in outputs.items())
         print("[PASS] scénarios à jour" if ok else "[FAIL] scénario(s) obsolète(s)")

@@ -40,7 +40,7 @@ func _initialize() -> void:
 		await process_frame
 	check(true, "les 10 onglets se construisent")
 	# Ordre de déplacement par clic carte.
-	mv.selected_formation = "army_france_1"
+	mv.selected_formation = "army_france_region_008"
 	var target := ""
 	for n: String in session.world.neighbor_ids(paris):
 		if session.state.controller(n) == "france":
@@ -53,7 +53,7 @@ func _initialize() -> void:
 	check(ui.status.text.begins_with("Ordre refusé"), "ordre invalide refusé avec motif : %s" % ui.status.text)
 	ui._on_end_turn()
 	await process_frame
-	check(session.state.formations["army_france_1"]["region"] == target, "déplacement résolu à la fin du mois")
+	check(session.state.formations["army_france_region_008"]["region"] == target, "déplacement résolu à la fin du mois")
 	check(session.state.date_label() == "février 1914", "calendrier avancé")
 	ui._on_save()
 	check(ui.status.text.begins_with("Sauvegardé"), "sauvegarde : %s" % ui.status.text)

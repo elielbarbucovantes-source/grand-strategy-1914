@@ -1,0 +1,36 @@
+{
+ "format": "gs1914.forces_rules",
+ "format_version": 1,
+ "_statut": "Paramètres TECHNIQUES de modélisation des effectifs et de la mobilisation (MIL-01 / MIL-02). Toutes les valeurs sont PROPOSÉES et configurables : ce ne sont PAS des données historiques. Elles sont identiques pour toutes les nations (aucune différence nationale arbitraire) ; une différence nationale n'est admise que si elle est sourcée (bloc national_overrides).",
+
+ "unit_generation": {
+  "_statut": "PROPOSÉ (technique) : granularité des unités tactiques du jeu, choisie pour la performance (environ 2,5 s de résolution automatique pour 40 unités, 20 s pour 170 ; mesure du 15/11/2026). Ce n'est pas un échelon historique.",
+  "peace_unit_soldiers": 10000,
+  "min_unit_soldiers": 1000,
+  "arms_to_unit_types": {
+   "infantry": ["infantry"],
+   "cavalry": ["cavalry"],
+   "artillery": ["field_artillery", "foot_artillery", "coast_artillery"]
+  },
+  "services_note": "Troupes techniques, train, service de santé et effectifs non ventilés : comptés comme « services » (présents, non combattants dans la bataille tactique).",
+  "unknown_arms_fallback": "infantry",
+  "unknown_arms_fallback_status": "Simplification technique signalée : si aucune ventilation par arme n'est sourcée, l'effectif est représenté en infanterie générique."
+ },
+
+ "mobilization": {
+  "_statut": "MIL-02 OUVERT pour les règles détaillées. Principe VALIDÉ (mission du 15/11/2026) : réserves disponibles mais non incorporées au départ ; mobilisation progressive ; ni apparition instantanée, ni dépassement des réserves, ni double comptage. Valeurs PROPOSÉES.",
+  "call_share_per_month": 0.5,
+  "call_share_note": "Part du réservoir INITIAL appelée chaque mois après la décision de mobilisation (bornée par le réservoir restant).",
+  "transit_months": 1,
+  "transit_note": "Les rappelés passent un mois « en cours de mobilisation » (rejoindre le dépôt, équipement) avant d'être incorporés.",
+  "war_establishment_mult": 2.0,
+  "war_establishment_note": "Les unités existantes sont d'abord complétées jusqu'à ce multiple de leur effectif de paix ; ordre de grandeur cohérent avec le passage du bataillon de paix (~500 hommes) au bataillon de guerre (~1 000) décrit par US War Dept 1916 (p. 5 et p. 43). Valeur de jeu, non historique par nation.",
+  "new_unit_soldiers": 20000,
+  "requires_controlled_region": true,
+  "requires_supply_link": true,
+  "region_rule_note": "Les rappelés d'un district ne rejoignent les unités que si la région du district est contrôlée par la nation et reliée à sa capitale (LogisticsSystem) ; sinon ils restent en cours de mobilisation.",
+  "economy_constraint_status": "OUVERT : l'équipement et le coût économique de la mobilisation (ECO-01/02, R-03) ne sont pas définis ; aucune contrainte économique n'est appliquée.",
+  "demobilization_status": "OUVERT (MIL-02) : la mobilisation est irréversible dans le prototype.",
+  "national_overrides": {}
+ }
+}

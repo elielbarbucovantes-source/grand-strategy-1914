@@ -51,7 +51,14 @@ static func validate_move(state: GameState, world: WorldMap, rules: Dictionary, 
 	return ""
 
 
-## Résolution simultanée des déplacements. Retourne la liste des affrontements à traiter.
+## Résolution simultanée des déplacements (T-045). Retourne la liste des affrontements à traiter.
+## - Tous les mouvements valides sont appliqués EN MÊME TEMPS, puis les contacts sont évalués sur
+##   les positions FINALES : deux armées ennemies qui échangent leurs positions (A→B et B→A) se
+##   croisent sans combattre (décision T-045). Aucune bataille n'est créée « en chemin ».
+## - Une bataille naît seulement si des armées ennemies se trouvent dans la même région à la fin
+##   des mouvements (règle territoriale normale, inchangée).
+## - Aucun départage ne dépend de l'ordre technique des pays ou des identifiants : les cas
+##   symétriques utilisent un tirage déterministe dérivé de la graine (TURN-03, TURN-04).
 static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, moves: Array) -> Array:
 	var origin: Dictionary = {}
 	for order: Dictionary in moves:
@@ -85,10 +92,16 @@ static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, 
 				if f["nation"] == anchor or state.at_war(f["nation"], anchor):
 					anchored = true
 			if not anchored:
+				# Contrôleur tiers : défend le camp déjà présent ; si tous viennent d'entrer
+				# (rencontre), tirage neutre entre les pays présents.
+				var stayers: Array = []
+				var all_nations: Array = []
 				for f: Dictionary in present:
-					if origin.has(f["id"]) and origin[f["id"]] != rid:
-						anchor = _first_enemy_of(state, present, f["nation"])
-						break
+					if not all_nations.has(f["nation"]):
+						all_nations.append(f["nation"])
+					if (not origin.has(f["id"]) or origin[f["id"]] == rid) and not stayers.has(f["nation"]):
+						stayers.append(f["nation"])
+				anchor = neutral_pick(state, "anchor:" + rid, stayers if not stayers.is_empty() else all_nations)
 			var attackers: Array = []
 			var defenders: Array = []
 			for f: Dictionary in present:
@@ -99,28 +112,52 @@ static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, 
 			if attackers.is_empty() or defenders.is_empty():
 				continue
 			clashes.append({"region": rid, "attackers": attackers, "defenders": defenders, "origin": origin})
-	# 3. Occupation des régions ennemies sans adversaire présent.
+	# 3. Occupation des régions ennemies sans adversaire présent. Si plusieurs pays co-belligérants
+	#    y entrent ensemble, le contrôle revient à celui qui y amène le plus de soldats ; égalité ou
+	#    effectifs inconnus : tirage neutre (jamais l'ordre des pays).
 	var occ: Dictionary = rules["occupation"]
 	if bool(occ["occupy_if_undefended"]):
 		var clash_regions: Array = clashes.map(func(c: Dictionary) -> String: return c["region"])
+		var entrants: Dictionary = {}  # région -> {nation: soldats}
 		for order: Dictionary in moves:
 			var f: Dictionary = state.formations[order["formation"]]
 			var rid: String = f["region"]
-			if clash_regions.has(rid):
-				continue
 			var owner := state.controller(rid)
-			if owner != f["nation"] and state.at_war(f["nation"], owner):
-				var previous := owner
-				state.regions[rid]["controller"] = f["nation"]
-				var verb := "libère" if state.sovereign(rid) == f["nation"] else "occupe"
-				state.log_event("occupation", "%s %s %s (souveraineté : %s)" % [state.nations[f["nation"]]["name_fr"], verb,
-					world.regions[rid]["name_fr"], state.nations[state.sovereign(rid)]["name_fr"]], [f["nation"], previous])
-				state.remember(previous, f["nation"], "region_lost", rid)
+			if clash_regions.has(rid) or owner == f["nation"] or not state.at_war(f["nation"], owner):
+				continue
+			if not entrants.has(rid):
+				entrants[rid] = {}
+			var s: Variant = state.soldiers_of(f["id"])
+			entrants[rid][f["nation"]] = int(entrants[rid].get(f["nation"], 0)) + (0 if s == null else int(s))
+		var occ_regions := entrants.keys()
+		occ_regions.sort()
+		for rid: String in occ_regions:
+			var top := -1
+			var best: Array = []
+			for n: String in entrants[rid]:
+				if int(entrants[rid][n]) > top:
+					top = int(entrants[rid][n])
+					best = [n]
+				elif int(entrants[rid][n]) == top:
+					best.append(n)
+			var occupant := neutral_pick(state, "occupy:" + rid, best)
+			var previous := state.controller(rid)
+			state.regions[rid]["controller"] = occupant
+			var verb := "libère" if state.sovereign(rid) == occupant else "occupe"
+			state.log_event("occupation", "%s %s %s (souveraineté : %s)" % [state.nations[occupant]["name_fr"], verb,
+				world.regions[rid]["name_fr"], state.nations[state.sovereign(rid)]["name_fr"]], [occupant, previous])
+			state.remember(previous, occupant, "region_lost", rid)
 	return clashes
 
 
-static func _first_enemy_of(state: GameState, present: Array, nation: String) -> String:
-	for f: Dictionary in present:
-		if state.at_war(f["nation"], nation):
-			return f["nation"]
-	return nation
+## Choix neutre et reproductible parmi des candidats symétriques : dépend de la graine de la partie,
+## du tour et du contexte, jamais de l'ordre des pays ni des identifiants (TURN-03).
+static func neutral_pick(state: GameState, context: String, candidates: Array) -> String:
+	if candidates.is_empty():
+		return ""
+	var sorted := candidates.duplicate()
+	sorted.sort()
+	if sorted.size() == 1:
+		return sorted[0]
+	var h := ("%d|%d|%s" % [state.seed_value, state.turn, context]).sha256_text()
+	return sorted[h.substr(0, 8).hex_to_int() % sorted.size()]

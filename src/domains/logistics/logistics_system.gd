@@ -45,7 +45,7 @@ static func update_supply(state: GameState, world: WorldMap) -> void:
 			cache[f["nation"]] = accessible_regions(state, world, f["nation"])
 		var was: bool = f["supplied"]
 		f["supplied"] = (cache[f["nation"]] as Dictionary).has(f["region"])
-		if was and not f["supplied"]:
+		if was and not f["supplied"] and state.is_top_level(f):  # une entrée par armée, pas par unité
 			state.log_event("logistique", "%s (%s) est coupée de sa capitale." % [f["name_fr"], state.nations[f["nation"]]["name_fr"]], [f["nation"]])
 
 

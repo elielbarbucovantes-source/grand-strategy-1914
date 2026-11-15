@@ -8,7 +8,7 @@ func _initialize() -> void:
 	var s := GameSession.create()
 	s.new_game("german_empire", 7)
 	s.queue_order(Orders.declare_war("german_empire", "france"))
-	var army := "army_german_empire_1"
+	var army := "army_german_empire_region_028"
 	var goal := s.state.nations["france"]["capital_region_id"] as String
 	for month in 8:
 		var here: String = s.state.formations[army]["region"]

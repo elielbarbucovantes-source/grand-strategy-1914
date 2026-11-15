@@ -8,6 +8,7 @@ const RULES_PATH := "res://data/rules/game_rules.json"
 const SCENARIO_PATH := "res://data/scenarios/campaign_1914.json"
 const SANDBOX_PATH := "res://data/scenarios/sandbox_fictif.json"
 const COMBAT_RULES_PATH := "res://data/rules/combat_rules.json"
+const FORCES_RULES_PATH := "res://data/rules/forces_rules.json"
 const SAVE_DIR := "user://saves"
 
 var world: WorldMap
@@ -28,7 +29,9 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.rules = load_json(RULES_PATH)
 	s.scenario = load_json(SCENARIO_PATH)
 	s.rules["combat"] = load_json(COMBAT_RULES_PATH)
-	if s.world == null or s.rules.is_empty() or s.scenario.is_empty() or (s.rules["combat"] as Dictionary).is_empty():
+	s.rules["forces"] = load_json(FORCES_RULES_PATH)
+	if s.world == null or s.rules.is_empty() or s.scenario.is_empty() or (s.rules["combat"] as Dictionary).is_empty() \
+			or (s.rules["forces"] as Dictionary).is_empty():
 		push_error("GameSession : données introuvables")
 		return null
 	return s
@@ -42,7 +45,8 @@ func playable_nations() -> Array:
 	return out
 
 
-## `scenario_id` : "campaign_1914" (historique, effectifs inconnus) ou "sandbox_fictif" (forces FICTIVES de test).
+## `scenario_id` : "campaign_1914" (historique : effectifs sourcés des sept puissances jouables, MIL-01)
+## ou "sandbox_fictif" (forces FICTIVES de test). Voir `scenario["forces_source"]`.
 func new_game(player: String, start_month: int, seed_value: int = 1914, scenario_id: String = "campaign_1914") -> String:
 	scenario = load_json(SANDBOX_PATH if scenario_id == "sandbox_fictif" else SCENARIO_PATH)
 	if not GameCalendar.is_valid_month(start_month):
@@ -73,6 +77,11 @@ func queue_order(order: Dictionary) -> String:
 			reason = EconomySystem.validate_allocation(rules, order)
 		Orders.BUILD_DEFENSE:
 			reason = DefenseSystem.validate(state, rules["combat"], order)
+		Orders.MOBILIZE:
+			reason = MobilizationSystem.validate(state, order)
+			for o: Dictionary in player_orders():
+				if o["type"] == Orders.MOBILIZE:
+					reason = "mobilisation déjà ordonnée ce mois-ci"
 		_:
 			reason = DiplomacySystem.validate(state, order)
 	if reason != "":
@@ -149,6 +158,23 @@ func auto_resolve_battle() -> Dictionary:
 		return {}
 	BattleManager.run_to_end(b, rules["combat"], true)
 	return BattleManager.finish(state, world, rules["combat"], b)
+
+
+## Déconnexion / reconnexion d'un joueur humain (T-046) : appliquées à toutes ses batailles actives.
+## Fondation de simulation : aucune couche réseau n'appelle encore ces fonctions.
+func disconnect_player(nation: String) -> void:
+	for b: Dictionary in state.active_battles:
+		BattleManager.on_disconnect(b, rules["combat"], nation)
+
+
+func reconnect_player(nation: String) -> void:
+	for b: Dictionary in state.active_battles:
+		BattleManager.on_reconnect(b, nation)
+
+
+## Les cinq catégories d'effectifs d'un pays (MIL-01) : actifs, réserves, en cours, incorporés, présents.
+func forces_summary(nation: String) -> Dictionary:
+	return MobilizationSystem.summary(state, nation)
 
 
 func save_game(name: String) -> String:

@@ -57,10 +57,11 @@ static func joint_commander(state: GameState, formation_ids: Array) -> Dictionar
 		var f: Dictionary = state.formations[fid]
 		if not soldiers.has(f["nation"]):
 			soldiers[f["nation"]] = 0
-		if f["soldiers"] == null:
+		var known: Variant = state.soldiers_of(fid)
+		if known == null:
 			unknown = true
 		else:
-			soldiers[f["nation"]] = int(soldiers[f["nation"]]) + int(f["soldiers"])
+			soldiers[f["nation"]] = int(soldiers[f["nation"]]) + int(known)
 	var nations := soldiers.keys()
 	nations.sort()
 	if nations.is_empty():

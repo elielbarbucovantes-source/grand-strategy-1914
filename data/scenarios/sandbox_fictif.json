@@ -112,7 +112,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "france": {
    "id": "france",
@@ -192,7 +196,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "belgium": {
    "id": "belgium",
@@ -272,7 +280,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "netherlands": {
    "id": "netherlands",
@@ -352,7 +364,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "switzerland": {
    "id": "switzerland",
@@ -432,7 +448,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "luxembourg": {
    "id": "luxembourg",
@@ -512,7 +532,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "portugal": {
    "id": "portugal",
@@ -592,7 +616,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "spain": {
    "id": "spain",
@@ -672,7 +700,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "german_empire": {
    "id": "german_empire",
@@ -752,7 +784,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "austria_hungary": {
    "id": "austria_hungary",
@@ -832,7 +868,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "denmark": {
    "id": "denmark",
@@ -912,7 +952,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "norway": {
    "id": "norway",
@@ -992,7 +1036,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "sweden": {
    "id": "sweden",
@@ -1072,7 +1120,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "russian_empire": {
    "id": "russian_empire",
@@ -1152,7 +1204,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "romania": {
    "id": "romania",
@@ -1232,7 +1288,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "bulgaria": {
    "id": "bulgaria",
@@ -1312,7 +1372,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "serbia": {
    "id": "serbia",
@@ -1392,7 +1456,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "montenegro": {
    "id": "montenegro",
@@ -1472,7 +1540,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "albania": {
    "id": "albania",
@@ -1552,7 +1624,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "greece": {
    "id": "greece",
@@ -1632,7 +1708,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "italy": {
    "id": "italy",
@@ -1712,7 +1792,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   },
   "ottoman_empire": {
    "id": "ottoman_empire",
@@ -1792,7 +1876,11 @@
     }
    },
    "stocks": {},
-   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)"
+   "stocks_status": "À DÉFINIR (ECO-01 ; catégories de ressources ouvertes, R-03)",
+   "forces": {
+    "source_type": "fictitious",
+    "status": "FICTIF (bac à sable) : aucune réserve ni mobilisation historique."
+   }
   }
  },
  "regions": {
@@ -6331,5 +6419,10 @@
   "diplomacy_start": "docs/diplomacy/OVERVIEW.md §4 (contexte, pas script)",
   "unknown_values": "null = inconnu ; aucune statistique historique n'est inventée"
  },
- "sandbox_warning": "FORCES FICTIVES : composition identique pour tous les États, valeurs rondes de test. Ni historique ni équilibré. Ne pas utiliser comme donnée de jeu."
+ "sandbox_warning": "FORCES FICTIVES : composition identique pour tous les États, valeurs rondes de test. Ni historique ni équilibré. Ne pas utiliser comme donnée de jeu.",
+ "forces_source": {
+  "type": "fictitious",
+  "database": null,
+  "warning": "FORCES FICTIVES de test : ne pas utiliser comme donnée de jeu."
+ }
 }

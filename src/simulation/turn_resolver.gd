@@ -5,7 +5,7 @@ extends RefCounted
 ## mouvements simultanés → création des batailles tactiques (et sièges des armées encerclées) →
 ## résolution immédiate des batailles sans joueur humain ; celles d'un joueur restent actives et
 ## doivent être jouées ou résolues avant le tour suivant (T-029 A) → travaux défensifs,
-## encerclement, moral → logistique → calendrier. Chaque ordre est journalisé.
+## encerclement, moral → mobilisation (incorporation puis appel) → logistique → calendrier. Chaque ordre est journalisé.
 
 
 ## `orders_by_nation` : nation -> Array d'ordres. Les ordres invalides sont rejetés et journalisés.
@@ -30,6 +30,8 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 			EconomySystem.apply_allocation(state, order)
 		elif order["type"] == Orders.BUILD_DEFENSE and rules.has("combat"):
 			DefenseSystem.apply_order(state, rules["combat"], order)
+		elif order["type"] == Orders.MOBILIZE:
+			MobilizationSystem.declare(state, order["nation"])
 	# Les mouvements sont revalidés après la diplomatie (une déclaration de guerre du même
 	# tour peut autoriser l'entrée ; une paix peut l'interdire). Une formation = un ordre.
 	var moves: Array = []
@@ -63,6 +65,8 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		DefenseSystem.monthly(state, world, rules["combat"])
 		BattleManager.monthly_encirclement(state, world, rules["combat"])
 		BattleManager.monthly_morale(state, rules["combat"])
+	if rules.has("forces"):
+		MobilizationSystem.monthly(state, world, rules["forces"])
 	LogisticsSystem.update_supply(state, world)
 	state.pending_orders = {}
 	var finished := state.date_label()
@@ -118,6 +122,8 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 			return EconomySystem.validate_allocation(rules, order)
 		Orders.BUILD_DEFENSE:
 			return DefenseSystem.validate(state, rules["combat"], order) if rules.has("combat") else "règles de combat absentes"
+		Orders.MOBILIZE:
+			return MobilizationSystem.validate(state, order)
 		Orders.DECLARE_WAR, Orders.PROPOSE_TREATY, Orders.RESPOND_PROPOSAL, Orders.BREAK_TREATY, Orders.SEND_MESSAGE:
 			return DiplomacySystem.validate(state, order)
 	return "type d'ordre inconnu"

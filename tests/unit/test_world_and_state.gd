@@ -40,7 +40,10 @@ func test_new_game_territories_and_unknown_values() -> void:
 		runner.check(not s.state.is_occupied(rid), "aucune occupation au départ")
 	runner.check(s.state.regions_controlled_by("russian_empire").size() == 18, "Empire russe : 18 régions")
 	runner.check(s.state.nations["france"]["stats"]["industrie"]["value"] == null, "statistique inconnue = null (NAT-01)")
-	runner.check(s.state.formations["army_france_1"]["soldiers"] == null, "effectifs inconnus = null (MIL-01)")
+	runner.check(s.state.soldiers_of("army_france_region_008") != null and int(s.state.soldiers_of("army_france_region_008")) > 0,
+		"puissance jouable : effectifs historiques présents (MIL-01)")
+	runner.check(s.state.formations["army_belgium_1"]["soldiers"] == null and s.state.soldiers_of("army_belgium_1") == null,
+		"État hors MIL-01 : effectifs inconnus = null, rien n'est fabriqué")
 	runner.check(s.state.month == 1 and s.state.year == 1914, "mois de départ paramétré")
 	var s2 := GameSession.create()
 	s2.new_game("france", 6)
