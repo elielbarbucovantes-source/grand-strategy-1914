@@ -254,29 +254,70 @@ func _page_industry() -> void:
 		_queue(Orders.industry_allocation(st.player_nation, a)))
 
 
-## Effectifs du pays (MIL-01) : source des données et cinq catégories distinctes ; mobilisation.
+## Effectifs du pays (MIL-01, phase 2) : catégories distinctes, échelons, posture, allocation,
+## pertes et prisonniers ; informations publiques des autres puissances (T-056).
 func _forces_panel(box: VBoxContainer) -> void:
 	var st := session.state
 	var src: Dictionary = session.scenario.get("forces_source", {})
 	var sum := session.forces_summary(st.player_nation)
 	var kind: String = sum["source_type"]
+	var mr: Dictionary = session.rules["forces"]["mobilization"]
 	var t := "[b]Source des effectifs du scénario[/b] : %s\n" % {"historical": "HISTORIQUE (%s)" % str(src.get("database", "")),
 		"fictitious": "[color=#b03a2e]FICTIVE (bac à sable, valeurs de test)[/color]"}.get(str(src.get("type", "")), "inconnue")
 	if kind == "historical":
 		t += "Données : %s\n" % sum["data_status"]
 		t += "1. Actifs au démarrage : %d (dont %d hors carte)\n" % [int(sum["active_start"]), int(sum["active_off_map"])]
-		t += "2. Réserves disponibles : %d sur %d (hors carte : %d)\n" % [int(sum["reserve_pool"]), int(sum["reserve_pool_initial"]), int(sum["reserves_off_map"])]
-		t += "3. En cours de mobilisation : %d\n4. Incorporés : %d\n" % [int(sum["mobilizing"]), int(sum["incorporated"])]
+		t += "2. Réservistes non appelés : %d sur %d (hors carte : %d)\n" % [int(sum["reserve_pool"]), int(sum["reserve_pool_initial"]), int(sum["reserves_off_map"])]
+		for e: Dictionary in sum["echelons"]:
+			t += "    • %s : %d sur %d — %s%s\n" % [e["label_fr"], int(e["pool"]), int(e["pool_initial"]),
+				"ouvert" if e["opened"] else "fermé", "" if e["documented"] else " [color=#b03a2e](approximation non documentée)[/color]"]
+		t += "    [i]%s[/i]\n" % sum["echelon_status_fr"]
+		t += "3. En cours de mobilisation : %d (dont bloqués, voie coupée : %d)\n" % [int(sum["mobilizing"]) + int(sum["blocked"]), int(sum["blocked"])]
+		t += "4. Incorporés : %d\n" % int(sum["incorporated"])
 		t += "5. Présents dans les unités : %d (+ %d services non combattants)\n" % [int(sum["present_in_units"]), int(sum["present_services"])]
-		t += "Mobilisation générale : %s\n[i]Effectifs nationaux sourcés ; répartition par district et ventilation par arme ESTIMÉES ; paramètres de mobilisation PROPOSÉS.[/i]" % (
-			"[b]décrétée[/b]" if bool(sum["declared"]) else "non décrétée")
+		t += "6. Pertes (non ventilées : tués, blessés et disparus non distingués par la simulation) : %d\n" % int(sum["losses_total"])
+		t += "    Tués : non modélisé ; blessés temporairement indisponibles : non modélisé\n"
+		t += "7. Prisonniers : %d perdus (détenus par l'ennemi) ; %d détenus ; libérés ou rapatriés : %d (aucun mécanisme)\n" % [
+			int(sum["prisoners_lost"]), int(sum["prisoners_held"]), int(sum["released"]) + int(sum["repatriated"])]
+		var al: Dictionary = sum["allocation"]
+		t += "\n[b]Posture de mobilisation[/b] : %s (publique)\n" % mr["postures"][sum["posture"]]["label_fr"]
+		t += "Moyens : administration %d %%, chemins de fer %d %%, logistique %d %% (sans coût économique : système économique non défini)\n" % [
+			int(al["administration"]), int(al["rail"]), int(al["logistics"])]
+		t += "[i]Paramètres nationaux : voir data/rules/forces_rules.json (dérivés ou PROVISOIRES). Posture accélérée reportée (Q1).[/i]"
 	elif kind == "fictitious":
 		t += "Aucune réserve ni mobilisation (bac à sable)."
 	else:
 		t += "[color=#b03a2e]Effectifs inconnus pour ce pays (hors MIL-01) : aucune valeur n'est fabriquée.[/color]"
 	_rich(box, t)
-	if kind == "historical" and not bool(sum["declared"]):
-		_button(box, "Décréter la mobilisation générale (ordre du mois)", func() -> void: _queue(Orders.mobilize(st.player_nation)))
+	if kind != "historical":
+		return
+	var row := HBoxContainer.new()
+	box.add_child(row)
+	for p: String in MobilizationSystem.POSTURES:
+		if p != sum["posture"]:
+			_button(row, "Posture : %s" % mr["postures"][p]["label_fr"], func() -> void: _queue(Orders.mobilization_posture(st.player_nation, p)))
+	_button(box, "Appeler l'échelon suivant (ordre du mois)", func() -> void: _queue(Orders.call_next_echelon(st.player_nation)))
+	var spins: Dictionary = {}
+	var arow := HBoxContainer.new()
+	box.add_child(arow)
+	for k: String in MobilizationSystem.MEANS:
+		_label(arow, {"administration": "Administration", "rail": "Chemins de fer", "logistics": "Logistique"}[k], 12)
+		var sp := SpinBox.new()
+		sp.max_value = 100
+		sp.suffix = "%"
+		sp.value = float(sum["allocation"][k])
+		arow.add_child(sp)
+		spins[k] = sp
+	_button(box, "Répartir les moyens (ordre du mois)", func() -> void:
+		_queue(Orders.mobilization_allocation(st.player_nation, int(spins["administration"].value), int(spins["rail"].value), int(spins["logistics"].value))))
+	var pub := session.public_mobilization()
+	var pt := "[b]Mobilisations publiques[/b] (posture et échelons ; volumes confidentiels) :\n"
+	for nid: String in pub:
+		if nid == st.player_nation:
+			continue
+		var opened: Array = (pub[nid]["opened_echelons"] as Array).map(func(e: Dictionary) -> String: return e["label_fr"])
+		pt += "%s : %s%s\n" % [st.nations[nid]["name_fr"], pub[nid]["posture_fr"], (" — échelons ouverts : " + ", ".join(opened)) if not opened.is_empty() else ""]
+	_rich(box, pt)
 
 
 func _page_army() -> void:
@@ -396,7 +437,14 @@ func _describe(o: Dictionary) -> String:
 		Orders.SET_INDUSTRY_ALLOCATION:
 			return "Priorités industrielles %s" % JSON.stringify(o["allocation"])
 		Orders.MOBILIZE:
-			return "Décréter la mobilisation générale"
+			return "Décréter la mobilisation générale (posture générale)"
+		Orders.SET_MOBILIZATION_POSTURE:
+			return "Posture de mobilisation : %s" % session.rules["forces"]["mobilization"]["postures"][o["posture"]]["label_fr"]
+		Orders.SET_MOBILIZATION_ALLOCATION:
+			return "Moyens de mobilisation : administration %d %%, chemins de fer %d %%, logistique %d %%" % [
+				int(o["allocation"]["administration"]), int(o["allocation"]["rail"]), int(o["allocation"]["logistics"])]
+		Orders.CALL_NEXT_ECHELON:
+			return "Appeler l'échelon de mobilisation suivant"
 		Orders.BUILD_DEFENSE:
 			return "Ouvrage défensif (%s) en %s" % [o["kind"], session.world.regions[o["region"]]["name_fr"]]
 	return o["type"]

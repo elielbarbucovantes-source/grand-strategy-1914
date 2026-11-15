@@ -33,9 +33,10 @@ func _mobilized_battle() -> void:
 	var st := s.state
 	st.human_nations = []
 	for nid: String in ["france", "german_empire"]:
-		MobilizationSystem.declare(st, nid)
+		_general(s, nid)
 	for m in 3:
 		MobilizationSystem.monthly(st, s.world, s.rules["forces"])
+		_next_echelons(s, ["france", "german_empire"])
 		st.turn += 1
 	st.wars.append({"id": "w", "a": "german_empire", "b": "france", "since_turn": 0})
 	var attackers: Array = st.armies_in("region_035").map(func(a: Dictionary) -> String: return a["id"])
@@ -127,7 +128,7 @@ func _mobilization() -> void:
 	var st := s.state
 	var rows := {}
 	for nid: String in ["united_kingdom", "france", "german_empire", "austria_hungary", "russian_empire", "italy", "ottoman_empire"]:
-		MobilizationSystem.declare(st, nid)
+		_general(s, nid)
 		rows[nid] = []
 	var t0 := Time.get_ticks_msec()
 	for m in 4:
@@ -135,6 +136,7 @@ func _mobilization() -> void:
 		for nid: String in rows:
 			var x := MobilizationSystem.summary(st, nid)
 			(rows[nid] as Array).append("%d / %d" % [int(x["mobilizing"]), int(x["incorporated"])])
+		_next_echelons(s, rows.keys())
 		st.turn += 1
 	for nid: String in rows:
 		var x := MobilizationSystem.summary(st, nid)
@@ -145,3 +147,16 @@ func _mobilization() -> void:
 		if st.formations[fid]["echelon"] == "unit":
 			units += 1
 	print("Unités sur la carte après mobilisation complète : %d (calcul de 4 mois : %d ms)" % [units, Time.get_ticks_msec() - t0])
+
+
+## Posture générale (T-053) : rythme national complet, échelons ouverts dès que possible.
+func _general(s: GameSession, nid: String) -> void:
+	MobilizationSystem.set_posture(s.state, s.rules["forces"]["mobilization"], nid, "generale")
+
+
+func _next_echelons(s: GameSession, nations: Array) -> void:
+	var mr: Dictionary = s.rules["forces"]["mobilization"]
+	for nid: String in nations:
+		var o := Orders.call_next_echelon(nid)
+		if MobilizationSystem.validate(s.state, o, s.world, mr) == "":
+			MobilizationSystem.apply_order(s.state, s.world, mr, o)

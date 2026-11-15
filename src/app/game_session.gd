@@ -82,11 +82,12 @@ func queue_order(order: Dictionary) -> String:
 			reason = EconomySystem.validate_allocation(rules, order)
 		Orders.BUILD_DEFENSE:
 			reason = DefenseSystem.validate(state, rules["combat"], order)
-		Orders.MOBILIZE:
-			reason = MobilizationSystem.validate(state, order)
+		Orders.MOBILIZE, Orders.SET_MOBILIZATION_POSTURE, Orders.SET_MOBILIZATION_ALLOCATION, Orders.CALL_NEXT_ECHELON:
+			reason = MobilizationSystem.validate(state, order, world, rules["forces"]["mobilization"])
+			var same := [Orders.MOBILIZE, Orders.SET_MOBILIZATION_POSTURE] if order["type"] in [Orders.MOBILIZE, Orders.SET_MOBILIZATION_POSTURE] else [order["type"]]
 			for o: Dictionary in player_orders():
-				if o["type"] == Orders.MOBILIZE:
-					reason = "mobilisation déjà ordonnée ce mois-ci"
+				if o["type"] in same and reason == "":
+					reason = "ordre de mobilisation de ce type déjà donné ce mois-ci"
 		_:
 			reason = DiplomacySystem.validate(state, order)
 	if reason != "":
@@ -177,9 +178,15 @@ func reconnect_player(nation: String) -> void:
 		BattleManager.on_reconnect(b, nation)
 
 
-## Les cinq catégories d'effectifs d'un pays (MIL-01) : actifs, réserves, en cours, incorporés, présents.
+## Catégories d'effectifs d'un pays (MIL-01) : actifs, réservistes non appelés (par échelon), en cours,
+## bloqués, incorporés, présents, pertes et prisonniers ; posture et allocation.
 func forces_summary(nation: String) -> Dictionary:
 	return MobilizationSystem.summary(state, nation)
+
+
+## Informations publiques de mobilisation de toutes les puissances (T-056, Q3) : jamais les volumes.
+func public_mobilization() -> Dictionary:
+	return MobilizationSystem.public_view(state, rules["forces"]["mobilization"])
 
 
 func save_game(name: String) -> String:

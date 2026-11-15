@@ -127,11 +127,39 @@
     "reserve_pool_initial": 209280,
     "reserve_pool": 209280,
     "mobilizing": [],
+    "blocked": [],
     "incorporated": 0,
-    "mobilization": {
-     "declared": false,
-     "turn": null
+    "echelons": [
+     {
+      "id": "bloc_unique",
+      "label_fr": "Bloc unique (approximation non documentée)",
+      "status": "bloc_unique",
+      "documented": false,
+      "pool_initial": 209280,
+      "pool_initial_by_region": {
+       "region_001": 104640,
+       "region_002": 52320,
+       "region_003": 26160,
+       "region_006": 26160
+      },
+      "pool_by_region": {
+       "region_001": 104640,
+       "region_002": 52320,
+       "region_003": 26160,
+       "region_006": 26160
+      },
+      "opened_turn": null
+     }
+    ],
+    "echelon_mode": "bloc_unique",
+    "echelon_status_fr": "APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (décision MIL01-P1-D1) : aucun échelon sourcé, le réservoir est appelé en bloc unique ; aucun sous-échelon n'est inventé.",
+    "posture": "paix",
+    "allocation": {
+     "administration": 34,
+     "rail": 33,
+     "logistics": 33
     },
+    "public_record": [],
     "district_pool_weights": {
      "region_001": 104640,
      "region_002": 52320,
@@ -242,11 +270,43 @@
     "reserve_pool_initial": 2195454,
     "reserve_pool": 2195454,
     "mobilizing": [],
+    "blocked": [],
     "incorporated": 0,
-    "mobilization": {
-     "declared": false,
-     "turn": null
+    "echelons": [
+     {
+      "id": "bloc_unique",
+      "label_fr": "Bloc unique (approximation non documentée)",
+      "status": "bloc_unique",
+      "documented": false,
+      "pool_initial": 2195454,
+      "pool_initial_by_region": {
+       "region_007": 209092,
+       "region_008": 522729,
+       "region_009": 313636,
+       "region_010": 313635,
+       "region_011": 418182,
+       "region_012": 418180
+      },
+      "pool_by_region": {
+       "region_007": 209092,
+       "region_008": 522729,
+       "region_009": 313636,
+       "region_010": 313635,
+       "region_011": 418182,
+       "region_012": 418180
+      },
+      "opened_turn": null
+     }
+    ],
+    "echelon_mode": "bloc_unique",
+    "echelon_status_fr": "APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (décision MIL01-P1-D1) : aucun échelon sourcé, le réservoir est appelé en bloc unique ; aucun sous-échelon n'est inventé.",
+    "posture": "paix",
+    "allocation": {
+     "administration": 34,
+     "rail": 33,
+     "logistics": 33
     },
+    "public_record": [],
     "district_pool_weights": {
      "region_007": 209092,
      "region_008": 522729,
@@ -863,11 +923,83 @@
     "reserve_pool_initial": 3803984,
     "reserve_pool": 3803984,
     "mobilizing": [],
+    "blocked": [],
     "incorporated": 0,
-    "mobilization": {
-     "declared": false,
-     "turn": null
+    "echelons": [
+     {
+      "id": "de_e1",
+      "label_fr": "Premier échelon : rappel d'août 1914 (plan de mobilisation exécuté)",
+      "status": "dérivé",
+      "documented": true,
+      "pool_initial": 2993984,
+      "pool_initial_by_region": {
+       "region_026": 239519,
+       "region_027": 239519,
+       "region_028": 359280,
+       "region_029": 239518,
+       "region_030": 119760,
+       "region_031": 359278,
+       "region_032": 359279,
+       "region_033": 479036,
+       "region_034": 359277,
+       "region_035": 239518
+      },
+      "pool_by_region": {
+       "region_026": 239519,
+       "region_027": 239519,
+       "region_028": 359280,
+       "region_029": 239518,
+       "region_030": 119760,
+       "region_031": 359278,
+       "region_032": 359279,
+       "region_033": 479036,
+       "region_034": 359277,
+       "region_035": 239518
+      },
+      "opened_turn": null
+     },
+     {
+      "id": "de_e2",
+      "label_fr": "Échelons suivants : instruits non rappelés en août 1914",
+      "status": "dérivé",
+      "documented": true,
+      "pool_initial": 810000,
+      "pool_initial_by_region": {
+       "region_026": 64800,
+       "region_027": 64800,
+       "region_028": 97200,
+       "region_029": 64800,
+       "region_030": 32400,
+       "region_031": 97200,
+       "region_032": 97200,
+       "region_033": 129600,
+       "region_034": 97200,
+       "region_035": 64800
+      },
+      "pool_by_region": {
+       "region_026": 64800,
+       "region_027": 64800,
+       "region_028": 97200,
+       "region_029": 64800,
+       "region_030": 32400,
+       "region_031": 97200,
+       "region_032": 97200,
+       "region_033": 129600,
+       "region_034": 97200,
+       "region_035": 64800
+      },
+      "opened_turn": null
+     }
+    ],
+    "echelon_mode": "documented",
+    "echelon_status_fr": "Échelons dérivés de sources consultées (T-051) ; voir la base historique.",
+    "posture": "paix",
+    "allocation": {
+     "administration": 34,
+     "rail": 33,
+     "logistics": 33
     },
+    "public_record": [],
     "district_pool_weights": {
      "region_026": 304319,
      "region_027": 304319,
@@ -984,11 +1116,71 @@
     "reserve_pool_initial": 2000000,
     "reserve_pool": 2000000,
     "mobilizing": [],
+    "blocked": [],
     "incorporated": 0,
-    "mobilization": {
-     "declared": false,
-     "turn": null
+    "echelons": [
+     {
+      "id": "ah_e1",
+      "label_fr": "Premier échelon : armée commune et Landwehrs au pied de guerre",
+      "status": "dérivé",
+      "documented": true,
+      "pool_initial": 1347285,
+      "pool_initial_by_region": {
+       "region_036": 168411,
+       "region_037": 84205,
+       "region_038": 168411,
+       "region_040": 252616,
+       "region_041": 336821,
+       "region_042": 84205,
+       "region_043": 252616
+      },
+      "pool_by_region": {
+       "region_036": 168411,
+       "region_037": 84205,
+       "region_038": 168411,
+       "region_040": 252616,
+       "region_041": 336821,
+       "region_042": 84205,
+       "region_043": 252616
+      },
+      "opened_turn": null
+     },
+     {
+      "id": "ah_e2",
+      "label_fr": "Échelons suivants : autres instruits",
+      "status": "dérivé",
+      "documented": true,
+      "pool_initial": 652715,
+      "pool_initial_by_region": {
+       "region_036": 81589,
+       "region_037": 40795,
+       "region_038": 81589,
+       "region_040": 122384,
+       "region_041": 163179,
+       "region_042": 40795,
+       "region_043": 122384
+      },
+      "pool_by_region": {
+       "region_036": 81589,
+       "region_037": 40795,
+       "region_038": 81589,
+       "region_040": 122384,
+       "region_041": 163179,
+       "region_042": 40795,
+       "region_043": 122384
+      },
+      "opened_turn": null
+     }
+    ],
+    "echelon_mode": "documented",
+    "echelon_status_fr": "Échelons dérivés de sources consultées (T-051) ; voir la base historique.",
+    "posture": "paix",
+    "allocation": {
+     "administration": 34,
+     "rail": 33,
+     "logistics": 33
     },
+    "public_record": [],
     "district_pool_weights": {
      "region_036": 250000,
      "region_037": 125000,
@@ -1354,11 +1546,57 @@
     "reserve_pool_initial": 2772972,
     "reserve_pool": 2772972,
     "mobilizing": [],
+    "blocked": [],
     "incorporated": 0,
-    "mobilization": {
-     "declared": false,
-     "turn": null
+    "echelons": [
+     {
+      "id": "bloc_unique",
+      "label_fr": "Bloc unique (approximation non documentée)",
+      "status": "bloc_unique",
+      "documented": false,
+      "pool_initial": 2772972,
+      "pool_initial_by_region": {
+       "region_052": 102703,
+       "region_053": 102703,
+       "region_055": 205406,
+       "region_056": 102703,
+       "region_057": 513515,
+       "region_058": 205406,
+       "region_059": 308109,
+       "region_060": 102702,
+       "region_063": 102702,
+       "region_064": 308109,
+       "region_066": 513510,
+       "region_067": 102702,
+       "region_068": 102702
+      },
+      "pool_by_region": {
+       "region_052": 102703,
+       "region_053": 102703,
+       "region_055": 205406,
+       "region_056": 102703,
+       "region_057": 513515,
+       "region_058": 205406,
+       "region_059": 308109,
+       "region_060": 102702,
+       "region_063": 102702,
+       "region_064": 308109,
+       "region_066": 513510,
+       "region_067": 102702,
+       "region_068": 102702
+      },
+      "opened_turn": null
+     }
+    ],
+    "echelon_mode": "bloc_unique",
+    "echelon_status_fr": "APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (décision MIL01-P1-D1) : aucun échelon sourcé, le réservoir est appelé en bloc unique ; aucun sous-échelon n'est inventé.",
+    "posture": "paix",
+    "allocation": {
+     "administration": 34,
+     "rail": 33,
+     "logistics": 33
     },
+    "public_record": [],
     "district_pool_weights": {
      "region_052": 102703,
      "region_053": 102703,
@@ -1982,11 +2220,43 @@
     "reserve_pool_initial": 994967,
     "reserve_pool": 994967,
     "mobilizing": [],
+    "blocked": [],
     "incorporated": 0,
-    "mobilization": {
-     "declared": false,
-     "turn": null
+    "echelons": [
+     {
+      "id": "bloc_unique",
+      "label_fr": "Bloc unique (approximation non documentée)",
+      "status": "bloc_unique",
+      "documented": false,
+      "pool_initial": 994967,
+      "pool_initial_by_region": {
+       "region_080": 331656,
+       "region_081": 165828,
+       "region_082": 165828,
+       "region_083": 82914,
+       "region_084": 165828,
+       "region_085": 82913
+      },
+      "pool_by_region": {
+       "region_080": 331656,
+       "region_081": 165828,
+       "region_082": 165828,
+       "region_083": 82914,
+       "region_084": 165828,
+       "region_085": 82913
+      },
+      "opened_turn": null
+     }
+    ],
+    "echelon_mode": "bloc_unique",
+    "echelon_status_fr": "APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (décision MIL01-P1-D1) : aucun échelon sourcé, le réservoir est appelé en bloc unique ; aucun sous-échelon n'est inventé.",
+    "posture": "paix",
+    "allocation": {
+     "administration": 34,
+     "rail": 33,
+     "logistics": 33
     },
+    "public_record": [],
     "district_pool_weights": {
      "region_080": 331656,
      "region_081": 165828,
@@ -2099,11 +2369,33 @@
     "reserve_pool_initial": 230769,
     "reserve_pool": 230769,
     "mobilizing": [],
+    "blocked": [],
     "incorporated": 0,
-    "mobilization": {
-     "declared": false,
-     "turn": null
+    "echelons": [
+     {
+      "id": "bloc_unique",
+      "label_fr": "Bloc unique (approximation non documentée)",
+      "status": "bloc_unique",
+      "documented": false,
+      "pool_initial": 230769,
+      "pool_initial_by_region": {
+       "region_087": 230769
+      },
+      "pool_by_region": {
+       "region_087": 230769
+      },
+      "opened_turn": null
+     }
+    ],
+    "echelon_mode": "bloc_unique",
+    "echelon_status_fr": "APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (décision MIL01-P1-D1) : aucun échelon sourcé, le réservoir est appelé en bloc unique ; aucun sous-échelon n'est inventé.",
+    "posture": "paix",
+    "allocation": {
+     "administration": 34,
+     "rail": 33,
+     "logistics": 33
     },
+    "public_record": [],
     "district_pool_weights": {
      "region_087": 230769
     },
@@ -11556,7 +11848,7 @@
   "database": "data/history/military_forces_1914.json",
   "database_sha256": "41faf5f504ae6a21f93ee4fbaea867cfc41c91bc4d2a84863ed2e456733e7339",
   "rules": "data/rules/forces_rules.json",
-  "rules_sha256": "c84b50c49cd90341ce2cb958089e921f347f99c2f551d5722c1d1858c8701ab3",
+  "rules_sha256": "aed13dedb3ba46b3a8994d4f127362eceaaa508d77e495527db07290141d4333",
   "nations_documented": [
    "austria_hungary",
    "france",

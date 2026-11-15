@@ -26,6 +26,8 @@ func _invariant(f: Dictionary) -> int:
 	var mob := 0
 	for c: Dictionary in f["mobilizing"]:
 		mob += int(c["soldiers"])
+	for c: Dictionary in f["blocked"]:
+		mob += int(c["soldiers"])
 	return int(f["reserve_pool"]) + mob + int(f["incorporated"])
 
 
@@ -215,22 +217,26 @@ func test_progressive_mobilization_without_double_counting() -> void:
 
 
 func test_mobilization_blocked_in_occupied_district() -> void:
+	# T-056 bis, Q4 : un district occupé SANS voie de communication ne fournit pas ses réservistes ;
+	# ils restent dans le réservoir (aucun blocage indéfini « en cours de mobilisation »).
 	var s := _session("france")
 	var st := s.state
 	var f: Dictionary = st.nations["france"]["forces"]
-	MobilizationSystem.declare(st, "france")
-	MobilizationSystem.monthly(st, s.world, s.rules["forces"])
-	var for_011 := 0
-	for c: Dictionary in f["mobilizing"]:
-		if c["region"] == "region_011":
-			for_011 += int(c["soldiers"])
-	runner.check(for_011 > 0, "réservistes rappelés pour le district 011")
+	var mr: Dictionary = s.rules["forces"]["mobilization"]
+	var e: Dictionary = f["echelons"][0]
+	var pool_011 := int(e["pool_by_region"]["region_011"])
+	runner.check(pool_011 > 0, "réservistes du district 011 dans le réservoir")
+	# Encerclement du district : 011 et toutes ses voisines passent à l'ennemi (aucune voie terrestre).
 	st.regions["region_011"]["controller"] = "german_empire"
-	st.turn += 1
+	for n: String in s.world.neighbor_ids("region_011", true):
+		if st.controller(n) == "france":
+			st.regions[n]["controller"] = "german_empire"
+	MobilizationSystem.set_posture(st, mr, "france", "generale")
 	MobilizationSystem.monthly(st, s.world, s.rules["forces"])
-	var still := 0
+	var called_011 := 0
 	for c: Dictionary in f["mobilizing"]:
 		if c["region"] == "region_011":
-			still += int(c["soldiers"])
-	runner.check(still >= for_011, "district occupé : les rappelés restent en cours de mobilisation, sans incorporation")
+			called_011 += int(c["soldiers"])
+	runner.check(called_011 == 0 and int(e["pool_by_region"]["region_011"]) == pool_011,
+		"district occupé sans voie : aucun appel, réservistes conservés dans le réservoir (Q4)")
 	runner.check(_invariant(f) == int(f["reserve_pool_initial"]), "conservation malgré le blocage")

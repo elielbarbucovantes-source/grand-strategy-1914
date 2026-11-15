@@ -6,7 +6,11 @@ extends RefCounted
 ## (format, version, carte différente) ou tronquée (JSON invalide).
 
 const FORMAT := "gs1914.save"
-const FORMAT_VERSION := 1
+## Version 2 (MIL-01 phase 2, 15/11/2026) : échelons de mobilisation, postures, allocation, cohortes
+## bloquées, comptabilité des pertes et des prisonniers. Version 1 refusée (Q9) : aucune migration
+## fiable n'est possible (réservoir non échelonné, base historique corrigée en phase 1 : réservoirs
+## allemand et italien, sièges russes ; pertes antérieures non comptabilisées).
+const FORMAT_VERSION := 2
 const ENGINE := "Godot 4.7.2"
 
 
@@ -42,6 +46,10 @@ static func load_save(path: String, world: WorldMap, rules: Dictionary) -> Dicti
 	var env: Dictionary = data
 	if env.get("format", "") != FORMAT:
 		return {"error": "format inconnu"}
+	if int(env.get("format_version", -1)) == 1:
+		return {"error": "sauvegarde de l'ancien format (version 1, antérieure à la refonte de la mobilisation) : "
+			+ "migration impossible de façon fiable (réservoirs non échelonnés, données historiques corrigées, pertes non comptabilisées). "
+			+ "Commencez une nouvelle partie."}
 	if int(env.get("format_version", -1)) != FORMAT_VERSION:
 		return {"error": "version de sauvegarde incompatible (%s)" % str(env.get("format_version"))}
 	if int(env.get("rules_format_version", -1)) != int(rules.get("format_version", 0)):

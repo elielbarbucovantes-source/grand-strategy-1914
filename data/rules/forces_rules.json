@@ -2,35 +2,281 @@
  "format": "gs1914.forces_rules",
  "format_version": 1,
  "_statut": "Paramètres TECHNIQUES de modélisation des effectifs et de la mobilisation (MIL-01 / MIL-02). Toutes les valeurs sont PROPOSÉES et configurables : ce ne sont PAS des données historiques. Elles sont identiques pour toutes les nations (aucune différence nationale arbitraire) ; une différence nationale n'est admise que si elle est sourcée (bloc national_overrides).",
-
  "unit_generation": {
   "_statut": "PROPOSÉ (technique) : granularité des unités tactiques du jeu, choisie pour la performance (environ 2,5 s de résolution automatique pour 40 unités, 20 s pour 170 ; mesure du 15/11/2026). Ce n'est pas un échelon historique.",
   "peace_unit_soldiers": 10000,
   "min_unit_soldiers": 1000,
   "arms_to_unit_types": {
-   "infantry": ["infantry"],
-   "cavalry": ["cavalry"],
-   "artillery": ["field_artillery", "foot_artillery", "coast_artillery"]
+   "infantry": [
+    "infantry"
+   ],
+   "cavalry": [
+    "cavalry"
+   ],
+   "artillery": [
+    "field_artillery",
+    "foot_artillery",
+    "coast_artillery"
+   ]
   },
   "services_note": "Troupes techniques, train, service de santé et effectifs non ventilés : comptés comme « services » (présents, non combattants dans la bataille tactique).",
   "unknown_arms_fallback": "infantry",
   "unknown_arms_fallback_status": "Simplification technique signalée : si aucune ventilation par arme n'est sourcée, l'effectif est représenté en infanterie générique."
  },
-
  "mobilization": {
-  "_statut": "MIL-02 OUVERT pour les règles détaillées. Principe VALIDÉ (mission du 15/11/2026) : réserves disponibles mais non incorporées au départ ; mobilisation progressive ; ni apparition instantanée, ni dépassement des réserves, ni double comptage. Valeurs PROPOSÉES.",
-  "call_share_per_month": 0.5,
-  "call_share_note": "Part du réservoir INITIAL appelée chaque mois après la décision de mobilisation (bornée par le réservoir restant).",
-  "transit_months": 1,
-  "transit_note": "Les rappelés passent un mois « en cours de mobilisation » (rejoindre le dépôt, équipement) avant d'être incorporés.",
+  "_statut": "MIL-02 OUVERT pour les règles détaillées. Principe VALIDÉ : réserves disponibles mais non incorporées au départ ; mobilisation progressive ; ni apparition instantanée, ni dépassement des réserves, ni double comptage. Phase 2 (15/11/2026) : échelons T-051, postures et allocation T-053 (Q1, Q2), rythme T-049 par paramètres NATIONAUX (Q7), communications T-056 bis (Q4, Q5), aucune armée de réserve nouvelle dans une région en bataille (Q8). Les valeurs de jeu sont PROPOSÉES ; les paramètres nationaux portent chacun leur statut (dérivé d'une source ou PROVISOIRE).",
   "war_establishment_mult": 2.0,
   "war_establishment_note": "Les unités existantes sont d'abord complétées jusqu'à ce multiple de leur effectif de paix ; ordre de grandeur cohérent avec le passage du bataillon de paix (~500 hommes) au bataillon de guerre (~1 000) décrit par US War Dept 1916 (p. 5 et p. 43). Valeur de jeu, non historique par nation.",
   "new_unit_soldiers": 20000,
-  "requires_controlled_region": true,
-  "requires_supply_link": true,
-  "region_rule_note": "Les rappelés d'un district ne rejoignent les unités que si la région du district est contrôlée par la nation et reliée à sa capitale (LogisticsSystem) ; sinon ils restent en cours de mobilisation.",
   "economy_constraint_status": "OUVERT : l'équipement et le coût économique de la mobilisation (ECO-01/02, R-03) ne sont pas définis ; aucune contrainte économique n'est appliquée.",
   "demobilization_status": "OUVERT (MIL-02) : la mobilisation est irréversible dans le prototype.",
-  "national_overrides": {}
+  "postures": {
+   "_statut": "VALIDÉ (Q2) : trois postures. La posture accélérée est REPORTÉE (Q1) jusqu'à ce qu'un coût économique réel existe.",
+   "paix": {
+    "call_factor": 0.0,
+    "max_echelon": 0,
+    "label_fr": "Paix",
+    "effect_fr": "Aucun appel de réservistes."
+   },
+   "preparatoire": {
+    "call_factor": 0.5,
+    "max_echelon": 1,
+    "label_fr": "Préparatoire",
+    "effect_fr": "Premier échelon (ou bloc unique) seulement, à la moitié du rythme national."
+   },
+   "generale": {
+    "call_factor": 1.0,
+    "max_echelon": 99,
+    "label_fr": "Générale",
+    "effect_fr": "Rythme national complet ; l'ordre « appeler l'échelon suivant » est permis."
+   },
+   "valeurs_statut": "call_factor : PROPOSÉ (valeur de jeu, non historique)."
+  },
+  "allocation": {
+   "_statut": "VALIDÉ (Q2) : trois moyens, en pourcentages entiers de somme 100. Arbitrage interne SANS coût économique (aucun coût fictif, Q1/Q2). Effets PROPOSÉS ci-dessous, seuils PROVISOIRES.",
+   "default": {
+    "administration": 34,
+    "rail": 33,
+    "logistics": 33
+   },
+   "administration_effect_fr": "Multiplie le volume appelé chaque mois : facteur = (part administration / 33,3 %), borné entre admin_factor_min et admin_factor_max.",
+   "admin_reference_share": 33.333,
+   "admin_factor_min": 0.5,
+   "admin_factor_max": 1.5,
+   "rail_effect_fr": "Ne mesure AUCUNE capacité ferroviaire (la carte indique seulement la présence d'une liaison). Si la part chemin de fer est < rail_minimum_share, tous les transits durent un mois de plus. Si elle est ≥ rail_priority_share, le délai des districts sans liaison attestée (rail_gap_months, actuellement 0 : couche incomplète) est supprimé.",
+   "rail_priority_share": 50,
+   "rail_minimum_share": 15,
+   "logistics_effect_fr": "Si la part logistique est < logistics_minimum_share, le détour des réservistes d'un district occupé (T-056 bis) dure un mois de plus.",
+   "logistics_minimum_share": 25
+  },
+  "next_echelon_min_delay_months": 1,
+  "next_echelon_note": "VALIDÉ (Q10) : délai minimal PROVISOIRE d'un mois entre l'ouverture d'un échelon et celle du suivant ; aucune source consultée ne le donne.",
+  "communication_note": "T-056 bis, Q4, Q5 (VALIDÉS) : les réservistes d'un district ne sont appelés que si une voie TERRESTRE continue (passages de détroits du graphe compris) relie la région du district à une région contrôlée par la nation et reliée à sa capitale, à travers des régions de la nation ou de ses alliés ; la voie maritime est exclue. Sinon, ils restent dans le réservoir. Une cohorte en route dont la voie est coupée devient « bloquée » jusqu'au rétablissement d'une voie.",
+  "battle_region_rule": "Q8 (VALIDÉ) : aucune nouvelle armée de réserve n'apparaît dans une région où une bataille est en cours ; l'incorporation y est reportée.",
+  "defaults": {
+   "_statut": "Base technique commune (PROPOSÉE). Chaque puissance a ses propres paramètres ci-dessous (national_parameters), configurables ; une valeur nationale n'est « dérivée » que si une source consultée la justifie.",
+   "call_share_per_month": 0.5,
+   "call_share_note": "Part de l'échelon ouvert (par district) appelée chaque mois en posture générale. 0,5 = valeur proposée dès MIL-01, non historique.",
+   "transit_months": 1,
+   "transit_note": "Mois passés « en cours de mobilisation » avant l'incorporation (minimum technique : 1, le tour étant mensuel).",
+   "administrative_capacity": 1.0,
+   "administrative_note": "Multiplicateur national du volume appelé (capacités administratives). 1,0 = aucune différence documentée.",
+   "rail_gap_months": 0,
+   "rail_gap_note": "DÉSACTIVÉ (0) : la couche ferroviaire de l'atlas est incomplète (MAJ-006 ouverte). Sans liaison vers la capitale dans l'atlas : Prusse-Orientale (026), Pologne russe (055, 056), Ukraine occidentale (058), Crimée (063), Irlande hors Ulster (006), Italie Centre-Est, Sud et Sicile (083 à 085). Ces absences viennent probablement de la couverture de l'atlas, non vérifiée historiquement ; un délai fondé sur elles serait une fausse certitude. Mécanisme conservé, réglable après consolidation de la couche ferroviaire.",
+   "detour_months": 1,
+   "detour_note": "Délai supplémentaire d'un réserviste d'un district occupé qui rejoint le territoire national par une autre région (T-056 bis)."
+  },
+  "national_parameters": {
+   "_statut": "Paramètres NATIONAUX (Q7, précision n° 2 du directeur). Organisation des réserves : voir les échelons de la base historique (documentés ou bloc unique). Statuts : « dérivé » (source consultée) ou « PROVISOIRE » (aucune source ; valeur de base commune).",
+   "german_empire": {
+    "call_share_per_month": {
+     "value": 1.0,
+     "status": "dérivé",
+     "note": "Repère ALLEMAND (Q7), non universel : « August 1914 3,8 Mio. Mann mobil gemacht » (Bundesarchiv) ; le premier échelon (2 993 984) est appelé en un mois en posture générale. Le délai d'incorporation reste le minimum technique d'un tour."
+    },
+    "transit_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "administrative_capacity": {
+     "value": 1.0,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "rail_gap_months": {
+     "value": 0,
+     "status": "PROVISOIRE",
+     "note": "désactivé : couche ferroviaire de l'atlas incomplète (MAJ-006) ; voir defaults.rail_gap_note"
+    },
+    "detour_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    }
+   },
+   "france": {
+    "call_share_per_month": {
+     "value": 0.5,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "transit_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "administrative_capacity": {
+     "value": 1.0,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "rail_gap_months": {
+     "value": 0,
+     "status": "PROVISOIRE",
+     "note": "désactivé : couche ferroviaire de l'atlas incomplète (MAJ-006) ; voir defaults.rail_gap_note"
+    },
+    "detour_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    }
+   },
+   "austria_hungary": {
+    "call_share_per_month": {
+     "value": 0.5,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "transit_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "administrative_capacity": {
+     "value": 1.0,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "rail_gap_months": {
+     "value": 0,
+     "status": "PROVISOIRE",
+     "note": "désactivé : couche ferroviaire de l'atlas incomplète (MAJ-006) ; voir defaults.rail_gap_note"
+    },
+    "detour_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    }
+   },
+   "russian_empire": {
+    "call_share_per_month": {
+     "value": 0.5,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "transit_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "administrative_capacity": {
+     "value": 1.0,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "rail_gap_months": {
+     "value": 0,
+     "status": "PROVISOIRE",
+     "note": "désactivé : couche ferroviaire de l'atlas incomplète (MAJ-006) ; voir defaults.rail_gap_note"
+    },
+    "detour_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    }
+   },
+   "united_kingdom": {
+    "call_share_per_month": {
+     "value": 0.5,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "transit_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "administrative_capacity": {
+     "value": 1.0,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "rail_gap_months": {
+     "value": 0,
+     "status": "PROVISOIRE",
+     "note": "désactivé : couche ferroviaire de l'atlas incomplète (MAJ-006) ; voir defaults.rail_gap_note"
+    },
+    "detour_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    }
+   },
+   "italy": {
+    "call_share_per_month": {
+     "value": 0.5,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "transit_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "administrative_capacity": {
+     "value": 1.0,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "rail_gap_months": {
+     "value": 0,
+     "status": "PROVISOIRE",
+     "note": "désactivé : couche ferroviaire de l'atlas incomplète (MAJ-006) ; voir defaults.rail_gap_note"
+    },
+    "detour_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    }
+   },
+   "ottoman_empire": {
+    "call_share_per_month": {
+     "value": 0.5,
+     "status": "PROVISOIRE",
+     "note": "aucune source chiffrée consultée ; Erickson (non consulté) décrit une mobilisation ottomane lente : à documenter avant toute différence."
+    },
+    "transit_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "administrative_capacity": {
+     "value": 1.0,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    },
+    "rail_gap_months": {
+     "value": 0,
+     "status": "PROVISOIRE",
+     "note": "désactivé : couche ferroviaire de l'atlas incomplète (MAJ-006) ; voir defaults.rail_gap_note"
+    },
+    "detour_months": {
+     "value": 1,
+     "status": "PROVISOIRE",
+     "note": "aucune source consultée"
+    }
+   }
+  }
  }
 }

@@ -88,19 +88,27 @@ func _initialize() -> void:
 	ui.refresh()
 	await process_frame
 	var army_text := _text_of(ui.pages["Armée"])
-	check(army_text.contains("HISTORIQUE") and army_text.contains("1. Actifs au démarrage") and army_text.contains("5. Présents dans les unités"),
-		"onglet Armée : source historique et cinq catégories affichées")
-	var mob := _find_button(ui.pages["Armée"], "Décréter la mobilisation")
-	check(mob != null, "bouton de mobilisation présent")
+	check(army_text.contains("HISTORIQUE") and army_text.contains("1. Actifs au démarrage") and army_text.contains("5. Présents dans les unités")
+		and army_text.contains("6. Pertes") and army_text.contains("7. Prisonniers") and army_text.contains("Bloc unique"),
+		"onglet Armée : source historique, catégories (dont pertes et prisonniers) et bloc unique affichés")
+	check(army_text.contains("approximation non documentée"), "onglet Armée : approximation du bloc unique signalée (MIL01-P1-D1)")
+	var alloc_btn := _find_button(ui.pages["Armée"], "Répartir les moyens")
+	check(alloc_btn != null, "bouton d'allocation des moyens présent")
+	if alloc_btn != null:
+		alloc_btn.pressed.emit()
+		check(session.player_orders().any(func(o: Dictionary) -> bool: return o["type"] == Orders.SET_MOBILIZATION_ALLOCATION), "bouton : ordre d'allocation préparé (%s)" % ui.status.text)
+	var mob := _find_button(ui.pages["Armée"], "Posture : Générale")
+	check(mob != null, "bouton de posture générale présent")
 	if mob != null:
 		mob.pressed.emit()
-		check(session.player_orders().any(func(o: Dictionary) -> bool: return o["type"] == Orders.MOBILIZE), "bouton : ordre de mobilisation préparé (%s)" % ui.status.text)
+		check(session.player_orders().any(func(o: Dictionary) -> bool: return o["type"] == Orders.SET_MOBILIZATION_POSTURE), "bouton : ordre de posture préparé (%s)" % ui.status.text)
 		var pool_before := int(session.state.nations["france"]["forces"]["reserve_pool"])
 		ui._on_end_turn()
 		await process_frame
 		check(int(session.state.nations["france"]["forces"]["reserve_pool"]) < pool_before, "fin du mois : réservistes rappelés (effet réel)")
 		ui.refresh()
 		await process_frame
-		check(_find_button(ui.pages["Armée"], "Décréter la mobilisation") == null and _text_of(ui.pages["Armée"]).contains("décrétée"), "mobilisation affichée comme décrétée")
+		check(_find_button(ui.pages["Armée"], "Posture : Générale") == null and _text_of(ui.pages["Armée"]).contains("Posture de mobilisation : Générale"),
+			"posture générale affichée (publique)")
 	print("RÉSULTAT UI : %s" % ("VALIDÉ" if failures == 0 else "%d échec(s)" % failures))
 	quit(1 if failures > 0 else 0)

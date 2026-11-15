@@ -173,6 +173,48 @@ def arm_shares(arms: dict | None, gen: dict) -> dict:
     return out
 
 
+ALLOCATION_DEFAULT = {"administration": 34, "rail": 33, "logistics": 33}
+ECHELON_STATUS_FR = {
+    "documented": "Échelons dérivés de sources consultées (T-051) ; voir la base historique.",
+    "bloc_unique": "APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (décision MIL01-P1-D1) : aucun échelon sourcé, "
+                   "le réservoir est appelé en bloc unique ; aucun sous-échelon n'est inventé.",
+}
+
+
+def scenario_echelons(n: dict, reserves_on_map: int, weights: dict) -> tuple[list, str]:
+    """Échelons du jeu (part sur la carte), chacun réparti par région de district (plus forts restes).
+
+    Seuls les échelons à valeur documentée sont repris ; un échelon « introuvable » (null) n'est
+    jamais créé. Sans échelon documenté : un bloc unique égal au réservoir sur la carte.
+    """
+    share = n["reserves"]["on_map_share"]
+    regions = sorted(weights)
+    w = [weights[r] for r in regions]
+    block = n["mobilization_echelons"]
+    documented = [e for e in block["echelons"] if e["value"] is not None]
+    out = []
+    if documented:
+        for e in documented:
+            v = int(e["value"]) * int(share["numerator"]) // int(share["denominator"])
+            out.append({"id": e["id"], "label_fr": e["label_fr"], "status": e["status"], "documented": True,
+                        "pool_initial": v, "pool_initial_by_region": dict(zip(regions, _split(v, w))),
+                        "pool_by_region": dict(zip(regions, _split(v, w))), "opened_turn": None})
+        mode = "documented"
+    else:
+        fb = block["fallback"]
+        if not fb or fb["mode"] != "bloc_unique":
+            raise SystemExit(f"{n['name_fr']} : ni échelon documenté ni bloc unique déclaré")
+        out.append({"id": "bloc_unique", "label_fr": "Bloc unique (approximation non documentée)", "status": "bloc_unique",
+                    "documented": False, "pool_initial": reserves_on_map,
+                    "pool_initial_by_region": dict(zip(regions, _split(reserves_on_map, w))),
+                    "pool_by_region": dict(zip(regions, _split(reserves_on_map, w))), "opened_turn": None})
+        mode = "bloc_unique"
+    if sum(e["pool_initial"] for e in out) != reserves_on_map:
+        raise SystemExit(f"{n['name_fr']} : la somme des échelons ({sum(e['pool_initial'] for e in out)}) "
+                         f"diffère du réservoir sur la carte ({reserves_on_map})")
+    return out, mode
+
+
 def historical_forces(world: dict, nations: dict) -> tuple[dict, list]:
     """Forces des puissances documentées : bloc national `forces` et formations du jeu."""
     db = json.loads(FORCES_DB.read_text(encoding="utf-8"))
@@ -228,6 +270,7 @@ def historical_forces(world: dict, nations: dict) -> tuple[dict, list]:
                         "status": ("HISTORIQUE : effectif national sourcé ; répartition ESTIMÉE"
                                    + ("" if n.get("arms") else " ; arme INCONNUE, infanterie générique (simplification)"))})
         formations.extend(armies.values())
+        echelons, mode = scenario_echelons(n, reserves_on_map, weights)
         blocks[nid] = {
             "source_type": "historical", "database": "data/history/military_forces_1914.json",
             "data_status": n["data_status"],
@@ -235,7 +278,10 @@ def historical_forces(world: dict, nations: dict) -> tuple[dict, list]:
             "active_off_map": off_map, "active_on_map": on_map, "services_active": services_total,
             "reserves_total": reserves, "reserves_off_map": reserves - reserves_on_map,
             "reserve_pool_initial": reserves_on_map, "reserve_pool": reserves_on_map,
-            "mobilizing": [], "incorporated": 0, "mobilization": {"declared": False, "turn": None},
+            "mobilizing": [], "blocked": [], "incorporated": 0,
+            "echelons": echelons, "echelon_mode": mode,
+            "echelon_status_fr": (ECHELON_STATUS_FR[mode]),
+            "posture": "paix", "allocation": dict(ALLOCATION_DEFAULT), "public_record": [],
             "district_pool_weights": dict(sorted(weights.items())),
             "arm_shares": {k: round(v, 6) for k, v in shares.items()},
             "districts_total": n_all, "districts_on_map": len(districts),

@@ -70,7 +70,7 @@ func test_save_reload_mid_battle_and_after_mobilization() -> void:
 	runner.check(not loaded.has("error"), "rechargement intègre")
 	var st2: GameState = loaded["state"]
 	runner.check(st2.checksum() == st.checksum(), "empreinte identique après rechargement")
-	runner.check(st2.nations["france"]["forces"]["mobilization"]["declared"] == true and int(st2.nations["france"]["forces"]["reserve_pool"]) == int(st.nations["france"]["forces"]["reserve_pool"]),
+	runner.check(st2.nations["france"]["forces"]["posture"] == "generale" and int(st2.nations["france"]["forces"]["reserve_pool"]) == int(st.nations["france"]["forces"]["reserve_pool"]),
 		"état de mobilisation conservé")
 	# La partie rechargée et l'originale évoluent à l'identique.
 	var s2 := GameSession.create()

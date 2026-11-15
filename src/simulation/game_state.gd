@@ -5,7 +5,7 @@ extends RefCounted
 ## sauvegarde, le rejeu déterministe et l'évolution multijoueur.
 
 const FORMAT := "gs1914.state"
-const FORMAT_VERSION := 1
+const FORMAT_VERSION := 2  # 2 : mobilisation par échelons et comptabilité des pertes (MIL-01 phase 2)
 
 var scenario_id: String = ""
 var year: int = 1914
@@ -289,13 +289,10 @@ static func _normalize_numbers(s: GameState) -> void:
 				"districts_total", "districts_on_map"]:
 			if fo.get(key) != null:
 				fo[key] = int(fo[key])
-		for c: Dictionary in fo.get("mobilizing", []):
-			c["soldiers"] = int(c["soldiers"])
-			c["ready_turn"] = int(c["ready_turn"])
-		if fo.has("mobilization") and fo["mobilization"].get("turn") != null:
-			fo["mobilization"]["turn"] = int(fo["mobilization"]["turn"])
 	for b: Dictionary in s.active_battles + s.battles:
 		CombatData.normalize_battle(b)
+	ForceLedger.normalize(s)
+	MobilizationSystem.normalize(s)
 
 
 ## Forme canonique stable : la relecture JSON transforme les entiers en flottants ; on applique

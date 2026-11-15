@@ -1,20 +1,30 @@
 class_name MobilizationSystem
 extends RefCounted
-## Mobilisation progressive des réserves (MIL-01 / MIL-02).
+## Mobilisation progressive des réserves (MIL-01 / MIL-02), phase 2 (15/11/2026).
 ##
-## Modèle VALIDÉ (mission du 15/11/2026) : l'armée active est présente au départ ; les réserves
-## sont disponibles mais NON incorporées ; la mobilisation les fait rejoindre progressivement.
-## Cinq catégories distinctes, jamais confondues :
-##   1. actifs au démarrage      : forces.active_start (donnée historique, constante) ;
-##   2. réserves disponibles      : forces.reserve_pool (diminue à chaque appel) ;
-##   3. en cours de mobilisation  : forces.mobilizing (cohortes appelées, pas encore incorporées) ;
-##   4. incorporés                : forces.incorporated (cumul des réservistes versés aux unités) ;
-##   5. présents dans les unités  : somme des effectifs des unités (+ services), après pertes.
-## Invariant de conservation : reserve_pool + Σ mobilizing + incorporated = reserve_pool_initial.
-## Aucun soldat n'est créé sans provenir du réservoir ; un actif n'est jamais compté en réserve.
-## Paramètres : data/rules/forces_rules.json (PROPOSÉS, identiques pour toutes les nations).
+## Décisions appliquées : T-047 (catégories), T-049 (rythme selon les capacités, paramètres
+## NATIONAUX), T-051 (échelons ; bloc unique MIL01-P1-D1 si aucun échelon n'est documenté),
+## T-053 (postures Paix / Préparatoire / Générale et allocation administration / chemins de fer /
+## logistique, SANS coût économique : Q1, Q2), T-056 (mobilisation libre, posture et ouverture
+## d'échelon PUBLIQUES, volumes confidentiels : Q3), T-056 bis (communications terrestres, alliés
+## compris, mer exclue : Q4, Q5), Q8 (pas de nouvelle armée de réserve dans une région en bataille),
+## Q10 (délai minimal entre échelons).
+##
+## Catégories distinctes, jamais confondues :
+##   1. actifs au démarrage      : forces.active_start (constante historique) ;
+##   2. réservistes non appelés   : Σ forces.echelons[].pool_by_region ;
+##   3. en cours de mobilisation  : forces.mobilizing (cohortes en route) ;
+##      dont bloqués              : forces.blocked (voie de communication coupée) ;
+##   4. incorporés                : forces.incorporated (cumul) ;
+##   5. présents dans les unités  : somme des unités et des services, après pertes ;
+##   6. pertes et prisonniers     : ForceLedger.
+## Invariant des réserves : non appelés + en cours + bloqués + incorporés = réservoir initial (carte).
+## Invariant du personnel : présents + pertes + prisonniers perdus = actifs sur la carte + incorporés.
+## Paramètres : data/rules/forces_rules.json (statuts dérivé / PROPOSÉ / PROVISOIRE).
 
 const ORDER := "mobilize"
+const POSTURES := ["paix", "preparatoire", "generale"]
+const MEANS := ["administration", "rail", "logistics"]
 
 
 static func forces(state: GameState, nation: String) -> Dictionary:
@@ -25,61 +35,316 @@ static func is_historical(state: GameState, nation: String) -> bool:
 	return forces(state, nation).get("source_type", "") == "historical"
 
 
-static func validate(state: GameState, order: Dictionary) -> String:
-	var nation: String = order.get("nation", "")
+## Paramètre national (Q7) : valeur nationale si elle existe, sinon base commune.
+static func param(mr: Dictionary, nation: String, key: String) -> float:
+	var np: Dictionary = mr["national_parameters"].get(nation, {})
+	if np.has(key):
+		return float(np[key]["value"])
+	return float(mr["defaults"][key])
+
+
+# ------------------------------------------------------------------ validation des ordres
+static func _base_check(state: GameState, nation: String) -> String:
 	if not state.nations.has(nation):
 		return "pays inconnu"
-	var f := forces(state, nation)
-	match f.get("source_type", "unknown"):
+	match forces(state, nation).get("source_type", "unknown"):
 		"fictitious":
 			return "bac à sable FICTIF : aucune réserve n'est modélisée"
 		"unknown":
 			return "effectifs et réserves inconnus pour ce pays (données insuffisantes, MIL-01)"
-	if bool(f["mobilization"]["declared"]):
-		return "mobilisation générale déjà décrétée"
 	return ""
 
 
-## Décret de mobilisation générale (ordre secret, appliqué à la résolution du mois).
-static func declare(state: GameState, nation: String) -> void:
+## `world` et `rules` (bloc forces) ne sont nécessaires que pour l'échelon suivant.
+static func validate(state: GameState, order: Dictionary, world: WorldMap = null, mr: Dictionary = {}) -> String:
+	var nation: String = order.get("nation", "")
+	var base := _base_check(state, nation)
+	if base != "":
+		return base
 	var f := forces(state, nation)
-	f["mobilization"] = {"declared": true, "turn": state.turn}
-	state.log_event("mobilisation", "%s décrète la mobilisation générale (%d réservistes disponibles sur la carte)." % [
-		state.nations[nation]["name_fr"], int(f["reserve_pool"])], [nation])
+	match order.get("type", ""):
+		Orders.MOBILIZE, Orders.SET_MOBILIZATION_POSTURE:
+			var posture: String = order.get("posture", "generale")
+			if not posture in POSTURES:
+				return "posture inconnue (Paix, Préparatoire ou Générale ; posture accélérée reportée, Q1)"
+			if posture == f["posture"]:
+				return "posture déjà en vigueur"
+			return ""
+		Orders.SET_MOBILIZATION_ALLOCATION:
+			var a: Dictionary = order.get("allocation", {})
+			var total := 0
+			for k: String in MEANS:
+				if not a.has(k) or int(a[k]) < 0:
+					return "allocation incomplète ou négative (administration, chemins de fer, logistique)"
+				total += int(a[k])
+			if a.size() != MEANS.size():
+				return "allocation : trois moyens seulement"
+			if total != 100:
+				return "allocation : la somme doit faire 100 %% (actuellement %d %%)" % total
+			return ""
+		Orders.CALL_NEXT_ECHELON:
+			return _next_echelon_reason(state, world, mr, nation)
+	return "ordre de mobilisation inconnu"
 
 
-## Étape mensuelle : incorporation des cohortes arrivées, puis appel d'une nouvelle tranche.
-## L'appel du mois M n'est incorporé qu'au mois M + transit : rien n'apparaît instantanément.
+static func _last_opened(f: Dictionary) -> int:
+	var last := -1
+	for i in (f["echelons"] as Array).size():
+		if f["echelons"][i]["opened_turn"] != null:
+			last = i
+	return last
+
+
+static func _next_echelon_reason(state: GameState, world: WorldMap, mr: Dictionary, nation: String) -> String:
+	var f := forces(state, nation)
+	if f["posture"] != "generale":
+		return "l'échelon suivant exige la posture générale"
+	var last := _last_opened(f)
+	if last < 0:
+		return "aucun échelon ouvert"
+	if last + 1 >= (f["echelons"] as Array).size():
+		return "aucun échelon suivant documenté" + (" (bloc unique : approximation non documentée, aucun sous-échelon)" if f["echelon_mode"] == "bloc_unique" else "")
+	var e: Dictionary = f["echelons"][last]
+	if state.turn < int(e["opened_turn"]) + int(mr.get("next_echelon_min_delay_months", 1)):
+		return "délai minimal entre échelons non écoulé (paramètre provisoire, Q10)"
+	if world != null and _callable_pool(state, world, nation, e) > 0:
+		return "l'échelon en cours n'est pas encore entièrement appelé"
+	return ""
+
+
+# ------------------------------------------------------------------ application (résolution du mois)
+static func apply_order(state: GameState, world: WorldMap, mr: Dictionary, order: Dictionary) -> void:
+	var nation: String = order["nation"]
+	var f := forces(state, nation)
+	match order["type"]:
+		Orders.MOBILIZE, Orders.SET_MOBILIZATION_POSTURE:
+			set_posture(state, mr, nation, order.get("posture", "generale"))
+		Orders.SET_MOBILIZATION_ALLOCATION:
+			var a: Dictionary = {}
+			for k: String in MEANS:
+				a[k] = int(order["allocation"][k])
+			f["allocation"] = a
+			state.log_event("mobilisation", "%s : moyens de mobilisation répartis (administration %d %%, chemins de fer %d %%, logistique %d %%)." % [
+				state.nations[nation]["name_fr"], a["administration"], a["rail"], a["logistics"]], [nation])
+		Orders.CALL_NEXT_ECHELON:
+			if _next_echelon_reason(state, world, mr, nation) == "":
+				_open_echelon(state, nation, _last_opened(f) + 1)
+
+
+## Changement de posture : PUBLIC (T-056, Q3). Une baisse arrête les nouveaux appels ; les
+## cohortes déjà en route terminent leur transit (ce n'est pas une démobilisation, MIL-02 ouvert).
+static func set_posture(state: GameState, mr: Dictionary, nation: String, posture: String) -> void:
+	var f := forces(state, nation)
+	var before: String = f["posture"]
+	f["posture"] = posture
+	var label: String = mr["postures"][posture]["label_fr"]
+	(f["public_record"] as Array).append({"turn": state.turn, "kind": "posture", "value": posture})
+	state.log_event("mobilisation publique", "%s adopte la posture de mobilisation « %s » (auparavant « %s »)." % [
+		state.nations[nation]["name_fr"], label, mr["postures"][before]["label_fr"]], state.nation_order.duplicate())
+	if float(mr["postures"][posture]["call_factor"]) > 0.0 and _last_opened(f) < 0:
+		_open_echelon(state, nation, 0)
+
+
+static func _open_echelon(state: GameState, nation: String, index: int) -> void:
+	var f := forces(state, nation)
+	var e: Dictionary = f["echelons"][index]
+	e["opened_turn"] = state.turn
+	(f["public_record"] as Array).append({"turn": state.turn, "kind": "echelon", "value": e["id"]})
+	var note := "" if bool(e["documented"]) else " — approximation non documentée historiquement"
+	state.log_event("mobilisation publique", "%s ouvre l'échelon de mobilisation « %s »%s." % [
+		state.nations[nation]["name_fr"], e["label_fr"], note], state.nation_order.duplicate())
+
+
+# ------------------------------------------------------------------ communications (T-056 bis)
+## Région d'incorporation des réservistes du district `rid`, ou "" si aucune voie :
+## `rid` lui-même s'il est contrôlé par la nation et relié à la capitale ; sinon la première région
+## de ce type atteinte par voie terrestre (détroits du graphe compris, mer exclue) en ne traversant
+## que des régions de la nation ou de ses alliés (parcours en largeur, ordre trié : déterministe).
+static func communication(state: GameState, world: WorldMap, nation: String, rid: String, accessible: Dictionary) -> String:
+	if state.controller(rid) == nation and accessible.has(rid):
+		return rid
+	var seen: Dictionary = {rid: true}
+	var queue: Array[String] = [rid]
+	while not queue.is_empty():
+		var current: String = queue.pop_front()
+		var nexts: Array = Array(world.neighbor_ids(current, true))
+		nexts.sort()
+		for nxt: String in nexts:
+			if seen.has(nxt) or not LogisticsSystem.friendly(state, nation, nxt):
+				continue
+			if state.controller(nxt) == nation and accessible.has(nxt):
+				return nxt
+			seen[nxt] = true
+			queue.append(nxt)
+	return ""
+
+
+## Régions reliées à la capitale par un chemin entièrement ferroviaire (liaisons ATTESTÉES de
+## l'atlas : présence seulement, aucune capacité) à travers des régions amies.
+static func rail_connected(state: GameState, world: WorldMap, nation: String) -> Dictionary:
+	var capital: String = state.nations[nation]["capital_region_id"]
+	var reached: Dictionary = {}
+	if state.controller(capital) != nation:
+		return reached
+	reached[capital] = true
+	var queue: Array[String] = [capital]
+	while not queue.is_empty():
+		var current: String = queue.pop_front()
+		var nexts: Array = Array(world.neighbor_ids(current, true))
+		nexts.sort()
+		for nxt: String in nexts:
+			if not reached.has(nxt) and world.has_rail_link(current, nxt) and LogisticsSystem.friendly(state, nation, nxt):
+				reached[nxt] = true
+				queue.append(nxt)
+	return reached
+
+
+static func _callable_pool(state: GameState, world: WorldMap, nation: String, e: Dictionary) -> int:
+	var accessible := LogisticsSystem.accessible_regions(state, world, nation)
+	var total := 0
+	for rid: String in e["pool_by_region"]:
+		if int(e["pool_by_region"][rid]) > 0 and communication(state, world, nation, rid, accessible) != "":
+			total += int(e["pool_by_region"][rid])
+	return total
+
+
+# ------------------------------------------------------------------ étape mensuelle
+## Ordre : cohortes bloquées réexaminées → incorporation des cohortes arrivées → nouvel appel.
 static func monthly(state: GameState, world: WorldMap, rules: Dictionary) -> void:
 	var mr: Dictionary = rules["mobilization"]
 	for nation: String in state.nation_order:
 		if not is_historical(state, nation):
 			continue
 		var f := forces(state, nation)
-		if not bool(f["mobilization"]["declared"]):
-			continue
-		_incorporate_ready(state, world, rules, nation)
-		_call_up(state, mr, nation)
+		var accessible := LogisticsSystem.accessible_regions(state, world, nation)
+		_unblock(state, world, mr, nation, accessible)
+		_incorporate_ready(state, world, rules, nation, accessible)
+		_call_up(state, world, mr, nation, accessible)
+		_sync_pool(f)
 
 
-static func _call_up(state: GameState, mr: Dictionary, nation: String) -> void:
+static func _sync_pool(f: Dictionary) -> void:
+	var total := 0
+	for e: Dictionary in f["echelons"]:
+		for rid: String in e["pool_by_region"]:
+			total += int(e["pool_by_region"][rid])
+	f["reserve_pool"] = total
+
+
+static func _admin_factor(mr: Dictionary, f: Dictionary, nation: String) -> float:
+	var al: Dictionary = mr["allocation"]
+	var share := float(f["allocation"]["administration"]) / float(al["admin_reference_share"])
+	return clampf(share, float(al["admin_factor_min"]), float(al["admin_factor_max"])) * param(mr, nation, "administrative_capacity")
+
+
+## Délai d'une cohorte (mois) : transit national, plus le délai ferroviaire (présence seulement),
+## plus le détour d'un district occupé (T-056 bis). Effets de l'allocation : voir forces_rules.json.
+static func transit_for(mr: Dictionary, f: Dictionary, nation: String, origin: String, dest: String, rails: Dictionary) -> int:
+	var al: Dictionary = mr["allocation"]
+	var months := int(param(mr, nation, "transit_months"))
+	if int(f["allocation"]["rail"]) < int(al["rail_minimum_share"]):
+		months += 1
+	elif not rails.has(dest) and int(f["allocation"]["rail"]) < int(al["rail_priority_share"]):
+		months += int(param(mr, nation, "rail_gap_months"))
+	if dest != origin:
+		months += int(param(mr, nation, "detour_months"))
+		if int(f["allocation"]["logistics"]) < int(al["logistics_minimum_share"]):
+			months += 1
+	return maxi(1, months)
+
+
+static func _call_up(state: GameState, world: WorldMap, mr: Dictionary, nation: String, accessible: Dictionary) -> void:
 	var f := forces(state, nation)
-	var pool := int(f["reserve_pool"])
-	if pool <= 0:
+	var posture: Dictionary = mr["postures"][f["posture"]]
+	var factor := float(posture["call_factor"]) * float(param(mr, nation, "call_share_per_month")) * _admin_factor(mr, f, nation)
+	if factor <= 0.0:
 		return
-	var share := float(mr["national_overrides"].get(nation, {}).get("call_share_per_month", mr["call_share_per_month"]))
-	var called := mini(pool, int(ceil(float(f["reserve_pool_initial"]) * share)))
-	var weights: Dictionary = f["district_pool_weights"]
-	var regions := weights.keys()
-	regions.sort()
-	var parts := split(called, regions.map(func(r: String) -> float: return float(weights[r])))
-	var ready := state.turn + int(mr["transit_months"])
-	for i in regions.size():
-		if parts[i] > 0:
-			(f["mobilizing"] as Array).append({"region": regions[i], "soldiers": parts[i], "ready_turn": ready})
-	f["reserve_pool"] = pool - called
-	state.log_event("mobilisation", "%s : %d réservistes rappelés (incorporation prévue dans %d mois)." % [
-		state.nations[nation]["name_fr"], called, int(mr["transit_months"])], [nation])
+	var rails := rail_connected(state, world, nation)
+	var called := 0
+	var skipped := 0
+	for i in (f["echelons"] as Array).size():
+		var e: Dictionary = f["echelons"][i]
+		if e["opened_turn"] == null or i >= int(posture["max_echelon"]):
+			continue
+		var regions: Array = (e["pool_by_region"] as Dictionary).keys()
+		regions.sort()
+		for rid: String in regions:
+			var pool := int(e["pool_by_region"][rid])
+			if pool <= 0:
+				continue
+			var dest := communication(state, world, nation, rid, accessible)
+			if dest == "":
+				skipped += pool  # Q4 : district sans voie de communication, ses réservistes ne sont pas appelés
+				continue
+			var n := mini(pool, int(ceil(float(e["pool_initial_by_region"][rid]) * factor)))
+			e["pool_by_region"][rid] = pool - n
+			(f["mobilizing"] as Array).append({"region": rid, "dest": dest, "soldiers": n, "echelon": e["id"],
+				"ready_turn": state.turn + transit_for(mr, f, nation, rid, dest, rails)})
+			called += n
+	if called > 0:
+		# Volume CONFIDENTIEL (Q3) : visible du seul pays concerné.
+		state.log_event("mobilisation", "%s : %d réservistes rappelés." % [state.nations[nation]["name_fr"], called], [nation])
+	if skipped > 0:
+		state.log_event("mobilisation", "%s : %d réservistes de districts occupés sans voie de communication ne peuvent pas être appelés." % [
+			state.nations[nation]["name_fr"], skipped], [nation])
+
+
+static func _region_has_battle(state: GameState, rid: String) -> bool:
+	for b: Dictionary in state.active_battles:
+		if b["region"] == rid:
+			return true
+	return false
+
+
+static func _unblock(state: GameState, world: WorldMap, mr: Dictionary, nation: String, accessible: Dictionary) -> void:
+	var f := forces(state, nation)
+	var still: Array = []
+	for c: Dictionary in f["blocked"]:
+		var dest := communication(state, world, nation, c["region"], accessible)
+		if dest == "":
+			still.append(c)
+			continue
+		var extra := int(param(mr, nation, "detour_months")) if dest != c["region"] else 0
+		(f["mobilizing"] as Array).append({"region": c["region"], "dest": dest, "soldiers": int(c["soldiers"]),
+			"echelon": c["echelon"], "ready_turn": state.turn + extra})
+		state.log_event("mobilisation", "%s : %d réservistes bloqués reprennent leur route vers %s." % [
+			state.nations[nation]["name_fr"], int(c["soldiers"]), dest], [nation])
+	f["blocked"] = still
+
+
+static func _incorporate_ready(state: GameState, world: WorldMap, rules: Dictionary, nation: String, accessible: Dictionary) -> void:
+	var f := forces(state, nation)
+	var keep: Array = []
+	var by_dest: Dictionary = {}
+	for c: Dictionary in f["mobilizing"]:
+		if int(c["ready_turn"]) > state.turn:
+			keep.append(c)
+			continue
+		var dest: String = c["dest"]
+		if not (state.controller(dest) == nation and accessible.has(dest)):
+			dest = communication(state, world, nation, c["region"], accessible)
+		if dest == "":
+			(f["blocked"] as Array).append({"region": c["region"], "soldiers": int(c["soldiers"]), "echelon": c["echelon"], "since_turn": state.turn})
+			state.log_event("mobilisation", "%s : %d réservistes bloqués (voie de communication coupée depuis %s)." % [
+				state.nations[nation]["name_fr"], int(c["soldiers"]), c["region"]], [nation])
+			continue
+		if _region_has_battle(state, dest):
+			c["dest"] = dest
+			keep.append(c)  # Q8 : incorporation reportée tant qu'une bataille se déroule dans la région
+			continue
+		var key := "%s|%s" % [dest, c["region"]]
+		if not by_dest.has(key):
+			by_dest[key] = {"dest": dest, "origin": c["region"], "soldiers": 0, "echelon": c["echelon"]}
+		by_dest[key]["soldiers"] = int(by_dest[key]["soldiers"]) + int(c["soldiers"])
+	var keys := by_dest.keys()
+	keys.sort()
+	var exhausted := int(f["reserve_pool"]) == 0
+	for key: String in keys:
+		var g: Dictionary = by_dest[key]
+		var carry := incorporate(state, rules, nation, g["dest"], int(g["soldiers"]), exhausted and keep.is_empty(), g["dest"] == g["origin"])
+		if carry > 0:
+			keep.append({"region": g["origin"], "dest": g["dest"], "soldiers": carry, "echelon": g["echelon"], "ready_turn": state.turn})
+	f["mobilizing"] = keep
 
 
 ## Répartition entière exacte (plus forts restes, ordre stable).
@@ -101,40 +366,11 @@ static func split(total: int, weights: Array) -> Array:
 	return out
 
 
-static func _region_ok(state: GameState, world: WorldMap, rules: Dictionary, nation: String, rid: String, accessible: Dictionary) -> bool:
-	var mr: Dictionary = rules["mobilization"]
-	if bool(mr["requires_controlled_region"]) and state.controller(rid) != nation:
-		return false
-	if bool(mr["requires_supply_link"]) and not accessible.has(rid):
-		return false
-	return true
-
-
-static func _incorporate_ready(state: GameState, world: WorldMap, rules: Dictionary, nation: String) -> void:
-	var f := forces(state, nation)
-	var accessible := LogisticsSystem.accessible_regions(state, world, nation)
-	var keep: Array = []
-	var by_region: Dictionary = {}
-	for c: Dictionary in f["mobilizing"]:
-		if int(c["ready_turn"]) <= state.turn and _region_ok(state, world, rules, nation, c["region"], accessible):
-			by_region[c["region"]] = int(by_region.get(c["region"], 0)) + int(c["soldiers"])
-		else:
-			keep.append(c)  # pas encore arrivés, ou district occupé / coupé : restent en cours de mobilisation
-	var regions := by_region.keys()
-	regions.sort()
-	var exhausted := int(f["reserve_pool"]) == 0
-	for rid: String in regions:
-		var carry := incorporate(state, rules, nation, rid, int(by_region[rid]), exhausted and keep.is_empty())
-		if carry > 0:
-			keep.append({"region": rid, "soldiers": carry, "ready_turn": state.turn})
-	f["mobilizing"] = keep
-
-
-## Incorpore `soldiers` réservistes dans la région de district `rid`. Les services reçoivent leur
-## part ; les unités du district sont d'abord complétées jusqu'à l'effectif de guerre, puis de
-## nouvelles unités de réserve sont formées. Retourne le reliquat non incorporé (trop petit pour
-## former une unité), qui reste en cours de mobilisation. `flush` : former aussi les petits reliquats.
-static func incorporate(state: GameState, rules: Dictionary, nation: String, rid: String, soldiers: int, flush: bool = false) -> int:
+## Incorpore `soldiers` réservistes dans la région `rid`. Les services reçoivent leur part ; si
+## `complete_units`, les unités du district sont d'abord complétées jusqu'à l'effectif de guerre ;
+## le reste forme de nouvelles unités de réserve. Retourne le reliquat non incorporé (trop petit
+## pour former une unité), qui reste en cours de mobilisation. `flush` : former aussi les petits reliquats.
+static func incorporate(state: GameState, rules: Dictionary, nation: String, rid: String, soldiers: int, flush: bool = false, complete_units: bool = true) -> int:
 	var f := forces(state, nation)
 	var gen: Dictionary = rules["unit_generation"]
 	var mr: Dictionary = rules["mobilization"]
@@ -152,16 +388,17 @@ static func incorporate(state: GameState, rules: Dictionary, nation: String, rid
 		var kind: String = kinds[i]
 		var amount: int = parts[i]
 		# 1. Compléter les unités du district (non engagées, armée non encerclée) jusqu'à l'effectif de guerre.
-		for uid: String in _district_units(state, nation, rid, kind):
-			if amount <= 0:
-				break
-			var u: Dictionary = state.formations[uid]
-			var cap := int(u.get("war_cap", int(round(float(u.get("establishment", u["soldiers"])) * float(mr["war_establishment_mult"])))))
-			u["war_cap"] = cap
-			var add := mini(amount, maxi(0, cap - int(u["soldiers"])))
-			u["soldiers"] = int(u["soldiers"]) + add
-			amount -= add
-			placed += add
+		if complete_units:
+			for uid: String in _district_units(state, nation, rid, kind):
+				if amount <= 0:
+					break
+				var u: Dictionary = state.formations[uid]
+				var cap := int(u.get("war_cap", int(round(float(u.get("establishment", u["soldiers"])) * float(mr["war_establishment_mult"])))))
+				u["war_cap"] = cap
+				var add := mini(amount, maxi(0, cap - int(u["soldiers"])))
+				u["soldiers"] = int(u["soldiers"]) + add
+				amount -= add
+				placed += add
 		# 2. Nouvelles unités de réserve.
 		var size := int(mr["new_unit_soldiers"])
 		while amount >= size or (amount > 0 and (amount >= int(gen["min_unit_soldiers"]) or flush)):
@@ -214,6 +451,7 @@ static func _reserve_army(state: GameState, nation: String, rid: String) -> Stri
 
 
 static func _new_reserve_unit(state: GameState, nation: String, rid: String, kind: String, soldiers: int) -> void:
+	assert(not _region_has_battle(state, rid), "Q8 : aucune armée de réserve dans une région en bataille")
 	var army := _reserve_army(state, nation, rid)
 	var uid := state.new_id("%s_res_%s" % [nation, kind.substr(0, 3)])
 	var label: String = {"infantry": "Infanterie", "cavalry": "Cavalerie", "artillery": "Artillerie"}.get(kind, kind)
@@ -225,7 +463,7 @@ static func _new_reserve_unit(state: GameState, nation: String, rid: String, kin
 		"status": "MOBILISATION : réservistes incorporés (réservoir historique sourcé)"}
 
 
-## Les cinq catégories, pour l'interface et les tests.
+# ------------------------------------------------------------------ lecture : catégories et contrôles
 static func summary(state: GameState, nation: String) -> Dictionary:
 	var f := forces(state, nation)
 	var present := 0
@@ -240,9 +478,83 @@ static func summary(state: GameState, nation: String) -> Dictionary:
 	var mobilizing := 0
 	for c: Dictionary in f.get("mobilizing", []):
 		mobilizing += int(c["soldiers"])
+	var blocked := 0
+	for c: Dictionary in f.get("blocked", []):
+		blocked += int(c["soldiers"])
+	var echelons: Array = []
+	var pool := 0
+	for e: Dictionary in f.get("echelons", []):
+		var p := 0
+		for rid: String in e["pool_by_region"]:
+			p += int(e["pool_by_region"][rid])
+		pool += p
+		echelons.append({"id": e["id"], "label_fr": e["label_fr"], "status": e["status"], "documented": e["documented"],
+			"pool": p, "pool_initial": int(e["pool_initial"]), "opened": e["opened_turn"] != null})
+	# Lecture seule : le registre n'est créé qu'à la première inscription (aucun effet de bord ici).
+	var l: Dictionary = state.nations[nation].get("military_ledger", {}) if state.nations.has(nation) else {}
 	return {"source_type": f.get("source_type", "unknown"), "data_status": f.get("data_status", ""),
 		"active_start": f.get("active_start"), "active_on_map": f.get("active_on_map"), "active_off_map": f.get("active_off_map"),
-		"reserve_pool": f.get("reserve_pool"), "reserve_pool_initial": f.get("reserve_pool_initial"),
-		"reserves_off_map": f.get("reserves_off_map"), "mobilizing": mobilizing, "incorporated": f.get("incorporated"),
+		"reserve_pool": pool if f.has("echelons") else f.get("reserve_pool"), "reserve_pool_initial": f.get("reserve_pool_initial"),
+		"reserves_off_map": f.get("reserves_off_map"), "echelons": echelons, "echelon_mode": f.get("echelon_mode", ""),
+		"echelon_status_fr": f.get("echelon_status_fr", ""),
+		"mobilizing": mobilizing, "blocked": blocked, "incorporated": f.get("incorporated"),
 		"present_in_units": present, "present_services": services,
-		"declared": bool(f.get("mobilization", {}).get("declared", false))}
+		"losses_total": l.get("losses_total", 0), "losses": l.get("losses", {}), "dead": l.get("dead"), "wounded": l.get("wounded"),
+		"prisoners_lost": l.get("prisoners_lost", 0), "prisoners_held": l.get("prisoners_held", 0),
+		"released": l.get("released", 0), "repatriated": l.get("repatriated", 0),
+		"posture": f.get("posture", "paix"), "allocation": f.get("allocation", {}),
+		"declared": f.get("posture", "paix") != "paix"}
+
+
+## Contrôle des deux invariants (tests ; nation historique).
+static func conservation(state: GameState, nation: String) -> Dictionary:
+	var s := summary(state, nation)
+	var reserves_lhs := int(s["reserve_pool"]) + int(s["mobilizing"]) + int(s["blocked"]) + int(s["incorporated"])
+	var personnel_lhs := int(s["present_in_units"]) + int(s["present_services"]) + int(s["losses_total"]) + int(s["prisoners_lost"])
+	var personnel_rhs := int(s["active_on_map"]) + int(s["incorporated"])
+	return {"reserves_ok": reserves_lhs == int(s["reserve_pool_initial"]), "reserves_lhs": reserves_lhs,
+		"reserves_rhs": int(s["reserve_pool_initial"]),
+		"personnel_ok": personnel_lhs == personnel_rhs, "personnel_lhs": personnel_lhs, "personnel_rhs": personnel_rhs}
+
+
+## Informations PUBLIQUES (T-056, Q3) : posture et échelons ouverts ; jamais les volumes.
+static func public_view(state: GameState, mr: Dictionary) -> Dictionary:
+	var out: Dictionary = {}
+	for nid: String in state.nation_order:
+		if not is_historical(state, nid):
+			continue
+		var f := forces(state, nid)
+		var opened: Array = []
+		for e: Dictionary in f["echelons"]:
+			if e["opened_turn"] != null:
+				opened.append({"id": e["id"], "label_fr": e["label_fr"], "documented": e["documented"], "since_turn": int(e["opened_turn"])})
+		out[nid] = {"posture": f["posture"], "posture_fr": mr["postures"][f["posture"]]["label_fr"] if not mr.is_empty() else f["posture"],
+			"opened_echelons": opened, "record": (f["public_record"] as Array).duplicate(true)}
+	return out
+
+
+static func normalize(state: GameState) -> void:
+	for nid: String in state.nations:
+		var fo: Dictionary = state.nations[nid].get("forces", {})
+		for key: String in ["active_start", "active_on_map", "active_off_map", "services_active", "reserves_total",
+				"reserves_off_map", "reserve_pool_initial", "reserve_pool", "incorporated", "services_mobilized",
+				"districts_total", "districts_on_map"]:
+			if fo.get(key) != null:
+				fo[key] = int(fo[key])
+		for c: Dictionary in fo.get("mobilizing", []) + fo.get("blocked", []):
+			c["soldiers"] = int(c["soldiers"])
+			for k: String in ["ready_turn", "since_turn"]:
+				if c.has(k):
+					c[k] = int(c[k])
+		for e: Dictionary in fo.get("echelons", []):
+			e["pool_initial"] = int(e["pool_initial"])
+			for d: String in ["pool_by_region", "pool_initial_by_region"]:
+				for rid: String in e[d]:
+					e[d][rid] = int(e[d][rid])
+			if e["opened_turn"] != null:
+				e["opened_turn"] = int(e["opened_turn"])
+		for r: Dictionary in fo.get("public_record", []):
+			r["turn"] = int(r["turn"])
+		if fo.has("allocation"):
+			for k: String in fo["allocation"]:
+				fo["allocation"][k] = int(fo["allocation"][k])

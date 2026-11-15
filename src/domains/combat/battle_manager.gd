@@ -420,6 +420,9 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 		su["battle_id"] = ""
 		if u["status"] == CombatData.AVAILABLE:
 			continue
+		if su.get("soldiers") != null:
+			# Comptabilité nationale (MIL-01 phase 2) : chaque soldat perdu est inscrit une seule fois.
+			ForceLedger.add_losses(state, su["nation"], int(su["soldiers"]) - int(u["soldiers"]), "combat")
 		su["soldiers"] = int(u["soldiers"])
 		su["morale"] = snappedf(float(u["morale"]), 0.1)
 		if u["status"] == CombatData.DESTROYED:
@@ -453,7 +456,7 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 			continue
 		if state.units_of(army).is_empty():
 			state.log_event("bataille", "%s est anéantie." % state.formations[army]["name_fr"], [state.formations[army]["nation"]])
-			state.remove_formation(army)
+			ForceLedger.remove_formation_booked(state, army, "losses")
 			continue
 		var prefer: String = b["origin"].get(army, "")
 		var dest := choose_retreat(state, world, cr, state.formations[army]["nation"], rid, prefer)
@@ -469,7 +472,7 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	for side: String in CombatData.SIDES:
 		for army: String in b["sides"][side]["armies"]:
 			if state.formations.has(army) and state.units_of(army).is_empty():
-				state.remove_formation(army)
+				ForceLedger.remove_formation_booked(state, army, "losses")
 	# 5. Positions défensives conservées dans la région (état et niveau compris).
 	state.regions[rid]["defenses"] = b["defenses"].duplicate(true)
 	# 6. Historique.
@@ -545,11 +548,12 @@ static func monthly_encirclement(state: GameState, world: WorldMap, cr: Dictiona
 			var l := int(round(float(su["soldiers"]) * float(e["monthly_attrition"])))
 			su["soldiers"] = int(su["soldiers"]) - l
 			lost += l
+			ForceLedger.add_losses(state, nation, l, "encirclement_attrition")
 		if float(f["morale"]) < float(e["surrender_morale"]):
 			var prisoners: Variant = state.soldiers_of(army)
 			state.log_event("reddition", "%s, encerclée en %s, capitule (%s prisonniers)." % [f["name_fr"], world.regions[rid]["name_fr"], str(prisoners)], [nation, state.controller(rid)])
 			state.remember(nation, state.controller(rid), "army_surrendered", army)
-			state.remove_formation(army)
+			ForceLedger.remove_formation_booked(state, army, "prisoners", state.controller(rid))
 		else:
 			state.log_event("encerclement", "%s reste encerclée (moral %.0f, %d pertes d'attrition)." % [f["name_fr"], float(f["morale"]), lost], [nation])
 
