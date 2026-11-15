@@ -1,5 +1,8 @@
 # Pertes et prisonniers — comptabilité nationale (MIL-01, phase 2)
 
+> **Mise à jour du 15/11/2026 (phase 6, étape 1).** Les pertes de combat sont désormais **ventilées** : tués, blessés (restés dans leur unité, en convalescence, rendus au service, inaptes, longue durée), disparus et prisonniers. Le volume des pertes et les règles de combat sont inchangés. Le texte ci-dessous décrit la comptabilité de la phase 2 et reste valable pour les prisonniers à la capitulation, les survivants d'armées anéanties et l'attrition, mais l'attrition et les services perdus sont maintenant des **disparus**. Référence à jour : `docs/project/MIL01_PHASE6_STEP1_REPORT.md`.
+
+
 - **Décision :** Q6 du directeur (15/11/2026) : suivi national rigoureux dès la phase 2, sans système médical ni de captivité complexe.
 - **Code :** `src/domains/military/force_ledger.gd`. Branchements dans `src/domains/combat/battle_manager.gd` : clôture de bataille, encerclement, capitulation, armée anéantie.
 - **Tests :** `tests/unit/test_mobilization_phase2.gd` (`test_war_losses_are_accounted`, `test_surrender_creates_prisoners_not_deaths`, `test_save_load_and_determinism`, `_check_conservation`).

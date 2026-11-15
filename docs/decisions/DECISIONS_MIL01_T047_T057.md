@@ -199,3 +199,23 @@ La phase 3 est **validée**. Ces trois décisions portent sur des **travaux futu
 | **MIL01-P3-D3** | Améliorer progressivement les doctrines à partir de **sources historiques** : plans de mobilisation de 1914 et chronologies de l'été 1914 pour les sept puissances. Il faut distinguer rigoureusement les comportements **documentés**, les **interprétations** historiques et les **paramètres de jeu**. | Plan de recherche préparé : `docs/history/RECHERCHE_DOCTRINES_1914.md`. Il ne retarde pas la phase 4. |
 
 **Phase 4.** Elle est consacrée à la Territorial Force (T-050, T-054), implémentée. Voir `docs/military/TERRITORIAL_FORCE.md` et `docs/project/MIL01_PHASE4_REPORT.md`.
+
+## 8. Phase 6, étape 1 : comptabilité des pertes (15/11/2026)
+
+**Décisions du directeur** (autorisation de l'étape 1) :
+- quatre catégories : tués, blessés, disparus, prisonniers ;
+- environ 10 % des blessés légers restent dans leur unité. L'efficacité réduite n'est **pas** appliquée : elle demande une règle tactique ;
+- convalescence d'un mois pour les blessures légères, de trois mois pour les autres ;
+- retour au service : 1 sur 1,8. Ce taux est sourcé pour le Royaume-Uni ; pour les autres puissances, c'est une approximation signalée ;
+- inaptitude définitive : 17 % ;
+- disparus sans conversion automatique ;
+- prisonniers comptés chez l'origine et chez le détenteur, sans libération pour l'instant ;
+- volume des pertes et règles de combat **inchangés**.
+
+**État :** D, I, T. Voir `docs/project/MIL01_PHASE6_STEP1_REPORT.md` et `data/rules/forces_rules.json`, bloc `casualties`.
+
+**Paramètres provisoires appliqués sans validation explicite**, signalés dans le rapport :
+- part des tués : 0,25 ;
+- disparus au feu : 0,05 ;
+- prisonniers en déroute selon l'issue : 0 / 0,3 / 0,8 (proposition Q6) ;
+- part des blessés légers : 0,686, dérivée des listes allemandes.
