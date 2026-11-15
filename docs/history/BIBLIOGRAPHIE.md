@@ -63,3 +63,11 @@ Ces documents n'ont pas pu être consultés en ligne. **Aucune valeur de la base
 | E. J. Erickson, *Ordered to Die* (2001) | Armée ottomane : effectifs, sièges des corps, mobilisation | Exemplaire d'archive.org en prêt contrôlé (`orderedtodiehist0000eric`, accès restreint). Un autre dépôt en accès libre existe sous un autre identifiant. Il est vraisemblablement **non autorisé**, puisque l'ouvrage est sous droits ; il **n'a pas été consulté**. **Consultation manuelle** (prêt ou exemplaire papier). |
 | Ufficio Storico, *L'Esercito italiano nella Grande Guerra*, vol. I | Premier échelon italien ; troupes en Libye | Aucun exemplaire en ligne trouvé. **Consultation manuelle.** |
 | N. N. Golovine, *The Russian Army in the World War* (1931) | Mobilisation russe | archive.org : prêt contrôlé (`russianarmyinwor0000nich`). **Consultation manuelle.** |
+
+## Pertes militaires 1914-1918 (phase 5)
+
+Les sources consultées et repérées pour les pertes (tués, blessés, disparus, prisonniers) sont détaillées dans `docs/project/MIL01_PHASE5_PERTES_HISTORIQUES.md` §6 :
+- consultées : War Office 1922 (Part IV), ЦСУ 1925 (*Россия в мировой войне 1914-1918 года в цифрах*), Mortara 1925, Dumas et Vedel-Petersen 1923 ;
+- repérées seulement : *Sanitätsbericht* allemand, *General Annual Report of the British Army 1913-1919*, rapport Marin, Winkler 1919, *Österreich-Ungarns letzter Krieg* t. VII, Erickson 2001.
+
+Aucune de ces valeurs n'est utilisée par le jeu.
