@@ -98,3 +98,16 @@ Légende :
 3. **Effets des traités** (DIP-02), au minimum ceux de l'alliance : l'entrée en guerre des alliés n'est pas automatique aujourd'hui.
 4. **Critères de déclaration de guerre de l'IA** : sans eux, les IA ne prennent pas d'initiative belliqueuse.
 5. **Mers occidentales** (U3) et intégration du mouvement naval.
+
+## 7. Feuille de route vers une version alpha
+
+| Étape | Contenu | Dépendance |
+|---|---|---|
+| A1 | Règles de combat stratégique et résolution automatique (remplace le résolveur neutre) ; durée et criticité des batailles | Décision T-029 (points ouverts), MIL-05/06 |
+| A2 | Données de départ sourcées : population, 12 statistiques, effectifs (schéma de provenance obligatoire) | R-13, R-05, NAT-01 à 03, MIL-01 |
+| A3 | Économie chiffrée : catégories de ressources, potentiels régionaux, budget, marché | R-03, ECO-01 à 05 |
+| A4 | Effets des traités (alliances, garanties), critères de guerre de l'IA, IA de niveau 2 (objectifs, coalitions, menaces anticipées) | DIP-02, critères du directeur |
+| A5 | Réseau naval occidental, mouvement naval et débarquements ; logistique avec capacités de transport | U3 ; données ferroviaires sourcées |
+| A6 | Interface tactique (bataille commandée en temps réel, une à la fois, pause selon T-029) | A1 |
+| A7 | Recherche (arbre 1914–1945) et renseignement (interception, décryptage) | Catalogues à valider |
+| A8 | Export binaire Linux et Windows, réglages, sauvegardes multiples, localisation | Technique (autonome) |
