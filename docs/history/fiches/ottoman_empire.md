@@ -50,6 +50,8 @@ T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un éch
 | Échelons suivants | ****inconnu**** | introuvable | — | Même lacune documentaire. |
 | Réserves résiduelles | ****inconnu**** | introuvable | — | Potentiel total « about 2,000,000 men » (ERICKSON_2000) : non ventilé ; non utilisable comme échelon. |
 
+**Appel en bloc unique (approximation non documentée, décision MIL01-P1-D1) :** 1 000 000. Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé.
+
 ### Ventilation par arme
 
 INCONNU : aucune ventilation par arme sourcée. Le jeu modélise ces soldats en infanterie générique (simplification technique signalée sur chaque unité), sans artillerie ni cavalerie.

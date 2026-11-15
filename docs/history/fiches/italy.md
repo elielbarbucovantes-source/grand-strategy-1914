@@ -36,7 +36,7 @@
 | Lien | https://archive.org/details/strengthorganiza00unit |
 | Fiabilité | faible |
 | Calcul | 1 300 000 (instruits, actifs compris) − 305 033 (armée active, p. 9) = 994 967. |
-| Remarque | Correction de phase 1 (15/11/2026), même règle que pour l'Allemagne : le total des instruits de la rubrique « Total war strength » est lu comme incluant l'armée active (PROBABLE). L'ancienne valeur (1 250 000, tableau p. 9 de 1911) donnait un total de 1 555 033, supérieur au total p. 66. |
+| Remarque | Correction de phase 1 (15/11/2026), même règle que pour l'Allemagne : le total des instruits de la rubrique « Total war strength » est lu comme incluant l'armée active (PROBABLE). L'ancienne valeur (1 250 000, tableau p. 9 de 1911) donnait un total de 1 555 033, supérieur au total p. 66. Plafond CONSERVÉ PROVISOIREMENT par décision du directeur (MIL01-P1-D2, 15/11/2026) : le total inclut PROBABLEMENT l'armée active ; cette lecture n'est pas établie. |
 
 **Divergences conservées :**
 
@@ -58,6 +58,8 @@ T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un éch
 | Premier échelon : appel prévu par le plan de mobilisation de 1914 | ****inconnu**** | introuvable | — | Source attendue : Ufficio Storico, L'Esercito italiano nella Grande Guerra, vol. I (non consulté). US_WD_1916 p. 66 ne donne que le total des instruits. |
 | Échelons suivants | ****inconnu**** | introuvable | — | Même lacune documentaire. |
 | Réserves résiduelles | ****inconnu**** | introuvable | — | « On paper she could mobilize 3,500,000 men » (p. 66) : total théorique incluant des non-instruits ; non utilisable. |
+
+**Appel en bloc unique (approximation non documentée, décision MIL01-P1-D1) :** 994 967. Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé.
 
 ### Ventilation par arme
 

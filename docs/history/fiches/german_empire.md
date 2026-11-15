@@ -37,7 +37,7 @@
 | Lien | https://archive.org/details/strengthorganiza00unit |
 | Fiabilité | faible à moyenne |
 | Calcul | 4 610 000 (total des instruits, actifs compris) − 806 016 (armée active, même document p. 28) = 3 803 984. |
-| Remarque | Correction de phase 1 (15/11/2026, audit MIL-01 P0-2). La lecture « actifs compris » est PROBABLE, non certaine : le chiffre figure sous la rubrique « Total war strength » (effectif de guerre, donc armée active comprise), mais la phrase ne le dit pas explicitement. L'ancienne valeur (4 000 000, tableau p. 9 de 1911) donnait un total de 4 806 016, supérieur au total du même document. |
+| Remarque | Correction de phase 1 (15/11/2026, audit MIL-01 P0-2). La lecture « actifs compris » est PROBABLE, non certaine : le chiffre figure sous la rubrique « Total war strength » (effectif de guerre, donc armée active comprise), mais la phrase ne le dit pas explicitement. L'ancienne valeur (4 000 000, tableau p. 9 de 1911) donnait un total de 4 806 016, supérieur au total du même document. Plafond CONSERVÉ PROVISOIREMENT par décision du directeur (MIL01-P1-D2, 15/11/2026) : le total inclut PROBABLEMENT l'armée active ; cette lecture n'est pas établie. |
 
 **Divergences conservées :**
 

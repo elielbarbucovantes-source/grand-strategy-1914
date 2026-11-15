@@ -48,3 +48,18 @@ Chaque identifiant (`US_WD_1916`…) est la clé utilisée dans `data/history/mi
 - E. J. Erickson, *Ordered to Die: A History of the Ottoman Army in the First World War*, Westport, Greenwood, 2001 (annexe sur l'organisation de 1914).
 - Glavnoe upravlenie General'nogo shtaba, *Rospis' voisk* (1914) ; N. N. Golovine, *The Russian Army in the World War*, Yale UP, 1931.
 - War Office, *General Annual Report on the British Army for the year ending 30th September 1913* : effectifs par commandement (numéro de document parlementaire à vérifier).
+
+## Consultation manuelle nécessaire (décision MIL01-P1-D4, 15/11/2026)
+
+Ces documents n'ont pas pu être consultés en ligne. **Aucune valeur de la base n'en est tirée**, et leur présence dans cette bibliographie ne prouve rien.
+
+| Document | Ce qu'il permettrait d'établir | État de la recherche (15/11/2026) |
+|---|---|---|
+| Ministère de la Guerre, *Annuaire officiel de l'armée française* 1914 (Gallica, `ark:/12148/bpt6k176446d`) | Sièges des 22 corps français | Gallica refuse l'accès automatisé (Cloudflare). **Consultation manuelle.** |
+| *Les Armées françaises dans la Grande Guerre*, t. I, vol. 1 et annexes | Premier échelon français (appel d'août 1914), ordre de bataille | archive.org n'a que le t. IX, vol. 3 et un volume de cartes (`lesarmeesfrancaisesdanslagrandeguerrep38`, `…p43`). **Consultation manuelle** (Gallica ou bibliothèque). |
+| Bundesministerium für Heerwesen et Kriegsarchiv, *Österreich-Ungarns letzter Krieg*, **t. I** | Mobilisation austro-hongroise de 1914, sièges des corps | archive.org (Université de Toronto) n'a que les t. III, IV et VI (`sterreichungar03austuoft`, `…04…`, `…06…`). Le t. I n'a pas été trouvé. **Consultation manuelle.** |
+| Reichsarchiv, *Der Weltkrieg 1914–1918*, t. I, et *Kriegsrüstung und Kriegswirtschaft*, Anlagen | Mobilisation allemande, échelons détaillés | Aucun texte intégral trouvé. **Consultation manuelle.** |
+| *Rangliste der Königlich Preußischen Armee* 1914 | Sièges des corps allemands | Exemplaire numérisé repéré (Württembergische Landesbibliothek), marqué sous droits. **Consultation manuelle.** |
+| E. J. Erickson, *Ordered to Die* (2001) | Armée ottomane : effectifs, sièges des corps, mobilisation | Exemplaire d'archive.org en prêt contrôlé (`orderedtodiehist0000eric`, accès restreint). Un autre dépôt en accès libre existe sous un autre identifiant. Il est vraisemblablement **non autorisé**, puisque l'ouvrage est sous droits ; il **n'a pas été consulté**. **Consultation manuelle** (prêt ou exemplaire papier). |
+| Ufficio Storico, *L'Esercito italiano nella Grande Guerra*, vol. I | Premier échelon italien ; troupes en Libye | Aucun exemplaire en ligne trouvé. **Consultation manuelle.** |
+| N. N. Golovine, *The Russian Army in the World War* (1931) | Mobilisation russe | archive.org : prêt contrôlé (`russianarmyinwor0000nich`). **Consultation manuelle.** |

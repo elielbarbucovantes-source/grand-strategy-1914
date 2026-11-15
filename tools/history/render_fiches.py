@@ -72,6 +72,9 @@ def echelon_block(block: dict | None) -> list[str]:
         for dv in e.get("divergences", []):
             detail += f" Divergence : {fmt(dv['value'])} (`{dv['source']}` {dv.get('page', '')}) — {dv['definition']}."
         lines.append(f"| {e['label_fr']} | **{fmt(e['value'])}** | {e['status']} | {', '.join(e.get('sources', [])) or '—'} | {detail} |")
+    fb = block.get("fallback")
+    if fb:
+        lines += ["", f"**Appel en bloc unique ({fb['status']}, décision {fb['decision']}) :** {fmt(fb['value'])}. {fb['note']}"]
     return lines + [""]
 
 

@@ -38,6 +38,7 @@
 | Page / passage | p. 9 (second tableau) |
 | Lien | https://archive.org/details/strengthorganiza00unit |
 | Fiabilité | faible à moyenne |
+| Remarque | Valeur conservée par décision du directeur (MIL01-P1-D3, 15/11/2026) : inférieure au total des instruits de la source, elle n'est pas relevée sans nouvelle source fiable. La comparabilité des réserves entre puissances reste douteuse. |
 
 **Divergences conservées :**
 
@@ -60,6 +61,8 @@ T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un éch
 | Premier échelon : appel prévu par le plan de mobilisation de 1914 | ****inconnu**** | introuvable | — | Source attendue : Les Armées françaises dans la Grande Guerre, t. I, vol. 1 et annexes (Service historique). Consultation impossible le 15/11/2026 (Gallica refuse l'accès automatisé). US_WD_1916 p. 20-21 donne seulement les combattants de la mobilisation initiale (« up to a total of 1,380,000 combatants, including Algerian troops »), et non l'effectif total rappelé : non utilisable comme échelon. |
 | Échelons suivants | ****inconnu**** | introuvable | — | Même lacune documentaire. |
 | Réserves résiduelles | ****inconnu**** | introuvable | — | Même lacune documentaire. |
+
+**Appel en bloc unique (approximation non documentée, décision MIL01-P1-D1) :** 2 300 000. Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé.
 
 ### Ventilation par arme
 

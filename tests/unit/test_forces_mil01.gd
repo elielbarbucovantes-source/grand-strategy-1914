@@ -87,6 +87,13 @@ func test_database_totals_coherent_with_sources() -> void:
 				if e["status"] == "dérivé":
 					runner.check(str(e.get("derivation", "")) != "", "%s/%s : calcul documenté" % [nid, e["id"]])
 		runner.check(documented <= reserves, "%s : échelons documentés (%d) ≤ réservoir (%d)" % [nid, documented, reserves])
+		# MIL01-P1-D1 : bloc unique seulement si AUCUN échelon n'est documenté, signalé comme approximation.
+		var fb: Variant = n["mobilization_echelons"]["fallback"]
+		if documented == 0:
+			runner.check(fb != null and fb["mode"] == "bloc_unique" and int(fb["value"]) == reserves
+				and str(fb["status"]) == "approximation non documentée", "%s : bloc unique déclaré comme approximation (MIL01-P1-D1)" % nid)
+		else:
+			runner.check(fb == null, "%s : pas de bloc unique quand des échelons sont documentés" % nid)
 	var de: Dictionary = db["nations"]["german_empire"]
 	runner.check(int(de["active"]["value"]) + int(de["reserves"]["value"]) == 4610000,
 		"Allemagne : total = 4 610 000 (US WD 1916 p. 28), et non plus 4 806 016 (audit P0-2)")

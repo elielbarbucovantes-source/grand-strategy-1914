@@ -58,6 +58,8 @@ T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un éch
 | Échelons suivants | ****inconnu**** | introuvable | — | Même lacune documentaire. |
 | Réserves résiduelles | ****inconnu**** | introuvable | — | La National Reserve (215 451) est un registre sans obligation de rappel : exclue (WO_1922 p. 30). |
 
+**Appel en bloc unique (approximation non documentée, décision MIL01-P1-D1) :** 209 280. Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé.
+
 ### Territorial Force (catégorie distincte, T-050 et T-054)
 
 T-050 et T-054 (VALIDÉS) : catégorie distincte, d'abord défense intérieure, déploiement outre-mer volontaire. Données de phase 1 : le moteur ne l'utilise pas encore (phase 4).

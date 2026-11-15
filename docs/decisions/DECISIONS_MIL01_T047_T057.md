@@ -135,3 +135,18 @@
 | K-5 Type d'engagement et cibles de pertes | T-055 (qui choisit). **Les fourchettes de pertes restent à fixer.** |
 | K-6 Mobilisation et diplomatie ; réservistes occupés | T-056, T-056 bis |
 | K-7 Date de départ (R-13) | T-057 |
+
+## 4. Décisions de direction sur la phase 1 (15/11/2026)
+
+Réponses du directeur aux questions D-1 à D-4 du rapport `docs/project/MIL01_PHASE1_HISTORICAL_CORRECTIONS.md`.
+
+| ID | Objet | Décision | État |
+|---|---|---|---|
+| **MIL01-P1-D1** | Puissances sans échelon documenté (France, Russie, Royaume-Uni, Italie, Empire ottoman) | **Appel en bloc unique autorisé.** Il doit être explicitement identifié comme une **approximation non documentée historiquement**. **Aucun sous-échelon ne doit être inventé.** | D (base : `mobilization_echelons.fallback`) ; implémentation en phase 2 |
+| **MIL01-P1-D2** | Plafonds de l'Allemagne (4 610 000) et de l'Italie (1 300 000) | **Conservés provisoirement.** On considère que ces totaux incluent **probablement** l'armée active. L'incertitude reste explicite dans les données et la documentation ; la lecture n'est jamais présentée comme établie. | D, I (données, phase 1) |
+| **MIL01-P1-D3** | Réserves de la France et de la Russie | **Conservées** (tableau p. 9). Aucun relèvement sans nouvelle source fiable. | D, I (aucun changement) |
+| **MIL01-P1-D4** | Sources inaccessibles | Poursuivre les recherches de versions consultables. Si elles restent inaccessibles, ne pas bloquer le développement. Ne tirer **aucune conclusion de leur seule présence bibliographique**. Signaler les documents qui exigent une consultation manuelle. | D : liste dans `docs/history/BIBLIOGRAPHIE.md`, section « Consultation manuelle nécessaire » |
+
+**Consignes associées :**
+- ne pas créer de coûts économiques fictifs tant que le système économique correspondant n'est pas défini ;
+- ne pas modifier les mécanismes du jeu avant la validation de la proposition de phase 2 (`docs/project/MIL01_PHASE2_PROPOSAL.md`).

@@ -141,7 +141,7 @@
     "page": "p. 28 (« The sum total of trained men which she is able to mobilize amounts to 4,610,000 »)",
     "reliability": "faible à moyenne",
     "derivation": "4 610 000 (total des instruits, actifs compris) − 806 016 (armée active, même document p. 28) = 3 803 984.",
-    "reliability_note": "Correction de phase 1 (15/11/2026, audit MIL-01 P0-2). La lecture « actifs compris » est PROBABLE, non certaine : le chiffre figure sous la rubrique « Total war strength » (effectif de guerre, donc armée active comprise), mais la phrase ne le dit pas explicitement. L'ancienne valeur (4 000 000, tableau p. 9 de 1911) donnait un total de 4 806 016, supérieur au total du même document.",
+    "reliability_note": "Correction de phase 1 (15/11/2026, audit MIL-01 P0-2). La lecture « actifs compris » est PROBABLE, non certaine : le chiffre figure sous la rubrique « Total war strength » (effectif de guerre, donc armée active comprise), mais la phrase ne le dit pas explicitement. L'ancienne valeur (4 000 000, tableau p. 9 de 1911) donnait un total de 4 806 016, supérieur au total du même document. Plafond CONSERVÉ PROVISOIREMENT par décision du directeur (MIL01-P1-D2, 15/11/2026) : le total inclut PROBABLEMENT l'armée active ; cette lecture n'est pas établie.",
     "divergences": [
      {
       "value": 4000000,
@@ -437,7 +437,8 @@
       "status": "introuvable",
       "reason": "Au-delà des instruits, les ressources restantes sont des hommes non instruits (réserve d'Ersatz non instruite, Landsturm non instruit) : hors du réservoir défini par T-047. Indice non utilisable : US_WD_1916 p. 29, « 7,000,000 men, of whom 4,000,000 have had military training » (1913)."
      }
-    ]
+    ],
+    "fallback": null
    }
   },
   "france": {
@@ -539,7 +540,8 @@
      "page": "p. 20",
      "definition": "« The sum total of trained men which she is able to mobilize amounts to about 3,800,000 men; possibly a little more » (rubrique « Total war strength », estimations de 1911)",
      "rule": "Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd)."
-    }
+    },
+    "reliability_note": "Valeur conservée par décision du directeur (MIL01-P1-D3, 15/11/2026) : inférieure au total des instruits de la source, elle n'est pas relevée sans nouvelle source fiable. La comparabilité des réserves entre puissances reste douteuse."
    },
    "districts": [
     {
@@ -749,7 +751,14 @@
       "status": "introuvable",
       "reason": "Même lacune documentaire."
      }
-    ]
+    ],
+    "fallback": {
+     "mode": "bloc_unique",
+     "value": 2300000,
+     "status": "approximation non documentée",
+     "decision": "MIL01-P1-D1",
+     "note": "Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé."
+    }
    }
   },
   "austria_hungary": {
@@ -1008,7 +1017,8 @@
       "status": "introuvable",
       "reason": "Landsturm (2 000 000) et réserve d'Ersatz (500 000), p. 38 : catégories mêlant instruits et non instruits, sans ventilation ; non utilisables."
      }
-    ]
+    ],
+    "fallback": null
    }
   },
   "russian_empire": {
@@ -1079,7 +1089,8 @@
      "page": "p. 45",
      "definition": "« The total number of trained men subject to call amounts to about 6,000,000 » (rubrique « Total war strength »)",
      "rule": "Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd)."
-    }
+    },
+    "reliability_note": "Valeur conservée par décision du directeur (MIL01-P1-D3, 15/11/2026) : inférieure au total des instruits de la source, elle n'est pas relevée sans nouvelle source fiable. La comparabilité des réserves entre puissances reste douteuse."
    },
    "districts": [
     {
@@ -1356,7 +1367,14 @@
       "status": "introuvable",
       "reason": "Même lacune documentaire."
      }
-    ]
+    ],
+    "fallback": {
+     "mode": "bloc_unique",
+     "value": 3800000,
+     "status": "approximation non documentée",
+     "decision": "MIL01-P1-D1",
+     "note": "Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé."
+    }
    }
   },
   "united_kingdom": {
@@ -1545,7 +1563,14 @@
       "status": "introuvable",
       "reason": "La National Reserve (215 451) est un registre sans obligation de rappel : exclue (WO_1922 p. 30)."
      }
-    ]
+    ],
+    "fallback": {
+     "mode": "bloc_unique",
+     "value": 209280,
+     "status": "approximation non documentée",
+     "decision": "MIL01-P1-D1",
+     "note": "Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé."
+    }
    },
    "territorial_force": {
     "_statut": "T-050 et T-054 (VALIDÉS) : catégorie distincte, d'abord défense intérieure, déploiement outre-mer volontaire. Données de phase 1 : le moteur ne l'utilise pas encore (phase 4).",
@@ -1634,7 +1659,7 @@
     "page": "p. 66 (« A conservative estimate would seem to be 1,300,000 fully trained men »)",
     "reliability": "faible",
     "derivation": "1 300 000 (instruits, actifs compris) − 305 033 (armée active, p. 9) = 994 967.",
-    "reliability_note": "Correction de phase 1 (15/11/2026), même règle que pour l'Allemagne : le total des instruits de la rubrique « Total war strength » est lu comme incluant l'armée active (PROBABLE). L'ancienne valeur (1 250 000, tableau p. 9 de 1911) donnait un total de 1 555 033, supérieur au total p. 66.",
+    "reliability_note": "Correction de phase 1 (15/11/2026), même règle que pour l'Allemagne : le total des instruits de la rubrique « Total war strength » est lu comme incluant l'armée active (PROBABLE). L'ancienne valeur (1 250 000, tableau p. 9 de 1911) donnait un total de 1 555 033, supérieur au total p. 66. Plafond CONSERVÉ PROVISOIREMENT par décision du directeur (MIL01-P1-D2, 15/11/2026) : le total inclut PROBABLEMENT l'armée active ; cette lecture n'est pas établie.",
     "divergences": [
      {
       "value": 1250000,
@@ -1790,7 +1815,14 @@
       "status": "introuvable",
       "reason": "« On paper she could mobilize 3,500,000 men » (p. 66) : total théorique incluant des non-instruits ; non utilisable."
      }
-    ]
+    ],
+    "fallback": {
+     "mode": "bloc_unique",
+     "value": 994967,
+     "status": "approximation non documentée",
+     "decision": "MIL01-P1-D1",
+     "note": "Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé."
+    }
    }
   },
   "ottoman_empire": {
@@ -1900,7 +1932,14 @@
       "status": "introuvable",
       "reason": "Potentiel total « about 2,000,000 men » (ERICKSON_2000) : non ventilé ; non utilisable comme échelon."
      }
-    ]
+    ],
+    "fallback": {
+     "mode": "bloc_unique",
+     "value": 1000000,
+     "status": "approximation non documentée",
+     "decision": "MIL01-P1-D1",
+     "note": "Décision MIL01-P1-D1 (15/11/2026) : en l'absence d'échelon documenté, le réservoir peut être appelé EN BLOC UNIQUE. C'est une APPROXIMATION NON DOCUMENTÉE HISTORIQUEMENT (ni le volume ni le rythme d'un premier échelon ne sont connus) ; aucun sous-échelon n'est inventé."
+    }
    }
   }
  }

@@ -11554,7 +11554,7 @@
  "forces_source": {
   "type": "historical",
   "database": "data/history/military_forces_1914.json",
-  "database_sha256": "a0411cf1a1cb3ce9d6a8ff78a9bd594403a2608376aa8a0cbfca43eda41c7ac7",
+  "database_sha256": "41faf5f504ae6a21f93ee4fbaea867cfc41c91bc4d2a84863ed2e456733e7339",
   "rules": "data/rules/forces_rules.json",
   "rules_sha256": "c84b50c49cd90341ce2cb958089e921f347f99c2f551d5722c1d1858c8701ab3",
   "nations_documented": [
