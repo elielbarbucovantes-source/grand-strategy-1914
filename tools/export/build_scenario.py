@@ -93,8 +93,8 @@ def build() -> dict:
         "format": "gs1914.scenario", "format_version": 1, "id": "campaign_1914",
         "name_fr": "Campagne historique 1914",
         "atlas_reference_date": "1914-01-01",
-        "start": {"year": 1914, "month": None,
-                  "status": "OUVERTE (R-13) : le mois de départ est choisi à la création de la partie"},
+        "start": {"year": 1914, "month": 1,
+                  "status": "VALIDÉ (T-057, directeur, 15/11/2026) : la campagne historique commence en janvier 1914"},
         "nation_order": order, "nations": nations, "regions": regions,
         "treaties": treaties, "wars": [], "formations": formations,
         "provenance": {
@@ -283,6 +283,8 @@ def build_sandbox(base: dict) -> dict:
     scenario = json.loads(json.dumps(base))
     scenario["id"] = "sandbox_fictif"
     scenario["name_fr"] = "Bac à sable FICTIF (forces génériques de test)"
+    scenario["start"] = {"year": 1914, "month": None,
+                         "status": "Bac à sable : mois de départ librement configurable à la création de la partie (T-057)"}
     scenario["sandbox_warning"] = ("FORCES FICTIVES : composition identique pour tous les États, valeurs rondes de test. "
                                    "Ni historique ni équilibré. Ne pas utiliser comme donnée de jeu.")
     formations = []

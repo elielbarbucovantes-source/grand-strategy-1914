@@ -60,6 +60,39 @@ def value_block(title: str, v: dict, sources: dict) -> list[str]:
     return lines
 
 
+def echelon_block(block: dict | None) -> list[str]:
+    if not block:
+        return []
+    lines = ["### Échelons de mobilisation (T-051)", "", block["_statut"], "",
+             "| Échelon | Valeur | Statut | Sources | Définition, calcul ou motif |", "|---|---|---|---|---|"]
+    for e in block["echelons"]:
+        detail = " ".join(str(e[k]) for k in ("definition", "derivation", "composition", "precision", "reason") if e.get(k))
+        if e.get("timing"):
+            detail += f" Délais : {e['timing']}."
+        for dv in e.get("divergences", []):
+            detail += f" Divergence : {fmt(dv['value'])} (`{dv['source']}` {dv.get('page', '')}) — {dv['definition']}."
+        lines.append(f"| {e['label_fr']} | **{fmt(e['value'])}** | {e['status']} | {', '.join(e.get('sources', [])) or '—'} | {detail} |")
+    return lines + [""]
+
+
+def territorial_block(tf: dict, sources: dict) -> list[str]:
+    lines = ["### Territorial Force (catégorie distincte, T-050 et T-054)", "", tf["_statut"], "",
+             "| Champ | Contenu |", "|---|---|",
+             f"| Effectif réel | **{fmt(tf['value'])}** |",
+             f"| Date | {tf['reference_date']} |",
+             f"| Définition | {tf['definition']} |",
+             f"| Source | `{tf['source']}` — {sources[tf['source']]['citation']} |",
+             f"| Page | {tf['page']} |",
+             f"| Effectif théorique | {fmt(tf['establishment']['value'])} ({tf['establishment']['definition']}) |",
+             f"| Double comptage | {tf['double_counting_check']} |",
+             f"| Emploi | {tf['deployment_rule']} |", ""]
+    for x in tf.get("not_included", []):
+        lines.append(f"- Non inclus : **{x['category']}** ({fmt(x['value'])}, {x['page']}) : {x['note']}")
+    for dv in tf.get("divergences", []):
+        lines.append(f"- Divergence : {fmt(dv['value'])} (`{dv['source']}` {dv['page']}) — {dv['definition']} {dv.get('note', '')}")
+    return lines + [""]
+
+
 def render(nid: str, n: dict, db: dict, camp: dict, regions: dict) -> str:
     forces = camp["nations"][nid]["forces"]
     units = [f for f in camp["formations"] if f["nation"] == nid and f["echelon"] == "unit"]
@@ -73,6 +106,16 @@ def render(nid: str, n: dict, db: dict, camp: dict, regions: dict) -> str:
     lines += value_block("B. Réserves mobilisables", n["reserves"], db["sources"])
     share = n["reserves"]["on_map_share"]
     lines += [f"Part des réserves sur la carte : {share['numerator']}/{share['denominator']} — {share['basis']}", ""]
+    chk = n["reserves"].get("source_total_check")
+    if chk:
+        total = chk["total_including_active"]
+        lines += ["**Contrôle de cohérence avec la source :** "
+                  + (f"total des instruits, actifs compris : {fmt(total)} (`{chk['source']}` {chk['page']}) ; "
+                     f"actif + réserves = {fmt(n['active']['value'] + n['reserves']['value'])}. " if total is not None else "")
+                  + f"{chk['definition']} {chk['rule']}", ""]
+    lines += echelon_block(n.get("mobilization_echelons"))
+    if n.get("territorial_force"):
+        lines += territorial_block(n["territorial_force"], db["sources"])
     lines += ["### Ventilation par arme", ""]
     if n.get("arms"):
         a = n["arms"]
@@ -95,6 +138,7 @@ def render(nid: str, n: dict, db: dict, camp: dict, regions: dict) -> str:
         rid = located.get(d["id"])
         where = f"{rid} ({regions[rid]})" if rid else "hors carte"
         check = d["hq_verification"] + (f" ({d['hq_source']})" if d.get("hq_source") else "")
+        check += "".join(f" — {d[k]}" for k in ("hq_correction", "hq_note") if d.get(k))
         lines.append(f"| {d['name_fr']} | {d['hq']} | {check} | {where} |")
     lines += ["", "### Situation de départ dans le jeu (campagne historique)", "",
               f"- Actifs au démarrage : {fmt(forces['active_start'])} ; sur la carte : {fmt(forces['active_on_map'])} "

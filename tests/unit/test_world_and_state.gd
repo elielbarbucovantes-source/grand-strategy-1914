@@ -45,10 +45,12 @@ func test_new_game_territories_and_unknown_values() -> void:
 	runner.check(s.state.formations["army_belgium_1"]["soldiers"] == null and s.state.soldiers_of("army_belgium_1") == null,
 		"État hors MIL-01 : effectifs inconnus = null, rien n'est fabriqué")
 	runner.check(s.state.month == 1 and s.state.year == 1914, "mois de départ paramétré")
+	runner.check(s.scenario["start"]["month"] == 1, "campagne historique : janvier 1914 fixé dans le scénario (T-057)")
 	var s2 := GameSession.create()
-	s2.new_game("france", 6)
-	runner.check(s2.state.date_label() == "juin 1914", "départ en juin si choisi (R-13 ouvert)")
-	runner.check(s2.new_game("france", 13) != "", "mois invalide refusé")
+	runner.check(s2.new_game("france", 6) != "", "campagne historique : autre mois que janvier refusé (T-057)")
+	runner.check(s2.new_game("france", 6, 1914, "sandbox_fictif") == "" and s2.state.date_label() == "juin 1914",
+		"bac à sable : mois de départ librement configurable (T-057)")
+	runner.check(s2.new_game("france", 13, 1914, "sandbox_fictif") != "", "mois invalide refusé")
 
 
 func test_calendar_advances_monthly() -> void:

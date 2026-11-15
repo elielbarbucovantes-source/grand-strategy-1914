@@ -51,6 +51,11 @@ func new_game(player: String, start_month: int, seed_value: int = 1914, scenario
 	scenario = load_json(SANDBOX_PATH if scenario_id == "sandbox_fictif" else SCENARIO_PATH)
 	if not GameCalendar.is_valid_month(start_month):
 		return "mois de départ invalide"
+	# T-057 (VALIDÉ) : la campagne historique a un mois de départ fixe (janvier 1914) ; le bac à sable
+	# FICTIF garde un mois librement configurable (`start.month` = null).
+	var fixed_month = scenario.get("start", {}).get("month")
+	if fixed_month != null and start_month != int(fixed_month):
+		return "la campagne historique commence en %s (T-057)" % GameCalendar.label(int(scenario["start"]["year"]), int(fixed_month))
 	if not scenario["nations"].has(player):
 		return "pays inconnu"
 	state = GameState.from_scenario(scenario, start_month, player, seed_value)

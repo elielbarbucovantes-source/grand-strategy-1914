@@ -6,8 +6,8 @@
  "atlas_reference_date": "1914-01-01",
  "start": {
   "year": 1914,
-  "month": null,
-  "status": "OUVERTE (R-13) : le mois de départ est choisi à la création de la partie"
+  "month": 1,
+  "status": "VALIDÉ (T-057, directeur, 15/11/2026) : la campagne historique commence en janvier 1914"
  },
  "nation_order": [
   "united_kingdom",
@@ -858,10 +858,10 @@
     "active_off_map": 0,
     "active_on_map": 806016,
     "services_active": 83275,
-    "reserves_total": 4000000,
+    "reserves_total": 3803984,
     "reserves_off_map": 0,
-    "reserve_pool_initial": 4000000,
-    "reserve_pool": 4000000,
+    "reserve_pool_initial": 3803984,
+    "reserve_pool": 3803984,
     "mobilizing": [],
     "incorporated": 0,
     "mobilization": {
@@ -869,16 +869,16 @@
      "turn": null
     },
     "district_pool_weights": {
-     "region_026": 320000,
-     "region_027": 320000,
-     "region_028": 480000,
-     "region_029": 320000,
-     "region_030": 160000,
-     "region_031": 480000,
-     "region_032": 480000,
-     "region_033": 640000,
-     "region_034": 480000,
-     "region_035": 320000
+     "region_026": 304319,
+     "region_027": 304319,
+     "region_028": 456480,
+     "region_029": 304318,
+     "region_030": 152160,
+     "region_031": 456478,
+     "region_032": 456479,
+     "region_033": 608636,
+     "region_034": 456477,
+     "region_035": 304318
     },
     "arm_shares": {
      "infantry": 0.629306,
@@ -1363,11 +1363,12 @@
      "region_052": 102703,
      "region_053": 102703,
      "region_055": 205406,
-     "region_056": 205406,
-     "region_057": 410812,
+     "region_056": 102703,
+     "region_057": 513515,
      "region_058": 205406,
      "region_059": 308109,
-     "region_060": 205404,
+     "region_060": 102702,
+     "region_063": 102702,
      "region_064": 308109,
      "region_066": 513510,
      "region_067": 102702,
@@ -1976,10 +1977,10 @@
     "active_off_map": 0,
     "active_on_map": 305033,
     "services_active": 30612,
-    "reserves_total": 1250000,
+    "reserves_total": 994967,
     "reserves_off_map": 0,
-    "reserve_pool_initial": 1250000,
-    "reserve_pool": 1250000,
+    "reserve_pool_initial": 994967,
+    "reserve_pool": 994967,
     "mobilizing": [],
     "incorporated": 0,
     "mobilization": {
@@ -1987,12 +1988,12 @@
      "turn": null
     },
     "district_pool_weights": {
-     "region_080": 416668,
-     "region_081": 208334,
-     "region_082": 208333,
-     "region_083": 104167,
-     "region_084": 208332,
-     "region_085": 104166
+     "region_080": 331656,
+     "region_081": 165828,
+     "region_082": 165828,
+     "region_083": 82914,
+     "region_084": 165828,
+     "region_085": 82913
     },
     "arm_shares": {
      "infantry": 0.634403,
@@ -4396,7 +4397,7 @@
    "services_soldiers": 3331,
    "district_id": "de_xv",
    "district_region": "region_035",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié (province seulement)) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_de_xv_inf1",
@@ -4466,7 +4467,7 @@
    "services_soldiers": 3331,
    "district_id": "de_xvi",
    "district_region": "region_035",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié (province seulement)) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_de_xvi_inf1",
@@ -7962,7 +7963,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_garde",
    "district_region": "region_064",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_garde_inf1",
@@ -8032,7 +8033,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_i",
    "district_region": "region_064",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_i_inf1",
@@ -8102,7 +8103,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xviii",
    "district_region": "region_064",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xviii_inf1",
@@ -8172,7 +8173,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xxii",
    "district_region": "region_052",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xxii_inf1",
@@ -8242,7 +8243,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_ii",
    "district_region": "region_057",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_ii_inf1",
@@ -8312,7 +8313,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_iii",
    "district_region": "region_057",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_iii_inf1",
@@ -8382,7 +8383,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_iv",
    "district_region": "region_057",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_iv_inf1",
@@ -8452,7 +8453,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xx",
    "district_region": "region_053",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xx_inf1",
@@ -8514,15 +8515,15 @@
    "id": "div_ru_vi",
    "nation": "russian_empire",
    "echelon": "division",
-   "name_fr": "VIe corps (Varsovie) — Łomża",
-   "region": "region_056",
-   "parent": "army_russian_empire_region_056",
+   "name_fr": "VIe corps (Varsovie) — Białystok",
+   "region": "region_057",
+   "parent": "army_russian_empire_region_057",
    "soldiers": null,
    "equipment": null,
    "services_soldiers": 3919,
    "district_id": "ru_vi",
-   "district_region": "region_056",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "district_region": "region_057",
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_vi_inf1",
@@ -8530,7 +8531,7 @@
    "echelon": "unit",
    "unit_type": "infantry",
    "name_fr": "Infanterie 1 — VIe corps (Varsovie)",
-   "region": "region_056",
+   "region": "region_057",
    "parent": "div_ru_vi",
    "soldiers": 11014,
    "establishment": 11014,
@@ -8544,7 +8545,7 @@
    "echelon": "unit",
    "unit_type": "infantry",
    "name_fr": "Infanterie 2 — VIe corps (Varsovie)",
-   "region": "region_056",
+   "region": "region_057",
    "parent": "div_ru_vi",
    "soldiers": 11013,
    "establishment": 11013,
@@ -8558,7 +8559,7 @@
    "echelon": "unit",
    "unit_type": "cavalry",
    "name_fr": "Cavalerie 1 — VIe corps (Varsovie)",
-   "region": "region_056",
+   "region": "region_057",
    "parent": "div_ru_vi",
    "soldiers": 3730,
    "establishment": 3730,
@@ -8572,7 +8573,7 @@
    "echelon": "unit",
    "unit_type": "artillery",
    "name_fr": "Artillerie 1 — VIe corps (Varsovie)",
-   "region": "region_056",
+   "region": "region_057",
    "parent": "div_ru_vi",
    "soldiers": 5027,
    "establishment": 5027,
@@ -8592,7 +8593,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xiv",
    "district_region": "region_056",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xiv_inf1",
@@ -8662,7 +8663,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xv",
    "district_region": "region_055",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xv_inf1",
@@ -8732,7 +8733,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xix",
    "district_region": "region_057",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xix_inf1",
@@ -8802,7 +8803,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xxiii",
    "district_region": "region_055",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xxiii_inf1",
@@ -8872,7 +8873,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_ix",
    "district_region": "region_059",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_ix_inf1",
@@ -8942,7 +8943,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_x",
    "district_region": "region_059",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_x_inf1",
@@ -9012,7 +9013,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xi",
    "district_region": "region_058",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xi_inf1",
@@ -9082,7 +9083,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xii",
    "district_region": "region_058",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xii_inf1",
@@ -9152,7 +9153,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xxi",
    "district_region": "region_059",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xxi_inf1",
@@ -9214,15 +9215,15 @@
    "id": "div_ru_vii",
    "nation": "russian_empire",
    "echelon": "division",
-   "name_fr": "VIIe corps (Odessa) — Iekaterinoslav",
-   "region": "region_060",
-   "parent": "army_russian_empire_region_060",
+   "name_fr": "VIIe corps (Odessa) — Simferopol",
+   "region": "region_063",
+   "parent": "army_russian_empire_region_063",
    "soldiers": null,
    "equipment": null,
    "services_soldiers": 3919,
    "district_id": "ru_vii",
-   "district_region": "region_060",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "district_region": "region_063",
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_vii_inf1",
@@ -9230,7 +9231,7 @@
    "echelon": "unit",
    "unit_type": "infantry",
    "name_fr": "Infanterie 1 — VIIe corps (Odessa)",
-   "region": "region_060",
+   "region": "region_063",
    "parent": "div_ru_vii",
    "soldiers": 11014,
    "establishment": 11014,
@@ -9244,7 +9245,7 @@
    "echelon": "unit",
    "unit_type": "infantry",
    "name_fr": "Infanterie 2 — VIIe corps (Odessa)",
-   "region": "region_060",
+   "region": "region_063",
    "parent": "div_ru_vii",
    "soldiers": 11013,
    "establishment": 11013,
@@ -9258,7 +9259,7 @@
    "echelon": "unit",
    "unit_type": "cavalry",
    "name_fr": "Cavalerie 1 — VIIe corps (Odessa)",
-   "region": "region_060",
+   "region": "region_063",
    "parent": "div_ru_vii",
    "soldiers": 3730,
    "establishment": 3730,
@@ -9272,7 +9273,7 @@
    "echelon": "unit",
    "unit_type": "artillery",
    "name_fr": "Artillerie 1 — VIIe corps (Odessa)",
-   "region": "region_060",
+   "region": "region_063",
    "parent": "div_ru_vii",
    "soldiers": 5027,
    "establishment": 5027,
@@ -9292,7 +9293,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_viii",
    "district_region": "region_060",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_viii_inf1",
@@ -9362,7 +9363,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_grenadiers",
    "district_region": "region_066",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_grenadiers_inf1",
@@ -9432,7 +9433,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_v",
    "district_region": "region_066",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_v_inf1",
@@ -9502,7 +9503,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xiii",
    "district_region": "region_066",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xiii_inf1",
@@ -9572,7 +9573,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xvii",
    "district_region": "region_066",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xvii_inf1",
@@ -9642,7 +9643,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xxv",
    "district_region": "region_066",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xxv_inf1",
@@ -9712,7 +9713,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xvi",
    "district_region": "region_067",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xvi_inf1",
@@ -9782,7 +9783,7 @@
    "services_soldiers": 3919,
    "district_id": "ru_xxiv",
    "district_region": "region_068",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège vérifié) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ru_xxiv_inf1",
@@ -9930,6 +9931,18 @@
    "echelon": "army",
    "name_fr": "Forces du temps de paix — Ukraine occidentale",
    "region": "region_058",
+   "parent": null,
+   "soldiers": null,
+   "equipment": null,
+   "morale": null,
+   "status": "HISTORIQUE : groupement de jeu des corps stationnés dans la région (répartition ESTIMÉE)"
+  },
+  {
+   "id": "army_russian_empire_region_063",
+   "nation": "russian_empire",
+   "echelon": "army",
+   "name_fr": "Forces du temps de paix — Crimée",
+   "region": "region_063",
    "parent": null,
    "soldiers": null,
    "equipment": null,
@@ -11446,7 +11459,7 @@
    "services_soldiers": 0,
    "district_id": "ot_ii",
    "district_region": "region_087",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier — indice contraire) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ot_ii_inf1",
@@ -11488,7 +11501,7 @@
    "services_soldiers": 0,
    "district_id": "ot_iii",
    "district_region": "region_087",
-   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier) ; effectif = part égale ESTIMÉE"
+   "status": "HISTORIQUE : district de corps du temps de paix (siège à vérifier — indice contraire) ; effectif = part égale ESTIMÉE"
   },
   {
    "id": "div_ot_iii_inf1",
@@ -11541,7 +11554,7 @@
  "forces_source": {
   "type": "historical",
   "database": "data/history/military_forces_1914.json",
-  "database_sha256": "a36eda5fb35d37d3b8ff90f35edde138670a454c579901856b6d5d8d8298cca6",
+  "database_sha256": "a0411cf1a1cb3ce9d6a8ff78a9bd594403a2608376aa8a0cbfca43eda41c7ac7",
   "rules": "data/rules/forces_rules.json",
   "rules_sha256": "c84b50c49cd90341ce2cb958089e921f347f99c2f551d5722c1d1858c8701ab3",
   "nations_documented": [

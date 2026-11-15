@@ -4,7 +4,7 @@
  "_statuts": "Chaque bloc porte son statut. VALIDÉ = décision du directeur ; PROPOSÉ = valeur technique provisoire et configurable ; OUVERT = non tranché (aucun effet appliqué).",
  "calendar": {
   "status": "VALIDÉ : tour mensuel, ordres secrets simultanés (D-006, TURN-02)",
-  "start_month_status": "OUVERT (R-13) : choisi à la création de la partie"
+  "start_month_status": "VALIDÉ (T-057) : campagne historique en janvier 1914 ; bac à sable FICTIF : mois librement configurable"
  },
  "movement": {
   "status": "PROPOSÉ : la durée des déplacements dépend du terrain, des infrastructures et de la logistique (dossier §5.2), formule non définie",

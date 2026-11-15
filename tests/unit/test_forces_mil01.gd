@@ -57,6 +57,58 @@ func test_database_is_sourced_and_complete() -> void:
 	runner.check(db["nations"]["ottoman_empire"]["arms"] == null, "donnée manquante explicite : ventilation ottomane inconnue (null)")
 
 
+# ------------------------------------------------------------------ cohérence avec les sources (phase 1)
+## Contrôle des VALEURS (et non plus seulement de leur présence) : actif + réserves ne dépasse pas
+## le total des instruits de la source ; échelons T-051 bornés par le réservoir, sourcés ou
+## explicitement « introuvables » ; Territorial Force distincte du réservoir (T-050).
+func test_database_totals_coherent_with_sources() -> void:
+	var db := _db()
+	for nid: String in PLAYABLE:
+		var n: Dictionary = db["nations"][nid]
+		var active := int(n["active"]["value"])
+		var reserves := int(n["reserves"]["value"])
+		var chk: Dictionary = n["reserves"]["source_total_check"]
+		runner.check(db["sources"].has(chk["source"]) and str(chk["definition"]) != "", "%s : contrôle de total sourcé" % nid)
+		if chk["total_including_active"] != null:
+			runner.check(active + reserves <= int(chk["total_including_active"]),
+				"%s : actif + réserves (%d) ≤ total de la source (%d)" % [nid, active + reserves, int(chk["total_including_active"])])
+		var echelons: Array = n["mobilization_echelons"]["echelons"]
+		runner.check(echelons.size() >= 1, "%s : échelons T-051 déclarés" % nid)
+		var documented := 0
+		for e: Dictionary in echelons:
+			runner.check(str(e["status"]) in ["sourcé", "dérivé", "introuvable"], "%s/%s : statut d'échelon reconnu" % [nid, e["id"]])
+			if e["value"] == null:
+				runner.check(e["status"] == "introuvable" and str(e.get("reason", "")) != "", "%s/%s : échelon introuvable motivé" % [nid, e["id"]])
+			else:
+				documented += int(e["value"])
+				runner.check(int(e["value"]) > 0 and not (e["sources"] as Array).is_empty(), "%s/%s : valeur d'échelon sourcée" % [nid, e["id"]])
+				for sid: String in e["sources"]:
+					runner.check(db["sources"].has(sid), "%s/%s : source %s référencée" % [nid, e["id"], sid])
+				if e["status"] == "dérivé":
+					runner.check(str(e.get("derivation", "")) != "", "%s/%s : calcul documenté" % [nid, e["id"]])
+		runner.check(documented <= reserves, "%s : échelons documentés (%d) ≤ réservoir (%d)" % [nid, documented, reserves])
+	var de: Dictionary = db["nations"]["german_empire"]
+	runner.check(int(de["active"]["value"]) + int(de["reserves"]["value"]) == 4610000,
+		"Allemagne : total = 4 610 000 (US WD 1916 p. 28), et non plus 4 806 016 (audit P0-2)")
+	var uk: Dictionary = db["nations"]["united_kingdom"]
+	runner.check(int(uk["reserves"]["value"]) == 145347 + 63933, "Royaume-Uni : réservoir = Army Reserve + Special Reserve (WO 1922 p. 30)")
+	runner.check(int(uk["territorial_force"]["value"]) == 268777 and uk["territorial_force"]["source"] == "WO_1922",
+		"Territorial Force : catégorie distincte, 268 777 (WO 1922 p. 30), hors du réservoir (T-050)")
+	var hq := {}
+	for d: Dictionary in db["nations"]["russian_empire"]["districts"]:
+		hq[d["id"]] = d
+		runner.check(d["hq_verification"] == "vérifié", "Russie %s : siège vérifié (état officiel du 1er mars 1914)" % d["id"])
+	runner.check(hq["ru_vi"]["hq"] == "Białystok" and hq["ru_vii"]["hq"] == "Simferopol", "Russie : VIe corps à Białystok, VIIe à Simferopol")
+	var s := _session()
+	var located := {}
+	for fid: String in s.state.formations:
+		var f: Dictionary = s.state.formations[fid]
+		if f.has("district_id"):
+			located[f["district_id"]] = f["district_region"]
+	runner.check(located.get("ru_vi", "") == "region_057", "VIe corps russe placé en région 057 (Białystok)")
+	runner.check(s.state.nations["german_empire"]["forces"]["reserve_pool_initial"] == 3803984, "campagne : réservoir allemand plafonné")
+
+
 # ------------------------------------------------------------------ séparation des jeux de données
 func test_campaign_and_sandbox_are_separate() -> void:
 	var camp := _session()

@@ -6,7 +6,7 @@ extends SceneTree
 
 func _initialize() -> void:
 	var s := GameSession.create()
-	s.new_game("german_empire", 7)
+	s.new_game("german_empire", 1)
 	s.queue_order(Orders.declare_war("german_empire", "france"))
 	var army := "army_german_empire_region_028"
 	var goal := s.state.nations["france"]["capital_region_id"] as String

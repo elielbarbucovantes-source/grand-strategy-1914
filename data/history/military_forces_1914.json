@@ -13,7 +13,7 @@
  "normalisation": {
   "rule": "Une seule définition par catégorie pour les sept puissances.",
   "active_definition": "Effectif du temps de paix de l'armée de terre régulière « officiers et hommes sous les drapeaux » (US War Dept 1916, tableau p. 9 : « Only officers and men with colors are considered »), juillet 1914 ou budget 1914. Exclus : réserves, milices territoriales non présentes, troupes coloniales et indigènes servant hors d'Europe.",
-  "reserves_definition": "« Fully trained reserves available for passing from peace to war footing » (US War Dept 1916, tableau p. 9), estimation de 1911 ; pour le Royaume-Uni, Army Reserve + Special Reserve au 1er août 1914 (War Office 1922) ; pour l'Empire ottoman, estimation de l'état-major ottoman rapportée par Erickson.",
+  "reserves_definition": "« Fully trained reserves available for passing from peace to war footing » (US War Dept 1916, tableau p. 9), estimation de 1911, PLAFONNÉE par le total des instruits de la rubrique « Total war strength » de la fiche nationale du même document, diminué de l'armée active (règle de cohérence de phase 1, 15/11/2026 : actif + réserves ne peut dépasser le total de la source). Le plafond s'applique à l'Allemagne et à l'Italie ; il est sans effet pour la France (3,8 M) et la Russie (6,0 M) ; il n'est pas appliqué à l'Autriche-Hongrie, dont le total (« fully trained men subject to call ») désigne des hommes à rappeler, donc hors actifs. Pour le Royaume-Uni, Army Reserve + Special Reserve au 1er août 1914 (War Office 1922) ; pour l'Empire ottoman, estimation de l'état-major ottoman rapportée par Erickson.",
   "why": "Le document américain applique la même définition à six des sept armées, à une date unique (juillet 1914). Les sources nationales, plus précises pour un pays, emploient des définitions différentes (effectif budgétaire, Friedenspräsenzstärke sans officiers, armée métropolitaine avec ou sans Algérie, armée commune sans Landwehr...). Elles sont conservées comme DIVERGENCES et servent de contrôle.",
   "known_bias": "Les chiffres de réserves du document américain datent de 1911 ; le document précise que les augmentations postérieures n'ont pas été rendues publiques (p. 9). Ce sont donc des minimums probables."
  },
@@ -23,7 +23,7 @@
    "url": "https://archive.org/details/strengthorganiza00unit",
    "type": "publication officielle contemporaine (renseignement militaire d'un État neutre)",
    "reliability": "moyenne",
-   "reliability_note": "Source unique et homogène pour six armées, datée de juillet 1914. L'introduction avertit : « no accurate estimate can be given of the real fighting force of these nations as it existed at the outbreak of the war » (p. 5) et que les chiffres de mobilisation sont des minimums. Le tableau p. 9 a été contrôlé sur le fac-similé (PDF p. 15).",
+   "reliability_note": "Source unique et homogène pour six armées, datée de juillet 1914. L'introduction avertit : « no accurate estimate can be given of the real fighting force of these nations as it existed at the outbreak of the war » (p. 5) et que les chiffres de mobilisation sont des minimums. Le tableau p. 9 a été contrôlé sur le fac-similé (PDF p. 15). Relu le 15/11/2026 (phase 1) : chaque fiche nationale comporte une rubrique « TOTAL WAR STRENGTH » (Allemagne p. 28, France p. 20, Autriche-Hongrie p. 37-38, Russie p. 45-46, Italie p. 66), distincte du tableau p. 9.",
    "verified_on": "2026-11-15"
   },
   "WO_1922": {
@@ -31,7 +31,7 @@
    "url": "https://archive.org/details/statisticsofmili00grea",
    "type": "statistique officielle nationale",
    "reliability": "haute",
-   "reliability_note": "Tableau (i)(b) p. 30 (PDF p. 40) et Section 10 p. 156-157 (PDF p. 168-169), contrôlés sur le fac-similé.",
+   "reliability_note": "Tableau (i)(b) p. 30 (PDF p. 40) et Section 10 p. 156-157 (PDF p. 168-169), contrôlés sur le fac-similé. Relu le 15/11/2026 (phase 1) sur l'image de la p. 30 (archive.org, page n39) : Territorial Force 10 684 officiers + 258 093 hommes = 268 777, avec la note † « Includes permanent staff of the Territorial Force ».",
    "verified_on": "2026-11-15"
   },
   "ERICKSON_2000": {
@@ -70,6 +70,14 @@
    "type": "référence secondaire non vérifiée",
    "reliability": "moyenne, À VÉRIFIER",
    "reliability_note": "N'affecte que la répartition territoriale estimée. Les sièges confirmés par une source consultée portent hq_verification = « vérifié »."
+  },
+  "RU_RASPISANIE_1914": {
+   "citation": "Главный штаб, Краткое расписание сухопутных войск. Исправлено по сведениям к 1-му марта 1914 г. Санкт-Петербург, 1914 (état abrégé officiel des troupes de terre de l'Empire russe, à jour au 1er mars 1914).",
+   "url": "https://archive.org/details/kratkoeraspisaniesuhoputnyhvojskpogo93",
+   "type": "publication officielle de l'état-major russe (source primaire)",
+   "reliability": "haute",
+   "reliability_note": "Section « Гвардейский, Гренадерский и армейские корпуса », p. 214-226 : une notice par corps, close par « Штабъ г. … » (siège de l'état-major). Lue dans le texte OCR d'archive.org (orthographe pré-1918, OCR imparfait) ; les 27 corps européens y figurent. Date : 1er mars 1914, deux mois après le départ de la campagne (T-057).",
+   "verified_on": "2026-11-15"
   }
  },
  "nations": {
@@ -126,30 +134,47 @@
     "status": "sourcé"
    },
    "reserves": {
-    "value": 4000000,
-    "reference_date": "estimation de 1911 publiée en 1916",
-    "definition": "Réservistes entièrement instruits disponibles pour le passage au pied de guerre",
+    "value": 3803984,
+    "reference_date": "non précisée ; document daté « conditions in July, 1914 »",
+    "definition": "Instruits mobilisables hors armée active : total des hommes instruits que l'Allemagne peut mobiliser (rubrique « TOTAL WAR STRENGTH »), moins l'armée active.",
     "source": "US_WD_1916",
-    "page": "p. 9 (second tableau)",
+    "page": "p. 28 (« The sum total of trained men which she is able to mobilize amounts to 4,610,000 »)",
     "reliability": "faible à moyenne",
+    "derivation": "4 610 000 (total des instruits, actifs compris) − 806 016 (armée active, même document p. 28) = 3 803 984.",
+    "reliability_note": "Correction de phase 1 (15/11/2026, audit MIL-01 P0-2). La lecture « actifs compris » est PROBABLE, non certaine : le chiffre figure sous la rubrique « Total war strength » (effectif de guerre, donc armée active comprise), mais la phrase ne le dit pas explicitement. L'ancienne valeur (4 000 000, tableau p. 9 de 1911) donnait un total de 4 806 016, supérieur au total du même document.",
     "divergences": [
      {
-      "value": 4610000,
+      "value": 4000000,
       "source": "US_WD_1916",
-      "page": "p. 28",
-      "definition": "« sum total of trained men which she is able to mobilize » (actifs compris)"
+      "page": "p. 9 (second tableau)",
+      "definition": "« Fully trained reserves available for passing from peace to war footing », estimation de 1911",
+      "note": "Valeur retenue jusqu'au 15/11/2026 ; abandonnée car actif + réserves dépassait le total p. 28."
+     },
+     {
+      "value": 3200000,
+      "source": "US_WD_1916",
+      "page": "p. 29",
+      "definition": "Estimation de 1913 citée par le document : « real military resources, 7,000,000 men, of whom 4,000,000 have had military training » ; 4 000 000 − 800 000 actifs (même passage) ≈ 3 200 000",
+      "note": "Autre estimation du même document, plus basse ; non retenue (estimation de 1913, chiffres ronds)."
      },
      {
       "value": 3800000,
       "source": "BUNDESARCHIV",
       "definition": "« August 1914 3,8 Mio. Mann mobil gemacht » (actifs compris)",
-      "note": "Contrôle : 3,8 M mobilisés − 0,8 M actifs ≈ 3,0 M réservistes effectivement rappelés en août 1914, inférieur au réservoir de 4,0 M : cohérent."
+      "note": "Contrôle : 3,8 M mobilisés en août 1914, actifs compris ; voir le premier échelon (mobilization_echelons)."
      }
     ],
     "on_map_share": {
      "numerator": 1,
      "denominator": 1,
      "basis": "Aucun district hors carte (US_WD_1916 p. 28)."
+    },
+    "source_total_check": {
+     "total_including_active": 4610000,
+     "source": "US_WD_1916",
+     "page": "p. 28",
+     "definition": "« The sum total of trained men which she is able to mobilize amounts to 4,610,000 » (rubrique « Total war strength ») ; lecture « actifs compris » PROBABLE",
+     "rule": "Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd)."
     }
    },
    "districts": [
@@ -280,7 +305,7 @@
      "hq": "Strasbourg",
      "lon": 7.75,
      "lat": 48.58,
-     "hq_verification": "vérifié",
+     "hq_verification": "vérifié (province seulement)",
      "hq_source": "WO_HANDBOOK_DE_1914 (XVe et XVIe corps « stationed in Alsace-Lorraine »)"
     },
     {
@@ -289,7 +314,7 @@
      "hq": "Metz",
      "lon": 6.18,
      "lat": 49.12,
-     "hq_verification": "vérifié",
+     "hq_verification": "vérifié (province seulement)",
      "hq_source": "WO_HANDBOOK_DE_1914 (XVe et XVIe corps « stationed in Alsace-Lorraine »)"
     },
     {
@@ -362,6 +387,57 @@
    "districts_count_check": {
     "expected": 25,
     "source": "US_WD_1916 p. 30 (« Germany has at present 25 ») ; WO_HANDBOOK_DE_1914 (« there are 25 Army-Corps in all »)"
+   },
+   "mobilization_echelons": {
+    "_statut": "T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).",
+    "echelons": [
+     {
+      "id": "de_e1",
+      "label_fr": "Premier échelon : rappel d'août 1914 (plan de mobilisation exécuté)",
+      "value": 2993984,
+      "status": "dérivé",
+      "definition": "Réservistes rappelés en août 1914 : hommes mobilisés en août 1914, actifs compris, moins l'armée active.",
+      "page": "rubrique Personalumfang (« August 1914 3,8 Mio. Mann mobil gemacht »)",
+      "derivation": "3 800 000 − 806 016 (actif, US_WD_1916 p. 28) = 2 993 984.",
+      "precision": "Source arrondie à 0,1 M (± 50 000) ; l'actif vient d'une autre source (le Bundesarchiv donne 734 000 pour juillet 1914, périmètre non précisé).",
+      "timing": "août 1914 (source) ; délais détaillés : introuvables dans les sources consultées",
+      "divergences": [
+       {
+        "value": 2200000,
+        "source": "US_WD_1916",
+        "page": "p. 29",
+        "definition": "Estimation de 1913 : pour une guerre offensive, armée active, réserve, réserve d'Ersatz et 1er ban de la Landwehr, « a total of about 3,000,000 men » (1 700 000 en première ligne, 1 300 000 en seconde ligne) ; 3 000 000 − 800 000 actifs ≈ 2 200 000",
+        "note": "Estimation étrangère antérieure ; non retenue face au chiffre d'archives de 1914."
+       }
+      ],
+      "sources": [
+       "BUNDESARCHIV"
+      ]
+     },
+     {
+      "id": "de_e2",
+      "label_fr": "Échelons suivants : instruits non rappelés en août 1914",
+      "value": 810000,
+      "status": "dérivé",
+      "definition": "Différence entre le total des instruits mobilisables (US_WD_1916 p. 28) et les mobilisés d'août 1914 (BUNDESARCHIV).",
+      "page": "p. 28 ; rubrique Personalumfang",
+      "derivation": "4 610 000 − 3 800 000 = 810 000 (indépendant de la valeur de l'actif).",
+      "composition": "NON DOCUMENTÉE : classes plus âgées de la Landwehr et Landsturm instruit (hypothèse). Aucun chiffre par catégorie n'a été trouvé pour 1914.",
+      "precision": "Différence de deux sources de définitions voisines mais non identiques ; incertitude au moins égale à ± 50 000.",
+      "timing": "introuvable",
+      "sources": [
+       "US_WD_1916",
+       "BUNDESARCHIV"
+      ]
+     },
+     {
+      "id": "de_e3",
+      "label_fr": "Réserves résiduelles (mobilisation à long terme)",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Au-delà des instruits, les ressources restantes sont des hommes non instruits (réserve d'Ersatz non instruite, Landsturm non instruit) : hors du réservoir défini par T-047. Indice non utilisable : US_WD_1916 p. 29, « 7,000,000 men, of whom 4,000,000 have had military training » (1913)."
+     }
+    ]
    }
   },
   "france": {
@@ -456,6 +532,13 @@
      "numerator": 21,
      "denominator": 22,
      "basis": "ESTIMATION : 21 des 22 districts (corps territoriaux et colonial) sont sur la carte ; le 19e corps (Algérie) est hors carte."
+    },
+    "source_total_check": {
+     "total_including_active": 3800000,
+     "source": "US_WD_1916",
+     "page": "p. 20",
+     "definition": "« The sum total of trained men which she is able to mobilize amounts to about 3,800,000 men; possibly a little more » (rubrique « Total war strength », estimations de 1911)",
+     "rule": "Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd)."
     }
    },
    "districts": [
@@ -641,6 +724,32 @@
     "expected": 22,
     "source": "US_WD_1916 p. 15 (« 20 army corps organized in peace. In addition there is one colonial army corps ») et p. 22 (21 corps dont un en Algérie) : 20 métropolitains numérotés 1 à 18, 20 et 21, plus le 19e en Algérie, plus le corps colonial.",
     "note": "Le document compte tantôt 20 + 1 colonial, tantôt 21 dont un en Algérie ; la liste retient les 21 corps territoriaux et le corps colonial."
+   },
+   "mobilization_echelons": {
+    "_statut": "T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).",
+    "echelons": [
+     {
+      "id": "fr_e1",
+      "label_fr": "Premier échelon : appel prévu par le plan de mobilisation de 1914",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Source attendue : Les Armées françaises dans la Grande Guerre, t. I, vol. 1 et annexes (Service historique). Consultation impossible le 15/11/2026 (Gallica refuse l'accès automatisé). US_WD_1916 p. 20-21 donne seulement les combattants de la mobilisation initiale (« up to a total of 1,380,000 combatants, including Algerian troops »), et non l'effectif total rappelé : non utilisable comme échelon."
+     },
+     {
+      "id": "fr_e2",
+      "label_fr": "Échelons suivants",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Même lacune documentaire."
+     },
+     {
+      "id": "fr_e3",
+      "label_fr": "Réserves résiduelles",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Même lacune documentaire."
+     }
+    ]
    }
   },
   "austria_hungary": {
@@ -717,6 +826,13 @@
      "numerator": 1,
      "denominator": 1,
      "basis": "Tous les districts sont sur la carte."
+    },
+    "source_total_check": {
+     "total_including_active": null,
+     "source": "US_WD_1916",
+     "page": "p. 37-38",
+     "definition": "« Austria has 2,000,000 fully trained men subject to call » : hommes à rappeler, donc hors actifs ; c'est la valeur du réservoir elle-même.",
+     "rule": "Aucun total actifs compris dans la source : contrôle sans objet."
     }
    },
    "districts": [
@@ -853,6 +969,46 @@
     "expected": 16,
     "source": "US_WD_1916 p. 34 (« In the common army there are 16 army corps with 33 divisions »)",
     "note": "Les 15 divisions de Landwehr sont rattachées aux mêmes districts (estimation : elles suivent la répartition des corps)."
+   },
+   "mobilization_echelons": {
+    "_statut": "T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).",
+    "echelons": [
+     {
+      "id": "ah_e1",
+      "label_fr": "Premier échelon : armée commune et Landwehrs au pied de guerre",
+      "value": 1347285,
+      "status": "dérivé",
+      "definition": "Effectif de guerre des formations de première ligne (armée commune 1 360 000, Landwehr autrichienne 240 000, Landwehr hongroise 220 000), moins l'armée active.",
+      "page": "p. 38 (« The latest estimate of war strength is as follows : Common army, 1,360,000 men; Landwehr (Austrian), 240,000 men; Landwehr (Hungarian), 220,000 men »)",
+      "derivation": "1 360 000 + 240 000 + 220 000 = 1 820 000 ; 1 820 000 − 472 715 (actif) = 1 347 285. Le chiffre 240 000 est lu « 2-10,000 » par l'OCR ; il est confirmé par le total du passage (4 320 000).",
+      "precision": "Estimation américaine non datée (« latest estimate »), pas le plan officiel austro-hongrois ; le document qualifie les données de la Landwehr de « little more than an incomplete guess ».",
+      "timing": "introuvable",
+      "sources": [
+       "US_WD_1916"
+      ]
+     },
+     {
+      "id": "ah_e2",
+      "label_fr": "Échelons suivants : autres instruits",
+      "value": 652715,
+      "status": "dérivé",
+      "definition": "Différence entre les hommes entièrement instruits rappelables (2 000 000, p. 37-38) et le premier échelon.",
+      "page": "p. 37-38",
+      "derivation": "2 000 000 − 1 347 285 = 652 715.",
+      "composition": "NON DOCUMENTÉE. Le même passage donne Landsturm 2 000 000 et réserve d'Ersatz 500 000, catégories en partie non instruites : elles ne sont pas des échelons d'instruits.",
+      "timing": "introuvable",
+      "sources": [
+       "US_WD_1916"
+      ]
+     },
+     {
+      "id": "ah_e3",
+      "label_fr": "Réserves résiduelles",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Landsturm (2 000 000) et réserve d'Ersatz (500 000), p. 38 : catégories mêlant instruits et non instruits, sans ventilation ; non utilisables."
+     }
+    ]
    }
   },
   "russian_empire": {
@@ -916,6 +1072,13 @@
      "numerator": 27,
      "denominator": 37,
      "basis": "ESTIMATION : 27 des 37 corps sont en Russie d'Europe (carte du jeu)."
+    },
+    "source_total_check": {
+     "total_including_active": 6000000,
+     "source": "US_WD_1916",
+     "page": "p. 45",
+     "definition": "« The total number of trained men subject to call amounts to about 6,000,000 » (rubrique « Total war strength »)",
+     "rule": "Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd)."
     }
    },
    "districts": [
@@ -925,7 +1088,8 @@
      "hq": "Saint-Pétersbourg",
      "lon": 30.32,
      "lat": 59.94,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_i",
@@ -933,7 +1097,8 @@
      "hq": "Saint-Pétersbourg",
      "lon": 30.32,
      "lat": 59.94,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xviii",
@@ -941,7 +1106,8 @@
      "hq": "Saint-Pétersbourg",
      "lon": 30.32,
      "lat": 59.94,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xxii",
@@ -949,7 +1115,8 @@
      "hq": "Helsingfors",
      "lon": 24.94,
      "lat": 60.17,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_ii",
@@ -957,7 +1124,8 @@
      "hq": "Grodno",
      "lon": 23.83,
      "lat": 53.68,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_iii",
@@ -965,7 +1133,8 @@
      "hq": "Vilna",
      "lon": 25.28,
      "lat": 54.69,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_iv",
@@ -973,7 +1142,8 @@
      "hq": "Minsk",
      "lon": 27.56,
      "lat": 53.9,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xx",
@@ -981,15 +1151,18 @@
      "hq": "Riga",
      "lon": 24.11,
      "lat": 56.95,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_vi",
      "name_fr": "VIe corps (Varsovie)",
-     "hq": "Łomża",
-     "lon": 22.07,
-     "lat": 53.18,
-     "hq_verification": "à vérifier"
+     "hq": "Białystok",
+     "lon": 23.16,
+     "lat": 53.13,
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)",
+     "hq_correction": "Corrigé le 15/11/2026 : la base indiquait Łomża ; la source (« Штабъ г. Бѣлостокъ ») donne Białystok."
     },
     {
      "id": "ru_xiv",
@@ -997,7 +1170,8 @@
      "hq": "Lublin",
      "lon": 22.57,
      "lat": 51.25,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xv",
@@ -1005,7 +1179,8 @@
      "hq": "Varsovie",
      "lon": 21.01,
      "lat": 52.23,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xix",
@@ -1013,7 +1188,8 @@
      "hq": "Brest-Litovsk",
      "lon": 23.69,
      "lat": 52.1,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xxiii",
@@ -1021,7 +1197,8 @@
      "hq": "Varsovie",
      "lon": 21.01,
      "lat": 52.23,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_ix",
@@ -1029,7 +1206,8 @@
      "hq": "Kiev",
      "lon": 30.52,
      "lat": 50.45,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_x",
@@ -1037,7 +1215,8 @@
      "hq": "Kharkov",
      "lon": 36.23,
      "lat": 49.99,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xi",
@@ -1045,7 +1224,8 @@
      "hq": "Rovno",
      "lon": 26.25,
      "lat": 50.62,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xii",
@@ -1053,7 +1233,8 @@
      "hq": "Vinnitsa",
      "lon": 28.47,
      "lat": 49.23,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xxi",
@@ -1061,15 +1242,18 @@
      "hq": "Kiev",
      "lon": 30.52,
      "lat": 50.45,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_vii",
      "name_fr": "VIIe corps (Odessa)",
-     "hq": "Iekaterinoslav",
-     "lon": 35.05,
-     "lat": 48.46,
-     "hq_verification": "à vérifier"
+     "hq": "Simferopol",
+     "lon": 34.1,
+     "lat": 44.95,
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)",
+     "hq_correction": "Corrigé le 15/11/2026 : la base indiquait Iekaterinoslav ; la source (« Штабъ г. Симферополь, Таврической губ. ») donne Simferopol."
     },
     {
      "id": "ru_viii",
@@ -1077,7 +1261,8 @@
      "hq": "Odessa",
      "lon": 30.73,
      "lat": 46.48,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_grenadiers",
@@ -1085,7 +1270,8 @@
      "hq": "Moscou",
      "lon": 37.62,
      "lat": 55.75,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_v",
@@ -1093,7 +1279,8 @@
      "hq": "Voronej",
      "lon": 39.2,
      "lat": 51.67,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xiii",
@@ -1101,7 +1288,8 @@
      "hq": "Smolensk",
      "lon": 32.05,
      "lat": 54.78,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xvii",
@@ -1109,7 +1297,8 @@
      "hq": "Moscou",
      "lon": 37.62,
      "lat": 55.75,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xxv",
@@ -1117,7 +1306,8 @@
      "hq": "Moscou",
      "lon": 37.62,
      "lat": 55.75,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xvi",
@@ -1125,7 +1315,8 @@
      "hq": "Kazan",
      "lon": 49.12,
      "lat": 55.79,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     },
     {
      "id": "ru_xxiv",
@@ -1133,12 +1324,39 @@
      "hq": "Samara",
      "lon": 50.1,
      "lat": 53.2,
-     "hq_verification": "à vérifier"
+     "hq_verification": "vérifié",
+     "hq_source": "RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)"
     }
    ],
    "districts_count_check": {
     "expected": 27,
-    "source": "37 corps au total (US_WD_1916 p. 42) moins 10 corps asiatiques et caucasiens hors carte (connaissance générale, à vérifier)."
+    "source": "37 corps au total (US_WD_1916 p. 42) moins 10 corps asiatiques et caucasiens hors carte (connaissance générale, à vérifier). ; RU_RASPISANIE_1914 (27 corps européens, p. 214-226)"
+   },
+   "mobilization_echelons": {
+    "_statut": "T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).",
+    "echelons": [
+     {
+      "id": "ru_e1",
+      "label_fr": "Premier échelon : appel prévu par le plan de mobilisation de 1914",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Aucune source consultée ne donne l'effectif prévu par le plan russe (Расписание n° 19). US_WD_1916 p. 46 estime ce que la Russie pourrait mobiliser « upon her European frontiers » (2 000 000), ce qui est une capacité de déploiement, pas un plan."
+     },
+     {
+      "id": "ru_e2",
+      "label_fr": "Échelons suivants",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Même lacune documentaire."
+     },
+     {
+      "id": "ru_e3",
+      "label_fr": "Réserves résiduelles",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Même lacune documentaire."
+     }
+    ]
    }
   },
   "united_kingdom": {
@@ -1202,7 +1420,7 @@
       "category": "Territorial Force",
       "value": 268777,
       "source": "WO_1922 p. 30",
-      "reason": "Force volontaire à temps partiel de défense intérieure, distincte des réserves de l'armée régulière ; non comptée dans le réservoir (catégorie à modéliser si le directeur le décide)."
+      "reason": "Catégorie militaire DISTINCTE (T-050, VALIDÉ) : non comptée dans le réservoir ; voir le bloc `territorial_force`."
      },
      {
       "category": "National Reserve (1er octobre 1913)",
@@ -1223,6 +1441,13 @@
      "numerator": 1,
      "denominator": 1,
      "basis": "Les réservistes (Army Reserve, Special Reserve) sont rappelés au Royaume-Uni ; les garnisons d'Inde et des colonies ne concernent que l'armée active."
+    },
+    "source_total_check": {
+     "total_including_active": null,
+     "source": "WO_1922",
+     "page": "p. 30",
+     "definition": "Réservoir = Army Reserve 145 347 + Special Reserve 63 933 (lignes du tableau du 1er août 1914).",
+     "rule": "Contrôle : la valeur égale exactement la somme des deux lignes (testé)."
     }
    },
    "districts": [
@@ -1295,6 +1520,65 @@
    "districts_count_check": {
     "expected": 8,
     "source": "US_WD_1916 p. 60 : commandements « Aldershot, south, east, north, west, Scotland, Ireland, and London »."
+   },
+   "mobilization_echelons": {
+    "_statut": "T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).",
+    "echelons": [
+     {
+      "id": "uk_e1",
+      "label_fr": "Premier échelon : rappel des réserves de l'armée régulière",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Les effectifs sont sourcés (Army Reserve 145 347, Special Reserve 63 933 au 1er août 1914, WO_1922 p. 30), mais aucune source consultée ne dit quelle part était appelée par le plan de 1914. Le rappel intégral est probable, mais il n'est pas documenté ici. La Territorial Force relève d'une catégorie distincte (T-050), voir `territorial_force`."
+     },
+     {
+      "id": "uk_e2",
+      "label_fr": "Échelons suivants",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Même lacune documentaire."
+     },
+     {
+      "id": "uk_e3",
+      "label_fr": "Réserves résiduelles",
+      "value": null,
+      "status": "introuvable",
+      "reason": "La National Reserve (215 451) est un registre sans obligation de rappel : exclue (WO_1922 p. 30)."
+     }
+    ]
+   },
+   "territorial_force": {
+    "_statut": "T-050 et T-054 (VALIDÉS) : catégorie distincte, d'abord défense intérieure, déploiement outre-mer volontaire. Données de phase 1 : le moteur ne l'utilise pas encore (phase 4).",
+    "value": 268777,
+    "reference_date": "1er août 1914",
+    "definition": "Effectif réel (strength) de la Territorial Force au 1er août 1914 : 10 684 officiers et 258 093 hommes, personnel permanent compris.",
+    "source": "WO_1922",
+    "page": "p. 30, tableau (i)(b), note † « Includes permanent staff of the Territorial Force »",
+    "reliability": "haute",
+    "establishment": {
+     "value": 316094,
+     "definition": "Effectif théorique (establishment) à la même date : 12 700 officiers et 303 394 hommes",
+     "page": "p. 30"
+    },
+    "not_included": [
+     {
+      "category": "Territorial Force Reserve",
+      "value": 2082,
+      "page": "p. 30",
+      "note": "Ligne distincte du même tableau ; non incluse."
+     }
+    ],
+    "double_counting_check": "Le total du tableau (733 514) est la somme exacte des sept lignes, dont l'armée régulière (247 432), l'Army Reserve, la Special Reserve et la Territorial Force (268 777) : la source les traite comme des catégories disjointes. La présence éventuelle du personnel permanent (militaires de carrière) aussi dans la ligne « Regular Army » n'est pas tranchée par cette page ; le total additif indique que non (PROBABLE).",
+    "divergences": [
+     {
+      "value": 315408,
+      "source": "US_WD_1916",
+      "page": "p. 9, note 4",
+      "definition": "« Territorial force, British Isles, numbers 315,408 » (date non précisée)",
+      "note": "Proche de l'effectif théorique (316 094) et non de l'effectif réel ; date et définition non précisées : non retenu."
+     }
+    ],
+    "deployment_rule": "Service intérieur au départ ; envoi outre-mer seulement par engagement volontaire (T-054). Pistes de source pour les délais : WO_1922 Section 8 (Territorial Force servant à l'étranger, par mois) et Section 2a (engagements volontaires) — non exploitées en phase 1."
    }
   },
   "italy": {
@@ -1343,18 +1627,21 @@
     "status": "partiel"
    },
    "reserves": {
-    "value": 1250000,
-    "reference_date": "estimation de 1911 publiée en 1916",
-    "definition": "Réservistes entièrement instruits disponibles pour le passage au pied de guerre",
+    "value": 994967,
+    "reference_date": "non précisée ; document daté « conditions in July, 1914 »",
+    "definition": "Instruits mobilisables hors armée active : estimation prudente des hommes entièrement instruits (rubrique « TOTAL WAR STRENGTH »), moins l'armée active.",
     "source": "US_WD_1916",
-    "page": "p. 9 (second tableau)",
+    "page": "p. 66 (« A conservative estimate would seem to be 1,300,000 fully trained men »)",
     "reliability": "faible",
+    "derivation": "1 300 000 (instruits, actifs compris) − 305 033 (armée active, p. 9) = 994 967.",
+    "reliability_note": "Correction de phase 1 (15/11/2026), même règle que pour l'Allemagne : le total des instruits de la rubrique « Total war strength » est lu comme incluant l'armée active (PROBABLE). L'ancienne valeur (1 250 000, tableau p. 9 de 1911) donnait un total de 1 555 033, supérieur au total p. 66.",
     "divergences": [
      {
-      "value": 1300000,
+      "value": 1250000,
       "source": "US_WD_1916",
-      "page": "p. 66",
-      "definition": "« A conservative estimate would seem to be 1,300,000 fully trained men »"
+      "page": "p. 9 (second tableau)",
+      "definition": "« Fully trained reserves available for passing from peace to war footing », estimation de 1911",
+      "note": "Valeur retenue jusqu'au 15/11/2026 ; abandonnée car actif + réserves dépassait le total p. 66."
      },
      {
       "value": 3500000,
@@ -1368,6 +1655,13 @@
      "numerator": 1,
      "denominator": 1,
      "basis": "Tous les districts sont sur la carte."
+    },
+    "source_total_check": {
+     "total_including_active": 1300000,
+     "source": "US_WD_1916",
+     "page": "p. 66",
+     "definition": "« A conservative estimate would seem to be 1,300,000 fully trained men » (rubrique « Total war strength »)",
+     "rule": "Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd)."
     }
    },
    "districts": [
@@ -1471,6 +1765,32 @@
    "districts_count_check": {
     "expected": 12,
     "source": "US_WD_1916 p. 63 (« There are 12 army corps, 25 divisions, and 3 cavalry divisions organized in peace »)."
+   },
+   "mobilization_echelons": {
+    "_statut": "T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).",
+    "echelons": [
+     {
+      "id": "it_e1",
+      "label_fr": "Premier échelon : appel prévu par le plan de mobilisation de 1914",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Source attendue : Ufficio Storico, L'Esercito italiano nella Grande Guerra, vol. I (non consulté). US_WD_1916 p. 66 ne donne que le total des instruits."
+     },
+     {
+      "id": "it_e2",
+      "label_fr": "Échelons suivants",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Même lacune documentaire."
+     },
+     {
+      "id": "it_e3",
+      "label_fr": "Réserves résiduelles",
+      "value": null,
+      "status": "introuvable",
+      "reason": "« On paper she could mobilize 3,500,000 men » (p. 66) : total théorique incluant des non-instruits ; non utilisable."
+     }
+    ]
    }
   },
   "ottoman_empire": {
@@ -1482,8 +1802,9 @@
     "definition": "« peacetime operating strength of about 200,000 men and 8,000 officers » (classes 1893 et 1894 sous les drapeaux)",
     "source": "ERICKSON_2000",
     "page": "non disponible (article repris en ligne)",
-    "reliability": "moyenne",
-    "divergences": []
+    "reliability": "faible à moyenne",
+    "divergences": [],
+    "reliability_note": "Abaissée le 15/11/2026 (audit P2-7) : source secondaire unique, consultée dans une reprise en ligne sans pagination, en attendant Erickson, Ordered to Die (2001)."
    },
    "arms": null,
    "arms_status": "INCONNU : aucune ventilation par arme sourcée. Le jeu modélise ces soldats en infanterie générique (simplification technique signalée sur chaque unité), sans artillerie ni cavalerie.",
@@ -1517,6 +1838,13 @@
      "numerator": 3,
      "denominator": 13,
      "basis": "ESTIMATION : 3 corps (Ire armée) sur 13 sont en Thrace et à Constantinople (à vérifier)."
+    },
+    "source_total_check": {
+     "total_including_active": 2000000,
+     "source": "ERICKSON_2000",
+     "page": "non disponible",
+     "definition": "« mobilization potential of about 2,000,000 men » (potentiel total)",
+     "rule": "Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd)."
     }
    },
    "districts": [
@@ -1532,19 +1860,47 @@
      "name_fr": "IIe corps (Ire armée, Thrace)",
      "hq": "Thrace — siège précis non vérifié, rattaché au QG de la Ire armée",
      "city_id": "city_constantinople",
-     "hq_verification": "à vérifier"
+     "hq_verification": "à vérifier — indice contraire",
+     "hq_note": "Indices secondaires (articles encyclopédiques citant Erickson, versions divergentes) : garnison en Thrace, à Edirne et Kırk Kilise (région 089) ou à Tekirdağ (région 088). Aucune source primaire consultée : le siège n'est PAS déplacé."
     },
     {
      "id": "ot_iii",
      "name_fr": "IIIe corps (Ire armée, Thrace)",
      "hq": "Thrace — siège précis non vérifié, rattaché au QG de la Ire armée",
      "city_id": "city_constantinople",
-     "hq_verification": "à vérifier"
+     "hq_verification": "à vérifier — indice contraire",
+     "hq_note": "Indices secondaires (articles encyclopédiques citant Erickson, versions divergentes) : garnison en Thrace, à Edirne et Kırk Kilise (région 089) ou à Tekirdağ (région 088). Aucune source primaire consultée : le siège n'est PAS déplacé."
     }
    ],
    "districts_count_check": {
     "expected": 3,
     "source": "Composition de la Ire armée en août 1914 (corps I, II, III) : article Wikipédia « First Army (Ottoman Empire) » (cite Erickson) — à vérifier."
+   },
+   "mobilization_echelons": {
+    "_statut": "T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).",
+    "echelons": [
+     {
+      "id": "ot_e1",
+      "label_fr": "Premier échelon : appel prévu par le plan de mobilisation de 1914",
+      "value": null,
+      "status": "introuvable",
+      "reason": "ERICKSON_2000 donne 1 000 000 hommes « easily available for recall » et un besoin de 477 868 hommes pour compléter les divisions ; ni l'un ni l'autre n'est le plan d'appel. Source attendue : Erickson, Ordered to Die (2001), non consulté."
+     },
+     {
+      "id": "ot_e2",
+      "label_fr": "Échelons suivants",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Même lacune documentaire."
+     },
+     {
+      "id": "ot_e3",
+      "label_fr": "Réserves résiduelles",
+      "value": null,
+      "status": "introuvable",
+      "reason": "Potentiel total « about 2,000,000 men » (ERICKSON_2000) : non ventilé ; non utilisable comme échelon."
+     }
+    ]
    }
   }
  }

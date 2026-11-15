@@ -46,11 +46,17 @@ func _show_menu() -> void:
 	var month := OptionButton.new()
 	for i in 12:
 		month.add_item(GameCalendar.MONTHS_FR[i] + " 1914")
-	box.add_child(_row("Mois de départ (R-13 ouvert) :", month))
 	var scen := OptionButton.new()
 	scen.add_item("Campagne historique 1914 (effectifs sourcés des 7 puissances, MIL-01 ; répartition estimée)")
 	scen.add_item("Bac à sable FICTIF (forces génériques de test, combat jouable)")
 	box.add_child(_row("Scénario :", scen))
+	# T-057 : la campagne commence en janvier 1914 ; seul le bac à sable laisse choisir le mois.
+	box.add_child(_row("Mois de départ (bac à sable seulement) :", month))
+	month.disabled = true
+	scen.item_selected.connect(func(i: int) -> void:
+		month.disabled = i != 1
+		if i != 1:
+			month.select(0))
 	var start := Button.new()
 	start.text = "Nouvelle partie"
 	start.pressed.connect(func() -> void:

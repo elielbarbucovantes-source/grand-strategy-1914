@@ -1,7 +1,7 @@
 class_name GameCalendar
 extends RefCounted
 ## Calendrier stratégique mensuel (VALIDÉ : un tour = un mois, D-006).
-## Le mois de départ est un paramètre de partie (R-13 ouvert).
+## Mois de départ : janvier 1914 pour la campagne historique (T-057, tranche R-13) ; libre dans le bac à sable.
 
 const MONTHS_FR: PackedStringArray = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
 	"août", "septembre", "octobre", "novembre", "décembre"]
