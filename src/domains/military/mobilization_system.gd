@@ -468,8 +468,8 @@ static func summary(state: GameState, nation: String) -> Dictionary:
 	var f := forces(state, nation)
 	var present := 0
 	var services := int(f.get("services_mobilized", 0)) + int(f.get("services_regrouped", 0))
-	for fid: String in state.sorted_formation_ids():
-		var x: Dictionary = state.formations[fid]
+	# Sommes indépendantes de l'ordre : parcours direct, sans tri (appelé pour chaque vue nationale).
+	for x: Dictionary in state.formations.values():
 		if x["nation"] != nation:
 			continue
 		if x["echelon"] == "unit" and x.get("soldiers") != null:
@@ -504,6 +504,7 @@ static func summary(state: GameState, nation: String) -> Dictionary:
 		"rejoined": l.get("rejoined", 0),
 		"released": l.get("released", 0), "repatriated": l.get("repatriated", 0),
 		"posture": f.get("posture", "paix"), "allocation": f.get("allocation", {}),
+		"public_record": (f.get("public_record", []) as Array).duplicate(true),
 		"declared": f.get("posture", "paix") != "paix"}
 
 

@@ -38,6 +38,7 @@ static func view_for(state: GameState, world: WorldMap, nation: String) -> Dicti
 		"political": political,
 		"wars": state.wars.duplicate(true),
 		"public_mobilization": MobilizationSystem.public_view(state, {}),  # T-056 : posture et échelons, sans volumes
+		"own_forces": MobilizationSystem.summary(state, nation),  # effectifs PROPRES à ce gouvernement (T-052)
 		"public_treaties": state.treaties.filter(func(t: Dictionary) -> bool: return t["status"] == "active").duplicate(true),
 		"pending_proposals": DiplomacySystem.pending_for(state, nation),
 		"sent_proposals": state.proposals.filter(func(p: Dictionary) -> bool: return p["from"] == nation and p["status"] == "pending"),

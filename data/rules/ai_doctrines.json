@@ -1,0 +1,127 @@
+{
+ "format": "gs1914.ai_doctrines",
+ "format_version": 1,
+ "_statut": "T-052 (VALIDÉ, choix D) : doctrine nationale de mobilisation, seuils de menace, réaction aux mobilisations étrangères, alliances et tensions. Toutes les VALEURS ci-dessous sont des paramètres de COMPORTEMENT de jeu PROPOSÉS, non des données historiques. Les doctrines s'inspirent de la conduite des puissances en 1914 (connaissance générale, non sourcée dans le dépôt) ; elles ne scriptent aucune date (HIS-01 : histoire non scriptée). L'IA ne lit que la vue de son gouvernement (IntelSystem.view_for) : guerres, traités, carte politique et postures PUBLIQUES des autres puissances, formations visibles sans effectifs, et ses propres effectifs.",
+ "threat_weights": {
+  "_statut": "PROPOSÉ (commun à toutes les puissances) : composantes du score de menace calculé à partir des seules informations accessibles.",
+  "posture_value": {
+   "paix": 0,
+   "preparatoire": 1,
+   "generale": 2
+  },
+  "bordering_rival": 10,
+  "bordering_rival_note": "Puissance non alliée contrôlant une région voisine d'une région contrôlée : valeur de posture × 10 × réaction nationale.",
+  "distant_rival": 3,
+  "distant_rival_note": "Puissance non alliée sans frontière commune : valeur de posture × 3 × réaction nationale.",
+  "at_war": 100,
+  "at_war_note": "Guerre déclarée (publique) avec la puissance.",
+  "ally_at_war": 30,
+  "ally_at_war_note": "Un allié (alliance ou entente publique) est en guerre.",
+  "enemy_army_adjacent": 5,
+  "enemy_army_adjacent_note": "Par armée ennemie VISIBLE dans une région voisine (guerre seulement ; effectifs inconnus).",
+  "occupied_region": 20,
+  "occupied_region_note": "Par région souveraine occupée par une autre puissance.",
+  "general_tension_per_war": 5,
+  "general_tension_note": "Par guerre en cours impliquant une grande puissance, multiplié par la sensibilité nationale à la tension générale."
+ },
+ "allocation_policy": {
+  "_statut": "PROPOSÉ : allocation situationnelle identique pour tous (aucune différence nationale inventée).",
+  "default": {
+   "administration": 34,
+   "rail": 33,
+   "logistics": 33
+  },
+  "occupied_or_blocked": {
+   "administration": 25,
+   "rail": 25,
+   "logistics": 50
+  },
+  "note": "Si des réservistes sont bloqués ou si un district est occupé, la logistique est privilégiée (détours T-056 bis)."
+ },
+ "nations": {
+  "german_empire": {
+   "doctrine_fr": "Mobilisation rapide en réponse à la mobilisation d'un voisin : la mobilisation générale prépare l'offensive.",
+   "preparatory_threshold": 10,
+   "general_threshold": 20,
+   "foreign_mobilization_reaction": 1.5,
+   "general_tension_factor": 1.0,
+   "next_echelon_policy": "war",
+   "stand_down_months": 2,
+   "rationale_fr": "Réaction forte aux postures des puissances frontalières ; échelon suivant appelé dès la guerre.",
+   "status": "PROPOSÉ",
+   "basis": "Inspiration : chronologie des mobilisations de juillet-août 1914 (connaissance générale, NON sourcée dans le dépôt ; aucune date n'est scriptée)."
+  },
+  "france": {
+   "doctrine_fr": "Mobilisation en réponse à celle du voisin allemand.",
+   "preparatory_threshold": 10,
+   "general_threshold": 20,
+   "foreign_mobilization_reaction": 1.0,
+   "general_tension_factor": 1.0,
+   "next_echelon_policy": "war",
+   "stand_down_months": 2,
+   "rationale_fr": "Réagit aux postures frontalières sans anticipation particulière.",
+   "status": "PROPOSÉ",
+   "basis": "Inspiration : chronologie des mobilisations de juillet-août 1914 (connaissance générale, NON sourcée dans le dépôt ; aucune date n'est scriptée)."
+  },
+  "russian_empire": {
+   "doctrine_fr": "Mobilisation graduée : préparatoire d'abord, générale si la menace se confirme.",
+   "preparatory_threshold": 10,
+   "general_threshold": 30,
+   "foreign_mobilization_reaction": 1.0,
+   "general_tension_factor": 1.0,
+   "next_echelon_policy": "war",
+   "stand_down_months": 2,
+   "rationale_fr": "Seuil de posture générale plus élevé : la posture préparatoire est privilégiée face à une menace limitée.",
+   "status": "PROPOSÉ",
+   "basis": "Inspiration : chronologie des mobilisations de juillet-août 1914 (connaissance générale, NON sourcée dans le dépôt ; aucune date n'est scriptée)."
+  },
+  "austria_hungary": {
+   "doctrine_fr": "Mobilisation préparatoire précoce face aux voisins, générale en cas de crise.",
+   "preparatory_threshold": 10,
+   "general_threshold": 20,
+   "foreign_mobilization_reaction": 1.2,
+   "general_tension_factor": 1.0,
+   "next_echelon_policy": "war",
+   "stand_down_months": 2,
+   "rationale_fr": "Réaction un peu plus forte que la moyenne aux postures frontalières.",
+   "status": "PROPOSÉ",
+   "basis": "Inspiration : chronologie des mobilisations de juillet-août 1914 (connaissance générale, NON sourcée dans le dépôt ; aucune date n'est scriptée)."
+  },
+  "united_kingdom": {
+   "doctrine_fr": "Pas de mobilisation en temps de paix : les réserves de l'armée régulière sont rappelées à l'entrée en guerre.",
+   "preparatory_threshold": 999,
+   "general_threshold": 100,
+   "foreign_mobilization_reaction": 0.0,
+   "general_tension_factor": 0.0,
+   "next_echelon_policy": "war",
+   "stand_down_months": 1,
+   "rationale_fr": "Ne réagit ni aux postures étrangères ni à la tension générale ; seule une guerre déclarée déclenche la mobilisation.",
+   "status": "PROPOSÉ",
+   "basis": "Inspiration : chronologie des mobilisations de juillet-août 1914 (connaissance générale, NON sourcée dans le dépôt ; aucune date n'est scriptée)."
+  },
+  "italy": {
+   "doctrine_fr": "Prudence et neutralité : pas de mobilisation malgré la tension tant que le pays n'est pas en guerre.",
+   "preparatory_threshold": 60,
+   "general_threshold": 100,
+   "foreign_mobilization_reaction": 0.5,
+   "general_tension_factor": 0.5,
+   "next_echelon_policy": "war",
+   "stand_down_months": 2,
+   "rationale_fr": "Seuils élevés, réaction atténuée : reste en paix face aux crises voisines.",
+   "status": "PROPOSÉ",
+   "basis": "Inspiration : chronologie des mobilisations de juillet-août 1914 (connaissance générale, NON sourcée dans le dépôt ; aucune date n'est scriptée)."
+  },
+  "ottoman_empire": {
+   "doctrine_fr": "Mobilisation précoce lorsqu'une guerre générale éclate, même sans y être engagé.",
+   "preparatory_threshold": 30,
+   "general_threshold": 60,
+   "foreign_mobilization_reaction": 1.0,
+   "general_tension_factor": 2.0,
+   "next_echelon_policy": "threat",
+   "stand_down_months": 3,
+   "rationale_fr": "Forte sensibilité à la tension générale (nombre de guerres en cours).",
+   "status": "PROPOSÉ",
+   "basis": "Inspiration : chronologie des mobilisations de juillet-août 1914 (connaissance générale, NON sourcée dans le dépôt ; aucune date n'est scriptée)."
+  }
+ }
+}

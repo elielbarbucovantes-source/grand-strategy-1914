@@ -9,6 +9,7 @@ extends RefCounted
 ##   (menaces, intérêts) → décision (ordres).
 ##
 ## Ce que fait le niveau 1 :
+##   - mobilisation selon la doctrine nationale et la menace perçue (MobilizationAgent, T-052) ;
 ##   - répond aux propositions selon la mémoire (traité rompu ou guerre déclarée contre elle → refus) ;
 ##   - en guerre : défend son territoire, reprend ses régions occupées, occupe les régions
 ##     ennemies voisines non défendues en se rapprochant de la capitale adverse ;
@@ -25,6 +26,7 @@ static func decide(view: Dictionary, world: WorldMap, rules: Dictionary) -> Arra
 	orders.append_array(_answer_proposals(view, me))
 	orders.append_array(_peace_initiatives(view, me))
 	orders.append_array(_military(view, world, rules, me))
+	orders.append_array(MobilizationAgent.decide(view, world, rules))  # T-052 : doctrine nationale
 	return orders
 
 

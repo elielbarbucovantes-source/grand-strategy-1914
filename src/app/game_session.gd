@@ -9,6 +9,7 @@ const SCENARIO_PATH := "res://data/scenarios/campaign_1914.json"
 const SANDBOX_PATH := "res://data/scenarios/sandbox_fictif.json"
 const COMBAT_RULES_PATH := "res://data/rules/combat_rules.json"
 const FORCES_RULES_PATH := "res://data/rules/forces_rules.json"
+const AI_DOCTRINES_PATH := "res://data/rules/ai_doctrines.json"
 const SAVE_DIR := "user://saves"
 
 var world: WorldMap
@@ -30,6 +31,7 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.scenario = load_json(SCENARIO_PATH)
 	s.rules["combat"] = load_json(COMBAT_RULES_PATH)
 	s.rules["forces"] = load_json(FORCES_RULES_PATH)
+	s.rules["ai_doctrines"] = load_json(AI_DOCTRINES_PATH)
 	if s.world == null or s.rules.is_empty() or s.scenario.is_empty() or (s.rules["combat"] as Dictionary).is_empty() \
 			or (s.rules["forces"] as Dictionary).is_empty():
 		push_error("GameSession : données introuvables")
