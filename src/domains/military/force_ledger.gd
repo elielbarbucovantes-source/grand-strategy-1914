@@ -5,9 +5,13 @@ extends RefCounted
 ## Chaque soldat qui quitte définitivement une unité est inscrit ICI, une seule fois :
 ##   - pertes de combat (bataille tactique : différence d'effectif avant / après la bataille) ;
 ##   - pertes d'attrition d'une armée encerclée (T-044) ;
-##   - services (non-combattants) d'une armée anéantie ;
-##   - prisonniers : armée encerclée qui capitule (T-044), comptés chez le pays d'origine
-##     (« prisonniers perdus ») et chez le pays détenteur (« prisonniers détenus »).
+##   - services (non-combattants) d'une armée anéantie SANS retraite sûre : sort inconnu, comptés en
+##     pertes (disparus), jamais en prisonniers faute de capture établie (MIL01-P2-D2) ;
+##   - prisonniers : SEULEMENT en cas de capture établie, c'est-à-dire la capitulation d'une armée
+##     encerclée (T-044), comptés chez le pays d'origine (« prisonniers perdus ») et chez le pays
+##     détenteur (« prisonniers détenus »).
+## Les services d'une armée anéantie qui DISPOSE d'une retraite sûre rejoignent leur territoire :
+## ils restent présents (forces.services_regrouped) et sont comptés dans `rejoined` (information).
 ##
 ## LIMITES DOCUMENTÉES (aucune mécanique inventée) :
 ##   - la simulation tactique ne distingue PAS les tués, les blessés et les disparus : les pertes de
@@ -31,6 +35,7 @@ static func ledger(state: GameState, nation: String) -> Dictionary:
 			"losses_status": "Pertes NON VENTILÉES : la simulation ne distingue pas tués, blessés et disparus.",
 			"dead": null, "wounded": null, "missing": null,
 			"breakdown_status": "non modélisé (aucun ratio inventé) ; voir docs/military/PERTES_ET_PRISONNIERS.md",
+			"rejoined": 0, "rejoined_status": "survivants d'armées anéanties ayant rejoint leur territoire (toujours présents)",
 			"prisoners_lost": 0, "prisoners_lost_by_captor": {},
 			"prisoners_held": 0, "prisoners_held_by_origin": {},
 			"released": 0, "repatriated": 0,
@@ -89,6 +94,19 @@ static func remove_formation_booked(state: GameState, fid: String, fate: String,
 	state.remove_formation(fid)
 
 
+## Survivants (services) d'une armée anéantie qui rejoignent leur territoire (MIL01-P2-D2) :
+## ils restent présents dans le décompte national ; la formation vide est retirée.
+static func rejoin_and_remove(state: GameState, fid: String) -> void:
+	var nation: String = state.formations[fid]["nation"]
+	var people: Variant = personnel_of(state, fid)
+	var forces: Dictionary = state.nations[nation].get("forces", {})
+	if people != null and int(people) > 0 and forces.get("source_type", "") == "historical":
+		forces["services_regrouped"] = int(forces.get("services_regrouped", 0)) + int(people)
+		var l := ledger(state, nation)
+		l["rejoined"] = int(l["rejoined"]) + int(people)
+	state.remove_formation(fid)
+
+
 static func normalize(state: GameState) -> void:
 	for nid: String in state.nations:
 		var l: Variant = state.nations[nid].get("military_ledger")
@@ -96,8 +114,8 @@ static func normalize(state: GameState) -> void:
 			continue
 		for k: String in l["losses"]:
 			l["losses"][k] = int(l["losses"][k])
-		for k: String in ["losses_total", "prisoners_lost", "prisoners_held", "released", "repatriated"]:
-			l[k] = int(l[k])
+		for k: String in ["losses_total", "prisoners_lost", "prisoners_held", "released", "repatriated", "rejoined"]:
+			l[k] = int(l.get(k, 0))
 		for d: String in ["prisoners_lost_by_captor", "prisoners_held_by_origin"]:
 			for k: String in l[d]:
 				l[d][k] = int(l[d][k])

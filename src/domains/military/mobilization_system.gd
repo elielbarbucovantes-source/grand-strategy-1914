@@ -467,7 +467,7 @@ static func _new_reserve_unit(state: GameState, nation: String, rid: String, kin
 static func summary(state: GameState, nation: String) -> Dictionary:
 	var f := forces(state, nation)
 	var present := 0
-	var services := int(f.get("services_mobilized", 0))
+	var services := int(f.get("services_mobilized", 0)) + int(f.get("services_regrouped", 0))
 	for fid: String in state.sorted_formation_ids():
 		var x: Dictionary = state.formations[fid]
 		if x["nation"] != nation:
@@ -501,6 +501,7 @@ static func summary(state: GameState, nation: String) -> Dictionary:
 		"present_in_units": present, "present_services": services,
 		"losses_total": l.get("losses_total", 0), "losses": l.get("losses", {}), "dead": l.get("dead"), "wounded": l.get("wounded"),
 		"prisoners_lost": l.get("prisoners_lost", 0), "prisoners_held": l.get("prisoners_held", 0),
+		"rejoined": l.get("rejoined", 0),
 		"released": l.get("released", 0), "repatriated": l.get("repatriated", 0),
 		"posture": f.get("posture", "paix"), "allocation": f.get("allocation", {}),
 		"declared": f.get("posture", "paix") != "paix"}
@@ -537,7 +538,7 @@ static func normalize(state: GameState) -> void:
 	for nid: String in state.nations:
 		var fo: Dictionary = state.nations[nid].get("forces", {})
 		for key: String in ["active_start", "active_on_map", "active_off_map", "services_active", "reserves_total",
-				"reserves_off_map", "reserve_pool_initial", "reserve_pool", "incorporated", "services_mobilized",
+				"reserves_off_map", "reserve_pool_initial", "reserve_pool", "incorporated", "services_mobilized", "services_regrouped",
 				"districts_total", "districts_on_map"]:
 			if fo.get(key) != null:
 				fo[key] = int(fo[key])

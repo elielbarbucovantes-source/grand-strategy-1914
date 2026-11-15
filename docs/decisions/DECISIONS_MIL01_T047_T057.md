@@ -175,3 +175,15 @@ Réponses du directeur aux questions Q1 à Q10 de `docs/project/MIL01_PHASE2_PRO
 - catégories de suivi : actifs, réservistes non appelés, en cours, incorporés, présents, morts, blessés, prisonniers ;
 - les prisonniers ne sont pas des morts, et les blessés ne disparaissent pas définitivement ;
 - aucun système médical ou de captivité complexe en phase 2 : comptabilité fiable, puis évolutions documentées.
+
+## 6. Décisions de direction sur la phase 2 (15/11/2026)
+
+Réponses du directeur aux trois questions du rapport `docs/project/MIL01_PHASE2_REPORT.md` §9. La phase 2 est **validée**.
+
+| ID | Décision | État |
+|---|---|---|
+| **MIL01-P2-D1** | **Retard ferroviaire à zéro** tant que les données ferroviaires de la carte ne sont pas vérifiées et complétées. L'allocation ferroviaire reste dans l'interface et le système, sans pénalité artificielle fondée sur des lacunes cartographiques. Il faut documenter ce qui fonctionne et ce qui dépend de l'amélioration de la carte. | D, I (`rail_gap_months = 0`) |
+| **MIL01-P2-D2** | **Survivants d'une armée anéantie.** Ils sont prisonniers **seulement si une capture effective est établie**, notamment à la capitulation d'une armée encerclée. Les effectifs disparus d'une armée anéantie ne deviennent pas automatiquement des prisonniers. Il faut distinguer les **pertes**, les **prisonniers** et les **soldats qui ont rejoint leur territoire**. | D, I, T (phase 3, correctif préalable ; voir `docs/military/PERTES_ET_PRISONNIERS.md`) |
+| **MIL01-P2-D3** | **Blessés et tués** : recherches historiques prévues en **phase 5**. Il faut rechercher des proportions documentées de tués, blessés et disparus, en tenant compte autant que possible des périodes, des types d'engagement et des puissances. Aucune proportion prétendument historique sans sources suffisantes ; le système actuel reste provisoire d'ici là. | D (planifié en phase 5) |
+
+**Consigne associée :** faire une vérification visuelle réelle de l'onglet Armée avant la phase 3.

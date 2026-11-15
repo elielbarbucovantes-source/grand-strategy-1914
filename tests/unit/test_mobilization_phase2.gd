@@ -319,6 +319,45 @@ func test_surrender_creates_prisoners_not_deaths() -> void:
 	_check_conservation(s, "france", "après capitulation")
 
 
+func _strip_units(s: GameSession, army: String) -> void:
+	# Simule la destruction de toutes les unités combattantes (pertes de combat inscrites).
+	var st := s.state
+	for uid: String in st.units_of(army):
+		ForceLedger.add_losses(st, "france", int(st.formations[uid]["soldiers"]), "combat")
+		st.remove_formation(uid)
+
+
+func test_annihilated_army_survivors() -> void:
+	# MIL01-P2-D2 : pertes, prisonniers et survivants ayant rejoint leur territoire sont distingués.
+	var cr: Dictionary = {}
+	# Cas 1 : retraite sûre disponible : les services rejoignent le territoire et restent présents.
+	var s := _session()
+	cr = s.rules["combat"]
+	var army := "army_france_region_011"
+	var services := int(ForceLedger.personnel_of(s.state, army)) - int(s.state.soldiers_of(army))
+	runner.check(services > 0, "l'armée a des services non combattants (%d)" % services)
+	_strip_units(s, army)
+	var present_before := int(MobilizationSystem.summary(s.state, "france")["present_services"])
+	BattleManager._dissolve_annihilated(s.state, s.world, cr, army, "region_011")
+	var fr := MobilizationSystem.summary(s.state, "france")
+	runner.check(not s.state.formations.has(army), "armée anéantie retirée")
+	runner.check(int(fr["rejoined"]) == services and int(fr["present_services"]) == present_before,
+		"retraite sûre : les survivants rejoignent leur territoire et restent présents")
+	runner.check(int(fr["prisoners_lost"]) == 0 and int(fr["losses"]["annihilated_services"]) == 0, "ni prisonniers ni pertes pour les survivants rapatriés")
+	_check_conservation(s, "france", "armée anéantie, survivants rapatriés")
+	# Cas 2 : aucune retraite (région et voisines aux mains de l'ennemi) : sort inconnu, pertes, PAS prisonniers.
+	var s2 := _session()
+	for n: String in s2.world.neighbor_ids("region_011", true):
+		s2.state.regions[n]["controller"] = "german_empire"
+	s2.state.regions["region_011"]["controller"] = "german_empire"
+	_strip_units(s2, army)
+	BattleManager._dissolve_annihilated(s2.state, s2.world, cr, army, "region_011")
+	var fr2 := MobilizationSystem.summary(s2.state, "france")
+	runner.check(int(fr2["losses"]["annihilated_services"]) == services and int(fr2["prisoners_lost"]) == 0 and int(fr2["rejoined"]) == 0,
+		"sans retraite ni capture établie : survivants comptés en pertes (disparus), jamais en prisonniers")
+	_check_conservation(s2, "france", "armée anéantie sans retraite")
+
+
 # ------------------------------------------------------------------ sauvegarde et déterminisme
 func _scripted_campaign(order_variant: int) -> GameSession:
 	var s := _session()

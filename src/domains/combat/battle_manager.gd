@@ -456,7 +456,7 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 			continue
 		if state.units_of(army).is_empty():
 			state.log_event("bataille", "%s est anéantie." % state.formations[army]["name_fr"], [state.formations[army]["nation"]])
-			ForceLedger.remove_formation_booked(state, army, "losses")
+			_dissolve_annihilated(state, world, cr, army, rid)
 			continue
 		var prefer: String = b["origin"].get(army, "")
 		var dest := choose_retreat(state, world, cr, state.formations[army]["nation"], rid, prefer)
@@ -472,7 +472,7 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	for side: String in CombatData.SIDES:
 		for army: String in b["sides"][side]["armies"]:
 			if state.formations.has(army) and state.units_of(army).is_empty():
-				ForceLedger.remove_formation_booked(state, army, "losses")
+				_dissolve_annihilated(state, world, cr, army, rid)
 	# 5. Positions défensives conservées dans la région (état et niveau compris).
 	state.regions[rid]["defenses"] = b["defenses"].duplicate(true)
 	# 6. Historique.
@@ -520,6 +520,20 @@ static func choose_retreat(state: GameState, world: WorldMap, cr: Dictionary, na
 			best_score = score
 			best = n
 	return best
+
+
+## Armée anéantie (plus aucune unité combattante) : ses services rejoignent le territoire national
+## si une retraite sûre existe ; sinon leur sort est inconnu (pertes, cause `annihilated_services`).
+## Jamais de prisonniers sans capture établie (MIL01-P2-D2).
+static func _dissolve_annihilated(state: GameState, world: WorldMap, cr: Dictionary, army: String, rid: String) -> void:
+	var nation: String = state.formations[army]["nation"]
+	if choose_retreat(state, world, cr, nation, rid) != "":
+		var people: Variant = ForceLedger.personnel_of(state, army)
+		if people != null and int(people) > 0:
+			state.log_event("retraite", "Les services de %s (%d hommes) rejoignent leur territoire." % [state.formations[army]["name_fr"], int(people)], [nation])
+		ForceLedger.rejoin_and_remove(state, army)
+	else:
+		ForceLedger.remove_formation_booked(state, army, "losses")
 
 
 ## Encerclement (T-044), une fois par mois : libération si une retraite sûre réapparaît ;

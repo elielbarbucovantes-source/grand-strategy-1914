@@ -279,6 +279,7 @@ func _forces_panel(box: VBoxContainer) -> void:
 		t += "    Tués : non modélisé ; blessés temporairement indisponibles : non modélisé\n"
 		t += "7. Prisonniers : %d perdus (détenus par l'ennemi) ; %d détenus ; libérés ou rapatriés : %d (aucun mécanisme)\n" % [
 			int(sum["prisoners_lost"]), int(sum["prisoners_held"]), int(sum["released"]) + int(sum["repatriated"])]
+		t += "    Survivants d'armées anéanties ayant rejoint le territoire : %d (comptés parmi les présents)\n" % int(sum["rejoined"])
 		var al: Dictionary = sum["allocation"]
 		t += "\n[b]Posture de mobilisation[/b] : %s (publique)\n" % mr["postures"][sum["posture"]]["label_fr"]
 		t += "Moyens : administration %d %%, chemins de fer %d %%, logistique %d %% (sans coût économique : système économique non défini)\n" % [
