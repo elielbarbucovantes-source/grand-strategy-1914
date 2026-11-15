@@ -40,6 +40,8 @@ Le prochain numéro libre est **0008**.
 
 T-046 tranche la question T-029 J (déconnexion), laissée ouverte jusque-là.
 
+**T-047 à T-057 (décisions du directeur du 15/11/2026 : effectifs, mobilisation par échelons, IA de mobilisation, posture du joueur, Territorial Force, types d'engagement, temps de paix, réservistes occupés, départ en janvier 1914)** : texte et état d'implémentation dans [`DECISIONS_MIL01_T047_T057.md`](DECISIONS_MIL01_T047_T057.md). **T-057 tranche R-13** (mois de départ) pour la campagne historique.
+
 ## 3. Dossiers d'arbitrage (non-ADR, ne valent jamais décision)
 
 | Document | Objet | Statut |

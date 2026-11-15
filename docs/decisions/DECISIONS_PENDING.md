@@ -40,7 +40,7 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 
 - **NAT-01 — Douze statistiques : À DÉFINIR.** Formules, unités, échelles, arrondis, comparabilité et interactions.
 - **NAT-02 — Population : À DÉFINIR.** Métropole, empire ou population abstraite ; traitement des territoires coloniaux.
-- **NAT-03 — Départs historiques : À DÉFINIR.** Valeurs harmonisées des sept puissances et États secondaires, sources et date de référence.
+- **NAT-03 — Départs historiques : À DÉFINIR.** Valeurs harmonisées des sept puissances et États secondaires, sources et date de référence. *Ajout du 15/11/2026 : **T-057** — la campagne historique commence en janvier 1914 (tranche R-13) ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
 - **NAT-04 — Notes d’équilibre : PROVISOIRE.** Évaluations comparatives existantes explicitement non officielles ; exclure des données runtime.
 - **NAT-05 — Capacités des petits États : À DÉFINIR.** Traduction en limites crédibles sans règle arbitraire.
 
@@ -64,12 +64,12 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 
 ## E. Militaire et logistique
 
-- **MIL-01 — Ordre de bataille : À DÉFINIR.** Types d’unités, équipements, effectifs et correspondance unités/régiments/divisions/armées. *Ajout du 15/11/2026 : modèle « armée active / réserves mobilisables » **VALIDÉ par le directeur** ; base historique sourcée des sept puissances dans `data/history/military_forces_1914.json` (répartition territoriale et ventilation par arme ESTIMÉES ; types d’unités et granularité PROPOSÉS) ; voir `docs/history/`. MIL-01 n’est pas déclaré terminé.*
-- **MIL-02 — Recrutement/mobilisation : À DÉFINIR.** Réserves, entraînement, équipement, remplacement et démobilisation. *Ajout du 15/11/2026 : principe de mobilisation progressive des réserves **VALIDÉ** (sans apparition instantanée, dépassement ni double comptage) ; rythme et paramètres PROPOSÉS (`data/rules/forces_rules.json`, `docs/military/MOBILISATION.md`) ; entraînement, équipement, remplacement, démobilisation toujours À DÉFINIR.*
+- **MIL-01 — Ordre de bataille : À DÉFINIR.** Types d’unités, équipements, effectifs et correspondance unités/régiments/divisions/armées. *Ajout du 15/11/2026 : modèle « armée active / réserves mobilisables » **VALIDÉ par le directeur** ; base historique sourcée des sept puissances dans `data/history/military_forces_1914.json` (répartition territoriale et ventilation par arme ESTIMÉES ; types d’unités et granularité PROPOSÉS) ; voir `docs/history/`. MIL-01 n’est pas déclaré terminé.* *Ajout du 15/11/2026 (2) : **T-047** (cinq catégories d'effectifs), **T-050** et **T-054** (Territorial Force distincte, outre-mer volontaire) **VALIDÉS** ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
+- **MIL-02 — Recrutement/mobilisation : À DÉFINIR.** Réserves, entraînement, équipement, remplacement et démobilisation. *Ajout du 15/11/2026 : principe de mobilisation progressive des réserves **VALIDÉ** (sans apparition instantanée, dépassement ni double comptage) ; rythme et paramètres PROPOSÉS (`data/rules/forces_rules.json`, `docs/military/MOBILISATION.md`) ; entraînement, équipement, remplacement, démobilisation toujours À DÉFINIR.* *Ajout du 15/11/2026 (2) : **T-049** (rythme selon capacités administratives, ferroviaires, logistiques et réserves), **T-051** (échelons historiquement documentés), **T-053** (posture et allocation de moyens), **T-056** (temps de paix libre et public) et **T-056 bis** (réservistes occupés) **VALIDÉS** ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
 - **MIL-03 — Mouvement : À DÉFINIR.** Coûts/durées, réseau, capacité, transit, ordres et interruptions.
 - **MIL-04 — Approvisionnement : À DÉFINIR.** Portée, consommation, capacité, priorités, récupérations et isolement.
 - **MIL-05 — Combat défensif stratégique : À DÉFINIR.** Modèle et lien avec offensives tactiques.
-- **MIL-06 — Bataille tactique : À DÉFINIR.** Déclenchement, objectifs, durée effective (30 min maximum envisagées), forces engagées, commandes et victoire.
+- **MIL-06 — Bataille tactique : À DÉFINIR.** Déclenchement, objectifs, durée effective (30 min maximum envisagées), forces engagées, commandes et victoire. *Ajout du 15/11/2026 : **T-048** (intensité variable selon le type d'engagement) et **T-055** (approche de l'attaquant, posture du défenseur, circonstances) **VALIDÉS** ; fourchettes de pertes À DÉFINIR ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
 - **MIL-07 — Pertes et suite : principe des pertes définitives VALIDÉ, règles À DÉFINIR.** Retraite, capture, reconstitution, occupation et renouvellement d’offensive.
 - **MIL-08 — Fortifications : À DÉFINIR.** Catégories, niveaux, coûts, effets ; ne pas anachroniser la ligne Maginot en 1914.
 - **MIL-09 — Marine/aviation : À DÉFINIR.** Classes, ordres, contrôle, transport, patrouille, blocus, escortes et interaction aérienne.
@@ -80,8 +80,8 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 - **DIP-02 — Accords : À DÉFINIR.** Catalogue, parties, durée, obligations, renouvellement, rupture, sanctions et clauses secrètes éventuelles.
 - **DIP-03 — Acceptation/négociation : À DÉFINIR.** Options d’offre, refus, contre-offre et facteurs d’acceptation.
 - **DIP-04 — Guerre/crise/paix : À DÉFINIR.** Déclaration, escalade, fin de guerre et règlement territorial.
-- **DIP-05 — Information diplomatique : À DÉFINIR.** Confidentialité des accords et connaissance par les tiers.
-- **AI-01 — Objectifs nationaux : À DÉFINIR.** Priorités, adaptation et réévaluation.
+- **DIP-05 — Information diplomatique : À DÉFINIR.** Confidentialité des accords et connaissance par les tiers. *Ajout du 15/11/2026 : **T-056** — une mobilisation est publiquement visible ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
+- **AI-01 — Objectifs nationaux : À DÉFINIR.** Priorités, adaptation et réévaluation. *Ajout du 15/11/2026 : **T-052** (doctrine nationale de mobilisation, seuils de menace, réaction aux mobilisations étrangères, sans information secrète) **VALIDÉ** ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
 - **AI-02 — Décision : À DÉFINIR.** Architecture cognitive, poids, personnalité et risque.
 - **AI-03 — Mémoire/apprentissage : À DÉFINIR.** Contenu, durée, persistance entre parties et effets ; aucun apprentissage implicite.
 - **AI-04 — Limites d’information : principe VALIDÉ, détail À DÉFINIR.** Perception, fiabilité et actions anti-omniscience.
