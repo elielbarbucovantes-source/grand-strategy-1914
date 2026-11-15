@@ -282,8 +282,17 @@ func _forces_panel(box: VBoxContainer) -> void:
 		var tfp: Dictionary = sum.get("territorial_force", {})
 		if not tfp.is_empty() and int(tfp["incorporated"]) > 0:
 			t += "      [i]dont Territorial Force : %s en unités, %s en services[/i]\n" % [_num(int(tfp["present_home"]) + int(tfp["present_overseas"])), _num(tfp["services"])]
-		t += "6. Pertes : %s\n      [i]tués, blessés et disparus non distingués (non modélisé)[/i]\n" % _num(sum["losses_total"])
+		var w: Dictionary = sum["wounded"]
+		t += "6. Hors des rangs : %s\n" % _num(sum["losses_total"])
+		t += "      Tués : %s\n" % _num(sum["killed"])
+		t += "      Blessés en convalescence : %s (dont longue durée : %s)\n" % [_num(int(w["convalescing"]) + int(w["long_term"])), _num(w["long_term"])]
+		t += "      Blessés définitivement inaptes : %s\n" % _num(w["unfit"])
+		t += "      Disparus (sort inconnu) : %s\n" % _num(sum["missing"])
+		t += "      [i]Blessés rendus au service : %s ; blessés légers restés dans leur unité : %s (comptés parmi les présents)[/i]\n" % [_num(w["returned"]), _num(w["remained_in_unit"])]
+		if int(sum["legacy_unventilated"]) > 0:
+			t += "      Pertes non ventilées (ancienne sauvegarde) : %s\n" % _num(sum["legacy_unventilated"])
 		t += "7. Prisonniers perdus : %s ; détenus : %s\n      [i]libération et rapatriement : aucun mécanisme[/i]\n" % [_num(sum["prisoners_lost"]), _num(sum["prisoners_held"])]
+		t += "      [i]Ventilation provisoire (phase 6, étape 1) : taux de retour britannique appliqué aux autres pays par approximation.[/i]\n"
 		if int(sum["rejoined"]) > 0:
 			t += "      Survivants ayant rejoint le territoire : %s (comptés parmi les présents)\n" % _num(sum["rejoined"])
 		var tfs: Dictionary = sum.get("territorial_force", {})

@@ -239,11 +239,13 @@ func test_destroyed_unit_removed_and_losses_saved() -> void:
 	b["status"] = "ended"
 	BattleManager.finish(s.state, s.world, _cr(s), b)
 	runner.check(not s.state.formations.has(uid), "unité détruite retirée de l'armée")
-	runner.check(int(s.state.formations[other]["soldiers"]) == 1234, "effectif stratégique mis à jour")
+	# Phase 6, étape 1 : les blessés légers restés dans leur unité (décision du directeur) lui sont rendus.
+	var remained := int(ForceLedger.ledger(s.state, "france")["wounded"]["remained_in_unit"])
+	runner.check(int(s.state.formations[other]["soldiers"]) == 1234 + remained, "effectif stratégique = résultat tactique + blessés légers restés (%d)" % remained)
 	var path := "user://test_saves/after_battle.json"
 	SaveRepository.save(path, s.state, s.world, s.rules)
 	var loaded := SaveRepository.load_save(path, s.world, s.rules)
-	runner.check(loaded.has("state") and int((loaded["state"] as GameState).formations[other]["soldiers"]) == 1234, "pertes conservées après rechargement")
+	runner.check(loaded.has("state") and int((loaded["state"] as GameState).formations[other]["soldiers"]) == 1234 + remained, "pertes conservées après rechargement")
 
 
 # ------------------------------------------------------------------ renforts (T-040)

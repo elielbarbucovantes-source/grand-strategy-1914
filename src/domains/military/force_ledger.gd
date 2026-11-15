@@ -1,56 +1,93 @@
 class_name ForceLedger
 extends RefCounted
-## Comptabilité nationale des effectifs sortis des unités (MIL-01, phase 2 ; décision Q6 du directeur).
+## Comptabilité nationale des pertes militaires (MIL-01 ; phase 2, puis phase 6 étape 1).
 ##
-## Chaque soldat qui quitte définitivement une unité est inscrit ICI, une seule fois :
-##   - pertes de combat (bataille tactique : différence d'effectif avant / après la bataille) ;
-##   - pertes d'attrition d'une armée encerclée (T-044) ;
-##   - services (non-combattants) d'une armée anéantie SANS retraite sûre : sort inconnu, comptés en
-##     pertes (disparus), jamais en prisonniers faute de capture établie (MIL01-P2-D2) ;
-##   - prisonniers : SEULEMENT en cas de capture établie, c'est-à-dire la capitulation d'une armée
-##     encerclée (T-044), comptés chez le pays d'origine (« prisonniers perdus ») et chez le pays
-##     détenteur (« prisonniers détenus »).
-## Les services d'une armée anéantie qui DISPOSE d'une retraite sûre rejoignent leur territoire :
-## ils restent présents (forces.services_regrouped) et sont comptés dans `rejoined` (information).
+## Phase 6, étape 1 (décisions du directeur) : les pertes produites par le combat sont VENTILÉES,
+## sans aucun nouveau calcul de pertes ni changement de leur volume :
+##   - tués (définitifs) ;
+##   - blessés : légers restés dans leur unité (présents) ; en convalescence (1 mois pour les légers,
+##     3 mois pour les autres) ; rendus au service (redeviennent présents, jamais recomptés comme
+##     nouveaux soldats) ; définitivement inaptes ; le reste demeure en convalescence de longue durée ;
+##   - disparus (catégorie distincte, jamais convertie automatiquement), par cause ;
+##   - prisonniers : chez l'origine (perdus) et chez le détenteur (détenus), jamais deux fois dans
+##     les présents de quiconque.
+## Paramètres : data/rules/forces_rules.json, bloc `casualties` (statuts sourcé / PROVISOIRE,
+## modifiables par pays dans `national_overrides`). Les règles et le volume des pertes de combat ne
+## sont PAS modifiés (data/rules/combat_rules.json inchangé).
 ##
-## LIMITES DOCUMENTÉES (aucune mécanique inventée) :
-##   - la simulation tactique ne distingue PAS les tués, les blessés et les disparus : les pertes de
-##     combat sont « non ventilées ». `dead` et `wounded` valent null (« non modélisé ») ; aucun ratio
-##     n'est appliqué. Les blessés ne reviennent donc pas encore dans les unités (évolution à définir) ;
-##   - aucun mécanisme de libération, d'échange ou de rapatriement de prisonniers n'existe :
-##     `released` et `repatriated` restent à 0.
-##
-## Invariant de personnel vérifié par les tests (nation historique, carte seulement) :
-##   présents (unités + services) + pertes + prisonniers perdus = actifs sur la carte + incorporés.
+## Invariant de personnel (nation historique, carte seulement) :
+##   présents (unités + services) + tués + en convalescence + inaptes + disparus + prisonniers perdus
+##   + pertes non ventilées héritées d'une ancienne sauvegarde
+##   = actifs sur la carte + réservistes incorporés + Territorial Force incorporée.
 
-const CAUSES := ["combat", "encirclement_attrition", "annihilated_services"]
+const LEDGER_VERSION := 2
+const MISSING_CAUSES := ["battle", "encirclement_attrition", "annihilated_services"]
+
+static var config: Dictionary = {}
+
+
+## Paramètres de ventilation (bloc `casualties` de forces_rules.json), chargés par GameSession.
+static func configure(casualties: Dictionary) -> void:
+	config = casualties
+
+
+static func cfg() -> Dictionary:
+	if config.is_empty():
+		var data: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://data/rules/forces_rules.json"))
+		if data is Dictionary:
+			config = data.get("casualties", {})
+	return config
+
+
+## Valeur d'un paramètre, avec dérogation nationale éventuelle.
+static func param(nation: String, key: String) -> float:
+	var c := cfg()
+	var over: Dictionary = c.get("national_overrides", {}).get(nation, {})
+	if over.has(key):
+		return float(over[key]["value"])
+	return float(c[key]["value"])
+
+
+static func _new_ledger() -> Dictionary:
+	return {
+		"version": LEDGER_VERSION,
+		"killed": 0,
+		"wounded": {"remained_in_unit": 0, "convalescing": 0, "long_term": 0, "returned": 0, "unfit": 0},
+		"convalescence": [],
+		"missing": {"battle": 0, "encirclement_attrition": 0, "annihilated_services": 0},
+		"missing_total": 0,
+		"prisoners_lost": 0, "prisoners_lost_by_captor": {},
+		"prisoners_held": 0, "prisoners_held_by_origin": {},
+		"released": 0, "repatriated": 0,
+		"release_status": "aucun mécanisme de libération ni de rapatriement (évolution ultérieure)",
+		"rejoined": 0,
+		"legacy_unventilated": 0,
+	}
 
 
 static func ledger(state: GameState, nation: String) -> Dictionary:
 	var n: Dictionary = state.nations[nation]
 	if not n.has("military_ledger"):
-		n["military_ledger"] = {
-			"losses": {"combat": 0, "encirclement_attrition": 0, "annihilated_services": 0},
-			"losses_total": 0,
-			"losses_status": "Pertes NON VENTILÉES : la simulation ne distingue pas tués, blessés et disparus.",
-			"dead": null, "wounded": null, "missing": null,
-			"breakdown_status": "non modélisé (aucun ratio inventé) ; voir docs/military/PERTES_ET_PRISONNIERS.md",
-			"rejoined": 0, "rejoined_status": "survivants d'armées anéanties ayant rejoint leur territoire (toujours présents)",
-			"prisoners_lost": 0, "prisoners_lost_by_captor": {},
-			"prisoners_held": 0, "prisoners_held_by_origin": {},
-			"released": 0, "repatriated": 0,
-			"release_status": "aucun mécanisme de libération ni de rapatriement (évolution documentée)",
-		}
+		n["military_ledger"] = _new_ledger()
 	return n["military_ledger"]
 
 
-static func add_losses(state: GameState, nation: String, amount: int, cause: String) -> void:
+## Total des hommes hors des rangs inscrits ici (pour l'invariant et l'affichage).
+static func out_of_ranks(l: Dictionary) -> int:
+	if l.is_empty():
+		return 0
+	var w: Dictionary = l["wounded"]
+	return int(l["killed"]) + int(w["convalescing"]) + int(w["long_term"]) + int(w["unfit"]) + int(l["missing_total"]) \
+		+ int(l["prisoners_lost"]) + int(l.get("legacy_unventilated", 0))
+
+
+static func add_missing(state: GameState, nation: String, amount: int, cause: String) -> void:
 	if amount <= 0 or not state.nations.has(nation):
 		return
-	assert(cause in CAUSES)
+	assert(cause in MISSING_CAUSES)
 	var l := ledger(state, nation)
-	l["losses"][cause] = int(l["losses"][cause]) + amount
-	l["losses_total"] = int(l["losses_total"]) + amount
+	l["missing"][cause] = int(l["missing"][cause]) + amount
+	l["missing_total"] = int(l["missing_total"]) + amount
 
 
 static func add_prisoners(state: GameState, nation: String, captor: String, amount: int) -> void:
@@ -63,6 +100,84 @@ static func add_prisoners(state: GameState, nation: String, captor: String, amou
 		var c := ledger(state, captor)
 		c["prisoners_held"] = int(c["prisoners_held"]) + amount
 		c["prisoners_held_by_origin"][nation] = int(c["prisoners_held_by_origin"].get(nation, 0)) + amount
+
+
+## Ventilation des pertes d'UNE unité à la clôture d'une bataille. `fire` : pertes au feu et en mêlée
+## hors déroute ; `rout` : pertes subies en déroute et reliquat d'unité anéantie. `outcome` :
+## "held" (son camp tient ou l'issue est indécise), "lost_retreat" ou "lost_no_retreat".
+## Retourne le nombre de blessés légers qui RESTENT dans l'unité (à lui rendre si elle existe encore).
+## La somme des catégories est exactement `fire + rout` : aucun soldat créé ni perdu.
+static func book_battle_losses(state: GameState, nation: String, captor: String, fire: int, rout: int, outcome: String,
+		unit_survives: bool, origin_region: String) -> Dictionary:
+	var out := {"killed": 0, "wounded": 0, "remained": 0, "missing": 0, "prisoners": 0}
+	if fire + rout <= 0 or not state.nations.has(nation):
+		return out
+	var c := cfg()
+	# 1. Pertes au feu : tués, disparus, blessés (le reste).
+	var killed := int(round(float(fire) * param(nation, "killed_share")))
+	var missing := mini(fire - killed, int(round(float(fire) * param(nation, "missing_share_fire"))))
+	var wounded := fire - killed - missing
+	# 2. Pertes en déroute : disparus ou prisonniers selon l'issue (capture établie seulement si le camp perd).
+	var share := float(c["rout_prisoner_share"][outcome]["value"])
+	var prisoners := int(round(float(rout) * share))
+	missing += rout - prisoners
+	# 3. Blessés : légers restés dans l'unité (si elle existe encore), légers et autres en convalescence.
+	var light := int(round(float(wounded) * param(nation, "light_wound_share")))
+	var remained := int(floor(float(light) * param(nation, "remain_in_unit_share_of_light"))) if unit_survives else 0
+	var light_conv := light - remained
+	var other_conv := wounded - light
+	var l := ledger(state, nation)
+	l["killed"] = int(l["killed"]) + killed
+	l["wounded"]["remained_in_unit"] = int(l["wounded"]["remained_in_unit"]) + remained
+	_add_convalescence(state, l, nation, light_conv, int(param(nation, "convalescence_months_light")), "light", origin_region)
+	_add_convalescence(state, l, nation, other_conv, int(param(nation, "convalescence_months_other")), "other", origin_region)
+	add_missing(state, nation, missing, "battle")
+	if prisoners > 0:
+		add_prisoners(state, nation, captor, prisoners)
+	out = {"killed": killed, "wounded": wounded, "remained": remained, "missing": missing, "prisoners": prisoners}
+	return out
+
+
+static func _add_convalescence(state: GameState, l: Dictionary, nation: String, n: int, months: int, kind: String, region: String) -> void:
+	if n <= 0:
+		return
+	(l["convalescence"] as Array).append({"soldiers": n, "return_turn": state.turn + months, "kind": kind, "region": region})
+	l["wounded"]["convalescing"] = int(l["wounded"]["convalescing"]) + n
+
+
+## Étape mensuelle : fin de convalescence. Part rendue au service (redevient présente par le chemin
+## d'incorporation, SANS compter de nouveau soldat), part définitivement inapte, reste en convalescence
+## de longue durée. Les puissances sans réserves modélisées (bac à sable, États hors MIL-01) gardent
+## leurs convalescents (aucun mécanisme de retour pour elles).
+static func monthly_recovery(state: GameState, world: WorldMap, rules: Dictionary) -> void:
+	for nation: String in state.nation_order:
+		var n: Dictionary = state.nations[nation]
+		if not n.has("military_ledger") or not MobilizationSystem.is_historical(state, nation):
+			continue
+		var l: Dictionary = n["military_ledger"]
+		var keep: Array = []
+		var accessible := LogisticsSystem.accessible_regions(state, world, nation)
+		for c: Dictionary in l["convalescence"]:
+			if int(c["return_turn"]) > state.turn:
+				keep.append(c)
+				continue
+			var soldiers := int(c["soldiers"])
+			var back := int(floor(float(soldiers) * param(nation, "return_share")))
+			var unfit := mini(soldiers - back, int(floor(float(soldiers) * param(nation, "unfit_share"))))
+			var dest := MobilizationSystem.communication(state, world, nation, c["region"], accessible) if state.regions.has(c["region"]) else ""
+			if dest == "":
+				dest = n["capital_region_id"] if accessible.has(n["capital_region_id"]) else ""
+			if back > 0 and (dest == "" or MobilizationSystem._region_has_battle(state, dest)):
+				keep.append(c)  # aucune région d'accueil (ou bataille en cours, Q8) : la convalescence se prolonge
+				continue
+			l["wounded"]["convalescing"] = int(l["wounded"]["convalescing"]) - soldiers
+			l["wounded"]["unfit"] = int(l["wounded"]["unfit"]) + unfit
+			l["wounded"]["long_term"] = int(l["wounded"]["long_term"]) + (soldiers - back - unfit)
+			if back > 0:
+				l["wounded"]["returned"] = int(l["wounded"]["returned"]) + back
+				MobilizationSystem.incorporate(state, rules, nation, dest, back, true, true, false)
+				state.log_event("pertes", "%s : %d blessés guéris rejoignent le service (%s)." % [n["name_fr"], back, dest], [nation])
+		l["convalescence"] = keep
 
 
 ## Personnel d'une formation et de ses subordonnées : soldats des unités et services des divisions.
@@ -80,7 +195,7 @@ static func personnel_of(state: GameState, fid: String) -> Variant:
 
 
 ## Retire une formation en inscrivant son personnel restant : `fate` = "prisoners" (capitulation,
-## détenteur `captor`) ou "losses" (armée anéantie : services restants, cause `cause`).
+## détenteur `captor`) ou "missing" (armée anéantie sans retraite : sort inconnu, cause `cause`).
 static func remove_formation_booked(state: GameState, fid: String, fate: String, captor: String = "", cause: String = "annihilated_services") -> void:
 	if not state.formations.has(fid):
 		return
@@ -90,12 +205,11 @@ static func remove_formation_booked(state: GameState, fid: String, fate: String,
 		if fate == "prisoners":
 			add_prisoners(state, nation, captor, int(people))
 		else:
-			add_losses(state, nation, int(people), cause)
+			add_missing(state, nation, int(people), cause)
 	state.remove_formation(fid)
 
 
-## Survivants (services) d'une armée anéantie qui rejoignent leur territoire (MIL01-P2-D2) :
-## ils restent présents dans le décompte national ; la formation vide est retirée.
+## Survivants (services) d'une armée anéantie qui rejoignent leur territoire (MIL01-P2-D2).
 static func rejoin_and_remove(state: GameState, fid: String) -> void:
 	var nation: String = state.formations[fid]["nation"]
 	var people: Variant = personnel_of(state, fid)
@@ -107,15 +221,45 @@ static func rejoin_and_remove(state: GameState, fid: String) -> void:
 	state.remove_formation(fid)
 
 
+## Migration d'un registre de la phase 2 (sauvegarde de format 3) : les pertes de combat « non
+## ventilées » ne peuvent pas être ventilées après coup ; elles sont conservées telles quelles dans
+## `legacy_unventilated`. Les pertes de sort inconnu (attrition d'encerclement, services d'armées
+## anéanties) deviennent des disparus avec leur cause. Prisonniers et survivants inchangés.
+static func migrate_v1(l: Dictionary) -> Dictionary:
+	var m := _new_ledger()
+	var losses: Dictionary = l.get("losses", {})
+	m["legacy_unventilated"] = int(losses.get("combat", 0))
+	for cause: String in ["encirclement_attrition", "annihilated_services"]:
+		m["missing"][cause] = int(losses.get(cause, 0))
+		m["missing_total"] = int(m["missing_total"]) + int(losses.get(cause, 0))
+	for k: String in ["prisoners_lost", "prisoners_held", "released", "repatriated", "rejoined"]:
+		m[k] = int(l.get(k, 0))
+	for d: String in ["prisoners_lost_by_captor", "prisoners_held_by_origin"]:
+		m[d] = (l.get(d, {}) as Dictionary).duplicate()
+	return m
+
+
+static func migrate_state(state: GameState) -> void:
+	for nid: String in state.nations:
+		var l: Variant = state.nations[nid].get("military_ledger")
+		if l != null and int(l.get("version", 1)) < LEDGER_VERSION:
+			state.nations[nid]["military_ledger"] = migrate_v1(l)
+
+
 static func normalize(state: GameState) -> void:
 	for nid: String in state.nations:
 		var l: Variant = state.nations[nid].get("military_ledger")
-		if l == null:
+		if l == null or int(l.get("version", 1)) < LEDGER_VERSION:
 			continue
-		for k: String in l["losses"]:
-			l["losses"][k] = int(l["losses"][k])
-		for k: String in ["losses_total", "prisoners_lost", "prisoners_held", "released", "repatriated", "rejoined"]:
+		for k: String in ["version", "killed", "missing_total", "prisoners_lost", "prisoners_held", "released", "repatriated", "rejoined", "legacy_unventilated"]:
 			l[k] = int(l.get(k, 0))
+		for k: String in l["wounded"]:
+			l["wounded"][k] = int(l["wounded"][k])
+		for k: String in l["missing"]:
+			l["missing"][k] = int(l["missing"][k])
 		for d: String in ["prisoners_lost_by_captor", "prisoners_held_by_origin"]:
 			for k: String in l[d]:
 				l[d][k] = int(l[d][k])
+		for c: Dictionary in l["convalescence"]:
+			c["soldiers"] = int(c["soldiers"])
+			c["return_turn"] = int(c["return_turn"])

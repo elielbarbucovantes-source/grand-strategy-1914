@@ -13,7 +13,11 @@ const FORMAT := "gs1914.save"
 ## Version 3 (phase 4) : Territorial Force (catégorie distincte). Version 2 refusée : sauvegardes de
 ## développement des phases 2 et 3 seulement, sans Territorial Force (son incorporation ne pourrait pas
 ## être reconstituée de façon certaine si la posture générale était déjà adoptée).
-const FORMAT_VERSION := 3
+## Version 4 (phase 6, étape 1) : pertes ventilées (tués, blessés en convalescence, inaptes, disparus,
+## prisonniers). Version 3 MIGRÉE : les pertes « non ventilées » anciennes sont conservées telles
+## quelles dans `legacy_unventilated` (aucune ventilation après coup) ; attrition et services perdus
+## deviennent des disparus avec leur cause (ForceLedger.migrate_v1).
+const FORMAT_VERSION := 4
 const ENGINE := "Godot 4.7.2"
 
 
@@ -53,6 +57,8 @@ static func load_save(path: String, world: WorldMap, rules: Dictionary) -> Dicti
 		return {"error": "sauvegarde de l'ancien format (version 1, antérieure à la refonte de la mobilisation) : "
 			+ "migration impossible de façon fiable (réservoirs non échelonnés, données historiques corrigées, pertes non comptabilisées). "
 			+ "Commencez une nouvelle partie."}
+	if int(env.get("format_version", -1)) == 3:
+		return _load_v3(env, world, rules)
 	if int(env.get("format_version", -1)) == 2:
 		return {"error": "sauvegarde de la version 2 (développement, sans Territorial Force) : migration non fiable. Commencez une nouvelle partie."}
 	if int(env.get("format_version", -1)) != FORMAT_VERSION:
@@ -84,3 +90,23 @@ static func list_saves(dir_path: String) -> PackedStringArray:
 	for e: Array in entries:
 		out.append(e[1])
 	return out
+
+
+## Migration d'une sauvegarde de format 3 : contrôles d'intégrité identiques (carte, règles, empreinte
+## calculée sur l'état d'ORIGINE), puis conversion du registre des pertes.
+static func _load_v3(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dictionary:
+	if int(env.get("rules_format_version", -1)) != int(rules.get("format_version", 0)):
+		return {"error": "version des règles incompatible"}
+	if env.get("world_sha256", "") != world.source_sha256:
+		return {"error": "données cartographiques différentes de celles de la sauvegarde"}
+	if not (env.get("state") is Dictionary):
+		return {"error": "état absent"}
+	var state := GameState.from_dict(env["state"])
+	# L'empreinte d'origine a été calculée avec le numéro de format 3 de l'état.
+	var d := state.to_dict()
+	d["format_version"] = 3
+	var once := JSON.stringify(d, "", true, true)
+	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
+		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
+	ForceLedger.migrate_state(state)
+	return {"state": state, "migrated_from": 3}

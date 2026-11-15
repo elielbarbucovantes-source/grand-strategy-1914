@@ -287,8 +287,8 @@ func test_war_losses_are_accounted() -> void:
 	for nid: String in ["france", "german_empire"]:
 		_check_conservation(s, nid, "après la bataille")
 		var sum := MobilizationSystem.summary(st, nid)
-		runner.check(int(sum["losses_total"]) > 0 and sum["dead"] == null and sum["wounded"] == null,
-			"%s : pertes inscrites, non ventilées (tués et blessés non modélisés : aucun ratio inventé)" % nid)
+		runner.check(int(sum["losses_total"]) > 0 and int(sum["killed"]) > 0 and int(sum["wounded"]["convalescing"]) > 0,
+			"%s : pertes inscrites et ventilées (tués, blessés en convalescence)" % nid)
 	var zero_units := 0
 	for fid: String in st.formations:
 		var u: Dictionary = st.formations[fid]
@@ -312,10 +312,10 @@ func test_surrender_creates_prisoners_not_deaths() -> void:
 	runner.check(not st.formations.has(army), "armée encerclée capitulée et retirée")
 	var fr := MobilizationSystem.summary(st, "france")
 	var de := MobilizationSystem.summary(st, "german_empire")
-	var attrition := int(fr["losses"]["encirclement_attrition"])
+	var attrition := int(fr["missing_by_cause"]["encirclement_attrition"])
 	runner.check(int(fr["prisoners_lost"]) + attrition == people, "personnel de l'armée = prisonniers + attrition (services compris)")
 	runner.check(int(fr["prisoners_lost"]) > 0 and int(de["prisoners_held"]) == int(fr["prisoners_lost"]), "prisonniers comptés chez l'origine et chez le détenteur")
-	runner.check(int(fr["losses"]["combat"]) == 0, "les prisonniers ne sont pas des morts")
+	runner.check(int(fr["killed"]) == 0, "les prisonniers ne sont pas des morts")
 	_check_conservation(s, "france", "après capitulation")
 
 
@@ -323,7 +323,8 @@ func _strip_units(s: GameSession, army: String) -> void:
 	# Simule la destruction de toutes les unités combattantes (pertes de combat inscrites).
 	var st := s.state
 	for uid: String in st.units_of(army):
-		ForceLedger.add_losses(st, "france", int(st.formations[uid]["soldiers"]), "combat")
+		var l := ForceLedger.ledger(st, "france")
+		l["killed"] = int(l["killed"]) + int(st.formations[uid]["soldiers"])
 		st.remove_formation(uid)
 
 
@@ -343,7 +344,7 @@ func test_annihilated_army_survivors() -> void:
 	runner.check(not s.state.formations.has(army), "armée anéantie retirée")
 	runner.check(int(fr["rejoined"]) == services and int(fr["present_services"]) == present_before,
 		"retraite sûre : les survivants rejoignent leur territoire et restent présents")
-	runner.check(int(fr["prisoners_lost"]) == 0 and int(fr["losses"]["annihilated_services"]) == 0, "ni prisonniers ni pertes pour les survivants rapatriés")
+	runner.check(int(fr["prisoners_lost"]) == 0 and int(fr["missing_by_cause"]["annihilated_services"]) == 0, "ni prisonniers ni disparus pour les survivants rapatriés")
 	_check_conservation(s, "france", "armée anéantie, survivants rapatriés")
 	# Cas 2 : aucune retraite (région et voisines aux mains de l'ennemi) : sort inconnu, pertes, PAS prisonniers.
 	var s2 := _session()
@@ -353,8 +354,8 @@ func test_annihilated_army_survivors() -> void:
 	_strip_units(s2, army)
 	BattleManager._dissolve_annihilated(s2.state, s2.world, cr, army, "region_011")
 	var fr2 := MobilizationSystem.summary(s2.state, "france")
-	runner.check(int(fr2["losses"]["annihilated_services"]) == services and int(fr2["prisoners_lost"]) == 0 and int(fr2["rejoined"]) == 0,
-		"sans retraite ni capture établie : survivants comptés en pertes (disparus), jamais en prisonniers")
+	runner.check(int(fr2["missing_by_cause"]["annihilated_services"]) == services and int(fr2["prisoners_lost"]) == 0 and int(fr2["rejoined"]) == 0,
+		"sans retraite ni capture établie : survivants comptés en disparus, jamais en prisonniers")
 	_check_conservation(s2, "france", "armée anéantie sans retraite")
 
 

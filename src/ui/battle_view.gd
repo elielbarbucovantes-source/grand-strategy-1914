@@ -291,6 +291,11 @@ func _show_result(res: Dictionary) -> void:
 	l.text = "%s\nPertes : vous %d, adversaire %d.\nScores : pertes et état des forces %.2f, territoire %.2f (vous).\nFin : %s.\n[i]Pondérations provisoires (T-037).[/i]" % [verdict,
 		int(res["stats"][side]["lost"]), int(res["stats"][CombatData.other(side)]["lost"]),
 		float(res["scores"][side]["losses"]), float(res["scores"][side]["territory"]), res["end_reason"]]
+	# Ventilation comptable (phase 6, étape 1) : affichage seulement, le volume des pertes est inchangé.
+	var k: Dictionary = battle.get("casualty_breakdown", {}).get(side, {})
+	if not k.is_empty():
+		l.text += "\nVos pertes : tués %d ; blessés %d (dont %d restés dans leur unité) ; disparus %d ; prisonniers %d.\n[i]Ventilation provisoire.[/i]" % [
+			int(k["killed"]), int(k["wounded"]), int(k["remained"]), int(k["missing"]), int(k["prisoners"])]
 	box.add_child(l)
 	_btn(box, "Retour à la carte", _on_close)
 

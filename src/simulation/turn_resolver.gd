@@ -70,6 +70,7 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		BattleManager.monthly_morale(state, rules["combat"])
 	if rules.has("forces"):
 		MobilizationSystem.monthly(state, world, rules["forces"])
+		ForceLedger.monthly_recovery(state, world, rules["forces"])  # fin de convalescence (phase 6, étape 1)
 	LogisticsSystem.update_supply(state, world)
 	state.pending_orders = {}
 	var finished := state.date_label()

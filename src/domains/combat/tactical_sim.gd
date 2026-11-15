@@ -354,10 +354,14 @@ static func _apply_losses(b: Dictionary, r: Dictionary, losses: Dictionary) -> v
 		var n := int(floor(carry))
 		u["loss_carry"] = carry - n
 		n = mini(n, int(u["soldiers"]))
+		# Comptage de l'ORIGINE des pertes (phase 6, étape 1) : aucun effet sur le calcul.
+		var origin_key := "loss_routing" if u["status"] == CombatData.ROUTING else "loss_fire"
+		u[origin_key] = int(u.get(origin_key, 0)) + n
 		u["soldiers"] = int(u["soldiers"]) - n
 		u["tick_losses"] = n
 		if int(u["soldiers"]) < int(r["combat"]["min_unit_soldiers"]) and u["status"] != CombatData.DESTROYED:
 			u["status"] = CombatData.DESTROYED
+			u["loss_remnant"] = int(u.get("loss_remnant", 0)) + int(u["soldiers"])
 			u["soldiers"] = 0
 			u["dest"] = null
 			_log(b, "%s est anéantie." % u["name_fr"], u["side"])

@@ -5,7 +5,7 @@ extends RefCounted
 ## sauvegarde, le rejeu déterministe et l'évolution multijoueur.
 
 const FORMAT := "gs1914.state"
-const FORMAT_VERSION := 3  # 2 : mobilisation par échelons et pertes (MIL-01 phase 2) ; 3 : Territorial Force (phase 4)
+const FORMAT_VERSION := 4  # 2 : échelons et pertes (phase 2) ; 3 : Territorial Force (phase 4) ; 4 : pertes ventilées (phase 6, étape 1)
 
 var scenario_id: String = ""
 var year: int = 1914

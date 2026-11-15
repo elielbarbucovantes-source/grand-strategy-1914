@@ -54,7 +54,8 @@ static func normalize_battle(b: Dictionary) -> void:
 			b[key] = int(b[key])
 	for uid: String in b.get("units", {}):
 		var u: Dictionary = b["units"][uid]
-		for key in ["soldiers", "start_soldiers", "arrive_tick", "last_fire_tick", "quiet_ticks", "engaged_ticks", "charge_ticks"]:
+		for key in ["soldiers", "start_soldiers", "arrive_tick", "last_fire_tick", "quiet_ticks", "engaged_ticks", "charge_ticks",
+				"loss_fire", "loss_routing", "loss_remnant"]:
 			if u.has(key) and u[key] != null:
 				u[key] = int(u[key])
 	for n: String in b.get("disconnected", {}):

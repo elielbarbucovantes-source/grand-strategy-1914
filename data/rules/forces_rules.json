@@ -299,5 +299,77 @@
    "note": "Part des hommes d'une formation qui se portent volontaires (Imperial Service). Aucune source consultée ne donne ce taux : valeur neutre (la formation part entière si le gouvernement le décide). Les non-volontaires restent au pays en service intérieur."
   },
   "home_regions_note": "Service intérieur : régions de souveraineté britannique (001 à 006)."
+ },
+ "casualties": {
+  "_statut": "MIL-01 phase 6, étape 1 (décisions du directeur) : VENTILATION comptable des pertes produites par le combat, sans nouveau calcul ni changement de volume. Les règles de combat (combat_rules.json) ne sont pas modifiées. Statuts : « sourcé », « dérivé » (calculé à partir de sources), « décision » (fixé par le directeur), « PROVISOIRE » (paramètre de jeu). Voir docs/project/MIL01_PHASE6_STEP1_REPORT.md.",
+  "killed_share": {
+   "value": 0.25,
+   "status": "PROVISOIRE (ancré sur sources)",
+   "note": "Part des tués (morts de blessures sur le champ de bataille compris) dans les pertes au feu. Sources consultées (phase 5) : 24 à 28 % des « tués + blessés » (Somme 1916, Isonzo 1915-1917, listes allemandes 1917, Royaume-Uni en France). La Russie (19,5 %) exclut les morts à l'hôpital."
+  },
+  "missing_share_fire": {
+   "value": 0.05,
+   "status": "PROVISOIRE",
+   "note": "Part de disparus dans les pertes au feu hors déroute. Paramètre de jeu (rapport de phase 6, §3.2)."
+  },
+  "rout_prisoner_share": {
+   "_note": "Pertes subies en déroute et reliquat d'unité anéantie : part de PRISONNIERS selon l'issue ; le reste est DISPARU. Proposition Q6 du rapport de phase 6, PROVISOIRE, non validée explicitement par le directeur.",
+   "held": {
+    "value": 0.0,
+    "status": "PROVISOIRE",
+    "note": "Le camp de l'unité tient ou l'issue est indécise : aucune capture établie."
+   },
+   "lost_retreat": {
+    "value": 0.3,
+    "status": "PROVISOIRE",
+    "note": "Le camp perd ; l'armée dispose d'une retraite sûre."
+   },
+   "lost_no_retreat": {
+    "value": 0.8,
+    "status": "PROVISOIRE",
+    "note": "Le camp perd sans retraite sûre (effondrement) ; ordre de grandeur comparé à Caporetto et à août 1915."
+   }
+  },
+  "light_wound_share": {
+   "value": 0.686,
+   "status": "dérivé",
+   "note": "Part des blessés légers : listes officielles allemandes jusqu'à fin octobre 1917 (WO 1922 p. 354) : légèrement blessés 1 829 820 + blessés restés dans leur unité 315 263, sur 3 125 535 blessés."
+  },
+  "remain_in_unit_share_of_light": {
+   "value": 0.1,
+   "status": "décision",
+   "note": "Environ 10 % des blessés légers restent dans leur unité (décision du directeur). L'efficacité réduite N'EST PAS appliquée : elle exige une règle tactique (étape ultérieure, autorisation requise)."
+  },
+  "convalescence_months_light": {
+   "value": 1,
+   "status": "décision",
+   "note": "Convalescence légère : un mois (décision du directeur, PROVISOIRE)."
+  },
+  "convalescence_months_other": {
+   "value": 3,
+   "status": "décision",
+   "note": "Convalescence plus importante : trois mois (décision du directeur, PROVISOIRE)."
+  },
+  "return_share": {
+   "value": 0.556,
+   "status": "PROVISOIRE (approximation britannique)",
+   "note": "Part des blessés rendus au service : 1 sur 1,8 (Royaume-Uni, WO 1922 p. 246). Pour les autres puissances : APPROXIMATION britannique (décision du directeur)."
+  },
+  "unfit_share": {
+   "value": 0.17,
+   "status": "décision",
+   "note": "Part des blessés définitivement inaptes : 17 % (décision du directeur, PROVISOIRE ; WO 1922 p. 246 donne 16,68 % des malades et blessés renvoyés au pays)."
+  },
+  "long_term_note": "Le reste (1 − 0,556 − 0,17 ≈ 27,4 %) n'est ni rendu ni inapte : il demeure en CONVALESCENCE DE LONGUE DURÉE (aucun retour ni décès n'est inventé). Question ouverte pour le directeur.",
+  "national_overrides": {
+   "_note": "Dérogations par pays, chacune avec son statut. Ajouter un pays seulement avec une source.",
+   "united_kingdom": {
+    "return_share": {
+     "value": 0.556,
+     "status": "sourcé",
+     "note": "1 blessé sur 1,8 « returned to ranks abroad and at home », autres grades, jusqu'au 8 déc. 1918 (WO 1922 p. 246, fac-similé)."
+    }
+   }
+  }
  }
 }

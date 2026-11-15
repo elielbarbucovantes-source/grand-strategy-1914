@@ -371,7 +371,9 @@ static func split(total: int, weights: Array) -> Array:
 ## `complete_units`, les unités du district sont d'abord complétées jusqu'à l'effectif de guerre ;
 ## le reste forme de nouvelles unités de réserve. Retourne le reliquat non incorporé (trop petit
 ## pour former une unité), qui reste en cours de mobilisation. `flush` : former aussi les petits reliquats.
-static func incorporate(state: GameState, rules: Dictionary, nation: String, rid: String, soldiers: int, flush: bool = false, complete_units: bool = true) -> int:
+## `count_incorporated` = false pour des blessés guéris : ils redeviennent présents sans être comptés
+## comme de nouveaux soldats incorporés (phase 6, étape 1).
+static func incorporate(state: GameState, rules: Dictionary, nation: String, rid: String, soldiers: int, flush: bool = false, complete_units: bool = true, count_incorporated: bool = true) -> int:
 	var f := forces(state, nation)
 	var gen: Dictionary = rules["unit_generation"]
 	var mr: Dictionary = rules["mobilization"]
@@ -408,9 +410,10 @@ static func incorporate(state: GameState, rules: Dictionary, nation: String, rid
 			amount -= n
 			placed += n
 		carry += amount
-	f["incorporated"] = int(f["incorporated"]) + placed
-	if placed > 0:
-		state.log_event("mobilisation", "%s : %d réservistes incorporés (%s)." % [state.nations[nation]["name_fr"], placed, rid], [nation])
+	if count_incorporated:
+		f["incorporated"] = int(f["incorporated"]) + placed
+		if placed > 0:
+			state.log_event("mobilisation", "%s : %d réservistes incorporés (%s)." % [state.nations[nation]["name_fr"], placed, rid], [nation])
 	return carry
 
 
@@ -502,7 +505,12 @@ static func summary(state: GameState, nation: String) -> Dictionary:
 		"echelon_status_fr": f.get("echelon_status_fr", ""),
 		"mobilizing": mobilizing, "blocked": blocked, "incorporated": f.get("incorporated"),
 		"present_in_units": present, "present_services": services,
-		"losses_total": l.get("losses_total", 0), "losses": l.get("losses", {}), "dead": l.get("dead"), "wounded": l.get("wounded"),
+		# Phase 6, étape 1 : catégories mutuellement exclusives des hommes hors des rangs.
+		"losses_total": ForceLedger.out_of_ranks(l),
+		"killed": l.get("killed", 0),
+		"wounded": (l.get("wounded", {"remained_in_unit": 0, "convalescing": 0, "long_term": 0, "returned": 0, "unfit": 0}) as Dictionary).duplicate(),
+		"missing": l.get("missing_total", 0), "missing_by_cause": (l.get("missing", {}) as Dictionary).duplicate(),
+		"legacy_unventilated": l.get("legacy_unventilated", 0),
 		"prisoners_lost": l.get("prisoners_lost", 0), "prisoners_held": l.get("prisoners_held", 0),
 		"rejoined": l.get("rejoined", 0),
 		"released": l.get("released", 0), "repatriated": l.get("repatriated", 0),
@@ -516,7 +524,9 @@ static func summary(state: GameState, nation: String) -> Dictionary:
 static func conservation(state: GameState, nation: String) -> Dictionary:
 	var s := summary(state, nation)
 	var reserves_lhs := int(s["reserve_pool"]) + int(s["mobilizing"]) + int(s["blocked"]) + int(s["incorporated"])
-	var personnel_lhs := int(s["present_in_units"]) + int(s["present_services"]) + int(s["losses_total"]) + int(s["prisoners_lost"])
+	# `losses_total` = tués + convalescence (y compris longue durée) + inaptes + disparus + prisonniers perdus
+	# (+ pertes non ventilées héritées) : catégories exclusives (ForceLedger.out_of_ranks).
+	var personnel_lhs := int(s["present_in_units"]) + int(s["present_services"]) + int(s["losses_total"])
 	var tf: Dictionary = s["territorial_force"]
 	# T-050 : la Territorial Force a son propre invariant et entre dans le personnel par ses incorporés.
 	var personnel_rhs := int(s["active_on_map"]) + int(s["incorporated"]) + int(tf.get("incorporated", 0))

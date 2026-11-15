@@ -411,7 +411,12 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	var winner: String = result["winner"]
 	var loser := CombatData.other(winner) if winner != "" else CombatData.ATTACKERS
 	# 1. Pertes persistantes et moral des unités ; unités détruites retirées ; verrous levés.
+	# Comptabilité (phase 6, étape 1) : la perte d'effectif de chaque unité, inchangée, est VENTILÉE
+	# en tués, blessés, disparus et prisonniers ; aucun soldat n'est créé ni perdu.
 	var destroyed: Array = []
+	var outcomes := _side_outcomes(state, world, cr, b, winner, rid)
+	var booked := {"attackers": {"killed": 0, "wounded": 0, "remained": 0, "missing": 0, "prisoners": 0},
+		"defenders": {"killed": 0, "wounded": 0, "remained": 0, "missing": 0, "prisoners": 0}}
 	for uid: String in CombatData.unit_ids(b):
 		var u: Dictionary = b["units"][uid]
 		if not state.formations.has(uid):
@@ -420,10 +425,18 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 		su["battle_id"] = ""
 		if u["status"] == CombatData.AVAILABLE:
 			continue
+		var remained := 0
 		if su.get("soldiers") != null:
-			# Comptabilité nationale (MIL-01 phase 2) : chaque soldat perdu est inscrit une seule fois.
-			ForceLedger.add_losses(state, su["nation"], int(su["soldiers"]) - int(u["soldiers"]), "combat")
-		su["soldiers"] = int(u["soldiers"])
+			var delta := int(su["soldiers"]) - int(u["soldiers"])
+			var rout := mini(delta, int(u.get("loss_routing", 0)) + int(u.get("loss_remnant", 0)))
+			var side: String = u["side"]
+			var captor := _captor(b, CombatData.other(side))
+			var r := ForceLedger.book_battle_losses(state, su["nation"], captor, delta - rout, rout,
+				outcomes.get(state.army_of(uid), "held"), u["status"] != CombatData.DESTROYED, su.get("region", rid))
+			remained = int(r["remained"])
+			for k: String in r:
+				booked[side][k] = int(booked[side][k]) + int(r[k])
+		su["soldiers"] = int(u["soldiers"]) + remained  # blessés légers restés dans leur unité (présents)
 		su["morale"] = snappedf(float(u["morale"]), 0.1)
 		if u["status"] == CombatData.DESTROYED:
 			destroyed.append(uid)
@@ -479,6 +492,11 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	var summary := "Bataille de %s : %s. Pertes : attaquants %d, défenseurs %d (%s)." % [world.regions[rid]["name_fr"],
 		"victoire des attaquants" if winner == CombatData.ATTACKERS else ("victoire des défenseurs" if winner == CombatData.DEFENDERS else "indécise, le défenseur tient"),
 		int(result["stats"]["attackers"]["lost"]), int(result["stats"]["defenders"]["lost"]), result["end_reason"]]
+	for side: String in CombatData.SIDES:
+		var k: Dictionary = booked[side]
+		summary += " %s : tués %d, blessés %d (dont %d restés dans leur unité), disparus %d, prisonniers %d." % [
+			"Attaquants" if side == CombatData.ATTACKERS else "Défenseurs", int(k["killed"]), int(k["wounded"]), int(k["remained"]), int(k["missing"]), int(k["prisoners"])]
+	b["casualty_breakdown"] = booked
 	state.log_event("bataille", summary, b["sides"]["attackers"]["nations"] + b["sides"]["defenders"]["nations"])
 	state.active_battles.erase(b)
 	var record := b.duplicate(true)
@@ -522,6 +540,30 @@ static func choose_retreat(state: GameState, world: WorldMap, cr: Dictionary, na
 	return best
 
 
+## Issue de la bataille pour chaque armée engagée, utilisée par la ventilation des pertes en déroute :
+## "held" (camp vainqueur, ou issue indécise : aucune capture établie), "lost_retreat" ou
+## "lost_no_retreat" (camp vaincu, selon qu'une retraite sûre existe). Calculée AVANT les conséquences
+## territoriales, avec la règle de retraite existante (T-043), sans la modifier.
+static func _side_outcomes(state: GameState, world: WorldMap, cr: Dictionary, b: Dictionary, winner: String, rid: String) -> Dictionary:
+	var out: Dictionary = {}
+	for side: String in CombatData.SIDES:
+		for army: String in b["sides"][side]["armies"]:
+			if not state.formations.has(army):
+				continue
+			if winner == "" or winner == side:
+				out[army] = "held"
+			else:
+				var dest := choose_retreat(state, world, cr, state.formations[army]["nation"], rid, b["origin"].get(army, ""))
+				out[army] = "lost_retreat" if dest != "" else "lost_no_retreat"
+	return out
+
+
+## Puissance détentrice des prisonniers faits par un camp : son commandant, sinon sa première nation.
+static func _captor(b: Dictionary, side: String) -> String:
+	var cmd: Variant = b["sides"][side].get("commander", {}).get("nation")
+	return str(cmd) if cmd != null else str(b["sides"][side]["nations"][0])
+
+
 ## Armée anéantie (plus aucune unité combattante) : ses services rejoignent le territoire national
 ## si une retraite sûre existe ; sinon leur sort est inconnu (pertes, cause `annihilated_services`).
 ## Jamais de prisonniers sans capture établie (MIL01-P2-D2).
@@ -533,7 +575,7 @@ static func _dissolve_annihilated(state: GameState, world: WorldMap, cr: Diction
 			state.log_event("retraite", "Les services de %s (%d hommes) rejoignent leur territoire." % [state.formations[army]["name_fr"], int(people)], [nation])
 		ForceLedger.rejoin_and_remove(state, army)
 	else:
-		ForceLedger.remove_formation_booked(state, army, "losses")
+		ForceLedger.remove_formation_booked(state, army, "missing")
 
 
 ## Encerclement (T-044), une fois par mois : libération si une retraite sûre réapparaît ;
@@ -562,7 +604,7 @@ static func monthly_encirclement(state: GameState, world: WorldMap, cr: Dictiona
 			var l := int(round(float(su["soldiers"]) * float(e["monthly_attrition"])))
 			su["soldiers"] = int(su["soldiers"]) - l
 			lost += l
-			ForceLedger.add_losses(state, nation, l, "encirclement_attrition")
+			ForceLedger.add_missing(state, nation, l, "encirclement_attrition")  # sort inconnu
 		if float(f["morale"]) < float(e["surrender_morale"]):
 			var prisoners: Variant = state.soldiers_of(army)
 			state.log_event("reddition", "%s, encerclée en %s, capitule (%s prisonniers)." % [f["name_fr"], world.regions[rid]["name_fr"], str(prisoners)], [nation, state.controller(rid)])
