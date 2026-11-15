@@ -15,6 +15,25 @@ func check(ok: bool, msg: String) -> void:
 		print("  ✓ " + msg)
 
 
+func _find_button(node: Node, prefix: String) -> Button:
+	if node is Button and (node as Button).text.begins_with(prefix):
+		return node
+	for c: Node in node.get_children():
+		var b := _find_button(c, prefix)
+		if b != null:
+			return b
+	return null
+
+
+func _text_of(node: Node) -> String:
+	var out := ""
+	if node is RichTextLabel:
+		out += (node as RichTextLabel).get_parsed_text() + "\n"
+	for c: Node in node.get_children():
+		out += _text_of(c)
+	return out
+
+
 func _initialize() -> void:
 	var main: Node = load("res://src/ui/main.tscn").instantiate()
 	root.add_child(main)
@@ -62,5 +81,26 @@ func _initialize() -> void:
 	ui._on_load()
 	await process_frame
 	check(session.state.checksum() == checksum, "chargement : état restauré à l'identique")
+	# Effectifs historiques et mobilisation (MIL-01) : panneau et vrai bouton.
+	for i in ui.tabs.get_tab_count():
+		if ui.tabs.get_tab_title(i) == "Armée":
+			ui.tabs.current_tab = i
+	ui.refresh()
+	await process_frame
+	var army_text := _text_of(ui.pages["Armée"])
+	check(army_text.contains("HISTORIQUE") and army_text.contains("1. Actifs au démarrage") and army_text.contains("5. Présents dans les unités"),
+		"onglet Armée : source historique et cinq catégories affichées")
+	var mob := _find_button(ui.pages["Armée"], "Décréter la mobilisation")
+	check(mob != null, "bouton de mobilisation présent")
+	if mob != null:
+		mob.pressed.emit()
+		check(session.player_orders().any(func(o: Dictionary) -> bool: return o["type"] == Orders.MOBILIZE), "bouton : ordre de mobilisation préparé (%s)" % ui.status.text)
+		var pool_before := int(session.state.nations["france"]["forces"]["reserve_pool"])
+		ui._on_end_turn()
+		await process_frame
+		check(int(session.state.nations["france"]["forces"]["reserve_pool"]) < pool_before, "fin du mois : réservistes rappelés (effet réel)")
+		ui.refresh()
+		await process_frame
+		check(_find_button(ui.pages["Armée"], "Décréter la mobilisation") == null and _text_of(ui.pages["Armée"]).contains("décrétée"), "mobilisation affichée comme décrétée")
 	print("RÉSULTAT UI : %s" % ("VALIDÉ" if failures == 0 else "%d échec(s)" % failures))
 	quit(1 if failures > 0 else 0)

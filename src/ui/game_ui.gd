@@ -254,10 +254,36 @@ func _page_industry() -> void:
 		_queue(Orders.industry_allocation(st.player_nation, a)))
 
 
+## Effectifs du pays (MIL-01) : source des données et cinq catégories distinctes ; mobilisation.
+func _forces_panel(box: VBoxContainer) -> void:
+	var st := session.state
+	var src: Dictionary = session.scenario.get("forces_source", {})
+	var sum := session.forces_summary(st.player_nation)
+	var kind: String = sum["source_type"]
+	var t := "[b]Source des effectifs du scénario[/b] : %s\n" % {"historical": "HISTORIQUE (%s)" % str(src.get("database", "")),
+		"fictitious": "[color=#b03a2e]FICTIVE (bac à sable, valeurs de test)[/color]"}.get(str(src.get("type", "")), "inconnue")
+	if kind == "historical":
+		t += "Données : %s\n" % sum["data_status"]
+		t += "1. Actifs au démarrage : %d (dont %d hors carte)\n" % [int(sum["active_start"]), int(sum["active_off_map"])]
+		t += "2. Réserves disponibles : %d sur %d (hors carte : %d)\n" % [int(sum["reserve_pool"]), int(sum["reserve_pool_initial"]), int(sum["reserves_off_map"])]
+		t += "3. En cours de mobilisation : %d\n4. Incorporés : %d\n" % [int(sum["mobilizing"]), int(sum["incorporated"])]
+		t += "5. Présents dans les unités : %d (+ %d services non combattants)\n" % [int(sum["present_in_units"]), int(sum["present_services"])]
+		t += "Mobilisation générale : %s\n[i]Effectifs nationaux sourcés ; répartition par district et ventilation par arme ESTIMÉES ; paramètres de mobilisation PROPOSÉS.[/i]" % (
+			"[b]décrétée[/b]" if bool(sum["declared"]) else "non décrétée")
+	elif kind == "fictitious":
+		t += "Aucune réserve ni mobilisation (bac à sable)."
+	else:
+		t += "[color=#b03a2e]Effectifs inconnus pour ce pays (hors MIL-01) : aucune valeur n'est fabriquée.[/color]"
+	_rich(box, t)
+	if kind == "historical" and not bool(sum["declared"]):
+		_button(box, "Décréter la mobilisation générale (ordre du mois)", func() -> void: _queue(Orders.mobilize(st.player_nation)))
+
+
 func _page_army() -> void:
 	var box := _clear("Armée")
 	var st := session.state
-	_rich(box, "Hiérarchie VALIDÉE : soldats et équipements → unités → régiments → divisions → armées. Effectifs et composition : [i]inconnus (MIL-01)[/i].\nSélectionnez une formation, puis cliquez une région voisine sur la carte pour ordonner un déplacement (portée provisoire : 1 région par mois).")
+	_forces_panel(box)
+	_rich(box, "\nHiérarchie VALIDÉE : soldats et équipements → unités → régiments → divisions → armées.\nSélectionnez une formation (ses unités s'affichent), puis cliquez une région voisine sur la carte pour ordonner un déplacement (portée provisoire : 1 région par mois).")
 	for f: Dictionary in st.formations_of(st.player_nation):
 		if not st.is_top_level(f):
 			continue
@@ -277,7 +303,7 @@ func _page_army() -> void:
 			"—" if f.get("morale") == null else "%.0f" % float(f["morale"]), " ; [color=#b03a2e]ENCERCLÉE[/color]" if f.get("encircled", false) else "",
 			" ; [color=#b03a2e]ENGAGÉE[/color]" if st.is_engaged(f["id"]) else ""]
 		_rich(box, extra)
-		for uid: String in st.units_of(f["id"]):
+		for uid: String in (st.units_of(f["id"]) if map_view.selected_formation == f["id"] else []):
 			var su: Dictionary = st.formations[uid]
 			var urow := HBoxContainer.new()
 			box.add_child(urow)
@@ -290,11 +316,17 @@ func _page_army() -> void:
 				say(("Réserve : " + ("oui" if on else "non")) if err == "" else ("Refusé : " + err)))
 			urow.add_child(rb)
 		_button(box, "Préparer les défenses de %s" % session.world.regions[f["region"]]["name_fr"], func() -> void: request_planning.emit(f["region"]))
-	_rich(box, "\nMobilisation et création de formations : %s (règles MIL-02 ouvertes).\nBatailles : règles T-029 de synchronisation, commandement et pause implémentées ; [b]résolution du combat OUVERTE[/b] : un affrontement est clos sans issue (résolveur neutre provisoire)." % NOT_FUNCTIONAL)
+	_rich(box, "\nCréation libre de formations, entraînement, équipement, démobilisation : %s (MIL-02 ouvert).\nBatailles tactiques : fonctionnelles quand les effectifs des deux camps sont connus ; sinon (États hors MIL-01) l'affrontement est clos sans issue (repli neutre documenté)." % NOT_FUNCTIONAL)
 	if not st.battles.is_empty():
 		_rich(box, "\n[b]Dernières batailles[/b]")
 		for b: Dictionary in st.battles.slice(-5):
-			_rich(box, "%s, %s : %s" % [b["date"], session.world.regions[b["region"]]["name_fr"], b["resolution"]["status"]])
+			var outcome: String
+			if b.has("result"):
+				var w: String = b["result"]["winner"]
+				outcome = "victoire des attaquants" if w == "attackers" else ("victoire des défenseurs" if w == "defenders" else "indécise")
+			else:
+				outcome = b["resolution"]["status"]
+			_rich(box, "%s, %s : %s" % [b["date"], session.world.regions[b["region"]]["name_fr"], outcome])
 
 
 func _page_logistics() -> void:
@@ -363,6 +395,10 @@ func _describe(o: Dictionary) -> String:
 			return "Message %s : %s" % [o["channel"], o["text"]]
 		Orders.SET_INDUSTRY_ALLOCATION:
 			return "Priorités industrielles %s" % JSON.stringify(o["allocation"])
+		Orders.MOBILIZE:
+			return "Décréter la mobilisation générale"
+		Orders.BUILD_DEFENSE:
+			return "Ouvrage défensif (%s) en %s" % [o["kind"], session.world.regions[o["region"]]["name_fr"]]
 	return o["type"]
 
 

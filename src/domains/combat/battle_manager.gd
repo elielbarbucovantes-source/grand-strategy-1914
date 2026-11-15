@@ -305,13 +305,13 @@ static func advance(b: Dictionary, cr: Dictionary, ticks: int, auto_all: bool = 
 			return
 		if (bool(b["paused"]) or bool(b.get("disconnect_pause", false))) and not auto_all:
 			return
-		_grace_expiry(b, cr)
 		if int(b["tick"]) % every == 0:
 			var nations: Array = b["sides"]["attackers"]["nations"] + b["sides"]["defenders"]["nations"]
 			for n: String in nations:
 				if auto_all or _ai_controls(b, cr, n):
 					TacticalAI.decide(b, cr, n)
 		TacticalSim.step(b, cr, 1)
+		_grace_expiry(b, cr)
 
 
 ## Contrôleurs (T-046) : "human" (connecté), "disconnected" (délai de grâce : ses unités gardent
