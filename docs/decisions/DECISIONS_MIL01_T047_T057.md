@@ -19,11 +19,11 @@
 | T-047 | Effectifs historiques | Armées actives de 1914 au départ ; réserves mobilisables progressivement ; cinq catégories distinctes | Complète MIL-01 et MIL-02 | D, I, T (phases 1 et 2 : catégories séparées, pertes et prisonniers, conservation testée) |
 | T-048 | Intensité des combats | **D** : intensité variable selon le type d'engagement | Précise MIL-06 et T-042 | D ; non implémentée |
 | T-049 | Vitesse de mobilisation | **B** : réaliste et flexible | Précise MIL-02 | D, I, T (phase 2) : paramètres nationaux ; seul le rythme allemand est dérivé, les autres sont PROVISOIRES |
-| T-050 | Territorial Force britannique | **B** : catégorie militaire distincte | — | D ; non implémentée |
+| T-050 | Territorial Force britannique | **B** : catégorie militaire distincte | — | D, I, T (phase 4) ; délais et part de volontaires PROVISOIRES ; répartition ESTIMÉE ; voir `docs/military/TERRITORIAL_FORCE.md` |
 | T-051 | Plafond de mobilisation | **C** : mobilisation progressive par échelons | Audit K-1 | D, I, T (phase 2) : échelons pour 2 puissances sur 7, bloc unique pour les autres (MIL01-P1-D1) |
 | T-052 | Mobilisation de l'IA | **D** : doctrine nationale et réaction au contexte stratégique | Audit K-3 | D, I, T (phase 3) ; doctrines PROPOSÉES ; voir `docs/military/MOBILISATION_IA.md` |
 | T-053 | Influence du joueur | **C** : posture générale et allocation de moyens | Audit K-2 | D, I, T (phase 2) : postures et allocation, sans coût économique (Q1, Q2) |
-| T-054 | Territorial Force : emploi | **B** : déploiement outre-mer volontaire | Audit K-4 | D ; non implémentée |
+| T-054 | Territorial Force : emploi | **B** : déploiement outre-mer volontaire | Audit K-4 | D, I, T (phase 4) ; délais et part de volontaires PROVISOIRES ; répartition ESTIMÉE ; voir `docs/military/TERRITORIAL_FORCE.md` |
 | T-055 | Type d'engagement | **C** : choix de l'attaquant, posture du défenseur, combinés aux circonstances | Audit K-5 (en partie) | D ; non implémentée |
 | T-056 | Mobilisation en temps de paix | **A** : libre, sans pénalité diplomatique automatique, publiquement visible | Audit K-6 (1re question) | D, I, T (phase 2) : posture et échelons publics, volumes confidentiels |
 | T-056 bis | Réservistes en territoire occupé | **B** : rejoignent leur armée si une voie de communication reste accessible, sinon bloqués | Audit K-6 (2e question) | D, I, T (phase 2) : communications terrestres, alliés compris, mer exclue |
@@ -187,3 +187,15 @@ Réponses du directeur aux trois questions du rapport `docs/project/MIL01_PHASE2
 | **MIL01-P2-D3** | **Blessés et tués** : recherches historiques prévues en **phase 5**. Il faut rechercher des proportions documentées de tués, blessés et disparus, en tenant compte autant que possible des périodes, des types d'engagement et des puissances. Aucune proportion prétendument historique sans sources suffisantes ; le système actuel reste provisoire d'ici là. | D (planifié en phase 5) |
 
 **Consigne associée :** faire une vérification visuelle réelle de l'onglet Armée avant la phase 3.
+
+## 7. Décisions de direction sur la phase 3 (15/11/2026)
+
+La phase 3 est **validée**. Ces trois décisions portent sur des **travaux futurs** : aucune n'est intégrée à la phase 4, et le système diplomatique n'est pas modifié.
+
+| ID | Décision | Inscription |
+|---|---|---|
+| **MIL01-P3-D1** | La **spirale d'escalade** n'est pas acceptable dans la version finale. Il faut un futur mécanisme de **désescalade diplomatique**, qui réduise progressivement la mobilisation quand les menaces disparaissent. **Une paix ne provoque pas automatiquement une démobilisation complète** : chaque gouvernement évalue les risques qui subsistent. | Phase ultérieure « diplomatie et comportement stratégique de l'IA » (DIP-01 à DIP-04, AI-01, AI-02). Lacune documentée dans `docs/military/MOBILISATION_IA.md` §5. |
+| **MIL01-P3-D2** | La guerre d'un allié **ne suffit pas** à déclencher une mobilisation générale. Il faut une **réaction graduée** : allié en guerre ou en crise → posture préparatoire possible ; menace directe ou risque sérieux d'implication → mobilisation générale possible ; pas de menace significative → paix. Elle dépend de la doctrine, des relations diplomatiques, de la proximité de la menace et des engagements. Un pays peut soutenir un allié **diplomatiquement** sans mobiliser. | Même phase ultérieure, car elle exige des relations et des engagements diplomatiques (DIP). **Non intégrée en phase 4.** Le comportement actuel (un allié en guerre vaut 30 points, ce qui suffit pour la posture générale de trois puissances) reste en place et documenté. |
+| **MIL01-P3-D3** | Améliorer progressivement les doctrines à partir de **sources historiques** : plans de mobilisation de 1914 et chronologies de l'été 1914 pour les sept puissances. Il faut distinguer rigoureusement les comportements **documentés**, les **interprétations** historiques et les **paramètres de jeu**. | Plan de recherche préparé : `docs/history/RECHERCHE_DOCTRINES_1914.md`. Il ne retarde pas la phase 4. |
+
+**Phase 4.** Elle est consacrée à la Territorial Force (T-050, T-054), implémentée. Voir `docs/military/TERRITORIAL_FORCE.md` et `docs/project/MIL01_PHASE4_REPORT.md`.

@@ -109,9 +109,11 @@ Ces absences viennent très probablement de la couverture de l'atlas, pas de l'h
 
 ## 7. Hors périmètre
 
-Territorial Force (phase 4), coûts économiques (ECO-01, 02, 05, 06 non définis), démobilisation (MIL-02).
+Coûts économiques (ECO-01, 02, 05, 06 non définis), démobilisation (MIL-02).
 
 **Mobilisation par l'IA :** implémentée en phase 3, voir [`MOBILISATION_IA.md`](MOBILISATION_IA.md).
+
+**Territorial Force :** implémentée en phase 4. C'est une catégorie distincte, incorporée avec la posture générale ; voir [`TERRITORIAL_FORCE.md`](TERRITORIAL_FORCE.md).
 
 **Ce qui dépend de l'amélioration de la carte (MIL01-P2-D1) :** le délai des districts sans liaison ferroviaire attestée (`rail_gap_months`) vaut 0 tant que la couche ferroviaire n'est pas vérifiée et complétée (MAJ-006).
 - **Fonctionne aujourd'hui :** l'allocation « chemins de fer » existe dans l'interface et dans le système. Sous 15 %, elle allonge tous les transits d'un mois.

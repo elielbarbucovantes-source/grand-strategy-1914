@@ -74,6 +74,8 @@ Résultats de `tests/ai_mobilization_report.gd` (15/11/2026), le joueur observan
 ## 5. Limites
 
 1. **Spirale d'escalade.** Deux blocs rivaux mobilisés se maintiennent mutuellement en posture générale, même après la paix ou après la démobilisation de l'initiateur : chacun réagit à la posture publique de l'autre. Ce comportement est documenté et testé. Aucun mécanisme de détente (négociation, garanties) n'existe ; il dépend de DIP-01 à DIP-04.
+   - **Décision MIL01-P3-D1 :** ce comportement n'est **pas acceptable** dans la version finale. Une désescalade diplomatique progressive est prévue dans une phase ultérieure (diplomatie et IA stratégique). La paix ne doit pas entraîner de démobilisation automatique complète.
+   - **Décision MIL01-P3-D2 :** la guerre d'un allié ne doit pas suffire à déclencher la posture générale. Une réaction graduée est prévue dans la même phase ; le comportement actuel n'est pas modifié d'ici là.
 2. **Doctrines non sourcées.** Elles s'inspirent de la conduite de 1914 sans référence consultée. Seuils et poids sont des valeurs de jeu à ajuster.
 3. **Ni économie ni calendrier.** La « situation économique » n'est pas prise en compte (ECO non défini). Le calendrier historique n'est pas utilisé (HIS-01 non scripté).
 4. **Pas de renseignement.** L'IA ne connaît pas les volumes adverses (INT-01/02 ouverts). Elle réagit aux postures publiques et aux armées visibles.

@@ -62,7 +62,7 @@ T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un éch
 
 ### Territorial Force (catégorie distincte, T-050 et T-054)
 
-T-050 et T-054 (VALIDÉS) : catégorie distincte, d'abord défense intérieure, déploiement outre-mer volontaire. Données de phase 1 : le moteur ne l'utilise pas encore (phase 4).
+T-050 et T-054 (VALIDÉS) : catégorie distincte, d'abord défense intérieure, déploiement outre-mer volontaire. Intégrée au jeu en phase 4 (15/11/2026) : voir docs/military/TERRITORIAL_FORCE.md.
 
 | Champ | Contenu |
 |---|---|
