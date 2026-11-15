@@ -187,6 +187,10 @@ func test_ai_defends_and_counterattacks() -> void:
 			if o["type"] == Orders.PROPOSE_TREATY and o["kind"] == "peace":
 				peace = true
 		runner.check(peace, "l'IA belge propose la paix après une perte de territoire")
+		s.end_turn()
+		var again := NationAgent.decide(IntelSystem.view_for(st, s.world, "belgium"), s.world, s.rules)
+		runner.check(again.filter(func(o: Dictionary) -> bool: return o["type"] == Orders.PROPOSE_TREATY and o["kind"] == "peace").is_empty(),
+			"pas de nouvelle proposition de paix tant que la précédente est en attente")
 
 
 func test_logistics_cut_off() -> void:

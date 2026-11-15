@@ -10,6 +10,7 @@ Projet en conception. La documentation a été intégrée et l’architecture te
 
 ## Où lire
 
+- **Prototype jouable (Godot 4.7.2)** : `godot --path .` ; tests `bash tests/run.sh` ; état et mode d'emploi : `docs/project/PROTOTYPE_STATUS.md`.
 - `DATA_LICENSES.md` et `NOTICE` — **licences et attributions des données** (données géographiques en partie sous CC BY-NC 4.0 : usage non commercial).
 - `docs/README.md` — **commencer ici** : ordre de lecture et carte des documents (en vigueur ou historiques).
 - `PROJECT.md` — vision, périmètre et principes de conception.

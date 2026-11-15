@@ -1,8 +1,18 @@
-; Grand Strategy-1914 — technical project shell
-; No main scene or gameplay code is configured at this stage.
+; Grand Strategy-1914 — prototype jouable (Godot 4.7.2, GDScript typé ; ADR-0007)
 config_version=5
 
 [application]
 
 config/name="Grand Strategy-1914"
-config/description="Projet de grande stratégie — socle technique en préparation."
+config/description="Prototype de grande stratégie — Europe 1914."
+run/main_scene="res://src/ui/main.tscn"
+config/features=PackedStringArray("4.7")
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

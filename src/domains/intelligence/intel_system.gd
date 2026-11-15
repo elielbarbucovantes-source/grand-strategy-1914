@@ -35,6 +35,7 @@ static func view_for(state: GameState, world: WorldMap, nation: String) -> Dicti
 		"wars": state.wars.duplicate(true),
 		"public_treaties": state.treaties.filter(func(t: Dictionary) -> bool: return t["status"] == "active").duplicate(true),
 		"pending_proposals": DiplomacySystem.pending_for(state, nation),
+		"sent_proposals": state.proposals.filter(func(p: Dictionary) -> bool: return p["from"] == nation and p["status"] == "pending"),
 		"messages": DiplomacySystem.visible_messages(state, nation),
 		"memory": (state.memory.get(nation, []) as Array).duplicate(true),
 		"capital_region": state.nations[nation]["capital_region_id"],

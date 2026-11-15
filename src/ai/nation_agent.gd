@@ -87,8 +87,8 @@ static func _peace_initiatives(view: Dictionary, me: String) -> Array:
 	for enemy: String in _at_war_with(view, me):
 		if _occupies_my_regions(view, me, enemy):
 			var already := false
-			for p: Dictionary in view["pending_proposals"]:
-				if p["from"] == enemy and p["kind"] == "peace":
+			for p: Dictionary in view["pending_proposals"] + view["sent_proposals"]:
+				if p["kind"] == "peace" and (p["from"] == enemy or p["to"] == enemy):
 					already = true
 			if not already:
 				orders.append(Orders.propose_treaty(me, enemy, "peace"))

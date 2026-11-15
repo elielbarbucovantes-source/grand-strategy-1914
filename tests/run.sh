@@ -8,7 +8,10 @@ cd "$ROOT"
 "$GODOT" --headless --path . --import >/dev/null 2>&1 || true
 OUT="$("$GODOT" --headless --path . --script tests/run_tests.gd 2>&1)"; CODE=$?
 echo "$OUT" | grep -vE "^Godot Engine"
-if echo "$OUT" | grep -qE "SCRIPT ERROR|Parse Error|Compile Error"; then
+UI="$("$GODOT" --headless --path . --script tests/ui_smoke.gd 2>&1)"; UICODE=$?
+echo "$UI" | grep -vE "^Godot Engine"
+if echo "$OUT$UI" | grep -qE "SCRIPT ERROR|Parse Error|Compile Error"; then
   echo "ÉCHEC : erreur de script GDScript détectée" >&2; exit 1
 fi
-exit $CODE
+[[ $CODE -eq 0 && $UICODE -eq 0 ]] || exit 1
+exit 0
