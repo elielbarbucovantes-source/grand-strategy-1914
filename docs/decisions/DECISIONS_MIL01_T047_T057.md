@@ -150,3 +150,28 @@ Réponses du directeur aux questions D-1 à D-4 du rapport `docs/project/MIL01_P
 **Consignes associées :**
 - ne pas créer de coûts économiques fictifs tant que le système économique correspondant n'est pas défini ;
 - ne pas modifier les mécanismes du jeu avant la validation de la proposition de phase 2 (`docs/project/MIL01_PHASE2_PROPOSAL.md`).
+
+## 5. Décisions de direction sur la proposition de phase 2 (15/11/2026)
+
+Réponses du directeur aux questions Q1 à Q10 de `docs/project/MIL01_PHASE2_PROPOSAL.md`.
+
+| ID | Décision | État (phase 2) |
+|---|---|---|
+| **Q1** | Posture accélérée **reportée**. Elle devra être liée à un coût économique réel. | D ; posture absente du jeu (testé) |
+| **Q2** | Trois postures (Paix, Préparatoire, Générale) et trois allocations (administration, chemins de fer, logistique) **validées**. Les effets doivent être clairement définis, sans coût économique fictif. | D, I, T |
+| **Q3** | Information publique : posture et ouverture des échelons. Les volumes restent confidentiels, accessibles seulement par le renseignement. | D, I, T. Aucun mécanisme de renseignement ne révèle encore les volumes (INT-01/02 ouverts). |
+| **Q4** | Un district occupé sans communication accessible avec le territoire national **ne fournit pas** ses réservistes. | D, I, T |
+| **Q5** | Les territoires alliés servent de voie terrestre s'il existe une liaison continue. Communications maritimes exclues pour le moment. | D, I, T |
+| **Q6** | Suivi national des pertes et des prisonniers **dès la phase 2**, rigoureux et cohérent avec les effectifs. | D, I, T. Voir `docs/military/PERTES_ET_PRISONNIERS.md`. |
+| **Q7** | Le délai d'un mois est un **repère allemand**, non une règle universelle. Paramètres nationaux différenciables ; valeurs provisoires signalées. | D, I, T |
+| **Q8** | Aucune nouvelle armée de réserve dans une région où une bataille est en cours. | D, I, T |
+| **Q9** | Anciennes sauvegardes refusées avec un message explicite si aucune migration fiable n'est possible ; migration préférée si elle est sûre. | D, I, T. Refus : migration jugée non fiable (voir le rapport de phase 2). |
+| **Q10** | Délai minimal provisoire d'un mois entre deux échelons, réglable. | D, I, T |
+
+**Précisions associées :**
+- paramètres nationaux configurables : capacité administrative, organisation des réserves, capacités ferroviaires, logistique, rythme ;
+- les lacunes documentaires ne deviennent pas des certitudes ;
+- aucune capacité ferroviaire historique n'est calculée, puisque la carte indique seulement la présence d'une liaison ;
+- catégories de suivi : actifs, réservistes non appelés, en cours, incorporés, présents, morts, blessés, prisonniers ;
+- les prisonniers ne sont pas des morts, et les blessés ne disparaissent pas définitivement ;
+- aucun système médical ou de captivité complexe en phase 2 : comptabilité fiable, puis évolutions documentées.

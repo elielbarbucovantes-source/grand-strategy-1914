@@ -1,6 +1,6 @@
 # MIL-01 — Proposition pour la phase 2 : refonte de la mobilisation
 
-**Statut : PROPOSITION. Rien de ce document n'est implémenté.** Les mécanismes du jeu n'ont pas été modifiés depuis la phase 1.
+**Statut : PROPOSITION, validée par le directeur avec les décisions Q1 à Q10** (registre `docs/decisions/DECISIONS_MIL01_T047_T057.md` §5). **Implémentation : voir `docs/project/MIL01_PHASE2_REPORT.md`**, qui signale les écarts avec ce texte : délai ferroviaire désactivé, comptabilité des pertes avancée, paramètres nationaux.
 
 **Branche :** `dev/mil01-finalisation`. **Date :** 15/11/2026.
 

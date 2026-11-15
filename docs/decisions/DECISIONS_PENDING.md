@@ -70,7 +70,7 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 - **MIL-04 — Approvisionnement : À DÉFINIR.** Portée, consommation, capacité, priorités, récupérations et isolement.
 - **MIL-05 — Combat défensif stratégique : À DÉFINIR.** Modèle et lien avec offensives tactiques.
 - **MIL-06 — Bataille tactique : À DÉFINIR.** Déclenchement, objectifs, durée effective (30 min maximum envisagées), forces engagées, commandes et victoire. *Ajout du 15/11/2026 : **T-048** (intensité variable selon le type d'engagement) et **T-055** (approche de l'attaquant, posture du défenseur, circonstances) **VALIDÉS** ; fourchettes de pertes À DÉFINIR ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
-- **MIL-07 — Pertes et suite : principe des pertes définitives VALIDÉ, règles À DÉFINIR.** Retraite, capture, reconstitution, occupation et renouvellement d’offensive.
+- **MIL-07 — Pertes et suite : principe des pertes définitives VALIDÉ, règles À DÉFINIR.** Retraite, capture, reconstitution, occupation et renouvellement d’offensive. *Ajout du 15/11/2026 : comptabilité nationale des pertes et des prisonniers (décision Q6) implémentée en phase 2 de MIL-01 ; tués, blessés et disparus NON distingués par la simulation ; libération et rapatriement À DÉFINIR ; voir `docs/military/PERTES_ET_PRISONNIERS.md`.*
 - **MIL-08 — Fortifications : À DÉFINIR.** Catégories, niveaux, coûts, effets ; ne pas anachroniser la ligne Maginot en 1914.
 - **MIL-09 — Marine/aviation : À DÉFINIR.** Classes, ordres, contrôle, transport, patrouille, blocus, escortes et interaction aérienne.
 
