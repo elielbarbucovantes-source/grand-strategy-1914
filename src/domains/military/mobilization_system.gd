@@ -221,6 +221,7 @@ static func monthly(state: GameState, world: WorldMap, rules: Dictionary) -> voi
 		_incorporate_ready(state, world, rules, nation, accessible)
 		_call_up(state, world, mr, nation, accessible)
 		_sync_pool(f)
+		TerritorialForce.monthly(state, world, rules, nation, accessible)  # T-050 : catégorie distincte
 
 
 static func _sync_pool(f: Dictionary) -> void:
@@ -438,7 +439,7 @@ static func _reserve_army(state: GameState, nation: String, rid: String) -> Stri
 		var aid := "army_%s_%s_res%d" % [nation, rid, k]
 		if not state.formations.has(aid):
 			state.formations[aid] = {"id": aid, "nation": nation, "echelon": "army",
-				"name_fr": "Formations de réserve %d — %s" % [k, rid], "region": rid, "parent": null,
+				"name_fr": "Formations de réserve n° %d" % k, "region": rid, "parent": null,
 				"soldiers": null, "equipment": null, "morale": null, "supplied": true, "planned_target": "",
 				"battle_id": "", "encircled": false, "reserve": false,
 				"status": "MOBILISATION : réservistes incorporés (réservoir historique sourcé)"}
@@ -468,6 +469,8 @@ static func summary(state: GameState, nation: String) -> Dictionary:
 	var f := forces(state, nation)
 	var present := 0
 	var services := int(f.get("services_mobilized", 0)) + int(f.get("services_regrouped", 0))
+	var tf := TerritorialForce.summary(state, nation)
+	services += int(tf.get("services", 0))
 	# Sommes indépendantes de l'ordre : parcours direct, sans tri (appelé pour chaque vue nationale).
 	for x: Dictionary in state.formations.values():
 		if x["nation"] != nation:
@@ -505,6 +508,7 @@ static func summary(state: GameState, nation: String) -> Dictionary:
 		"released": l.get("released", 0), "repatriated": l.get("repatriated", 0),
 		"posture": f.get("posture", "paix"), "allocation": f.get("allocation", {}),
 		"public_record": (f.get("public_record", []) as Array).duplicate(true),
+		"territorial_force": tf,
 		"declared": f.get("posture", "paix") != "paix"}
 
 
@@ -513,9 +517,12 @@ static func conservation(state: GameState, nation: String) -> Dictionary:
 	var s := summary(state, nation)
 	var reserves_lhs := int(s["reserve_pool"]) + int(s["mobilizing"]) + int(s["blocked"]) + int(s["incorporated"])
 	var personnel_lhs := int(s["present_in_units"]) + int(s["present_services"]) + int(s["losses_total"]) + int(s["prisoners_lost"])
-	var personnel_rhs := int(s["active_on_map"]) + int(s["incorporated"])
-	return {"reserves_ok": reserves_lhs == int(s["reserve_pool_initial"]), "reserves_lhs": reserves_lhs,
-		"reserves_rhs": int(s["reserve_pool_initial"]),
+	var tf: Dictionary = s["territorial_force"]
+	# T-050 : la Territorial Force a son propre invariant et entre dans le personnel par ses incorporés.
+	var personnel_rhs := int(s["active_on_map"]) + int(s["incorporated"]) + int(tf.get("incorporated", 0))
+	var tf_ok := tf.is_empty() or int(tf["pool"]) + int(tf["mobilizing"]) + int(tf["blocked"]) + int(tf["incorporated"]) == int(tf["pool_initial"])
+	return {"reserves_ok": reserves_lhs == int(s["reserve_pool_initial"]) and tf_ok, "reserves_lhs": reserves_lhs,
+		"reserves_rhs": int(s["reserve_pool_initial"]), "territorial_ok": tf_ok,
 		"personnel_ok": personnel_lhs == personnel_rhs, "personnel_lhs": personnel_lhs, "personnel_rhs": personnel_rhs}
 
 
@@ -560,3 +567,4 @@ static func normalize(state: GameState) -> void:
 		if fo.has("allocation"):
 			for k: String in fo["allocation"]:
 				fo["allocation"][k] = int(fo["allocation"][k])
+		TerritorialForce.normalize(fo)

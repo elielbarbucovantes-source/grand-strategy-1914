@@ -74,4 +74,23 @@ func _initialize() -> void:
 	ui._on_end_turn()
 	_army(ui)
 	await _shot("04_allemagne_echelons")
+	# Royaume-Uni (Territorial Force, phase 4) : posture générale, deux mois, puis défilement vers les armées.
+	main.queue_free()
+	await process_frame
+	main = load("res://src/ui/main.tscn").instantiate()
+	root.add_child(main)
+	await process_frame
+	session = main.session
+	session.new_game("united_kingdom", 1)
+	main._start_game()
+	await process_frame
+	ui = main.game_ui
+	session.queue_order(Orders.mobilization_posture("united_kingdom", "generale"))
+	ui._on_end_turn()
+	ui._on_end_turn()
+	_army(ui)
+	await _shot("05_royaume_uni_territorial_force")
+	var scroll: ScrollContainer = ui.pages["Armée"].get_parent()
+	scroll.scroll_vertical = 900
+	await _shot("06_royaume_uni_armees")
 	quit()

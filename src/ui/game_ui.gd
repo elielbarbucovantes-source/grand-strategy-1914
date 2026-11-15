@@ -279,10 +279,21 @@ func _forces_panel(box: VBoxContainer) -> void:
 		t += (" (dont bloqués : %s)\n" % _num(sum["blocked"])) if int(sum["blocked"]) > 0 else "\n"
 		t += "4. Incorporés : %s\n" % _num(sum["incorporated"])
 		t += "5. Présents dans les unités : %s\n      + services non combattants : %s\n" % [_num(sum["present_in_units"]), _num(sum["present_services"])]
+		var tfp: Dictionary = sum.get("territorial_force", {})
+		if not tfp.is_empty() and int(tfp["incorporated"]) > 0:
+			t += "      [i]dont Territorial Force : %s en unités, %s en services[/i]\n" % [_num(int(tfp["present_home"]) + int(tfp["present_overseas"])), _num(tfp["services"])]
 		t += "6. Pertes : %s\n      [i]tués, blessés et disparus non distingués (non modélisé)[/i]\n" % _num(sum["losses_total"])
 		t += "7. Prisonniers perdus : %s ; détenus : %s\n      [i]libération et rapatriement : aucun mécanisme[/i]\n" % [_num(sum["prisoners_lost"]), _num(sum["prisoners_held"])]
 		if int(sum["rejoined"]) > 0:
 			t += "      Survivants ayant rejoint le territoire : %s (comptés parmi les présents)\n" % _num(sum["rejoined"])
+		var tfs: Dictionary = sum.get("territorial_force", {})
+		if not tfs.is_empty():
+			t += "\n[b]Territorial Force[/b] [i](catégorie distincte de l'armée régulière et des réserves, T-050)[/i]\n"
+			t += "      Non incorporés : %s sur %s ; en cours : %s ; incorporés : %s\n" % [_num(tfs["pool"]), _num(tfs["pool_initial"]),
+				_num(int(tfs["mobilizing"]) + int(tfs["blocked"])), _num(tfs["incorporated"])]
+			t += "      Présents : %s en service intérieur ; %s volontaires outre-mer (+ services : %s)\n" % [
+				_num(tfs["present_home"]), _num(tfs["present_overseas"]), _num(tfs["services"])]
+			t += "      [i]Incorporée avec la posture générale ; service outre-mer par volontariat (T-054) ; délais PROVISOIRES.[/i]\n"
 		var al: Dictionary = sum["allocation"]
 		t += "\n[b]Posture de mobilisation[/b] : %s [i](publique)[/i]\n" % mr["postures"][sum["posture"]]["label_fr"]
 		t += "Moyens : administration %d %%, chemins de fer %d %%, logistique %d %%\n[i]Sans coût économique (économie non définie). Paramètres nationaux dérivés ou PROVISOIRES.[/i]" % [
@@ -386,6 +397,9 @@ func _page_army() -> void:
 		var db := _button(box, full, func() -> void: request_planning.emit(f["region"]))
 		db.clip_text = true  # noms de régions longs : le libellé ne doit pas élargir le panneau
 		db.tooltip_text = full
+		if TerritorialForce.is_territorial(f) and f.get("service", "home") == "home":
+			var ob := _button(box, "Volontaires pour le service outre-mer", func() -> void: _queue(Orders.territorial_overseas(st.player_nation, f["id"])))
+			ob.tooltip_text = "Territorial Force (T-054) : les volontaires de cette armée forment une armée de service outre-mer."
 	_rich(box, "\nCréation libre de formations, entraînement, équipement, démobilisation : %s (MIL-02 ouvert).\nBatailles tactiques : fonctionnelles quand les effectifs des deux camps sont connus ; sinon (États hors MIL-01) l'affrontement est clos sans issue (repli neutre documenté)." % NOT_FUNCTIONAL)
 	if not st.battles.is_empty():
 		_rich(box, "\n[b]Dernières batailles[/b]")
@@ -474,6 +488,8 @@ func _describe(o: Dictionary) -> String:
 				int(o["allocation"]["administration"]), int(o["allocation"]["rail"]), int(o["allocation"]["logistics"])]
 		Orders.CALL_NEXT_ECHELON:
 			return "Appeler l'échelon de mobilisation suivant"
+		Orders.TERRITORIAL_OVERSEAS:
+			return "Territorial Force : volontaires outre-mer (%s)" % session.state.formations.get(o["army"], {}).get("name_fr", o["army"])
 		Orders.BUILD_DEFENSE:
 			return "Ouvrage défensif (%s) en %s" % [o["kind"], session.world.regions[o["region"]]["name_fr"]]
 	return o["type"]

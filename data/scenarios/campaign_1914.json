@@ -160,6 +160,22 @@
      "logistics": 33
     },
     "public_record": [],
+    "territorial_force": {
+     "pool_initial": 268777,
+     "pool_by_region": {
+      "region_001": 115190,
+      "region_002": 95992,
+      "region_003": 38397,
+      "region_004": 19198
+     },
+     "embodied_turn": null,
+     "mobilizing": [],
+     "blocked": [],
+     "incorporated": 0,
+     "services": 0,
+     "overseas_volunteers": 0,
+     "status_fr": "Territorial Force : catégorie DISTINCTE de l'armée régulière et des réserves (T-050) ; service intérieur, outre-mer seulement par volontariat (T-054). Répartition ESTIMÉE par division."
+    },
     "district_pool_weights": {
      "region_001": 104640,
      "region_002": 52320,
@@ -307,6 +323,7 @@
      "logistics": 33
     },
     "public_record": [],
+    "territorial_force": null,
     "district_pool_weights": {
      "region_007": 209092,
      "region_008": 522729,
@@ -1000,6 +1017,7 @@
      "logistics": 33
     },
     "public_record": [],
+    "territorial_force": null,
     "district_pool_weights": {
      "region_026": 304319,
      "region_027": 304319,
@@ -1181,6 +1199,7 @@
      "logistics": 33
     },
     "public_record": [],
+    "territorial_force": null,
     "district_pool_weights": {
      "region_036": 250000,
      "region_037": 125000,
@@ -1597,6 +1616,7 @@
      "logistics": 33
     },
     "public_record": [],
+    "territorial_force": null,
     "district_pool_weights": {
      "region_052": 102703,
      "region_053": 102703,
@@ -2257,6 +2277,7 @@
      "logistics": 33
     },
     "public_record": [],
+    "territorial_force": null,
     "district_pool_weights": {
      "region_080": 331656,
      "region_081": 165828,
@@ -2396,6 +2417,7 @@
      "logistics": 33
     },
     "public_record": [],
+    "territorial_force": null,
     "district_pool_weights": {
      "region_087": 230769
     },
@@ -11846,9 +11868,9 @@
  "forces_source": {
   "type": "historical",
   "database": "data/history/military_forces_1914.json",
-  "database_sha256": "41faf5f504ae6a21f93ee4fbaea867cfc41c91bc4d2a84863ed2e456733e7339",
+  "database_sha256": "ff7ee8737c96dacfdc901a85137114b34f6d41c5401a04845521415f478a7f1a",
   "rules": "data/rules/forces_rules.json",
-  "rules_sha256": "aed13dedb3ba46b3a8994d4f127362eceaaa508d77e495527db07290141d4333",
+  "rules_sha256": "387c0b5e4b054b503480f19d3e528094cd02e201fbc5f917e67122bbc7553160",
   "nations_documented": [
    "austria_hungary",
    "france",

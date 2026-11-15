@@ -15,6 +15,7 @@ const MOBILIZE := "mobilize"  # alias conservé : posture générale
 const SET_MOBILIZATION_POSTURE := "set_mobilization_posture"
 const SET_MOBILIZATION_ALLOCATION := "set_mobilization_allocation"
 const CALL_NEXT_ECHELON := "call_next_echelon"
+const TERRITORIAL_OVERSEAS := "territorial_overseas"
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
@@ -78,3 +79,8 @@ static func call_next_echelon(nation: String) -> Dictionary:
 
 static func industry_allocation(nation: String, allocation: Dictionary) -> Dictionary:
 	return {"type": SET_INDUSTRY_ALLOCATION, "nation": nation, "allocation": allocation}
+
+
+## Territorial Force (T-054) : les volontaires d'une armée de la Territorial Force acceptent le service outre-mer.
+static func territorial_overseas(nation: String, army: String) -> Dictionary:
+	return {"type": TERRITORIAL_OVERSEAS, "nation": nation, "army": army}

@@ -29,7 +29,9 @@ static func view_for(state: GameState, world: WorldMap, nation: String) -> Dicti
 			formations.append({"id": f["id"], "nation": f["nation"], "region": f["region"], "echelon": f["echelon"],
 				"soldiers": state.soldiers_of(f["id"]) if f["nation"] == nation else null,
 				"engaged": state.is_engaged(f["id"]) if f["nation"] == nation else false,
-				"encircled": bool(f.get("encircled", false)) if f["nation"] == nation else false})
+				"encircled": bool(f.get("encircled", false)) if f["nation"] == nation else false,
+				# Propre armée de la Territorial Force en service intérieur (T-054) : information propre.
+				"home_service_only": f["nation"] == nation and TerritorialForce.is_territorial(f) and f.get("service", "home") == "home"})
 	var political: Dictionary = {}
 	for rid: String in state.regions:
 		political[rid] = {"controller": state.controller(rid), "sovereign": state.sovereign(rid)}

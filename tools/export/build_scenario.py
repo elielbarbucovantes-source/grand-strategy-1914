@@ -181,6 +181,23 @@ ECHELON_STATUS_FR = {
 }
 
 
+def territorial_block(n: dict) -> dict | None:
+    """Territorial Force (T-050, T-054) : catégorie distincte du réservoir, répartie par division
+    (ESTIMATION, voir la base). Absente pour les autres puissances."""
+    tf = n.get("territorial_force")
+    if not tf:
+        return None
+    counts: dict = {}
+    for d in tf["distribution"]["divisions"]:
+        counts[d["region_id"]] = counts.get(d["region_id"], 0) + 1
+    regions = sorted(counts)
+    split = dict(zip(regions, _split(int(tf["value"]), [counts[r] for r in regions])))
+    return {"pool_initial": int(tf["value"]), "pool_by_region": split, "embodied_turn": None,
+            "mobilizing": [], "blocked": [], "incorporated": 0, "services": 0, "overseas_volunteers": 0,
+            "status_fr": "Territorial Force : catégorie DISTINCTE de l'armée régulière et des réserves (T-050) ; "
+                         "service intérieur, outre-mer seulement par volontariat (T-054). Répartition ESTIMÉE par division."}
+
+
 def scenario_echelons(n: dict, reserves_on_map: int, weights: dict) -> tuple[list, str]:
     """Échelons du jeu (part sur la carte), chacun réparti par région de district (plus forts restes).
 
@@ -282,6 +299,7 @@ def historical_forces(world: dict, nations: dict) -> tuple[dict, list]:
             "echelons": echelons, "echelon_mode": mode,
             "echelon_status_fr": (ECHELON_STATUS_FR[mode]),
             "posture": "paix", "allocation": dict(ALLOCATION_DEFAULT), "public_record": [],
+            "territorial_force": territorial_block(n),
             "district_pool_weights": dict(sorted(weights.items())),
             "arm_shares": {k: round(v, 6) for k, v in shares.items()},
             "districts_total": n_all, "districts_on_map": len(districts),

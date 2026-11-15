@@ -116,6 +116,8 @@ static func _military(view: Dictionary, world: WorldMap, rules: Dictionary, me: 
 			target = _war_target(view, world, me, enemies, here, enemy_presence, claimed)
 		elif political[here]["controller"] != me:
 			target = _step_towards(world, political, me, here, view["capital_region"])
+		if target != "" and bool(f.get("home_service_only", false)) and political[target]["sovereign"] != me:
+			target = ""  # Territorial Force en service intérieur : ne quitte pas le territoire national (T-054)
 		if target != "" and target != here:
 			claimed[target] = true
 			orders.append(Orders.move(me, f["id"], target))

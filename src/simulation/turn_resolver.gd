@@ -33,6 +33,8 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		elif order["type"] in [Orders.MOBILIZE, Orders.SET_MOBILIZATION_POSTURE, Orders.SET_MOBILIZATION_ALLOCATION, Orders.CALL_NEXT_ECHELON]:
 			if rules.has("forces"):
 				MobilizationSystem.apply_order(state, world, rules["forces"]["mobilization"], order)
+		elif order["type"] == Orders.TERRITORIAL_OVERSEAS and rules.has("forces"):
+			TerritorialForce.apply_overseas(state, rules["forces"], order)
 	# Les mouvements sont revalidés après la diplomatie (une déclaration de guerre du même
 	# tour peut autoriser l'entrée ; une paix peut l'interdire). Une formation = un ordre.
 	var moves: Array = []
@@ -125,6 +127,8 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 			return DefenseSystem.validate(state, rules["combat"], order) if rules.has("combat") else "règles de combat absentes"
 		Orders.MOBILIZE, Orders.SET_MOBILIZATION_POSTURE, Orders.SET_MOBILIZATION_ALLOCATION, Orders.CALL_NEXT_ECHELON:
 			return MobilizationSystem.validate(state, order, world, rules.get("forces", {}).get("mobilization", {}))
+		Orders.TERRITORIAL_OVERSEAS:
+			return TerritorialForce.validate_overseas(state, rules["forces"], order) if rules.has("forces") else "règles des forces absentes"
 		Orders.DECLARE_WAR, Orders.PROPOSE_TREATY, Orders.RESPOND_PROPOSAL, Orders.BREAK_TREATY, Orders.SEND_MESSAGE:
 			return DiplomacySystem.validate(state, order)
 	return "type d'ordre inconnu"

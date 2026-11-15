@@ -278,5 +278,26 @@
     }
    }
   }
+ },
+ "territorial_force": {
+  "_statut": "T-050, T-054 (VALIDÉS) ; phase 4. Valeurs PROVISOIRES (aucune source consultée ne fixe ces délais) sauf mention.",
+  "embodiment_posture": "generale",
+  "embodiment_note": "La Territorial Force est incorporée (« embodied ») quand le Royaume-Uni adopte la posture générale. Elle n'est pas appelée en posture préparatoire. L'incorporation est intégrale (toute la force à la fois), au rythme de son propre transit.",
+  "transit_months": {
+   "value": 1,
+   "status": "PROVISOIRE",
+   "note": "Minimum technique d'un tour mensuel ; aucune source consultée."
+  },
+  "overseas_min_months_embodied": {
+   "value": 3,
+   "status": "PROVISOIRE",
+   "note": "Délai minimal entre l'incorporation et un départ outre-mer. Repère : 69 218 hommes de la Territorial Force servaient à l'étranger au début de décembre 1914, quatre mois après l'incorporation (WO_1922 p. 153) ; les départs antérieurs ne sont pas chiffrés. 3 mois reste compatible avec ce repère, sans en être tiré."
+  },
+  "overseas_volunteer_share": {
+   "value": 1.0,
+   "status": "PROVISOIRE",
+   "note": "Part des hommes d'une formation qui se portent volontaires (Imperial Service). Aucune source consultée ne donne ce taux : valeur neutre (la formation part entière si le gouvernement le décide). Les non-volontaires restent au pays en service intérieur."
+  },
+  "home_regions_note": "Service intérieur : régions de souveraineté britannique (001 à 006)."
  }
 }

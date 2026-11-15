@@ -31,7 +31,7 @@
    "url": "https://archive.org/details/statisticsofmili00grea",
    "type": "statistique officielle nationale",
    "reliability": "haute",
-   "reliability_note": "Tableau (i)(b) p. 30 (PDF p. 40) et Section 10 p. 156-157 (PDF p. 168-169), contrôlés sur le fac-similé. Relu le 15/11/2026 (phase 1) sur l'image de la p. 30 (archive.org, page n39) : Territorial Force 10 684 officiers + 258 093 hommes = 268 777, avec la note † « Includes permanent staff of the Territorial Force ».",
+   "reliability_note": "Tableau (i)(b) p. 30 (PDF p. 40) et Section 10 p. 156-157 (PDF p. 168-169), contrôlés sur le fac-similé. Relu le 15/11/2026 (phase 1) sur l'image de la p. 30 (archive.org, page n39) : Territorial Force 10 684 officiers + 258 093 hommes = 268 777, avec la note † « Includes permanent staff of the Territorial Force ». Relu en phase 4 (15/11/2026) : p. 25-26 (commandements et divisions territoriales, avril 1920) dans le texte OCR ; p. 153 (Section 8) sur l'image du fac-similé.",
    "verified_on": "2026-11-15"
   },
   "ERICKSON_2000": {
@@ -1573,7 +1573,7 @@
     }
    },
    "territorial_force": {
-    "_statut": "T-050 et T-054 (VALIDÉS) : catégorie distincte, d'abord défense intérieure, déploiement outre-mer volontaire. Données de phase 1 : le moteur ne l'utilise pas encore (phase 4).",
+    "_statut": "T-050 et T-054 (VALIDÉS) : catégorie distincte, d'abord défense intérieure, déploiement outre-mer volontaire. Intégrée au jeu en phase 4 (15/11/2026) : voir docs/military/TERRITORIAL_FORCE.md.",
     "value": 268777,
     "reference_date": "1er août 1914",
     "definition": "Effectif réel (strength) de la Territorial Force au 1er août 1914 : 10 684 officiers et 258 093 hommes, personnel permanent compris.",
@@ -1603,7 +1603,95 @@
       "note": "Proche de l'effectif théorique (316 094) et non de l'effectif réel ; date et définition non précisées : non retenu."
      }
     ],
-    "deployment_rule": "Service intérieur au départ ; envoi outre-mer seulement par engagement volontaire (T-054). Pistes de source pour les délais : WO_1922 Section 8 (Territorial Force servant à l'étranger, par mois) et Section 2a (engagements volontaires) — non exploitées en phase 1."
+    "deployment_rule": "Service intérieur au départ ; envoi outre-mer seulement par engagement volontaire (T-054). Pistes de source pour les délais : WO_1922 Section 8 (Territorial Force servant à l'étranger, par mois) et Section 2a (engagements volontaires) — non exploitées en phase 1.",
+    "distribution": {
+     "status": "ESTIMATION",
+     "method": "14 divisions territoriales, à parts égales (les brigades montées de yeomanry et les autres troupes sont fondues dans les divisions). Région du jeu déduite du commandement territorial de rattachement et, pour la division galloise, de son nom.",
+     "source": "WO_1922",
+     "page": "p. 25-26, « Home Service Commands » (situation d'AVRIL 1920 : chaque commandement « also commands … Division, Territorial Force »)",
+     "limits": "Source postérieure de six ans : les 14 divisions de 1920 portent les noms des 14 divisions de 1914 (connaissance générale, non vérifiée dans une source de 1914). Effectifs par division inconnus. Aucune division en Irlande (régions 005 et 006) dans cette liste.",
+     "divisions": [
+      {
+       "name": "1st London",
+       "command_1920": "London District",
+       "region_id": "region_001"
+      },
+      {
+       "name": "2nd London",
+       "command_1920": "London District",
+       "region_id": "region_001"
+      },
+      {
+       "name": "East Anglian",
+       "command_1920": "Eastern",
+       "region_id": "region_001"
+      },
+      {
+       "name": "Home Counties",
+       "command_1920": "Eastern",
+       "region_id": "region_001"
+      },
+      {
+       "name": "Wessex",
+       "command_1920": "Southern",
+       "region_id": "region_001"
+      },
+      {
+       "name": "South Midland",
+       "command_1920": "Southern",
+       "region_id": "region_001"
+      },
+      {
+       "name": "Northumbrian",
+       "command_1920": "Northern",
+       "region_id": "region_002"
+      },
+      {
+       "name": "West Riding",
+       "command_1920": "Northern",
+       "region_id": "region_002"
+      },
+      {
+       "name": "North Midland",
+       "command_1920": "Northern",
+       "region_id": "region_002"
+      },
+      {
+       "name": "West Lancashire",
+       "command_1920": "Western",
+       "region_id": "region_002"
+      },
+      {
+       "name": "East Lancashire",
+       "command_1920": "Western",
+       "region_id": "region_002"
+      },
+      {
+       "name": "Highland",
+       "command_1920": "Scottish",
+       "region_id": "region_003"
+      },
+      {
+       "name": "Lowland",
+       "command_1920": "Scottish",
+       "region_id": "region_003"
+      },
+      {
+       "name": "Welsh",
+       "command_1920": "Western",
+       "region_id": "region_004"
+      }
+     ]
+    },
+    "arms_status": "ESTIMATION : ventilation par arme INCONNUE pour la Territorial Force ; le jeu applique les proportions de l'armée régulière britannique (US_WD_1916 p. 9), comme pour les Landwehr austro-hongroises.",
+    "deployment_evidence": {
+     "value": 69218,
+     "date": "début de décembre 1914",
+     "definition": "Territorial Force servant à l'étranger : 2 413 officiers et 66 805 hommes (France 22 026, Égypte 16 539, Inde 24 356, Gibraltar 2 011, Malte 4 286).",
+     "source": "WO_1922",
+     "page": "p. 153, Section 8, « Strength of the Territorial Force serving abroad (by months) », lue sur l'image du fac-similé",
+     "use": "Repère de vraisemblance : environ un quart de l'effectif du 1er août 1914 servait à l'étranger quatre mois après l'incorporation. Le tableau commence en décembre 1914 : les départs antérieurs ne sont pas chiffrés. Ce n'est pas un taux de volontariat."
+    }
    }
   },
   "italy": {

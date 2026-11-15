@@ -48,7 +48,7 @@ static func validate_move(state: GameState, world: WorldMap, rules: Dictionary, 
 		return "trop loin pour un mois (%d régions, portée provisoire %d)" % [path.size() - 1, int(mv["regions_per_month"])]
 	if not can_enter(state, order["nation"], target):
 		return "entrée non autorisée : ni guerre ni autorisation de passage avec %s" % state.controller(target)
-	return ""
+	return TerritorialForce.move_restriction(state, f, target)  # T-054 : service intérieur
 
 
 ## Résolution simultanée des déplacements (T-045). Retourne la liste des affrontements à traiter.

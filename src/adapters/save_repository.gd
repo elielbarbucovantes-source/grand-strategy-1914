@@ -10,7 +10,10 @@ const FORMAT := "gs1914.save"
 ## bloquées, comptabilité des pertes et des prisonniers. Version 1 refusée (Q9) : aucune migration
 ## fiable n'est possible (réservoir non échelonné, base historique corrigée en phase 1 : réservoirs
 ## allemand et italien, sièges russes ; pertes antérieures non comptabilisées).
-const FORMAT_VERSION := 2
+## Version 3 (phase 4) : Territorial Force (catégorie distincte). Version 2 refusée : sauvegardes de
+## développement des phases 2 et 3 seulement, sans Territorial Force (son incorporation ne pourrait pas
+## être reconstituée de façon certaine si la posture générale était déjà adoptée).
+const FORMAT_VERSION := 3
 const ENGINE := "Godot 4.7.2"
 
 
@@ -50,6 +53,8 @@ static func load_save(path: String, world: WorldMap, rules: Dictionary) -> Dicti
 		return {"error": "sauvegarde de l'ancien format (version 1, antérieure à la refonte de la mobilisation) : "
 			+ "migration impossible de façon fiable (réservoirs non échelonnés, données historiques corrigées, pertes non comptabilisées). "
 			+ "Commencez une nouvelle partie."}
+	if int(env.get("format_version", -1)) == 2:
+		return {"error": "sauvegarde de la version 2 (développement, sans Territorial Force) : migration non fiable. Commencez une nouvelle partie."}
 	if int(env.get("format_version", -1)) != FORMAT_VERSION:
 		return {"error": "version de sauvegarde incompatible (%s)" % str(env.get("format_version"))}
 	if int(env.get("rules_format_version", -1)) != int(rules.get("format_version", 0)):
