@@ -88,7 +88,7 @@ func _initialize() -> void:
 	ui.refresh()
 	await process_frame
 	var army_text := _text_of(ui.pages["Armée"])
-	check(army_text.contains("HISTORIQUE") and army_text.contains("1. Actifs au démarrage") and army_text.contains("5. Présents dans les unités")
+	check(army_text.contains("historique") and army_text.contains("1. Actifs au démarrage") and army_text.contains("5. Présents dans les unités")
 		and army_text.contains("6. Pertes") and army_text.contains("7. Prisonniers") and army_text.contains("Bloc unique"),
 		"onglet Armée : source historique, catégories (dont pertes et prisonniers) et bloc unique affichés")
 	check(army_text.contains("approximation non documentée"), "onglet Armée : approximation du bloc unique signalée (MIL01-P1-D1)")

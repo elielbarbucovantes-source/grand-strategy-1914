@@ -59,6 +59,9 @@ func _build() -> void:
 	for name in ["Pays", "Diplomatie", "Économie", "Industrie", "Armée", "Logistique", "Recherche", "Renseignement", "Événements", "Ordres"]:
 		var scroll := ScrollContainer.new()
 		scroll.name = name
+		if name == "Armée":
+			# Vérification visuelle (phase 3) : le texte doit se replier dans la largeur du panneau.
+			scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 		tabs.add_child(scroll)
 		var box := VBoxContainer.new()
 		box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -262,29 +265,28 @@ func _forces_panel(box: VBoxContainer) -> void:
 	var sum := session.forces_summary(st.player_nation)
 	var kind: String = sum["source_type"]
 	var mr: Dictionary = session.rules["forces"]["mobilization"]
-	var t := "[b]Source des effectifs du scénario[/b] : %s\n" % {"historical": "HISTORIQUE (%s)" % str(src.get("database", "")),
+	var t := "[b]Source des effectifs[/b] : %s\n" % {"historical": "historique (base MIL-01)",
 		"fictitious": "[color=#b03a2e]FICTIVE (bac à sable, valeurs de test)[/color]"}.get(str(src.get("type", "")), "inconnue")
 	if kind == "historical":
-		t += "Données : %s\n" % sum["data_status"]
-		t += "1. Actifs au démarrage : %d (dont %d hors carte)\n" % [int(sum["active_start"]), int(sum["active_off_map"])]
-		t += "2. Réservistes non appelés : %d sur %d (hors carte : %d)\n" % [int(sum["reserve_pool"]), int(sum["reserve_pool_initial"]), int(sum["reserves_off_map"])]
+		t += "Données : %s\n\n" % sum["data_status"]
+		t += "1. Actifs au démarrage : %s (dont %s hors carte)\n" % [_num(sum["active_start"]), _num(sum["active_off_map"])]
+		t += "2. Réservistes non appelés : %s sur %s (hors carte : %s)\n" % [_num(sum["reserve_pool"]), _num(sum["reserve_pool_initial"]), _num(sum["reserves_off_map"])]
 		for e: Dictionary in sum["echelons"]:
-			t += "    • %s : %d sur %d — %s%s\n" % [e["label_fr"], int(e["pool"]), int(e["pool_initial"]),
-				"ouvert" if e["opened"] else "fermé", "" if e["documented"] else " [color=#b03a2e](approximation non documentée)[/color]"]
-		t += "    [i]%s[/i]\n" % sum["echelon_status_fr"]
-		t += "3. En cours de mobilisation : %d (dont bloqués, voie coupée : %d)\n" % [int(sum["mobilizing"]) + int(sum["blocked"]), int(sum["blocked"])]
-		t += "4. Incorporés : %d\n" % int(sum["incorporated"])
-		t += "5. Présents dans les unités : %d (+ %d services non combattants)\n" % [int(sum["present_in_units"]), int(sum["present_services"])]
-		t += "6. Pertes (non ventilées : tués, blessés et disparus non distingués par la simulation) : %d\n" % int(sum["losses_total"])
-		t += "    Tués : non modélisé ; blessés temporairement indisponibles : non modélisé\n"
-		t += "7. Prisonniers : %d perdus (détenus par l'ennemi) ; %d détenus ; libérés ou rapatriés : %d (aucun mécanisme)\n" % [
-			int(sum["prisoners_lost"]), int(sum["prisoners_held"]), int(sum["released"]) + int(sum["repatriated"])]
-		t += "    Survivants d'armées anéanties ayant rejoint le territoire : %d (comptés parmi les présents)\n" % int(sum["rejoined"])
+			t += "      • %s : %s / %s — %s\n" % [e["label_fr"], _num(e["pool"]), _num(e["pool_initial"]), "ouvert" if e["opened"] else "fermé"]
+		if sum["echelon_mode"] == "bloc_unique":
+			t += "      [color=#e06c5c]Approximation non documentée historiquement (décision MIL01-P1-D1)[/color]\n"
+		t += "3. En cours de mobilisation : %s" % _num(int(sum["mobilizing"]) + int(sum["blocked"]))
+		t += (" (dont bloqués : %s)\n" % _num(sum["blocked"])) if int(sum["blocked"]) > 0 else "\n"
+		t += "4. Incorporés : %s\n" % _num(sum["incorporated"])
+		t += "5. Présents dans les unités : %s\n      + services non combattants : %s\n" % [_num(sum["present_in_units"]), _num(sum["present_services"])]
+		t += "6. Pertes : %s\n      [i]tués, blessés et disparus non distingués (non modélisé)[/i]\n" % _num(sum["losses_total"])
+		t += "7. Prisonniers perdus : %s ; détenus : %s\n      [i]libération et rapatriement : aucun mécanisme[/i]\n" % [_num(sum["prisoners_lost"]), _num(sum["prisoners_held"])]
+		if int(sum["rejoined"]) > 0:
+			t += "      Survivants ayant rejoint le territoire : %s (comptés parmi les présents)\n" % _num(sum["rejoined"])
 		var al: Dictionary = sum["allocation"]
-		t += "\n[b]Posture de mobilisation[/b] : %s (publique)\n" % mr["postures"][sum["posture"]]["label_fr"]
-		t += "Moyens : administration %d %%, chemins de fer %d %%, logistique %d %% (sans coût économique : système économique non défini)\n" % [
+		t += "\n[b]Posture de mobilisation[/b] : %s [i](publique)[/i]\n" % mr["postures"][sum["posture"]]["label_fr"]
+		t += "Moyens : administration %d %%, chemins de fer %d %%, logistique %d %%\n[i]Sans coût économique (économie non définie). Paramètres nationaux dérivés ou PROVISOIRES.[/i]" % [
 			int(al["administration"]), int(al["rail"]), int(al["logistics"])]
-		t += "[i]Paramètres nationaux : voir data/rules/forces_rules.json (dérivés ou PROVISOIRES). Posture accélérée reportée (Q1).[/i]"
 	elif kind == "fictitious":
 		t += "Aucune réserve ni mobilisation (bac à sable)."
 	else:
@@ -297,28 +299,51 @@ func _forces_panel(box: VBoxContainer) -> void:
 	for p: String in MobilizationSystem.POSTURES:
 		if p != sum["posture"]:
 			_button(row, "Posture : %s" % mr["postures"][p]["label_fr"], func() -> void: _queue(Orders.mobilization_posture(st.player_nation, p)))
-	_button(box, "Appeler l'échelon suivant (ordre du mois)", func() -> void: _queue(Orders.call_next_echelon(st.player_nation)))
+	if sum["echelon_mode"] != "bloc_unique":
+		_button(box, "Appeler l'échelon suivant", func() -> void: _queue(Orders.call_next_echelon(st.player_nation)))
+	_rich(box, "[b]Répartition des moyens[/b] [i](total : 100 %)[/i]")
 	var spins: Dictionary = {}
-	var arow := HBoxContainer.new()
-	box.add_child(arow)
 	for k: String in MobilizationSystem.MEANS:
-		_label(arow, {"administration": "Administration", "rail": "Chemins de fer", "logistics": "Logistique"}[k], 12)
+		var arow := HBoxContainer.new()
+		box.add_child(arow)
+		var l := _label(arow, {"administration": "Administration", "rail": "Chemins de fer", "logistics": "Logistique"}[k], 13)
+		l.custom_minimum_size.x = 140
 		var sp := SpinBox.new()
 		sp.max_value = 100
 		sp.suffix = "%"
 		sp.value = float(sum["allocation"][k])
 		arow.add_child(sp)
 		spins[k] = sp
-	_button(box, "Répartir les moyens (ordre du mois)", func() -> void:
+	_button(box, "Répartir les moyens", func() -> void:
 		_queue(Orders.mobilization_allocation(st.player_nation, int(spins["administration"].value), int(spins["rail"].value), int(spins["logistics"].value))))
 	var pub := session.public_mobilization()
-	var pt := "[b]Mobilisations publiques[/b] (posture et échelons ; volumes confidentiels) :\n"
+	var pt := "\n[b]Mobilisations publiques[/b] [i](postures et échelons ; volumes confidentiels)[/i]\n"
 	for nid: String in pub:
 		if nid == st.player_nation:
 			continue
 		var opened: Array = (pub[nid]["opened_echelons"] as Array).map(func(e: Dictionary) -> String: return e["label_fr"])
-		pt += "%s : %s%s\n" % [st.nations[nid]["name_fr"], pub[nid]["posture_fr"], (" — échelons ouverts : " + ", ".join(opened)) if not opened.is_empty() else ""]
+		pt += "• %s : %s%s\n" % [st.nations[nid]["name_fr"], pub[nid]["posture_fr"], (" — " + ", ".join(opened)) if not opened.is_empty() else ""]
 	_rich(box, pt)
+
+
+## Libellé qui se replie dans la largeur du panneau (sinon sa largeur minimale élargit tout l'onglet).
+func _wrap(l: Label) -> Label:
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	l.custom_minimum_size.x = 120
+	return l
+
+
+## Nombre lisible : séparateur de milliers (espace insécable fine).
+func _num(v: Variant) -> String:
+	if v == null:
+		return "inconnu"
+	var s := str(absi(int(v)))
+	var out := ""
+	while s.length() > 3:
+		out = "\u202f" + s.substr(s.length() - 3) + out
+		s = s.substr(0, s.length() - 3)
+	return ("-" if int(v) < 0 else "") + s + out
 
 
 func _page_army() -> void:
@@ -333,7 +358,7 @@ func _page_army() -> void:
 		box.add_child(row)
 		var txt := "%s — %s%s%s" % [f["name_fr"], session.world.regions[f["region"]]["name_fr"],
 			"" if f["supplied"] else " (coupée)", (" → " + session.world.regions[f["planned_target"]]["name_fr"]) if f["planned_target"] != "" else ""]
-		_label(row, txt, 13)
+		_wrap(_label(row, txt, 13))
 		var b := _button(row, "Sélectionnée" if map_view.selected_formation == f["id"] else "Sélectionner", func() -> void:
 			map_view.selected_formation = "" if map_view.selected_formation == f["id"] else f["id"]
 			map_view.center_on(f["region"])
@@ -341,7 +366,7 @@ func _page_army() -> void:
 		b.toggle_mode = true
 		b.button_pressed = map_view.selected_formation == f["id"]
 		var soldiers: Variant = st.soldiers_of(f["id"])
-		var extra := "Effectif : %s ; moral d'armée : %s%s%s" % ["[i]inconnu (MIL-01)[/i]" if soldiers == null else str(soldiers),
+		var extra := "Effectif : %s ; moral d'armée : %s%s%s" % ["[i]inconnu (MIL-01)[/i]" if soldiers == null else _num(soldiers),
 			"—" if f.get("morale") == null else "%.0f" % float(f["morale"]), " ; [color=#b03a2e]ENCERCLÉE[/color]" if f.get("encircled", false) else "",
 			" ; [color=#b03a2e]ENGAGÉE[/color]" if st.is_engaged(f["id"]) else ""]
 		_rich(box, extra)
@@ -349,7 +374,7 @@ func _page_army() -> void:
 			var su: Dictionary = st.formations[uid]
 			var urow := HBoxContainer.new()
 			box.add_child(urow)
-			_label(urow, "   %s : %s soldats, moral %s" % [su["name_fr"], str(su.get("soldiers")), "—" if su.get("morale") == null else "%.0f" % float(su["morale"])], 11)
+			_wrap(_label(urow, "   %s : %s soldats, moral %s" % [su["name_fr"], _num(su.get("soldiers")), "—" if su.get("morale") == null else "%.0f" % float(su["morale"])], 11))
 			var rb := CheckBox.new()
 			rb.text = "réserve"
 			rb.button_pressed = bool(su.get("reserve", false))
@@ -357,7 +382,10 @@ func _page_army() -> void:
 				var err := session.set_reserve(uid, on)
 				say(("Réserve : " + ("oui" if on else "non")) if err == "" else ("Refusé : " + err)))
 			urow.add_child(rb)
-		_button(box, "Préparer les défenses de %s" % session.world.regions[f["region"]]["name_fr"], func() -> void: request_planning.emit(f["region"]))
+		var full := "Préparer les défenses de %s" % session.world.regions[f["region"]]["name_fr"]
+		var db := _button(box, full, func() -> void: request_planning.emit(f["region"]))
+		db.clip_text = true  # noms de régions longs : le libellé ne doit pas élargir le panneau
+		db.tooltip_text = full
 	_rich(box, "\nCréation libre de formations, entraînement, équipement, démobilisation : %s (MIL-02 ouvert).\nBatailles tactiques : fonctionnelles quand les effectifs des deux camps sont connus ; sinon (États hors MIL-01) l'affrontement est clos sans issue (repli neutre documenté)." % NOT_FUNCTIONAL)
 	if not st.battles.is_empty():
 		_rich(box, "\n[b]Dernières batailles[/b]")
