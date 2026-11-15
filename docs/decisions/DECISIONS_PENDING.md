@@ -81,7 +81,7 @@ Les choix suivants restent **À DÉFINIR** dans le travail cartographique en cou
 - **DIP-03 — Acceptation/négociation : À DÉFINIR.** Options d’offre, refus, contre-offre et facteurs d’acceptation.
 - **DIP-04 — Guerre/crise/paix : À DÉFINIR.** Déclaration, escalade, fin de guerre et règlement territorial.
 - **DIP-05 — Information diplomatique : À DÉFINIR.** Confidentialité des accords et connaissance par les tiers. *Ajout du 15/11/2026 : **T-056** — une mobilisation est publiquement visible ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
-- **AI-01 — Objectifs nationaux : À DÉFINIR.** Priorités, adaptation et réévaluation. *Ajout du 15/11/2026 : **T-052** (doctrine nationale de mobilisation, seuils de menace, réaction aux mobilisations étrangères, sans information secrète) **VALIDÉ** ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`.*
+- **AI-01 — Objectifs nationaux : À DÉFINIR.** Priorités, adaptation et réévaluation. *Ajout du 15/11/2026 : **T-052** (doctrine nationale de mobilisation, seuils de menace, réaction aux mobilisations étrangères, sans information secrète) **VALIDÉ** ; voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`. Implémenté en phase 3 de MIL-01, avec des doctrines PROPOSÉES (`data/rules/ai_doctrines.json`, `docs/military/MOBILISATION_IA.md`).*
 - **AI-02 — Décision : À DÉFINIR.** Architecture cognitive, poids, personnalité et risque.
 - **AI-03 — Mémoire/apprentissage : À DÉFINIR.** Contenu, durée, persistance entre parties et effets ; aucun apprentissage implicite.
 - **AI-04 — Limites d’information : principe VALIDÉ, détail À DÉFINIR.** Perception, fiabilité et actions anti-omniscience.

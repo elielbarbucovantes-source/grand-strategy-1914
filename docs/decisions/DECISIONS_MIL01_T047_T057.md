@@ -16,17 +16,17 @@
 
 | ID | Objet | Choix | Remplace ou tranche | État au 15/11/2026 |
 |---|---|---|---|---|
-| T-047 | Effectifs historiques | Armées actives de 1914 au départ ; réserves mobilisables progressivement ; cinq catégories distinctes | Complète MIL-01 et MIL-02 | D, I partielle (la sixième grandeur, les pertes, manque), T en temps de paix |
+| T-047 | Effectifs historiques | Armées actives de 1914 au départ ; réserves mobilisables progressivement ; cinq catégories distinctes | Complète MIL-01 et MIL-02 | D, I, T (phases 1 et 2 : catégories séparées, pertes et prisonniers, conservation testée) |
 | T-048 | Intensité des combats | **D** : intensité variable selon le type d'engagement | Précise MIL-06 et T-042 | D ; non implémentée |
-| T-049 | Vitesse de mobilisation | **B** : réaliste et flexible | Précise MIL-02 | D ; non implémentée (rythme identique pour tous) |
+| T-049 | Vitesse de mobilisation | **B** : réaliste et flexible | Précise MIL-02 | D, I, T (phase 2) : paramètres nationaux ; seul le rythme allemand est dérivé, les autres sont PROVISOIRES |
 | T-050 | Territorial Force britannique | **B** : catégorie militaire distincte | — | D ; non implémentée |
-| T-051 | Plafond de mobilisation | **C** : mobilisation progressive par échelons | Audit K-1 | D ; données d'échelons en base (phase 1, partielles : 2 puissances sur 7) ; moteur non implémenté |
-| T-052 | Mobilisation de l'IA | **D** : doctrine nationale et réaction au contexte stratégique | Audit K-3 | D ; non implémentée |
-| T-053 | Influence du joueur | **C** : posture générale et allocation de moyens | Audit K-2 | D ; non implémentée |
+| T-051 | Plafond de mobilisation | **C** : mobilisation progressive par échelons | Audit K-1 | D, I, T (phase 2) : échelons pour 2 puissances sur 7, bloc unique pour les autres (MIL01-P1-D1) |
+| T-052 | Mobilisation de l'IA | **D** : doctrine nationale et réaction au contexte stratégique | Audit K-3 | D, I, T (phase 3) ; doctrines PROPOSÉES ; voir `docs/military/MOBILISATION_IA.md` |
+| T-053 | Influence du joueur | **C** : posture générale et allocation de moyens | Audit K-2 | D, I, T (phase 2) : postures et allocation, sans coût économique (Q1, Q2) |
 | T-054 | Territorial Force : emploi | **B** : déploiement outre-mer volontaire | Audit K-4 | D ; non implémentée |
 | T-055 | Type d'engagement | **C** : choix de l'attaquant, posture du défenseur, combinés aux circonstances | Audit K-5 (en partie) | D ; non implémentée |
-| T-056 | Mobilisation en temps de paix | **A** : libre, sans pénalité diplomatique automatique, publiquement visible | Audit K-6 (1re question) | D ; partielle (libre et sans pénalité ; **pas de visibilité publique**) |
-| T-056 bis | Réservistes en territoire occupé | **B** : rejoignent leur armée si une voie de communication reste accessible, sinon bloqués | Audit K-6 (2e question) | D ; partielle (blocage seulement) |
+| T-056 | Mobilisation en temps de paix | **A** : libre, sans pénalité diplomatique automatique, publiquement visible | Audit K-6 (1re question) | D, I, T (phase 2) : posture et échelons publics, volumes confidentiels |
+| T-056 bis | Réservistes en territoire occupé | **B** : rejoignent leur armée si une voie de communication reste accessible, sinon bloqués | Audit K-6 (2e question) | D, I, T (phase 2) : communications terrestres, alliés compris, mer exclue |
 | T-057 | Début de campagne | **A** : janvier 1914 | **Tranche R-13** ; audit K-7 | D, I, T (phase 1) ; F : menu (sélecteur réservé au bac à sable), non vérifié à l'écran |
 
 ## 2. Texte des décisions
