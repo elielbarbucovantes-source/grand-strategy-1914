@@ -11870,7 +11870,7 @@
   "database": "data/history/military_forces_1914.json",
   "database_sha256": "ff7ee8737c96dacfdc901a85137114b34f6d41c5401a04845521415f478a7f1a",
   "rules": "data/rules/forces_rules.json",
-  "rules_sha256": "387c0b5e4b054b503480f19d3e528094cd02e201fbc5f917e67122bbc7553160",
+  "rules_sha256": "d3e8f94b6b9de68aaec504c21c109579f72782f3723c5e76a881f0f2f38bfcc5",
   "nations_documented": [
    "austria_hungary",
    "france",

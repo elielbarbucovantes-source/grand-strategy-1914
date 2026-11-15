@@ -106,7 +106,7 @@ Les catégories sont exclusives (`ForceLedger.out_of_ranks`).
 | Commande (sur ce poste) | Résultat |
 |---|---|
 | `bash tests/run.sh` | **94 réussis, 0 échec** ; interface stratégique VALIDÉE ; interface de bataille VALIDÉE |
-| GitHub Actions | Voir le compte rendu de fin d'étape |
+| GitHub Actions | 1re exécution (`42d3086`) : **ÉCHEC** au contrôle « scénarios à jour ». Le scénario contient l'empreinte de `forces_rules.json`, que je n'avais pas régénérée après l'ajout du bloc `casualties` ; les tests locaux ne contrôlent pas cette empreinte. Corrigé par régénération : seule la ligne d'empreinte change. Résultat après correction : voir le compte rendu de fin d'étape. |
 
 **Couverture des 16 tests demandés** (`test_casualty_accounting.gd`, sauf mention) :
 
