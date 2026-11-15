@@ -35,6 +35,12 @@ Comparer ces chiffres tels quels serait une erreur. La règle retenue :
    - Source commune : US War Department 1916, tableau p. 9, qui applique la même définition à six des sept puissances.
    - Exclus : réserves, milices non présentes, troupes coloniales et indigènes hors d'Europe.
 2. **Réserves** : « réservistes entièrement instruits disponibles pour le passage au pied de guerre » (même tableau p. 9, estimation de 1911).
+   - **Plafond de cohérence (phase 1, 15/11/2026).** Actif + réserves ne peut dépasser le total des instruits que la même source donne pour la puissance (rubrique « Total war strength » de chaque fiche nationale). Ce total est lu comme incluant l'armée active : c'est une lecture **probable** (la rubrique désigne l'effectif de guerre), que le texte ne dit pas explicitement.
+     - Allemagne : 4 610 000 (p. 28) − 806 016 = **3 803 984** (au lieu de 4 000 000).
+     - Italie : 1 300 000 (p. 66) − 305 033 = **994 967** (au lieu de 1 250 000).
+     - France (3,8 M, p. 20) et Russie (6,0 M, p. 45) : plafond sans effet.
+     - Autriche-Hongrie : non appliqué, car le total (« fully trained men subject to call », p. 38) désigne des hommes à rappeler, donc hors actifs.
+     - Le contrôle est enregistré dans `reserves.source_total_check` et vérifié par `test_database_totals_coherent_with_sources`.
    - Royaume-Uni : statistique officielle de 1922 (Army Reserve + Special Reserve).
    - Empire ottoman : estimation de l'état-major ottoman rapportée par Erickson.
 3. **Exceptions motivées** : une source nationale remplace la source commune seulement si sa définition est identique et sa date plus précise.
@@ -46,6 +52,24 @@ Comparer ces chiffres tels quels serait une erreur. La règle retenue :
    - Ces chiffres servent de contrôle de vraisemblance, jamais de valeur de jeu.
 
 **Biais connu.** Les réserves de la source commune datent de 1911. La source le dit elle-même : les augmentations ultérieures n'ont pas été publiées. Ce sont probablement des minimums.
+
+## 2 bis. Échelons de mobilisation (T-051)
+
+T-051 (VALIDÉ) demande une mobilisation par échelons **historiquement documentés**. Le bloc `mobilization_echelons` de chaque puissance contient trois échelons : premier échelon (plan de 1914), échelons suivants, réserves résiduelles.
+
+**Règles :**
+- un échelon sans donnée fiable vaut `null`, avec le statut « introuvable » et son motif ;
+- aucun total n'est réparti arbitrairement entre échelons ;
+- un échelon « dérivé » est la différence de deux totaux sourcés, avec son calcul et sa précision ;
+- la somme des échelons documentés ne dépasse jamais le réservoir (testé).
+
+| Puissance | 1er échelon | Échelons suivants | Résiduel |
+|---|---|---|---|
+| Allemagne | 2 993 984 (dérivé : 3,8 M mobilisés en août 1914, Bundesarchiv, moins l'actif) | 810 000 (dérivé : 4 610 000 − 3 800 000 ; composition non documentée) | introuvable (non-instruits) |
+| Autriche-Hongrie | 1 347 285 (dérivé : armée commune et Landwehrs au pied de guerre, US WD p. 38, moins l'actif) | 652 715 (dérivé : 2 000 000 − premier échelon) | introuvable |
+| France, Russie, Royaume-Uni, Italie, Empire ottoman | introuvable | introuvable | introuvable |
+
+Les sources qui permettraient de documenter les échelons manquants sont listées dans `BIBLIOGRAPHIE.md` (non consultées). Le moteur n'utilise pas encore ces échelons : c'est l'objet de la phase 2.
 
 ## 3. Répartition territoriale (ESTIMATION documentée)
 
@@ -68,7 +92,11 @@ Les sources consultées ne donnent **pas** l'effectif présent dans chaque régi
 6. Le réservoir de réserves est réparti avec la même clé. Les réservistes rejoignent les dépôts de leur district.
 
 **Statut des sièges :**
-- Les sièges confirmés par une source consultée portent `hq_verification = "vérifié"`. C'est le cas de la Garde à Berlin, des XVe et XVIe corps en Alsace-Lorraine, des XXe (Allenstein) et XXIe (Sarrebruck) corps, et d'Aldershot.
+- Les sièges confirmés par une source consultée portent `hq_verification = "vérifié"`. C'est le cas :
+  - de la Garde à Berlin, des XXe (Allenstein) et XXIe (Sarrebruck) corps, et d'Aldershot ;
+  - des XVe et XVIe corps, au niveau de la province seulement (« vérifié (province seulement) ») : la source dit « stationed in Alsace-Lorraine », sans les villes ;
+  - **des 27 corps russes d'Europe** (phase 1), d'après l'état officiel abrégé des troupes au 1er mars 1914 (`RU_RASPISANIE_1914`). Deux sièges ont été corrigés : **VIe corps à Białystok** (région 057, et non Łomża, région 056) et **VIIe corps à Simferopol** (région 063, et non Iekaterinoslav).
+- Les IIe et IIIe corps ottomans restent rattachés à Constantinople, avec le statut « à vérifier — indice contraire » : des indices secondaires les placent en Thrace (régions 088 et 089), mais aucune source primaire n'a été consultée.
 - Les autres sièges relèvent de la connaissance encyclopédique courante et sont marqués **« à vérifier »**. Ils n'influent que sur la répartition estimée.
 
 ## 4. Forces hors de la carte
@@ -114,8 +142,7 @@ Pour le reste, les sources primaires recommandées sont :
 - Erickson, *Ordered to Die* (2001) ;
 - *Rospis' voisk* de 1914 (état-major russe).
 
-## 8. Mois de départ (R-13 ouvert)
+## 8. Mois de départ (T-057, VALIDÉ)
 
-- Les effectifs représentent l'armée **du temps de paix**, avant la mobilisation de fin juillet 1914.
-- Ils sont utilisés quel que soit le mois de départ choisi.
-- Partir après juillet 1914 ne reproduit donc **pas** la mobilisation historique : c'est au joueur de la décréter. Cette limite est liée à R-13.
+- La campagne historique commence en **janvier 1914** (T-057, qui tranche R-13). Le bac à sable fictif garde un mois librement configurable.
+- Les effectifs représentent l'armée **du temps de paix**. Les sources sont datées de juillet 1914 (US WD), du 1er août 1914 (War Office) ou du 1er mars 1914 (sièges russes) : l'écart avec janvier 1914 est faible pour les effectifs du temps de paix, mais il n'est pas mesuré.

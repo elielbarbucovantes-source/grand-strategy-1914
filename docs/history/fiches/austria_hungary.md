@@ -45,6 +45,18 @@
 
 Part des réserves sur la carte : 1/1 — Tous les districts sont sur la carte.
 
+**Contrôle de cohérence avec la source :** « Austria has 2,000,000 fully trained men subject to call » : hommes à rappeler, donc hors actifs ; c'est la valeur du réservoir elle-même. Aucun total actifs compris dans la source : contrôle sans objet.
+
+### Échelons de mobilisation (T-051)
+
+T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).
+
+| Échelon | Valeur | Statut | Sources | Définition, calcul ou motif |
+|---|---|---|---|---|
+| Premier échelon : armée commune et Landwehrs au pied de guerre | **1 347 285** | dérivé | US_WD_1916 | Effectif de guerre des formations de première ligne (armée commune 1 360 000, Landwehr autrichienne 240 000, Landwehr hongroise 220 000), moins l'armée active. 1 360 000 + 240 000 + 220 000 = 1 820 000 ; 1 820 000 − 472 715 (actif) = 1 347 285. Le chiffre 240 000 est lu « 2-10,000 » par l'OCR ; il est confirmé par le total du passage (4 320 000). Estimation américaine non datée (« latest estimate »), pas le plan officiel austro-hongrois ; le document qualifie les données de la Landwehr de « little more than an incomplete guess ». Délais : introuvable. |
+| Échelons suivants : autres instruits | **652 715** | dérivé | US_WD_1916 | Différence entre les hommes entièrement instruits rappelables (2 000 000, p. 37-38) et le premier échelon. 2 000 000 − 1 347 285 = 652 715. NON DOCUMENTÉE. Le même passage donne Landsturm 2 000 000 et réserve d'Ersatz 500 000, catégories en partie non instruites : elles ne sont pas des échelons d'instruits. Délais : introuvable. |
+| Réserves résiduelles | ****inconnu**** | introuvable | — | Landsturm (2 000 000) et réserve d'Ersatz (500 000), p. 38 : catégories mêlant instruits et non instruits, sans ventilation ; non utilisables. |
+
 ### Ventilation par arme
 
 Source : `US_WD_1916` p. 9 ; périmètre : armée commune seule

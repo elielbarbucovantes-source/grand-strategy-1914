@@ -20,14 +20,14 @@
 | T-048 | Intensité des combats | **D** : intensité variable selon le type d'engagement | Précise MIL-06 et T-042 | D ; non implémentée |
 | T-049 | Vitesse de mobilisation | **B** : réaliste et flexible | Précise MIL-02 | D ; non implémentée (rythme identique pour tous) |
 | T-050 | Territorial Force britannique | **B** : catégorie militaire distincte | — | D ; non implémentée |
-| T-051 | Plafond de mobilisation | **C** : mobilisation progressive par échelons | Audit K-1 | D ; non implémentée |
+| T-051 | Plafond de mobilisation | **C** : mobilisation progressive par échelons | Audit K-1 | D ; données d'échelons en base (phase 1, partielles : 2 puissances sur 7) ; moteur non implémenté |
 | T-052 | Mobilisation de l'IA | **D** : doctrine nationale et réaction au contexte stratégique | Audit K-3 | D ; non implémentée |
 | T-053 | Influence du joueur | **C** : posture générale et allocation de moyens | Audit K-2 | D ; non implémentée |
 | T-054 | Territorial Force : emploi | **B** : déploiement outre-mer volontaire | Audit K-4 | D ; non implémentée |
 | T-055 | Type d'engagement | **C** : choix de l'attaquant, posture du défenseur, combinés aux circonstances | Audit K-5 (en partie) | D ; non implémentée |
 | T-056 | Mobilisation en temps de paix | **A** : libre, sans pénalité diplomatique automatique, publiquement visible | Audit K-6 (1re question) | D ; partielle (libre et sans pénalité ; **pas de visibilité publique**) |
 | T-056 bis | Réservistes en territoire occupé | **B** : rejoignent leur armée si une voie de communication reste accessible, sinon bloqués | Audit K-6 (2e question) | D ; partielle (blocage seulement) |
-| T-057 | Début de campagne | **A** : janvier 1914 | **Tranche R-13** ; audit K-7 | D ; non appliquée (le mois reste au choix du joueur dans le code et les données) |
+| T-057 | Début de campagne | **A** : janvier 1914 | **Tranche R-13** ; audit K-7 | D, I, T (phase 1) ; F : menu (sélecteur réservé au bac à sable), non vérifié à l'écran |
 
 ## 2. Texte des décisions
 
@@ -47,6 +47,8 @@
 **Points non tranchés :**
 - liste des types d'engagement : l'audit cite à titre d'exemple escarmouche, combat limité, assaut et grande bataille ;
 - **fourchettes de pertes visées par type** (audit K-5).
+
+**Précision du directeur (15/11/2026) :** préparer des propositions de fourchettes et des simulations comparatives, sans les appliquer avant validation.
 
 ### T-049 — Vitesse de mobilisation (choix B)
 
@@ -69,7 +71,7 @@
 
 **Les échelons doivent être historiquement documentés. Aucun chiffre arbitraire.**
 
-**Points non tranchés :** conduite à tenir pour une puissance dont un échelon reste introuvable dans les sources.
+**Précision du directeur (15/11/2026) :** un échelon sans données historiques suffisamment fiables reste « introuvable ». Un total global n'est jamais réparti arbitrairement entre échelons. Les échelons documentés restent utilisables indépendamment.
 
 ### T-052 — Mobilisation de l'IA (choix D)
 
@@ -84,6 +86,8 @@
 **Points non tranchés :**
 - liste des postures ;
 - nature des coûts : le modèle économique (R-03, ECO-01, ECO-02, ECO-05) n'est pas défini.
+
+**Précision du directeur (15/11/2026) :** aucun système économique parallèle ne doit être créé. Il faut identifier les besoins et les dépendances, puis attendre si nécessaire la définition des mécanismes économiques concernés.
 
 ### T-054 — Territorial Force : déploiement (choix B)
 
@@ -116,9 +120,9 @@
 
 **Conséquences documentaires :**
 - **R-13 est tranchée** pour la campagne historique ;
-- le code (`src/ui/main.gd`, `src/core/game_calendar.gd`), les données (`data/rules/game_rules.json`, `data/scenarios/*.json`), les tests (`tests/unit/test_world_and_state.gd`) et la documentation (`docs/history/MIL01_METHODE.md` §8) indiquent encore « R-13 ouvert ». Ils seront mis à jour dans la phase concernée, pas par ce registre.
+- **Appliquée en phase 1** (15/11/2026) : scénario de campagne `start.month = 1`, refus d'un autre mois par `GameSession.new_game`, sélecteur de mois réservé au bac à sable dans le menu, tests mis à jour.
 
-**Points non tranchés :** le bac à sable fictif doit-il garder un mois au choix ?
+**Précision du directeur (15/11/2026) :** le bac à sable fictif conserve un mois de départ librement configurable.
 
 ## 3. Correspondance avec l'audit MIL-01
 

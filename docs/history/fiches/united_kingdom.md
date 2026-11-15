@@ -41,10 +41,40 @@
 |---|---|---|---|---|
 | 215 000 | `US_WD_1916` | p. 9 | Réserves instruites (« Regulars only ») |  |
 
-- Exclu : **Territorial Force** (268 777, WO_1922 p. 30) : Force volontaire à temps partiel de défense intérieure, distincte des réserves de l'armée régulière ; non comptée dans le réservoir (catégorie à modéliser si le directeur le décide).
+- Exclu : **Territorial Force** (268 777, WO_1922 p. 30) : Catégorie militaire DISTINCTE (T-050, VALIDÉ) : non comptée dans le réservoir ; voir le bloc `territorial_force`.
 - Exclu : **National Reserve (1er octobre 1913)** (215 451, WO_1922 p. 30) : Registre d'anciens soldats sans obligation de rappel.
 
 Part des réserves sur la carte : 1/1 — Les réservistes (Army Reserve, Special Reserve) sont rappelés au Royaume-Uni ; les garnisons d'Inde et des colonies ne concernent que l'armée active.
+
+**Contrôle de cohérence avec la source :** Réservoir = Army Reserve 145 347 + Special Reserve 63 933 (lignes du tableau du 1er août 1914). Contrôle : la valeur égale exactement la somme des deux lignes (testé).
+
+### Échelons de mobilisation (T-051)
+
+T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).
+
+| Échelon | Valeur | Statut | Sources | Définition, calcul ou motif |
+|---|---|---|---|---|
+| Premier échelon : rappel des réserves de l'armée régulière | ****inconnu**** | introuvable | — | Les effectifs sont sourcés (Army Reserve 145 347, Special Reserve 63 933 au 1er août 1914, WO_1922 p. 30), mais aucune source consultée ne dit quelle part était appelée par le plan de 1914. Le rappel intégral est probable, mais il n'est pas documenté ici. La Territorial Force relève d'une catégorie distincte (T-050), voir `territorial_force`. |
+| Échelons suivants | ****inconnu**** | introuvable | — | Même lacune documentaire. |
+| Réserves résiduelles | ****inconnu**** | introuvable | — | La National Reserve (215 451) est un registre sans obligation de rappel : exclue (WO_1922 p. 30). |
+
+### Territorial Force (catégorie distincte, T-050 et T-054)
+
+T-050 et T-054 (VALIDÉS) : catégorie distincte, d'abord défense intérieure, déploiement outre-mer volontaire. Données de phase 1 : le moteur ne l'utilise pas encore (phase 4).
+
+| Champ | Contenu |
+|---|---|
+| Effectif réel | **268 777** |
+| Date | 1er août 1914 |
+| Définition | Effectif réel (strength) de la Territorial Force au 1er août 1914 : 10 684 officiers et 258 093 hommes, personnel permanent compris. |
+| Source | `WO_1922` — War Office, Statistics of the Military Effort of the British Empire during the Great War, 1914-1920. Londres, HMSO, mars 1922. |
+| Page | p. 30, tableau (i)(b), note † « Includes permanent staff of the Territorial Force » |
+| Effectif théorique | 316 094 (Effectif théorique (establishment) à la même date : 12 700 officiers et 303 394 hommes) |
+| Double comptage | Le total du tableau (733 514) est la somme exacte des sept lignes, dont l'armée régulière (247 432), l'Army Reserve, la Special Reserve et la Territorial Force (268 777) : la source les traite comme des catégories disjointes. La présence éventuelle du personnel permanent (militaires de carrière) aussi dans la ligne « Regular Army » n'est pas tranchée par cette page ; le total additif indique que non (PROBABLE). |
+| Emploi | Service intérieur au départ ; envoi outre-mer seulement par engagement volontaire (T-054). Pistes de source pour les délais : WO_1922 Section 8 (Territorial Force servant à l'étranger, par mois) et Section 2a (engagements volontaires) — non exploitées en phase 1. |
+
+- Non inclus : **Territorial Force Reserve** (2 082, p. 30) : Ligne distincte du même tableau ; non incluse.
+- Divergence : 315 408 (`US_WD_1916` p. 9, note 4) — « Territorial force, British Isles, numbers 315,408 » (date non précisée) Proche de l'effectif théorique (316 094) et non de l'effectif réel ; date et définition non précisées : non retenu.
 
 ### Ventilation par arme
 

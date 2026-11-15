@@ -14,7 +14,7 @@ $GODOT --headless --path . --script tests/demo_campaign.gd   # démonstration re
 ```
 
 **Jouer un tour :**
-1. Au menu, choisir une des 7 puissances et le **mois de départ** (R-13 ouvert), puis « Nouvelle partie ».
+1. Au menu, choisir une des 7 puissances et le scénario, puis « Nouvelle partie ». La campagne historique commence en janvier 1914 (T-057) ; seul le bac à sable laisse choisir le **mois de départ**.
 2. Naviguer sur la carte : molette pour le zoom, clic droit maintenu pour se déplacer, flèches du clavier.
 3. Cliquer une région pour l'onglet **Pays** : souveraineté, contrôle, voisins mis en évidence, villes, zones maritimes.
 4. Dans l'onglet **Armée**, sélectionner une formation, puis cliquer une région voisine : l'ordre est préparé (flèche rouge), ou refusé avec son motif.

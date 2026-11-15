@@ -10,7 +10,8 @@ Chaque identifiant (`US_WD_1916`…) est la clé utilisée dans `data/history/mi
 | Clé | Référence | Accès | Type | Fiabilité | Passages contrôlés |
 |---|---|---|---|---|---|
 | `US_WD_1916` | United States War Department, Office of the Chief of Staff, War College Division, General Staff No. 22, *Strength and Organization of the Armies of France, Germany, Austria, Russia, England, Italy, Mexico and Japan (Showing Conditions in July, 1914)*, Washington, GPO, 1916 (War Dept. Doc. No. 499) | https://archive.org/details/strengthorganiza00unit (Library of Congress) | Publication officielle contemporaine d'un État neutre (renseignement) | **Moyenne** : homogène et datée, mais ce sont des estimations ; la source avertit p. 5 (« no accurate estimate can be given… ») | p. 5, 9 (tableaux, contrôlés sur le fac-similé, PDF p. 15), 15, 20, 22, 28, 29, 30, 34, 37, 38, 39, 42, 43, 45, 46, 60, 63, 66, 67 |
-| `WO_1922` | War Office, *Statistics of the Military Effort of the British Empire during the Great War, 1914–1920*, Londres, HMSO, 1922 | https://archive.org/details/statisticsofmili00grea | Statistique officielle nationale | **Haute** | p. 30, tableau (i)(b) (PDF p. 40) ; p. 156-157, Section 10 (PDF p. 168-169, contrôlées sur l'image) ; p. 777 (PDF p. 795) |
+| `WO_1922` | War Office, *Statistics of the Military Effort of the British Empire during the Great War, 1914–1920*, Londres, HMSO, 1922 | https://archive.org/details/statisticsofmili00grea | Statistique officielle nationale | **Haute** | p. 30, tableau (i)(b) (PDF p. 40 ; **recontrôlé sur l'image le 15/11/2026** : Territorial Force 268 777, note † « Includes permanent staff ») ; p. 156-157, Section 10 (PDF p. 168-169, contrôlées sur l'image) ; p. 777 (PDF p. 795) |
+| `RU_RASPISANIE_1914` | Главный штаб, *Краткое расписание сухопутных войск*, исправлено по сведениям к 1-му марта 1914 г., Saint-Pétersbourg, 1914 (état abrégé officiel des troupes de terre, à jour au 1er mars 1914) | https://archive.org/details/kratkoeraspisaniesuhoputnyhvojskpogo93 | **Source primaire** officielle (état-major russe) | **Haute** (OCR imparfait, orthographe pré-1918) | p. 214-226 : sièges des 27 corps européens (« Штабъ г. … »), lus dans le texte OCR le 15/11/2026 |
 | `ERICKSON_2000` | Edward J. Erickson, « Turkey Prepares for War, 1913–1914 », *Relevance: The Quarterly Journal of the Great War Society*, printemps 2000 | Reprise : https://roadstothegreatwar-ww1.blogspot.com/2019/01/turkey-prepares-for-war-19131914.html | Article d'un historien spécialiste, lu dans une reprise en ligne | **Moyenne** (pagination originale indisponible) | Effectif de paix (« about 200,000 men and 8,000 officers »), réserves (« approximately 1,000,000 men […] easily available for recall »), potentiel (2 000 000), besoins (477 868) |
 
 ## Sources de contrôle (divergences documentées)
@@ -30,9 +31,15 @@ Chaque identifiant (`US_WD_1916`…) est la clé utilisée dans `data/history/mi
 | Wikipédia, « Imperial Russian Army formations and units (1914) », « List of corps of the Imperial German Army » | Pas de sièges ni de districts dans la version consultée |
 | GenWiki, « Korps und Gouvernements (WK1) » | Accès bloqué (anti-robot) |
 | Hoover Institution (OAC), fonds Bastunov | Inventaire sans liste de corps ; numérisation en cours |
-| Роспись войск 1914 (transcription Google Docs) | Transcription partielle : corps sibériens seulement |
+| Роспись войск 1914 (transcription Google Docs) | Transcription partielle : corps sibériens seulement. Remplacée par `RU_RASPISANIE_1914` (phase 1). |
+| Gallica : *Annuaire officiel de l'armée française* 1914 (ark:/12148/bpt6k176446d), pour les sièges des corps français | Accès automatisé refusé (Cloudflare) le 15/11/2026. **À consulter manuellement.** |
+| `WO_HANDBOOK_DE_1914` : recherche des sièges des corps allemands | Le texte OCR d'archive.org ne couvre qu'une partie des pages et ne contient pas de tableau de stationnement ; l'image du fac-similé (969 Mo) n'a pas été parcourue. |
+| *Rangliste der Königlich Preußischen Armee* 1914 | Exemplaire numérisé repéré (Württembergische Landesbibliothek), marqué sous droits, non consulté. |
+| Reichsarchiv, *Der Weltkrieg 1914–1918*, t. I | Aucun fac-similé en texte intégral trouvé ; l'exemplaire de la Staatsbibliothek zu Berlin trouvé sous ce titre est un ouvrage de 1915, sans rapport. |
 
 ## Sources primaires recommandées pour consolider MIL-01
+
+**Références bibliographiques seulement : aucune de ces sources n'a été consultée.** Elles ne servent de source à aucune valeur de la base.
 
 - Reichsarchiv, *Der Weltkrieg 1914–1918. Kriegsrüstung und Kriegswirtschaft*, t. I et Anlagen, Berlin, 1930 : Friedensstärke 1914 et mobilisation.
 - Ministère de la Guerre, État-major de l'armée, Service historique, *Les Armées françaises dans la Grande Guerre*, t. I, vol. 1 et annexes : effectifs et ordre de bataille d'août 1914.

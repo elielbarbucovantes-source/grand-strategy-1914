@@ -8,6 +8,11 @@
 - **Principe VALIDÉ** par le directeur (15/11/2026) : réserves disponibles mais non incorporées au départ ; mobilisation progressive ; aucune apparition instantanée, aucun dépassement des réserves, aucun double comptage.
 - **Toutes les valeurs numériques sont PROPOSÉES.**
 - MIL-02 (recrutement, entraînement, équipement, remplacement, démobilisation) reste **OUVERT**.
+- **Décisions du 15/11/2026 non encore implémentées** (voir `docs/decisions/DECISIONS_MIL01_T047_T057.md`) :
+  - T-049 (rythme selon les capacités nationales), T-051 (échelons), T-053 (posture et allocation de moyens), T-056 (visibilité publique), T-056 bis (réservistes en territoire occupé) : phase 2 ;
+  - T-050 et T-054 (Territorial Force) : phase 4.
+  - Ce document décrit le système **actuel**, qui appelle tout le réservoir au même rythme pour toutes les nations.
+  - Les échelons documentés en phase 1 figurent dans la base (`mobilization_echelons`), mais le moteur ne les lit pas encore.
 
 ## 1. Cycle
 
@@ -61,6 +66,5 @@ Réservoir (B, sourcé) ──appel mensuel──▶ En cours de mobilisation �
 ## 5. Ordres de grandeur observés (simulation, `tests/balance_report.gd`)
 
 - Avec les paramètres proposés, tout le réservoir sur la carte est appelé en 2 mois et incorporé en 3 mois.
-- L'Allemagne passe de 806 016 à 4 806 016 présents ; il y a 974 unités sur la carte après mobilisation complète des sept puissances.
-- Pour comparaison historique, le Bundesarchiv indique 3,8 millions d'hommes mobilisés en août 1914, actifs compris. Le réservoir de la source commune, 4,0 millions de réservistes instruits, dépasse donc le rappel effectif d'août 1914.
-- C'est cohérent avec la définition (tous les instruits), mais **le rythme et le plafond d'appel sont à arbitrer par le directeur**.
+- Après la correction de phase 1 (15/11/2026), l'Allemagne passe de 806 016 à **4 610 000** présents, soit le total des instruits donné par la source (US WD 1916 p. 28). Il y a **963** unités sur la carte après mobilisation complète des sept puissances. Avant la correction, les chiffres étaient de 4 806 016 présents et de 974 unités.
+- Pour comparaison historique, le Bundesarchiv indique 3,8 millions d'hommes mobilisés en août 1914, actifs compris. Le jeu appelle encore **tous** les instruits, au-delà du premier échelon d'août 1914. Les échelons (T-051) seront implémentés en phase 2.

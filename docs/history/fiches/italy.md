@@ -28,22 +28,36 @@
 
 | Champ | Contenu |
 |---|---|
-| Valeur retenue | **1 250 000** |
-| Date de référence | estimation de 1911 publiée en 1916 |
-| Définition | Réservistes entièrement instruits disponibles pour le passage au pied de guerre |
+| Valeur retenue | **994 967** |
+| Date de référence | non précisée ; document daté « conditions in July, 1914 » |
+| Définition | Instruits mobilisables hors armée active : estimation prudente des hommes entièrement instruits (rubrique « TOTAL WAR STRENGTH »), moins l'armée active. |
 | Source | `US_WD_1916` — United States War Department, Office of the Chief of Staff, War College Division, General Staff, No. 22 : Strength and Organization of the Armies of France, Germany, Austria, Russia, England, Italy, Mexico and Japan (Showing Conditions in July, 1914). Washington, Government Printing Office, 1916 (War Department Document No. 499). |
-| Page / passage | p. 9 (second tableau) |
+| Page / passage | p. 66 (« A conservative estimate would seem to be 1,300,000 fully trained men ») |
 | Lien | https://archive.org/details/strengthorganiza00unit |
 | Fiabilité | faible |
+| Calcul | 1 300 000 (instruits, actifs compris) − 305 033 (armée active, p. 9) = 994 967. |
+| Remarque | Correction de phase 1 (15/11/2026), même règle que pour l'Allemagne : le total des instruits de la rubrique « Total war strength » est lu comme incluant l'armée active (PROBABLE). L'ancienne valeur (1 250 000, tableau p. 9 de 1911) donnait un total de 1 555 033, supérieur au total p. 66. |
 
 **Divergences conservées :**
 
 | Valeur | Source | Page | Définition | Note |
 |---|---|---|---|---|
-| 1 300 000 | `US_WD_1916` | p. 66 | « A conservative estimate would seem to be 1,300,000 fully trained men » |  |
+| 1 250 000 | `US_WD_1916` | p. 9 (second tableau) | « Fully trained reserves available for passing from peace to war footing », estimation de 1911 | Valeur retenue jusqu'au 15/11/2026 ; abandonnée car actif + réserves dépassait le total p. 66. |
 | 3 500 000 | `US_WD_1916` | p. 66 | « On paper she could mobilize 3,500,000 men » | Théorique, non retenu. |
 
 Part des réserves sur la carte : 1/1 — Tous les districts sont sur la carte.
+
+**Contrôle de cohérence avec la source :** total des instruits, actifs compris : 1 300 000 (`US_WD_1916` p. 66) ; actif + réserves = 1 300 000. « A conservative estimate would seem to be 1,300,000 fully trained men » (rubrique « Total war strength ») Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd).
+
+### Échelons de mobilisation (T-051)
+
+T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).
+
+| Échelon | Valeur | Statut | Sources | Définition, calcul ou motif |
+|---|---|---|---|---|
+| Premier échelon : appel prévu par le plan de mobilisation de 1914 | ****inconnu**** | introuvable | — | Source attendue : Ufficio Storico, L'Esercito italiano nella Grande Guerra, vol. I (non consulté). US_WD_1916 p. 66 ne donne que le total des instruits. |
+| Échelons suivants | ****inconnu**** | introuvable | — | Même lacune documentaire. |
+| Réserves résiduelles | ****inconnu**** | introuvable | — | « On paper she could mobilize 3,500,000 men » (p. 66) : total théorique incluant des non-instruits ; non utilisable. |
 
 ### Ventilation par arme
 
@@ -79,7 +93,7 @@ Contrôle du nombre : 12 — US_WD_1916 p. 63 (« There are 12 army corps, 25 di
 ### Situation de départ dans le jeu (campagne historique)
 
 - Actifs au démarrage : 305 033 ; sur la carte : 305 033 (unités combattantes 274 421 + services 30 612).
-- Réserves sur la carte (non incorporées) : 1 250 000 ; hors carte : 0.
+- Réserves sur la carte (non incorporées) : 994 967 ; hors carte : 0.
 - Unités : 48.
 
 | Région | Infanterie | Cavalerie | Artillerie |

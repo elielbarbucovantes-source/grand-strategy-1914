@@ -43,6 +43,18 @@
 
 Part des réserves sur la carte : 27/37 — ESTIMATION : 27 des 37 corps sont en Russie d'Europe (carte du jeu).
 
+**Contrôle de cohérence avec la source :** total des instruits, actifs compris : 6 000 000 (`US_WD_1916` p. 45) ; actif + réserves = 5 084 000. « The total number of trained men subject to call amounts to about 6,000,000 » (rubrique « Total war strength ») Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd).
+
+### Échelons de mobilisation (T-051)
+
+T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).
+
+| Échelon | Valeur | Statut | Sources | Définition, calcul ou motif |
+|---|---|---|---|---|
+| Premier échelon : appel prévu par le plan de mobilisation de 1914 | ****inconnu**** | introuvable | — | Aucune source consultée ne donne l'effectif prévu par le plan russe (Расписание n° 19). US_WD_1916 p. 46 estime ce que la Russie pourrait mobiliser « upon her European frontiers » (2 000 000), ce qui est une capacité de déploiement, pas un plan. |
+| Échelons suivants | ****inconnu**** | introuvable | — | Même lacune documentaire. |
+| Réserves résiduelles | ****inconnu**** | introuvable | — | Même lacune documentaire. |
+
 ### Ventilation par arme
 
 Source : `US_WD_1916` p. 9
@@ -59,37 +71,37 @@ Technique « includes miscellaneous organizations, staffs, school detachments »
 
 ### Districts du temps de paix (répartition ESTIMÉE)
 
-Contrôle du nombre : 27 — 37 corps au total (US_WD_1916 p. 42) moins 10 corps asiatiques et caucasiens hors carte (connaissance générale, à vérifier).
+Contrôle du nombre : 27 — 37 corps au total (US_WD_1916 p. 42) moins 10 corps asiatiques et caucasiens hors carte (connaissance générale, à vérifier). ; RU_RASPISANIE_1914 (27 corps européens, p. 214-226)
 
 | District | Siège | Siège vérifié ? | Région du jeu |
 |---|---|---|---|
-| Corps de la Garde (district de Saint-Pétersbourg) | Saint-Pétersbourg | à vérifier | region_064 (Russie du Nord-Ouest) |
-| Ier corps (Saint-Pétersbourg) | Saint-Pétersbourg | à vérifier | region_064 (Russie du Nord-Ouest) |
-| XVIIIe corps (Saint-Pétersbourg) | Saint-Pétersbourg | à vérifier | region_064 (Russie du Nord-Ouest) |
-| XXIIe corps (Finlande) | Helsingfors | à vérifier | region_052 (Finlande) |
-| IIe corps (Vilna) | Grodno | à vérifier | region_057 (Biélorussie) |
-| IIIe corps (Vilna) | Vilna | à vérifier | region_057 (Biélorussie) |
-| IVe corps (Vilna) | Minsk | à vérifier | region_057 (Biélorussie) |
-| XXe corps (Vilna) | Riga | à vérifier | region_053 (Pays baltes du Nord) |
-| VIe corps (Varsovie) | Łomża | à vérifier | region_056 (Pologne russe orientale) |
-| XIVe corps (Varsovie) | Lublin | à vérifier | region_056 (Pologne russe orientale) |
-| XVe corps (Varsovie) | Varsovie | à vérifier | region_055 (Pologne russe occidentale) |
-| XIXe corps (Varsovie) | Brest-Litovsk | à vérifier | region_057 (Biélorussie) |
-| XXIIIe corps (Varsovie) | Varsovie | à vérifier | region_055 (Pologne russe occidentale) |
-| IXe corps (Kiev) | Kiev | à vérifier | region_059 (Ukraine centrale) |
-| Xe corps (Kiev) | Kharkov | à vérifier | region_059 (Ukraine centrale) |
-| XIe corps (Kiev) | Rovno | à vérifier | region_058 (Ukraine occidentale) |
-| XIIe corps (Kiev) | Vinnitsa | à vérifier | region_058 (Ukraine occidentale) |
-| XXIe corps (Kiev) | Kiev | à vérifier | region_059 (Ukraine centrale) |
-| VIIe corps (Odessa) | Iekaterinoslav | à vérifier | region_060 (Ukraine méridionale) |
-| VIIIe corps (Odessa) | Odessa | à vérifier | region_060 (Ukraine méridionale) |
-| Corps des grenadiers (Moscou) | Moscou | à vérifier | region_066 (Russie centrale) |
-| Ve corps (Moscou) | Voronej | à vérifier | region_066 (Russie centrale) |
-| XIIIe corps (Moscou) | Smolensk | à vérifier | region_066 (Russie centrale) |
-| XVIIe corps (Moscou) | Moscou | à vérifier | region_066 (Russie centrale) |
-| XXVe corps (Moscou) | Moscou | à vérifier | region_066 (Russie centrale) |
-| XVIe corps (Kazan) | Kazan | à vérifier | region_067 (Volga moyenne) |
-| XXIVe corps (Kazan) | Samara | à vérifier | region_068 (Volga inférieure) |
+| Corps de la Garde (district de Saint-Pétersbourg) | Saint-Pétersbourg | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_064 (Russie du Nord-Ouest) |
+| Ier corps (Saint-Pétersbourg) | Saint-Pétersbourg | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_064 (Russie du Nord-Ouest) |
+| XVIIIe corps (Saint-Pétersbourg) | Saint-Pétersbourg | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_064 (Russie du Nord-Ouest) |
+| XXIIe corps (Finlande) | Helsingfors | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_052 (Finlande) |
+| IIe corps (Vilna) | Grodno | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_057 (Biélorussie) |
+| IIIe corps (Vilna) | Vilna | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_057 (Biélorussie) |
+| IVe corps (Vilna) | Minsk | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_057 (Biélorussie) |
+| XXe corps (Vilna) | Riga | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_053 (Pays baltes du Nord) |
+| VIe corps (Varsovie) | Białystok | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) — Corrigé le 15/11/2026 : la base indiquait Łomża ; la source (« Штабъ г. Бѣлостокъ ») donne Białystok. | region_057 (Biélorussie) |
+| XIVe corps (Varsovie) | Lublin | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_056 (Pologne russe orientale) |
+| XVe corps (Varsovie) | Varsovie | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_055 (Pologne russe occidentale) |
+| XIXe corps (Varsovie) | Brest-Litovsk | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_057 (Biélorussie) |
+| XXIIIe corps (Varsovie) | Varsovie | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_055 (Pologne russe occidentale) |
+| IXe corps (Kiev) | Kiev | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_059 (Ukraine centrale) |
+| Xe corps (Kiev) | Kharkov | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_059 (Ukraine centrale) |
+| XIe corps (Kiev) | Rovno | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_058 (Ukraine occidentale) |
+| XIIe corps (Kiev) | Vinnitsa | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_058 (Ukraine occidentale) |
+| XXIe corps (Kiev) | Kiev | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_059 (Ukraine centrale) |
+| VIIe corps (Odessa) | Simferopol | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) — Corrigé le 15/11/2026 : la base indiquait Iekaterinoslav ; la source (« Штабъ г. Симферополь, Таврической губ. ») donne Simferopol. | region_063 (Crimée) |
+| VIIIe corps (Odessa) | Odessa | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_060 (Ukraine méridionale) |
+| Corps des grenadiers (Moscou) | Moscou | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_066 (Russie centrale) |
+| Ve corps (Moscou) | Voronej | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_066 (Russie centrale) |
+| XIIIe corps (Moscou) | Smolensk | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_066 (Russie centrale) |
+| XVIIe corps (Moscou) | Moscou | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_066 (Russie centrale) |
+| XXVe corps (Moscou) | Moscou | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_066 (Russie centrale) |
+| XVIe corps (Kazan) | Kazan | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_067 (Volga moyenne) |
+| XXIVe corps (Kazan) | Samara | vérifié (RU_RASPISANIE_1914, p. 214-226 (« Штабъ г. … »)) | region_068 (Volga inférieure) |
 
 ### Situation de départ dans le jeu (campagne historique)
 
@@ -102,11 +114,12 @@ Contrôle du nombre : 27 — 37 corps au total (US_WD_1916 p. 42) moins 10 corps
 | region_052 (Finlande) | 22 027 | 3 730 | 5 027 |
 | region_053 (Pays baltes du Nord) | 22 027 | 3 730 | 5 027 |
 | region_055 (Pologne russe occidentale) | 44 054 | 7 460 | 10 054 |
-| region_056 (Pologne russe orientale) | 44 054 | 7 460 | 10 054 |
-| region_057 (Biélorussie) | 88 108 | 14 920 | 20 108 |
+| region_056 (Pologne russe orientale) | 22 027 | 3 730 | 5 027 |
+| region_057 (Biélorussie) | 110 135 | 18 650 | 25 135 |
 | region_058 (Ukraine occidentale) | 44 054 | 7 460 | 10 054 |
 | region_059 (Ukraine centrale) | 66 081 | 11 190 | 15 081 |
-| region_060 (Ukraine méridionale) | 44 053 | 7 460 | 10 054 |
+| region_060 (Ukraine méridionale) | 22 026 | 3 730 | 5 027 |
+| region_063 (Crimée) | 22 027 | 3 730 | 5 027 |
 | region_064 (Russie du Nord-Ouest) | 66 081 | 11 190 | 15 081 |
 | region_066 (Russie centrale) | 110 130 | 18 650 | 25 135 |
 | region_067 (Volga moyenne) | 22 026 | 3 730 | 5 027 |

@@ -49,6 +49,18 @@
 
 Part des réserves sur la carte : 21/22 — ESTIMATION : 21 des 22 districts (corps territoriaux et colonial) sont sur la carte ; le 19e corps (Algérie) est hors carte.
 
+**Contrôle de cohérence avec la source :** total des instruits, actifs compris : 3 800 000 (`US_WD_1916` p. 20) ; actif + réserves = 3 144 188. « The sum total of trained men which she is able to mobilize amounts to about 3,800,000 men; possibly a little more » (rubrique « Total war strength », estimations de 1911) Contrôle de phase 1 : armée active + réserves ≤ ce total (testé par test_forces_mil01.gd).
+
+### Échelons de mobilisation (T-051)
+
+T-051 (VALIDÉ) : mobilisation par échelons historiquement documentés. Un échelon sans donnée fiable vaut null (« introuvable ») ; aucun total n'est réparti arbitrairement. Données de phase 1 : le moteur ne les utilise pas encore (phase 2).
+
+| Échelon | Valeur | Statut | Sources | Définition, calcul ou motif |
+|---|---|---|---|---|
+| Premier échelon : appel prévu par le plan de mobilisation de 1914 | ****inconnu**** | introuvable | — | Source attendue : Les Armées françaises dans la Grande Guerre, t. I, vol. 1 et annexes (Service historique). Consultation impossible le 15/11/2026 (Gallica refuse l'accès automatisé). US_WD_1916 p. 20-21 donne seulement les combattants de la mobilisation initiale (« up to a total of 1,380,000 combatants, including Algerian troops »), et non l'effectif total rappelé : non utilisable comme échelon. |
+| Échelons suivants | ****inconnu**** | introuvable | — | Même lacune documentaire. |
+| Réserves résiduelles | ****inconnu**** | introuvable | — | Même lacune documentaire. |
+
 ### Ventilation par arme
 
 Source : `US_WD_1916` p. 9
