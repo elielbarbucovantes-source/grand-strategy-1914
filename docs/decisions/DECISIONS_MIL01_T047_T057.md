@@ -233,3 +233,17 @@ L'étape 1 est **validée dans son ensemble**. Décisions du directeur :
 | **MIL01-P6-C5** | Aucune baisse d'efficacité des blessés légers restés dans leur unité. À étudier à l'**étape 2**. | Comportement inchangé |
 | **MIL01-P6-C6** | **Prisonniers et diplomatie :** rien d'implémenté. **Évolutions futures du système diplomatique :** échanges de prisonniers, libérations négociées, rapatriement après la paix. | Inscrit ici et dans `docs/diplomacy/OVERVIEW.md` §9 |
 
+
+## 10. Phase 6, étape 2 : types d'engagement et largeur du front (16/11/2026)
+
+**Mandat du directeur :** étape 2 autorisée intégralement, sans équilibrage définitif des pertes (étape 3).
+
+| Élément | Contenu | État |
+|---|---|---|
+| **T-055 (choix C)** | L'attaquant choisit son approche (reconnaissance en force, attaque limitée, assaut) dans l'ordre de déplacement. Le défenseur choisit sa posture (retarder, tenir, tenir à tout prix), ordre permanent par armée. Ces choix changent des règles (part engagée, rupture du combat, déroute, objectifs, charges, retranchement, occupation), jamais un multiplicateur de pertes. | D, I, T, F |
+| **T-048 (choix D)** | Quatre types (escarmouche, engagement limité, assaut frontal, grande bataille au-delà de 200 000 hommes) : matrice des choix, corrigée par les circonstances (effectifs, terrain, fortifications, moral, encerclement), puis réévaluée (renforts, rupture précoce). | D, I, T, F |
+| **Largeur du front** | Secteur de combat (km) selon le type, la géométrie de la région et le terrain ; seuls les soldats en ligne combattent ; les unités au contact sans place attendent et relèvent les unités épuisées. | D, I, T, F |
+| **Blessés légers** (décision de l'étape 1) | Efficacité réduite à 50 % jusqu'à leur guérison (un mois) ; effectif administratif inchangé. | D, I, T, F |
+| **Valeurs** | Toutes les valeurs sont des paramètres de CONCEPTION PROVISOIRES (`combat_rules.json`, bloc `engagement`). | P ; questions E1 à E5 du rapport |
+
+Rapport : `docs/project/MIL01_PHASE6_STEP2_REPORT.md`.

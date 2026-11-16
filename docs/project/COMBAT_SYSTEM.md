@@ -19,6 +19,8 @@ src/domains/combat/
   tactical_orders.gd commandes (joueur, IA, futur réseau) : formation, déplacement de groupe,
                      charge, tenir, tranchée, installation, réserve, renfort, objectif commun
   battle_result.gd   résultat : pertes et état des forces + contrôle territorial (pondéré)
+  engagement.gd      (MIL-01 phase 6, étape 2) types d'engagement, largeur du front, rotations,
+                     rupture du combat, capacité opérationnelle (blessés légers)
   battle_manager.gd  intégration stratégique : création, verrous, commandant, durée, priorité,
                      file, avance, pause, déconnexion, clôture, pertes persistantes, occupation,
                      retraite, encerclement mensuel, moral mensuel
@@ -35,7 +37,9 @@ src/ui/battle_view.gd           interface tactique (bataille et préparation des
 
 - **Hiérarchie stratégique (VALIDÉE)** : armée → divisions → régiments → unités (`echelon` et `parent`). Seules les armées se déplacent sur la carte, et leurs subordonnées les suivent. Effectif d'une armée = somme de ses unités ; `null` si un effectif est inconnu.
 - **Unité tactique** (`battle.units[id]`) : nation, camp, type, soldats (actuels et de départ), moral, formation, position, destination, ordre, statut, armée, région source, compteurs (feu reçu, engagement, report fractionnaire des pertes).
-  - Statuts : `active`, `routing`, `withdrawn`, `destroyed`, `reserve`, `arriving`, `available`.
+  - Statuts : `active`, `routing`, `withdrawn`, `destroyed`, `reserve`, `arriving`, `available` ; depuis l'étape 2, `withdrawing` (repli en ordre après rupture du combat, sans déroute).
+  - Étape 2 : `lightly_wounded` (blessés légers restés dans l'unité, inclus dans `soldiers`), `front_share` et `front_status` (`line`, `waiting` ou vide).
+- **Type d'engagement** (`battle.engagement`, étape 2) : approche, posture, type prévu, courant et réalisé, critères retenus, largeur de la région, facteur de terrain, front (km), soldats en ligne, en attente et au pic, rotations, rupture du combat.
 - **Bataille** : région, pas courant et pas maximal, champ, objectifs (villes de la région et centre), camps (nations, armées, commandant, objectif commun, point d'entrée, effectifs de départ), défenses, brouillard (mémoire datée par camp), visibilité, moral des armées, journal, pause et votes, contrôleurs (humain, IA, déconnecté), priorité.
 - **Défenses d'une région** : `state.regions[rid].defenses` = tranchées (segments a→b, niveau, cible, progression, état) et installations (type, position, progression, état). Mêmes coordonnées que le champ de bataille.
 
@@ -45,15 +49,18 @@ src/ui/battle_view.gd           interface tactique (bataille et préparation des
 2. brouillard (tous les 3 pas) ;
 3. mouvements (déroute, charge, travaux, déplacement) ;
 4. construction ;
-5. tir automatique et mêlée : pertes accumulées **par unité** ;
+5. largeur du front (étape 2) : place de chaque unité au contact, rotations ; puis tir automatique et mêlée des seuls soldats en ligne : pertes accumulées **par unité** ;
 6. application des pertes (destruction sous un seuil) ;
 7. moral, déroute, ralliement ;
 8. contrôle des objectifs ;
-9. fin si la durée maximale est atteinte ou si un camp ne peut plus combattre.
+9. rupture du combat (étape 2 : seuil de l'approche ou de la posture, ou unités épuisées) ;
+10. fin si la durée maximale est atteinte, si un camp ne peut plus combattre ou si la rupture du combat est achevée.
 
-**Pertes infligées par un tireur** = létalité du type × soldats × tir de la formation × efficacité (moral, désorganisation, fatigue) × (1 + bonus d'installation) × atténuation avec la distance × durée du pas × **exposition de la cible**.
+**Pertes infligées par un tireur** = létalité du type × soldats **opérationnels × part en ligne** (étape 2) × tir de la formation × efficacité (moral, désorganisation, fatigue) × (1 + bonus d'installation) × atténuation avec la distance × durée du pas × **exposition de la cible**.
 
-**Exposition** = type × formation × (1 − couverture : terrain + tranchée selon la formation + installation) × vulnérabilité (déroute, travaux) × facteur de rôle (artillerie en retrait).
+**Exposition** = type × formation × (1 − couverture : terrain + tranchée selon la formation + installation) × vulnérabilité (déroute, travaux) × facteur de rôle (artillerie en retrait) × facteur de place (étape 2 : unité en attente, en retrait du front).
+
+**Étape 2 (MIL-01 phase 6) :** voir `docs/project/MIL01_PHASE6_STEP2_REPORT.md` pour les types d'engagement, la largeur du front, les réserves et rotations, la rupture du combat et les blessés légers.
 
 ## 4. Correspondance avec les décisions
 
