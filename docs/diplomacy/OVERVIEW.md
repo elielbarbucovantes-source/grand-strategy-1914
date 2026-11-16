@@ -98,3 +98,9 @@ conditions de négociation, la signature et les effets du traité restent
 -   Déclaration de guerre et escalade de crise.
 -   Conditions de paix et transfert de territoires.
 -   Confidentialité des accords et information des tiers.
+-   Prisonniers de guerre (évolution future, MIL-01 phase 6, décision
+    MIL01-P6-C6 du 16/11/2026) : échanges de prisonniers, libérations
+    négociées, rapatriement après la paix. Aucun mécanisme n'est
+    implémenté ; les prisonniers sont seulement comptés chez leur pays
+    d'origine et chez la puissance détentrice.
+

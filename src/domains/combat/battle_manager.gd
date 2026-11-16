@@ -415,8 +415,11 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	# en tués, blessés, disparus et prisonniers ; aucun soldat n'est créé ni perdu.
 	var destroyed: Array = []
 	var outcomes := _side_outcomes(state, world, cr, b, winner, rid)
-	var booked := {"attackers": {"killed": 0, "wounded": 0, "remained": 0, "missing": 0, "prisoners": 0},
-		"defenders": {"killed": 0, "wounded": 0, "remained": 0, "missing": 0, "prisoners": 0}}
+	var booked := {}
+	for side: String in CombatData.SIDES:
+		booked[side] = {}
+		for k: String in ["killed", "wounded", "remained", "missing", "prisoners", "origin_fire", "origin_routing", "origin_remnant", "routing_as_ordinary"]:
+			booked[side][k] = 0
 	for uid: String in CombatData.unit_ids(b):
 		var u: Dictionary = b["units"][uid]
 		if not state.formations.has(uid):
@@ -428,11 +431,13 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 		var remained := 0
 		if su.get("soldiers") != null:
 			var delta := int(su["soldiers"]) - int(u["soldiers"])
-			var rout := mini(delta, int(u.get("loss_routing", 0)) + int(u.get("loss_remnant", 0)))
+			# Origine tactique (instrumentation du simulateur) ; bornée par la perte réelle d'effectif.
+			var remnant := clampi(int(u.get("loss_remnant", 0)), 0, maxi(0, delta))
+			var routing := clampi(int(u.get("loss_routing", 0)), 0, maxi(0, delta - remnant))
 			var side: String = u["side"]
 			var captor := _captor(b, CombatData.other(side))
-			var r := ForceLedger.book_battle_losses(state, su["nation"], captor, delta - rout, rout,
-				outcomes.get(state.army_of(uid), "held"), u["status"] != CombatData.DESTROYED, su.get("region", rid))
+			var r := ForceLedger.book_battle_losses(state, su["nation"], captor, delta - routing - remnant, routing, remnant,
+				outcomes.get(state.army_of(uid), "indecisive"), u["status"] != CombatData.DESTROYED, su.get("region", rid))
 			remained = int(r["remained"])
 			for k: String in r:
 				booked[side][k] = int(booked[side][k]) + int(r[k])
@@ -541,17 +546,19 @@ static func choose_retreat(state: GameState, world: WorldMap, cr: Dictionary, na
 
 
 ## Issue de la bataille pour chaque armée engagée, utilisée par la ventilation des pertes en déroute :
-## "held" (camp vainqueur, ou issue indécise : aucune capture établie), "lost_retreat" ou
-## "lost_no_retreat" (camp vaincu, selon qu'une retraite sûre existe). Calculée AVANT les conséquences
-## territoriales, avec la règle de retraite existante (T-043), sans la modifier.
+## "won" (camp vainqueur : il conserve ou prend le terrain), "indecisive" (issue indécise : aucune
+## capture établie), "lost_retreat" ou "lost_no_retreat" (camp vaincu, selon qu'une retraite sûre existe).
+## Calculée AVANT les conséquences territoriales, avec la règle de retraite existante (T-043), sans la modifier.
 static func _side_outcomes(state: GameState, world: WorldMap, cr: Dictionary, b: Dictionary, winner: String, rid: String) -> Dictionary:
 	var out: Dictionary = {}
 	for side: String in CombatData.SIDES:
 		for army: String in b["sides"][side]["armies"]:
 			if not state.formations.has(army):
 				continue
-			if winner == "" or winner == side:
-				out[army] = "held"
+			if winner == side:
+				out[army] = "won"
+			elif winner == "":
+				out[army] = "indecisive"
 			else:
 				var dest := choose_retreat(state, world, cr, state.formations[army]["nation"], rid, b["origin"].get(army, ""))
 				out[army] = "lost_retreat" if dest != "" else "lost_no_retreat"

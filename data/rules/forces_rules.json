@@ -301,39 +301,56 @@
   "home_regions_note": "Service intérieur : régions de souveraineté britannique (001 à 006)."
  },
  "casualties": {
-  "_statut": "MIL-01 phase 6, étape 1 (décisions du directeur) : VENTILATION comptable des pertes produites par le combat, sans nouveau calcul ni changement de volume. Les règles de combat (combat_rules.json) ne sont pas modifiées. Statuts : « sourcé », « dérivé » (calculé à partir de sources), « décision » (fixé par le directeur), « PROVISOIRE » (paramètre de jeu). Voir docs/project/MIL01_PHASE6_STEP1_REPORT.md.",
+  "_statut": "MIL-01 phase 6, étape 1 et corrections ciblées (décisions du directeur) : VENTILATION comptable des pertes produites par le combat, sans nouveau calcul ni changement de volume. Les règles de combat (combat_rules.json) ne sont pas modifiées. Statuts : « sourcé » (donnée historique sourcée), « approximation historique » (donnée sourcée appliquée hors de son champ), « décision » (fixé par le directeur), « conception » (paramètre de jeu sans valeur historique) ; « PROVISOIRE » signale une valeur validée provisoirement. Voir docs/project/MIL01_PHASE6_STEP1_REPORT.md.",
   "killed_share": {
    "value": 0.25,
-   "status": "PROVISOIRE (ancré sur sources)",
+   "status": "approximation historique (sources : 24 à 28 %) appliquée à une catégorie de jeu ; validée PROVISOIREMENT par le directeur",
    "note": "Part des tués (morts de blessures sur le champ de bataille compris) dans les pertes au feu. Sources consultées (phase 5) : 24 à 28 % des « tués + blessés » (Somme 1916, Isonzo 1915-1917, listes allemandes 1917, Royaume-Uni en France). La Russie (19,5 %) exclut les morts à l'hôpital."
   },
   "missing_share_fire": {
    "value": 0.05,
-   "status": "PROVISOIRE",
+   "status": "conception ; validée PROVISOIREMENT par le directeur",
    "note": "Part de disparus dans les pertes au feu hors déroute. Paramètre de jeu (rapport de phase 6, §3.2)."
   },
+  "routing_as_ordinary_outcomes": {
+   "value": [
+    "won"
+   ],
+   "status": "décision",
+   "note": "Correction du directeur (solution A) : les pertes de déroute d'un camp qui REMPORTE la bataille et conserve le terrain sont ventilées comme des pertes ordinaires (parts du feu), leur origine restant enregistrée à part (losses_by_origin). Les issues indécises n'en font pas partie (question ouverte au directeur)."
+  },
+  "annihilated_unit_routing_as_ordinary": {
+   "value": true,
+   "status": "conception ; À VALIDER par le directeur",
+   "note": "Unité anéantie (effectif tombé sous le seuil de combat) d'un camp VAINQUEUR : true = ses pertes subies en déroute sont ventilées comme ordinaires (le camp tient le terrain) ; false = elles restent disparues comme avant la correction. Dans tous les cas, le reliquat de l'unité au moment de l'anéantissement garde un traitement distinct (disparu, ou prisonnier selon l'issue) et aucun blessé ne « reste dans l'unité ». Mesure : dans les batailles de comparaison, 86 % des pertes de déroute des vainqueurs (jusqu'à 99,6 % en Vénétie) proviennent d'unités anéanties ; false annulerait l'essentiel de la correction."
+  },
   "rout_prisoner_share": {
-   "_note": "Pertes subies en déroute et reliquat d'unité anéantie : part de PRISONNIERS selon l'issue ; le reste est DISPARU. Proposition Q6 du rapport de phase 6, PROVISOIRE, non validée explicitement par le directeur.",
-   "held": {
+   "_note": "Pertes de déroute NON ventilées comme ordinaires (camp non vainqueur) et reliquat d'unité réellement anéantie : part de PRISONNIERS selon l'issue ; le reste est DISPARU. Valeurs de conception validées PROVISOIREMENT par le directeur (0 / 30 / 80 %). Aucune capture sans défaite.",
+   "won": {
     "value": 0.0,
-    "status": "PROVISOIRE",
-    "note": "Le camp de l'unité tient ou l'issue est indécise : aucune capture établie."
+    "status": "conception ; validée PROVISOIREMENT",
+    "note": "Camp vainqueur : aucune capture établie. Ses pertes de déroute sont de toute façon ventilées comme ordinaires ; seul le reliquat d'unité anéantie passe par ici (disparu)."
+   },
+   "indecisive": {
+    "value": 0.0,
+    "status": "conception ; validée PROVISOIREMENT",
+    "note": "Issue indécise : aucune capture établie (pas de défaite)."
    },
    "lost_retreat": {
     "value": 0.3,
-    "status": "PROVISOIRE",
+    "status": "conception ; validée PROVISOIREMENT",
     "note": "Le camp perd ; l'armée dispose d'une retraite sûre."
    },
    "lost_no_retreat": {
     "value": 0.8,
-    "status": "PROVISOIRE",
+    "status": "conception ; validée PROVISOIREMENT",
     "note": "Le camp perd sans retraite sûre (effondrement) ; ordre de grandeur comparé à Caporetto et à août 1915."
    }
   },
   "light_wound_share": {
    "value": 0.686,
-   "status": "dérivé",
-   "note": "Part des blessés légers : listes officielles allemandes jusqu'à fin octobre 1917 (WO 1922 p. 354) : légèrement blessés 1 829 820 + blessés restés dans leur unité 315 263, sur 3 125 535 blessés."
+   "status": "approximation historique (source allemande unique) ; NON validée",
+   "note": "Part des blessés « légers » : (légèrement blessés 1 829 820 + blessés restés dans leur unité 315 263) / 3 125 535 blessés des quatre catégories (listes officielles allemandes jusqu'à fin octobre 1917, WO 1922 p. 354, OCR) = 0,686. Les 328 431 « blessés » sans gravité précisée sont comptés hors légers (choix de calcul). Appliquée à toutes les puissances : approximation. Voir le rapport de l'étape 1, §« Le chiffre de 68,6 % »."
   },
   "remain_in_unit_share_of_light": {
    "value": 0.1,
@@ -352,15 +369,15 @@
   },
   "return_share": {
    "value": 0.556,
-   "status": "PROVISOIRE (approximation britannique)",
+   "status": "sourcé pour le Royaume-Uni ; approximation historique ailleurs ; validée PROVISOIREMENT",
    "note": "Part des blessés rendus au service : 1 sur 1,8 (Royaume-Uni, WO 1922 p. 246). Pour les autres puissances : APPROXIMATION britannique (décision du directeur)."
   },
   "unfit_share": {
    "value": 0.17,
-   "status": "décision",
+   "status": "décision (proche d'une source britannique) ; validée PROVISOIREMENT",
    "note": "Part des blessés définitivement inaptes : 17 % (décision du directeur, PROVISOIRE ; WO 1922 p. 246 donne 16,68 % des malades et blessés renvoyés au pays)."
   },
-  "long_term_note": "Le reste (1 − 0,556 − 0,17 ≈ 27,4 %) n'est ni rendu ni inapte : il demeure en CONVALESCENCE DE LONGUE DURÉE (aucun retour ni décès n'est inventé). Question ouverte pour le directeur.",
+  "long_term_note": "Le reste (1 − 0,556 − 0,17 ≈ 27,4 %) n'est ni rendu ni inapte : il demeure en CONVALESCENCE DE LONGUE DURÉE, sans délai de retour, sans être compté inapte, et reste dans les effectifs nationaux hors des rangs (décision du directeur ; évolution étudiée dans une phase ultérieure).",
   "national_overrides": {
    "_note": "Dérogations par pays, chacune avec son statut. Ajouter un pays seulement avec une source.",
    "united_kingdom": {

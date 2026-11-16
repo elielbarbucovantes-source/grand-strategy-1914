@@ -219,3 +219,17 @@ La phase 3 est **validée**. Ces trois décisions portent sur des **travaux futu
 - disparus au feu : 0,05 ;
 - prisonniers en déroute selon l'issue : 0 / 0,3 / 0,8 (proposition Q6) ;
 - part des blessés légers : 0,686, dérivée des listes allemandes.
+
+## 9. Phase 6, étape 1 : corrections ciblées (16/11/2026)
+
+L'étape 1 est **validée dans son ensemble**. Décisions du directeur :
+
+| N° | Décision | État |
+|---|---|---|
+| **MIL01-P6-C1** | **Solution A.** Les pertes de déroute d'un camp qui remporte la bataille et conserve le terrain sont ventilées comme des **pertes ordinaires**, avec leur origine conservée. Prisonniers seulement en cas de capture effective ou d'effondrement ; une déroute n'est pas une capture ; traitement distinct des unités anéanties. | D, I, T. Le traitement de la déroute des unités anéanties d'un vainqueur est **à valider** (rapport §10.2). |
+| **MIL01-P6-C2** | Les quelque 27 % de blessés ni rendus ni inaptes restent en **convalescence de longue durée** : pas de délai de retour, pas d'inaptitude, comptés dans les effectifs nationaux. Évolution étudiée ultérieurement. | D, I, T |
+| **MIL01-P6-C3** | Le chiffre de **68,6 %** de blessés légers n'est **pas validé**. Il faut l'examiner sans le modifier. | Examiné (rapport §12) : approximation historique, source allemande unique ; valeur inchangée |
+| **MIL01-P6-C4** | **Validation provisoire :** 25 % de tués et 5 % de disparus parmi les pertes ordinaires ; 0 / 30 / 80 % de prisonniers ; 55,6 % de retours ; 17 % d'inaptes ; reste en longue durée. Ces valeurs restent configurables. | Statuts reclassés dans `forces_rules.json` (sourcé, approximation historique, décision, conception) |
+| **MIL01-P6-C5** | Aucune baisse d'efficacité des blessés légers restés dans leur unité. À étudier à l'**étape 2**. | Comportement inchangé |
+| **MIL01-P6-C6** | **Prisonniers et diplomatie :** rien d'implémenté. **Évolutions futures du système diplomatique :** échanges de prisonniers, libérations négociées, rapatriement après la paix. | Inscrit ici et dans `docs/diplomacy/OVERVIEW.md` §9 |
+

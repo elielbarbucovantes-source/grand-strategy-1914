@@ -1,6 +1,7 @@
 extends RefCounted
 ## MIL-01 phase 6, étape 1 : comptabilité ventilée des pertes (tués, blessés, disparus, prisonniers),
-## sans modification du volume des pertes ni des règles de combat.
+## sans modification du volume des pertes ni des règles de combat. Corrections ciblées (solution A) :
+## pertes de déroute d'un camp vainqueur ventilées comme ordinaires, origine conservée.
 
 var runner: Object
 
@@ -48,24 +49,61 @@ func test_breakdown_preserves_battle_volume() -> void:
 
 
 # 2, 8, 9. Tués ; disparus ; prisonniers (calcul unitaire exact, paramètres du bloc `casualties`).
+# Signature : feu, déroute, reliquat d'unité anéantie, issue, unité survivante.
 func test_unit_breakdown_rules() -> void:
 	var s := _session()
-	var r := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 1000, 0, "held", true, "region_011")
+	var r := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 1000, 0, 0, "won", true, "region_011")
 	runner.check(int(r["killed"]) == 250 and int(r["missing"]) == 50 and int(r["wounded"]) == 700 and int(r["prisoners"]) == 0,
 		"pertes au feu : 25 % tués, 5 % disparus, 70 % blessés (paramètres provisoires)")
 	runner.check(int(r["remained"]) == 48, "blessés légers restés dans l'unité : 10 % des 480 légers (68,6 % des blessés)")
-	var held := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, "held", true, "region_011")
-	runner.check(int(held["missing"]) == 1000 and int(held["prisoners"]) == 0, "déroute, camp tenant le terrain : aucun prisonnier, 1 000 disparus")
-	var retreat := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, "lost_retreat", true, "region_011")
-	runner.check(int(retreat["prisoners"]) == 300 and int(retreat["missing"]) == 700, "défaite avec retraite : 30 % de prisonniers")
-	var collapse := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, "lost_no_retreat", true, "region_011")
-	runner.check(int(collapse["prisoners"]) == 800 and int(collapse["missing"]) == 200, "effondrement : 80 % de prisonniers")
+	var retreat := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "lost_retreat", true, "region_011")
+	runner.check(int(retreat["prisoners"]) == 300 and int(retreat["missing"]) == 700 and int(retreat["killed"]) == 0,
+		"déroute d'un camp vaincu avec retraite : 30 % de prisonniers, 70 % de disparus")
+	var collapse := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "lost_no_retreat", true, "region_011")
+	runner.check(int(collapse["prisoners"]) == 800 and int(collapse["missing"]) == 200, "effondrement (sans retraite) : 80 % de prisonniers")
 	var fr := MobilizationSystem.summary(s.state, "france")
 	var de := MobilizationSystem.summary(s.state, "german_empire")
 	runner.check(int(fr["prisoners_lost"]) == 1100 and int(de["prisoners_held"]) == 1100, "prisonniers chez l'origine et chez le détenteur")
 	runner.check(int(de["present_in_units"]) == int(MobilizationSystem.summary(_session().state, "german_empire")["present_in_units"]),
 		"les prisonniers ne s'ajoutent jamais aux présents du détenteur")
-	runner.check(int(fr["missing"]) == 50 + 1000 + 700 + 200, "disparus : catégorie distincte, cumulée sans conversion")
+	runner.check(int(fr["missing"]) == 50 + 700 + 200, "disparus : catégorie distincte, cumulée sans conversion")
+
+
+# Correction A : déroute d'un camp vainqueur = pertes ordinaires ; origine conservée ; aucune capture.
+func test_winner_routing_booked_as_ordinary() -> void:
+	var s := _session()
+	var r := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "won", true, "region_011")
+	runner.check(int(r["killed"]) == 250 and int(r["missing"]) == 50 and int(r["wounded"]) == 700 and int(r["prisoners"]) == 0,
+		"déroute du vainqueur : 25 % tués, 5 % disparus, 70 % blessés, aucun prisonnier (au lieu de 100 % de disparus)")
+	runner.check(int(r["origin_routing"]) == 1000 and int(r["routing_as_ordinary"]) == 1000 and int(r["origin_fire"]) == 0,
+		"origine conservée : 1 000 pertes de déroute, inscrites comme telles (non converties en pertes au feu)")
+	var o: Dictionary = ForceLedger.ledger(s.state, "france")["losses_by_origin"]
+	runner.check(int(o["routing"]) == 1000 and int(o["fire"]) == 0 and int(o["routing_as_ordinary"]) == 1000, "registre national : origine des pertes tracée")
+	var ind := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "indecisive", true, "region_011")
+	runner.check(int(ind["prisoners"]) == 0 and int(ind["missing"]) == 1000 and int(ind["routing_as_ordinary"]) == 0,
+		"issue indécise : aucune capture ; traitement inchangé (question ouverte au directeur)")
+
+
+# Unités réellement anéanties : traitement distinct (reliquat), capture seulement en cas de défaite.
+func test_annihilated_unit_remnant() -> void:
+	var s := _session()
+	var w := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 0, 1000, "won", false, "region_011")
+	runner.check(int(w["missing"]) == 1000 and int(w["prisoners"]) == 0 and int(w["remained"]) == 0 and int(w["origin_remnant"]) == 1000,
+		"unité anéantie d'un camp vainqueur : reliquat disparu, aucun prisonnier, personne ne « reste dans l'unité »")
+	var l := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 0, 1000, "lost_no_retreat", false, "region_011")
+	runner.check(int(l["prisoners"]) == 800 and int(l["missing"]) == 200, "unité anéantie d'un camp effondré : capture (80 %)")
+	var c: Dictionary = ForceLedger.cfg()["annihilated_unit_routing_as_ordinary"]
+	var dr := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "won", false, "region_011")
+	runner.check(bool(c["value"]) and int(dr["routing_as_ordinary"]) == 1000 and int(dr["remained"]) == 0,
+		"unité anéantie d'un vainqueur : déroute ordinaire (paramètre à valider), aucun blessé resté dans l'unité")
+	c["value"] = false
+	var dr2 := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "won", false, "region_011")
+	c["value"] = true
+	runner.check(int(dr2["missing"]) == 1000 and int(dr2["prisoners"]) == 0 and int(dr2["routing_as_ordinary"]) == 0,
+		"paramètre désactivé : déroute d'une unité anéantie disparue, sans capture inventée")
+	var mix := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 500, 300, 200, "won", false, "region_011")
+	runner.check(int(mix["killed"]) + int(mix["wounded"]) + int(mix["missing"]) + int(mix["prisoners"]) == 1000 and int(mix["remained"]) == 0,
+		"feu, déroute et reliquat : somme exacte, aucun soldat créé ni perdu")
 
 
 # 3. Blessés légers restés dans leur unité : présents, jamais en convalescence en même temps.
@@ -96,7 +134,7 @@ func test_convalescence_and_returns() -> void:
 			unit = fid
 			break
 	st.formations[unit]["soldiers"] = int(st.formations[unit]["soldiers"]) - 1000
-	var booked := ForceLedger.book_battle_losses(st, "france", "german_empire", 1000, 0, "held", true, "region_011")
+	var booked := ForceLedger.book_battle_losses(st, "france", "german_empire", 1000, 0, 0, "won", true, "region_011")
 	st.formations[unit]["soldiers"] = int(st.formations[unit]["soldiers"]) + int(booked["remained"])
 	var l := ForceLedger.ledger(st, "france")
 	runner.check(int(l["wounded"]["convalescing"]) == 652, "652 blessés en convalescence (432 légers, 220 autres)")
@@ -125,6 +163,15 @@ func test_convalescence_and_returns() -> void:
 	st.turn = t0 + 12
 	ForceLedger.monthly_recovery(st, s.world, s.rules["forces"])
 	runner.check(int(l["wounded"]["unfit"]) == 110 and int(l["missing_total"]) == 50, "inaptes et disparus définitifs : aucune conversion ultérieure")
+	# Convalescence de longue durée : ni délai de retour, ni inaptitude, comptée hors des rangs.
+	var long_term := int(l["wounded"]["long_term"])
+	runner.check(long_term == 652 - 362 - 110, "convalescence de longue durée : les 27 %% restants (%d)" % long_term)
+	st.turn = t0 + 60
+	ForceLedger.monthly_recovery(st, s.world, s.rules["forces"])
+	runner.check(int(l["wounded"]["long_term"]) == long_term and int(l["wounded"]["unfit"]) == 110 and int(l["wounded"]["returned"]) == 362,
+		"cinq ans plus tard : aucun retour ni inaptitude inventés pour la longue durée")
+	runner.check(int(MobilizationSystem.summary(st, "france")["wounded"]["long_term"]) == long_term, "longue durée comptée dans les effectifs nationaux hors des rangs")
+	_conserved(s, "france", "longue durée")
 
 
 # Taux de retour par pays : britannique sourcé, approximation ailleurs, dérogation possible.
@@ -168,10 +215,35 @@ func test_encirclement_and_surrender_categories() -> void:
 	runner.check(int(fr["prisoners_lost"]) > 0, "capitulation : prisonniers")
 	_conserved(s, "france", "encerclement et capitulation")
 	var s2 := _session()
-	var b := _lorraine(s2)
-	var loser: String = CombatData.other(b["result"]["winner"]) if b["result"]["winner"] != "" else CombatData.ATTACKERS
-	runner.check(int(b["casualty_breakdown"][loser]["missing"]) >= 0, "camp vaincu : pertes en déroute ventilées selon l'issue")
+	_lorraine(s2)
 	_conserved(s2, "german_empire", "après retraite")
+
+
+# Batailles réelles : vainqueur (déroute ordinaire) et vaincu (captures partielles) ; origines tracées.
+func test_battle_winner_and_loser_routing() -> void:
+	for case: Array in [["german_empire", "army_german_empire_region_035", "region_011", "france"],
+			["italy", "army_italy_region_081", "region_037", "austria_hungary"]]:
+		var s := _session()
+		s.state.wars.append({"id": "w", "a": case[0], "b": case[3], "since_turn": 0})
+		TurnResolver.resolve(s.state, s.world, s.rules, {case[0]: [Orders.move(case[0], case[1], case[2])]})
+		var b: Dictionary = s.state.battles[-1]
+		var winner: String = b["result"]["winner"]
+		runner.check(winner != "", "%s : bataille décisive (%s)" % [case[2], winner])
+		var w: Dictionary = b["casualty_breakdown"][winner]
+		var lo: Dictionary = b["casualty_breakdown"][CombatData.other(winner)]
+		for k: Dictionary in [w, lo]:
+			runner.check(int(k["origin_fire"]) + int(k["origin_routing"]) + int(k["origin_remnant"]) == int(k["killed"]) + int(k["wounded"]) + int(k["missing"]) + int(k["prisoners"]),
+				"%s : origines (feu, déroute, reliquat) = catégories, volume inchangé" % case[2])
+		runner.check(int(w["origin_routing"]) > 0 and int(w["routing_as_ordinary"]) == int(w["origin_routing"]) and int(w["prisoners"]) == 0,
+			"%s : vainqueur — %d pertes de déroute ventilées comme ordinaires, aucun prisonnier" % [case[2], int(w["origin_routing"])])
+		var wtot := int(w["killed"]) + int(w["wounded"]) + int(w["missing"])
+		runner.check(float(w["missing"]) <= 0.05 * float(wtot) + float(w["origin_remnant"]) + 1.0,
+			"%s : vainqueur — disparus limités aux 5 %% ordinaires et aux unités anéanties (%d sur %d)" % [case[2], int(w["missing"]), wtot])
+		var rout_lo := int(lo["origin_routing"]) + int(lo["origin_remnant"])
+		runner.check(int(lo["routing_as_ordinary"]) == 0 and int(lo["prisoners"]) > 0 and int(lo["prisoners"]) < rout_lo,
+			"%s : vaincu — captures partielles seulement (%d prisonniers sur %d pertes de déroute)" % [case[2], int(lo["prisoners"]), rout_lo])
+		for nid: String in [case[0], case[3]]:
+			_conserved(s, nid, "%s, après la bataille" % case[2])
 
 
 # 15. Sauvegarde et chargement avec cohortes de convalescence.
@@ -239,7 +311,7 @@ func test_determinism_and_sandbox() -> void:
 	runner.check(JSON.stringify(_lorraine(a)["casualty_breakdown"]) == JSON.stringify(_lorraine(b)["casualty_breakdown"]), "ventilation déterministe")
 	var sb := GameSession.create()
 	sb.new_game("france", 1, 1914, "sandbox_fictif")
-	ForceLedger.book_battle_losses(sb.state, "france", "german_empire", 1000, 0, "held", true, "region_011")
+	ForceLedger.book_battle_losses(sb.state, "france", "german_empire", 1000, 0, 0, "won", true, "region_011")
 	sb.state.turn += 3
 	ForceLedger.monthly_recovery(sb.state, sb.world, sb.rules["forces"])
 	runner.check(int(ForceLedger.ledger(sb.state, "france")["wounded"]["returned"]) == 0, "bac à sable : aucune réserve modélisée, les convalescents ne sont pas rendus (documenté)")

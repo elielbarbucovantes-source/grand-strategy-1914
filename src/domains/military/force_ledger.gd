@@ -62,6 +62,8 @@ static func _new_ledger() -> Dictionary:
 		"release_status": "aucun mécanisme de libération ni de rapatriement (évolution ultérieure)",
 		"rejoined": 0,
 		"legacy_unventilated": 0,
+		# Origine tactique des pertes de bataille ventilées (traçabilité ; ne s'additionne pas aux catégories).
+		"losses_by_origin": {"fire": 0, "routing": 0, "remnant": 0, "routing_as_ordinary": 0},
 	}
 
 
@@ -102,25 +104,43 @@ static func add_prisoners(state: GameState, nation: String, captor: String, amou
 		c["prisoners_held_by_origin"][nation] = int(c["prisoners_held_by_origin"].get(nation, 0)) + amount
 
 
-## Ventilation des pertes d'UNE unité à la clôture d'une bataille. `fire` : pertes au feu et en mêlée
-## hors déroute ; `rout` : pertes subies en déroute et reliquat d'unité anéantie. `outcome` :
-## "held" (son camp tient ou l'issue est indécise), "lost_retreat" ou "lost_no_retreat".
-## Retourne le nombre de blessés légers qui RESTENT dans l'unité (à lui rendre si elle existe encore).
-## La somme des catégories est exactement `fire + rout` : aucun soldat créé ni perdu.
-static func book_battle_losses(state: GameState, nation: String, captor: String, fire: int, rout: int, outcome: String,
-		unit_survives: bool, origin_region: String) -> Dictionary:
-	var out := {"killed": 0, "wounded": 0, "remained": 0, "missing": 0, "prisoners": 0}
-	if fire + rout <= 0 or not state.nations.has(nation):
+## Ventilation des pertes d'UNE unité à la clôture d'une bataille, selon leur ORIGINE tactique :
+##   `fire`    : pertes au feu et en mêlée hors déroute ;
+##   `routing` : pertes subies pendant une déroute (unité qui survit ou non) ;
+##   `remnant` : reliquat d'une unité réellement anéantie (effectif mis à zéro par le combat).
+## `outcome` (issue de la bataille pour l'armée de l'unité) : "won" (camp vainqueur, qui conserve le
+## terrain), "indecisive", "lost_retreat" ou "lost_no_retreat" (camp vaincu, avec ou sans retraite sûre).
+## Correction du directeur (solution A) : les pertes de déroute d'un camp VAINQUEUR sont ventilées comme
+## des pertes ordinaires (tués, blessés, disparus aux parts du feu) ; leur origine reste inscrite à part.
+## Dans les autres cas, les pertes de déroute sont disparues ou prisonnières (part de capture selon
+## l'issue : aucune capture sans défaite). Le reliquat d'une unité anéantie garde son traitement distinct.
+## Retourne la ventilation (entiers) ; la somme killed + wounded + missing + prisoners vaut exactement
+## `fire + routing + remnant` : aucun soldat créé ni perdu. `remained` est inclus dans `wounded`.
+static func book_battle_losses(state: GameState, nation: String, captor: String, fire: int, routing: int, remnant: int,
+		outcome: String, unit_survives: bool, origin_region: String) -> Dictionary:
+	var out := {"killed": 0, "wounded": 0, "remained": 0, "missing": 0, "prisoners": 0,
+		"origin_fire": 0, "origin_routing": 0, "origin_remnant": 0, "routing_as_ordinary": 0}
+	if fire + routing + remnant <= 0 or not state.nations.has(nation):
 		return out
 	var c := cfg()
-	# 1. Pertes au feu : tués, disparus, blessés (le reste).
-	var killed := int(round(float(fire) * param(nation, "killed_share")))
-	var missing := mini(fire - killed, int(round(float(fire) * param(nation, "missing_share_fire"))))
-	var wounded := fire - killed - missing
-	# 2. Pertes en déroute : disparus ou prisonniers selon l'issue (capture établie seulement si le camp perd).
 	var share := float(c["rout_prisoner_share"][outcome]["value"])
-	var prisoners := int(round(float(rout) * share))
-	missing += rout - prisoners
+	# 1. Pertes ordinaires : feu, et déroute d'un camp vainqueur (origine conservée à part).
+	# Unité anéantie d'un camp vainqueur : ses pertes de déroute ne sont ordinaires que si le paramètre
+	# `annihilated_unit_routing_as_ordinary` le permet (choix à valider) ; son reliquat reste à part.
+	var eligible := unit_survives or bool(cfg().get("annihilated_unit_routing_as_ordinary", {}).get("value", true))
+	var routing_ordinary := routing if outcome in routing_ordinary_outcomes() and eligible else 0
+	var a := _split_ordinary(nation, fire)
+	var b := _split_ordinary(nation, routing_ordinary)
+	var killed: int = a[0] + b[0]
+	var missing: int = a[1] + b[1]
+	var wounded: int = a[2] + b[2]
+	# 2. Autres pertes de déroute, puis reliquat d'unité anéantie : prisonniers (capture établie par la
+	#    défaite seulement) ou disparus. Arrondis séparés : chaque origine reste traçable.
+	var prisoners := 0
+	for n: int in [routing - routing_ordinary, remnant]:
+		var p := int(round(float(n) * share))
+		prisoners += p
+		missing += n - p
 	# 3. Blessés : légers restés dans l'unité (si elle existe encore), légers et autres en convalescence.
 	var light := int(round(float(wounded) * param(nation, "light_wound_share")))
 	var remained := int(floor(float(light) * param(nation, "remain_in_unit_share_of_light"))) if unit_survives else 0
@@ -134,8 +154,30 @@ static func book_battle_losses(state: GameState, nation: String, captor: String,
 	add_missing(state, nation, missing, "battle")
 	if prisoners > 0:
 		add_prisoners(state, nation, captor, prisoners)
-	out = {"killed": killed, "wounded": wounded, "remained": remained, "missing": missing, "prisoners": prisoners}
+	if not l.has("losses_by_origin"):
+		l["losses_by_origin"] = {"fire": 0, "routing": 0, "remnant": 0, "routing_as_ordinary": 0}
+	var o: Dictionary = l["losses_by_origin"]
+	o["fire"] = int(o["fire"]) + fire
+	o["routing"] = int(o["routing"]) + routing
+	o["remnant"] = int(o["remnant"]) + remnant
+	o["routing_as_ordinary"] = int(o["routing_as_ordinary"]) + routing_ordinary
+	out = {"killed": killed, "wounded": wounded, "remained": remained, "missing": missing, "prisoners": prisoners,
+		"origin_fire": fire, "origin_routing": routing, "origin_remnant": remnant, "routing_as_ordinary": routing_ordinary}
 	return out
+
+
+## Issues pour lesquelles les pertes de déroute sont des pertes ordinaires (décision : camp vainqueur).
+static func routing_ordinary_outcomes() -> Array:
+	return cfg().get("routing_as_ordinary_outcomes", {}).get("value", ["won"])
+
+
+## Pertes ordinaires : [tués, disparus, blessés] aux parts du feu ; somme exactement égale à `n`.
+static func _split_ordinary(nation: String, n: int) -> Array:
+	if n <= 0:
+		return [0, 0, 0]
+	var killed := int(round(float(n) * param(nation, "killed_share")))
+	var missing := mini(n - killed, int(round(float(n) * param(nation, "missing_share_fire"))))
+	return [killed, missing, n - killed - missing]
 
 
 static func _add_convalescence(state: GameState, l: Dictionary, nation: String, n: int, months: int, kind: String, region: String) -> void:
@@ -255,6 +297,11 @@ static func normalize(state: GameState) -> void:
 			l[k] = int(l.get(k, 0))
 		for k: String in l["wounded"]:
 			l["wounded"][k] = int(l["wounded"][k])
+		# Registres v2 écrits avant la correction de l'étape 1 : origine non enregistrée (zéros).
+		var o: Dictionary = l.get("losses_by_origin", {})
+		for k: String in ["fire", "routing", "remnant", "routing_as_ordinary"]:
+			o[k] = int(o.get(k, 0))
+		l["losses_by_origin"] = o
 		for k: String in l["missing"]:
 			l["missing"][k] = int(l["missing"][k])
 		for d: String in ["prisoners_lost_by_captor", "prisoners_held_by_origin"]:
