@@ -73,6 +73,14 @@ static func create(state: GameState, world: WorldMap, rules: Dictionary, cr: Dic
 				per_nation[u["nation"]] = int(per_nation.get(u["nation"], 0)) + int(u["soldiers"])
 		b["sides"][side]["start_soldiers"] = per_nation
 		b["sides"][side]["commander"] = commander(state, cr, per_nation)
+	# Type d'engagement (phase 6, étape 2 ; T-048, T-055) : choix des deux camps et circonstances.
+	var encircled := false
+	for army: String in clash["defenders"]:
+		encircled = encircled or bool(state.formations[army].get("encircled", false))
+	Engagement.setup(b, cr, {"approach": Engagement.side_approach(state, clash["attackers"], clash.get("approach", {})),
+		"posture": Engagement.side_posture(state, clash["defenders"]), "encircled": encircled,
+		"attacker_morale": _side_army_morale(b, CombatData.ATTACKERS), "defender_morale": _side_army_morale(b, CombatData.DEFENDERS)})
+	Engagement.apply_commitment(b, cr)
 	b["max_ticks"] = max_ticks(b, cr)
 	var participants: Array = b["sides"]["attackers"]["nations"] + b["sides"]["defenders"]["nations"]
 	for n: String in participants:
@@ -85,6 +93,15 @@ static func create(state: GameState, world: WorldMap, rules: Dictionary, cr: Dic
 	b["critical"] = pr >= float(cr["priority"]["critical_score"])
 	TacticalSim.update_fog(b, cr)
 	return b
+
+
+static func _side_army_morale(b: Dictionary, side: String) -> float:
+	var total := 0.0
+	var n := 0
+	for army: String in b["sides"][side]["armies"]:
+		total += float(b["army_morale"].get(army, 70.0))
+		n += 1
+	return 70.0 if n == 0 else total / float(n)
 
 
 static func _region_defenses(state: GameState, rid: String) -> Dictionary:
@@ -109,6 +126,7 @@ static func _tactical_unit(state: GameState, b: Dictionary, cr: Dictionary, su: 
 		formation = "skirmish_line"
 	return {"id": su["id"], "army": army, "nation": su["nation"], "side": side, "type": kind, "name_fr": su["name_fr"],
 		"soldiers": int(su["soldiers"]), "start_soldiers": int(su["soldiers"]), "morale": float(morale),
+		"lightly_wounded": mini(int(su.get("lightly_wounded", 0)), int(su["soldiers"])), "front_share": 0.0, "front_status": "",
 		"formation": formation, "pos": [0, 0], "dest": null, "order": "hold", "target": "", "build": "",
 		"status": CombatData.ACTIVE, "arrive_tick": 0, "entry": (b["sides"][side]["entry"] as Array).duplicate(),
 		"retreat_point": (b["sides"][side]["entry"] as Array).duplicate(), "last_fire_tick": -999, "quiet_ticks": 0,
@@ -253,6 +271,7 @@ static func max_ticks(b: Dictionary, cr: Dictionary) -> int:
 	minutes += maxf(0.0, float(n_nations - 2)) * float(d["per_extra_nation_minutes"])
 	minutes += float((b["objectives"] as Array).size()) * float(d["per_objective_minutes"])
 	minutes = clampf(minutes, float(d["min_minutes"]), float(d["max_minutes"]))
+	minutes = minf(minutes, Engagement.max_minutes(b, cr))  # plafond du type d'engagement (étape 2)
 	b["max_minutes"] = snappedf(minutes, 0.1)
 	return int(ceil(minutes * 60.0 / float(cr["tick_seconds"])))
 
@@ -404,10 +423,24 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	if b["status"] == "active":
 		b["status"] = "ended"
 		b["end_reason"] = "résolution forcée"
+	Engagement.finalize(b, cr)
 	var result := BattleResult.compute(b, cr)
+	var rid: String = b["region"]
+	# Reconnaissance en force : la région n'est prise que si la défense s'est effondrée ; sinon
+	# l'attaquant se retire avec son renseignement (issue indécise, aucune capture).
+	if Engagement.active(b) and bool(Engagement.side_param(b, cr, CombatData.ATTACKERS, "occupy_only_if_broken", false)) \
+			and result["winner"] == CombatData.ATTACKERS and not TacticalSim._side_broken(b, CombatData.DEFENDERS):
+		result["winner"] = ""
+		result["decisive"] = false
+		result["holder"] = CombatData.DEFENDERS
+		result["end_reason"] = str(result["end_reason"]) + " ; reconnaissance achevée, l'attaquant se retire"
+	if Engagement.active(b):
+		result["engagement"] = {"type": b["engagement"]["realized"], "label_fr": Engagement.label(cr, b["engagement"]["realized"]),
+			"planned": b["engagement"]["planned"], "approach": b["engagement"]["approach"], "posture": b["engagement"]["posture"]}
+		if b["engagement"]["approach"] == "reconnaissance":
+			_record_reconnaissance(state, b)
 	b["result"] = result
 	b["status"] = "finished"
-	var rid: String = b["region"]
 	var winner: String = result["winner"]
 	var loser := CombatData.other(winner) if winner != "" else CombatData.ATTACKERS
 	# 1. Pertes persistantes et moral des unités ; unités détruites retirées ; verrous levés.
@@ -442,6 +475,10 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 			for k: String in r:
 				booked[side][k] = int(booked[side][k]) + int(r[k])
 		su["soldiers"] = int(u["soldiers"]) + remained  # blessés légers restés dans leur unité (présents)
+		# Étape 2 : ces blessés légers réduisent la capacité opérationnelle jusqu'à leur guérison.
+		su["lightly_wounded"] = mini(int(su["soldiers"]), int(u.get("lightly_wounded", 0)) + remained)
+		if remained > 0:
+			su["lightly_wounded_turn"] = state.turn
 		su["morale"] = snappedf(float(u["morale"]), 0.1)
 		if u["status"] == CombatData.DESTROYED:
 			destroyed.append(uid)
@@ -494,7 +531,8 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	# 5. Positions défensives conservées dans la région (état et niveau compris).
 	state.regions[rid]["defenses"] = b["defenses"].duplicate(true)
 	# 6. Historique.
-	var summary := "Bataille de %s : %s. Pertes : attaquants %d, défenseurs %d (%s)." % [world.regions[rid]["name_fr"],
+	var summary := "Bataille de %s%s : %s. Pertes : attaquants %d, défenseurs %d (%s)." % [world.regions[rid]["name_fr"],
+		(" (%s)" % result["engagement"]["label_fr"]) if result.has("engagement") else "",
 		"victoire des attaquants" if winner == CombatData.ATTACKERS else ("victoire des défenseurs" if winner == CombatData.DEFENDERS else "indécise, le défenseur tient"),
 		int(result["stats"]["attackers"]["lost"]), int(result["stats"]["defenders"]["lost"]), result["end_reason"]]
 	for side: String in CombatData.SIDES:
@@ -509,6 +547,25 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	record.erase("visible")
 	state.battles.append(record)
 	return result
+
+
+## Reconnaissance en force : renseignement de l'attaquant sur ce que son camp a repéré (brouillard,
+## estimations arrondies), conservé dans la région pour chaque pays attaquant.
+static func _record_reconnaissance(state: GameState, b: Dictionary) -> void:
+	var mem: Dictionary = b["fog"][CombatData.ATTACKERS]
+	var estimate := 0
+	for eid: String in mem:
+		estimate += int(mem[eid]["estimate"])
+	var report := {"turn": state.turn, "date": state.date_label(), "units_seen": mem.size(), "estimate": estimate,
+		"fortification_level": int(b["engagement"]["fortification_level"])}
+	var rid: String = b["region"]
+	if not state.regions[rid].has("recon_reports"):
+		state.regions[rid]["recon_reports"] = {}
+	for n: String in b["sides"][CombatData.ATTACKERS]["nations"]:
+		state.regions[rid]["recon_reports"][n] = report.duplicate()
+	b["recon_report"] = report
+	state.log_event("renseignement", "Reconnaissance en force : %d unité(s) ennemie(s) repérée(s), environ %d hommes ; tranchées de niveau %d." % [
+		mem.size(), estimate, int(report["fortification_level"])], b["sides"][CombatData.ATTACKERS]["nations"])
 
 
 ## Retraite (T-043) : région nationale ou alliée, sans armée ennemie, de préférence reliée à la

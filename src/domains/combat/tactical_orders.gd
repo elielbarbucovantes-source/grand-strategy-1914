@@ -199,3 +199,17 @@ static func set_primary_objective(b: Dictionary, nation: String, objective_id: S
 			b["sides"][side]["primary_objective"] = objective_id
 			return ""
 	return "objectif inconnu"
+
+
+## Rupture du combat en ordre (phase 6, étape 2) : décision du commandant général de son camp.
+## Les unités actives se replient sans déroute ; la bataille s'achève peu après (disengage_ticks).
+static func disengage(b: Dictionary, rules: Dictionary, nation: String) -> String:
+	if b["status"] != "active":
+		return "bataille terminée"
+	var side := TacticalSim.side_of_nation(b, nation)
+	if side == "":
+		return "pays non engagé"
+	if b["sides"][side]["commander"]["nation"] != nation:
+		return "seul le commandant général peut rompre le combat"
+	return Engagement.disengage(b, rules, side, "ordre du commandant")
+

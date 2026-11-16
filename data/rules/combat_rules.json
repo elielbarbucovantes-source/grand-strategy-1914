@@ -114,6 +114,59 @@
   "grace_note": "30 pas de 2 s = 1 minute de temps de bataille (PROPOSÉ). Le délai court en temps de bataille : il ne s'écoule pas pendant une pause unanime des joueurs restants.",
   "network_status": "Fondations de simulation seulement : aucune couche réseau n'existe ; la détection d'une déconnexion réelle et la reconnexion par le réseau ne sont PAS implémentées ni testées."
  },
+ "engagement": {
+  "_statut": "T-048 (choix D) et T-055 (choix C) VALIDÉS (principes). MIL-01 phase 6, étape 2 : mécanique IMPLÉMENTÉE. Toutes les valeurs ci-dessous sont des paramètres de CONCEPTION PROVISOIRES : aucune n'est une donnée historique sourcée. La calibration des pertes relève de l'étape 3. Voir docs/project/MIL01_PHASE6_STEP2_REPORT.md.",
+  "approaches": {
+   "reconnaissance": {"label_fr": "Reconnaissance en force", "commit_share": 0.25, "disengage_loss": 0.06, "charges": "never", "objective": "nearest", "advance": "contact", "commit_reserves": false, "occupy_only_if_broken": true,
+    "description": "Engagement limité d'une partie des forces pour éprouver la défense : pas de charge, arrêt au contact, rupture rapide ; la région n'est prise que si la défense s'effondre ; renseignement sur les forces repérées."},
+   "limited_attack": {"label_fr": "Attaque limitée", "commit_share": 0.6, "disengage_loss": 0.15, "charges": "routing_only", "objective": "nearest", "advance": "objective", "commit_reserves": true, "occupy_only_if_broken": false,
+    "description": "Objectif circonscrit (l'objectif le plus proche) ; 60 % des unités engagées d'emblée, le reste en réserve ; charges seulement contre un ennemi en déroute."},
+   "assault": {"label_fr": "Assaut", "commit_share": 1.0, "disengage_loss": 0.35, "charges": "all", "objective": "main", "advance": "objective", "commit_reserves": true, "occupy_only_if_broken": false,
+    "description": "Offensive importante pour déloger l'adversaire : toutes les forces, objectif principal, charges autorisées."}
+  },
+  "postures": {
+   "delay": {"label_fr": "Retarder", "disengage_loss": 0.08, "rout_threshold_mult": 1.0, "entrench": false, "voluntary_withdraw": true,
+    "description": "Ralentir l'ennemi et préserver ses forces : pas de retranchement, rupture du combat dès 8 % de pertes (la région est cédée)."},
+   "hold": {"label_fr": "Tenir", "disengage_loss": 0.3, "rout_threshold_mult": 1.0, "entrench": true, "voluntary_withdraw": true,
+    "description": "Défense normale : retranchement, rupture du combat à 30 % de pertes."},
+   "hold_at_all_costs": {"label_fr": "Tenir à tout prix", "disengage_loss": null, "rout_threshold_mult": 0.5, "entrench": true, "voluntary_withdraw": false,
+    "description": "Maintien de la position : aucune rupture du combat, aucun repli volontaire, seuil de déroute abaissé (les unités tiennent plus longtemps sous le feu)."}
+  },
+  "matrix": {
+   "reconnaissance": {"delay": "skirmish", "hold": "skirmish", "hold_at_all_costs": "skirmish"},
+   "limited_attack": {"delay": "skirmish", "hold": "limited", "hold_at_all_costs": "limited"},
+   "assault": {"delay": "limited", "hold": "frontal", "hold_at_all_costs": "frontal"}
+  },
+  "types": {
+   "skirmish": {"label_fr": "Escarmouche", "max_minutes": 10.0, "sector_km": 8.0},
+   "limited": {"label_fr": "Engagement limité", "max_minutes": 20.0, "sector_km": 20.0},
+   "frontal": {"label_fr": "Assaut frontal", "max_minutes": 30.0, "sector_km": 40.0},
+   "major": {"label_fr": "Grande bataille", "max_minutes": 30.0, "sector_km": 80.0}
+  },
+  "major_battle_soldiers": 200000,
+  "major_note": "Seuil proposé par le directeur, vérifié contre le moteur : armées de 45 000 à 190 000 hommes au départ dans la campagne de janvier 1914, 100 000 à 250 000 par bataille avec les deux camps ; seuls les affrontements de plusieurs armées ou renforcés l'atteignent.",
+  "major_min_terrain_frontage": 0.6,
+  "small_battle_soldiers": 20000,
+  "assault_min_army_morale": 40.0,
+  "fortified_trench_level": 2,
+  "disengage_ticks": 30,
+  "disengage_morale": 30.0,
+  "disengage_note": "Rupture du combat : quand la part de l'effectif engagé perdue OU en déroute atteint le seuil de l'approche (attaquant) ou de la posture (défenseur), ou quand toutes les unités actives d'un camp ont un moral inférieur à disengage_morale. Les unités actives se replient en ordre pendant disengage_ticks pas (2 s chacun), puis la bataille s'achève.",
+  "front": {
+   "infantry_per_km": 1000.0,
+   "artillery_per_km": 250.0,
+   "terrain_frontage": {"plains": 1.0, "hills": 0.8, "forests": 0.6, "marshes": 0.5, "mountains": 0.4},
+   "formation_frontage": {"skirmish_line": 1.3, "assault_column": 0.7, "entrenched": 1.0},
+   "trench_frontage": 1.4,
+   "waiting_exposure": 0.3,
+   "rotation_morale": 40.0,
+   "rotation_fatigue": 0.85,
+   "fatigue_recovery_per_tick": 2,
+   "_note": "Densités en soldats « en ligne » par km de secteur : ordres de grandeur de CONCEPTION, non sourcés. Une formation occupe plus (tirailleurs) ou moins (colonne) de front par soldat ; en tranchée achevée et en position retranchée, chaque soldat tient plus de front. Les unités au contact sans place sur le front attendent, peu exposées, et relèvent les unités épuisées."
+  },
+  "lightly_wounded_efficiency": 0.5,
+  "lightly_wounded_note": "Un blessé léger resté dans son unité (étape 1) compte pour 0,5 soldat valide dans la capacité opérationnelle (feu, mêlée, travaux, état des forces) ; il reste dans l'effectif administratif. Valeur de CONCEPTION."
+ },
  "ai": {
   "_statut": "Comportements PROPOSÉS (niveau 1 tactique), configurables.",
   "charge_min_morale": 60.0, "charge_target_max_morale": 45.0, "charge_range": 220.0,

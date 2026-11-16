@@ -110,5 +110,36 @@ func _initialize() -> void:
 		await process_frame
 		check(_find_button(ui.pages["Armée"], "Posture : Générale") == null and _text_of(ui.pages["Armée"]).contains("Posture de mobilisation : Générale"),
 			"posture générale affichée (publique)")
+	# Types d'engagement (phase 6, étape 2) : approche offensive, posture défensive, explications.
+	ui.refresh()
+	await process_frame
+	var eng_text := _text_of(ui.pages["Armée"])
+	check(eng_text.contains("Types d'engagement") and eng_text.contains("Largeur du front") and eng_text.contains("Blessés légers"),
+		"onglet Armée : types d'engagement, largeur du front et blessés légers expliqués")
+	var opt := _find_button(ui.pages["Armée"], "Assaut") as OptionButton
+	check(opt != null and opt.item_count == 3, "sélecteur d'approche offensive (3 choix)")
+	if opt != null:
+		opt.select(1)
+		opt.item_selected.emit(1)
+		check(ui.approach == "limited_attack", "approche choisie : attaque limitée")
+		var army := ""
+		var dest := ""
+		for f: Dictionary in session.state.formations_of("france"):
+			if army == "" and session.state.is_top_level(f) and not session.state.is_engaged(f["id"]):
+				for n: String in session.world.neighbor_ids(f["region"], true):
+					if dest == "" and session.state.controller(n) == "france":
+						army = f["id"]
+						dest = n
+		ui.map_view.selected_formation = army
+		ui._on_region_clicked(dest)
+		var mv_orders: Array = session.player_orders().filter(func(o: Dictionary) -> bool: return o["type"] == Orders.MOVE and o["formation"] == army)
+		check(mv_orders.size() == 1 and mv_orders[0].get("approach", "") == "limited_attack", "ordre de déplacement avec l'approche choisie (%s)" % ui.status.text)
+		ui.map_view.selected_formation = ""
+	var post := _find_button(ui.pages["Armée"], "Tenir") as OptionButton
+	check(post != null and post.item_count == 3, "sélecteur de posture défensive (3 choix)")
+	if post != null:
+		post.item_selected.emit(2)
+		check(session.player_orders().any(func(o: Dictionary) -> bool: return o["type"] == Orders.SET_DEFENSIVE_POSTURE and o["posture"] == "hold_at_all_costs"),
+			"posture « tenir à tout prix » : ordre préparé (%s)" % ui.status.text)
 	print("RÉSULTAT UI : %s" % ("VALIDÉ" if failures == 0 else "%d échec(s)" % failures))
 	quit(1 if failures > 0 else 0)

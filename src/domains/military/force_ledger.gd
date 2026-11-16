@@ -180,6 +180,17 @@ static func _split_ordinary(nation: String, n: int) -> Array:
 	return [killed, missing, n - killed - missing]
 
 
+## Blessés légers restés dans leur unité (étape 2) : ils réduisent la capacité opérationnelle de
+## l'unité jusqu'à leur guérison, au bout de la convalescence légère (`convalescence_months_light`).
+## Ils n'ont jamais quitté l'effectif : la guérison ne change ni les présents ni le registre.
+static func heal_lightly_wounded(state: GameState) -> void:
+	var months := int(cfg()["convalescence_months_light"]["value"])
+	for fid: String in state.sorted_formation_ids():
+		var f: Dictionary = state.formations[fid]
+		if int(f.get("lightly_wounded", 0)) > 0 and state.turn >= int(f.get("lightly_wounded_turn", 0)) + months:
+			f["lightly_wounded"] = 0
+
+
 static func _add_convalescence(state: GameState, l: Dictionary, nation: String, n: int, months: int, kind: String, region: String) -> void:
 	if n <= 0:
 		return

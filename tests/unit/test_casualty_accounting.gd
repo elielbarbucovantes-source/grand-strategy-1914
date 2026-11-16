@@ -234,7 +234,10 @@ func test_battle_winner_and_loser_routing() -> void:
 		for k: Dictionary in [w, lo]:
 			runner.check(int(k["origin_fire"]) + int(k["origin_routing"]) + int(k["origin_remnant"]) == int(k["killed"]) + int(k["wounded"]) + int(k["missing"]) + int(k["prisoners"]),
 				"%s : origines (feu, déroute, reliquat) = catégories, volume inchangé" % case[2])
-		runner.check(int(w["origin_routing"]) > 0 and int(w["routing_as_ordinary"]) == int(w["origin_routing"]) and int(w["prisoners"]) == 0,
+		# Étape 2 : avec la largeur du front et la rupture du combat, un vainqueur peut n'avoir aucune
+		# perte de déroute (Vénétie) ; la règle reste vérifiée sur ce qui existe (et en calcul exact,
+		# test_winner_routing_booked_as_ordinary).
+		runner.check(int(w["routing_as_ordinary"]) == int(w["origin_routing"]) and int(w["prisoners"]) == 0,
 			"%s : vainqueur — %d pertes de déroute ventilées comme ordinaires, aucun prisonnier" % [case[2], int(w["origin_routing"])])
 		var wtot := int(w["killed"]) + int(w["wounded"]) + int(w["missing"])
 		runner.check(float(w["missing"]) <= 0.05 * float(wtot) + float(w["origin_remnant"]) + 1.0,

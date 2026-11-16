@@ -85,6 +85,8 @@ func queue_order(order: Dictionary) -> String:
 			reason = EconomySystem.validate_allocation(rules, order)
 		Orders.TERRITORIAL_OVERSEAS:
 			reason = TerritorialForce.validate_overseas(state, rules["forces"], order)
+		Orders.SET_DEFENSIVE_POSTURE:
+			reason = MilitarySystem.validate_posture(state, order)
 		Orders.BUILD_DEFENSE:
 			reason = DefenseSystem.validate(state, rules["combat"], order)
 		Orders.MOBILIZE, Orders.SET_MOBILIZATION_POSTURE, Orders.SET_MOBILIZATION_ALLOCATION, Orders.CALL_NEXT_ECHELON:
@@ -101,6 +103,8 @@ func queue_order(order: Dictionary) -> String:
 	if order["type"] == Orders.MOVE:
 		list = list.filter(func(o: Dictionary) -> bool: return not (o["type"] == Orders.MOVE and o["formation"] == order["formation"]))
 		state.formations[order["formation"]]["planned_target"] = order["target"]
+	elif order["type"] == Orders.SET_DEFENSIVE_POSTURE:
+		list = list.filter(func(o: Dictionary) -> bool: return not (o["type"] == Orders.SET_DEFENSIVE_POSTURE and o["army"] == order["army"]))
 	list.append(order)
 	state.pending_orders[state.player_nation] = list
 	return ""

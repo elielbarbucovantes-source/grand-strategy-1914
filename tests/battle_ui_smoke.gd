@@ -67,10 +67,24 @@ func _initialize() -> void:
 	press(bv.hud, "×16")
 	bv._process(1.0)
 	check(int(b["tick"]) > t0, "la bataille avance en temps réel (×16)")
+	# Phase 6, étape 2 : type d'engagement, front et répartition affichés ; rupture du combat.
+	bv.refresh()
+	var panel: String = bv.status_panel.get_parsed_text()
+	check(panel.contains("Engagement") and panel.contains("Front") and panel.contains("en ligne") and panel.contains("en réserve"),
+		"panneau : type d'engagement, front, soldats en ligne, en attente et en réserve")
+	bv.selected = [mine[0]]
+	bv.refresh()
+	check(bv.info.get_parsed_text().contains("Front :"), "unité sélectionnée : place sur le front affichée")
+	check(press(bv.hud, "Rompre le combat") and (b["engagement"]["disengaged"] as Dictionary).has(CombatData.ATTACKERS), "bouton « Rompre le combat » : repli ordonné du camp")
 	bv._on_close()
 	check(main.battle_view != null, "impossible de quitter une bataille active (T-029 A)")
 	press(bv.hud, "Résolution automatique")
 	check(s.state.active_battles.is_empty() and bv.result_box != null, "résolution automatique et résultat affiché")
+	var res_text := ""
+	for c: Node in bv.result_box.get_children()[0].get_children():
+		if c is RichTextLabel:
+			res_text += (c as RichTextLabel).get_parsed_text()
+	check(res_text.contains("Type d'engagement"), "résultat : type d'engagement réalisé affiché")
 	press(bv.result_box, "Retour à la carte")
 	await process_frame
 	check(main.battle_view == null and main.map_view.visible, "retour à la carte")

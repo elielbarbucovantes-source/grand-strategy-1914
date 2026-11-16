@@ -83,6 +83,7 @@ func _build_hud() -> void:
 		_btn(bar, "×4", func() -> void: speed = 4.0)
 		_btn(bar, "×16", func() -> void: speed = 16.0)
 		_btn(bar, "Résolution automatique", _on_auto)
+		_btn(bar, "Rompre le combat", func() -> void: _order(TacticalOrders.disengage(battle, session.rules["combat"], me)))
 	_btn(bar, "Retour à la carte", _on_close)
 	var left := PanelContainer.new()
 	left.anchor_top = 0.0; left.anchor_bottom = 1.0
@@ -113,6 +114,8 @@ func _build_hud() -> void:
 	right.offset_left = -360; right.offset_top = 44; right.offset_bottom = -30
 	hud.add_child(right)
 	var scroll := ScrollContainer.new()
+	# Vérification visuelle (étape 2, 1214 × 955) : les libellés longs ne doivent pas élargir le panneau.
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	right.add_child(scroll)
 	side_box = VBoxContainer.new()
 	side_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -167,12 +170,16 @@ func refresh() -> void:
 		var u: Dictionary = battle["units"].get(uid, {})
 		if u.is_empty():
 			continue
-		var state_txt: String = {"active": "active", "routing": "[color=#c0392b]EN DÉROUTE[/color]", "withdrawn": "retirée",
+		var state_txt: String = {"active": "active", "routing": "[color=#c0392b]EN DÉROUTE[/color]", "withdrawn": "retirée", "withdrawing": "repli en ordre",
 			"destroyed": "anéantie", "reserve": "en réserve", "arriving": "en route", "available": "disponible"}.get(u["status"], u["status"])
 		if TacticalSim.is_disorganized(cr, u):
 			state_txt = "[color=#d35400]désorganisée[/color]"
 		t += "[b]%s[/b] — %s\n  %d / %d soldats ; moral %.0f\n  %s ; ordre : %s ; %s\n" % [u["name_fr"], cr["unit_types"][u["type"]]["label_fr"],
 			int(u["soldiers"]), int(u["start_soldiers"]), float(u["morale"]), cr["formations"][u["formation"]]["label_fr"], u["order"], state_txt]
+		var front_txt: String = {"line": "en ligne (%.0f %% de l'effectif)" % (100.0 * float(u.get("front_share", 0.0))), "waiting": "en attente : pas de place sur le front"}.get(u.get("front_status", ""), "hors contact")
+		t += "  Front : %s\n" % front_txt
+		if int(u.get("lightly_wounded", 0)) > 0:
+			t += "  Dont %d blessés légers : capacité %d\n" % [int(u["lightly_wounded"]), int(round(Engagement.operational(cr, u)))]
 	info.text = t
 	for c in side_box.get_children():
 		if c != status_panel:
@@ -190,6 +197,7 @@ func refresh() -> void:
 	var other: Dictionary = b["sides"][CombatData.other(side)]
 	s += "[b]Commandant de votre camp[/b] : %s (%s)\n" % [_n(mine["commander"]["nation"]), mine["commander"]["basis"]]
 	s += "Objectif commun : %s\n" % _objective_name(mine["primary_objective"])
+	s += _engagement_text(b, cr)
 	var own := 0
 	for uid: String in b["units"]:
 		var u: Dictionary = b["units"][uid]
@@ -213,16 +221,15 @@ func refresh() -> void:
 		if u["status"] == CombatData.RESERVE:
 			var row := HBoxContainer.new()
 			side_box.add_child(row)
-			var l := Label.new(); l.text = "%s (%d)" % [u["name_fr"], int(u["soldiers"])]; row.add_child(l)
+			row.add_child(_wrapped("%s (%d)" % [u["name_fr"], int(u["soldiers"])]))
 			_btn(row, "Engager", func() -> void: _order(TacticalOrders.commit_reserve(b, cr, me, [uid])))
 		elif u["status"] == CombatData.AVAILABLE:
 			var row := HBoxContainer.new()
 			side_box.add_child(row)
-			var l := Label.new(); l.text = "%s depuis %s (%s)" % [u["name_fr"], session.world.regions[u["source_region"]]["name_fr"], _mmss(int(u["eta_ticks"]) * float(cr["tick_seconds"]))]; row.add_child(l)
+			row.add_child(_wrapped("%s depuis %s (%s)" % [u["name_fr"], session.world.regions[u["source_region"]]["name_fr"], _mmss(int(u["eta_ticks"]) * float(cr["tick_seconds"]))]))
 			_btn(row, "Appeler", func() -> void: _order(TacticalOrders.call_reinforcement(b, cr, me, uid)))
 		elif u["status"] == CombatData.ARRIVING:
-			var l := Label.new(); l.text = "→ %s arrive dans %s" % [u["name_fr"], _mmss((int(u["arrive_tick"]) - int(b["tick"])) * float(cr["tick_seconds"]))]
-			side_box.add_child(l)
+			side_box.add_child(_wrapped("→ %s arrive dans %s" % [u["name_fr"], _mmss((int(u["arrive_tick"]) - int(b["tick"])) * float(cr["tick_seconds"]))]))
 	var log_title := Label.new()
 	log_title.text = "Journal"
 	side_box.add_child(log_title)
@@ -232,6 +239,49 @@ func refresh() -> void:
 		l.autowrap_mode = TextServer.AUTOWRAP_WORD
 		l.custom_minimum_size.x = 330
 		side_box.add_child(l)
+
+
+## Type d'engagement, choix des camps, largeur du front et répartition de VOS forces (le brouillard
+## cache celles de l'adversaire).
+func _engagement_text(b: Dictionary, cr: Dictionary) -> String:
+	if not Engagement.active(b):
+		return ""
+	var e: Dictionary = b["engagement"]
+	var ec: Dictionary = cr["engagement"]
+	var s := "[b]Engagement[/b] : %s%s\n  %s contre %s\n" % [Engagement.label(cr, e["type"]),
+		"" if e["type"] == e["planned"] else " (prévu : %s)" % Engagement.label(cr, e["planned"]),
+		ec["approaches"][e["approach"]]["label_fr"], ec["postures"][e["posture"]]["label_fr"]]
+	s += "[b]Front[/b] : %.0f km (région %.0f km, terrain %.0f %%)\n" % [float(e["front_km"]), float(e["region_width_km"]), 100.0 * float(e["terrain_frontage"])]
+	var line := 0
+	var waiting := 0
+	var reserve := 0
+	for uid: String in b["units"]:
+		var u: Dictionary = b["units"][uid]
+		if u["side"] != side:
+			continue
+		if u["status"] == CombatData.RESERVE:
+			reserve += int(u["soldiers"])
+		elif u.get("front_status", "") == "line":
+			line += int(round(float(u["soldiers"]) * float(u["front_share"])))
+			waiting += int(round(float(u["soldiers"]) * (1.0 - float(u["front_share"]))))
+		elif u.get("front_status", "") == "waiting":
+			waiting += int(u["soldiers"])
+	s += "  Vos soldats en ligne : %d ; en attente : %d ; en réserve : %d\n" % [line, waiting, reserve]
+	var thr := Engagement.disengage_threshold(b, cr, side)
+	s += "  Rupture automatique : %s\n" % ("jamais (tenir à tout prix)" if thr == INF else "à %.0f %% de pertes ou de déroute" % (100.0 * thr))
+	if not (e["disengaged"] as Dictionary).is_empty():
+		s += "  [color=#ff8a7a]%s rompent le combat.[/color]\n" % ("Les attaquants" if e["disengaged"].has(CombatData.ATTACKERS) else "Les défenseurs")
+	return s
+
+
+## Libellé replié dans la largeur du panneau (noms d'unités et de régions longs).
+func _wrapped(text: String) -> Label:
+	var l := Label.new()
+	l.text = text
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	l.custom_minimum_size.x = 200
+	return l
 
 
 func _planning_panel() -> void:
@@ -296,6 +346,11 @@ func _show_result(res: Dictionary) -> void:
 	if not k.is_empty():
 		l.text += "\nVos pertes : tués %d ; blessés %d (dont %d restés dans leur unité) ; disparus %d ; prisonniers %d.\n[i]Ventilation provisoire.[/i]" % [
 			int(k["killed"]), int(k["wounded"]), int(k["remained"]), int(k["missing"]), int(k["prisoners"])]
+	if res.has("engagement"):
+		l.text += "\nType d'engagement : [b]%s[/b] (prévu : %s)." % [res["engagement"]["label_fr"], Engagement.label(session.rules["combat"], res["engagement"]["planned"])]
+	if battle.has("recon_report") and side == CombatData.ATTACKERS:
+		var rr: Dictionary = battle["recon_report"]
+		l.text += "\nReconnaissance : %d unité(s) repérée(s), environ %d hommes ; tranchées de niveau %d." % [int(rr["units_seen"]), int(rr["estimate"]), int(rr["fortification_level"])]
 	box.add_child(l)
 	_btn(box, "Retour à la carte", _on_close)
 
@@ -527,6 +582,8 @@ func _draw_unit(u: Dictionary, k: float, cr: Dictionary) -> void:
 	if selected.has(u["id"]):
 		draw_circle(p, 26.0 * k, Color(SELECT, 0.45))
 	var size: Vector2 = {"skirmish_line": Vector2(40, 12), "assault_column": Vector2(16, 34), "entrenched": Vector2(34, 16)}[u["formation"]] * k
+	if u.get("front_status", "") == "waiting" or u["status"] == CombatData.WITHDRAWING:
+		col.a = 0.45  # en attente (pas de place sur le front) ou en repli ordonné
 	draw_rect(Rect2(p - size / 2.0, size), col)
 	draw_rect(Rect2(p - size / 2.0, size), outline, false, 2.0 * k)
 	var glyph: String = {"infantry": "I", "cavalry": "C", "artillery": "A"}[u["type"]]

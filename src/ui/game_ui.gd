@@ -20,6 +20,7 @@ var nation_label: Label
 var share_label: Label
 var battle_button: Button
 var pages: Dictionary = {}    # nom -> VBoxContainer
+var approach := "assault"     # approche offensive des prochains ordres de déplacement (T-055)
 
 
 func setup(s: GameSession, m: MapView) -> void:
@@ -371,6 +372,7 @@ func _page_army() -> void:
 	var st := session.state
 	_forces_panel(box)
 	_rich(box, "\nHiérarchie VALIDÉE : soldats et équipements → unités → régiments → divisions → armées.\nSélectionnez une formation (ses unités s'affichent), puis cliquez une région voisine sur la carte pour ordonner un déplacement (portée provisoire : 1 région par mois).")
+	_engagement_controls(box)
 	for f: Dictionary in st.formations_of(st.player_nation):
 		if not st.is_top_level(f):
 			continue
@@ -385,6 +387,7 @@ func _page_army() -> void:
 			refresh())
 		b.toggle_mode = true
 		b.button_pressed = map_view.selected_formation == f["id"]
+		_posture_row(box, f)
 		var soldiers: Variant = st.soldiers_of(f["id"])
 		var extra := "Effectif : %s ; moral d'armée : %s%s%s" % ["[i]inconnu (MIL-01)[/i]" if soldiers == null else _num(soldiers),
 			"—" if f.get("morale") == null else "%.0f" % float(f["morale"]), " ; [color=#b03a2e]ENCERCLÉE[/color]" if f.get("encircled", false) else "",
@@ -394,7 +397,11 @@ func _page_army() -> void:
 			var su: Dictionary = st.formations[uid]
 			var urow := HBoxContainer.new()
 			box.add_child(urow)
-			_wrap(_label(urow, "   %s : %s soldats, moral %s" % [su["name_fr"], _num(su.get("soldiers")), "—" if su.get("morale") == null else "%.0f" % float(su["morale"])], 11))
+			var lw := int(su.get("lightly_wounded", 0))
+			var lw_txt := ""
+			if lw > 0 and su.get("soldiers") != null:
+				lw_txt = " ; dont %s blessés légers (capacité %s)" % [_num(lw), _num(int(round(Engagement.operational(session.rules["combat"], su))))]
+			_wrap(_label(urow, "   %s : %s soldats%s, moral %s" % [su["name_fr"], _num(su.get("soldiers")), lw_txt, "—" if su.get("morale") == null else "%.0f" % float(su["morale"])], 11))
 			var rb := CheckBox.new()
 			rb.text = "réserve"
 			rb.button_pressed = bool(su.get("reserve", false))
@@ -420,6 +427,57 @@ func _page_army() -> void:
 			else:
 				outcome = b["resolution"]["status"]
 			_rich(box, "%s, %s : %s" % [b["date"], session.world.regions[b["region"]]["name_fr"], outcome])
+
+
+## Types d'engagement (T-055, phase 6 étape 2) : approche offensive des prochains déplacements et
+## explication du système (largeur du front, blessés légers).
+func _engagement_controls(box: VBoxContainer) -> void:
+	var ec: Dictionary = session.rules["combat"].get("engagement", {})
+	if ec.is_empty():
+		return
+	var row := HBoxContainer.new()
+	box.add_child(row)
+	_label(row, "Approche offensive :", 13)
+	var opt := OptionButton.new()
+	opt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	opt.clip_text = true
+	for ap: String in Engagement.APPROACHES:
+		opt.add_item(ec["approaches"][ap]["label_fr"])
+		opt.set_item_tooltip(opt.item_count - 1, ec["approaches"][ap]["description"])
+		if ap == approach:
+			opt.select(opt.item_count - 1)
+	opt.item_selected.connect(func(i: int) -> void:
+		approach = Engagement.APPROACHES[i]
+		say("Approche des prochains déplacements : " + ec["approaches"][approach]["label_fr"]))
+	row.add_child(opt)
+	_rich(box, "[i]%s[/i]\n[b]Types d'engagement[/b] : votre approche et la posture du défenseur (escarmouche, engagement limité, assaut frontal, grande bataille au-delà de %s hommes). [b]Largeur du front[/b] : seuls les soldats qui trouvent place sur le secteur combattent ; les autres attendent et relèvent les unités épuisées. [b]Blessés légers[/b] restés dans une unité : comptés dans l'effectif, mais à %d %% de leur capacité jusqu'à leur guérison. [i]Paramètres provisoires.[/i]" % [
+		ec["approaches"][approach]["description"], _num(int(ec["major_battle_soldiers"])), int(round(100.0 * float(ec["lightly_wounded_efficiency"])))])
+
+
+## Posture défensive permanente d'une armée (ordre du mois).
+func _posture_row(box: VBoxContainer, f: Dictionary) -> void:
+	var ec: Dictionary = session.rules["combat"].get("engagement", {})
+	if ec.is_empty():
+		return
+	var current: String = f.get("defensive_posture", "")
+	var pending := ""
+	for o: Dictionary in session.player_orders():
+		if o["type"] == Orders.SET_DEFENSIVE_POSTURE and o["army"] == f["id"]:
+			pending = o["posture"]
+	var shown := pending if pending != "" else (current if current != "" else Engagement.DEFAULT_POSTURE)
+	var row := HBoxContainer.new()
+	box.add_child(row)
+	_label(row, "   Posture défensive :", 12)
+	var opt := OptionButton.new()
+	opt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	opt.clip_text = true
+	for po: String in Engagement.POSTURES:
+		opt.add_item(ec["postures"][po]["label_fr"] + (" (ordre en attente)" if po == pending and pending != current else ""))
+		opt.set_item_tooltip(opt.item_count - 1, ec["postures"][po]["description"])
+		if po == shown:
+			opt.select(opt.item_count - 1)
+	opt.item_selected.connect(func(i: int) -> void: _queue(Orders.defensive_posture(session.state.player_nation, f["id"], Engagement.POSTURES[i])))
+	row.add_child(opt)
 
 
 func _page_logistics() -> void:
@@ -475,7 +533,11 @@ func _page_orders() -> void:
 func _describe(o: Dictionary) -> String:
 	match o["type"]:
 		Orders.MOVE:
-			return "Déplacer %s vers %s" % [session.state.formations[o["formation"]]["name_fr"], session.world.regions[o["target"]]["name_fr"]]
+			var ap: String = o.get("approach", Engagement.DEFAULT_APPROACH)
+			return "Déplacer %s vers %s (approche : %s)" % [session.state.formations[o["formation"]]["name_fr"], session.world.regions[o["target"]]["name_fr"],
+				session.rules["combat"]["engagement"]["approaches"][ap]["label_fr"]]
+		Orders.SET_DEFENSIVE_POSTURE:
+			return "Posture défensive de %s : %s" % [session.state.formations[o["army"]]["name_fr"], session.rules["combat"]["engagement"]["postures"][o["posture"]]["label_fr"]]
 		Orders.DECLARE_WAR:
 			return "Déclarer la guerre à %s" % _n(o["target"])
 		Orders.PROPOSE_TREATY:
@@ -513,7 +575,7 @@ func _queue(order: Dictionary) -> void:
 
 func _on_region_clicked(rid: String) -> void:
 	if map_view.selected_formation != "":
-		_queue(Orders.move(session.state.player_nation, map_view.selected_formation, rid))
+		_queue(Orders.move(session.state.player_nation, map_view.selected_formation, rid, approach))
 		return
 	map_view.selected_region = rid
 	tabs.current_tab = 0

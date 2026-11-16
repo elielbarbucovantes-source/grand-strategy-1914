@@ -13,6 +13,7 @@ const ROUTING := "routing"      # en déroute : retraite automatique, non contr�
 const WITHDRAWN := "withdrawn"  # a quitté le champ (déroute achevée ou repli)
 const DESTROYED := "destroyed"  # anéantie
 const RESERVE := "reserve"      # réserve non engagée (T-040 B)
+const WITHDRAWING := "withdrawing"  # rupture du combat en ordre (phase 6, étape 2) : repli sans déroute
 const ARRIVING := "arriving"    # renfort en route (T-040 A) ou réserve en cours d'engagement
 const AVAILABLE := "available"  # renfort possible, non appelé
 
@@ -33,7 +34,7 @@ static func a(p: Vector2) -> Array:
 
 
 static func is_on_field(u: Dictionary) -> bool:
-	return u["status"] == ACTIVE or u["status"] == ROUTING
+	return u["status"] == ACTIVE or u["status"] == ROUTING or u["status"] == WITHDRAWING
 
 
 static func can_fight(u: Dictionary) -> bool:
@@ -55,9 +56,17 @@ static func normalize_battle(b: Dictionary) -> void:
 	for uid: String in b.get("units", {}):
 		var u: Dictionary = b["units"][uid]
 		for key in ["soldiers", "start_soldiers", "arrive_tick", "last_fire_tick", "quiet_ticks", "engaged_ticks", "charge_ticks",
-				"loss_fire", "loss_routing", "loss_remnant"]:
+				"loss_fire", "loss_routing", "loss_remnant", "lightly_wounded"]:
 			if u.has(key) and u[key] != null:
 				u[key] = int(u[key])
+	if b.has("engagement"):
+		var e: Dictionary = b["engagement"]
+		for key in ["engaged_start", "rotations", "disengage_end_tick", "upgraded_tick", "fortification_level", "entered"]:
+			if e.has(key):
+				e[key] = int(e[key])
+		for key in ["peak_line", "line", "waiting", "disengaged", "start_by_side"]:
+			for k: String in e.get(key, {}):
+				e[key][k] = int(e[key][k])
 	for n: String in b.get("disconnected", {}):
 		b["disconnected"][n] = int(b["disconnected"][n])
 	for side: String in b.get("fog", {}):

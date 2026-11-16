@@ -279,7 +279,7 @@ static func _normalize_numbers(s: GameState) -> void:
 			m["turn"] = int(m["turn"])
 	for fid: String in s.formations:
 		var f: Dictionary = s.formations[fid]
-		for key: String in ["soldiers", "services_soldiers", "establishment", "war_cap"]:
+		for key: String in ["soldiers", "services_soldiers", "establishment", "war_cap", "lightly_wounded", "lightly_wounded_turn"]:
 			if f.get(key) != null:
 				f[key] = int(f[key])
 	for nid: String in s.nations:

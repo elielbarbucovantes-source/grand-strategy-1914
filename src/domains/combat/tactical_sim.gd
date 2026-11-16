@@ -2,8 +2,9 @@ class_name TacticalSim
 extends RefCounted
 ## Simulation tactique à pas fixe, déterministe, sans interface (une bataille = un Dictionary).
 ## Un pas = `tick_seconds` secondes. Ordre d'un pas :
-##   arrivées → brouillard → mouvements et ordres → construction → tir et mêlée (pertes par unité)
-##   → application des pertes → moral, déroute, ralliement → objectifs → fin.
+##   arrivées → brouillard → mouvements et ordres → construction → largeur du front (place de chaque
+##   unité au contact) → tir et mêlée (pertes par unité) → application des pertes → moral, déroute,
+##   ralliement → objectifs → rupture du combat (types d'engagement) → fin.
 ## Toutes les valeurs proviennent de data/rules/combat_rules.json (provisoires).
 
 
@@ -25,8 +26,13 @@ static func _one_tick(b: Dictionary, r: Dictionary) -> void:
 	_apply_losses(b, r, losses)
 	_morale(b, r, losses)
 	_objectives(b, r)
+	Engagement.check_disengagement(b, r)
 	b["tick"] = tick + 1
-	if int(b["tick"]) >= int(b["max_ticks"]) or _side_broken(b, CombatData.ATTACKERS) or _side_broken(b, CombatData.DEFENDERS):
+	if Engagement.disengagement_over(b):
+		b["status"] = "ended"
+		var who: String = (b["engagement"]["disengaged"] as Dictionary).keys()[0]
+		b["end_reason"] = "les %s ont rompu le combat" % ("attaquants" if who == CombatData.ATTACKERS else "défenseurs")
+	elif int(b["tick"]) >= int(b["max_ticks"]) or _side_broken(b, CombatData.ATTACKERS) or _side_broken(b, CombatData.DEFENDERS):
 		b["status"] = "ended"
 		b["end_reason"] = "durée maximale atteinte" if int(b["tick"]) >= int(b["max_ticks"]) else "un camp ne peut plus combattre"
 
@@ -135,6 +141,7 @@ static func _arrivals(b: Dictionary, r: Dictionary) -> void:
 			u["status"] = CombatData.ACTIVE
 			u["pos"] = (u["entry"] as Array).duplicate()
 			_log(b, "%s arrive sur le champ de bataille." % u["name_fr"], u["side"])
+			Engagement.on_arrival(b, r)
 
 
 ## Brouillard tactique (T-035) : visibilité par camp, mémoire datée qui vieillit puis s'efface.
@@ -181,7 +188,7 @@ static func _movement(b: Dictionary, r: Dictionary) -> void:
 	var h := float(b["field"]["h"])
 	for uid: String in CombatData.unit_ids(b):
 		var u: Dictionary = b["units"][uid]
-		if u["status"] == CombatData.ROUTING:
+		if u["status"] == CombatData.ROUTING or u["status"] == CombatData.WITHDRAWING:
 			u["dest"] = (u["retreat_point"] as Array).duplicate()
 		elif u["status"] != CombatData.ACTIVE:
 			continue
@@ -215,6 +222,8 @@ static func _movement(b: Dictionary, r: Dictionary) -> void:
 			if u["status"] == CombatData.ROUTING:
 				u["status"] = CombatData.WITHDRAWN
 				_log(b, "%s, en déroute, quitte le champ de bataille." % u["name_fr"], u["side"])
+			elif u["status"] == CombatData.WITHDRAWING:
+				u["status"] = CombatData.WITHDRAWN
 			continue
 		var step_len := minf(speed(b, r, u), d - stop)
 		var np := pos + (dest - pos).normalized() * step_len
@@ -238,7 +247,7 @@ static func _construction(b: Dictionary, r: Dictionary) -> void:
 		var job := _job(b, u.get("build", ""))
 		if job.is_empty() or job["complete"] or CombatData.v(u["pos"]).distance_to(CombatData.v(job["site"])) > 30.0:
 			continue
-		var rate := float(u["soldiers"]) * float(c["work_per_soldier_per_tick_battle"]) * float(b["field"]["terrain"]["dig"]) \
+		var rate := Engagement.operational(r, u) * float(c["work_per_soldier_per_tick_battle"]) * float(b["field"]["terrain"]["dig"]) \
 			* float(type_cfg(r, u)["dig_rate"]) * effectiveness(r, u)
 		if int(b["tick"]) - int(u["last_fire_tick"]) <= int(c["under_fire_memory_ticks"]):
 			rate *= float(c["under_fire_rate"])
@@ -256,6 +265,7 @@ static func _construction(b: Dictionary, r: Dictionary) -> void:
 
 # ------------------------------------------------------------------ tir et mêlée (pertes par unité)
 static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
+	Engagement.allocate_front(b, r)  # phase 6, étape 2 : seuls les soldats en ligne combattent
 	var losses: Dictionary = {}
 	var dt := float(r["tick_seconds"])
 	var cmb: Dictionary = r["combat"]
@@ -267,16 +277,23 @@ static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
 		var spos := CombatData.v(s["pos"])
 		var target := ""
 		var best := INF
+		var share := float(s.get("front_share", 1.0))
+		if share <= 0.0:
+			continue  # au contact sans place sur le front (en attente) ou hors de portée
 		if s["order"] == "charge" and is_visible_to(b, s["side"], s["target"]):
 			target = s["target"]
 		else:
+			# Les unités en ligne sont visées d'abord ; une unité en attente, en retrait, à défaut.
+			var best_rank := 2
 			for eid: String in b["visible"][s["side"]]:
 				var e: Dictionary = b["units"].get(eid, {})
 				if e.is_empty() or not CombatData.is_on_field(e):
 					continue
 				var d := spos.distance_to(CombatData.v(e["pos"]))
-				if d <= float(tc["range"]) and d < best:
+				var rank := 1 if e.get("front_status", "") == "waiting" else 0
+				if d <= float(tc["range"]) and (rank < best_rank or (rank == best_rank and d < best)):
 					best = d
+					best_rank = rank
 					target = eid
 		if target == "":
 			continue
@@ -291,7 +308,7 @@ static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
 			continue  # une unité au travail ne tire pas
 		var falloff := lerpf(1.0, float(cmb["falloff_min"]), clampf(d / float(tc["range"]), 0.0, 1.0))
 		var bonus := installation_bonus(b, r, s)
-		var fire := float(tc["lethality"]) * float(s["soldiers"]) * float(formation_cfg(r, s)["fire"]) \
+		var fire := float(tc["lethality"]) * Engagement.operational(r, s) * share * float(formation_cfg(r, s)["fire"]) \
 			* effectiveness(r, s) * (1.0 + float(bonus["fire"])) * falloff * dt
 		var c := fire * exposure(b, r, t)
 		losses[target] = float(losses.get(target, 0.0)) + c
@@ -311,7 +328,7 @@ static func exposure(b: Dictionary, r: Dictionary, t: Dictionary) -> float:
 		e *= float(r["construction"]["builder_exposure_mult"])
 	if t["type"] == "artillery":
 		e *= float(r["combat"]["role_exposure"]["artillery_rear_factor"])
-	return e
+	return e * Engagement.exposure_factor(r, t)
 
 
 ## Le feu d'artillerie dégrade les installations ennemies proches de la cible (état ∈ [0, 1]).
@@ -328,9 +345,9 @@ static func _melee(b: Dictionary, r: Dictionary, s: Dictionary, t: Dictionary, l
 	var cmb: Dictionary = r["combat"]
 	var dt := float(r["tick_seconds"])
 	var trench := trench_level(b, r, t) * float(cmb["trench_cover_per_level"])
-	var att := float(cmb["charge_melee_lethality"]) * float(s["soldiers"]) * float(type_cfg(r, s)["melee"]) \
+	var att := float(cmb["charge_melee_lethality"]) * Engagement.operational(r, s) * float(s.get("front_share", 1.0)) * float(type_cfg(r, s)["melee"]) \
 		* float(formation_cfg(r, s)["charge"]) * effectiveness(r, s) * dt * (1.0 - minf(0.8, trench * 2.0))
-	var dfn := float(cmb["charge_melee_lethality"]) * 0.6 * float(t["soldiers"]) * float(type_cfg(r, t)["melee"]) \
+	var dfn := float(cmb["charge_melee_lethality"]) * 0.6 * Engagement.operational(r, t) * float(type_cfg(r, t)["melee"]) \
 		* effectiveness(r, t) * dt * (1.0 + trench * 2.0)
 	if t["status"] == CombatData.ROUTING:
 		att *= float(r["rout"]["vulnerability"])
@@ -357,7 +374,9 @@ static func _apply_losses(b: Dictionary, r: Dictionary, losses: Dictionary) -> v
 		# Comptage de l'ORIGINE des pertes (phase 6, étape 1) : aucun effet sur le calcul.
 		var origin_key := "loss_routing" if u["status"] == CombatData.ROUTING else "loss_fire"
 		u[origin_key] = int(u.get(origin_key, 0)) + n
-		u["soldiers"] = int(u["soldiers"]) - n
+		var before := int(u["soldiers"])
+		u["soldiers"] = before - n
+		Engagement.on_losses(u, n, before)  # blessés légers de l'unité : au prorata
 		u["tick_losses"] = n
 		if int(u["soldiers"]) < int(r["combat"]["min_unit_soldiers"]) and u["status"] != CombatData.DESTROYED:
 			u["status"] = CombatData.DESTROYED
@@ -405,7 +424,7 @@ static func _morale(b: Dictionary, r: Dictionary, losses: Dictionary) -> void:
 		u["morale"] = clampf(morale, 0.0, float(m["max"]))
 		u["tick_losses"] = 0
 		var rt: Dictionary = r["rout"]
-		if u["status"] == CombatData.ACTIVE and float(u["morale"]) < float(rt["threshold"]):
+		if u["status"] == CombatData.ACTIVE and float(u["morale"]) < Engagement.rout_threshold(b, r, u):
 			u["status"] = CombatData.ROUTING
 			u["order"] = "rout"
 			_log(b, "%s est en déroute !" % u["name_fr"], u["side"])
@@ -435,7 +454,8 @@ static func _objectives(b: Dictionary, r: Dictionary) -> void:
 static func _side_broken(b: Dictionary, side: String) -> bool:
 	for uid: String in b["units"]:
 		var u: Dictionary = b["units"][uid]
-		if u["side"] == side and (u["status"] == CombatData.ACTIVE or u["status"] == CombatData.RESERVE or u["status"] == CombatData.ARRIVING):
+		if u["side"] == side and (u["status"] == CombatData.ACTIVE or u["status"] == CombatData.RESERVE or u["status"] == CombatData.ARRIVING \
+				or u["status"] == CombatData.WITHDRAWING):
 			return false
 	return true
 

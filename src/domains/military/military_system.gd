@@ -48,6 +48,8 @@ static func validate_move(state: GameState, world: WorldMap, rules: Dictionary, 
 		return "trop loin pour un mois (%d régions, portée provisoire %d)" % [path.size() - 1, int(mv["regions_per_month"])]
 	if not can_enter(state, order["nation"], target):
 		return "entrée non autorisée : ni guerre ni autorisation de passage avec %s" % state.controller(target)
+	if order.has("approach") and not Engagement.APPROACHES.has(str(order["approach"])):
+		return "approche offensive inconnue"
 	return TerritorialForce.move_restriction(state, f, target)  # T-054 : service intérieur
 
 
@@ -61,9 +63,11 @@ static func validate_move(state: GameState, world: WorldMap, rules: Dictionary, 
 ##   symétriques utilisent un tirage déterministe dérivé de la graine (TURN-03, TURN-04).
 static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, moves: Array) -> Array:
 	var origin: Dictionary = {}
+	var approach: Dictionary = {}  # armée -> approche offensive choisie (T-055)
 	for order: Dictionary in moves:
 		var f: Dictionary = state.formations[order["formation"]]
 		origin[f["id"]] = f["region"]
+		approach[f["id"]] = str(order.get("approach", Engagement.DEFAULT_APPROACH))
 	# 1. Tous les mouvements valides sont appliqués en même temps.
 	for order: Dictionary in moves:
 		var f: Dictionary = state.formations[order["formation"]]
@@ -111,7 +115,7 @@ static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, 
 					defenders.append(f["id"])
 			if attackers.is_empty() or defenders.is_empty():
 				continue
-			clashes.append({"region": rid, "attackers": attackers, "defenders": defenders, "origin": origin})
+			clashes.append({"region": rid, "attackers": attackers, "defenders": defenders, "origin": origin, "approach": approach})
 	# 3. Occupation des régions ennemies sans adversaire présent. Si plusieurs pays co-belligérants
 	#    y entrent ensemble, le contrôle revient à celui qui y amène le plus de soldats ; égalité ou
 	#    effectifs inconnus : tirage neutre (jamais l'ordre des pays).
@@ -152,6 +156,18 @@ static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, 
 
 ## Choix neutre et reproductible parmi des candidats symétriques : dépend de la graine de la partie,
 ## du tour et du contexte, jamais de l'ordre des pays ni des identifiants (TURN-03).
+## Posture défensive (T-055) : ordre permanent d'une armée de son propre pays.
+static func validate_posture(state: GameState, order: Dictionary) -> String:
+	var army: String = order.get("army", "")
+	if not state.formations.has(army) or not state.is_top_level(state.formations[army]):
+		return "armée inconnue"
+	if state.formations[army]["nation"] != order["nation"]:
+		return "commandement national seulement"
+	if not Engagement.POSTURES.has(str(order.get("posture", ""))):
+		return "posture défensive inconnue"
+	return ""
+
+
 static func neutral_pick(state: GameState, context: String, candidates: Array) -> String:
 	if candidates.is_empty():
 		return ""

@@ -35,6 +35,8 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 				MobilizationSystem.apply_order(state, world, rules["forces"]["mobilization"], order)
 		elif order["type"] == Orders.TERRITORIAL_OVERSEAS and rules.has("forces"):
 			TerritorialForce.apply_overseas(state, rules["forces"], order)
+		elif order["type"] == Orders.SET_DEFENSIVE_POSTURE:
+			state.formations[order["army"]]["defensive_posture"] = order["posture"]  # avant les batailles du mois
 	# Les mouvements sont revalidés après la diplomatie (une déclaration de guerre du même
 	# tour peut autoriser l'entrée ; une paix peut l'interdire). Une formation = un ordre.
 	var moves: Array = []
@@ -71,6 +73,7 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 	if rules.has("forces"):
 		MobilizationSystem.monthly(state, world, rules["forces"])
 		ForceLedger.monthly_recovery(state, world, rules["forces"])  # fin de convalescence (phase 6, étape 1)
+		ForceLedger.heal_lightly_wounded(state)  # blessés légers restés dans leur unité (étape 2)
 	LogisticsSystem.update_supply(state, world)
 	state.pending_orders = {}
 	var finished := state.date_label()
@@ -130,6 +133,8 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 			return MobilizationSystem.validate(state, order, world, rules.get("forces", {}).get("mobilization", {}))
 		Orders.TERRITORIAL_OVERSEAS:
 			return TerritorialForce.validate_overseas(state, rules["forces"], order) if rules.has("forces") else "règles des forces absentes"
+		Orders.SET_DEFENSIVE_POSTURE:
+			return MilitarySystem.validate_posture(state, order)
 		Orders.DECLARE_WAR, Orders.PROPOSE_TREATY, Orders.RESPOND_PROPOSAL, Orders.BREAK_TREATY, Orders.SEND_MESSAGE:
 			return DiplomacySystem.validate(state, order)
 	return "type d'ordre inconnu"

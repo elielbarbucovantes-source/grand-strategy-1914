@@ -16,13 +16,24 @@ const SET_MOBILIZATION_POSTURE := "set_mobilization_posture"
 const SET_MOBILIZATION_ALLOCATION := "set_mobilization_allocation"
 const CALL_NEXT_ECHELON := "call_next_echelon"
 const TERRITORIAL_OVERSEAS := "territorial_overseas"
+const SET_DEFENSIVE_POSTURE := "set_defensive_posture"  # phase 6, étape 2 (T-055)
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
 
 
-static func move(nation: String, formation: String, target: String) -> Dictionary:
-	return {"type": MOVE, "nation": nation, "formation": formation, "target": target}
+## `approach` (T-055, phase 6 étape 2) : approche offensive si le déplacement provoque une bataille
+## ("reconnaissance", "limited_attack" ou "assault") ; vide = assaut (défaut).
+static func move(nation: String, formation: String, target: String, approach: String = "") -> Dictionary:
+	var o := {"type": MOVE, "nation": nation, "formation": formation, "target": target}
+	if approach != "":
+		o["approach"] = approach
+	return o
+
+
+## Posture défensive permanente d'une armée (T-055) : "delay", "hold" ou "hold_at_all_costs".
+static func defensive_posture(nation: String, army: String, posture: String) -> Dictionary:
+	return {"type": SET_DEFENSIVE_POSTURE, "nation": nation, "army": army, "posture": posture}
 
 
 static func declare_war(nation: String, target: String) -> Dictionary:

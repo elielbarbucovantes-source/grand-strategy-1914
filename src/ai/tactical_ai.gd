@@ -14,6 +14,8 @@ extends RefCounted
 ##   - repli d'une unité très éprouvée avant la déroute ; engagement des réserves quand le front
 ##     faiblit ; appel des renforts si le rapport de forces estimé est défavorable ;
 ##   - défenseur sans contact : creuse une tranchée devant l'objectif.
+## Phase 6, étape 2 : l'IA respecte l'approche de l'attaquant (charges, objectif, avance, réserves) et
+## la posture du défenseur (retranchement, repli volontaire) ; ce sont des règles, pas des bonus.
 
 
 static func decide(b: Dictionary, rules: Dictionary, nation: String) -> void:
@@ -42,7 +44,8 @@ static func decide(b: Dictionary, rules: Dictionary, nation: String) -> void:
 	for e: Dictionary in known:
 		if CombatData.v(e["pos"]).distance_to(objective) <= float(rules["victory"]["objective_radius"]) * 2.0:
 			enemy_near_objective = true
-	if front_n == 0 or avg < float(ai["reserve_commit_frontline_morale"]) or enemy_near_objective:
+	var may_commit: bool = Engagement.side_param(b, rules, side, "commit_reserves", true)
+	if may_commit and (front_n == 0 or avg < float(ai["reserve_commit_frontline_morale"]) or enemy_near_objective):
 		var reserves: Array = []
 		for uid: String in CombatData.unit_ids(b):
 			if b["units"][uid]["nation"] == nation and b["units"][uid]["status"] == CombatData.RESERVE:
@@ -55,7 +58,7 @@ static func decide(b: Dictionary, rules: Dictionary, nation: String) -> void:
 	for uid: String in mine:
 		var u: Dictionary = b["units"][uid]
 		var pos := CombatData.v(u["pos"])
-		if float(u["morale"]) < float(ai["withdraw_morale"]):
+		if float(u["morale"]) < float(ai["withdraw_morale"]) and bool(Engagement.side_param(b, rules, side, "voluntary_withdraw", true)):
 			TacticalOrders.set_formation(b, rules, nation, [uid], "skirmish_line")
 			TacticalOrders.move(b, rules, nation, [uid], CombatData.v(u["retreat_point"]).lerp(pos, 0.6))
 			continue
@@ -69,11 +72,12 @@ static func decide(b: Dictionary, rules: Dictionary, nation: String) -> void:
 				nd = d
 				nearest = e
 		var weak_target := {}
-		if float(u["morale"]) >= float(ai["charge_min_morale"]) and u["type"] != "artillery":
+		var charges: String = Engagement.side_param(b, rules, side, "charges", "all")
+		if float(u["morale"]) >= float(ai["charge_min_morale"]) and u["type"] != "artillery" and charges != "never":
 			for e: Dictionary in known:
 				if not e["fresh"] or pos.distance_to(CombatData.v(e["pos"])) > float(ai["charge_range"]):
 					continue
-				if e["routing"] or int(e["estimate"]) < int(u["soldiers"]) * 0.6:
+				if e["routing"] or (charges == "all" and int(e["estimate"]) < int(u["soldiers"]) * 0.6):
 					weak_target = e
 					break
 		if not weak_target.is_empty():
@@ -83,19 +87,20 @@ static func decide(b: Dictionary, rules: Dictionary, nation: String) -> void:
 		var range_u := float(rules["unit_types"][u["type"]]["range"])
 		if side == CombatData.DEFENDERS:
 			var anchor := objective + _spread(uid) * 90.0
+			var entrench: bool = Engagement.side_param(b, rules, side, "entrench", true)
 			if nd <= range_u:
-				_formation_if(b, rules, nation, uid, "entrenched")
+				_formation_if(b, rules, nation, uid, "entrenched" if entrench else "skirmish_line")
 				TacticalOrders.hold(b, rules, nation, [uid])
 			elif pos.distance_to(anchor) > 60.0:
 				_formation_if(b, rules, nation, uid, "assault_column" if pos.distance_to(anchor) > float(ai["column_distance"]) else "skirmish_line")
 				TacticalOrders.move(b, rules, nation, [uid], anchor)
-			elif known.is_empty() and u["type"] == "infantry" and _side_trench_length(b, side) < 1.0 and int(b["tick"]) < int(b["max_ticks"]) / 3:
+			elif entrench and known.is_empty() and u["type"] == "infantry" and _side_trench_length(b, side) < 1.0 and int(b["tick"]) < int(b["max_ticks"]) / 3:
 				var facing := (CombatData.v(b["sides"][CombatData.ATTACKERS]["entry"]) - objective).normalized()
 				var center := objective + facing * 120.0
 				var perp := facing.orthogonal() * 110.0
 				TacticalOrders.build_trench(b, rules, nation, [uid], center - perp, center + perp)
 			else:
-				_formation_if(b, rules, nation, uid, "entrenched")
+				_formation_if(b, rules, nation, uid, "entrenched" if entrench else "skirmish_line")
 				TacticalOrders.hold(b, rules, nation, [uid])
 		else:
 			if u["type"] == "artillery":
@@ -108,7 +113,10 @@ static func decide(b: Dictionary, rules: Dictionary, nation: String) -> void:
 				continue
 			if nd <= range_u * 0.9:
 				_formation_if(b, rules, nation, uid, "skirmish_line")
-				TacticalOrders.move(b, rules, nation, [uid], pos.move_toward(objective, 60.0))
+				if Engagement.side_param(b, rules, side, "advance", "objective") == "contact":
+					TacticalOrders.hold(b, rules, nation, [uid])  # reconnaissance : on éprouve la défense sans avancer
+				else:
+					TacticalOrders.move(b, rules, nation, [uid], pos.move_toward(objective, 60.0))
 			else:
 				_formation_if(b, rules, nation, uid, "assault_column" if nd > float(ai["column_distance"]) else "skirmish_line")
 				TacticalOrders.move(b, rules, nation, [uid], objective + _spread(uid) * 70.0)
@@ -150,11 +158,14 @@ static func _set_objective(b: Dictionary, side: String, nation: String) -> void:
 	var best := ""
 	var best_score := -INF
 	var center := CombatData.v(b["sides"][side]["entry"])
+	# Attaque limitée et reconnaissance : objectif circonscrit (le plus proche), sans égard à son poids.
+	var nearest := side == CombatData.ATTACKERS and Engagement.active(b) \
+		and Engagement.cfg_objective(b) == "nearest"
 	for o: Dictionary in b["objectives"]:
 		var held_by_us: bool = o["controller"] == side
 		if side == CombatData.ATTACKERS and held_by_us:
 			continue
-		var score := float(o["weight"]) * 1000.0 - CombatData.v(o["pos"]).distance_to(center)
+		var score := (0.0 if nearest else float(o["weight"]) * 1000.0) - CombatData.v(o["pos"]).distance_to(center)
 		if score > best_score:
 			best_score = score
 			best = o["id"]
@@ -189,3 +200,12 @@ static func _reinforce(b: Dictionary, rules: Dictionary, nation: String, side: S
 		var u: Dictionary = b["units"][uid]
 		if u["nation"] == nation and u["status"] == CombatData.AVAILABLE:
 			TacticalOrders.call_reinforcement(b, rules, nation, uid)
+
+
+## Posture défensive par défaut d'une armée IA (T-055, PROPOSÉ) : tenir à tout prix dans la région
+## de sa capitale, tenir ailleurs. L'IA n'a pas d'information secrète sur l'attaquant.
+static func default_posture(state: GameState, army: String) -> String:
+	var f: Dictionary = state.formations[army]
+	if state.nations[f["nation"]]["capital_region_id"] == f["region"]:
+		return "hold_at_all_costs"
+	return "hold"

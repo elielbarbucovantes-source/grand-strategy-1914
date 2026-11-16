@@ -22,7 +22,7 @@ static func compute(b: Dictionary, rules: Dictionary) -> Dictionary:
 			start += int(u["start_soldiers"])
 			now += int(u["soldiers"])
 			if u["status"] == CombatData.ACTIVE or u["status"] == CombatData.RESERVE or u["status"] == CombatData.ARRIVING:
-				capacity += float(u["soldiers"]) * float(u["morale"]) / 100.0
+				capacity += Engagement.operational(rules, u) * float(u["morale"]) / 100.0  # capacité opérationnelle (étape 2)
 		stats[side] = {"start": start, "now": now, "lost": start - now,
 			"loss_frac": float(start - now) / maxf(1.0, float(start)), "capacity": capacity}
 	var total_capacity := maxf(1.0, float(stats["attackers"]["capacity"]) + float(stats["defenders"]["capacity"]))
