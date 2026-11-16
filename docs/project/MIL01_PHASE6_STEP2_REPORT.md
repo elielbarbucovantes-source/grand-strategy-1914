@@ -321,6 +321,10 @@ Commande : `godot --headless --path . --script tests/engagement_report.gd`.
 ## 15. Commits, branche, GitHub Actions
 
 - **Branche :** `dev/mil01-finalisation`.
-- **Commits, GitHub Actions :** voir le compte rendu de fin d'étape.
+- **Commits :**
+  - `1850792` : feat, mécaniques, paramètres, tests ;
+  - `6d0c77d` : docs, ce rapport, registre, documentation du combat, captures ;
+  - puis ce complément du §15.
+- **GitHub Actions :** exécution `43864330920` sur `6d0c77d`, **réussie**. Monde, scénarios et fiches à jour ; 109 tests réussis, 0 échec ; interfaces stratégique et de bataille VALIDÉES.
 - **Aucune fusion.** `main`, `dev/historical-forces`, `dev/combat-system` et `audit/mil01-review` ne sont pas modifiées.
 - **L'étape 3 (calibration) n'est pas commencée.**
