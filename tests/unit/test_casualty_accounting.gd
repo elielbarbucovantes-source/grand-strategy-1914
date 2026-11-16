@@ -81,7 +81,13 @@ func test_winner_routing_booked_as_ordinary() -> void:
 	runner.check(int(o["routing"]) == 1000 and int(o["fire"]) == 0 and int(o["routing_as_ordinary"]) == 1000, "registre national : origine des pertes tracée")
 	var ind := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "indecisive", true, "region_011")
 	runner.check(int(ind["prisoners"]) == 0 and int(ind["missing"]) == 1000 and int(ind["routing_as_ordinary"]) == 0,
-		"issue indécise : aucune capture ; traitement inchangé (question ouverte au directeur)")
+		"issue indécise (camp ne conservant pas le terrain) : aucune capture ; pertes de déroute en disparus")
+	var ind_held := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "indecisive_held", true, "region_011")
+	runner.check(int(ind_held["killed"]) == 250 and int(ind_held["missing"]) == 50 and int(ind_held["wounded"]) == 700 and int(ind_held["prisoners"]) == 0 and int(ind_held["routing_as_ordinary"]) == 1000,
+		"issue indécise (camp qui conserve le terrain) : pertes de déroute traitées comme ordinaires, aucune capture")
+	var ind_held_annihil := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 200, "indecisive_held", false, "region_011")
+	runner.check(int(ind_held_annihil["routing_as_ordinary"]) == 1000 and int(ind_held_annihil["killed"]) == 250 and int(ind_held_annihil["missing"]) == 250 and int(ind_held_annihil["prisoners"]) == 0 and int(ind_held_annihil["remained"]) == 0,
+		"issue indécise (camp qui conserve le terrain, unité anéantie) : déroute ordinaire, reliquat en disparus, aucune capture")
 
 
 # Unités réellement anéanties : traitement distinct (reliquat), capture seulement en cas de défaite.
@@ -94,8 +100,8 @@ func test_annihilated_unit_remnant() -> void:
 	runner.check(int(l["prisoners"]) == 800 and int(l["missing"]) == 200, "unité anéantie d'un camp effondré : capture (80 %)")
 	var c: Dictionary = ForceLedger.cfg()["annihilated_unit_routing_as_ordinary"]
 	var dr := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "won", false, "region_011")
-	runner.check(bool(c["value"]) and int(dr["routing_as_ordinary"]) == 1000 and int(dr["remained"]) == 0,
-		"unité anéantie d'un vainqueur : déroute ordinaire (paramètre à valider), aucun blessé resté dans l'unité")
+	runner.check(bool(c["value"]) and str(c.get("status", "")).begins_with("décision") and int(dr["routing_as_ordinary"]) == 1000 and int(dr["remained"]) == 0,
+		"unité anéantie d'un vainqueur : déroute ordinaire (décision validée), aucun blessé resté dans l'unité")
 	c["value"] = false
 	var dr2 := ForceLedger.book_battle_losses(s.state, "france", "german_empire", 0, 1000, 0, "won", false, "region_011")
 	c["value"] = true
@@ -240,13 +246,38 @@ func test_battle_winner_and_loser_routing() -> void:
 		runner.check(int(w["routing_as_ordinary"]) == int(w["origin_routing"]) and int(w["prisoners"]) == 0,
 			"%s : vainqueur — %d pertes de déroute ventilées comme ordinaires, aucun prisonnier" % [case[2], int(w["origin_routing"])])
 		var wtot := int(w["killed"]) + int(w["wounded"]) + int(w["missing"])
-		runner.check(float(w["missing"]) <= 0.05 * float(wtot) + float(w["origin_remnant"]) + 1.0,
+		var n_units := (b["units"] as Dictionary).size()
+		runner.check(float(w["missing"]) <= 0.05 * float(wtot) + float(w["origin_remnant"]) + 0.5 * float(n_units),
 			"%s : vainqueur — disparus limités aux 5 %% ordinaires et aux unités anéanties (%d sur %d)" % [case[2], int(w["missing"]), wtot])
 		var rout_lo := int(lo["origin_routing"]) + int(lo["origin_remnant"])
 		runner.check(int(lo["routing_as_ordinary"]) == 0 and int(lo["prisoners"]) > 0 and int(lo["prisoners"]) < rout_lo,
 			"%s : vaincu — captures partielles seulement (%d prisonniers sur %d pertes de déroute)" % [case[2], int(lo["prisoners"]), rout_lo])
 		for nid: String in [case[0], case[3]]:
 			_conserved(s, nid, "%s, après la bataille" % case[2])
+	# Bataille indécise : le défenseur conserve le terrain (`indecisive_held`), ses pertes de déroute
+	# (y compris d'unité anéantie) sont traitées comme des pertes ordinaires ; aucune capture d'aucun côté.
+	var si := _session()
+	var bi := BattleManager.create(si.state, si.world, si.rules, si.rules["combat"], {"region": "region_035",
+		"attackers": ["army_france_region_011"], "defenders": ["army_german_empire_region_035"],
+		"origin": {"army_france_region_011": "region_011"}, "approach": {"army_france_region_011": "reconnaissance"}})
+	var def_uids: Array = CombatData.unit_ids(bi).filter(func(id: String) -> bool: return bi["units"][id]["side"] == CombatData.DEFENDERS and bi["units"][id]["status"] == CombatData.ACTIVE)
+	var att_uids: Array = CombatData.unit_ids(bi).filter(func(id: String) -> bool: return bi["units"][id]["side"] == CombatData.ATTACKERS and bi["units"][id]["status"] == CombatData.ACTIVE)
+	bi["units"][def_uids[0]]["loss_routing"] = 400
+	bi["units"][def_uids[0]]["soldiers"] = int(bi["units"][def_uids[0]]["start_soldiers"]) - 400
+	bi["units"][att_uids[0]]["loss_routing"] = 300
+	bi["units"][att_uids[0]]["soldiers"] = int(bi["units"][att_uids[0]]["start_soldiers"]) - 300
+	bi["status"] = "ended"
+	bi["end_reason"] = "durée maximale atteinte"
+	BattleManager.finish(si.state, si.world, si.rules["combat"], bi)
+	runner.check(bi["result"]["winner"] == "" and bi["result"]["holder"] == CombatData.DEFENDERS, "bataille indécise : défenseur conserve le terrain")
+	var bd_def: Dictionary = bi["casualty_breakdown"][CombatData.DEFENDERS]
+	var bd_att: Dictionary = bi["casualty_breakdown"][CombatData.ATTACKERS]
+	runner.check(int(bd_def["routing_as_ordinary"]) == 400 and int(bd_def["prisoners"]) == 0,
+		"bataille indécise : pertes de déroute du défenseur (qui conserve le terrain) traitées comme ordinaires")
+	runner.check(int(bd_att["routing_as_ordinary"]) == 0 and int(bd_att["missing"]) == 300 and int(bd_att["prisoners"]) == 0,
+		"bataille indécise : pertes de déroute de l'attaquant en disparus, aucune capture")
+	for nid: String in ["france", "german_empire"]:
+		_conserved(si, nid, "bataille indécise")
 
 
 # 15. Sauvegarde et chargement avec cohortes de convalescence.

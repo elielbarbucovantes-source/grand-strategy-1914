@@ -84,6 +84,8 @@ func _initialize() -> void:
 	if target != null:
 		scroll.ensure_control_visible(target)
 	await _shot("13_armee_blesses_legers")
+	scroll.scroll_vertical = 0
+	await _shot("14_armee_bilan_pertes")
 	quit()
 
 

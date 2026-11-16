@@ -460,3 +460,61 @@ func test_legacy_battle_without_engagement() -> void:
 	runner.check(not res.has("engagement") and res.has("winner"), "clôture sans type d'engagement")
 	for nid: String in [A_NATION, D_NATION]:
 		_conserved(s, nid, "bataille héritée")
+
+
+## Étape 3 : calibration des pertes (infanterie majoritaire, artillerie non dominante, survie des unités
+## en déroute, respect des seuils de rupture, effondrement de la défense à tout prix).
+func test_step3_calibration_and_collapse() -> void:
+	# 1. Engagement limité : l'infanterie subit l'essentiel des pertes, l'artillerie ne domine plus.
+	var sl := _session()
+	var bl := _resolve(sl, "limited_attack", "hold")
+	var inf_lost := 0
+	var art_lost := 0
+	var tot_lost := 0
+	for uid: String in bl["units"]:
+		var u: Dictionary = bl["units"][uid]
+		if u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.WITHDRAWN, CombatData.DESTROYED, CombatData.WITHDRAWING]:
+			var l := int(u["start_soldiers"]) - int(u["soldiers"])
+			tot_lost += l
+			if u["type"] == "infantry":
+				inf_lost += l
+			elif u["type"] == "artillery":
+				art_lost += l
+	runner.check(inf_lost > int(0.65 * float(tot_lost)) and art_lost < int(0.15 * float(tot_lost)),
+		"engagement limité : infanterie majoritaire dans les pertes (%d / %d, artillerie %d)" % [inf_lost, tot_lost, art_lost])
+	# 2. Assaut contre défense normale : rupture sous le seuil de 35 % et absence d'annihilation d'unités en déroute.
+	var sa := _session()
+	var ba := _resolve(sa, "assault", "hold")
+	var destroyed := 0
+	var att_entered := 0
+	for uid: String in ba["units"]:
+		var u: Dictionary = ba["units"][uid]
+		if u["status"] == CombatData.DESTROYED:
+			destroyed += 1
+		if u["side"] == CombatData.ATTACKERS and u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.WITHDRAWN, CombatData.DESTROYED, CombatData.WITHDRAWING]:
+			att_entered += int(u["start_soldiers"])
+	var att_loss_pct := 100.0 * float(ba["result"]["stats"]["attackers"]["lost"]) / maxf(1.0, float(att_entered))
+	runner.check(att_loss_pct < 30.0 and destroyed == 0,
+		"assaut / tenir : pertes de l'attaquant modérées avant rupture (%.1f %%), aucune unité anéantie" % att_loss_pct)
+	# 3. Défense à tout prix submergée (Lorraine inversée : FR 011 -> DE 035) : plus longue et plus coûteuse
+	#    que « tenir », mais finit par effondrement de la défense sans annihilation totale.
+	var sh := GameSession.create()
+	sh.new_game("united_kingdom", 1, 1914)
+	sh.state.wars.append({"id": "w", "a": D_NATION, "b": A_NATION, "since_turn": 0})
+	sh.state.formations[A_ARMY]["defensive_posture"] = "hold"
+	TurnResolver.resolve(sh.state, sh.world, sh.rules, {D_NATION: [Orders.move(D_NATION, D_ARMY, "region_035", "assault")]})
+	var bh: Dictionary = sh.state.battles[-1]
+	var sc := GameSession.create()
+	sc.new_game("united_kingdom", 1, 1914)
+	sc.state.wars.append({"id": "w", "a": D_NATION, "b": A_NATION, "since_turn": 0})
+	sc.state.formations[A_ARMY]["defensive_posture"] = "hold_at_all_costs"
+	TurnResolver.resolve(sc.state, sc.world, sc.rules, {D_NATION: [Orders.move(D_NATION, D_ARMY, "region_035", "assault")]})
+	var bc: Dictionary = sc.state.battles[-1]
+	var def_lost_h := int(bh["result"]["stats"]["defenders"]["lost"])
+	var def_lost_c := int(bc["result"]["stats"]["defenders"]["lost"])
+	var att_lost_h := int(bh["result"]["stats"]["attackers"]["lost"])
+	var att_lost_c := int(bc["result"]["stats"]["attackers"]["lost"])
+	runner.check(int(bc["tick"]) > int(bh["tick"]) and def_lost_c > def_lost_h and att_lost_c > att_lost_h,
+		"tenir à tout prix submergé : résiste plus longtemps (%d > %d pas) et coûte plus cher aux deux camps" % [int(bc["tick"]), int(bh["tick"])])
+	runner.check(str(bc["result"]["end_reason"]).find("effondrement de la défense") >= 0 and float(def_lost_c) < 0.40 * 57819.0,
+		"tenir à tout prix submergé : fin par effondrement de la défense (%s, %.1f %% de pertes) sans annihilation totale" % [str(bc["result"]["end_reason"]), 100.0 * float(def_lost_c) / 57819.0])

@@ -17,14 +17,14 @@
 | ID | Objet | Choix | Remplace ou tranche | État au 15/11/2026 |
 |---|---|---|---|---|
 | T-047 | Effectifs historiques | Armées actives de 1914 au départ ; réserves mobilisables progressivement ; cinq catégories distinctes | Complète MIL-01 et MIL-02 | D, I, T (phases 1 et 2 : catégories séparées, pertes et prisonniers, conservation testée) |
-| T-048 | Intensité des combats | **D** : intensité variable selon le type d'engagement | Précise MIL-06 et T-042 | D ; non implémentée |
+| T-048 | Intensité des combats | **D** : intensité variable selon le type d'engagement | Précise MIL-06 et T-042 | D, I, T, F (phase 6, étapes 2 et 3) |
 | T-049 | Vitesse de mobilisation | **B** : réaliste et flexible | Précise MIL-02 | D, I, T (phase 2) : paramètres nationaux ; seul le rythme allemand est dérivé, les autres sont PROVISOIRES |
 | T-050 | Territorial Force britannique | **B** : catégorie militaire distincte | — | D, I, T (phase 4) ; délais et part de volontaires PROVISOIRES ; répartition ESTIMÉE ; voir `docs/military/TERRITORIAL_FORCE.md` |
 | T-051 | Plafond de mobilisation | **C** : mobilisation progressive par échelons | Audit K-1 | D, I, T (phase 2) : échelons pour 2 puissances sur 7, bloc unique pour les autres (MIL01-P1-D1) |
 | T-052 | Mobilisation de l'IA | **D** : doctrine nationale et réaction au contexte stratégique | Audit K-3 | D, I, T (phase 3) ; doctrines PROPOSÉES ; voir `docs/military/MOBILISATION_IA.md` |
 | T-053 | Influence du joueur | **C** : posture générale et allocation de moyens | Audit K-2 | D, I, T (phase 2) : postures et allocation, sans coût économique (Q1, Q2) |
 | T-054 | Territorial Force : emploi | **B** : déploiement outre-mer volontaire | Audit K-4 | D, I, T (phase 4) ; délais et part de volontaires PROVISOIRES ; répartition ESTIMÉE ; voir `docs/military/TERRITORIAL_FORCE.md` |
-| T-055 | Type d'engagement | **C** : choix de l'attaquant, posture du défenseur, combinés aux circonstances | Audit K-5 (en partie) | D ; non implémentée |
+| T-055 | Type d'engagement | **C** : choix de l'attaquant, posture du défenseur, combinés aux circonstances | Audit K-5 (en partie) | D, I, T, F (phase 6, étapes 2 et 3) |
 | T-056 | Mobilisation en temps de paix | **A** : libre, sans pénalité diplomatique automatique, publiquement visible | Audit K-6 (1re question) | D, I, T (phase 2) : posture et échelons publics, volumes confidentiels |
 | T-056 bis | Réservistes en territoire occupé | **B** : rejoignent leur armée si une voie de communication reste accessible, sinon bloqués | Audit K-6 (2e question) | D, I, T (phase 2) : communications terrestres, alliés compris, mer exclue |
 | T-057 | Début de campagne | **A** : janvier 1914 | **Tranche R-13** ; audit K-7 | D, I, T (phase 1) ; F : menu (sélecteur réservé au bac à sable), non vérifié à l'écran |
@@ -226,7 +226,7 @@ L'étape 1 est **validée dans son ensemble**. Décisions du directeur :
 
 | N° | Décision | État |
 |---|---|---|
-| **MIL01-P6-C1** | **Solution A.** Les pertes de déroute d'un camp qui remporte la bataille et conserve le terrain sont ventilées comme des **pertes ordinaires**, avec leur origine conservée. Prisonniers seulement en cas de capture effective ou d'effondrement ; une déroute n'est pas une capture ; traitement distinct des unités anéanties. | D, I, T. Le traitement de la déroute des unités anéanties d'un vainqueur est **à valider** (rapport §10.2). |
+| **MIL01-P6-C1** | **Solution A.** Les pertes de déroute d'un camp qui remporte la bataille et conserve le terrain sont ventilées comme des **pertes ordinaires**, avec leur origine conservée. Prisonniers seulement en cas de capture effective ou d'effondrement ; une déroute n'est pas une capture ; traitement distinct des unités anéanties. | D, I, T (étape 3 : validé pour les unités anéanties et étendu aux batailles indécises lorsque le camp conserve le terrain). |
 | **MIL01-P6-C2** | Les quelque 27 % de blessés ni rendus ni inaptes restent en **convalescence de longue durée** : pas de délai de retour, pas d'inaptitude, comptés dans les effectifs nationaux. Évolution étudiée ultérieurement. | D, I, T |
 | **MIL01-P6-C3** | Le chiffre de **68,6 %** de blessés légers n'est **pas validé**. Il faut l'examiner sans le modifier. | Examiné (rapport §12) : approximation historique, source allemande unique ; valeur inchangée |
 | **MIL01-P6-C4** | **Validation provisoire :** 25 % de tués et 5 % de disparus parmi les pertes ordinaires ; 0 / 30 / 80 % de prisonniers ; 55,6 % de retours ; 17 % d'inaptes ; reste en longue durée. Ces valeurs restent configurables. | Statuts reclassés dans `forces_rules.json` (sourcé, approximation historique, décision, conception) |
@@ -247,3 +247,20 @@ L'étape 1 est **validée dans son ensemble**. Décisions du directeur :
 | **Valeurs** | Toutes les valeurs sont des paramètres de CONCEPTION PROVISOIRES (`combat_rules.json`, bloc `engagement`). | P ; questions E1 à E5 du rapport |
 
 Rapport : `docs/project/MIL01_PHASE6_STEP2_REPORT.md`.
+
+
+## 11. Phase 6, étape 3 : calibration des pertes et équilibrage des combats (16/11/2026)
+
+**Décisions du directeur** (autorisation de l'étape 3) :
+- **Base de travail validée :** maintien des paramètres d'engagement introduits à l'étape 2 (reconnaissance 25 % engagés / rupture 6 %, attaque limitée 60 % / 15 %, assaut 100 % / 35 %, défense en retardement 8 %, défense normale 30 %, défense à tout prix sans rupture volontaire et seuil de déroute × 0,5, durées maximales 10/20/30 min, fronts de base 8/20/40/80 km, efficacité des blessés légers 50 %, grande bataille à 200 000 hommes), avec ajout d'un échelonnement de 50 % en réserve pour la défense en retardement.
+- **Comptabilité des pertes (règles fondamentales validées) :**
+  - les pertes de déroute d'un camp qui conserve le terrain sont traitées comme des pertes ordinaires, **y compris lorsque des unités sont anéanties** (`annihilated_unit_routing_as_ordinary = true`, statut passé à `décision`) ;
+  - cette règle s'applique également aux **batailles indécises lorsque le camp conserve le terrain** (`routing_as_ordinary_outcomes = ["won", "indecisive_held"]`, statut `décision`) ;
+  - maintien des taux de l'étape 1 (25 % tués, 5 % disparus au feu, 55,6 % retour au service, 17 % inaptitude définitive, ~27,4 % convalescence de longue durée, 10 % des blessés légers maintenus dans l'unité, 68,6 % de blessés légers comme approximation historique allemande).
+- **Calibration et résolution des cinq problèmes identifiés (A à E) :**
+  - déploiement défensif ancré sur l'objectif menacé ou fortifié, artillerie en second échelon, tir de contre-batterie (25 % du feu d'artillerie) et écrantage de l'artillerie par les troupes de ligne ;
+  - réduction de la vulnérabilité en déroute (1,25 au lieu de 1,8, passage en ligne de tirailleurs, vitesse de fuite × 1,55, priorité de tir secondaire avec 18 % de feu de poursuite) évitant l'annihilation systématique ;
+  - réactivité accrue de la rupture du combat (délai de décrochage de 12 pas sous couvert à 30 % d'exposition, prise en compte des unités ayant fui hors carte) ;
+  - mécanisme d'**effondrement de la défense (position intenable)** pour la posture « tenir à tout prix » lorsque les pertes physiques atteignent 42 % ou que plus de 52 % de l'armée est hors de combat (avec au moins 26 % de pertes physiques et infériorité numérique en ligne).
+
+**État :** D, I, T, F. Rapport : `docs/project/MIL01_PHASE6_STEP3_REPORT.md`.

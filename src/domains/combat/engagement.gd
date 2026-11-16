@@ -144,26 +144,31 @@ static func setup(b: Dictionary, r: Dictionary, ctx: Dictionary) -> void:
 		b["engagement"]["start_by_side"][side] = s
 
 
-## Part initialement engagée par l'attaquant : les autres unités restent en réserve (proportionnellement
-## par type d'unité, ordre déterministe des identifiants).
+## Part initialement engagée (attaquant selon l'approche, défenseur en posture « retarder ») : les
+## autres unités restent en réserve (proportionnellement par type d'unité, ordre déterministe).
 static func apply_commitment(b: Dictionary, r: Dictionary) -> void:
 	if not active(b):
 		return
-	var share := float(cfg(r)["approaches"][b["engagement"]["approach"]]["commit_share"])
-	if share >= 1.0:
-		return
-	var by_type: Dictionary = {}
-	for uid: String in CombatData.unit_ids(b):
-		var u: Dictionary = b["units"][uid]
-		if u["side"] == CombatData.ATTACKERS and u["status"] == CombatData.ACTIVE:
-			if not by_type.has(u["type"]):
-				by_type[u["type"]] = []
-			by_type[u["type"]].append(uid)
-	for kind: String in by_type:
-		var ids: Array = by_type[kind]
-		var keep := maxi(1, int(ceil(share * float(ids.size()))))
-		for i in range(keep, ids.size()):
-			b["units"][ids[i]]["status"] = CombatData.RESERVE
+	if str(b["engagement"].get("posture", "hold")) == "delay":
+		for uid: String in b["units"]:
+			if b["units"][uid]["side"] == CombatData.DEFENDERS:
+				b["units"][uid]["formation"] = "skirmish_line"
+	for side: String in CombatData.SIDES:
+		var share := float(side_param(b, r, side, "commit_share", 1.0))
+		if share >= 1.0:
+			continue
+		var by_type: Dictionary = {}
+		for uid: String in CombatData.unit_ids(b):
+			var u: Dictionary = b["units"][uid]
+			if u["side"] == side and u["status"] == CombatData.ACTIVE:
+				if not by_type.has(u["type"]):
+					by_type[u["type"]] = []
+				by_type[u["type"]].append(uid)
+		for kind: String in by_type:
+			var ids: Array = by_type[kind]
+			var keep := maxi(1, int(ceil(share * float(ids.size()))))
+			for i in range(keep, ids.size()):
+				b["units"][ids[i]]["status"] = CombatData.RESERVE
 
 
 ## Durée maximale du type (plafonne la formule T-036, sans prolongation).
@@ -250,8 +255,8 @@ static func on_arrival(b: Dictionary, r: Dictionary) -> void:
 	var present := 0
 	for uid: String in b["units"]:
 		var u: Dictionary = b["units"][uid]
-		if u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.RESERVE, CombatData.ARRIVING, CombatData.WITHDRAWING]:
-			present += int(u["soldiers"])
+		if u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.RESERVE, CombatData.WITHDRAWING, CombatData.WITHDRAWN, CombatData.DESTROYED]:
+			present += int(u["start_soldiers"])
 	if present >= int(c["major_battle_soldiers"]) and float(e["terrain_frontage"]) >= float(c["major_min_terrain_frontage"]):
 		e["type"] = "major"
 		e["upgraded_tick"] = int(b["tick"])
@@ -310,7 +315,7 @@ static func allocate_front(b: Dictionary, r: Dictionary) -> void:
 			if d == INF:
 				continue
 			var tired := float(u["morale"]) < float(fc["rotation_morale"]) or _fatigue(r, u) < float(fc["rotation_fatigue"])
-			var rank := 2 if tired else (0 if prev == "line" else 1)
+			var rank := (2 if prev == "line" else 3) if tired else (0 if prev == "line" else 1)
 			(pools["artillery" if u["type"] == "artillery" else "infantry"] as Array).append([rank, d, uid, prev])
 		var line := 0
 		var waiting := 0
@@ -353,8 +358,10 @@ static func frontage(b: Dictionary, r: Dictionary, u: Dictionary) -> float:
 	return f
 
 
-## Exposition d'une unité selon sa place : en attente, elle est en retrait du front.
+## Exposition d'une unité selon sa place : en attente ou en repli ordonné, elle est en retrait du front.
 static func exposure_factor(r: Dictionary, u: Dictionary) -> float:
+	if u.get("status", "") == CombatData.WITHDRAWING:
+		return float(cfg(r)["front"]["waiting_exposure"])
 	match u.get("front_status", ""):
 		"waiting":
 			return float(cfg(r)["front"]["waiting_exposure"])
@@ -412,13 +419,21 @@ static func check_disengagement(b: Dictionary, r: Dictionary) -> void:
 		var routing := 0
 		var active_n := 0
 		var exhausted := 0
+		var incoming_n := 0
 		for uid: String in b["units"]:
 			var u: Dictionary = b["units"][uid]
-			if u["side"] != side or not (u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.WITHDRAWN, CombatData.DESTROYED, CombatData.WITHDRAWING]):
+			if u["side"] != side:
+				continue
+			if u["status"] == CombatData.ARRIVING:
+				incoming_n += 1
+				start += int(u["start_soldiers"])
+				now += int(u["soldiers"])
+				continue
+			if not (u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.WITHDRAWN, CombatData.DESTROYED, CombatData.WITHDRAWING]):
 				continue
 			start += int(u["start_soldiers"])
 			now += int(u["soldiers"])
-			if u["status"] == CombatData.ROUTING:
+			if u["status"] == CombatData.ROUTING or u["status"] == CombatData.WITHDRAWN:
 				routing += int(u["soldiers"])
 			elif u["status"] == CombatData.ACTIVE:
 				active_n += 1
@@ -426,14 +441,68 @@ static func check_disengagement(b: Dictionary, r: Dictionary) -> void:
 					exhausted += 1
 		if start <= 0:
 			continue
-		var out := float(start - now + routing) / float(start)
+		var rw := float(cfg(r).get("disengage_rout_weight", 0.35))
+		var out := (float(start - now) + float(routing) * rw) / float(start)
 		var who := "l'approche" if side == CombatData.ATTACKERS else "la posture"
 		if out >= threshold:
-			disengage(b, r, side, "%.0f %% de l'effectif perdu ou en déroute (seuil de %s : %.0f %%)" % [100.0 * out, who, 100.0 * threshold])
+			disengage(b, r, side, "%.0f %% de l'effectif hors de combat (seuil de %s : %.0f %%)" % [100.0 * out, who, 100.0 * threshold])
 			return
-		if active_n > 0 and exhausted == active_n and int(b["tick"]) > 0:
+		if active_n > 0 and exhausted == active_n and incoming_n == 0 and int(b["tick"]) > 0:
 			disengage(b, r, side, "toutes les unités engagées sont épuisées (moral inférieur à %.0f)" % float(cfg(r)["disengage_morale"]))
 			return
+
+
+## Posture « tenir à tout prix » : aucune rupture volontaire, mais lorsque la situation devient
+## physiquement intenable (pertes et déroutes dépassant les seuils d'effondrement et rapport de forces
+## compromis), la résistance s'effondre au lieu de mener automatiquement à l'anéantissement total.
+static func check_collapse(b: Dictionary, r: Dictionary) -> void:
+	if not active(b) or b["status"] != "active":
+		return
+	var e: Dictionary = b["engagement"]
+	if e["posture"] != "hold_at_all_costs" or not (e["disengaged"] as Dictionary).is_empty():
+		return
+	var c := cfg(r)
+	var start := 0
+	var now := 0
+	var routed := 0
+	var disorg := 0
+	var def_active := 0
+	var att_active := 0
+	for uid: String in b["units"]:
+		var u: Dictionary = b["units"][uid]
+		if u["side"] == CombatData.ATTACKERS:
+			if u["status"] == CombatData.ACTIVE:
+				att_active += int(u["soldiers"])
+			continue
+		if not (u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.WITHDRAWN, CombatData.DESTROYED, CombatData.WITHDRAWING]):
+			continue
+		start += int(u["start_soldiers"])
+		now += int(u["soldiers"])
+		if u["status"] == CombatData.ROUTING or u["status"] == CombatData.WITHDRAWN:
+			routed += int(u["soldiers"])
+		elif u["status"] == CombatData.ACTIVE:
+			def_active += int(u["soldiers"])
+			if float(u["morale"]) < float(r["morale"]["disorganized_threshold"]):
+				disorg += int(u["soldiers"])
+	if start <= 0:
+		return
+	var lost_frac := float(start - now) / float(start)
+	var broken_frac := (float(start - now + routed) + float(disorg) * 0.5) / float(start)
+	var max_loss := float(c.get("collapse_max_loss", 0.42))
+	var broken_share := float(c.get("collapse_broken_share", 0.52))
+	if lost_frac >= max_loss or (broken_frac >= broken_share and lost_frac >= 0.26 and def_active < int(float(att_active) * 0.75)):
+		for uid: String in CombatData.unit_ids(b):
+			var u: Dictionary = b["units"][uid]
+			if u["side"] == CombatData.DEFENDERS and u["status"] == CombatData.ACTIVE:
+				if float(u["morale"]) < float(r["morale"]["disorganized_threshold"]):
+					u["status"] = CombatData.ROUTING
+					u["order"] = "rout"
+				else:
+					u["status"] = CombatData.WITHDRAWN
+		e["collapsed"] = int(b["tick"])
+		b["status"] = "ended"
+		b["end_reason"] = "effondrement de la défense (position intenable)"
+		TacticalSim._log(b, "La défense à tout prix s'effondre : la position est devenue intenable.", CombatData.DEFENDERS)
 
 
 ## Rupture du combat en ordre : les unités actives se replient (sans déroute), les réserves et les
@@ -452,6 +521,7 @@ static func disengage(b: Dictionary, r: Dictionary, side: String, why: String) -
 			continue
 		if u["status"] == CombatData.ACTIVE:
 			u["status"] = CombatData.WITHDRAWING
+			u["formation"] = "skirmish_line"
 			u["order"] = "withdraw"
 			u["dest"] = (u["retreat_point"] as Array).duplicate()
 		elif u["status"] == CombatData.RESERVE or u["status"] == CombatData.ARRIVING:

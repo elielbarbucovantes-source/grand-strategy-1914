@@ -9,9 +9,9 @@
 
  "unit_types": {
   "infantry":  {"speed": 3.2, "range": 260.0, "lethality": 0.0011, "melee": 1.0, "spot_range": 330.0, "exposure": 1.0, "dig_rate": 1.0, "label_fr": "Infanterie"},
-  "cavalry":   {"speed": 7.0, "range": 160.0, "lethality": 0.0006, "melee": 1.6, "spot_range": 520.0, "exposure": 1.15, "dig_rate": 0.4, "label_fr": "Cavalerie"},
-  "artillery": {"speed": 1.8, "range": 700.0, "lethality": 0.0042, "melee": 0.3, "spot_range": 300.0, "exposure": 0.6, "dig_rate": 0.6, "label_fr": "Artillerie"},
-  "_statut": "PROPOSÉ : types et valeurs provisoires (MIL-01 ouvert)"
+  "cavalry":   {"speed": 7.0, "range": 160.0, "lethality": 0.0006, "melee": 1.5, "spot_range": 520.0, "exposure": 1.1, "dig_rate": 0.4, "label_fr": "Cavalerie"},
+  "artillery": {"speed": 1.8, "range": 660.0, "lethality": 0.0026, "melee": 0.3, "spot_range": 340.0, "exposure": 0.6, "dig_rate": 0.6, "label_fr": "Artillerie"},
+  "_statut": "PROPOSÉ : types et valeurs calibrés en phase 6 étape 3 (provisoires)"
  },
 
  "formations": {
@@ -45,13 +45,13 @@
   "monthly_recovery": 15.0
  },
  "rout": {
-  "_statut": "T-039 VALIDÉ (principe de Lines of Battle, déroute individuelle). Seuils PROPOSÉS.",
-  "threshold": 20.0, "rally_threshold": 35.0, "rally_quiet_ticks": 30, "speed_mult": 1.4, "vulnerability": 1.8
+  "_statut": "T-039 VALIDÉ (principe de Lines of Battle, déroute individuelle). Seuils PROPOSÉS (calibrés en phase 6 étape 3).",
+  "threshold": 20.0, "rally_threshold": 35.0, "rally_quiet_ticks": 60, "speed_mult": 1.55, "vulnerability": 1.25
  },
  "combat": {
-  "_statut": "T-042 VALIDÉ (pertes individuelles par unité). Formules PROPOSÉES.",
+  "_statut": "T-042 VALIDÉ (pertes individuelles par unité). Formules PROPOSÉES (calibrées en phase 6 étape 3).",
   "falloff_min": 0.35, "melee_range": 40.0, "charge_speed_mult": 1.6, "charge_morale_shock": 18.0,
-  "charge_melee_lethality": 0.008, "role_exposure": {"artillery_rear_factor": 0.7},
+  "charge_melee_lethality": 0.0045, "counter_battery_share": 0.25, "role_exposure": {"artillery_rear_factor": 0.7},
   "min_unit_soldiers": 50, "trench_cover_per_level": 0.12, "installation_radius": 90.0,
   "fatigue_per_engaged_tick": 0.0004, "fatigue_floor": 0.7, "installation_damage_per_artillery_tick": 0.0015
  },
@@ -125,8 +125,8 @@
     "description": "Offensive importante pour déloger l'adversaire : toutes les forces, objectif principal, charges autorisées."}
   },
   "postures": {
-   "delay": {"label_fr": "Retarder", "disengage_loss": 0.08, "rout_threshold_mult": 1.0, "entrench": false, "voluntary_withdraw": true,
-    "description": "Ralentir l'ennemi et préserver ses forces : pas de retranchement, rupture du combat dès 8 % de pertes (la région est cédée)."},
+   "delay": {"label_fr": "Retarder", "commit_share": 0.5, "commit_reserves": false, "disengage_loss": 0.08, "rout_threshold_mult": 1.0, "entrench": false, "voluntary_withdraw": true,
+    "description": "Ralentir l'ennemi et préserver ses forces : arrière-garde engagée (50 %), pas de retranchement, rupture du combat dès 8 % de pertes (la région est cédée)."},
    "hold": {"label_fr": "Tenir", "disengage_loss": 0.3, "rout_threshold_mult": 1.0, "entrench": true, "voluntary_withdraw": true,
     "description": "Défense normale : retranchement, rupture du combat à 30 % de pertes."},
    "hold_at_all_costs": {"label_fr": "Tenir à tout prix", "disengage_loss": null, "rout_threshold_mult": 0.5, "entrench": true, "voluntary_withdraw": false,
@@ -149,9 +149,12 @@
   "small_battle_soldiers": 20000,
   "assault_min_army_morale": 40.0,
   "fortified_trench_level": 2,
-  "disengage_ticks": 30,
-  "disengage_morale": 30.0,
-  "disengage_note": "Rupture du combat : quand la part de l'effectif engagé perdue OU en déroute atteint le seuil de l'approche (attaquant) ou de la posture (défenseur), ou quand toutes les unités actives d'un camp ont un moral inférieur à disengage_morale. Les unités actives se replient en ordre pendant disengage_ticks pas (2 s chacun), puis la bataille s'achève.",
+  "disengage_ticks": 12,
+  "disengage_morale": 24.0,
+  "disengage_rout_weight": 0.40,
+  "collapse_max_loss": 0.42,
+  "collapse_broken_share": 0.52,
+  "disengage_note": "Rupture du combat : quand la part de l'effectif engagé hors de combat (pertes + part pondérée des unités en déroute ou ayant quitté le champ) atteint le seuil de l'approche (attaquant) ou de la posture (défenseur), ou quand toutes les unités actives d'un camp ont un moral inférieur à disengage_morale. Les unités actives se replient en ordre (ligne de tirailleurs, exposition réduite) pendant disengage_ticks pas (2 s chacun), puis la bataille s'achève. En défense à tout prix, pas de rupture volontaire, mais effondrement lorsque la position devient intenable (collapse_max_loss / collapse_broken_share).",
   "front": {
    "infantry_per_km": 1000.0,
    "artillery_per_km": 250.0,
@@ -169,8 +172,8 @@
  },
  "ai": {
   "_statut": "Comportements PROPOSÉS (niveau 1 tactique), configurables.",
-  "charge_min_morale": 60.0, "charge_target_max_morale": 45.0, "charge_range": 220.0,
-  "reserve_commit_frontline_morale": 45.0, "withdraw_morale": 28.0, "column_distance": 500.0,
+  "charge_min_morale": 55.0, "charge_target_max_morale": 45.0, "charge_range": 220.0,
+  "reserve_commit_frontline_morale": 45.0, "withdraw_morale": 22.0, "column_distance": 500.0,
   "reinforce_when_ratio_below": 1.1, "decision_ticks": 5
  }
 }

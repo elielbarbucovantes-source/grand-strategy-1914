@@ -159,6 +159,12 @@ Constats (détail et recommandations : `docs/project/MIL01_T045_T046_REPORT.md` 
 5. **Durée.** Presque toutes les batailles atteignent le maximum de 30 minutes : la formule de durée sature dès les effectifs de 1914.
 6. **Performance.** 0,4 à 4,8 s de calcul par bataille résolue automatiquement (32 à 65 unités).
 
+> **Mise à jour du 16/11/2026 (phase 6, étapes 2 et 3).** L'introduction des types d'engagement, de la largeur du front, des blessés légers et la calibration de l'étape 3 ont résolu les problèmes ci-dessus :
+> - en Lorraine (assaut contre tenir), l'attaquant rompt à 17,0 min avec 21,9 % de pertes contre 4,5 % au défenseur (9,2 % en ligne de tirailleurs, 1,7 % derrière des tranchées de niveau 2) ;
+> - l'infanterie supporte 70 à 85 % des pertes, l'artillerie opère en second échelon avec tir de contre-batterie (25 %), et les unités en déroute ne sont plus systématiquement anéanties ;
+> - la posture « tenir à tout prix » face à un assaut très supérieur résiste plus longtemps puis se termine par **effondrement de la défense (position intenable)** (~26 % de pertes au lieu de 88 %).
+> Détail complet : `docs/project/MIL01_PHASE6_STEP2_REPORT.md` et `docs/project/MIL01_PHASE6_STEP3_REPORT.md`.
+
 ## 7. Fonctionnalités incomplètes ou limites
 
 - **Campagne historique** :

@@ -82,6 +82,7 @@ func _run(c: Array) -> void:
 		for uid: String in CombatData.unit_ids(b):
 			if b["units"][uid]["side"] == CombatData.DEFENDERS and b["units"][uid]["status"] == CombatData.ACTIVE:
 				b["units"][uid]["formation"] = "skirmish_line"
+				b["units"][uid]["lock_formation"] = true
 	if c[7] == "trenches":
 		# Ligne de tranchées achevée (niveau 2) devant chaque unité défenseure : préparation hors bataille.
 		for uid: String in CombatData.unit_ids(b):

@@ -123,10 +123,11 @@ static func book_battle_losses(state: GameState, nation: String, captor: String,
 	if fire + routing + remnant <= 0 or not state.nations.has(nation):
 		return out
 	var c := cfg()
-	var share := float(c["rout_prisoner_share"][outcome]["value"])
-	# 1. Pertes ordinaires : feu, et déroute d'un camp vainqueur (origine conservée à part).
-	# Unité anéantie d'un camp vainqueur : ses pertes de déroute ne sont ordinaires que si le paramètre
-	# `annihilated_unit_routing_as_ordinary` le permet (choix à valider) ; son reliquat reste à part.
+	var share_entry: Dictionary = c["rout_prisoner_share"].get(outcome, c["rout_prisoner_share"].get("indecisive", {"value": 0.0}))
+	var share := float(share_entry["value"])
+	# 1. Pertes ordinaires : feu, et déroute d'un camp qui conserve le terrain (vainqueur ou défenseur en bataille indécise).
+	# Unité anéantie d'un camp qui conserve le terrain : ses pertes de déroute sont ordinaires si le paramètre
+	# `annihilated_unit_routing_as_ordinary` le permet (décision du directeur : oui) ; son reliquat reste à part.
 	var eligible := unit_survives or bool(cfg().get("annihilated_unit_routing_as_ordinary", {}).get("value", true))
 	var routing_ordinary := routing if outcome in routing_ordinary_outcomes() and eligible else 0
 	var a := _split_ordinary(nation, fire)
@@ -166,9 +167,9 @@ static func book_battle_losses(state: GameState, nation: String, captor: String,
 	return out
 
 
-## Issues pour lesquelles les pertes de déroute sont des pertes ordinaires (décision : camp vainqueur).
+## Issues pour lesquelles les pertes de déroute sont des pertes ordinaires (décision : camp qui conserve le terrain).
 static func routing_ordinary_outcomes() -> Array:
-	return cfg().get("routing_as_ordinary_outcomes", {}).get("value", ["won"])
+	return cfg().get("routing_as_ordinary_outcomes", {}).get("value", ["won", "indecisive_held"])
 
 
 ## Pertes ordinaires : [tués, disparus, blessés] aux parts du feu ; somme exactement égale à `n`.

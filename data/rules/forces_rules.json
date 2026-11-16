@@ -314,27 +314,33 @@
   },
   "routing_as_ordinary_outcomes": {
    "value": [
-    "won"
+    "won",
+    "indecisive_held"
    ],
    "status": "décision",
-   "note": "Correction du directeur (solution A) : les pertes de déroute d'un camp qui REMPORTE la bataille et conserve le terrain sont ventilées comme des pertes ordinaires (parts du feu), leur origine restant enregistrée à part (losses_by_origin). Les issues indécises n'en font pas partie (question ouverte au directeur)."
+   "note": "Décisions du directeur (étape 1 et étape 3) : les pertes de déroute d'un camp qui conserve le terrain (camp vainqueur ou camp qui conserve le terrain lors d'une bataille indécise) sont ventilées comme des pertes ordinaires (parts du feu), leur origine restant enregistrée à part (losses_by_origin)."
   },
   "annihilated_unit_routing_as_ordinary": {
    "value": true,
-   "status": "conception ; À VALIDER par le directeur",
-   "note": "Unité anéantie (effectif tombé sous le seuil de combat) d'un camp VAINQUEUR : true = ses pertes subies en déroute sont ventilées comme ordinaires (le camp tient le terrain) ; false = elles restent disparues comme avant la correction. Dans tous les cas, le reliquat de l'unité au moment de l'anéantissement garde un traitement distinct (disparu, ou prisonnier selon l'issue) et aucun blessé ne « reste dans l'unité ». Mesure : dans les batailles de comparaison, 86 % des pertes de déroute des vainqueurs (jusqu'à 99,6 % en Vénétie) proviennent d'unités anéanties ; false annulerait l'essentiel de la correction."
+   "status": "décision",
+   "note": "Décision du directeur (étape 3) : les pertes de déroute d'un camp qui conserve le terrain sont traitées comme des pertes ordinaires, y compris lorsque des unités sont anéanties. Le reliquat de l'unité au moment de l'anéantissement (< 50 hommes) garde son traitement distinct (disparu, ou prisonnier en cas de défaite) et aucun blessé ne « reste dans l'unité »."
   },
   "rout_prisoner_share": {
-   "_note": "Pertes de déroute NON ventilées comme ordinaires (camp non vainqueur) et reliquat d'unité réellement anéantie : part de PRISONNIERS selon l'issue ; le reste est DISPARU. Valeurs de conception validées PROVISOIREMENT par le directeur (0 / 30 / 80 %). Aucune capture sans défaite.",
+   "_note": "Pertes de déroute NON ventilées comme ordinaires (camp qui ne conserve pas le terrain) et reliquat d'unité réellement anéantie : part de PRISONNIERS selon l'issue ; le reste est DISPARU. Valeurs de conception validées PROVISOIREMENT par le directeur (0 / 30 / 80 %). Aucune capture sans défaite.",
    "won": {
     "value": 0.0,
     "status": "conception ; validée PROVISOIREMENT",
-    "note": "Camp vainqueur : aucune capture établie. Ses pertes de déroute sont de toute façon ventilées comme ordinaires ; seul le reliquat d'unité anéantie passe par ici (disparu)."
+    "note": "Camp vainqueur : aucune capture établie. Ses pertes de déroute sont ventilées comme ordinaires ; seul le reliquat d'unité anéantie passe par ici (disparu)."
+   },
+   "indecisive_held": {
+    "value": 0.0,
+    "status": "décision",
+    "note": "Bataille indécise, camp qui conserve le terrain : aucune capture établie ; ses pertes de déroute sont ventilées comme ordinaires."
    },
    "indecisive": {
     "value": 0.0,
     "status": "conception ; validée PROVISOIREMENT",
-    "note": "Issue indécise : aucune capture établie (pas de défaite)."
+    "note": "Issue indécise (camp qui se retire sans conserver le terrain) : aucune capture établie (pas de défaite)."
    },
    "lost_retreat": {
     "value": 0.3,

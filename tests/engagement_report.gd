@@ -1,5 +1,5 @@
 extends SceneTree
-## Simulations exploratoires des types d'engagement (MIL-01, phase 6, étape 2) — PAS un équilibrage :
+## Simulations représentatives et calibration des engagements (MIL-01, phase 6, étapes 2 et 3) :
 ##   godot --headless --path . --script tests/engagement_report.gd
 ## Batailles IA contre IA, campagne de janvier 1914, graine fixe. Pour chaque cas : type prévu et
 ## réalisé, secteur de front, pic de soldats en ligne et capacité du front, rotations, durée, fin,
@@ -31,6 +31,7 @@ func _initialize() -> void:
 	_run("8. Grande ampleur (Lorraine après trois mois de mobilisation)", LORRAINE, "assault", "hold", _mobilized)
 	_run("9. Renforts progressifs (Galicie : renforts voisins des deux camps)", ["russian_empire", "army_russian_empire_region_058", "region_040", "austria_hungary", "army_austria_hungary_region_040"], "assault", "hold", Callable())
 	_run("10. Unités éprouvées (Lorraine, seconde bataille le mois suivant)", LORRAINE, "assault", "hold", _previous_battle)
+	_run("11. Somme (scénario de test : assaut contre position fortifiée en terrain ouvert, sans prétendre reproduire 1916)", ["france", "army_france_region_011", "region_007", "german_empire", "army_german_empire_region_035"], "assault", "hold", _somme_fortified)
 	quit()
 
 
@@ -87,6 +88,11 @@ func _fortified(s: GameSession, c: Array) -> void:
 func _somme(s: GameSession, c: Array) -> void:
 	s.state.move_army("army_german_empire_region_035", "region_007")
 	s.state.regions["region_007"]["controller"] = "german_empire"
+
+
+func _somme_fortified(s: GameSession, c: Array) -> void:
+	_somme(s, c)
+	_fortified(s, c)
 
 
 func _mobilized(s: GameSession, c: Array) -> void:

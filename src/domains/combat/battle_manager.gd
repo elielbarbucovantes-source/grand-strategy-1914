@@ -49,7 +49,7 @@ static func create(state: GameState, world: WorldMap, rules: Dictionary, cr: Dic
 				if su.get("battle_id", "") != "":
 					continue  # déjà engagée ou réservée ailleurs : jamais comptée deux fois
 				var u := _tactical_unit(state, b, cr, su, side, army)
-				var deploy := _deploy_point(b, side, i)
+				var deploy := _deploy_point(b, side, i, str(u["type"]))
 				u["pos"] = CombatData.a(deploy)
 				u["status"] = CombatData.RESERVE if su.get("reserve", false) else CombatData.ACTIVE
 				b["units"][uid] = u
@@ -145,22 +145,50 @@ static func _side_source(state: GameState, world: WorldMap, side: String, rid: S
 	return path[1] if path.size() > 1 else ""
 
 
-static func _deploy_point(b: Dictionary, side: String, index: int) -> Vector2:
+static func _deploy_point(b: Dictionary, side: String, index: int, unit_type: String = "infantry") -> Vector2:
 	var entry := CombatData.v(b["sides"][side]["entry"])
+	var att_entry := CombatData.v(b["sides"][CombatData.ATTACKERS]["entry"])
 	var center := Vector2(float(b["field"]["w"]), float(b["field"]["h"])) / 2.0
 	var anchor: Vector2
+	var dir: Vector2
 	if side == CombatData.DEFENDERS:
-		var obj: Dictionary = b["objectives"][index % (b["objectives"] as Array).size()]
-		anchor = CombatData.v(obj["pos"]).lerp(entry, 0.15)
+		var def_pos := _defended_anchor(b, att_entry)
+		anchor = def_pos.lerp(att_entry, 0.10)
+		dir = (att_entry - def_pos).normalized()
 	else:
 		anchor = entry.lerp(center, 0.12)
-	var dir := (center - entry).normalized()
+		dir = (center - entry).normalized()
 	if dir == Vector2.ZERO:
 		dir = Vector2.RIGHT
 	var perp := dir.orthogonal()
-	var lateral := float((index % 7) - 3) * 70.0
-	var depth := float(index / 7) * 60.0
-	return anchor + perp * lateral - dir * depth
+	var lateral := float((index % 7) - 3) * 65.0
+	var depth := float(index / 7) * 55.0 + (150.0 if unit_type == "artillery" else 0.0)
+	var p := anchor + perp * lateral - dir * depth
+	return Vector2(clampf(p.x, 40.0, float(b["field"]["w"]) - 40.0), clampf(p.y, 40.0, float(b["field"]["h"]) - 40.0))
+
+
+static func _defended_anchor(b: Dictionary, att_entry: Vector2) -> Vector2:
+	var defenders: Array = b["sides"][CombatData.DEFENDERS]["nations"]
+	var fort_sum := Vector2.ZERO
+	var fort_n := 0
+	for t: Dictionary in b["defenses"]["trenches"]:
+		if defenders.has(t["owner"]) and int(t["level"]) > 0:
+			fort_sum += (CombatData.v(t["a"]) + CombatData.v(t["b"])) * 0.5
+			fort_n += 1
+	for inst: Dictionary in b["defenses"]["installations"]:
+		if defenders.has(inst["owner"]) and bool(inst["complete"]):
+			fort_sum += CombatData.v(inst["pos"])
+			fort_n += 1
+	var ref := (fort_sum / float(fort_n)) if fort_n > 0 else att_entry
+	var best_pos := Vector2(float(b["field"]["w"]), float(b["field"]["h"])) / 2.0
+	var best_score := -INF
+	for o: Dictionary in b["objectives"]:
+		var pos := CombatData.v(o["pos"])
+		var score := float(o["weight"]) * 1000.0 - pos.distance_to(ref)
+		if score > best_score:
+			best_score = score
+			best_pos = pos
+	return best_pos
 
 
 ## Renforts possibles (T-040 A) : unités d'armées alliées dans les régions voisines, non engagées
@@ -447,7 +475,7 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	# Comptabilité (phase 6, étape 1) : la perte d'effectif de chaque unité, inchangée, est VENTILÉE
 	# en tués, blessés, disparus et prisonniers ; aucun soldat n'est créé ni perdu.
 	var destroyed: Array = []
-	var outcomes := _side_outcomes(state, world, cr, b, winner, rid)
+	var outcomes := _side_outcomes(state, world, cr, b, winner, rid, str(result.get("holder", CombatData.DEFENDERS)))
 	var booked := {}
 	for side: String in CombatData.SIDES:
 		booked[side] = {}
@@ -603,10 +631,12 @@ static func choose_retreat(state: GameState, world: WorldMap, cr: Dictionary, na
 
 
 ## Issue de la bataille pour chaque armée engagée, utilisée par la ventilation des pertes en déroute :
-## "won" (camp vainqueur : il conserve ou prend le terrain), "indecisive" (issue indécise : aucune
-## capture établie), "lost_retreat" ou "lost_no_retreat" (camp vaincu, selon qu'une retraite sûre existe).
+## "won" (camp vainqueur : il conserve ou prend le terrain), "indecisive_held" (bataille indécise, camp
+## qui conserve le terrain : pertes de déroute ventilées comme ordinaires, aucune capture),
+## "indecisive" (bataille indécise, camp qui se retire : aucune capture), "lost_retreat" ou
+## "lost_no_retreat" (camp vaincu, selon qu'une retraite sûre existe).
 ## Calculée AVANT les conséquences territoriales, avec la règle de retraite existante (T-043), sans la modifier.
-static func _side_outcomes(state: GameState, world: WorldMap, cr: Dictionary, b: Dictionary, winner: String, rid: String) -> Dictionary:
+static func _side_outcomes(state: GameState, world: WorldMap, cr: Dictionary, b: Dictionary, winner: String, rid: String, holder: String = CombatData.DEFENDERS) -> Dictionary:
 	var out: Dictionary = {}
 	for side: String in CombatData.SIDES:
 		for army: String in b["sides"][side]["armies"]:
@@ -615,7 +645,7 @@ static func _side_outcomes(state: GameState, world: WorldMap, cr: Dictionary, b:
 			if winner == side:
 				out[army] = "won"
 			elif winner == "":
-				out[army] = "indecisive"
+				out[army] = "indecisive_held" if side == holder else "indecisive"
 			else:
 				var dest := choose_retreat(state, world, cr, state.formations[army]["nation"], rid, b["origin"].get(army, ""))
 				out[army] = "lost_retreat" if dest != "" else "lost_no_retreat"

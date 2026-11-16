@@ -27,7 +27,10 @@ static func _one_tick(b: Dictionary, r: Dictionary) -> void:
 	_morale(b, r, losses)
 	_objectives(b, r)
 	Engagement.check_disengagement(b, r)
+	Engagement.check_collapse(b, r)
 	b["tick"] = tick + 1
+	if b["status"] != "active":
+		return
 	if Engagement.disengagement_over(b):
 		b["status"] = "ended"
 		var who: String = (b["engagement"]["disengaged"] as Dictionary).keys()[0]
@@ -159,6 +162,8 @@ static func update_fog(b: Dictionary, r: Dictionary) -> void:
 			var stealth := float(formation_cfg(r, e)["spot_stealth"])
 			if trench_level(b, r, e) > 0:
 				stealth *= 0.7
+			if e["type"] == "artillery" and int(e.get("engaged_ticks", 0)) > 0:
+				stealth *= 1.6
 			for oid: String in CombatData.unit_ids(b):
 				var o: Dictionary = b["units"][oid]
 				if o["side"] != side or not CombatData.is_on_field(o):
@@ -171,7 +176,7 @@ static func update_fog(b: Dictionary, r: Dictionary) -> void:
 				var rounding := float(fog_cfg["estimate_rounding"])
 				memory[eid] = {"pos": (e["pos"] as Array).duplicate(), "tick": tick, "type": e["type"], "nation": e["nation"],
 					"estimate": int(maxf(rounding, snappedf(float(e["soldiers"]), rounding))), "routing": e["status"] == CombatData.ROUTING,
-					"formation": e["formation"]}
+					"disorganized": is_disorganized(r, e), "formation": e["formation"]}
 		for eid: String in memory.keys():
 			if not visible.has(eid) and tick - int(memory[eid]["tick"]) > int(fog_cfg["forget_ticks"]):
 				memory.erase(eid)
@@ -194,7 +199,8 @@ static func _movement(b: Dictionary, r: Dictionary) -> void:
 			continue
 		if u["order"] == "charge":
 			var t: Dictionary = b["units"].get(u["target"], {})
-			if t.is_empty() or not CombatData.is_on_field(t) or int(u["charge_ticks"]) <= 0:
+			if t.is_empty() or not CombatData.is_on_field(t) or int(u["charge_ticks"]) <= 0 \
+					or (t["status"] == CombatData.ROUTING and CombatData.v(u["pos"]).distance_to(CombatData.v(t["pos"])) > float(r["combat"]["melee_range"]) * 2.5):
 				u["order"] = "hold"
 				u["dest"] = null
 			else:
@@ -269,6 +275,7 @@ static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
 	var losses: Dictionary = {}
 	var dt := float(r["tick_seconds"])
 	var cmb: Dictionary = r["combat"]
+	var shooter_idx := {CombatData.ATTACKERS: 0, CombatData.DEFENDERS: 0}
 	for uid: String in CombatData.unit_ids(b):
 		var s: Dictionary = b["units"][uid]
 		if s["status"] != CombatData.ACTIVE:
@@ -280,21 +287,48 @@ static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
 		var share := float(s.get("front_share", 1.0))
 		if share <= 0.0:
 			continue  # au contact sans place sur le front (en attente) ou hors de portée
+		var art_target := ""
+		var best_art_d := INF
+		var rout_target := ""
+		var best_rout_d := INF
 		if s["order"] == "charge" and is_visible_to(b, s["side"], s["target"]):
 			target = s["target"]
 		else:
-			# Les unités en ligne sont visées d'abord ; une unité en attente, en retrait, à défaut.
-			var best_rank := 2
+			# Priorité : 0 = unité active en ligne ; 1 = unité active en attente ; 2 = déroute ou repli.
+			var best_rank := 3
+			var all_in_range: Array = []
 			for eid: String in b["visible"][s["side"]]:
 				var e: Dictionary = b["units"].get(eid, {})
 				if e.is_empty() or not CombatData.is_on_field(e):
 					continue
 				var d := spos.distance_to(CombatData.v(e["pos"]))
-				var rank := 1 if e.get("front_status", "") == "waiting" else 0
-				if d <= float(tc["range"]) and (rank < best_rank or (rank == best_rank and d < best)):
+				if d > float(tc["range"]):
+					continue
+				if s["type"] == "artillery" and e["type"] == "artillery" and e["status"] == CombatData.ACTIVE and d < best_art_d:
+					best_art_d = d
+					art_target = eid
+				if e["status"] == CombatData.ROUTING and int(e["soldiers"]) > int(e["start_soldiers"]) * 0.35 and d < best_rout_d:
+					best_rout_d = d
+					rout_target = eid
+				var rank := 2 if (e["status"] == CombatData.ROUTING or e["status"] == CombatData.WITHDRAWING) else (1 if e.get("front_status", "") == "waiting" else 0)
+				all_in_range.append([rank, d, eid, e["type"]])
+				if rank < best_rank or (rank == best_rank and d < best):
 					best = d
 					best_rank = rank
 					target = eid
+			if not all_in_range.is_empty():
+				var band: Array = []
+				var screen_band: Array = []
+				for item: Array in all_in_range:
+					if int(item[0]) == best_rank and float(item[1]) <= best + 35.0:
+						band.append(item[2])
+						if item[3] != "artillery":
+							screen_band.append(item[2])
+				var pool: Array = screen_band if (s["type"] != "artillery" and not screen_band.is_empty()) else band
+				if not pool.is_empty():
+					var idx := int(shooter_idx.get(s["side"], 0))
+					target = pool[idx % pool.size()]
+					shooter_idx[s["side"]] = idx + 1
 		if target == "":
 			continue
 		var t: Dictionary = b["units"][target]
@@ -310,8 +344,24 @@ static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
 		var bonus := installation_bonus(b, r, s)
 		var fire := float(tc["lethality"]) * Engagement.operational(r, s) * share * float(formation_cfg(r, s)["fire"]) \
 			* effectiveness(r, s) * (1.0 + float(bonus["fire"])) * falloff * dt
-		var c := fire * exposure(b, r, t)
+		var cb_share := float(cmb.get("counter_battery_share", 0.25)) if (s["type"] == "artillery" and art_target != "" and art_target != target) else 0.0
+		var p_share := float(cmb.get("pursuit_fire_share", 0.18)) if (rout_target != "" and rout_target != target) else 0.0
+		var c := fire * (1.0 - cb_share - p_share) * exposure(b, r, t)
 		losses[target] = float(losses.get(target, 0.0)) + c
+		if cb_share > 0.0:
+			var at: Dictionary = b["units"][art_target]
+			var ad := spos.distance_to(CombatData.v(at["pos"]))
+			var afalloff := lerpf(1.0, float(cmb["falloff_min"]), clampf(ad / float(tc["range"]), 0.0, 1.0))
+			var afire := (fire / maxf(0.01, falloff)) * afalloff * cb_share
+			losses[art_target] = float(losses.get(art_target, 0.0)) + afire * exposure(b, r, at)
+			at["last_fire_tick"] = b["tick"]
+		if p_share > 0.0:
+			var rt: Dictionary = b["units"][rout_target]
+			var rd := spos.distance_to(CombatData.v(rt["pos"]))
+			var rfalloff := lerpf(1.0, float(cmb["falloff_min"]), clampf(rd / float(tc["range"]), 0.0, 1.0))
+			var rfire := (fire / maxf(0.01, falloff)) * rfalloff * p_share
+			losses[rout_target] = float(losses.get(rout_target, 0.0)) + rfire * exposure(b, r, rt)
+			rt["last_fire_tick"] = b["tick"]
 		if s["type"] == "artillery":
 			_damage_installations(b, r, t)
 		t["last_fire_tick"] = b["tick"]
@@ -356,6 +406,7 @@ static func _melee(b: Dictionary, r: Dictionary, s: Dictionary, t: Dictionary, l
 	losses[s["id"]] = float(losses.get(s["id"], 0.0)) + dfn
 	if not s.get("charge_contact", false):
 		s["charge_contact"] = true
+		s["charge_ticks"] = mini(int(s["charge_ticks"]), 4)
 		t["morale"] = maxf(0.0, float(t["morale"]) - float(cmb["charge_morale_shock"]) * float(formation_cfg(r, s)["charge"]))
 		_log(b, "%s charge %s." % [s["name_fr"], t["name_fr"]], s["side"])
 	t["last_fire_tick"] = b["tick"]
@@ -390,16 +441,26 @@ static func _apply_losses(b: Dictionary, r: Dictionary, losses: Dictionary) -> v
 static func _morale(b: Dictionary, r: Dictionary, losses: Dictionary) -> void:
 	var m: Dictionary = r["morale"]
 	var routing_positions: Array = []
+	var side_start := {CombatData.ATTACKERS: 0, CombatData.DEFENDERS: 0}
+	var side_out := {CombatData.ATTACKERS: 0, CombatData.DEFENDERS: 0}
 	for uid: String in CombatData.unit_ids(b):
 		var u: Dictionary = b["units"][uid]
 		if u["status"] == CombatData.ROUTING:
 			routing_positions.append([u["side"], CombatData.v(u["pos"])])
+		if u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.WITHDRAWN, CombatData.DESTROYED, CombatData.WITHDRAWING]:
+			var s_side: String = u["side"]
+			side_start[s_side] = int(side_start.get(s_side, 0)) + int(u["start_soldiers"])
+			var lost_u := int(u["start_soldiers"]) - int(u["soldiers"])
+			var rout_u := int(u["soldiers"]) if (u["status"] == CombatData.ROUTING or u["status"] == CombatData.WITHDRAWN) else 0
+			side_out[s_side] = int(side_out.get(s_side, 0)) + lost_u + rout_u
 	for uid: String in CombatData.unit_ids(b):
 		var u: Dictionary = b["units"][uid]
 		if not CombatData.is_on_field(u):
 			continue
 		var morale := float(u["morale"])
-		var army_morale := float(b["army_morale"].get(u["army"], m["army_default"]))
+		var s_side: String = u["side"]
+		var broken_ratio := float(side_out.get(s_side, 0)) / maxf(1.0, float(side_start.get(s_side, 0)))
+		var army_morale := float(b["army_morale"].get(u["army"], m["army_default"])) * (1.0 - 0.65 * clampf(broken_ratio, 0.0, 1.0))
 		morale += (army_morale - morale) * float(m["army_influence_per_tick"])
 		var n := int(u.get("tick_losses", 0))
 		var resist := float(formation_cfg(r, u)["morale_resist"]) * (1.0 + 0.15 * trench_level(b, r, u))
@@ -427,6 +488,8 @@ static func _morale(b: Dictionary, r: Dictionary, losses: Dictionary) -> void:
 		if u["status"] == CombatData.ACTIVE and float(u["morale"]) < Engagement.rout_threshold(b, r, u):
 			u["status"] = CombatData.ROUTING
 			u["order"] = "rout"
+			if u["formation"] == "assault_column":
+				u["formation"] = "skirmish_line"
 			_log(b, "%s est en déroute !" % u["name_fr"], u["side"])
 		elif u["status"] == CombatData.ROUTING and float(u["morale"]) >= float(rt["rally_threshold"]) \
 				and int(u["quiet_ticks"]) >= int(rt["rally_quiet_ticks"]):

@@ -53,8 +53,8 @@ func setup(s: GameSession, view_mode: String, rid: String = "") -> void:
 	camera = Camera2D.new()
 	add_child(camera)
 	camera.make_current()
-	camera.position = Vector2(float(battle["field"]["w"]), float(battle["field"]["h"])) / 2.0 + Vector2(120, 0)
-	camera.zoom = Vector2(0.62, 0.62)
+	camera.position = Vector2(float(battle["field"]["w"]), float(battle["field"]["h"])) / 2.0 + Vector2(100, 0)
+	camera.zoom = Vector2(0.54, 0.54)
 	_build_hud()
 	refresh()
 
@@ -85,7 +85,11 @@ func _build_hud() -> void:
 		_btn(bar, "Résolution automatique", _on_auto)
 		_btn(bar, "Rompre le combat", func() -> void: _order(TacticalOrders.disengage(battle, session.rules["combat"], me)))
 	_btn(bar, "Retour à la carte", _on_close)
+	var hud_sb := StyleBoxFlat.new()
+	hud_sb.bg_color = Color("#383630f2")
+	hud_sb.set_content_margin_all(8)
 	var left := PanelContainer.new()
+	left.add_theme_stylebox_override("panel", hud_sb)
 	left.anchor_top = 0.0; left.anchor_bottom = 1.0
 	left.offset_top = 44; left.offset_bottom = -30; left.offset_right = 330
 	hud.add_child(left)
@@ -110,6 +114,7 @@ func _build_hud() -> void:
 	if mode == "battle":
 		_btn(grid, "Fixer l'objectif commun", func() -> void: _set_tool("objective"))
 	var right := PanelContainer.new()
+	right.add_theme_stylebox_override("panel", hud_sb)
 	right.anchor_left = 1.0; right.anchor_right = 1.0; right.anchor_top = 0.0; right.anchor_bottom = 1.0
 	right.offset_left = -360; right.offset_top = 44; right.offset_bottom = -30
 	hud.add_child(right)
@@ -328,14 +333,27 @@ func _process(delta: float) -> void:
 
 func _show_result(res: Dictionary) -> void:
 	result_box = PanelContainer.new()
-	result_box.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color("#1e1e1ef2")
+	sb.border_color = Color("#8c7e5a")
+	sb.set_border_width_all(2)
+	sb.set_content_margin_all(14)
+	result_box.add_theme_stylebox_override("panel", sb)
+	result_box.anchor_left = 0.5
+	result_box.anchor_right = 0.5
+	result_box.anchor_top = 0.5
+	result_box.anchor_bottom = 0.5
+	result_box.offset_left = -255.0
+	result_box.offset_right = 225.0
+	result_box.offset_top = -135.0
+	result_box.offset_bottom = 135.0
 	hud.add_child(result_box)
 	var box := VBoxContainer.new()
 	result_box.add_child(box)
 	var l := RichTextLabel.new()
 	l.bbcode_enabled = true
 	l.fit_content = true
-	l.custom_minimum_size = Vector2(520, 0)
+	l.custom_minimum_size = Vector2(450, 0)
 	var who: String = res["winner"]
 	var verdict := "Bataille indécise : le défenseur conserve la région." if who == "" else ("[b]Victoire[/b]" if who == side else "[b]Défaite[/b]")
 	l.text = "%s\nPertes : vous %d, adversaire %d.\nScores : pertes et état des forces %.2f, territoire %.2f (vous).\nFin : %s.\n[i]Pondérations provisoires (T-037).[/i]" % [verdict,
