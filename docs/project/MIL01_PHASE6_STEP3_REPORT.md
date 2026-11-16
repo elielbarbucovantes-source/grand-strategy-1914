@@ -312,7 +312,10 @@ Toutes les vérifications de données, de scénarios, de fiches historiques, de 
 
 ### 7.3 Résultat sur GitHub Actions
 
-Le workflow GitHub Actions (`.github/workflows/tests.yml`) a été exécuté sur la branche `dev/mil01-finalisation` après poussée des commits de l'étape 3 (voir §11).
+Le workflow GitHub Actions (`.github/workflows/tests.yml` — *Tests du jeu (Godot 4.7.2)*) a été exécuté sur la branche `dev/mil01-finalisation` :
+- **Run ID :** `43920595063` (job `133486513617`, commit `09617e8`)
+- **Durée :** 1 min 49 s
+- **Résultat :** **`success`** (`Exports reproductibles (NP-0 et scénario)` ✓, `Tests (simulation et interface)` ✓ — 110 tests réussis, 0 échec, UI et UI bataille validées).
 
 ---
 
@@ -384,6 +387,7 @@ Les captures ont été générées en rendu réel sous X via `tests/engagement_c
 ## 11. Commits et branche
 
 - **Branche :** `dev/mil01-finalisation` (aucune fusion vers une autre branche, aucune modification hors de `dev/mil01-finalisation`).
+- **Commit principal de l'étape 3 :** `09617e8` (`MIL-01 phase 6 étape 3 : calibration des pertes, contre-batterie, effondrement et rapport final`), vérifié par GitHub Actions (run `43920595063`, `success`).
 - **Fichiers modifiés ou créés à l'étape 3 :**
   - `data/rules/forces_rules.json`
   - `data/rules/combat_rules.json`
