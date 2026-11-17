@@ -37,7 +37,14 @@ func test_database_is_sourced_and_complete() -> void:
 	runner.check(db.get("format", "") == "gs1914.historical_forces", "base historique chargée")
 	var nations: Array = (db["nations"] as Dictionary).keys()
 	nations.sort()
-	runner.check(nations == PLAYABLE, "exactement les sept puissances jouables (liste non modifiée)")
+	for nid: String in PLAYABLE:
+		runner.check(nations.has(nid), "%s : puissance jouable toujours présente" % nid)
+	# Phase II : 15 États secondaires ajoutés sans modifier les sept puissances.
+	var expected: Array = PLAYABLE.duplicate()
+	expected.append_array(["belgium", "netherlands", "luxembourg", "switzerland", "spain", "portugal",
+		"denmark", "norway", "sweden", "romania", "bulgaria", "serbia", "montenegro", "albania", "greece"])
+	expected.sort()
+	runner.check(nations == expected, "base étendue : 7 puissances + 15 États secondaires, aucun État supplémentaire")
 	for nid: String in PLAYABLE:
 		var n: Dictionary = db["nations"][nid]
 		for cat: String in ["active", "reserves"]:
@@ -140,8 +147,16 @@ func test_campaign_and_sandbox_are_separate() -> void:
 			runner.check(st.contains("FICTIF"), "bac à sable : unité %s marquée FICTIF" % fid)
 	runner.check(historical_in_sandbox == 0, "aucune donnée historique dans le bac à sable")
 	runner.check(MobilizationSystem.validate(sand.state, Orders.mobilize("france")) != "", "bac à sable : pas de mobilisation (aucune réserve modélisée)")
-	runner.check(camp.state.nations["belgium"]["forces"]["source_type"] == "unknown", "État hors MIL-01 : source inconnue signalée")
-	runner.check(MobilizationSystem.validate(camp.state, Orders.mobilize("belgium")).contains("inconnus"), "données insuffisantes signalées, rien n'est fabriqué")
+	# Phase II : la Belgique a désormais des forces historiques sourcées (elle n'est plus « inconnue »).
+	runner.check(camp.state.nations["belgium"]["forces"]["source_type"] == "historical",
+		"Phase II : Belgique sourcée dans la campagne")
+	runner.check(int(camp.state.nations["belgium"]["forces"]["reserve_pool_initial"]) > 0,
+		"Phase II : réserves belges modélisées")
+	var still_unknown: Array = []
+	for nid: String in camp.state.nations:
+		if camp.state.nations[nid]["forces"]["source_type"] == "unknown":
+			still_unknown.append(nid)
+	runner.check(still_unknown.is_empty(), "phase II : aucun État européen sans effectif dans la campagne")
 
 
 # ------------------------------------------------------------------ actifs, réserves, cohérence

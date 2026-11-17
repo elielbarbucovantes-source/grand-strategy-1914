@@ -42,8 +42,9 @@ func test_new_game_territories_and_unknown_values() -> void:
 	runner.check(s.state.nations["france"]["stats"]["industrie"]["value"] == null, "statistique inconnue = null (NAT-01)")
 	runner.check(s.state.soldiers_of("army_france_region_008") != null and int(s.state.soldiers_of("army_france_region_008")) > 0,
 		"puissance jouable : effectifs historiques présents (MIL-01)")
-	runner.check(s.state.formations["army_belgium_1"]["soldiers"] == null and s.state.soldiers_of("army_belgium_1") == null,
-		"État hors MIL-01 : effectifs inconnus = null, rien n'est fabriqué")
+	runner.check(s.state.soldiers_of("army_belgium_region_013") != null
+		and int(s.state.soldiers_of("army_belgium_region_013")) > 0,
+		"Phase II : la Belgique a des effectifs historiques (plus d'état à effectif inconnu)")
 	runner.check(s.state.month == 1 and s.state.year == 1914, "mois de départ paramétré")
 	runner.check(s.scenario["start"]["month"] == 1, "campagne historique : janvier 1914 fixé dans le scénario (T-057)")
 	var s2 := GameSession.create()

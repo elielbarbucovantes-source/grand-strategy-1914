@@ -87,8 +87,7 @@ func test_simultaneous_clash_creates_neutral_battle() -> void:
 	st.wars.append({"id": "war_t", "a": "france", "b": "belgium", "since_turn": 0})
 	# Placer deux formations dans des régions voisines puis les faire converger.
 	st.formations["army_france_region_008"]["region"] = "region_007"
-	st.formations["army_belgium_1"]["region"] = "region_014"
-	var moves := [Orders.move("france", "army_france_region_008", "region_013"), Orders.move("belgium", "army_belgium_1", "region_013")]
+	var moves := [Orders.move("france", "army_france_region_008", "region_013"), Orders.move("belgium", "army_belgium_region_014", "region_013")]
 	for m: Dictionary in moves:
 		runner.check(MilitarySystem.validate_move(st, s.world, s.rules, m) == "", "mouvement valide : %s" % MilitarySystem.validate_move(st, s.world, s.rules, m))
 	var clashes := MilitarySystem.resolve_moves(st, s.world, s.rules, moves)
@@ -103,20 +102,30 @@ func test_simultaneous_clash_creates_neutral_battle() -> void:
 func test_joint_command_and_pause_rules() -> void:
 	var s := _session()
 	var st := s.state
-	# États hors MIL-01 (effectif déclaré au niveau de l'armée, sans unité) : règle isolée des données.
-	st.formations["army_belgium_1"]["soldiers"] = 1000
-	st.formations["army_netherlands_1"]["soldiers"] = 400
-	var c := BattleSystem.joint_commander(st, ["army_belgium_1", "army_netherlands_1"])
+	# Phase II : règle isolée avec deux UNITÉS historiques (effectifs modifiés pour le test).
+	var be := ""
+	var nl := ""
+	for fid: String in st.sorted_formation_ids():
+		var f: Dictionary = st.formations[fid]
+		if f["echelon"] != "unit":
+			continue
+		if f["nation"] == "belgium" and be == "":
+			be = fid
+		if f["nation"] == "netherlands" and nl == "":
+			nl = fid
+	st.formations[be]["soldiers"] = 1000
+	st.formations[nl]["soldiers"] = 400
+	var c := BattleSystem.joint_commander(st, [be, nl])
 	runner.check(c["nation"] == "belgium", "commandement au pays fournissant le plus de soldats")
-	st.formations["army_netherlands_1"]["soldiers"] = 1000
-	c = BattleSystem.joint_commander(st, ["army_belgium_1", "army_netherlands_1"])
+	st.formations[nl]["soldiers"] = 1000
+	c = BattleSystem.joint_commander(st, [be, nl])
 	runner.check(c["nation"] == "belgium", "égalité sans prestige connu : départage déterministe documenté (T-029 G ; identifiant croissant)")
 	st.nations["belgium"]["military_prestige"] = 3
 	st.nations["netherlands"]["military_prestige"] = 5
-	c = BattleSystem.joint_commander(st, ["army_belgium_1", "army_netherlands_1"])
+	c = BattleSystem.joint_commander(st, [be, nl])
 	runner.check(c["nation"] == "netherlands", "égalité départagée par le prestige militaire")
-	st.formations["army_belgium_1"]["soldiers"] = null
-	c = BattleSystem.joint_commander(st, ["army_belgium_1", "army_netherlands_1"])
+	st.formations[be]["soldiers"] = null
+	c = BattleSystem.joint_commander(st, [be, nl])
 	runner.check(c["nation"] == null, "effectifs inconnus : indéterminé")
 	var fr := _army(s, "france")
 	var uk := _army(s, "united_kingdom")

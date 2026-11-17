@@ -152,6 +152,10 @@ def locate_districts(world: dict, db: dict) -> dict:
 def _split(total: int, weights: list) -> list:
     """Répartition entière exacte (plus forts restes, ordre stable)."""
     s = sum(weights)
+    if s == 0:
+        # Aucun réservoir à répartir (par ex. État sans réserve documentée) :
+        # répartition entièrement nulle, sans division par zéro.
+        return [0] * len(weights)
     raw = [total * w / s for w in weights]
     base = [int(x) for x in raw]
     rest = total - sum(base)

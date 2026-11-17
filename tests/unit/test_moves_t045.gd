@@ -25,6 +25,13 @@ func _resolve(s: GameSession, orders: Dictionary) -> Dictionary:
 	return TurnResolver.resolve(s.state, s.world, s.rules, orders)
 
 
+## Fixe un effectif total sur une armée de la campagne Phase II (unités historiques)
+func _set_army_soldiers(st: GameState, aid: String, value: int) -> void:
+	var units: Array = st.units_of(aid)
+	for i: int in units.size():
+		st.formations[units[i]]["soldiers"] = value if i == 0 else 0
+
+
 ## Échange simple : France 011 → 035, Allemagne 035 → 011. Croisement sans bataille (T-045).
 func test_swap_positions_without_battle() -> void:
 	var s := _session()
@@ -80,23 +87,26 @@ func test_convergence_and_no_order_bias() -> void:
 	for seed_value: int in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
 		var s := _session(seed_value)
 		var st := s.state
-		_war(st, "france", "german_empire")
-		_transit(st, "france", "belgium")
-		_transit(st, "german_empire", "belgium")
-		var moves := [Orders.move("france", "army_france_region_007", "region_014"),
-			Orders.move("german_empire", "army_german_empire_region_032", "region_014")]
+		# Phase II : la Belgique a maintenant des troupes en region_014. On converge vers
+		# region_016 (Pays-Bas, tiers, vide) : le défenseur est alors tire au sort entre les
+		# deux belligérants, comme dans le test d'origine.
+		_war(st, "german_empire", "belgium")
+		_transit(st, "german_empire", "netherlands")
+		_transit(st, "belgium", "netherlands")
+		var moves := [Orders.move("german_empire", "army_german_empire_region_029", "region_016"),
+			Orders.move("belgium", "army_belgium_region_013", "region_016")]
 		for m: Dictionary in moves:
 			runner.check(MilitarySystem.validate_move(st, s.world, s.rules, m) == "", "mouvement autorisé (passage) : %s" % m["formation"])
 		var clashes := MilitarySystem.resolve_moves(st, s.world, s.rules, moves)
-		runner.check(clashes.size() == 1 and clashes[0]["region"] == "region_014", "rencontre : bataille dans la région commune")
+		runner.check(clashes.size() == 1 and clashes[0]["region"] == "region_016", "rencontre : bataille dans la région commune")
 		var d: String = st.formations[clashes[0]["defenders"][0]]["nation"]
 		defenders_seen[d] = true
 		# Même graine, ordre des pays et des ordres inversé : même résultat.
 		var s2 := _session(seed_value)
 		var st2 := s2.state
-		_war(st2, "france", "german_empire")
-		_transit(st2, "france", "belgium")
-		_transit(st2, "german_empire", "belgium")
+		_war(st2, "german_empire", "belgium")
+		_transit(st2, "german_empire", "netherlands")
+		_transit(st2, "belgium", "netherlands")
 		st2.nation_order.reverse()
 		var reversed := moves.duplicate()
 		reversed.reverse()
@@ -127,11 +137,11 @@ func test_joint_occupation_is_order_independent() -> void:
 		_war(st2, "belgium", "german_empire")
 		_war(st2, "netherlands", "german_empire")
 		st2.move_army("army_german_empire_region_032", "region_033")
-		st2.move_army("army_belgium_1", "region_014")
-		st2.move_army("army_netherlands_1", "region_016")
-		st2.formations["army_belgium_1"]["soldiers"] = 5000
-		st2.formations["army_netherlands_1"]["soldiers"] = 5000
-		var mv := [Orders.move("belgium", "army_belgium_1", "region_032"), Orders.move("netherlands", "army_netherlands_1", "region_032")]
+		st2.move_army("army_belgium_region_013", "region_014")
+		st2.move_army("army_netherlands_region_015", "region_016")
+		_set_army_soldiers(st2, "army_belgium_region_013", 5000)
+		_set_army_soldiers(st2, "army_netherlands_region_015", 5000)
+		var mv := [Orders.move("belgium", "army_belgium_region_013", "region_032"), Orders.move("netherlands", "army_netherlands_region_015", "region_032")]
 		if flip:
 			mv.reverse()
 			st2.nation_order.reverse()

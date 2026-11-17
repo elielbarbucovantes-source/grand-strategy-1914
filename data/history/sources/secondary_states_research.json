@@ -1,0 +1,1693 @@
+{
+  "format": "gs1914.secondary_forces_research",
+  "format_version": 1,
+  "title_fr": "Recherche historique — forces terrestres des 15 États secondaires européens (janvier 1914)",
+  "compiled": "2026-11-17",
+  "method": "Four CHORUS research agents (OpenCode). Peace-time active establishment, trained reserves and wartime mobilisation are kept distinct. Estimates are explicitly flagged; low-reliability data (Montenegro, Albania) is marked as such.",
+  "provenance": {
+    "west": {
+      "chorus_task": 1,
+      "file": "/tmp/gs1914-chorus/.chorus/workspaces/1/research.json",
+      "sha256": "fb2cfa3f2d2550b1100c7a52ca143d8bcfe4687a4a37e116d177cfed9169f5d7",
+      "nations": [
+        "belgium",
+        "luxembourg",
+        "netherlands",
+        "switzerland"
+      ]
+    },
+    "balkans": {
+      "chorus_task": 2,
+      "file": "/tmp/gs1914-chorus/.chorus/workspaces/2/research.json",
+      "sha256": "2718257605f906164917d8809c9c71936108cb98a3c087e00c2ab68ff21e31c3",
+      "nations": [
+        "albania",
+        "bulgaria",
+        "greece",
+        "montenegro",
+        "serbia"
+      ]
+    },
+    "iberia": {
+      "chorus_task": 3,
+      "file": "/tmp/gs1914-chorus/.chorus/workspaces/3/research.json",
+      "sha256": "9184f5cc6e7d059ce550b6957764a4cc10b6668d6030c664d8d018823c8b75c6",
+      "nations": [
+        "portugal",
+        "spain"
+      ]
+    },
+    "nordic": {
+      "chorus_task": 4,
+      "file": "/tmp/gs1914-chorus/.chorus/workspaces/4/research.json",
+      "sha256": "34369978773eeb6a29b36b61e930c8a7253509ad8481a8440283ae328c5da7bd",
+      "nations": [
+        "denmark",
+        "norway",
+        "romania",
+        "sweden"
+      ]
+    }
+  },
+  "sources": {
+    "SEC_west_EB1911_BE": {
+      "citation": "Encyclopaedia Britannica, 11th edition (1911), vol. 3, article 'Belgium', section 'Defence' / army. Standard contemporary reference summarising the 1909 conscription law, the active army, the reserve, the Garde Civique and the Brialmont fortified positions (Antwerp, Liège, Namur). Reliable for structure and order of magnitude; peacetime headcounts are only approximate.",
+      "url": "",
+      "type": "contemporary general encyclopedia based on official returns",
+      "reliability": "haute"
+    },
+    "SEC_west_EB1911_NL": {
+      "citation": "Encyclopaedia Britannica, 11th edition (1911), vol. 17, article 'Netherlands' (or 'Holland'), section 'Defence' / army. Describes conscription (introduced 1898-1901), short service with the colours, the reserve/Landsturm, the small peace establishment, the two field divisions and the defence system of the New Dutch Water Line and the Stelling van Amsterdam.",
+      "url": "",
+      "type": "contemporary general encyclopedia based on official returns",
+      "reliability": "haute"
+    },
+    "SEC_west_EB1911_LU": {
+      "citation": "Encyclopaedia Britannica, 11th edition (1911), article 'Luxemburg'/'Luxembourg', section 'Defence'. Notes the Grand Duchy's perpetual neutrality under the 1867 Treaty of London, the demolition of the fortress of Luxembourg and the existence of only a very small armed force. Reliable for the qualitative picture, not for exact numbers.",
+      "url": "",
+      "type": "contemporary general encyclopedia based on official returns",
+      "reliability": "moyenne"
+    },
+    "SEC_west_EB1911_CH": {
+      "citation": "Encyclopaedia Britannica, 11th edition (1911), article 'Switzerland', section 'Defence'. Describes the Swiss militia system: no standing army, recruit schools and refresher courses, the active levy / Landwehr / Landsturm, the small permanent instructional cadre and the large trained manpower pool. Reliable for structure; simultaneous under-arms headcounts are not given directly.",
+      "url": "",
+      "type": "contemporary general encyclopedia based on official returns",
+      "reliability": "haute"
+    },
+    "SEC_west_SYB1914": {
+      "citation": "Statesman's Year-Book, 1914 edition (ed. J. Scott Keltie), national entries for Belgium, Netherlands, Luxembourg and Switzerland, sections 'Defence' / 'Army'. The annual compilation of official government returns closest in date to January 1914; the standard reference for peace establishments of the European armies. Used here for order-of-magnitude and structure; exact figures could not be re-verified in this environment (see METHODOLOGY).",
+      "url": "",
+      "type": "contemporary annual statistical compilation of official returns",
+      "reliability": "haute"
+    },
+    "SEC_west_USWD1916": {
+      "citation": "U.S. War Department, War College Division, 'Strength and Organization of the Armies of the European Powers' (Washington, Government Printing Office, 1916) and related War Department handbooks of 1916-1918. Official contemporary compilation contrasting peace (under-arms) strength, trained reserve and war establishment of European armies. Used only as a cross-check for orders of magnitude, not for exact figures; dated after January 1914.",
+      "url": "",
+      "type": "official contemporary military handbook (post-January-1914)",
+      "reliability": "moyenne"
+    },
+    "SEC_west_METHODOLOGY": {
+      "citation": "Research note. No web-search or web-fetch access was available for this task (the search tool is failing in this environment). All figures were reconstructed from established historical knowledge of the standard references cited above (EB1911 national articles, Statesman's Year-Book 1913/1914, US War Department 1916 handbooks and national military handbooks). Where the sources do not permit a precise, dated headcount the numbers are explicitly labelled as ESTIMATES, with a stated range in the divergences. The four categories are kept strictly separate: (1) theoretical/establishment strength, (2) troops actually under arms in peace time (the 'active' value), (3) trained reservists available (the 'reserves' value), (4) wartime mobilised strength (recorded only in divergences/notes, never as peace-time active strength).",
+      "url": "",
+      "type": "methodological note",
+      "reliability": "moyenne"
+    },
+    "SEC_balkans_US_WD_1916": {
+      "citation": "United States, War Department, General Staff, 'Handbook of the Balkan States: Servia, Montenegro, Albania, Bulgaria, Greece, and European Turkey', Government Printing Office, Washington, 1916 (prepared by George F. Andrews). Contemporary official compilation based largely on pre-1914/1914 data.",
+      "url": "https://archive.org/details/handbookofbalk00grea",
+      "type": "contemporary official military handbook",
+      "reliability": "haute",
+      "note": "REFERENCE ONLY: full text could NOT be retrieved. Retries on 2026-11-17: Internet Archive /stream/..._djvu.txt returned 404; archive.org advancedsearch found no item titled 'Handbook of the Balkan States' ( nor any 1916 US War Department item); Google Books API returned HTTP 429 (rate-limited); websearch unavailable. No page-specific figure below is attributed to it directly; it is listed because it is the standard contemporary source the lead requested. If a future agent can access it, it is the single most valuable source for contemporary (c.1913-14) gendarmerie/army returns, especially for Albania and Montenegro."
+    },
+    "SEC_balkans_EB1911_SERVIA": {
+      "citation": "1911 Encyclopaedia Britannica, vol. 24, article 'Servia' (partly by Chedomille Mijatovich), section 'Defence': national army of 5 divisions (HQ Nish, Belgrade, Valyevo, Kraguyevats, Zayechar); 'On a peace footing the strength of the army is 35,000 men; in war it might reach 225,000, including landsturm.' Text VERIFIED VERBATIM from the Wikisource transcription (page ID 3409122) on 2026-11-17: 'The defensive force of the country, as reorganized in 1901, consists of the national army (narodna voyska) and the landsturm... On a peace footing the strength of the army is 35,000 men; in war it might reach 225,000, including landsturm.' It also states the modern forts of Nish, Pirot and Zayechar were strengthened/re-armed in the early 20th century.",
+      "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Servia",
+      "type": "contemporary reference work (c.1911)",
+      "reliability": "haute"
+    },
+    "SEC_balkans_EB1911_BULGARIA": {
+      "citation": "1911 Encyclopaedia Britannica, vol. 4, article 'Bulgaria' by James David Bourchier, subsection 'Army and Navy': organisation based on law of 1 Jan 1904; peace strength 1905 = 2,500 officers + 48,200 men; 9 infantry divisions with divisional HQs at Sofia, Philippopolis, Sliven, Shumla, Rustchuk, Vratza, Plevna, Stara-Zagora, Dupnitza; war strength active army + reserve 180,954; reserve army + opltchenie brings grand total to about 338,000 officers and men.",
+      "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bulgaria/Description",
+      "type": "contemporary reference work (c.1905-1911)",
+      "reliability": "haute"
+    },
+    "SEC_balkans_EB1911_GREECE": {
+      "citation": "1911 Encyclopaedia Britannica, vol. 12, article 'Greece' (Bourchier et al.), section 'Army': 1904 reorganisation scheme peace footing 1,887 officers + 25,140 NCOs and men, war active army >=120,000 plus territorial army >=60,000; 'In 1908 ... peace strength ... 1939 officers and civilians, 19,416 non-commissioned officers and men ... reserves will furnish about 77,000 men and the territorial army about 37,000 men in time of war.'",
+      "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Greece",
+      "type": "contemporary reference work (c.1908-1911)",
+      "reliability": "haute"
+    },
+    "SEC_balkans_EB1911_MONTENEGRO": {
+      "citation": "1911 Encyclopaedia Britannica, vol. 18, article 'Montenegro' by James David Bourchier, section 'Defence': 'There is a standing corps of officers, but no standing army'; 11 infantry brigades, 56 battalions; 'The war strength is estimated at from 38,000 to 42,000 men' (first ban ~32,000, second ban/reserve 5,000-6,000, artillery ~1,500); 20,000-22,000 men of military age absent abroad; 'About 20,000 men can concentrate at a given spot within 48 hours'; permanent corps of 20 perianiki (1907); arsenal at Spuzh.",
+      "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Montenegro",
+      "type": "contemporary reference work (c.1911, pre-Balkan-War borders)",
+      "reliability": "moyenne"
+    },
+    "SEC_balkans_HALL_BALKAN": {
+      "citation": "Richard C. Hall, 'The Balkan Wars, 1912-1913: Prelude to the First World War' (Routledge, 2000), pp. 16, 18, as quoted in Wikipedia 'Bulgarian Land Forces' (quote VERIFIED 2026-11-17 in article section 'Early years'): Bulgarian peacetime force of 60,000 expanded to 370,000 in war (more than half the League's 700,000), 'with almost 600,000 men mobilised in total, out of a population of 4,300,000'; field army of 9 infantry divisions, 1 cavalry division and 1,116 artillery pieces.",
+      "url": "https://en.wikipedia.org/wiki/Bulgarian_Land_Forces",
+      "type": "academic monograph (quoted at second hand)",
+      "reliability": "moyenne"
+    },
+    "SEC_balkans_WIKI_BALKAN_WARS": {
+      "citation": "Wikipedia, 'Balkan Wars', infobox strengths: First Balkan War - Bulgaria 600,000+, Serbia 230,000, Greece 125,000, Montenegro 44,500; Second Balkan War - Bulgaria 450,000+, Serbia 348,000, Greece 148,000, Montenegro 12,800. These are WARTIME (1912-13) figures, not peace establishment.",
+      "url": "https://en.wikipedia.org/wiki/Balkan_Wars",
+      "type": "tertiary compilation (secondary citations)",
+      "reliability": "moyenne"
+    },
+    "SEC_balkans_WIKI_HELLENIC_ARMY": {
+      "citation": "Wikipedia, 'Hellenic Army', section 'Decade of wars: 1912-1922': French military mission 1911-1914; 'while foreign observers estimated a mobilized force of approximately 50,000 men, the Army eventually fielded 125,000, with another 140,000 in the National Guard and reserves.'",
+      "url": "https://en.wikipedia.org/wiki/Hellenic_Army",
+      "type": "tertiary compilation",
+      "reliability": "moyenne"
+    },
+    "SEC_balkans_WIKI_ROYAL_SERBIAN_ARMY": {
+      "citation": "Wikipedia, 'Royal Serbian Army': infobox size 420,000, citing vojska.net ('Serbian army, August 1914') and Thomas & Babac, 'Armies in the Balkans 1914-1918', p. 12. This is a wartime mobilisation figure.",
+      "url": "https://en.wikipedia.org/wiki/Royal_Serbian_Army",
+      "type": "tertiary compilation",
+      "reliability": "moyenne"
+    },
+    "SEC_balkans_VOJSKA_SERBIA_1914": {
+      "citation": "Vojska.net (Ivan Bajlo), 'Serbian army, August 1914': Commander-in-Chief Prince Aleksandar, Chief of Staff vojvoda Putnik; 420,597 soldiers (about 250,000 frontline, about 150,000 rear echelon), 71,200 horses; 1st, 2nd, 3rd Armies plus Timok, Užice and detachment groupings; infantry divisions Timok I/II, Morava I/II, Šumadija I, Danube I, Drina I/II, Combined Division I, Cavalry Division.",
+      "url": "http://www.vojska.net/eng/world-war-1/serbia/organization/1914",
+      "type": "specialist amateur reference website (detailed OOB)",
+      "reliability": "moyenne"
+    },
+    "SEC_balkans_VOJSKA_MNE_1914": {
+      "citation": "Vojska.net (Ivan Bajlo), 'Montenegro army, August 1914': Commander-in-Chief King Nikola, Chief of Staff General Božidar Janković, HQ Cetinje; Pljevlja division ~6,000 (10 bns), Herzegovina detachment ~15,000 (15 bns), Lovćen detachment ~8,000 (18 bns), Starosrbijanski detachment ~6,000 (13 bns) - total ~35,000 in 56 battalions.",
+      "url": "http://www.vojska.net/eng/world-war-1/montenegro/organization/1914/",
+      "type": "specialist amateur reference website (detailed OOB)",
+      "reliability": "faible"
+    },
+    "SEC_balkans_WIKI_ALBANIAN_AF": {
+      "citation": "Wikipedia, 'Albanian Armed Forces': Albanian National Army formed 4 December 1912 by Ismail Qemali's provisional government, first commander Lt. Col. Ali Shefqet Shkupi; next numerical strength quoted is 10,691 active troops in 1923, i.e. no reliable contemporary 1914 return is given.",
+      "url": "https://en.wikipedia.org/wiki/Albanian_Armed_Forces",
+      "type": "tertiary compilation",
+      "reliability": "faible"
+    },
+    "SEC_balkans_WIKI_BULGARIAN_LAND": {
+      "citation": "Wikipedia, 'Bulgarian Land Forces', section 'Early years': citing Hall (2000) - Bulgarian army 'militarily the most powerful of the four states'; peacetime force 60,000 expanded to 370,000 in the First Balkan War, almost 600,000 mobilised in total from a population of 4,300,000; field army 9 infantry divisions, 1 cavalry division.",
+      "url": "https://en.wikipedia.org/wiki/Bulgarian_Land_Forces",
+      "type": "tertiary compilation quoting academic work",
+      "reliability": "moyenne"
+    },
+    "SEC_iberia_SYB1913": {
+      "citation": "The Statesman's Year-Book: Statistical and Historical Annual of the States of the World for the Year 1913. Spain: 'Defence — Army', pp. 1260-1262; Portugal: 'Defence', pp. 1151-1152. Figures 'revised after official returns'.",
+      "url": "https://en.wikisource.org/wiki/Page:Statesman%27s_Year-Book_1913.djvu/1383 (Spain p.1261); https://en.wikisource.org/wiki/Page:Statesman%27s_Year-Book_1913.djvu/1274 (Portugal p.1152); full scan: https://archive.org/details/statesmansyearbo1913newy",
+      "type": "contemporary statistical year-book based on official government returns (primary/near-primary published source)",
+      "reliability": "haute"
+    },
+    "SEC_iberia_WWI1916": {
+      "citation": "Ángel Alcalde, 'Military and Strategy (Spain)', in 1914-1918-online. International Encyclopedia of the First World War, ed. Ute Daniel et al., Freie Universität Berlin, 9 June 2017, DOI 10.15463/ie1418.11108 (peer-reviewed academic article). Cites Romanones, Reformas Militares (1915), pp.25-33 and La Porte, 'La espiral irresistible', Hispania Nova 15 (2017), pp.500-526.",
+      "url": "https://encyclopedia.1914-1918-online.net/article/military-and-strategy-spain/",
+      "type": "peer-reviewed academic encyclopedia article with cited primary and secondary sources",
+      "reliability": "haute"
+    },
+    "SEC_iberia_NYT1914": {
+      "citation": "The New York Times, 29 October 1914, 'PORTUGAL'S ARMY 130,000.; With 50,000 in the Territorial Reserve' — 'When mobilization is ordered, after allowing for wastage, the number of fully trained men in the active army and its two reserves amounts to about 130,000, with perhaps 50,000 men of the territorial reserve...' (headline and lead retrieved via search index; full text paywalled).",
+      "url": "https://timesmachine.nytimes.com/timesmachine/1914/10/29/101905679.html",
+      "type": "contemporary newspaper report of official/ War Office estimates, October 1914 (wartime context)",
+      "reliability": "moyenne"
+    },
+    "SEC_iberia_HCPT": {
+      "citation": "'Portuguese Armed Forces. Details of Strength, Dispositions and Quality' (British military intelligence summary, reproduced by History Commons): troops 'with colours including National Republican Guard and Police is estimated at 44,000, (to which must be added about 10,000 men in the colonies)'; 'In peace there is no divisional organisation. In war it is intended to mobilise five infantry divisions on outbreak, with an ultimate mobilisation of a further twelve divisions.' (Text available only as a search-index excerpt; site behind Cloudflare.)",
+      "url": "https://history-commons.net/artifacts/2549414/portuguese-armed-forces/3571998/",
+      "type": "British War Office-style intelligence handbook / summary (contemporary, exact date not verified)",
+      "reliability": "moyenne"
+    },
+    "SEC_iberia_WORLDARMY": {
+      "citation": "'World Armies' (compiled reference), section 'F. The Spanish Army in 1914', listing I-VIII Corps Districts and overseas commands (Melilla, Ceuta, Canaries, Balearics) and the 1914 regiment/corps inventory. PDF p.93 (printed p.318).",
+      "url": "https://www.worldarmies.com/Spain/Spain-p%2093.pdf",
+      "type": "secondary compiled reference work (order of battle detail; no troop-strength figures in the accessible section)",
+      "reliability": "moyenne"
+    },
+    "SEC_iberia_WIKI": {
+      "citation": "Wikipedia, 'Spanish Army' / 'Portuguese Army' / 'Spain during World War I' / 'Portugal during World War I' — used only for territorial district names, 1911 Portuguese reorganisation and general contextual facts, not for strength figures.",
+      "url": "https://en.wikipedia.org/wiki/Portuguese_Army; https://en.wikipedia.org/wiki/Spanish_Army",
+      "type": "tertiary encyclopedia, used for cross-checking organisation only",
+      "reliability": "faible"
+    },
+    "SEC_nordic_EB1911_RO": {
+      "citation": "Encyclopaedia Britannica, 11th edition (1911), vol. 23, article 'Rumania' (Arthur J. Evans, Henry Trotter, Moses Gaster), section 'Defence'. Gives the 1891 conscription law (modified 1900, 1908), three military sections (field army and reserves ages 21-30; territorial militia ages 30-36; Gloata/Landsturm ages 36-46), four army corps at Craiova, Bucharest, Jassy, Galatz, an independent Dobrudja brigade and a cavalry division at Bucharest; peace strength 1909-10 = 4,415 officers + 89,227 NCOs and men + 18,920 horses; war footing of field army 225,000 combatants; projected militia 100,000 (not fully organised by 1910).",
+      "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Rumania",
+      "type": "contemporary general encyclopedia based on official statistics",
+      "reliability": "haute"
+    },
+    "SEC_nordic_EB1911_DK": {
+      "citation": "Encyclopaedia Britannica, 11th edition (1911), vol. 8, article 'Denmark', section 'Army and Navy'. Gives active army composition (Life Guard battalion, 10 infantry regiments of 3 battalions, 5 cavalry regiments of 3 squadrons, 12 field batteries, 3 fortress artillery battalions, 6 engineer companies); peace strength of permanent troops 13,500 officers and men; annual contingent trained 2-3 years with colours 22,500; annual special-reservist contingent 17,000; up to 75,000 under arms at peak periods, average nearly 60,000; c.80,000 reservists given refresher training in 1907; war footing field army c.50,000, more than doubled by reserves, nearly 120,000 with the colours in 1907 manoeuvres.",
+      "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Denmark",
+      "type": "contemporary general encyclopedia based on official statistics",
+      "reliability": "haute"
+    },
+    "SEC_nordic_EB1911_NO": {
+      "citation": "Encyclopaedia Britannica, 11th edition (1911), vol. 19, article 'Norway' (Philip Lake, Osbert J. R. Howarth, Bertha S. Phillpotts, Hans L. Brækstad, Edmund Gosse), section 'Army and Navy'. Army = line + landværn (reserve) + landstorm (second reserve); conscription from 22, 6 years line, 6 reserve, 4 second reserve; war liability ages 18-50; peace establishment of the line 12,000 men with 750 officers; war footing 26,000 or more but not above 18,000 without parliamentary authority; only fortress garrisons and the Christiania garrison of Norwegian Guards are enlisted troops; principal fortresses Oscarsborg, Agdenes, Bergen, Tönsberg, Christiansand.",
+      "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Norway",
+      "type": "contemporary general encyclopedia based on official statistics",
+      "reliability": "haute"
+    },
+    "SEC_nordic_EB1911_SE": {
+      "citation": "Encyclopaedia Britannica, 11th edition (1911), vol. 26, article 'Sweden' (Frederick Beck, Robert Nisbet Bain, Oskar Dumrath, Osbert Howarth, Edmund Gosse), section 'Army and Navy'. Universal military service; conscripts aged 21-40, 8 years first levy, 4 second levy, 8 reserves; 1901 law set 240 days infantry etc., 365 days cavalry/field artillery; permanent cadres c.22,000; c.85,000 men trained annually as recruits or recalled; peace organisation 82 infantry battalions (28 regiments), 50 cavalry squadrons, 71 field and 7 position artillery batteries, 10 fortress artillery, 16 engineer, 18 army service corps companies; 6 divisions quartered at Helsingborg, Linköping, Sköfde, Stockholm (two), Hernösand plus Gotland troops at Visby; c.500,000 men estimated available for service in case of war; fortresses Stockholm (Vaxholm, Oscar-Fredriksborg), Boden, Karlsborg, Karlskrona.",
+      "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Sweden",
+      "type": "contemporary general encyclopedia based on official statistics",
+      "reliability": "haute"
+    },
+    "SEC_nordic_TANK_DK": {
+      "citation": "Leander Jobse, 'Kingdom of Denmark (WW1)', Tank Encyclopedia, 10 May 2011 [10 May 2021], section 'War time': Danish Army mobilised 1 August 1914; 'the peace-time force of 13,500 men had grown to a force of 47,000 men' six days later, 'further increasing to 58,000 men by the end of 1914'; only 10,000 on the Jutland border, remainder at Copenhagen; reduced to 34,000 conscripts by end 1915 and 24,500 in second half 1917. Article cites Danish archives and academic works (Christensen 2012; Sørensen 2014; Baltzersen 2005).",
+      "url": "https://tanks-encyclopedia.com/ww1/denmark",
+      "type": "well-sourced secondary historical article (specialist)",
+      "reliability": "moyenne"
+    },
+    "SEC_nordic_GLOBALSEC_DK": {
+      "citation": "GlobalSecurity.org, 'Denmark - Army - History': 'The peace strength of the Danish army was only about 14,000 men and officers, but a national militia system in which exemptions were very rare, somewhat after the Swiss style, was in vogue.'",
+      "url": "https://www.globalsecurity.org/military/world/europe/dk-army-history.htm",
+      "type": "secondary reference website",
+      "reliability": "moyenne"
+    },
+    "SEC_nordic_WIKI_RO_CAMPAIGN": {
+      "citation": "Wikipedia, 'Romania in World War I' (consulted 2026): infobox gives Romanian mobilised strength in 1916 as 658,088 (plus 30,000 Russians, 20,000 Serbs, 1,600 French); text notes c.700,000 in June 1917 in 207 infantry battalions, 110 cavalry squadrons, 245 artillery batteries. Wartime figures, not January 1914.",
+      "url": "https://en.wikipedia.org/wiki/Romania_in_World_War_I",
+      "type": "secondary encyclopedia citing academic literature",
+      "reliability": "moyenne"
+    },
+    "SEC_nordic_WIKI_RO_ARMY": {
+      "citation": "Wikipedia, 'Romanian Land Forces': Second Balkan War 1913 - c.330,000 troops mobilised; Romanian army entered war 27 August 1916. Useful only for wartime comparison.",
+      "url": "https://en.wikipedia.org/wiki/Romanian_Land_Forces",
+      "type": "secondary encyclopedia",
+      "reliability": "moyenne"
+    },
+    "SEC_nordic_SPARTACUS_RO": {
+      "citation": "Spartacus Educational, 'The Romanian Army and the First World War' (John Simkin): 'Romania's peacetime army was manned by limited conscription, and all adult males spent time in the territorial reserve. This gave it a regular strength of around 100,000 men. On the outbreak of the Second Balkan War in 1913, conscription was introduced and the army grew to 400,000.'",
+      "url": "https://spartacus-educational.com/FWWromaniaA.htm",
+      "type": "educational secondary website",
+      "reliability": "faible"
+    },
+    "SEC_nordic_WIKI_NO_ARMY": {
+      "citation": "Wikipedia, 'Norwegian Army', sections 'Independence' and 'World War I' (text derived from an early-20th-century encyclopedic description of the post-1920 militia system): six brigades established 1911, called divisions from 1916; 56 infantry battalions, 5 cyclist (ski) companies, 3 cavalry regiments (16 squadrons), 27 four-gun field batteries, 3 mountain batteries, 9 heavy artillery batteries, 1 engineer regiment and 2 battalions; 'The total peace strength was 118,500 men and comprised 71,836 rifles, 228 field and 36 heavy guns. The additional numbers available on mobilization amount to 282,000 men.' Liability 18-56, 12 years line then 12 years landvern then landstorm; initial training 48-102 days by arm. Note: this description is of the c.1920 'national militia' system and must not be read as troops continuously under arms.",
+      "url": "https://en.wikipedia.org/wiki/Norwegian_Army",
+      "type": "secondary encyclopedia reproducing contemporary statistics",
+      "reliability": "moyenne"
+    },
+    "SEC_nordic_WIKI_SE_ARMY": {
+      "citation": "Wikipedia, 'Swedish Army', section 'Size': 'Between the introduction of universal conscription in 1902 until the start of World War II, the army was usually maintained at a consistent strength of 100,000 men, with two-thirds of the force being conscripts for two years'; also notes army on active service consisted mainly of conscripts in basic training and refreshers.",
+      "url": "https://en.wikipedia.org/wiki/Swedish_Army",
+      "type": "secondary encyclopedia",
+      "reliability": "moyenne"
+    },
+    "SEC_nordic_WIKI_SE_WW1": {
+      "citation": "Wikipedia, 'Sweden during World War I' (good article), section 'Swedish military preparedness during the war - Army': 'During the entirety of the war, the active strength of the Swedish army never exceeded 13,000 men, even after the doubling in strength requested in Hammarskjöld's Army Bill of 1914 of reserve formations from six to twelve infantry divisions and a cavalry division'; by 1918 active deployable men fell as low as 2,000. Cites Qvarnström and Åselius (academic works).",
+      "url": "https://en.wikipedia.org/wiki/Sweden_during_World_War_I",
+      "type": "secondary encyclopedia citing academic works",
+      "reliability": "moyenne"
+    },
+    "SEC_nordic_NYT_SE": {
+      "citation": "New York Times, 2 August 1914, 'A NEW SWEDISH ARMY; Formidable Armament to be Based on Militia System': 'The regular peace footing will amount to 350,000 officers and men, with a pure militia reserve of about 500,000. Thus nearly 900,000 men can be put under arms at twelve hours' notice.' Contemporary press estimate, grossly inflated compared with official statistics; recorded only as a divergence.",
+      "url": "https://www.nytimes.com/1914/08/02/archives/a-new-swedish-army-formidable-armament-to-be-based-on-militia.html",
+      "type": "contemporary newspaper report",
+      "reliability": "faible"
+    },
+    "SEC_nordic_CHORUS_NOTE": {
+      "citation": "Research note: the suggested US War Department 1916 army handbook could not be located as a freely accessible, verifiable online text during this research (archive.org and Google Books searches returned no usable item). Contemporary official-statistics-based figures were therefore taken principally from the 1911 Encyclopaedia Britannica national articles, corroborated where possible by specialist/secondary sources. On 2026-11-17 all core figures for the four nations were re-verified against the complete EB1911 article texts on Wikisource (Rumania 'Defence'; Denmark 'Army and Navy'; Norway 'Army and Navy'; Sweden 'Army and Navy') and found consistent. All estimates are labelled as such.",
+      "url": "",
+      "type": "methodological note",
+      "reliability": "moyenne"
+    }
+  },
+  "nations": {
+    "belgium": {
+      "name_fr": "Belgique",
+      "active": {
+        "value": 33000,
+        "reference_date": "January 1914 (peace establishment of 1913-14; Belgium was not mobilised until 2 August 1914)",
+        "definition": "Approximate peacetime strength actually under arms of the Belgian Army (the conscript active army with the colours plus the permanent cadre): on the order of 30,000-35,000 officers and men, taken here as about 33,000. Under the 1909 law the term with the colours was short (roughly 12-15 months by arm), so the standing force was essentially the annual contingent plus cadres. This figure EXCLUDES the Garde Civique (civil guard, a separate, only partly trained citizen militia numbering roughly 40,000-50,000 on paper) and the trained reserve. It is NOT the August 1914 mobilised field army (c.117,000-120,000) nor the total mobilised forces (c.200,000-300,000).",
+        "source": "SEC_west_SYB1914",
+        "page": "Belgium, 'Defence — Army'; see also EB1911_BE, article 'Belgium', section 'Defence'",
+        "reliability": "moyenne",
+        "derivation": "ESTIMATE. The standard references agree on the 1909 conscription framework and on a small professional cadre, but do not yield a verifiable daily return for January 1914. An annual contingent of c.25,000-30,000 conscripts serving roughly 12-15 months, plus c.4,000-6,000 long-service officers, NCOs and specialists, implies c.30,000-35,000 men under arms at any one time; the mid value 33,000 is adopted and explicitly flagged as an estimate.",
+        "divergences": [
+          "Contemporary and later accounts variously give the Belgian peace army as c.28,000-30,000 or c.33,000-35,000; the spread reflects whether cadres and depot troops are included.",
+          "Including the Garde Civique (c.40,000-50,000 enrolled, only partly trained) would roughly double the number of men bearing arms, but it was a militia, not regular troops continuously under arms.",
+          "August 1914 mobilisation figures — field army c.117,000-120,000 plus the fortified-place garrisons (Antwerp, Liège, Namur) and the Garde Civique, giving c.200,000-300,000 in total — are wartime numbers and must not be used as the January 1914 peace strength.",
+          "Exact figures from the cited standard works could not be re-opened for verbatim verification here; the value is an estimate from the established literature (see METHODOLOGY)."
+        ],
+        "source_original_key": "SYB1914"
+      },
+      "reserves": {
+        "value": 100000,
+        "reference_date": "1913-14 reserve organisation; trained reservists available on mobilisation in January 1914",
+        "definition": "ESTIMATED trained reservists: men who had completed their term with the colours and remained liable for recall, available to bring the field army and the fortress garrisons up to war strength. With an annual intake of c.25,000-30,000 and a multi-year reserve liability, the trained reserve pool was on the order of 100,000. These men were NOT under arms in January 1914. The partly trained Garde Civique is excluded here (listed as a divergence).",
+        "source": "SEC_west_SYB1914",
+        "page": "Belgium, 'Defence — Army' (reserve and territorial/Garde Civique provisions)",
+        "reliability": "moyenne",
+        "derivation": "ESTIMATE by order of magnitude: c.25,000-30,000 trained men per annual class multiplied by roughly 3-4 years of reserve liability gives c.75,000-120,000; 100,000 is adopted as a round mid estimate. No exact contemporary return is available here.",
+        "divergences": [
+          "If the Garde Civique (c.40,000-50,000, lightly trained) is counted, the total trained-or-partly-trained reserve approaches 140,000-150,000.",
+          "August 1914 mobilisation created six infantry divisions and a cavalry division and large fortress garrisons; the mobilised total (c.200,000-300,000) includes newly called and partly trained men and is NOT a reserve-only figure.",
+          "Some accounts stress that Belgian reserve training was short and uneven, so the 'trained' label is weaker than for, e.g., the German or French reserve systems."
+        ],
+        "source_original_key": "SYB1914"
+      },
+      "districts": [
+        {
+          "id": "be_1div",
+          "name_fr": "1re division d'armée (Gand / Flandre orientale)",
+          "hq": "Gand",
+          "lon": 3.7174,
+          "lat": 51.0543
+        },
+        {
+          "id": "be_2div",
+          "name_fr": "2e division d'armée (Anvers / Campine)",
+          "hq": "Anvers",
+          "lon": 4.4025,
+          "lat": 51.2194
+        },
+        {
+          "id": "be_3div",
+          "name_fr": "3e division d'armée (Liège / Meuse)",
+          "hq": "Liège",
+          "lon": 5.5797,
+          "lat": 50.6292
+        },
+        {
+          "id": "be_4div",
+          "name_fr": "4e division d'armée (Namur / Meuse)",
+          "hq": "Namur",
+          "lon": 4.8719,
+          "lat": 50.4674
+        },
+        {
+          "id": "be_5div",
+          "name_fr": "5e division d'armée (Hainaut / Mons-Charleroi)",
+          "hq": "Mons",
+          "lon": 3.9525,
+          "lat": 50.4547
+        },
+        {
+          "id": "be_6div",
+          "name_fr": "6e division d'armée (Brabant / formation de mobilisation)",
+          "hq": "Bruxelles",
+          "lon": 4.3517,
+          "lat": 50.8503
+        },
+        {
+          "id": "be_cav",
+          "name_fr": "Division de cavalerie",
+          "hq": "Bruxelles",
+          "lon": 4.3517,
+          "lat": 50.8503
+        },
+        {
+          "id": "be_fort_anvers",
+          "name_fr": "Gouvernement militaire de la position fortifiée d'Anvers (réduit national)",
+          "hq": "Anvers",
+          "lon": 4.4025,
+          "lat": 51.2194
+        },
+        {
+          "id": "be_fort_liege",
+          "name_fr": "Gouvernement militaire de la position fortifiée de Liège",
+          "hq": "Liège",
+          "lon": 5.5797,
+          "lat": 50.6292
+        },
+        {
+          "id": "be_fort_namur",
+          "name_fr": "Gouvernement militaire de la position fortifiée de Namur",
+          "hq": "Namur",
+          "lon": 4.8719,
+          "lat": 50.4674
+        }
+      ],
+      "organisation": "Compulsory service under the law of 1909. Every Belgian was liable from about 19 to 40; the term with the colours was short (roughly 12-15 months by arm), followed by several years in the reserve and a territorial/Garde Civique obligation. In peacetime the army was small, organised in a handful of divisions; on mobilisation (August 1914) it expanded to six infantry divisions of roughly 12,000-15,000 men each, one cavalry division, and substantial fortress troops. The Garde Civique (civil guard) was a separate citizen militia used mainly for local defence and fortified-place duty. Fortifications designed by General Henri Brialmont guarded the Meuse at Liège and Namur and the great fortified camp of Antwerp, which served as the national redoubt. Infantry weapon: Mauser M1889, 7.65 mm; field artillery of 75 mm quick-firing type.",
+      "garrisons": "Antwerp was the principal fortified camp and war-time refuge of the government and army (the 'national redoubt'), with large permanent and mobilised garrisons; Liège and Namur guarded the Meuse crossings with Brialmont forts; Brussels was the capital and location of the general staff and cavalry headquarters. Ghent, Bruges, Mons and Charleroi held recruiting and training depots in Flanders and the industrial Hainaut region. These HQs and the division-to-district mapping are approximate reconstructions; the peacetime provincial recruiting districts (one per province) do not map exactly onto the six mobilisation divisions.",
+      "uncertainties": [
+        "No verified January 1914 daily return; the 33,000 active figure and 100,000 reserve figure are explicit estimates from the standard literature.",
+        "Whether Belgium maintained four or six divisions in being in peacetime is not firmly resolved here; the six divisions listed are the well-attested August 1914 field army.",
+        "The Garde Civique (c.40,000-50,000 nominal) is variously counted as part of the army or as a separate militia; it is excluded from both the active and the trained-reserve values.",
+        "Division and fortress-command headquarters are plausible rather than source-verified locations.",
+        "All August 1914 mobilisation figures are excluded from the peace-time values by design."
+      ]
+    },
+    "netherlands": {
+      "name_fr": "Pays-Bas",
+      "active": {
+        "value": 25000,
+        "reference_date": "January 1914 (peace establishment of 1913-14; the Netherlands did not mobilise until the outbreak of war in August 1914)",
+        "definition": "Approximate peacetime strength actually under arms of the Royal Netherlands Army's European land forces (the colonial army in the Dutch East Indies is excluded): on the order of 20,000-28,000 officers and men, taken here as about 25,000. Conscription had been introduced in 1898-1901 and service with the colours was short, so the standing force consisted of the current contingent plus a professional cadre. EXCLUDES the reserve/Landsturm and the c.200,000 men mobilised in August 1914.",
+        "source": "SEC_west_SYB1914",
+        "page": "Netherlands, 'Defence — Army'; see also EB1911_NL, article 'Netherlands', section 'Defence'",
+        "reliability": "moyenne",
+        "derivation": "ESTIMATE. The standard references describe a short-service conscript army of roughly 20,000-28,000 in peace; 25,000 is adopted as a round mid value. No verifiable dated return was available here, so this is explicitly an estimate, not a precise establishment total.",
+        "divergences": [
+          "Sources give the Dutch peace army variously as about 20,000-22,000 or about 25,000-28,000, depending on whether depot and cadre troops and the small volunteer element are counted.",
+          "The separate Royal Netherlands East Indies Army (KNIL), roughly 30,000-40,000 strong including native troops, is excluded (it was not a European land force).",
+          "On mobilisation in August 1914 the Netherlands fielded roughly 200,000 men (some accounts say up to 250,000); these are wartime figures, not January 1914 peace strengths.",
+          "Exact figures could not be re-verified in this environment (see METHODOLOGY)."
+        ],
+        "source_original_key": "SYB1914"
+      },
+      "reserves": {
+        "value": 175000,
+        "reference_date": "1913-14 reserve organisation; trained reservists available on mobilisation in January 1914",
+        "definition": "ESTIMATED trained reservists: under universal conscription with short service with the colours and a multi-year reserve (and Landsturm) liability, the Netherlands could field roughly 200,000 men in August 1914. Subtracting the c.25,000 active peace establishment gives on the order of 175,000 trained reservists. These men were NOT under arms in January 1914. A portion of the mobilised total was only partly trained Landsturm, so the strictly 'trained' figure may be lower.",
+        "source": "SEC_west_SYB1914",
+        "page": "Netherlands, 'Defence — Army' (reserve and Landsturm provisions)",
+        "reliability": "moyenne",
+        "derivation": "ESTIMATE by subtraction: c.200,000 mobilised (August 1914, standard literature) minus c.25,000 active peace establishment (above) = c.175,000. Both inputs are approximate, so the result is flagged as an estimate and must not be read as a verified return.",
+        "divergences": [
+          "If the mobilised total was nearer 250,000, the corresponding reserve would be c.225,000; if the Dutch field army alone (c.100,000-120,000) is used, the reserve figure would be much smaller.",
+          "The Landsturm (territorial levy) was only partly trained and is only imperfectly covered by the word 'trained'.",
+          "The 1867-era and later militia-style traditions mean some Dutch units were cadres rather than fully manned in peace."
+        ],
+        "source_original_key": "SYB1914"
+      },
+      "districts": [
+        {
+          "id": "nl_1div",
+          "name_fr": "1re division d'infanterie (champ d'armée / field army)",
+          "hq": "Amsterdam",
+          "lon": 4.9041,
+          "lat": 52.3676
+        },
+        {
+          "id": "nl_2div",
+          "name_fr": "2e division d'infanterie (champ d'armée / field army)",
+          "hq": "La Haye",
+          "lon": 4.2903,
+          "lat": 52.0787
+        },
+        {
+          "id": "nl_cav",
+          "name_fr": "Brigade de cavalerie",
+          "hq": "Amsterdam",
+          "lon": 4.9041,
+          "lat": 52.3676
+        },
+        {
+          "id": "nl_stelling_amsterdam",
+          "name_fr": "Commandement de la position fortifiée d'Amsterdam (Stelling van Amsterdam)",
+          "hq": "Amsterdam",
+          "lon": 4.9041,
+          "lat": 52.3676
+        },
+        {
+          "id": "nl_waterlinie",
+          "name_fr": "Commandement de la nouvelle ligne d'eau (Hollande)",
+          "hq": "Utrecht",
+          "lon": 5.1214,
+          "lat": 52.0907
+        },
+        {
+          "id": "nl_brabant",
+          "name_fr": "Commandement de la place de Bois-le-Duc ('s-Hertogenbosch)",
+          "hq": "Bois-le-Duc",
+          "lon": 5.3037,
+          "lat": 51.6977
+        },
+        {
+          "id": "nl_gelderland",
+          "name_fr": "Commandement de la place de Nimègue (Nijmegen)",
+          "hq": "Nimègue",
+          "lon": 5.8691,
+          "lat": 51.8433
+        },
+        {
+          "id": "nl_frise",
+          "name_fr": "Commandement de la place de Leeuwarden (Frise)",
+          "hq": "Leeuwarden",
+          "lon": 5.7999,
+          "lat": 53.2012
+        },
+        {
+          "id": "nl_limburg",
+          "name_fr": "Commandement de la place de Maestricht (Maastricht)",
+          "hq": "Maestricht",
+          "lon": 5.6909,
+          "lat": 50.8514
+        },
+        {
+          "id": "nl_groningen",
+          "name_fr": "Garnison de Groningue",
+          "hq": "Groningue",
+          "lon": 6.5665,
+          "lat": 53.2194
+        }
+      ],
+      "organisation": "Conscription introduced in 1898-1901, with short service with the colours (infantry roughly 8-12 months, mounted and technical arms longer), followed by several years in the reserve and then the Landsturm. In peacetime the army was kept small: two field divisions, a cavalry brigade and fortress/garrison troops. On mobilisation it was to expand to roughly 200,000 men. The national defence plan rested on the New Dutch Water Line and the Stelling van Amsterdam (the fortified ring around the capital), with secondary fortified places at 's-Hertogenbosch, Nijmegen, Leeuwarden and Maastricht. The Dutch infantry of 1914 was armed with the Mannlicher M1895 magazine rifle (6.5 mm); the field artillery was being re-equipped with quick-firing guns. The Netherlands remained neutral and mobilised throughout the First World War.",
+      "garrisons": "The main peacetime concentrations were around Amsterdam and The Hague/Rotterdam in Holland, which also held the headquarters of the two field divisions and the cavalry brigade. The Stelling van Amsterdam and the New Dutch Water Line were the keystones of defence, with Utrecht as the central water-line command. Regional garrisons and fortified places lay at 's-Hertogenbosch (North Brabant), Nijmegen (Gelderland), Leeuwarden (Friesland), Groningen and Maastricht (Limburg). These district locations are plausible reconstructions; the exact 1914 territorial command boundaries and headquarters are not verified here.",
+      "uncertainties": [
+        "The 25,000 active and 175,000 reserve values are estimates; no exact January 1914 return was available for verification.",
+        "The total mobilised strength usually given for 1914 (c.200,000, sometimes c.250,000) is a wartime figure and is only used to derive the reserve estimate.",
+        "It is uncertain how much of the mobilised force was genuinely trained versus Landsturm, so 'trained reservists' is approximate.",
+        "Field-division and fortress-command headquarters are plausible rather than source-verified; the two-division peacetime field army is the best-attested structure.",
+        "The colonial army (KNIL) is excluded from the European land-force figures by design."
+      ]
+    },
+    "luxembourg": {
+      "name_fr": "Luxembourg",
+      "active": {
+        "value": 400,
+        "reference_date": "January 1914 (peace establishment; the Grand Duchy was invaded and occupied from 2 August 1914)",
+        "definition": "ESTIMATED peace-time strength actually under arms of the armed force of the Grand Duchy: a single small infantry battalion (a few companies) with a tiny mounted/technical element, roughly 300-400 officers and men, taken here as about 400. Under the 1867 Treaty of Luxembourg the Grand Duchy was declared perpetually neutral and the great fortress of Luxembourg was demolished, leaving only a token force. EXCLUDES the nominal civic guard (Garde Civique), a largely untrained citizen militia of a few thousand enrolled men.",
+        "source": "SEC_west_EB1911_LU",
+        "page": "article 'Luxemburg'/'Luxembourg', section 'Defence'; cf. SYB1914, Luxembourg, 'Defence'",
+        "reliability": "faible",
+        "derivation": "ESTIMATE. The standard references and later accounts agree only that the force was a token one of a few hundred men (usually quoted as 300-400). The round value 400 is adopted; given the scarcity and vagueness of the sources this value has low reliability.",
+        "divergences": [
+          "Some accounts give c.300 men, others c.400 for the 1914 army; both are of the same order of magnitude.",
+          "The Garde Civique (c.2,000-3,000 nominal members) was barely trained and is excluded from the regular under-arms figure.",
+          "No mobilisation of significance occurred: German troops occupied the country on 2 August 1914 and the tiny army offered only token resistance."
+        ],
+        "source_original_key": "EB1911_LU"
+      },
+      "reserves": {
+        "value": 0,
+        "reference_date": "January 1914 (no organised trained reserve of military significance)",
+        "definition": "No trained reserve of military significance. Luxembourg had no substantial body of ex-service trained reservists; the nominal Garde Civique was a citizen militia with little or no systematic training and is therefore not counted here. A value of 0 is used to mark the absence of a usable trained reserve, NOT to deny that a paper militia existed.",
+        "source": "SEC_west_EB1911_LU",
+        "page": "article 'Luxembourg', section 'Defence'",
+        "reliability": "faible",
+        "derivation": "Qualitative assessment from the cited references: the post-1867 settlement limited Luxembourg to a tiny regular force and a nominal militia. No numerical trained-reserve return exists in the accessible literature; 0 is used as a deliberate 'none of significance' marker.",
+        "divergences": [
+          "If the Garde Civique's nominal membership (c.2,000-3,000) is loosely called a 'reserve', a figure of a few thousand could be quoted — but it was not trained reservists in the sense used for the great powers.",
+          "Some later accounts speak of a wartime expansion to roughly 1,000-2,000 men, but this is a paper mobilisation, not trained manpower."
+        ],
+        "source_original_key": "EB1911_LU"
+      },
+      "districts": [
+        {
+          "id": "lu_cap",
+          "name_fr": "Garnison de Luxembourg-ville (ancienne forteresse, capitale)",
+          "hq": "Luxembourg",
+          "lon": 6.1319,
+          "lat": 49.6116
+        },
+        {
+          "id": "lu_nord",
+          "name_fr": "Poste du nord (Diekirch) — commandement nominal",
+          "hq": "Diekirch",
+          "lon": 6.1617,
+          "lat": 49.8681
+        },
+        {
+          "id": "lu_sud",
+          "name_fr": "Poste du sud (Esch-sur-Alzette, bassin industriel) — commandement nominal",
+          "hq": "Esch-sur-Alzette",
+          "lon": 5.9417,
+          "lat": 49.4944
+        }
+      ],
+      "organisation": "Perpetually neutral since the 1867 Treaty of London, which also required the demolition of the fortress of Luxembourg. The army was a tiny volunteer regular force, essentially one infantry battalion of a few companies with a minute mounted element, under the Grand Duke. A civic guard (Garde Civique) existed on paper as a citizen militia but was poorly trained and equipped. There was no meaningful divisional structure, general staff or reserve system. On 2 August 1914 German forces entered the Grand Duchy, which remained occupied for the duration of the war; the army was reduced to a token presence.",
+      "garrisons": "Luxembourg City, the capital and site of the demolished fortress, was the sole significant garrison and the seat of government and army command. Small posts existed in the north (Diekirch) and in the industrial south (Esch-sur-Alzette / Dudelange area). These 'districts' are nominal administrative posts rather than genuine military districts; the locations are approximate.",
+      "uncertainties": [
+        "The tiny scale of the force means the sources give only vague figures (300-400 men); the 400 value has low reliability.",
+        "No January 1914 return or detailed order of battle was available; even the battalion/sub-unit structure is only broadly attested.",
+        "The status and size of the Garde Civique is unclear and it is deliberately excluded from both active and reserve values.",
+        "The listed districts are nominal posts, approximate reconstructions rather than documented 1914 military districts."
+      ]
+    },
+    "switzerland": {
+      "name_fr": "Suisse",
+      "active": {
+        "value": 12000,
+        "reference_date": "January 1914 (peacetime militia training cycle; no standing army and no mobilisation until August 1914)",
+        "definition": "Switzerland had NO standing army. The only troops actually under arms in peacetime were the small permanent instructional cadre (roughly 2,500-3,000 officers, NCOs and specialists) plus conscripts undergoing recruit school (Rekrutenschule) and men attending refresher courses (Wiederholungskurse). Averaged over the training year, on the order of 10,000-15,000 men were under arms at any one time; 12,000 is adopted here as a mid ESTIMATE. This is strictly distinct from the theoretical militia establishment (c.200,000 trained men, see reserves) and from the August 1914 mobilised army (c.200,000-250,000).",
+        "source": "SEC_west_EB1911_CH",
+        "page": "article 'Switzerland', section 'Defence' (militia system, recruit schools and cadres); cf. SYB1914, Switzerland, 'Defence'",
+        "reliability": "moyenne",
+        "derivation": "ESTIMATE. The cited references establish that there was no standing army and describe the recruit school and refresher-course system, but give no simultaneous daily headcount. Rough calculation: c.20,000-25,000 recruits per year each training roughly 90 days (about 5,000-7,000 under arms on an average day), plus c.60,000-80,000 men on 2-4 week refresher courses (about 3,000-6,000 on an average day), plus c.2,500-3,000 cadre, giving roughly 10,000-15,000; 12,000 is used as a mid estimate and flagged as such.",
+        "divergences": [
+          "If 'active' is read as the permanent career cadre alone, the figure is only c.2,500-3,000; if it is read as the annual training throughput, it is c.80,000-100,000 men passing through courses per year. Neither is the same as the simultaneous under-arms headcount used here.",
+          "The total trained militia establishment (the theoretical 'establishment strength') was c.200,000 or more — this is the reserves value, not active.",
+          "In August 1914 Switzerland mobilised roughly 200,000-250,000 men; by 1918 total wartime strength approached 400,000. These are wartime figures, not January 1914 peace strengths.",
+          "Exact figures could not be re-verified in this environment (see METHODOLOGY)."
+        ],
+        "source_original_key": "EB1911_CH"
+      },
+      "reserves": {
+        "value": 190000,
+        "reference_date": "1914 militia establishment; trained reservists available on mobilisation",
+        "definition": "ESTIMATED trained reservists: the great body of Swiss males who had passed through recruit training and were enrolled in the active levy (Auszug), the Landwehr and the Landsturm, but who were NOT under arms in peacetime. With a total mobilisable force of roughly 200,000-250,000 in 1914 and only about 12,000 continuously under arms, the trained reserve pool was on the order of 190,000. Under the Swiss system this reserve WAS the army in wartime; in January 1914 its members were civilians pursuing their ordinary occupations.",
+        "source": "SEC_west_EB1911_CH",
+        "page": "article 'Switzerland', section 'Defence' (active levy, Landwehr, Landsturm and total trained strength)",
+        "reliability": "moyenne",
+        "derivation": "ESTIMATE by subtraction: c.200,000 mobilisable (standard literature, total first-line) minus c.12,000 simultaneously under arms = c.190,000. Both inputs are approximate; the value is explicitly an estimate and refers to trained men available, not to troops present with the colours in January 1914.",
+        "divergences": [
+          "If a mobilisation total of 250,000 is used, the corresponding reserve would be c.235,000; some accounts give an even larger total wartime pool including the Landsturm.",
+          "The Landsturm (older age classes, home defence only) was less thoroughly trained than the active levy/Landwehr, so the strictly 'fully trained' figure may be lower.",
+          "The c.400,000 total reached by 1918 reflects wartime expansion and must not be back-projected to January 1914."
+        ],
+        "source_original_key": "EB1911_CH"
+      },
+      "districts": [
+        {
+          "id": "ch_1div",
+          "name_fr": "1re division (Genève / Vaud / Valais, frontière occidentale)",
+          "hq": "Genève",
+          "lon": 6.1432,
+          "lat": 46.2044
+        },
+        {
+          "id": "ch_2div",
+          "name_fr": "2e division (Lausanne / Neuchâtel / Jura)",
+          "hq": "Lausanne",
+          "lon": 6.6323,
+          "lat": 46.5197
+        },
+        {
+          "id": "ch_3div",
+          "name_fr": "3e division (Berne / Soleure / Tessin septentrional)",
+          "hq": "Berne",
+          "lon": 7.4474,
+          "lat": 46.948
+        },
+        {
+          "id": "ch_4div",
+          "name_fr": "4e division (Bâle / Argovie / Suisse centrale)",
+          "hq": "Bâle",
+          "lon": 7.5886,
+          "lat": 47.5596
+        },
+        {
+          "id": "ch_5div",
+          "name_fr": "5e division (Zurich / Schaffhouse / Thurgovie)",
+          "hq": "Zurich",
+          "lon": 8.5417,
+          "lat": 47.3769
+        },
+        {
+          "id": "ch_6div",
+          "name_fr": "6e division (Saint-Gall / Grisons / Tessin)",
+          "hq": "Coire",
+          "lon": 9.5308,
+          "lat": 46.8529
+        },
+        {
+          "id": "ch_cav",
+          "name_fr": "Brigade de cavalerie (troupes non divisionnaires)",
+          "hq": "Berne",
+          "lon": 7.4474,
+          "lat": 46.948
+        },
+        {
+          "id": "ch_fort",
+          "name_fr": "Troupes de forteresse (Saint-Maurice, Gothard, passages alpins)",
+          "hq": "Bellinzone",
+          "lon": 9.0289,
+          "lat": 46.1953
+        }
+      ],
+      "organisation": "Universal male conscription under the federal military organisation in force in 1914 (based on the 1907 army law and the federal constitution). Every Swiss male was liable from about 20 to 48: recruit school (roughly 90 days for infantry, longer for other arms) at about 20, followed by service in the active levy (Auszug), then the Landwehr and finally the Landsturm, with periodic refresher courses (Wiederholungskurse) in subsequent years. There was no standing army: the permanent cadre served as instructors, and units existed as trained formations whose men lived as civilians in peace. The field army was organised in six divisions plus cavalry and fortress troops. On mobilisation in August 1914 Switzerland fielded roughly 200,000-250,000 men to guard its frontiers, and total wartime strength approached 400,000 by 1918. Infantry weapon: Schmidt-Rubin magazine rifle, 7.5 mm.",
+      "garrisons": "In peacetime the only permanently active elements were the general staff at Bern (the federal capital), the military schools and the cadres at the cantonal recruit-training centres; troops were not embodied in permanent garrisons. The six divisions were associated with cantonal recruiting areas covering the western (Geneva/Lausanne), northern (Basel/Zurich) and eastern (St Gallen/Graubünden/Tessin) frontiers. Fortress troops guarded the great alpine transit routes — Saint-Maurice, the Gotthard and the Grisons passes — and frontier brigades covered the Jura and the Rhine. Division and fortress headquarters are approximate reconstructions from cantonal military geography rather than verified 1914 returns.",
+      "uncertainties": [
+        "The Swiss militia system makes 'active strength' definition-dependent: c.2,500-3,000 permanent cadre, c.10,000-15,000 under arms on an average day, and c.80,000-100,000 annual training throughput are all defensible readings; the 12,000 value is the simultaneous under-arms estimate.",
+        "The 190,000 reserve and c.200,000-250,000 mobilisation figures are estimates from the standard literature, not verified returns.",
+        "Whether Switzerland had six divisions in 1914, and the exact divisional recruiting areas and headquarters, are only approximately reconstructed here.",
+        "The c.400,000 wartime peak of 1918 is a later mobilisation figure and is excluded from all peace-time values."
+      ]
+    },
+    "serbia": {
+      "name_fr": "Serbie",
+      "active": {
+        "value": 35000,
+        "reference_date": "1911 (documented figure); used as estimate for 1914-01",
+        "definition": "Peace establishment / troops on a permanent footing in the national army (narodna voyska), excluding landsturm and Second/Third Ban cadres",
+        "source": "SEC_balkans_EB1911_SERVIA",
+        "page": "article 'Servia', section 'Defence'",
+        "reliability": "moyenne",
+        "derivation": "EB1911 states explicitly: 'On a peace footing the strength of the army is 35,000 men; in war it might reach 225,000, including landsturm.' No reliable, dated return for January 1914 was located. The 35,000 figure is a pre-Balkan-War establishment and is used here as the best documented proxy. In 1913-14 Serbia did not fully demobilise after the Second Balkan War, so actual troops under arms in January 1914 may have been substantially higher than the peace cadre - this is an ESTIMATE, not a certified fact.",
+        "divergences": [
+          "c.30,000 peace strength is a commonly repeated figure in secondary literature for 1913-14 (not directly sourced here)",
+          "Wartime mobilisation: 230,000 (First Balkan War, WIKI_BALKAN_WARS); 348,000 (Second Balkan War, same source); 420,597 in August 1914 (VOJSKA_SERBIA_1914) / 420,000 (WIKI_ROYAL_SERBIAN_ARMY, citing Thomas & Babac p.12)",
+          "EB1911 pre-1912 war ceiling 225,000 including landsturm"
+        ],
+        "source_original_key": "EB1911_SERVIA"
+      },
+      "reserves": {
+        "value": 250000,
+        "reference_date": "1914-01 (estimate, from 1911 base + Balkan War experience)",
+        "definition": "Trained reservists available for recall (First and Second Ban reservists and landsturm), not including untrained new levies",
+        "source": "SEC_balkans_EB1911_SERVIA",
+        "page": "article 'Servia', section 'Defence'",
+        "reliability": "faible",
+        "derivation": "EB1911 war strength 225,000 including landsturm minus 35,000 peace strength = about 190,000 trained reservists on the 1911 establishment. The higher value of 250,000 adopted here allows for the much larger number of men given combat training in the Balkan Wars of 1912-13; the August 1914 mobilisation of 420,597 implies a very large trained or semi-trained manpower pool but also included untrained recruits. This is a rough estimate only.",
+        "divergences": [
+          "190,000 implied by EB1911 (225,000 - 35,000)",
+          "385,000 implied if 420,597 mobilised (Aug 1914) minus 35,000 peace troops - but this includes untrained levies",
+          "No separate 1914 reserve return located"
+        ],
+        "source_original_key": "EB1911_SERVIA"
+      },
+      "districts": [
+        {
+          "id": "rs_i",
+          "name_fr": "1re division (Belgrade)",
+          "hq": "Belgrade",
+          "lon": 20.457,
+          "lat": 44.787
+        },
+        {
+          "id": "rs_ii",
+          "name_fr": "2e division (Valjevo)",
+          "hq": "Valjevo",
+          "lon": 19.899,
+          "lat": 44.268
+        },
+        {
+          "id": "rs_iii",
+          "name_fr": "3e division (Niš)",
+          "hq": "Niš",
+          "lon": 21.896,
+          "lat": 43.321
+        },
+        {
+          "id": "rs_iv",
+          "name_fr": "4e division (Kragujevac)",
+          "hq": "Kragujevac",
+          "lon": 20.939,
+          "lat": 44.012
+        },
+        {
+          "id": "rs_v",
+          "name_fr": "5e division (Zaječar)",
+          "hq": "Zaječar",
+          "lon": 22.297,
+          "lat": 43.899
+        },
+        {
+          "id": "rs_vi",
+          "name_fr": "District de Skoplje (territoire annexé en 1913)",
+          "hq": "Skoplje",
+          "lon": 21.434,
+          "lat": 42.002
+        }
+      ],
+      "organisation": "Based on the 1901 law (EB1911): national army (narodna voyska) in three 'bans' - 1st Ban = field army, 2nd Ban = peace-time cadres only, 3rd Ban = unorganised; plus landsturm for ages 17-21 and 45-50. Five infantry divisions with HQs at Niš, Belgrade, Valjevo, Kragujevac and Zaječar (pre-1912 territory). After the Balkan Wars the enlarged kingdom gained Kosovo and Vardar Macedonia and additional garrisons were established there (Skoplje, Bitola), but the exact 1914 divisional district list is not documented in the sources located. In August 1914 the field army comprised the 1st, 2nd and 3rd Armies plus the Timok, Užice and western detachments, with infantry divisions Timok I/II, Morava I/II, Šumadija I, Danube I, Drina I/II, a Combined Division and a Cavalry Division (VOJSKA_SERBIA_1914).",
+      "garrisons": "Belgrade (capital, Danube/Save fortress), Niš (modern forts, key southeastern fortress), Kragujevac (arsenal and military academy), Valjevo, Zaječar (fortified near Bulgarian frontier), Pirot and Leskovac (fortified Bulgarian approach), Skoplje and Bitola (newly annexed 1913). Serbian frontier fortifications on the Bulgarian border were strengthened before 1914.",
+      "uncertainties": [
+        "CRITICAL: All concrete peace-strength figures are from c.1911, two years BEFORE the January 1914 reference date. The Balkan Wars (1912-13) transformed Serbian manpower and territory.",
+        "The 35,000 figure is a theoretical establishment, not verified troops actually present under arms in January 1914.",
+        "Post-1913 partial mobilisation means the number under arms in early 1914 may have been far above the peace establishment.",
+        "Wartime figures (230,000 / 348,000 / 420,000+) refer to 1912-1914 mobilisations and must not be used as peace strength.",
+        "The new Macedonian/Kosovo divisional districts after the 1913 Treaty of Bucharest are poorly documented in accessible sources.",
+        "US War Department 1916 handbook not directly consulted; its figures could not be verified here."
+      ]
+    },
+    "montenegro": {
+      "name_fr": "Monténégro",
+      "active": {
+        "value": 3000,
+        "reference_date": "1914-01 (rough estimate; documented base c.1911)",
+        "definition": "Permanent troops under arms: the small standing corps of officers, the 20-man perianiki bodyguard and the permanently embodied militia cadres; Montenegro had NO standing army in the modern sense",
+        "source": "SEC_balkans_EB1911_MONTENEGRO",
+        "page": "article 'Montenegro', section 'Defence'",
+        "reliability": "faible",
+        "derivation": "EB1911 is explicit: 'There is a standing corps of officers, but no standing army.' Permanent formations were tiny (20 perianiki in 1907; the 500-man Cettigne and Podgoritza permanent battalions and the Nikšić artillery brigade were ABOLISHED in 1905 for economy). All young men performed only 12 days' obligatory training annually at local centres. The 3,000 value is therefore an ORDER-OF-MAGNITUDE ESTIMATE of officers, NCOs and trainees actually under arms at any one time in January 1914, NOT a documented return.",
+        "divergences": [
+          "Some sources imply a 'peace strength' of up to 5,000-6,000 if all training cadres are counted",
+          "War strength 38,000-42,000 (EB1911, pre-1912) and ~44,500 mobilised in First Balkan War (WIKI_BALKAN_WARS)",
+          "Vojska.net gives ~35,000 in 56 battalions for August 1914",
+          "20,000-22,000 men of military age were emigrated abroad (EB1911), making all manpower estimates uncertain"
+        ],
+        "source_original_key": "EB1911_MONTENEGRO"
+      },
+      "reserves": {
+        "value": 35000,
+        "reference_date": "1914-01 (highly uncertain estimate)",
+        "definition": "Trained militia (first ban and second ban) theoretically callable - i.e. all able-bodied males who had passed the 12-day annual training",
+        "source": "SEC_balkans_EB1911_MONTENEGRO",
+        "page": "article 'Montenegro', section 'Defence'",
+        "reliability": "faible",
+        "derivation": "EB1911: war strength estimated at 38,000-42,000 (infantry ~32,000 first ban + 5,000-6,000 second ban, artillery ~1,500), with 20,000-22,000 military-age men absent abroad; about 20,000 could concentrate within 48 hours. Subtracting the small permanent cadre gives roughly 35,000 trained reservists. After the Balkan Wars Montenegro gained Plav, Gusinje and part of the Sandžak, increasing population and nominal manpower, but no reliable post-1913 return was located. Treat this number as a ROUGH ORDER OF MAGNITUDE ONLY.",
+        "divergences": [
+          "32,000-38,000 first ban (EB1911)",
+          "44,500 mobilised in First Balkan War (WIKI_BALKAN_WARS) vs only 12,800 in Second Balkan War (same source) - the latter figure is especially dubious",
+          "~35,000 in 56 battalions in August 1914 (VOJSKA_MNE_1914)",
+          "Deduction for emigration could reduce available men by half"
+        ],
+        "source_original_key": "EB1911_MONTENEGRO"
+      },
+      "districts": [
+        {
+          "id": "me_i",
+          "name_fr": "Brigade de Cetinje (quartier général)",
+          "hq": "Cetinje",
+          "lon": 18.923,
+          "lat": 42.39
+        },
+        {
+          "id": "me_ii",
+          "name_fr": "Brigade de Nikšić (artillerie)",
+          "hq": "Nikšić",
+          "lon": 18.951,
+          "lat": 42.782
+        },
+        {
+          "id": "me_iii",
+          "name_fr": "Brigade de Podgorica",
+          "hq": "Podgorica",
+          "lon": 19.259,
+          "lat": 42.441
+        },
+        {
+          "id": "me_iv",
+          "name_fr": "Brigade de Pljevlja (frontière serbe/ottomane)",
+          "hq": "Pljevlja",
+          "lon": 19.363,
+          "lat": 43.356
+        },
+        {
+          "id": "me_v",
+          "name_fr": "Arsenal de Spuž",
+          "hq": "Spuž",
+          "lon": 19.301,
+          "lat": 42.51
+        },
+        {
+          "id": "me_vi",
+          "name_fr": "District côtier d'Antivari (Bar)",
+          "hq": "Bar (Antivari)",
+          "lon": 19.099,
+          "lat": 42.094
+        }
+      ],
+      "organisation": "Tribal militia system: 11 infantry brigades of 4-6 battalions each (56 battalions total), companies (tchete) raised by clan with their own standard-bearers. No cavalry. Artillery (1910): 18 siege, 25 field, 38 mountain guns, 4 howitzers, 15 mortars, 18 machine guns, mostly Russian-supplied; heavy guns at Spuž arsenal. In August 1914 the force was grouped as the Pljevlja Division, Herzegovina, Lovćen and Starosrbijanski (Old Serbia) detachments under King Nikola with General Božidar Janković as Chief of Staff (VOJSKA_MNE_1914).",
+      "garrisons": "Cetinje (capital, royal residence, perianiki guard), Nikšić (artillery school and brigade, cathedral town), Podgorica (officer training school), Spuž (principal arsenal and heavy guns), Bar/Antivari and Dulcigno (coast), Pljevlja and Andrijevica (northern/ethnic frontier garrisons newly relevant after 1913 territorial gains).",
+      "uncertainties": [
+        "DATA RELIABILITY EXPLICITLY LOW - no reliable contemporary order of battle or strength return for January 1914 was located.",
+        "EB1911 source is from c.1911, before the Balkan Wars; Montenegro's territory and population changed in 1912-13.",
+        "Contemporary figures (38,000-44,500 war strength) are theoretically possible mobilisation, not troops under arms in peace.",
+        "Mass emigration of military-age men (20,000-22,000) makes all manpower estimates highly speculative.",
+        "Vojska.net is a hobbyist site; its August 1914 figures should be treated as indicative only.",
+        "The Second Balkan War strength of 12,800 given by Wikipedia is contradicted by all other sources and is likely erroneous."
+      ]
+    },
+    "albania": {
+      "name_fr": "Albanie",
+      "active": {
+        "value": 5000,
+        "reference_date": "1914-01 (extremely rough estimate)",
+        "definition": "Nominal gendarmerie and regular armed formations nominally under the provisional Albanian government - NOT a national army in the effective sense",
+        "source": "SEC_balkans_WIKI_ALBANIAN_AF",
+        "page": "section 'History'",
+        "reliability": "faible",
+        "derivation": "Albania declared independence 28 November 1912; the Albanian National Army was created 4 December 1912 under Ismail Qemali (first commander Lt. Col. Ali Shefqet Shkupi). In January 1914 the new state was under the International Commission of Control; public order was maintained by a gendarmerie organised with Dutch officers, while most armed men were tribal irregulars owing allegiance to local chiefs, not to the government. The value 5,000 is a PLACEHOLDER ORDER OF MAGNITUDE only, not supported by a located contemporary return. The first concrete strength figure in the Wikipedia article is 10,691 active troops in 1923 - a decade later.",
+        "divergences": [
+          "No reliable January 1914 strength return located in any accessible source",
+          "Estimates in secondary literature range widely (a few thousand gendarmerie to 10,000-15,000 armed men including irregulars)",
+          "WIKI_ALBANIAN_AF gives 10,691 active in 1923 - not applicable to 1914",
+          "US War Department 1916 handbook (not directly consulted) is the most likely source for a contemporary gendarmerie figure"
+        ],
+        "source_original_key": "WIKI_ALBANIAN_AF"
+      },
+      "reserves": {
+        "value": 0,
+        "reference_date": "1914-01",
+        "definition": "No organised, trained reserve force existed; armed tribal irregulars are not counted as trained reservists",
+        "source": "SEC_balkans_WIKI_ALBANIAN_AF",
+        "page": "section 'History'",
+        "reliability": "faible",
+        "derivation": "The value 0 means 'no documented organised reserve establishment', NOT that no armed men existed. In practice thousands of armed tribesmen (Kachaks, Tosks and Ghegs) could be mobilised locally, but they were neither trained nor centrally controlled. Any numeric value here would be invented; 0 is used to avoid presenting a fabricated estimate as fact.",
+        "divergences": [
+          "Potential irregular mobilisation of unknown size",
+          "During the First Balkan War Albanian volunteers and irregulars fought on both Ottoman and Balkan-League sides (WIKI_BALKAN_WARS)",
+          "No conscription law or reserve structure documented for January 1914"
+        ],
+        "source_original_key": "WIKI_ALBANIAN_AF"
+      },
+      "districts": [
+        {
+          "id": "al_i",
+          "name_fr": "Shkodër (nominal, sous contrôle international)",
+          "hq": "Shkodër",
+          "lon": 19.506,
+          "lat": 42.068
+        },
+        {
+          "id": "al_ii",
+          "name_fr": "Tirana (capital nominale)",
+          "hq": "Tirana",
+          "lon": 19.818,
+          "lat": 41.327
+        },
+        {
+          "id": "al_iii",
+          "name_fr": "Durrës (port)",
+          "hq": "Durrës",
+          "lon": 19.455,
+          "lat": 41.314
+        },
+        {
+          "id": "al_iv",
+          "name_fr": "Vlorë (siège du gouvernement provisoire)",
+          "hq": "Vlorë",
+          "lon": 19.472,
+          "lat": 40.452
+        },
+        {
+          "id": "al_v",
+          "name_fr": "Berat",
+          "hq": "Berat",
+          "lon": 19.951,
+          "lat": 40.705
+        },
+        {
+          "id": "al_vi",
+          "name_fr": "Korçë (contestée par la Grèce)",
+          "hq": "Korçë",
+          "lon": 20.779,
+          "lat": 40.616
+        }
+      ],
+      "organisation": "No coherent national army in January 1914. Provisional government (Vlorë) with an Albanian National Army nominally created 4 December 1912. International Commission of Control (Great Powers) supervised the new state; Dutch officers organised the gendarmerie. Effective authority was limited to towns and the central corridor; north was governed by tribal customary law (kanun) and parts of the south by Greek-backed autonomous movements (Northern Epirus). Prince Wied (Wilhelm zu Wied) arrived only in March 1914 and the country descended into rebellion later that year.",
+      "garrisons": "Vlorë (seat of provisional government), Tirana, Durrës (main port, international landing point), Shkodër (contested with Montenegro/Serbia), Berat and Korçë (southern centres, contested with Greece). These are administrative/nominal centres rather than verifiable military garrisons.",
+      "uncertainties": [
+        "DATA RELIABILITY EXPLICITLY VERY LOW - Albania is the weakest-documented case of the five states.",
+        "The 5,000 'active' figure is an acknowledged placeholder, not a sourced fact; it should be treated as unknown within a 3,000-15,000 range.",
+        "The 0 'reserves' value means 'no organised reserve', not 'no armed population'.",
+        "The state was under international control in January 1914 and lacked effective monopoly of force.",
+        "Territorial control was disputed (Northern Epirus, Shkodër area, Korçë) and borders were not finally settled.",
+        "No reliable contemporary official statistics were accessible; US War Department 1916 handbook should be consulted if available."
+      ]
+    },
+    "bulgaria": {
+      "name_fr": "Bulgarie",
+      "active": {
+        "value": 60000,
+        "reference_date": "1914-01 (peacetime force after the Balkan Wars)",
+        "definition": "Troops on a permanent peace footing - the 'active army (i)' of the 1904 military law, i.e. cadres and conscripts actually serving",
+        "source": "SEC_balkans_HALL_BALKAN",
+        "page": "pp. 16, 18 (as quoted in Wikipedia 'Bulgarian Land Forces')",
+        "reliability": "moyenne",
+        "derivation": "Hall (2000) gives a Bulgarian peacetime force of 60,000 on the eve of the Balkan Wars; this is used as the January 1914 peace-time estimate. The 1904-law establishment documented in EB1911 gives 2,500 officers + 48,200 men = 50,700 for 1905, 'the active army (i.) alone ... on a permanent footing'. Bulgaria's population and army grew after 1913, so 60,000 is the more appropriate 1914 order of magnitude. Both figures are theoretical establishments rather than audited head counts.",
+        "divergences": [
+          "50,700 (2,500 officers + 48,200 men) official peace strength for 1905 (EB1911_BULGARIA)",
+          "370,000 field army in the First Balkan War and 'almost 600,000 men mobilised in total' (Hall)",
+          "450,000+ mobilised in Second Balkan War (WIKI_BALKAN_WARS)",
+          "Wartime field army: 9 infantry divisions + 1 cavalry division + 1,116 artillery pieces (Hall)"
+        ],
+        "source_original_key": "HALL_BALKAN"
+      },
+      "reserves": {
+        "value": 280000,
+        "reference_date": "1914-01 (derived from 1904-05 establishment, adjusted)",
+        "definition": "Trained reservists liable for recall: the active army reserve plus the reserve army (reservna armia); the opltchenïe (militia) is only partially trained and is counted separately",
+        "source": "SEC_balkans_EB1911_BULGARIA",
+        "page": "article 'Bulgaria/Description', subsection 'Army and Navy'",
+        "reliability": "moyenne",
+        "derivation": "EB1911: war strength of the active army and its reserve = 180,954 officers and men, exclusive of the five cavalry regiments. Subtracting the 50,700 peace establishment gives about 130,000 active reservists. The 36 recruitment districts additionally furnished 144,000 infantry in reserve army battalions. 130,000 + 144,000 = about 274,000, rounded here to 280,000 trained reservists. Grand wartime total including opltchenïe, cavalry and services was about 338,000 on the 1904 establishment, rising to ~600,000 mobilised in 1912-13 after the Balkan Wars.",
+        "divergences": [
+          "180,954 = war strength of active army + active reserve alone (EB1911)",
+          "144,000 = reserve army battalions from 36 districts (EB1911)",
+          "~338,000 = grand total war strength including militia (EB1911)",
+          "~600,000 total mobilised in Balkan Wars (Hall) - includes untrained/second-line levies"
+        ],
+        "source_original_key": "EB1911_BULGARIA"
+      },
+      "districts": [
+        {
+          "id": "bg_i",
+          "name_fr": "1re division (Sofia)",
+          "hq": "Sofia",
+          "lon": 23.322,
+          "lat": 42.698
+        },
+        {
+          "id": "bg_ii",
+          "name_fr": "2e division (Philippopolis/Plovdiv)",
+          "hq": "Plovdiv",
+          "lon": 24.749,
+          "lat": 42.144
+        },
+        {
+          "id": "bg_iii",
+          "name_fr": "3e division (Sliven)",
+          "hq": "Sliven",
+          "lon": 26.322,
+          "lat": 42.678
+        },
+        {
+          "id": "bg_iv",
+          "name_fr": "4e division (Shumla/Choumen)",
+          "hq": "Shumen",
+          "lon": 26.922,
+          "lat": 43.281
+        },
+        {
+          "id": "bg_v",
+          "name_fr": "5e division (Rustchuk/Rousse)",
+          "hq": "Ruse",
+          "lon": 25.957,
+          "lat": 43.849
+        },
+        {
+          "id": "bg_vi",
+          "name_fr": "6e division (Vratza)",
+          "hq": "Vratsa",
+          "lon": 23.551,
+          "lat": 43.199
+        },
+        {
+          "id": "bg_vii",
+          "name_fr": "7e division (Plevna/Pleven)",
+          "hq": "Pleven",
+          "lon": 24.619,
+          "lat": 43.417
+        },
+        {
+          "id": "bg_viii",
+          "name_fr": "8e division (Stara-Zagora)",
+          "hq": "Stara Zagora",
+          "lon": 25.571,
+          "lat": 42.426
+        },
+        {
+          "id": "bg_ix",
+          "name_fr": "9e division (Dupnitza)",
+          "hq": "Dupnitsa",
+          "lon": 23.121,
+          "lat": 42.298
+        }
+      ],
+      "organisation": "Organisation under the law of 1 January 1904 (EB1911): (1) active or field army (deystvuyushta armia), subdivided into the active army and the active army reserve; (2) reserve army (reservna armia); (3) opltchenïe (militia, employed only inside the kingdom). Only the active army (i) was permanently embodied in peace. Peacetime structure: 9 infantry divisions each of 4 regiments, 5 cavalry regiments plus 12 squadrons attached to divisions, 9 artillery regiments (3 groups of 3 batteries each) + 2 mountain-artillery groups + 3 siege-artillery battalions, 9 engineer battalions with railway, balloon and bridging sections. Each divisional area was divided into 4 recruitment districts (36 total), each providing one 4-battalion regiment. Conscription: 2 years infantry + 8 years active reserve, or 3 years other arms + 6 years active reserve, then further militia liability. In the Balkan Wars the field army was 9 infantry divisions + 1 cavalry division.",
+      "garrisons": "Sofia (capital and 1st Division HQ, War Ministry), Plovdiv (Philippopolis, Eastern Rumelia), Sliven (textile centre and army supply), Shumen (Shumla, fortress), Ruse (Rustchuk, Danube fortress and river port), Vratsa, Pleven (fortified), Stara Zagora, Dupnitsa (western frontier toward Serbia), Vidin and Silistra (Danube frontier fortresses), Burgas and Varna (Black Sea ports).",
+      "uncertainties": [
+        "The detailed 1904-law establishment figures are from c.1905 and predate the Balkan Wars and the 1913 territorial changes.",
+        "60,000 (Hall) vs 50,700 (EB1911 1905) - both are establishments, not audited January 1914 head counts.",
+        "Bulgaria did not fully demobilise after the Second Balkan War, so troops under arms in January 1914 may have exceeded the peace figure.",
+        "Wartime totals (370,000 field army; ~600,000 mobilised) include second-line and untrained personnel and must not be used as reserve strength.",
+        "Hall cited at second hand via Wikipedia; the monograph was not directly consulted.",
+        "The 9 divisional HQs listed are the 1905 arrangement; minor 1913-14 changes cannot be excluded."
+      ]
+    },
+    "greece": {
+      "name_fr": "Grèce",
+      "active": {
+        "value": 20000,
+        "reference_date": "1914-01 (estimate; documented base 1908)",
+        "definition": "Peace-footing regular army: officers, NCOs and conscripts actually serving",
+        "source": "SEC_balkans_EB1911_GREECE",
+        "page": "article 'Greece', section 'Army'",
+        "reliability": "moyenne",
+        "derivation": "EB1911 gives the 1908 peace strength as 1,939 officers and civilians + 19,416 NCOs and men = 21,355 (plus 2,661 horses/mules). The 1904 reorganisation scheme envisioned 1,887 officers + 25,140 men = 27,027 on a peace footing, but its full implementation was suspended in 1906 for five years. The round value 20,000 is used as the January 1914 order of magnitude; after the Balkan Wars Greece doubled its territory and retained part of its army mobilised, so the true number under arms in early 1914 may have been considerably higher.",
+        "divergences": [
+          "21,355 peace strength in 1908 (EB1911)",
+          "27,027 planned peace footing under the 1904 law (EB1911)",
+          "Foreign observers estimated only ~50,000 mobilisable before the Balkan Wars; Greece actually fielded 125,000 in 1912-13 (WIKI_HELLENIC_ARMY)",
+          "125,000 (First Balkan War) and 148,000 (Second Balkan War) wartime strengths (WIKI_BALKAN_WARS)"
+        ],
+        "source_original_key": "EB1911_GREECE"
+      },
+      "reserves": {
+        "value": 140000,
+        "reference_date": "1914-01 (estimate based on 1912-13 mobilisation)",
+        "definition": "Trained reserves and National Guard available in addition to the regular peace establishment",
+        "source": "SEC_balkans_WIKI_HELLENIC_ARMY",
+        "page": "section 'Decade of wars: 1912-1922'",
+        "reliability": "moyenne",
+        "derivation": "EB1911 (1908 base) estimated reserves of about 77,000 and a territorial army of about 37,000 in war (total ~114,000); the unimplemented 1904 scheme envisioned 120,000 active + 60,000 territorial in war (180,000). During the Balkan Wars Greece fielded 125,000 in the army and had 'another 140,000 in the National Guard and reserves' (WIKI_HELLENIC_ARMY). The value 140,000 is taken as the post-Balkan-War trained reserve pool, which after territorial gains and mobilisation reforms was larger than the 1908 estimate. This remains an estimate.",
+        "divergences": [
+          "77,000 reserves + 37,000 territorial army = ~114,000 (EB1911, 1908)",
+          "180,000 = 120,000 active + 60,000 territorial under the 1904 scheme (never fully implemented)",
+          "140,000 National Guard and reserves in 1912-13 (WIKI_HELLENIC_ARMY)",
+          "A Greek wartime field army of 125,000-148,000 (WIKI_BALKAN_WARS)"
+        ],
+        "source_original_key": "WIKI_HELLENIC_ARMY"
+      },
+      "districts": [
+        {
+          "id": "gr_i",
+          "name_fr": "Commandement d'Athènes (1re division / corps)",
+          "hq": "Athens",
+          "lon": 23.728,
+          "lat": 37.984
+        },
+        {
+          "id": "gr_ii",
+          "name_fr": "Commandement de Larissa (Thessalie)",
+          "hq": "Larissa",
+          "lon": 22.399,
+          "lat": 39.639
+        },
+        {
+          "id": "gr_iii",
+          "name_fr": "Commandement de Thessalonique (Macédoine annexée en 1913)",
+          "hq": "Thessaloniki",
+          "lon": 22.944,
+          "lat": 40.64
+        },
+        {
+          "id": "gr_iv",
+          "name_fr": "Commandement de Ioannina (Épire annexée en 1913)",
+          "hq": "Ioannina",
+          "lon": 20.854,
+          "lat": 39.665
+        },
+        {
+          "id": "gr_v",
+          "name_fr": "Commandement du Péloponnèse (Patras)",
+          "hq": "Patras",
+          "lon": 21.734,
+          "lat": 38.246
+        }
+      ],
+      "organisation": "After the 1897 defeat a reorganisation scheme was approved in June 1904 under Crown Prince Constantine: triangular infantry divisions and a large reserve/territorial army, with French military missions (1884-87 and 1911-14) training the officer corps. The 1904 law was only partially implemented (suspended 1906 for five years). Greek forces were reorganised and expanded for the Balkan Wars, adopting the triangular division, and after 1913 the army covered newly annexed Macedonia, Epirus and the Aegean islands. The exact 1914 corps/district structure is not given in the sources located; the five districts above are the principal peacetime garrison/command centres inferred from the geography and the 1913-14 army locations.",
+      "garrisons": "Athens (capital, Evelpidon Military Academy), Piraeus (naval base and arsenal at Salamis), Larissa (Thessaly, principal northern assembly area), Thessaloniki (Salonica, captured 1912, major Macedonian garrison), Ioannina (captured 1913, Epirus garrison), Patras and Tripolis (Peloponnese), Kavala and Serres (newly acquired eastern Macedonia), Corfu and Crete (island garrisons). Greek forces remained partially mobilised in 1913-14 because of the unresolved dispute with Bulgaria.",
+      "uncertainties": [
+        "The detailed peace-strength figures (1908) and reserve estimates predate the Balkan Wars and the doubling of Greek territory in 1913.",
+        "20,000 is a rounded estimate for January 1914; no dated 1914 return was located.",
+        "Post-1913 partial mobilisation against Bulgaria means actual troops under arms may have exceeded the peace establishment.",
+        "The 140,000 reserve figure refers to 1912-13 and may not be exactly applicable to January 1914.",
+        "The list of five military districts is inferred from major garrison locations, not taken from a documented 1914 order of battle.",
+        "Wartime figures (125,000-148,000) must not be used as peace strength."
+      ]
+    },
+    "spain": {
+      "name_fr": "Espagne",
+      "active": {
+        "value": 128073,
+        "reference_date": "1911-1913 peace establishment, as published in 1913; valid approximation for January 1914 (conscription law of 29 June 1911 still in force; no general mobilisation before July 1914)",
+        "definition": "Official PEACE ESTABLISHMENT of the Spanish Army: 13,405 officers + 114,668 men = 128,073. This is an establishment/peacetime under-arms figure, explicitly INCLUDING the Guardia Civil (constabulary, 'somewhat less than 20,000', 2,000 mounted) and the Carabineros (military customs police, 'nearly 15,000', 500 mounted). It is NOT the wartime field army and NOT the number of effectives actually present in barracks on any given day. Spain stayed on a peacetime footing through 1914-1918.",
+        "source": "SEC_iberia_SYB1913",
+        "page": "Spain, 'Defence — Army', printed p.1261-1262 (Wikisource djvu page 1383-1384)",
+        "reliability": "haute",
+        "derivation": "Direct sum of the two figures explicitly given by the source: 13,405 + 114,668 = 128,073. Note this is an establishment figure; the source itself distinguishes it from the c.220,000-combatant wartime field army and from the c.90,000 second-line reserve.",
+        "divergences": [
+          "If the Guardia Civil (<20,000) and Carabineros (~15,000) are excluded as paramilitary constabulary rather than field troops, the regular army peace establishment is roughly 93,000 — a narrower definition of 'troops under arms'.",
+          "WWI1916, quoting Romanones (Reformas Militares, 1915, pp.25-33), speaks of 'an army of 140,000 men' costing 300 million pesetas — a slightly higher contemporary political figure, dated 1915.",
+          "WWI1916 (citing La Porte 2017) states that 75,000 troops — 60 percent of the entire Spanish army — were deployed in Morocco at the beginning of the war (August 1914), implying a total of about 125,000; consistent in magnitude with 128,073, but this is a war-crisis deployment figure, not a January 1914 peace return.",
+          "SYB1921 (not used for 1914) gives 16,578 officers + 190,715 men, showing strong wartime/late-war inflation; such figures must not be back-projected to 1914."
+        ],
+        "source_original_key": "SYB1913"
+      },
+      "reserves": {
+        "value": 90000,
+        "reference_date": "1913 peace organisation; the trained reserve available on mobilisation in January 1914",
+        "definition": "Organised SECOND-LINE (reserve) troops: cadres for 116 battalions, 14 squadrons and 14 batteries, intended to form 7 reserve divisions of about 13,000 combatants each — total about 90,000. These are trained reservists who would be called out on mobilisation; they were NOT present under arms in peacetime. Distinct from the c.220,000-combatant first-line wartime field army and from the unorganised 'territorial reserve'.",
+        "source": "SEC_iberia_SYB1913",
+        "page": "Spain, 'Defence — Army', printed p.1261 (Wikisource djvu page 1383)",
+        "reliability": "haute",
+        "derivation": "7 divisions x about 13,000 combatants = about 90,000, as stated directly in the source. Under the 1911 law the total liability was 18 years (3 active, generally reduced to 2; 3 first reserve; 6 second reserve; remainder territorial reserve), so the total trained manpower pool was larger than the 90,000 organised second-line, but the source gives no number for it.",
+        "divergences": [
+          "SYB1913 notes that in 1913 there was 'no organisation for the territorial reserve' — so the large theoretical reserve pool was not immediately usable as formed units.",
+          "The c.220,000 figure in the same source is the mobilised FIELD army (first line), not a reserve figure and not a peace-time active figure.",
+          "WORLDARMY confirms the 1914 corps/division structure but gives no reserve manpower figure."
+        ],
+        "source_original_key": "SYB1913"
+      },
+      "districts": [
+        {
+          "id": "es_i",
+          "name_fr": "Ier district militaire (Nouvelle-Castille) — Capitainerie générale de Madrid",
+          "hq": "Madrid",
+          "lon": -3.7038,
+          "lat": 40.4168
+        },
+        {
+          "id": "es_ii",
+          "name_fr": "IIe district militaire (Andalousie) — Capitainerie générale de Séville",
+          "hq": "Séville",
+          "lon": -5.9845,
+          "lat": 37.3891
+        },
+        {
+          "id": "es_iii",
+          "name_fr": "IIIe district militaire (Valence) — Capitainerie générale de Valence",
+          "hq": "Valence",
+          "lon": -0.3763,
+          "lat": 39.4699
+        },
+        {
+          "id": "es_iv",
+          "name_fr": "IVe district militaire (Catalogne) — Capitainerie générale de Barcelone",
+          "hq": "Barcelone",
+          "lon": 2.1734,
+          "lat": 41.3851
+        },
+        {
+          "id": "es_v",
+          "name_fr": "Ve district militaire (Aragon) — Capitainerie générale de Saragosse",
+          "hq": "Saragosse",
+          "lon": -0.8891,
+          "lat": 41.6488
+        },
+        {
+          "id": "es_vi",
+          "name_fr": "VIe district militaire (Burgos) — Capitainerie générale de Burgos",
+          "hq": "Burgos",
+          "lon": -3.7018,
+          "lat": 42.337
+        },
+        {
+          "id": "es_vii",
+          "name_fr": "VIIe district militaire (Vieille-Castille) — Capitainerie générale de Valladolid",
+          "hq": "Valladolid",
+          "lon": -4.7235,
+          "lat": 41.6523
+        },
+        {
+          "id": "es_viii",
+          "name_fr": "VIIIe district militaire (Galice) — Capitainerie générale de La Corogne",
+          "hq": "La Corogne",
+          "lon": -8.4057,
+          "lat": 43.3623
+        },
+        {
+          "id": "es_ix",
+          "name_fr": "Commandement militaire des Îles Canaries",
+          "hq": "Santa Cruz de Ténérife",
+          "lon": -16.2546,
+          "lat": 28.4682
+        },
+        {
+          "id": "es_x",
+          "name_fr": "Commandement militaire des Îles Baléares",
+          "hq": "Palma",
+          "lon": 2.65,
+          "lat": 39.5696
+        },
+        {
+          "id": "es_xi",
+          "name_fr": "Commandement militaire de Melilla (Promontoire de commandement général depuis 1913)",
+          "hq": "Melilla",
+          "lon": -2.939,
+          "lat": 35.2931
+        },
+        {
+          "id": "es_xii",
+          "name_fr": "Commandement militaire de Ceuta",
+          "hq": "Ceuta",
+          "lon": -5.3196,
+          "lat": 35.8892
+        }
+      ],
+      "organisation": "Compulsory service under the law of 29 June 1911: total 18 years — 3 in the active army (generally reduced to 2), 3 in the first reserve, 6 in the second reserve, the remainder in an (as yet unorganised) territorial reserve. Metropolitan Spain was divided into 8 territorial districts, each under a Captain-General; districts I-VI each furnished 2 field divisions, districts VII-VIII one each (14 infantry divisions in all). A division comprised 2 infantry brigades of 2 regiments of 3 battalions (third battalion a cadre only in peace), 1 cavalry regiment, 1 field artillery regiment of 5 batteries, and 1 engineer regiment; batteries had 4 guns. Additional troops: 3 independent chasseur (cazador) brigades of 6 battalions, 4 mountain artillery regiments (14 batteries), 1 horse artillery regiment (5 batteries), 1 permanent cavalry division (2 brigades) and 3 permanent cavalry brigades. Wartime field army about 220,000 combatants. Second line: 116 infantry, 14 cavalry and 14 artillery cadres for 7 reserve divisions (~90,000). Guardia Civil (<20,000) and Carabineros (~15,000) were military-disciplined constabulary/customs corps. Infantry weapon: Mauser Model 1893, 7 mm (calibre .275); field gun: Schneider Canet 14.5-pdr.",
+      "garrisons": "Distribution table (battalions/regiments, source SYB1913 p.1261): Spain 58 line infantry regiments, 15 chasseur battalions, 28 cavalry regiments, 18 field artillery, 7 horse/mountain, 6 garrison/siege; Africa (Melilla/Ceuta) 4, 2, 1, 1, 2, 1; Balearic Islands 4, 2, -, 1, -, 1; Canary Islands 4, 3, -, 1, -, 1. Totals 70 infantry regiments, 23 chasseur battalions, 29 cavalry, 19 field artillery, 13 other artillery, 7 fortress. The Army of Africa (Melilla, Ceuta, Larache, Alcazar) was nominally always on a war footing: corps of occupation of 12,000-15,000 combatants (4 infantry regiments of 3 battalions, 3 cazador battalions of 6 companies, 1 cavalry regiment of 6 squadrons, 3 field batteries, 3-4 mountain batteries, 1 howitzer battery, 1 engineer regiment, native infantry/cavalry and police units). During 1913-14 the Rif War absorbed most Spanish field troops; WWI1916 states 75,000 troops (~60% of the army) were in Morocco at the outbreak of war in August 1914. Fortresses guarded the Pyrenees and Portuguese frontier (Pasajes, Santoña, Santander, Ferrol, A Coruña, Vigo, Tarifa, Algeciras, Cádiz).",
+      "uncertainties": [
+        "The 128,073 figure is a peace ESTABLISHMENT including two paramilitary corps; the number of effectives actually present under arms in January 1914 is not separately given and was certainly somewhat lower.",
+        "The 1913 edition of the SYB is the closest accessible contemporary publication; the 1914 edition could not be located online. The conscription/establishment law did not change before July 1914, so the figures are treated as valid for January 1914, but this is an inference.",
+        "The 90,000 reserve figure is what could be organised into 7 second-line divisions; the total pool of men with reserve liability under the 1911 law was larger but unquantified and, for the territorial reserve, unorganised.",
+        "The 220,000 field army and the 75,000-in-Morocco figures are mobilisation/war-crisis numbers (July-August 1914 onward) and must not be used as January 1914 peace strengths.",
+        "WORLDARMY is a secondary compilation; SYB1913 and WWI1916 are preferred for numbers."
+      ]
+    },
+    "portugal": {
+      "name_fr": "Portugal",
+      "active": {
+        "value": 30000,
+        "reference_date": "Peace establishment 'fixed of late years' as reported in 1913; applicable to January 1914 (1911 militia reorganisation in force; no mobilisation before 1916)",
+        "definition": "PEACE ESTABLISHMENT of the metropolitan active (first-line) army: '30,000 men', with 'about 2,800 officers, all told' counted separately by the source. This is the establishment of the conscript militia-style active army, not a verified daily headcount of effectives. Excluded: Republican Guard (~5,000), Fiscal Guard (~5,200), colonial army (~10,150) and the reserve/territorial categories. Portugal was neutral and unmobilised in January 1914.",
+        "source": "SEC_iberia_SYB1913",
+        "page": "Portugal, 'Defence', printed pp.1151-1152 (Wikisource djvu pages 1273-1274)",
+        "reliability": "haute",
+        "derivation": "Direct reading of the SYB statement 'The peace establishment of the active army has been fixed of late years at 30,000 men. There are about 2,800 officers, all told.' The 30,000 is used as the active strength to avoid doubling the officers, whose relationship to the 30,000 is ambiguous in the text.",
+        "divergences": [
+          "If the ~2,800 officers are additional to the 30,000 men, the total active army under arms would be about 32,800 — the source's wording is ambiguous.",
+          "HCPT gives about 44,000 'with colours including National Republican Guard and Police', plus about 10,000 in the colonies — a much broader definition that folds in paramilitary gendarmerie and colonial troops.",
+          "SYB1913 gives the broader structure (35 infantry regiments of 3 battalions, 11 cavalry regiments, 8 field artillery regiments with 63 batteries, etc.); Wikipedia (WIKI) describes the 1911 reform as 8 active divisions of 4 infantry regiments each plus a cavalry brigade — the same order of battle described at different levels, not a contradiction in numbers.",
+          "Portugal was not strictly a non-belligerent in practice after 1914 (seizure of German ships, border fighting in Africa from August 1914, war declared by Germany March 1916), but none of this affects the January 1914 peace establishment."
+        ],
+        "source_original_key": "SYB1913"
+      },
+      "reserves": {
+        "value": 100000,
+        "reference_date": "Contemporary estimate of October 1914 (NYT1914), applied approximately to the 1914 reserve system in being in January 1914",
+        "definition": "ESTIMATED trained reservists available in addition to the active army: the NYT (29 Oct 1914) reported about 130,000 'fully trained men in the active army and its two reserves' after wastage; subtracting the ~30,000-man active peace establishment gives roughly 100,000 trained reservists. This is an ESTIMATE by derivation, not a figure stated directly in the sources, and it is a mobilisation-availability figure — reservists were not under arms in January 1914. A further ~50,000 men of the territorial reserve were only partly trained and are excluded here.",
+        "source": "SEC_iberia_NYT1914",
+        "page": "Headline and lead paragraph, 29 October 1914",
+        "reliability": "moyenne",
+        "derivation": "130,000 (active + two reserves, fully trained, after wastage) minus 30,000 (active peace establishment, SYB1913) = about 100,000 trained reservists. Because both inputs are approximate and come from different sources, this value is explicitly an estimate. SYB1913 gives no numerical reserve strength, only the reserve order of battle: 35 infantry regiments, 8 cavalry squadrons, 24 field batteries and other units; the territorial army had no cadres.",
+        "divergences": [
+          "NYT1914's own figure is 130,000 for active + two reserves combined; if a user wants the total trained mobilisable manpower including the active army, use 130,000 instead of the 100,000 reserve-only estimate.",
+          "NYT1914 also mentions 'perhaps 50,000 men of the territorial reserve' — additional, largely untrained manpower, not included in the 100,000.",
+          "HCPT's war-planning figures (5 infantry divisions on outbreak, ultimately 12 more) imply far larger wartime mobilisation, consistent with the trained-reserve estimate but not usable as a January 1914 active figure.",
+          "SYB1913's liability rules (10 years active, 10 reserve, 5 territorial, ages 17-45) imply a much larger theoretical manpower pool; the source does not quantify it."
+        ],
+        "source_original_key": "NYT1914"
+      },
+      "districts": [
+        {
+          "id": "pt_i",
+          "name_fr": "District militaire Nord (1re circonscription militaire)",
+          "hq": "Porto",
+          "lon": -8.6291,
+          "lat": 41.1579
+        },
+        {
+          "id": "pt_ii",
+          "name_fr": "District militaire Centre (2e circonscription militaire)",
+          "hq": "Coimbra",
+          "lon": -8.4292,
+          "lat": 40.2035
+        },
+        {
+          "id": "pt_iii",
+          "name_fr": "District militaire Sud (3e circonscription militaire)",
+          "hq": "Évora",
+          "lon": -7.9093,
+          "lat": 38.5714
+        },
+        {
+          "id": "pt_iv",
+          "name_fr": "Camp retranché de Lisbonne (commandement distinct)",
+          "hq": "Lisbonne",
+          "lon": -9.1393,
+          "lat": 38.7223
+        },
+        {
+          "id": "pt_v",
+          "name_fr": "Commandement militaire des Açores",
+          "hq": "Ponta Delgada",
+          "lon": -25.6684,
+          "lat": 37.7412
+        },
+        {
+          "id": "pt_vi",
+          "name_fr": "Commandement militaire de Madère",
+          "hq": "Funchal",
+          "lon": -16.9099,
+          "lat": 32.6475
+        }
+      ],
+      "organisation": "The Army of Portugal was a conscript militia. All males were liable from 17 to 45 (practically from 20): 10 years in the active army, 10 in the reserve, 5 in the territorial army (which also absorbed surplus men). Recruits underwent 15-30 weeks' preliminary training depending on arm, plus a fortnight's annual training. The country was divided into 3 territorial military districts (North, Centre, South), each expected to produce a division; each comprised two territorial divisions, and there were also the Azores and Madeira military commands plus the separate Lisbon Entrenched Camp command. The 1911 republican reform (January-May 1911) turned a largely professional army into a mainly militia army: the active troops comprised 8 divisions (each 4 infantry regiments, 1 machine-gun battery group, 1 mounted artillery regiment, 1 cavalry regiment) and a cavalry brigade of 3 regiments, plus non-divisional engineers, mountain/horse/howitzer artillery, 3 independent infantry regiments, machine-gun companies and services. In SYB terms: 35 infantry regiments of 3 battalions, 11 cavalry regiments of 4 squadrons, 8 field artillery regiments (63 batteries), 2 horse batteries, 9 mountain batteries, 20 garrison batteries and engineer units; batteries had 4 guns. Reserve army (cadres only in peace): 35 infantry regiments, 8 cavalry squadrons, 24 field batteries; territorial army had no cadres. Republican Guard ~5,000 (800 mounted) and Fiscal Guard ~5,200 were military-recruited civil corps usable in the field in war. Infantry arm: Mauser-Vergueiro 6.5 mm magazine rifle; field artillery rearming with 7.5 cm Schneider Canet guns. No general mobilisation before 1916.",
+      "garrisons": "Metropolitan garrisons were spread among the three military districts and the Lisbon Entrenched Camp; the campaign/field organisation existed only on mobilisation (HCPT: 'In peace there is no divisional organisation'). Overseas: 2 line infantry regiments (2 battalions each) permanently stationed in the Azores and 1 at Madeira, with garrison artillery (1 battalion Madeira, 2 in the Azores). A separate Colonial Army garrisoned West Africa, Mozambique, India etc.: about 650 officers (partly seconded from the home army), about 2,500 European NCOs and men (volunteers) and about 7,000 native troops (compulsory) — roughly 10,150 total, consistent with HCPT's 'about 10,000 men in the colonies'. In August-October 1914 reinforcements (c.1,600 men to Angola, c.1,527 to Mozambique) were sent, but these are post-January-1914 movements.",
+      "uncertainties": [
+        "The SYB1913 '30,000 men' active establishment may or may not include the ~2,800 officers; the 1914 unit structure from the 1911 reform is well attested but the exact peace-time headcount actually present is not.",
+        "The reserve figure (100,000) is a derived estimate from an October 1914 newspaper report of official estimates; the SYB gives only reserve order of battle, no strength. Treat as approximate.",
+        "The NYT headline figure of 130,000 applies to active plus two reserves combined after wastage — it is a mobilisation estimate, not a peace-time active strength.",
+        "The exact headquarters of the Centre Military District (Coimbra versus Lisbon) is not firmly established from the sources consulted.",
+        "HCPT (British intelligence summary) was accessible only as a search-index excerpt and its exact date is unverified; its broader 44,000 'with colours' figure should not be substituted for the SYB active establishment without qualification.",
+        "The 1913 edition of the SYB is the closest accessible contemporary publication; its military sections were still current in January 1914, but this is an inference rather than a 1914-dated return."
+      ]
+    },
+    "romania": {
+      "name_fr": "Roumanie",
+      "active": {
+        "value": 93642,
+        "reference_date": "1909-1910 (closest documented pre-war peace establishment; used as proxy for January 1914)",
+        "definition": "Peace establishment of the field army actually maintained under arms: 4,415 officers + 89,227 NCOs and men (18,920 horses excluded). Four army corps, the Dobrudja independent brigade and the separate cavalry division. This is the standing/peace force, not the mobilised army.",
+        "source": "SEC_nordic_EB1911_RO",
+        "page": "article 'Rumania', section 'Defence'",
+        "reliability": "haute",
+        "derivation": "4,415 + 89,227 = 93,642; directly stated component figures, no estimation beyond the sum. Horses excluded from headcount.",
+        "divergences": [
+          "Spartacus Educational gives 'around 100,000 men' regular strength (SPARTACUS_RO) - compatible rounding.",
+          "1911 Britannica describes the field army on a war footing as 225,000 combatants; this is a wartime establishment, not a peacetime under-arms figure.",
+          "No exact January 1914 return was found; the 1909-10 figure is the nearest contemporary documented peace establishment."
+        ],
+        "source_original_key": "EB1911_RO"
+      },
+      "reserves": {
+        "value": 100000,
+        "reference_date": "1909-1910 (establishment target; explicitly not fully organised by 1910)",
+        "definition": "Projected territorial militia (second section, citizens aged 30-36, mustering in spring for shooting practice and autumn manoeuvres), intended to add 100,000 men; included men who had completed ranks service and conscripts chosen by lot but not called to the field army. Additionally the Gloata (Landsturm) comprised all citizens aged 36-46 for home service only, not quantified in the source.",
+        "source": "SEC_nordic_EB1911_RO",
+        "page": "article 'Rumania', section 'Defence'",
+        "reliability": "haute",
+        "divergences": [
+          "The 100,000 militia figure was an establishment target and was reported as not completely organised up to 1910; the actually trained reserve in January 1914 is uncertain and may have been lower.",
+          "If the 225,000 war-footing field army is compared with the 93,642 peace establishment, the implied field-army reserve increment is about 131,000 - a derived, not stated, figure.",
+          "Wartime mobilisation was far larger: c.330,000 in the 1913 Second Balkan War (WIKI_RO_ARMY) / c.400,000 (SPARTACUS_RO) and 658,088 in 1916 (WIKI_RO_CAMPAIGN); these include Landsturm and newly raised units, not just trained reservists."
+        ],
+        "source_original_key": "EB1911_RO"
+      },
+      "districts": [
+        {
+          "id": "ro_i",
+          "name_fr": "Ier corps d'armée (Olténie)",
+          "hq": "Craiova",
+          "lon": 23.87,
+          "lat": 44.33
+        },
+        {
+          "id": "ro_ii",
+          "name_fr": "IIe corps d'armée (Munténie)",
+          "hq": "Bucarest",
+          "lon": 26.1,
+          "lat": 44.43
+        },
+        {
+          "id": "ro_iii",
+          "name_fr": "IIIe corps d'armée (Moldavie)",
+          "hq": "Iași",
+          "lon": 27.59,
+          "lat": 47.16
+        },
+        {
+          "id": "ro_iv",
+          "name_fr": "IVe corps d'armée (Moldavie méridionale)",
+          "hq": "Galați",
+          "lon": 28.02,
+          "lat": 45.44
+        },
+        {
+          "id": "ro_v",
+          "name_fr": "Brigade indépendante de Dobroudja",
+          "hq": "Constanța",
+          "lon": 28.63,
+          "lat": 44.17
+        },
+        {
+          "id": "ro_vi",
+          "name_fr": "Division de cavalerie séparée",
+          "hq": "Bucarest",
+          "lon": 26.1,
+          "lat": 44.43
+        }
+      ],
+      "organisation": "Conscription under the law of 1891 as modified in 1900 and 1908. Three sections: first section, men 21-30 in the field army and its reserves; second section, men 30-36 in the territorial militia; third section, men 36-46 in the Gloata (Landsturm) for home service only. In peace the field army comprised four complete army corps plus an independent brigade in the Dobrudja and a separate cavalry division. Infantry armed with Mannlicher M1893 magazine rifle, cavalry with Mannlicher carbine, horse and field artillery with Krupp quick-firing guns. War-footing field army 225,000 combatants; territorial system designed for rapid mobilisation and reinforcement from reserves.",
+      "garrisons": "Corps headquarters at Craiova, Bucharest, Jassy and Galatz; independent Dobrudja brigade; separate cavalry division at Bucharest. Fortifications designed by the Belgian general Brialmont: the Sereth Line from Galatz to Focshani (45 miles) and the fortified camp of Bucharest, plus works at Galatz and Focshani, armed with Krupp and Gruson guns. Main army depots and the Danube/Black Sea naval bases at Galatz and Constantza.",
+      "uncertainties": [
+        "The exact January 1914 peace return has not been located; 1909-10 figures are the nearest reliable contemporary data.",
+        "The 100,000 militia figure was an unfulfilled target; actual trained reserve strength in January 1914 is an estimate at best.",
+        "The territorial organisation of 1912-1916 is documented in Romanian military literature that was not directly accessible here; corps HQ locations are from the 1911 Britannica.",
+        "Wartime mobilisation figures (1913, 1916, 1917) vary widely by source and are not interchangeable with peacetime or reserve figures."
+      ]
+    },
+    "denmark": {
+      "name_fr": "Danemark",
+      "active": {
+        "value": 13500,
+        "reference_date": "1911 (peace establishment) and 1 August 1914 (mobilisation eve)",
+        "definition": "Peace strength of permanent troops, WITHOUT the annual contingent of recruits: 13,500 officers and men. Independently corroborated as the 'peace-time force of 13,500 men' on the eve of the August 1914 mobilisation. In addition, annual contingents of c.22,500 men trained 2-3 years with the colours and c.17,000 short-trained special reservists passed through the ranks, so the number actually under arms rose to c.60,000 on average and up to 75,000 at certain periods of the year.",
+        "source": "SEC_nordic_EB1911_DK",
+        "page": "article 'Denmark', section 'Army and Navy'",
+        "reliability": "haute",
+        "derivation": "Directly stated figure (13,500 officers and men), cross-checked against TANK_DK for August 1914. The annual contingents are counted as trained reserve/manning pool rather than the permanent active establishment.",
+        "divergences": [
+          "GLOBALSEC_DK gives 'about 14,000 men and officers' - compatible rounding.",
+          "If the annual colour contingents are included, 'under arms' at peak training periods reached 75,000 (EB1911_DK) - a very different definition of 'active'.",
+          "TANK_DK records 47,000 under arms by 7 August 1914 and 58,000 by end-1914; these are post-mobilisation, not January 1914, figures.",
+          "Grokipedia-style claims of a c.50,000 peacetime army expandable to 120,000 are not supported by contemporary official statistics and are rejected."
+        ],
+        "source_original_key": "EB1911_DK"
+      },
+      "reserves": {
+        "value": 80000,
+        "reference_date": "1907 (last documented refresher-training return)",
+        "definition": "Reservists who had definitively left the colours and were recalled for short refresher training: c.80,000 in 1907. They supplement the annual contingent of c.22,500 long-trained men and c.17,000 special reservists. Term of service: 8 years in the active army and its reserves, then 8 years in the second line. A national militia system with very rare exemptions, somewhat on the Swiss model.",
+        "source": "SEC_nordic_EB1911_DK",
+        "page": "article 'Denmark', section 'Army and Navy'",
+        "reliability": "haute",
+        "divergences": [
+          "The 80,000 figure counts men given refresher training in one year, not necessarily the entire trained reserve pool; the true pool may have been somewhat larger.",
+          "Field army on a war footing was c.50,000 without depot/garrison troops and reservists; with reserves it could be more than doubled, and nearly 120,000 were with the colours in the 1907 manoeuvre season.",
+          "The post-mobilisation Sicherheitsmacht/Security Force reached c.47,000 in August 1914 and c.58,000-60,000 by late 1914."
+        ],
+        "source_original_key": "EB1911_DK"
+      },
+      "districts": [
+        {
+          "id": "dk_sjaelland",
+          "name_fr": "Commandement de Zélande / 1re division (Copenhague)",
+          "hq": "Copenhague",
+          "lon": 12.57,
+          "lat": 55.68
+        },
+        {
+          "id": "dk_jylland",
+          "name_fr": "Commandement du Jutland / 2e division",
+          "hq": "Bygholm (près Horsens)",
+          "lon": 9.85,
+          "lat": 55.86
+        },
+        {
+          "id": "dk_fyn",
+          "name_fr": "Garnison de Fionie",
+          "hq": "Odense",
+          "lon": 10.39,
+          "lat": 55.4
+        },
+        {
+          "id": "dk_bornholm",
+          "name_fr": "Garnison de Bornholm",
+          "hq": "Rønne",
+          "lon": 12.14,
+          "lat": 55.1
+        }
+      ],
+      "organisation": "Small conscript/militia army oriented to the defence of Copenhagen and the Danish Straits after the 1864 national trauma. Active army in 1911: one Life Guard battalion, 10 infantry regiments of 3 battalions, 5 cavalry regiments of 3 squadrons, 12 field batteries (Krupp QF), 3 fortress artillery battalions, 6 engineer companies plus local troops. Infantry armed with the Krag-Jørgensen M1889 (0.314 in); field artillery 7.5 cm Krupp QF M1902. Eight years active+reserve, eight years second line. On 1 August 1914 the army was mobilised as the Security Force (Sikringsstyrken) to guard neutrality; roughly 10,000 troops were posted on the Jutland-German border, the bulk around Copenhagen.",
+      "garrisons": "Copenhagen/Zealand (capital, fortified position with the Vestvolden and north-front forts) was the main concentration; Jutland and Funen provided regional troops; Bornholm had a separate small garrison. Principal fortresses/strongpoints around Copenhagen and at the Danish Straits; the German frontier in southern Jutland was watched by a small covering force.",
+      "uncertainties": [
+        "Danish territorial commands in 1914 are only indirectly documented here; district HQs are plausible garrison locations and should be treated as approximate.",
+        "Sources agree closely on the 13,500 permanent peace establishment, but 'troops under arms' can legitimately be read as 13,500, c.60,000 (annual average including recruits) or 75,000 (peak) depending on definition.",
+        "The 80,000 reservist figure is from 1907; January 1914 may have differed somewhat."
+      ]
+    },
+    "norway": {
+      "name_fr": "Norvège",
+      "active": {
+        "value": 12750,
+        "reference_date": "1911",
+        "definition": "Peace establishment of the line: 12,000 men with 750 officers. The only enlisted (long-service) troops were the fortress garrisons and the Christiania garrison of Norwegian Guards; the line was otherwise a cadre trained for 18-102 days per year. This is the force under arms in peacetime, distinct from the much larger total trained establishment (see divergences).",
+        "source": "SEC_nordic_EB1911_NO",
+        "page": "article 'Norway', section 'Army and Navy'",
+        "reliability": "haute",
+        "derivation": "12,000 men + 750 officers = 12,750; directly stated components.",
+        "divergences": [
+          "A later (c.1920) description quoted in WIKI_NO_ARMY gives a 'total peace strength' of 118,500 men with 71,836 rifles, 228 field and 36 heavy guns. This almost certainly denotes the total trained line+landværn establishment on paper, NOT troops continuously under arms, and is roughly ten times the peace establishment of the line.",
+          "The same source gives 282,000 additional men available on mobilisation, implying a theoretical wartime pool of roughly 400,000 - an establishment figure, not a peacetime presence.",
+          "EB1911_NO states a war footing of 26,000 or more but not exceeding 18,000 without parliamentary authority; this ambiguity is noted rather than resolved."
+        ],
+        "source_original_key": "EB1911_NO"
+      },
+      "reserves": {
+        "value": 282000,
+        "reference_date": "c.1920 description of the system in force from 1911/1914 (approximate proxy for January 1914)",
+        "definition": "Additional men available on mobilisation under the militia/territorial system: the landværn (reserve, 6 years) and landstorm (second reserve, 4 years), with war liability from 18 to 50 and 12 years in the line followed by 12 in the landvern then the landstorm. The figure is an establishment/pool estimate, NOT reservists under arms in peacetime.",
+        "source": "SEC_nordic_WIKI_NO_ARMY",
+        "page": "section 'Independence' (c.1920 system description)",
+        "reliability": "moyenne",
+        "divergences": [
+          "The source text describes the post-1920 'national militia' organisation of a system introduced earlier; the exact January 1914 reserve total is uncertain.",
+          "EB1911_NO describes the same three-tier structure (line, landværn, landstorm) but gives no headcount for the reserves, only the line's war footing of 26,000.",
+          "The 118,500 'peace strength' and 282,000 mobilisable extras from the same later source should not be added to the 12,750 line peace establishment without triple-counting; they describe different levels of the same establishment."
+        ],
+        "source_original_key": "WIKI_NO_ARMY"
+      },
+      "districts": [
+        {
+          "id": "no_1brig",
+          "name_fr": "1re brigade (Akershus)",
+          "hq": "Christiania (Oslo)",
+          "lon": 10.75,
+          "lat": 59.91
+        },
+        {
+          "id": "no_2brig",
+          "name_fr": "2e brigade (Norvège orientale)",
+          "hq": "Halden",
+          "lon": 11.39,
+          "lat": 59.12
+        },
+        {
+          "id": "no_3brig",
+          "name_fr": "3e brigade (Trondhjem)",
+          "hq": "Trondhjem",
+          "lon": 10.4,
+          "lat": 63.43
+        },
+        {
+          "id": "no_4brig",
+          "name_fr": "4e brigade (Bergen)",
+          "hq": "Bergen",
+          "lon": 5.32,
+          "lat": 60.39
+        },
+        {
+          "id": "no_5brig",
+          "name_fr": "5e brigade (Møre og Romsdal, Trøndelag)",
+          "hq": "Kristiansund",
+          "lon": 7.73,
+          "lat": 63.11
+        },
+        {
+          "id": "no_6brig",
+          "name_fr": "6e brigade (Norvège occidentale / Nord-Norge)",
+          "hq": "Stavanger",
+          "lon": 5.73,
+          "lat": 58.97
+        }
+      ],
+      "organisation": "Militia/territorial-style conscription rather than a large standing army. Six brigades established in 1911 as district organisations, redesignated divisions by Army Order 1916; in 1914 they were still brigades. Each district was roughly a brigade (about four infantry battalions plus an artillery regiment) rather than a full division. Army order of c.1920: 56 infantry battalions, 5 cyclist/ski companies, 3 cavalry regiments (16 squadrons), 27 field batteries, 3 mountain batteries, 9 heavy artillery batteries, 1 engineer regiment and 2 battalions; a small flying corps. Initial training 48 days (infantry/garrison artillery) to 102 days (cavalry); 30 days additional training in the first year and 80 days in the 2nd, 3rd and 7th years. Norway stayed mobilised throughout the First World War to defend its neutrality.",
+      "garrisons": "Principal fortresses: Oscarsborg on Christiania Fjord, Agdenes at Trondhjem Fjord, Bergen, Tönsberg and Christiansand; Norwegian Guards garrison at Christiania. Forts on the Swedish frontier south of 61° N were dismantled under the 1905 convention with Sweden and a neutral zone created. Main district centres at Christiania, Bergen, Trondhjem, Stavanger/Christiansand and northern Norway.",
+      "uncertainties": [
+        "The exact HQs of the six 1911-1914 brigade districts are not firmly documented in the sources consulted; the listed towns are plausible district centres.",
+        "The 118,500 / 282,000 figures come from a c.1920 description and may not apply unchanged to January 1914.",
+        "The difference between the 12,000-man line peace establishment (1911) and the later 118,500 'peace strength' is a definition problem that cannot be fully resolved from the accessible sources.",
+        "No dedicated US War Department 1916 handbook text was accessible; the 1911 Britannica was used instead."
+      ]
+    },
+    "sweden": {
+      "name_fr": "Suède",
+      "active": {
+        "value": 22000,
+        "reference_date": "1911 (peacetime permanent cadres)",
+        "definition": "Permanent cadres about 22,000 officers, NCOs and specialists — the standing peacetime establishment around which the conscript army was trained. In addition c.85,000 men were trained annually as recruits or recalled for further training, so the number under arms at any one time fluctuated. Conscripts served 240 days (infantry, position/fortress artillery, fortress engineers, army service corps) or 365 days (cavalry, field artillery, field engineers, field telegraph) under the 1901 law.",
+        "source": "SEC_nordic_EB1911_SE",
+        "page": "article 'Sweden', section 'Army and Navy'",
+        "reliability": "haute",
+        "derivation": "Directly stated figure ('The permanent cadres number about 22,000'). No arithmetic derivation.",
+        "divergences": [
+          "WIKI_SE_WW1 states the active strength of the Swedish army never exceeded 13,000 men during 1914-1918 - this appears to count active deployable field troops rather than the whole permanent cadre and training establishment.",
+          "The 1911 Britannica's c.85,000 men trained or recalled annually is a throughput figure, not a simultaneous under-arms headcount.",
+          "The NYT 1914 claim of a 350,000 'regular peace footing' is a grossly inflated contemporary press estimate and is rejected (see NYT_SE)."
+        ],
+        "source_original_key": "EB1911_SE"
+      },
+      "reserves": {
+        "value": 500000,
+        "reference_date": "1911 (official estimate of total wartime manpower available)",
+        "definition": "Estimated number of men available for service in the various capacities in case of war - the trained reserve pool under general conscription (ages 21-40: 8 years first levy, 4 years second levy, 8 years reserves). This is a theoretical mobilisable pool, not troops under arms in January 1914.",
+        "source": "SEC_nordic_EB1911_SE",
+        "page": "article 'Sweden', section 'Army and Navy'",
+        "reliability": "haute",
+        "divergences": [
+          "WIKI_SE_ARMY gives a consistent wartime army strength of about 100,000 men in the 1902-1939 period, two-thirds conscripts - a much narrower 'field army mobilised' definition than the 500,000 total available.",
+          "Hammarskjöld's 1914 Army Bill proposed doubling reserve formations from six to twelve infantry divisions and a cavalry division; this was a projected expansion, not an achieved January 1914 strength.",
+          "NYT_SE claimed a 'pure militia reserve of about 500,000' and nearly 900,000 under arms at twelve hours' notice - the 500,000 coincidentally matches the official estimate but the 900,000 total is unsupported wartime alarmism."
+        ],
+        "source_original_key": "EB1911_SE"
+      },
+      "districts": [
+        {
+          "id": "se_i",
+          "name_fr": "Ire division (Scânie)",
+          "hq": "Helsingborg",
+          "lon": 12.69,
+          "lat": 56.05
+        },
+        {
+          "id": "se_ii",
+          "name_fr": "IIe division (Östergötland)",
+          "hq": "Linköping",
+          "lon": 15.62,
+          "lat": 58.41
+        },
+        {
+          "id": "se_iii",
+          "name_fr": "IIIe division (Västergötland)",
+          "hq": "Skövde",
+          "lon": 13.85,
+          "lat": 58.39
+        },
+        {
+          "id": "se_iv",
+          "name_fr": "IVe division (Stockholm)",
+          "hq": "Stockholm",
+          "lon": 18.07,
+          "lat": 59.33
+        },
+        {
+          "id": "se_v",
+          "name_fr": "Ve division (Stockholm / Uppland)",
+          "hq": "Stockholm",
+          "lon": 18.07,
+          "lat": 59.33
+        },
+        {
+          "id": "se_vi",
+          "name_fr": "VIe division (Norrland)",
+          "hq": "Härnösand",
+          "lon": 17.39,
+          "lat": 62.63
+        },
+        {
+          "id": "se_gotland",
+          "name_fr": "Troupes de Gotland",
+          "hq": "Visby",
+          "lon": 18.3,
+          "lat": 57.64
+        }
+      ],
+      "organisation": "General conscription introduced in 1901-1902, replacing the old indelta (indelningsverket) system of military tenure every man between 21 and 40 served 8 years in the first levy, 4 in the second and 8 in the reserves. Peace organisation (1911): 82 infantry battalions in 28 regiments, 50 cavalry squadrons, 71 field artillery and 7 position artillery batteries, 10 fortress artillery companies, 16 engineer companies and 18 army service corps companies, grouped in six divisions plus the separate Gotland troops. A war division would probably comprise 4 infantry regiments (12 battalions), 4 cavalry squadrons, 1 artillery regiment, 1 engineer company etc.; a cavalry division 2 brigades of 8 squadrons plus horse artillery. Army Bill of 1914 proposed doubling reserve formations to twelve infantry divisions and a cavalry division. Sweden remained neutral throughout the war and its active deployable army declined from c.13,000 in 1914 to as few as 2,000 in 1918.",
+      "garrisons": "Six division headquarters at Helsingborg, Linköping, Sköfde (Skövde), Stockholm (two divisions) and Hernösand (Härnösand), plus the Gotland troops at Visby. Fortresses: Stockholm with Vaxholm and Oscar-Fredriksborg, Boden near the Russian/Finnish frontier, Karlsborg on Lake Vetter, Karlskrona, plus forts at Gothenburg and on Gotland. The coastal artillery (Kustartilleriet, c.7,500 men in 1914) belonged to the Navy rather than the Army.",
+      "uncertainties": [
+        "The 22,000 permanent cadres, c.85,000 trained annually, c.100,000 mobilised field army and c.500,000 total wartime availability are four different categories and must not be conflated.",
+        "The active deployable strength during the war (c.13,000 maximum, falling to 2,000) is from a later academic synthesis and may not equal the January 1914 peacetime under-arms figure.",
+        "Division HQ locations are from the 1911 Britannica and may have shifted slightly by 1914.",
+        "NYT 1914 mass-mobilisation claims are demonstrably inflated and are retained only as a documented divergence."
+      ]
+    }
+  }
+}
