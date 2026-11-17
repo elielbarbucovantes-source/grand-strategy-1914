@@ -36,7 +36,7 @@ Aucun fichier du travail repris n'a été supprimé ni écrasé. Aucun `git rese
 
 Ces apports étaient écrits et partiellement exécutés mais **non validés par des tests**. Les statuts **PROPOSÉ** n'ont pas été modifiés.
 
-## 3. Modifications apportées pendant la reprise (T3 puis T4)
+## 3. Modifications apportées pendant la reprise (T3, T4 puis T5)
 
 1. **T3 — cause de la régression** : l'IA ordonnait désormais une offensive pour chaque armée disponible. La résolution de très nombreuses batailles automatisées, et non `descendants()`, provoquait l'explosion du tour 4. Ajout des plafonds `PROPOSÉ` `max_offensives_per_turn = 2`, `max_armies_per_offensive = 1`, `max_concentrations_per_turn = 1` (dans `DEFAULT_OPS` et `ai_doctrines.json`). Rejeu : tour 4 **472 479 ms → 2 138 ms** (`diag_rootcause_current.txt` → `diag_rootcause_final.txt`).
 2. **T3 — sauvegarde bit-exact** : `SaveRepository` encode les flottants en motif binaire 64 bits (`__gs1914_f64__`) avant `JSON.stringify`, et les décode au chargement. Les sauvegardes v4 existantes (nombres JSON nus) restent lisibles.
@@ -45,6 +45,7 @@ Ces apports étaient écrits et partiellement exécutés mais **non validés par
 5. **T4 — paramètres sans constantes en dur** : `45000`, `65000`, `1.50`, `0.30` (et deux facteurs de prudence associés) déplacés dans `NationAgent.DEFAULT_OPS` **et** `ai_doctrines.json:operations`.
 6. **T4 — tests et outils** : 26 nouveaux tests, banc versionné, simulation longue, extension du lanceur de tests aux dossiers d'intégration.
 7. **T4 — rapport, `PROGRESS.md`, `CHANGELOG.md`** : le présent document et les deux journaux d'état.
+8. **T5 — tests de bout en bout** : 6 scénarios avec vraies batailles, vrai renseignement et deux IA, sans injection de vue ; distinction documentée avec les tests de décision (§11 et §13). Aucun paramètre MIL-01 ni aucune décision validée modifié.
 
 ## 4. Architecture
 
@@ -141,7 +142,12 @@ Gains observés : `descendants` ≈ ×100–200, `view_for` ≈ ×8–10, `resol
 
 ## 11. Simulations intégrées
 
-- **Tests déterministes** : `tests/integration/test_ai_phase1_scenarios.gd`, 10 scénarios du brief + anti-répétition + non-abandon. Chaque scénario vérifie les informations accessibles, la décision, les ordres, la bataille ou son absence, le résultat et le brouillard.
+- **Tests de décision (vue injectée)** : `tests/integration/test_ai_phase1_scenarios.gd`, 10 scénarios du brief + anti-répétition + non-abandon. Ils injectent `region_intel` dans la vue pour tester finement les seuils, la décision, les ordres et le brouillard, mais **ne jouent aucune bataille de bout en bout** : ils ne démontrent pas à eux seuls la chaîne mécanique demandée par le brief.
+- **Tests de bout en bout (vrais mécanismes)** : `tests/integration/test_ai_phase1_e2e.gd`, 6 scénarios, graine `19140101`. Aucune vue n'est modifiée à la main : les formations ennemies sont réellement placées dans `state`, l'observation est écrite par une reconnaissance résolue (`BattleManager._record_reconnaissance`), les postures et ordres passent par `TurnResolver.resolve()` / `GameSession.end_turn()`, et les issues sont lues dans `state.battles`, `state.regions` et le contrôle territorial.
+  - (a) offensive française contre la garnison allemande plus faible : victoire des attaquants, pertes enregistrées, occupation de la région et retraite du défenseur vers une région voisine amie sans ennemi ;
+  - (c/7/8) région inconnue → reconnaissance → rapport daté (estimation 129 000 hommes pour 127 820 réels, jamais l'effectif exact) → nouvelle décision au tour suivant refusant l'assaut → statut `stale` puis `unknown` après `stale_turns`, avec retour à la reconnaissance ;
+  - (4/5) capitale allemande en `hold_at_all_costs` (le défenseur ne rompt jamais et conserve la région) et position secondaire en `delay` (rupture, occupation adverse et repli MIL-01 vers un territoire ami) ;
+  - (6) deux IA (Allemagne + France) sur 4 tours via `end_turn()` : batailles résolues, opérations sur plusieurs tours, aucun ordre contradictoire ou rejeté, brouillard vérifié à chaque tour pour les deux camps (aucun effectif ennemi réel exposé).
 - **Simulation longue** : `tools/simulate_phase1.gd`, graine `19140101`, deux IA en guerre sur la Lorraine, 8 tours. Sortie : `SIM seed=19140101 tours=8 formations_initiales=608` … `SIM FIN tour=8 formations=1243 batailles=10 evenements=395`. Journaux par tour : 2 à 9 ordres, approches `assault` / `limited_attack` / `reconnaissance`, postures émises quand nécessaires, 0 à 2 batailles par tour.
 - Les résultats sont cohérents avec le modèle : l'IA attaque désormais des positions défendues, hésite face au renseignement ancien, et la boucle reste déterministe à graine fixe.
 
@@ -153,15 +159,18 @@ Gains observés : `descendants` ≈ ×100–200, `view_for` ≈ ×8–10, `resol
 | B — IA stratégique niveau 2 (attaque / attente / renfort / reconnaissance) | atteint (D/I/T/F, seuils P) |
 | C — Performance `GameState` et war-turn | atteint : régression 472 s → 2,1 s ; gains mesurés au §10 |
 | C — Directive du chef sur l'index spatial | respectée : tentative abandonnée et documentée |
-| Non-régression MIL-01 | suite verte, UI stratégique et tactique validée |
+| Non-régression MIL-01 | suite verte, UI stratégique et tactique validée ; retraite et postures vérifiées en bataille réelle |
+| Couverture de bout en bout (vraies batailles, deux IA) | atteinte : 6 scénarios e2e sans injection de vue ; suite complète 144 tests, 0 échec, 375 s (< 400 s) |
 | Aucune modification de décision validée | respecté |
 
 ## 13. Tests
 
-- `bash tests/run.sh` : **138 tests réussis, 0 échec** (`run_sh_phase1_v8.txt` ; 110 tests de base + 7 renseignement + 8 index + 12 scénarios + 1 aller-retour flottants). Nouveaux fichiers :
+- `bash tests/run.sh` : **144 tests réussis, 0 échec**, durée totale mesurée **375 s** (limite < 400 s) ; 110 tests de base + 7 renseignement + 8 index + 12 décision + 6 e2e + 1 aller-retour flottants. Fichiers de test ajoutés pendant la reprise :
   - `tests/unit/test_intelligence_phase1.gd` (7 tests) ;
   - `tests/unit/test_hierarchy_index.gd` (8 tests) ;
-  - `tests/integration/test_ai_phase1_scenarios.gd` (12 tests).
+  - `tests/integration/test_ai_phase1_scenarios.gd` (12 tests de **décision**, vue injectée via `_set_target_intel`) ;
+  - `tests/integration/test_ai_phase1_e2e.gd` (6 tests de **bout en bout**, 119 contrôles, aucune vue injectée ; voir §11).
+- **Distinction à retenir** : les scénarios de décision vérifient les seuils et la cohérence des ordres sur une vue contrôlée ; les scénarios e2e vérifient la chaîne réelle `formations dans state` → bataille → rapport → `IntelSystem.view_for` → décision → tour résolu. Les deux familles sont conservées : la première est un filet de sécurité fin, la seconde apporte la preuve d'intégration exigée par le brief.
 - `tests/run_tests.gd` analyse désormais `tests/unit/` **et** `tests/integration/`.
 - Exports reproductibles (workflow `game-tests.yml`) exécutés localement avec l'interpréteur GIS épinglé : `[PASS] data/game/world_map.json à jour`, `[PASS] scénarios à jour`, `[PASS] fiches MIL-01 à jour`.
 - Conformément à l'arbitrage T3, `test_world_and_state.gd::test_save_float_roundtrip_is_bit_exact` vérifie `433.90000000000003` (1 ULP), `-0.0`, les structures imbriquées, la lisibilité des anciens nombres JSON nus et un aller-retour disque complet.
@@ -205,14 +214,16 @@ Découpage atomique effectué sur `dev/mil01-finalisation` (aucun `push`, aucun 
 | 3 | `218af2e2126daab43d3c7598ffcf07a5e8aff80d` | `feat(ai): décisions opérationnelles sans constantes en dur` |
 | 4 | `cdecd087854fc1233401ebc2e1cad42052362edd` | `fix(save): sérialisation bit-exacte des flottants` |
 | 5 | `5b6070563b83fdf97b10d0da97325e480706bbf3` | `test(phase1): renseignement, index, scénarios IA, simulation et banc` |
-| 6 | *(ce commit)* | `docs(phase1): rapport final, avancement et changelog` |
-| 7 | *(commit suivant)* | `test(save): aller-retour bit-exacte des flottants` |
+| 6 | `e61b189da88ffe2028d79de09d294499bc2766ee` | `docs(phase1): rapport final, avancement et changelog` |
+| 7 | `1fc1e2e97e076cd364de842d73393b3ff14f0923` | `test(save): aller-retour bit-exacte des flottants` |
+| 8 | `59822e0db2f7be40dcd2d40ed0fd68abcb790cd5` | `test(phase1): scénarios de bout en bout (vraies batailles et deux IA)` |
+| 9 | *(ce commit)* | `docs(phase1): distingue tests de décision et e2e, durée mesurée` |
 
 Chaque commit porte le trailer `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. Aucun de ces commits n'a été poussé.
 
 ## 18. CI et validation finale
 
-- Commande locale équivalente au workflow `game-tests.yml` : `bash tests/run.sh` → 136 tests réussis, 0 échec ; UI et UI bataille validées.
+- Commande locale équivalente au workflow `game-tests.yml` : `bash tests/run.sh` → **144 tests réussis, 0 échec, 375 s** ; UI et UI bataille validées.
 - Commandes locales équivalentes aux étapes d'export du même workflow : `build_game_data.py --check`, `build_scenario.py --check`, `render_fiches.py --check` → trois `[PASS]`.
 - Aucune donnée cartographique n'a été touchée : `tools/map/validate_all.sh --full` n'a pas été relancé (workflow `map-validation.yml` non déclenché par ces fichiers).
 - Aucune CI GitHub n'a été lancée sur cette branche, conformément à la consigne « ne pas pousser ». La branche est prête pour relecture et poussée par le chef.
