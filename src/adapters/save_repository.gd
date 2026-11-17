@@ -20,6 +20,14 @@ const FORMAT := "gs1914.save"
 const FORMAT_VERSION := 4
 const ENGINE := "Godot 4.7.2"
 
+## T3 : l'analyseur décimal de Godot 4.7 n'est pas correctement arrondi (p.ex. la chaîne
+## "433.90000000000003" relit 433.9, à 1 ULP près). Une sauvegarde JSON perd donc des bits
+## de flottants sans que l'empreinte canonique (elle aussi JSON) ne le détecte. Les flottants
+## sont sérialisés sous forme de motif binaire 64 bits en hexadécimal, ce qui garantit une
+## restauration bit pour bit. Les anciennes sauvegardes (nombres JSON nus) restent lisibles.
+const FLOAT_KEY := "__gs1914_f64__"
+const HEX := "0123456789abcdef"
+
 
 static func envelope(state: GameState, world: WorldMap, rules: Dictionary) -> Dictionary:
 	return {
@@ -38,16 +46,60 @@ static func save(path: String, state: GameState, world: WorldMap, rules: Diction
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
 		return "écriture impossible : %s" % error_string(FileAccess.get_open_error())
-	file.store_string(JSON.stringify(envelope(state, world, rules), "", true, true))
+	file.store_string(JSON.stringify(_encode_floats(envelope(state, world, rules)), "", true, true))
 	file.close()
 	return ""
+
+
+static func _encode_floats(v: Variant) -> Variant:
+	if v is Dictionary:
+		var out := {}
+		for k in v.keys():
+			out[k] = _encode_floats(v[k])
+		return out
+	if v is Array:
+		var out: Array = []
+		for item in v:
+			out.append(_encode_floats(item))
+		return out
+	if v is float:
+		var raw: PackedByteArray = var_to_bytes(v)
+		var hex := ""
+		for b in raw:
+			var x := int(b)
+			hex += HEX[x >> 4] + HEX[x & 15]
+		return {FLOAT_KEY: hex}
+	return v
+
+
+static func _decode_floats(v: Variant) -> Variant:
+	if v is Dictionary:
+		if v.size() == 1 and v.has(FLOAT_KEY) and v[FLOAT_KEY] is String:
+			var h: String = v[FLOAT_KEY]
+			var ba := PackedByteArray()
+			var i := 0
+			while i + 1 < h.length():
+				ba.append(HEX.find(h.substr(i, 1)) * 16 + HEX.find(h.substr(i + 1, 1)))
+				i += 2
+			var decoded: Variant = bytes_to_var(ba)
+			return decoded if decoded is float else v
+		var out := {}
+		for k in v.keys():
+			out[k] = _decode_floats(v[k])
+		return out
+	if v is Array:
+		var out: Array = []
+		for item in v:
+			out.append(_decode_floats(item))
+		return out
+	return v
 
 
 ## Retourne {"state": GameState} ou {"error": String}.
 static func load_save(path: String, world: WorldMap, rules: Dictionary) -> Dictionary:
 	if not FileAccess.file_exists(path):
 		return {"error": "fichier introuvable"}
-	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	var data: Variant = _decode_floats(JSON.parse_string(FileAccess.get_file_as_string(path)))
 	if not (data is Dictionary):
 		return {"error": "sauvegarde corrompue (JSON invalide)"}
 	var env: Dictionary = data
