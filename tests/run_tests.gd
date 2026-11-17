@@ -8,13 +8,12 @@ var passed: int = 0
 
 
 func _init() -> void:
-	var dir := DirAccess.open("res://tests/unit")
-	var files := dir.get_files()
+	var files := _gd_files("res://tests/unit")
+	files.append_array(_gd_files("res://tests/integration"))
 	files.sort()
-	for file in files:
-		if not file.ends_with(".gd"):
-			continue
-		var script: GDScript = load("res://tests/unit/" + file)
+	for path in files:
+		var file: String = path.substr(path.rfind("/") + 1)
+		var script: GDScript = load(path)
 		if script == null or not script.can_instantiate():
 			failures += 1
 			printerr("  FAIL  %s : script de test illisible (erreur d'analyse)" % file)
@@ -34,6 +33,17 @@ func _init() -> void:
 				print("  FAIL  %s::%s" % [file, name])
 	print("RÉSULTAT : %d test(s) réussi(s), %d échec(s)" % [passed, failures])
 	quit(1 if failures > 0 else 0)
+
+
+func _gd_files(dir_path: String) -> Array:
+	var out: Array = []
+	var dir := DirAccess.open(dir_path)
+	if dir == null:
+		return out
+	for file: String in dir.get_files():
+		if file.ends_with(".gd"):
+			out.append(dir_path + "/" + file)
+	return out
 
 
 func check(condition: bool, message: String) -> void:
