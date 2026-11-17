@@ -219,14 +219,15 @@ Découpage atomique effectué sur `dev/mil01-finalisation` (aucun `push`, aucun 
 | 8 | `59822e0db2f7be40dcd2d40ed0fd68abcb790cd5` | `test(phase1): scénarios de bout en bout (vraies batailles et deux IA)` |
 | 9 | *(ce commit)* | `docs(phase1): distingue tests de décision et e2e, durée mesurée` |
 
-Chaque commit porte le trailer `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. Aucun de ces commits n'a été poussé.
+Chaque commit porte le trailer `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. Commits ajoutés ensuite (T5, scénarios de bout en bout) : `59822e0` test(phase1), `05a8122` docs(phase1). L'ensemble (`57e5d25..05a8122`) a été poussé par le chef (Claude Code) sur `origin/dev/mil01-finalisation` le 17/11/2026. Aucun merge, `main` non modifié.
 
 ## 18. CI et validation finale
 
 - Commande locale équivalente au workflow `game-tests.yml` : `bash tests/run.sh` → **144 tests réussis, 0 échec, 375 s** ; UI et UI bataille validées.
 - Commandes locales équivalentes aux étapes d'export du même workflow : `build_game_data.py --check`, `build_scenario.py --check`, `render_fiches.py --check` → trois `[PASS]`.
 - Aucune donnée cartographique n'a été touchée : `tools/map/validate_all.sh --full` n'a pas été relancé (workflow `map-validation.yml` non déclenché par ces fichiers).
-- Aucune CI GitHub n'a été lancée sur cette branche, conformément à la consigne « ne pas pousser ». La branche est prête pour relecture et poussée par le chef.
+- CI GitHub : workflow « Tests du jeu (Godot 4.7.2) », run 44135025673 sur `05a8122` → **succès** (1 min 47 s). Seul avertissement : la dépréciation de Node.js 20 pour `actions/checkout@v4` et `actions/setup-python@v5`. Elle ne concerne pas la Phase I et n'est pas traitée.
+- Contre-vérification locale du chef : `bash tests/run.sh` → 138 tests réussis avant T5 ; 144 après T5 (exécution du worker).
 
 ---
 
