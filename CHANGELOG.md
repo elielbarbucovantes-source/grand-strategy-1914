@@ -3,6 +3,15 @@
 
 Toutes les évolutions importantes du projet sont consignées ici.
 
+## [1.9] — Phase I post-MIL-01 : renseignement, IA, performance et tests (17/11/2026)
+
+- Renseignement : statuts datés `confirmed_clear`/`estimated`/`stale`/`unknown`, fourchettes et fiabilité, vieillissement configurable, rapports de reconnaissance et de combat réinjectés dans la vue filtrée ; effectifs ennemis réels jamais exposés.
+- IA stratégique niveau 2 : offensives contre positions défendues, choix de l'approche et des postures, coordination, plafonds opérationnels et anti-répétition ; paramètres **PROPOSÉ** déplacés dans `ai_doctrines.json` sans constantes en dur.
+- Performance : index hiérarchique incrémental (changements de taille détectés en O(1), changements de parent/échelon via API ou `invalidate_hierarchy()`), régression des tours de guerre supprimée (472 479 ms → 2 138 ms au tour 4), sauvegarde bit-exacte des flottants ; tentative d'index spatial abandonnée et documentée.
+- Tests/outils : 26 nouveaux tests (renseignement, index, 10 scénarios IA + anti-répétition/non-abandon), simulation 8 tours à graine fixe, banc avant/après versionné.
+- Validation locale : `bash tests/run.sh` 138 tests réussis / 0 échec, UI et UI bataille validées, exports reproductibles `[PASS]`.
+- Rapport : `docs/project/POST_MIL01_PHASE1_REPORT.md`. Branche `dev/mil01-finalisation`, aucun push, aucun merge.
+
 ## [1.8] — Lot 2 : consolidation cartographique et licences (15/11/2026)
 
 - `DATA_LICENSES.md` et `NOTICE` : REGIS CC BY-NC 4.0 (usage non commercial), OpenStreetMap ODbL 1.0, Kavanagh CC BY 4.0, RISTAT CC0, Natural Earth domaine public.

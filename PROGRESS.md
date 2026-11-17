@@ -12,6 +12,14 @@ Statut général : **CONCEPTION EN COURS — GAMEPLAY INTERDIT SANS AUTORISATION
 - **Dépôt :** public ; `main` sur la lignée du 31/10 (`1ec985f`), alignement préparé et non exécuté (`docs/project/MAIN_ALIGNMENT_PLAN.md`) ; base de travail `consolidate/phase-1`.
 - **Moteur :** Godot 4.7.2 candidat privilégié, non décidé ; prototype Python gelé comme référence d'étude.
 
+### Phase I post-MIL-01 (17/11/2026 — branche `dev/mil01-finalisation`)
+
+- Travail explicitement mandaté par le chef sur la branche de finalisation : exploitation du renseignement, IA opérationnelle de niveau 2, stabilisation des performances, tests, simulations, bancs et rapport. Aucune fusion vers `main`, aucun push, aucune décision validée modifiée.
+- Régression des tours de guerre supprimée (tour 4 : 472 479 ms → 2 138 ms) par des plafonds opérationnels **PROPOSÉ** ; index spatial tenté puis abandonné et documenté.
+- `bash tests/run.sh` : 138 tests réussis, 0 échec ; UI stratégique et tactique validées ; exports reproductibles vérifiés en local.
+- Livrables : `docs/project/POST_MIL01_PHASE1_REPORT.md`, `tests/unit/test_intelligence_phase1.gd`, `tests/unit/test_hierarchy_index.gd`, `tests/integration/test_ai_phase1_scenarios.gd`, `tools/simulate_phase1.gd`, `tools/bench_phase1.gd`.
+- À valider par le directeur : blocs `intelligence` et `operations` (statut **PROPOSÉ** inchangé).
+
 Les sections suivantes sont conservées telles qu'elles étaient au 13/11/2026, sauf les lignes marquées « (14/11) ».
 
 ## 1. État général
