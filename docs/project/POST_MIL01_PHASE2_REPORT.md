@@ -4,7 +4,7 @@
 > **Agent :** OpenCode
 > **Branche :** `dev/mil01-finalisation`
 > **Autorisation :** la mission explicite du directeur leve GATE-01 pour cette phase.
-> **Statut :** conçu + documenté + implémenté + testé + fonctionnel localement. Push non effectué (voir §11).
+> **Statut :** conçu + documenté + implémenté + testé + fonctionnel + **poussé sur `origin/dev/mil01-finalisation`**.
 
 ---
 
@@ -158,10 +158,12 @@ aucune régression observée par rapport aux repères Phase I. Temps de la simul
 
 ## 11. Problèmes identifiés
 
-1. **Push impossible** : aucun identifiant GitHub n'est configuré sur cette machine
-   (ni `gh`, ni clé SSH, ni helper de credentials, ni token). `git push origin dev/mil01-finalisation`
-   échoue avec « could not read Username ». Aucun push forcé n'a été tenté. Le commit local est
-   intact et prêt à être publié dès qu'un token ou une clé SSH sera fourni.
+1. **Push initialement bloqué, puis résolu** : aucun identifiant GitHub n'était configuré sur
+   cette machine. Une clé Ed25519 dédiée a été générée localement (`~/.ssh/id_ed25519_gs1914`),
+   son empreinte d'hôte vérifiée contre la documentation officielle GitHub, la clé publique a
+   été ajoutée au compte `elielbarbucovantes-source`, puis `git push origin dev/mil01-finalisation`
+   a réussi (`f0de972..1b0b0a1`). Aucun push forcé n'a été effectué. Aucun secret n'a été
+   écrit dans le dépôt ni transmis ; seule la clé publique a été partagée.
 2. `build_scenario.py` divisait par zéro pour un État à réserves nulles (corrigé par un guard).
 3. Le renderer de fiches attendait des divergences objets ; les divergences textuelles de la
    recherche sont normalisées par le builder.
@@ -183,7 +185,11 @@ aucune régression observée par rapport aux repères Phase I. Temps de la simul
 ## 13. Commits créés
 
 - `b8bdb69be62f09906e6cfe5382de37e4bad1ed15` — `docs(environnement): consigner la reconstitution et la validation Phase 0`
-- commit Phase II à créer dans le dépôt local à l'issue de ce rapport (voir §14).
+- `1b0b0a1ac539615c960f8b96ae60cab9354156ab` — `feat(mil01): integrer les forces historiques des 15 Etats secondaires`
+- `docs(mil01): consigner la publication des rapports Phase 0 et Phase II` — mise à jour de ce rapport après push.
+
+Les deux premiers commits ont été poussés avec succès sur `origin/dev/mil01-finalisation`
+(`f0de972..1b0b0a1`) ; le troisième est un correctif documentaire sans effet sur le jeu.
 
 ## 14. Branche utilisée et statut réel
 
@@ -197,6 +203,6 @@ aucun historique réécrit).
 | Implémenté | OUI — base étendue, scénario régénéré, doctrines, builder reproductible |
 | Testé | OUI — 152 tests, exports, validation cartographique, benchmarks |
 | Fonctionnel | OUI localement — simulations 18 et 24 tours sans erreur |
-| Publié sur GitHub | NON — identifiants absents (§11) |
+| Publié sur GitHub | OUI — `origin/dev/mil01-finalisation`, local = distant (`1b0b0a1`) |
 
 **La Phase III n'a pas été commencée.**
