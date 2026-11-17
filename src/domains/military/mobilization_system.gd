@@ -441,11 +441,11 @@ static func _reserve_army(state: GameState, nation: String, rid: String) -> Stri
 	while true:
 		var aid := "army_%s_%s_res%d" % [nation, rid, k]
 		if not state.formations.has(aid):
-			state.formations[aid] = {"id": aid, "nation": nation, "echelon": "army",
+			state.register_formation({"id": aid, "nation": nation, "echelon": "army",
 				"name_fr": "Formations de réserve n° %d" % k, "region": rid, "parent": null,
 				"soldiers": null, "equipment": null, "morale": null, "supplied": true, "planned_target": "",
 				"battle_id": "", "encircled": false, "reserve": false,
-				"status": "MOBILISATION : réservistes incorporés (réservoir historique sourcé)"}
+				"status": "MOBILISATION : réservistes incorporés (réservoir historique sourcé)"})
 			return aid
 		var a: Dictionary = state.formations[aid]
 		if a["region"] == rid and not state.is_engaged(aid) and not a.get("encircled", false):
@@ -459,12 +459,12 @@ static func _new_reserve_unit(state: GameState, nation: String, rid: String, kin
 	var army := _reserve_army(state, nation, rid)
 	var uid := state.new_id("%s_res_%s" % [nation, kind.substr(0, 3)])
 	var label: String = {"infantry": "Infanterie", "cavalry": "Cavalerie", "artillery": "Artillerie"}.get(kind, kind)
-	state.formations[uid] = {"id": uid, "nation": nation, "echelon": "unit", "unit_type": kind,
+	state.register_formation({"id": uid, "nation": nation, "echelon": "unit", "unit_type": kind,
 		"name_fr": "%s de réserve n° %d" % [label, state.next_id - 1],
 		"region": rid, "parent": army, "soldiers": soldiers, "establishment": soldiers, "war_cap": soldiers,
 		"equipment": null, "morale": null, "supplied": true, "planned_target": "", "battle_id": "",
 		"encircled": false, "reserve": false,
-		"status": "MOBILISATION : réservistes incorporés (réservoir historique sourcé)"}
+		"status": "MOBILISATION : réservistes incorporés (réservoir historique sourcé)"})
 
 
 # ------------------------------------------------------------------ lecture : catégories et contrôles

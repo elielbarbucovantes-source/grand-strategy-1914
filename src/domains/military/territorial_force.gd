@@ -125,11 +125,11 @@ static func _army(state: GameState, nation: String, rid: String, service: String
 	while true:
 		var aid := "army_%s_%s_tf_%s%d" % [nation, rid, service, k]
 		if not state.formations.has(aid):
-			state.formations[aid] = {"id": aid, "nation": nation, "echelon": "army", "category": CATEGORY, "service": service,
+			state.register_formation({"id": aid, "nation": nation, "echelon": "army", "category": CATEGORY, "service": service,
 				"name_fr": "Territorial Force %s n° %d" % ["(service intérieur)" if service == "home" else "(volontaires outre-mer)", k],
 				"region": rid, "parent": null, "soldiers": null, "equipment": null, "morale": null, "supplied": true,
 				"planned_target": "", "battle_id": "", "encircled": false, "reserve": false,
-				"status": "TERRITORIAL FORCE (T-050) : catégorie distincte ; répartition et ventilation ESTIMÉES"}
+				"status": "TERRITORIAL FORCE (T-050) : catégorie distincte ; répartition et ventilation ESTIMÉES"})
 			return aid
 		var a: Dictionary = state.formations[aid]
 		if a["region"] == rid and not state.is_engaged(aid) and not a.get("encircled", false):
@@ -141,11 +141,11 @@ static func _army(state: GameState, nation: String, rid: String, service: String
 static func _new_unit(state: GameState, nation: String, rid: String, army: String, kind: String, soldiers: int, service: String) -> String:
 	var uid := state.new_id("%s_tf_%s" % [nation, kind.substr(0, 3)])
 	var label: String = {"infantry": "Infanterie", "cavalry": "Yeomanry (cavalerie)", "artillery": "Artillerie"}.get(kind, kind)
-	state.formations[uid] = {"id": uid, "nation": nation, "echelon": "unit", "unit_type": kind, "category": CATEGORY, "service": service,
+	state.register_formation({"id": uid, "nation": nation, "echelon": "unit", "unit_type": kind, "category": CATEGORY, "service": service,
 		"name_fr": "%s territoriale n° %d" % [label, state.next_id - 1], "region": rid, "parent": army,
 		"soldiers": soldiers, "establishment": soldiers, "war_cap": soldiers, "equipment": null, "morale": null,
 		"supplied": true, "planned_target": "", "battle_id": "", "encircled": false, "reserve": false,
-		"status": "TERRITORIAL FORCE (T-050)"}
+		"status": "TERRITORIAL FORCE (T-050)"})
 	return uid
 
 
@@ -196,7 +196,7 @@ static func apply_overseas(state: GameState, rules: Dictionary, order: Dictionar
 		if vol <= 0:
 			continue
 		if vol == int(u["soldiers"]):
-			u["parent"] = dest
+			state.set_formation_parent(uid, dest)
 			u["service"] = "overseas"
 		else:
 			u["soldiers"] = int(u["soldiers"]) - vol

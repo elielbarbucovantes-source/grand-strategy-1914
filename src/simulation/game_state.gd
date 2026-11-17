@@ -33,6 +33,15 @@ var active_battles: Array = []     # batailles tactiques en cours (sauvegardées
 var human_nations: Array = []      # pays commandés par des humains (solo : le joueur)
 var defense_orders: Array = []     # constructions défensives stratégiques en cours
 
+# Index hiérarchique en mémoire (non sérialisé) : évite le recalcul quadratique de descendants().
+var _hierarchy_dirty: bool = true
+var _indexed_size: int = -1
+var _sorted_ids: Array = []
+var _top_level_ids: Array = []
+var _children_of: Dictionary = {}        # fid -> Array[String] (enfants directs triés)
+var _descendants_cache: Dictionary = {}  # fid -> Array[String] (tous les descendants triés)
+var _units_cache: Dictionary = {}        # fid -> Array[String] (descendants d'échelon "unit" triés)
+
 
 static func from_scenario(scenario: Dictionary, start_month_value: int, player: String, seed_in: int) -> GameState:
 	var s := GameState.new()
@@ -143,9 +152,93 @@ func formations_of(nation: String) -> Array:
 
 
 func sorted_formation_ids() -> Array:
-	var ids := formations.keys()
-	ids.sort()
-	return ids
+	_ensure_hierarchy()
+	return _sorted_ids.duplicate()
+
+
+## Ajoute une nouvelle formation à l'état en mettant à jour l'index hiérarchique incrémentalement.
+func register_formation(f: Dictionary) -> void:
+	var id: String = f["id"]
+	var existed := formations.has(id)
+	formations[id] = f
+	if existed or _hierarchy_dirty or formations.size() != _indexed_size + 1:
+		_hierarchy_dirty = true
+		return
+	_sorted_ids.insert(_sorted_ids.bsearch(id), id)
+	_indexed_size += 1
+	var direct_parent: Variant = f.get("parent")
+	_children_of[id] = []
+	_descendants_cache[id] = []
+	_units_cache[id] = []
+	if direct_parent == null or not formations.has(direct_parent):
+		_top_level_ids.insert(_top_level_ids.bsearch(id), id)
+		return
+	var ch: Array = _children_of[direct_parent]
+	ch.insert(ch.bsearch(id), id)
+	var is_unit: bool = f.get("echelon", "") == "unit"
+	var visited: Dictionary = {}
+	var p: Variant = direct_parent
+	while p != null and formations.has(p) and not visited.has(p):
+		visited[p] = true
+		var dc: Array = _descendants_cache[p]
+		dc.insert(dc.bsearch(id), id)
+		if is_unit:
+			var uc: Array = _units_cache[p]
+			uc.insert(uc.bsearch(id), id)
+		p = formations[p].get("parent")
+
+
+## Invalide l'index hiérarchique en mémoire (appelé lors des ajouts, suppressions ou changements de parent).
+func invalidate_hierarchy() -> void:
+	_hierarchy_dirty = true
+
+
+## Modifie le parent d'une formation et invalide l'index hiérarchique.
+func set_formation_parent(fid: String, parent_id: Variant) -> void:
+	if formations.has(fid):
+		formations[fid]["parent"] = parent_id
+		_hierarchy_dirty = true
+
+
+func _ensure_hierarchy(_check_fid: String = "") -> void:
+	# Détection O(1) des ajouts/suppressions directs. Les changements de parent ou
+	# d'échelon hors API exigent un invalidate_hierarchy() explicite du appelant :
+	# une validation O(n) à chaque lecture détruirait le bénéfice du cache (banc
+	# phase 1 : descendants ×10 0,8 ms → 35 ms, view_for ×10 115 ms → 941 ms).
+	if _hierarchy_dirty or formations.size() != _indexed_size:
+		_rebuild_hierarchy()
+
+
+func _rebuild_hierarchy() -> void:
+	_sorted_ids = formations.keys()
+	_sorted_ids.sort()
+	_indexed_size = _sorted_ids.size()
+	_top_level_ids.clear()
+	_children_of.clear()
+	_descendants_cache.clear()
+	_units_cache.clear()
+	for id: String in _sorted_ids:
+		var f: Dictionary = formations[id]
+		var direct_parent: Variant = f.get("parent")
+		if direct_parent == null or not formations.has(direct_parent):
+			_top_level_ids.append(id)
+		_children_of[id] = []
+		_descendants_cache[id] = []
+		_units_cache[id] = []
+	for id: String in _sorted_ids:
+		var direct_parent: Variant = formations[id].get("parent")
+		if direct_parent != null and formations.has(direct_parent):
+			(_children_of[direct_parent] as Array).append(id)
+		var is_unit: bool = formations[id].get("echelon", "") == "unit"
+		var visited: Dictionary = {}
+		var p: Variant = direct_parent
+		while p != null and formations.has(p) and not visited.has(p):
+			visited[p] = true
+			(_descendants_cache[p] as Array).append(id)
+			if is_unit:
+				(_units_cache[p] as Array).append(id)
+			p = formations[p].get("parent")
+	_hierarchy_dirty = false
 
 
 # ------------------------------------------------------------------ hiérarchie militaire
@@ -154,8 +247,18 @@ func is_top_level(f: Dictionary) -> bool:
 	return f.get("parent") == null or not formations.has(f.get("parent"))
 
 
+func top_level_formation_ids() -> Array:
+	_ensure_hierarchy()
+	return _top_level_ids.duplicate()
+
+
 func armies_in(rid: String) -> Array:
-	return formations_in(rid).filter(func(f: Dictionary) -> bool: return is_top_level(f))
+	_ensure_hierarchy()
+	var out: Array = []
+	for fid: String in _top_level_ids:
+		if formations.has(fid) and formations[fid]["region"] == rid:
+			out.append(formations[fid])
+	return out
 
 
 func army_of(fid: String) -> String:
@@ -166,20 +269,18 @@ func army_of(fid: String) -> String:
 
 
 func descendants(fid: String) -> Array:
-	var out: Array = []
-	for id: String in sorted_formation_ids():
-		var parent: Variant = formations[id].get("parent")
-		while parent != null and formations.has(parent):
-			if parent == fid:
-				out.append(id)
-				break
-			parent = formations[parent].get("parent")
-	return out
+	if not formations.has(fid):
+		return []
+	_ensure_hierarchy(fid)
+	return (_descendants_cache.get(fid, []) as Array).duplicate()
 
 
-## Unités combattantes (échelon « unit ») d'une armée.
+## Unités combattantes (échelon « unit ») d'une armée ou d'une formation.
 func units_of(army_id: String) -> Array:
-	return descendants(army_id).filter(func(id: String) -> bool: return formations[id]["echelon"] == "unit")
+	if not formations.has(army_id):
+		return []
+	_ensure_hierarchy(army_id)
+	return (_units_cache.get(army_id, []) as Array).duplicate()
 
 
 ## Effectif d'une formation : somme des unités ; sans unité, effectif déclaré de la formation
@@ -188,7 +289,8 @@ func soldiers_of(fid: String) -> Variant:
 	var f: Dictionary = formations[fid]
 	if f["echelon"] == "unit":
 		return f.get("soldiers")
-	var units := units_of(fid) if is_top_level(f) else descendants(fid).filter(func(id: String) -> bool: return formations[id]["echelon"] == "unit")
+	_ensure_hierarchy(fid)
+	var units: Array = _units_cache.get(fid, [])
 	if units.is_empty():
 		return f.get("soldiers")
 	var total := 0
@@ -202,7 +304,8 @@ func soldiers_of(fid: String) -> Variant:
 func is_engaged(army_id: String) -> bool:
 	if formations[army_id].get("battle_id", "") != "":
 		return true
-	for uid: String in descendants(army_id):
+	_ensure_hierarchy(army_id)
+	for uid: String in _descendants_cache.get(army_id, []):
 		if formations[uid].get("battle_id", "") != "":
 			return true
 	return false
@@ -211,7 +314,8 @@ func is_engaged(army_id: String) -> bool:
 ## Déplace une armée et toutes ses formations subordonnées (même région).
 func move_army(army_id: String, rid: String) -> void:
 	formations[army_id]["region"] = rid
-	for uid: String in descendants(army_id):
+	_ensure_hierarchy(army_id)
+	for uid: String in _descendants_cache.get(army_id, []):
 		formations[uid]["region"] = rid
 
 
@@ -220,6 +324,7 @@ func remove_formation(fid: String) -> void:
 	for child: String in descendants(fid):
 		formations.erase(child)
 	formations.erase(fid)
+	_hierarchy_dirty = true
 
 
 func regions_controlled_by(nation: String) -> Array:
@@ -291,6 +396,14 @@ static func _normalize_numbers(s: GameState) -> void:
 				fo[key] = int(fo[key])
 	for b: Dictionary in s.active_battles + s.battles:
 		CombatData.normalize_battle(b)
+	for rid: String in s.regions:
+		var r: Dictionary = s.regions[rid]
+		if r.has("recon_reports"):
+			for nid: String in r["recon_reports"]:
+				var rep: Dictionary = r["recon_reports"][nid]
+				for k: String in ["turn", "units_seen", "confirmed_units", "armies_seen", "spotted_estimate", "estimate", "fortification_level"]:
+					if rep.has(k) and rep[k] != null:
+						rep[k] = int(rep[k])
 	ForceLedger.normalize(s)
 	MobilizationSystem.normalize(s)
 
