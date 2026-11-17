@@ -93,6 +93,35 @@ func test_save_load_roundtrip_and_integrity() -> void:
 	runner.check(SaveRepository.load_save("user://test_saves/truncated.json", s.world, s.rules).has("error"), "sauvegarde tronquée détectée")
 
 
+func test_save_float_roundtrip_is_bit_exact() -> void:
+	# Le parseur décimal de Godot 4.7 relit 433.90000000000003 comme 433.9 (1 ULP).
+	# Le motif binaire hexadécimal doit préserver les bits, y compris dans les
+	# structures imbriquées, et rester rétrocompatible avec les nombres JSON nus.
+	var special := 433.90000000000003
+	var encoded: Variant = SaveRepository._encode_floats({"v": [special, -0.0], "n": {"w": 1.5}})
+	runner.check(encoded is Dictionary and (encoded["v"] as Array)[0] is Dictionary
+		and (encoded["v"] as Array)[0].has("__gs1914_f64__"), "flottant encodé en motif binaire")
+	var decoded: Variant = SaveRepository._decode_floats(encoded)
+	runner.check(var_to_bytes((decoded["v"] as Array)[0]) == var_to_bytes(special),
+		"433.90000000000003 préservé bit pour bit")
+	runner.check(var_to_bytes((decoded["v"] as Array)[1]) == var_to_bytes(-0.0), "-0.0 préservé")
+	var legacy := {"turn": 2, "morale": 433.9, "nested": [1.5, {"x": -0.25}]}
+	runner.check(SaveRepository._decode_floats(legacy) == legacy, "anciens nombres JSON nus lisibles tels quels")
+	# Aller-retour complet via une sauvegarde réelle.
+	var s := _session()
+	var fid: String = s.state.sorted_formation_ids()[0]
+	s.state.formations[fid]["morale"] = special
+	var path := "user://test_saves/float_bits.json"
+	runner.check(SaveRepository.save(path, s.state, s.world, s.rules) == "", "sauvegarde écrite")
+	runner.check(FileAccess.get_file_as_string(path).contains("__gs1914_f64__"), "hexadécimal présent dans le fichier")
+	var loaded := SaveRepository.load_save(path, s.world, s.rules)
+	runner.check(loaded.has("state"), "sauvegarde relue : %s" % str(loaded.get("error", "")))
+	if loaded.has("state"):
+		var got: Variant = (loaded["state"] as GameState).formations[fid].get("morale")
+		runner.check(got is float and var_to_bytes(got) == var_to_bytes(special),
+			"morale bit pour bit après aller-retour disque")
+
+
 func test_simulation_is_deterministic() -> void:
 	var a := _session()
 	var b := _session()
