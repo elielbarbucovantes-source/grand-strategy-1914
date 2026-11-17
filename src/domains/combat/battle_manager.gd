@@ -556,8 +556,9 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 		for army: String in b["sides"][side]["armies"]:
 			if state.formations.has(army) and state.units_of(army).is_empty():
 				_dissolve_annihilated(state, world, cr, army, rid)
-	# 5. Positions défensives conservées dans la région (état et niveau compris).
+	# 5. Positions défensives conservées dans la région (état et niveau compris) et renseignement de combat.
 	state.regions[rid]["defenses"] = b["defenses"].duplicate(true)
+	_record_post_battle_intel(state, b, winner, rid)
 	# 6. Historique.
 	var summary := "Bataille de %s%s : %s. Pertes : attaquants %d, défenseurs %d (%s)." % [world.regions[rid]["name_fr"],
 		(" (%s)" % result["engagement"]["label_fr"]) if result.has("engagement") else "",
@@ -577,23 +578,112 @@ static func finish(state: GameState, world: WorldMap, cr: Dictionary, b: Diction
 	return result
 
 
-## Reconnaissance en force : renseignement de l'attaquant sur ce que son camp a repéré (brouillard,
-## estimations arrondies), conservé dans la région pour chaque pays attaquant.
+## Reconnaissance en force : renseignement de l'attaquant sur ce que son camp a repéré (brouillard et
+## reconnaissance des positions adverses sur le champ, estimations arrondies jamais égales au chiffre exact),
+## conservé dans la région pour chaque pays attaquant.
 static func _record_reconnaissance(state: GameState, b: Dictionary) -> void:
-	var mem: Dictionary = b["fog"][CombatData.ATTACKERS]
-	var estimate := 0
-	for eid: String in mem:
-		estimate += int(mem[eid]["estimate"])
-	var report := {"turn": state.turn, "date": state.date_label(), "units_seen": mem.size(), "estimate": estimate,
-		"fortification_level": int(b["engagement"]["fortification_level"])}
+	var report := _build_side_intel_report(state, b, CombatData.ATTACKERS, "reconnaissance")
 	var rid: String = b["region"]
 	if not state.regions[rid].has("recon_reports"):
 		state.regions[rid]["recon_reports"] = {}
 	for n: String in b["sides"][CombatData.ATTACKERS]["nations"]:
-		state.regions[rid]["recon_reports"][n] = report.duplicate()
+		state.regions[rid]["recon_reports"][n] = report.duplicate(true)
 	b["recon_report"] = report
 	state.log_event("renseignement", "Reconnaissance en force : %d unité(s) ennemie(s) repérée(s), environ %d hommes ; tranchées de niveau %d." % [
-		mem.size(), estimate, int(report["fortification_level"])], b["sides"][CombatData.ATTACKERS]["nations"])
+		int(report["units_seen"]), int(report["estimate"]), int(report["fortification_level"])], b["sides"][CombatData.ATTACKERS]["nations"])
+
+
+## Renseignement militaire acquis au contact à l'issue d'une bataille : met à jour le rapport sur la
+## région tenue par l'adversaire (ou nettoie un rapport obsolète si la région a été conquise).
+static func _record_post_battle_intel(state: GameState, b: Dictionary, winner: String, rid: String) -> void:
+	if not Engagement.active(b):
+		return
+	var holder := CombatData.ATTACKERS if winner == CombatData.ATTACKERS else CombatData.DEFENDERS
+	var other_side := CombatData.other(holder)
+	# Le camp qui conserve ou prend la région n'y observe plus d'armée ennemie (sauf encerclement).
+	if state.regions[rid].has("recon_reports"):
+		var has_encircled_enemy := false
+		for army: String in b["sides"][other_side]["armies"]:
+			if state.formations.has(army) and state.formations[army]["region"] == rid:
+				has_encircled_enemy = true
+		if not has_encircled_enemy:
+			for n: String in b["sides"][holder]["nations"]:
+				(state.regions[rid]["recon_reports"] as Dictionary).erase(n)
+	# Le camp qui s'est retiré (ou a reconnu la position) conserve une estimation post-combat sur `rid`.
+	var is_recon := other_side == CombatData.ATTACKERS and str(b["engagement"].get("approach", "")) == "reconnaissance"
+	var src := "reconnaissance" if is_recon else "combat"
+	var rep_on_holder := _build_side_intel_report(state, b, other_side, src)
+	if int(rep_on_holder["units_seen"]) > 0:
+		if not state.regions[rid].has("recon_reports"):
+			state.regions[rid]["recon_reports"] = {}
+		for n: String in b["sides"][other_side]["nations"]:
+			state.regions[rid]["recon_reports"][n] = rep_on_holder.duplicate(true)
+		if is_recon:
+			b["recon_report"] = rep_on_holder
+	# Le camp qui tient `rid` a également combattu `other_side` : si les armées adverses se sont repliées
+	# dans une région unique, on y enregistre l'estimation issue du combat.
+	var retreat_regions: Dictionary = {}
+	for army: String in b["sides"][other_side]["armies"]:
+		if state.formations.has(army):
+			retreat_regions[state.formations[army]["region"]] = true
+	if retreat_regions.size() == 1:
+		var dest_rid: String = retreat_regions.keys()[0]
+		var rep_on_retreated := _build_side_intel_report(state, b, holder, "combat")
+		if int(rep_on_retreated["units_seen"]) > 0:
+			if not state.regions[dest_rid].has("recon_reports"):
+				state.regions[dest_rid]["recon_reports"] = {}
+			for n: String in b["sides"][holder]["nations"]:
+				state.regions[dest_rid]["recon_reports"][n] = rep_on_retreated.duplicate(true)
+
+
+## Construit un rapport d'estimation des forces du camp adverse (`target_side`) vues par `observer_side`.
+## N'utilise jamais le total administratif exact de `GameState` : combine les estimations arrondies du
+## brouillard tactique (`b["fog"]`) et l'évaluation approchée des échelons présents sur le champ.
+static func _build_side_intel_report(state: GameState, b: Dictionary, observer_side: String, source: String) -> Dictionary:
+	var target_side := CombatData.other(observer_side)
+	var mem: Dictionary = b.get("fog", {}).get(observer_side, {})
+	var spotted_estimate := 0
+	for eid: String in mem:
+		if b["units"].has(eid) and b["units"][eid]["status"] != CombatData.DESTROYED:
+			spotted_estimate += int(snappedf(float(b["units"][eid]["soldiers"]), 500.0))
+		else:
+			spotted_estimate += int(mem[eid]["estimate"])
+	var total_estimate := spotted_estimate
+	var units_seen := mem.size()
+	var exact_sum := 0
+	for uid: String in CombatData.unit_ids(b):
+		var u: Dictionary = b["units"][uid]
+		if u["side"] != target_side or u["status"] == CombatData.AVAILABLE or u["status"] == CombatData.DESTROYED:
+			continue
+		exact_sum += int(u["soldiers"])
+		if mem.has(uid):
+			continue
+		if u["status"] != CombatData.RESERVE:
+			total_estimate += int(snappedf(float(u["soldiers"]) * 0.85, 1000.0))
+			units_seen += 1
+		elif source == "reconnaissance":
+			total_estimate += int(snappedf(float(u["soldiers"]) * 0.65, 2000.0))
+			units_seen += 1
+	total_estimate = int(maxf(500.0, snappedf(float(total_estimate), 500.0)))
+	if total_estimate == exact_sum and exact_sum > 0:
+		total_estimate = maxi(500, total_estimate - 500)
+	var target_armies := 0
+	for army: String in b["sides"][target_side]["armies"]:
+		if state.formations.has(army) and not state.units_of(army).is_empty():
+			target_armies += 1
+	var fort := int(b["engagement"]["fortification_level"]) if target_side == CombatData.DEFENDERS else 0
+	return {
+		"turn": int(state.turn),
+		"date": state.date_label(),
+		"source": source,
+		"units_seen": int(units_seen),
+		"confirmed_units": int(mem.size()),
+		"armies_seen": maxi(1, target_armies),
+		"spotted_estimate": int(spotted_estimate),
+		"estimate": int(total_estimate),
+		"fortification_level": fort,
+		"enemy_nations": (b["sides"][target_side]["nations"] as Array).duplicate(),
+	}
 
 
 ## Retraite (T-043) : région nationale ou alliée, sans armée ennemie, de préférence reliée à la

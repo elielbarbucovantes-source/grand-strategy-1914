@@ -47,7 +47,19 @@
   "collective_treaty_status": "Principe envisagé ; contradiction R-04 à arbitrer"
  },
  "ai": {
-  "status": "PROPOSÉ : heuristiques techniques de niveau 1, non validées comme comportement définitif",
-  "level": 1
+  "status": "PROPOSÉ : heuristiques de niveau 2 pour la conduite opérationnelle et la mobilisation, non validées comme comportement définitif",
+  "level": 2
+ },
+ "intelligence": {
+  "status": "PROPOSÉ (Phase I post-MIL-01) : renseignement militaire de campagne, exploitation et vieillissement des rapports de reconnaissance et de combat",
+  "fresh_turns": 1,
+  "stale_turns": 4,
+  "base_reliability_recon": 0.85,
+  "base_reliability_combat": 0.8,
+  "reliability_decay_per_turn": 0.18,
+  "min_reliability": 0.25,
+  "base_uncertainty": 0.15,
+  "uncertainty_per_turn": 0.12,
+  "unknown_army_default_estimate": 55000
  }
 }

@@ -132,7 +132,7 @@ func end_turn() -> Dictionary:
 	for nid: String in state.nation_order:
 		if nid == state.player_nation:
 			continue
-		orders[nid] = NationAgent.decide(IntelSystem.view_for(state, world, nid), world, rules)
+		orders[nid] = NationAgent.decide(IntelSystem.view_for(state, world, nid, rules), world, rules)
 	last_report = TurnResolver.resolve(state, world, rules, orders)
 	return last_report
 

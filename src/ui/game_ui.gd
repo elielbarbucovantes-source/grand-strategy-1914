@@ -158,6 +158,8 @@ func _page_country() -> void:
 			neigh.append(session.world.regions[n["to"]]["name_fr"] + (" (détroit)" if n["kind"] == "strait" else ""))
 		text += "Voisins : %s\n" % ", ".join(neigh)
 		text += "Zones maritimes : %s\n" % (", ".join(session.world.maritime_links[rid]) if not (session.world.maritime_links[rid] as Array).is_empty() else "—")
+		var ri := IntelSystem.region_intel(st, session.world, st.player_nation, rid, session.rules)
+		text += "Renseignement militaire : %s\n" % _format_region_intel(ri)
 		text += "Économie régionale : [i]données à sourcer (modèle C validé, ECO-02 ouvert)[/i]\n"
 		_rich(box, text)
 	var nid := st.controller(rid) if rid != "" else st.player_nation
@@ -496,13 +498,42 @@ func _page_research() -> void:
 
 func _page_intel() -> void:
 	var box := _clear("Renseignement")
-	var view := IntelSystem.view_for(session.state, session.world, session.state.player_nation)
+	var view := IntelSystem.view_for(session.state, session.world, session.state.player_nation, session.rules)
 	var foreign := (view["formations"] as Array).filter(func(f: Dictionary) -> bool: return f["nation"] != session.state.player_nation)
-	var t := "Vue nationale (implémentée) : %d régions observées ; %d formation(s) étrangère(s) visible(s), effectifs masqués.\n" % [(view["visible_regions"] as Dictionary).size(), foreign.size()]
+	var t := "[b]Vue nationale[/b] (brouillard de guerre strict) : %d régions observées ; %d armée(s) étrangère(s) repérée(s) aux frontières.\n" % [(view["visible_regions"] as Dictionary).size(), foreign.size()]
 	for f: Dictionary in foreign:
-		t += "  • %s en %s\n" % [_n(f["nation"]), session.world.regions[f["region"]]["name_fr"]]
+		var ri: Dictionary = view["region_intel"].get(f["region"], {})
+		t += "  • %s en %s — %s\n" % [_n(f["nation"]), session.world.regions[f["region"]]["name_fr"], _format_region_intel(ri)]
+	t += "\n[b]Rapports de reconnaissance et de combat[/b]\n"
+	var reports := 0
+	for rid: String in view["region_intel"]:
+		var ri: Dictionary = view["region_intel"][rid]
+		if ri["status"] in ["estimated", "stale"]:
+			reports += 1
+			t += "  • [b]%s[/b] : %s\n" % [session.world.regions[rid]["name_fr"], _format_region_intel(ri)]
+	if reports == 0:
+		t += "  [i]Aucun rapport de reconnaissance actif (ordonnez une approche « Reconnaissance en force » pour évaluer une position défendue).[/i]\n"
 	t += "\nInterception, décryptage, espionnage industriel : %s (INT-01/02 ouverts)." % NOT_FUNCTIONAL
 	_rich(box, t)
+
+
+func _format_region_intel(ri: Dictionary) -> String:
+	var st_code: String = ri.get("status", "unknown")
+	match st_code:
+		"confirmed_clear":
+			return "observée directement — aucune force étrangère (confirmé)"
+		"estimated", "stale":
+			var label := "estimé" if st_code == "estimated" else "[color=#d4882a]ancien[/color]"
+			var age := int(ri.get("age_turns", 0))
+			var age_txt := "ce mois-ci" if age == 0 else "il y a %d mois (%s)" % [age, str(ri.get("report_date", ""))]
+			return "%s : ~%s h (%s–%s), %d unité(s), tranchées niv. %d, fiabilité %d %%, %s" % [
+				label, _num(ri["estimated_soldiers"]), _num(ri["estimate_min"]), _num(ri["estimate_max"]),
+				int(ri.get("units_seen", 0)), int(ri.get("fortification_level", 0)),
+				int(round(100.0 * float(ri.get("reliability", 0.0)))), age_txt]
+		_:
+			if bool(ri.get("confirmed_presence", false)):
+				return "%d armée(s) présente(s) (confirmé), effectifs inconnus" % int(ri.get("armies_seen", 1))
+			return "inconnu (hors de vue)"
 
 
 func _page_events() -> void:

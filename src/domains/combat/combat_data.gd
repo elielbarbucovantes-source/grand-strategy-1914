@@ -73,3 +73,8 @@ static func normalize_battle(b: Dictionary) -> void:
 		for uid: String in b["fog"][side]:
 			var m: Dictionary = b["fog"][side][uid]
 			m["tick"] = int(m["tick"])
+	if b.has("recon_report"):
+		var rr: Dictionary = b["recon_report"]
+		for k: String in ["turn", "units_seen", "confirmed_units", "armies_seen", "spotted_estimate", "estimate", "fortification_level"]:
+			if rr.has(k) and rr[k] != null:
+				rr[k] = int(rr[k])
