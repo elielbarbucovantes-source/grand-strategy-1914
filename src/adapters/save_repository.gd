@@ -17,7 +17,10 @@ const FORMAT := "gs1914.save"
 ## prisonniers). Version 3 MIGRÉE : les pertes « non ventilées » anciennes sont conservées telles
 ## quelles dans `legacy_unventilated` (aucune ventilation après coup) ; attrition et services perdus
 ## deviennent des disparus avec leur cause (ForceLedger.migrate_v1).
-const FORMAT_VERSION := 4
+## Version 5 (Phase III) : relations, réputation, personnalités et structures diplomatiques.
+## Version 4 MIGRÉE sans perte : les champs absents sont initialisés à vide ; traités, propositions,
+## messages, wars et mémoire existants sont conservés tels quels.
+const FORMAT_VERSION := 5  # 5 : diplomatie Phase III (relations, alliances, crises, paix, prisonniers)
 const ENGINE := "Godot 4.7.2"
 
 ## T3 : l'analyseur décimal de Godot 4.7 n'est pas correctement arrondi (p.ex. la chaîne
@@ -109,6 +112,8 @@ static func load_save(path: String, world: WorldMap, rules: Dictionary) -> Dicti
 		return {"error": "sauvegarde de l'ancien format (version 1, antérieure à la refonte de la mobilisation) : "
 			+ "migration impossible de façon fiable (réservoirs non échelonnés, données historiques corrigées, pertes non comptabilisées). "
 			+ "Commencez une nouvelle partie."}
+	if int(env.get("format_version", -1)) == 4:
+		return _load_v4(env, world, rules)
 	if int(env.get("format_version", -1)) == 3:
 		return _load_v3(env, world, rules)
 	if int(env.get("format_version", -1)) == 2:
@@ -142,6 +147,27 @@ static func list_saves(dir_path: String) -> PackedStringArray:
 	for e: Array in entries:
 		out.append(e[1])
 	return out
+
+
+## Migration v4 -> v5 (Phase III) : contrôles d'intégrité identiques, calcul de l'empreinte sur
+## l'état d'ORIGINE (format 4). GameState.from_dict initialise les champs diplomatiques absents.
+static func _load_v4(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dictionary:
+	if int(env.get("rules_format_version", -1)) != int(rules.get("format_version", 0)):
+		return {"error": "version des règles incompatible"}
+	if env.get("world_sha256", "") != world.source_sha256:
+		return {"error": "données cartographiques différentes de celles de la sauvegarde"}
+	if not (env.get("state") is Dictionary):
+		return {"error": "état absent"}
+	var state := GameState.from_dict(env["state"])
+	var d := state.to_dict()
+	d["format_version"] = 4
+	# L'empreinte d'origine a été calculée avant l'ajout des champs Phase III.
+	for k: String in ["relations", "reputation", "personalities", "diplomacy"]:
+		d.erase(k)
+	var once := JSON.stringify(d, "", true, true)
+	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
+		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
+	return {"state": state, "migrated_from": 4}
 
 
 ## Migration d'une sauvegarde de format 3 : contrôles d'intégrité identiques (carte, règles, empreinte
