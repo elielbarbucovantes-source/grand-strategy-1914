@@ -158,7 +158,7 @@ aucune régression observée par rapport aux repères Phase I. Temps de la simul
 
 ## 11. Problèmes identifiés
 
-1. **Push initialement bloqué, puis résolu** : aucun identifiant GitHub n'était configuré sur
+1. **Ancien blocage de push — résolu** : aucun identifiant GitHub n'était configuré sur
    cette machine. Une clé Ed25519 dédiée a été générée localement (`~/.ssh/id_ed25519_gs1914`),
    son empreinte d'hôte vérifiée contre la documentation officielle GitHub, la clé publique a
    été ajoutée au compte `elielbarbucovantes-source`, puis `git push origin dev/mil01-finalisation`
@@ -180,16 +180,16 @@ aucune régression observée par rapport aux repères Phase I. Temps de la simul
 - Mobilisation en bloc unique : aucun sous-échelon historique n'a été inventé.
 - Doctrines IA des États secondaires volontairement conservatrices (PROPOSÉES) ; aucune
   nouvelle capacité diplomatique ou stratégique n'a été développée (Phase III exclue).
-- Le push n'a pas pu être effectué (§11).
+- Toutes les corrections de cette mission corrective sont consignées dans `POST_MIL01_PHASE2_AUDIT_REPORT.md`.
 
 ## 13. Commits créés
 
 - `b8bdb69be62f09906e6cfe5382de37e4bad1ed15` — `docs(environnement): consigner la reconstitution et la validation Phase 0`
 - `1b0b0a1ac539615c960f8b96ae60cab9354156ab` — `feat(mil01): integrer les forces historiques des 15 Etats secondaires`
-- `docs(mil01): consigner la publication des rapports Phase 0 et Phase II` — mise à jour de ce rapport après push.
+- `2e6b564129aeb2a4167dc218eec38d921e07a056` — `docs(mil01): consigner la publication reussie sur dev/mil01-finalisation`
 
-Les deux premiers commits ont été poussés avec succès sur `origin/dev/mil01-finalisation`
-(`f0de972..1b0b0a1`) ; le troisième est un correctif documentaire sans effet sur le jeu.
+Les trois commits ont été poussés avec succès sur `origin/dev/mil01-finalisation`
+(`f0de972..2e6b564`). Le troisième est un correctif documentaire sans effet sur le jeu.
 
 ## 14. Branche utilisée et statut réel
 
@@ -203,6 +203,6 @@ aucun historique réécrit).
 | Implémenté | OUI — base étendue, scénario régénéré, doctrines, builder reproductible |
 | Testé | OUI — 152 tests, exports, validation cartographique, benchmarks |
 | Fonctionnel | OUI localement — simulations 18 et 24 tours sans erreur |
-| Publié sur GitHub | OUI — `origin/dev/mil01-finalisation`, local = distant (`1b0b0a1`) |
+| Publié sur GitHub | OUI — `origin/dev/mil01-finalisation`, local = distant (`2e6b564`) |
 
 **La Phase III n'a pas été commencée.**

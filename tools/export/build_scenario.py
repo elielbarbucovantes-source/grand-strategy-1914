@@ -8,12 +8,13 @@ Uniquement à partir de données VALIDÉES ou DOCUMENTÉES, avec leur statut :
 - statistiques nationales, population, ressources, industrie, effectifs : AUCUNE valeur
   sourcée n'existe encore, donc `null` avec le statut « À DÉFINIR » (NAT-01 à 03,
   ECO-01/02, MIL-01). Le moteur traite `null` comme « inconnu ».
-- formations militaires des SEPT PUISSANCES JOUABLES : générées depuis la base historique
-  data/history/military_forces_1914.json (effectif actif et réserves sourcés ; répartition par
-  district de corps du temps de paix et ventilation par arme ESTIMÉES, voir
-  docs/history/MIL01_METHODE.md) avec les paramètres techniques de data/rules/forces_rules.json ;
-- autres États : un emplacement « armée nationale » à la capitale, **effectifs inconnus**
-  (hors du périmètre MIL-01, qui ne couvre que les puissances jouables) ;
+- formations militaires des 22 ÉTATS SOURCÉS : générées depuis la base historique
+  data/history/military_forces_1914.json (7 puissances jouables MIL-01 + 15 États secondaires
+  intégrés en Phase II ; effectif actif et réserves sourcés ou bornés ; répartition par district
+  et ventilation par arme ESTIMÉES, voir docs/history/MIL01_METHODE.md) avec les paramètres
+  techniques de data/rules/forces_rules.json ;
+- les États sans entrée dans la base (cas de repli, aucun aujourd'hui) conservent un emplacement
+  « armée nationale » à la capitale avec **effectifs inconnus**, jamais une valeur inventée ;
 - couleurs : paramètre de PRÉSENTATION, personnalisable (pas une donnée historique).
 
 Usage : python3 tools/export/build_scenario.py [--check]
@@ -321,7 +322,7 @@ def build_campaign(base: dict) -> dict:
     for nid, nation in campaign["nations"].items():
         nation["forces"] = blocks.get(nid, {
             "source_type": "unknown",
-            "status": "INCONNU : MIL-01 ne couvre que les sept puissances jouables ; aucune valeur n'est fabriquée."})
+            "status": "INCONNU : cet État n'est pas encore couvert par la base historique ; aucune valeur n'est fabriquée."})
     campaign["formations"] = [f for f in base["formations"] if f["nation"] not in blocks] + formations
     campaign["forces_source"] = {
         "type": "historical", "database": "data/history/military_forces_1914.json",

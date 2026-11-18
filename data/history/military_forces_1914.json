@@ -2,9 +2,9 @@
   "format": "gs1914.historical_forces",
   "format_version": 1,
   "id": "military_forces_1914",
-  "title_fr": "Effectifs militaires terrestres des sept puissances jouables, 1914 (MIL-01)",
-  "compiled": "2026-11-15",
-  "status": "BASE DE RECHERCHE. Chaque valeur porte sa source, sa page, sa définition et sa fiabilité. Aucune valeur n'est inventée : une donnée introuvable vaut null avec le motif. Les RÉPARTITIONS territoriales et la ventilation hors carte sont des ESTIMATIONS documentées (méthode dans docs/history/MIL01_METHODE.md), pas des faits historiques.",
+  "title_fr": "Effectifs militaires terrestres des 22 États européens, janvier 1914 (MIL-01 étendu — Phase II)",
+  "compiled": "2026-11-18",
+  "status": "BASE DE RECHERCHE ÉTENDUE (MIL-01 + Phase II). Chaque valeur porte sa source, sa page, sa définition et sa fiabilité. Aucune valeur n'est inventée : une donnée introuvable vaut null avec le motif. Couvre les sept puissances jouables et les quinze États secondaires ajoutés en Phase II (recherche : data/history/sources/secondary_states_research.json ; audit : docs/project/POST_MIL01_PHASE2_AUDIT_REPORT.md). Les RÉPARTITIONS territoriales et la ventilation par arme sont des ESTIMATIONS documentées (docs/history/MIL01_METHODE.md), pas des faits historiques.",
   "model": {
     "_statut": "Modèle VALIDÉ par le directeur (mission du 15/11/2026, §4.1) : (A) armée active ; (B) réserves mobilisables ; le jeu distingue en outre : en cours de mobilisation, incorporés, présents dans les unités.",
     "active": "Officiers et hommes sous les drapeaux au début de la campagne, en temps de paix (avant la mobilisation de fin juillet 1914).",

@@ -4,8 +4,8 @@
 - **Cahier des charges :** décisions T-029 à T-046 du directeur (missions du 15/11/2026).
 - **Statut :**
   - **fonctionnel et testé dans le bac à sable fictif et dans la campagne historique** ;
-  - la campagne utilise les effectifs historiques documentés des sept puissances jouables (`data/history/military_forces_1914.json`, voir `docs/history/`) ;
-  - les États hors MIL-01 ont des effectifs inconnus ; un affrontement qui les implique garde le repli neutre documenté.
+  - la campagne utilise les effectifs historiques documentés de **22 États** (`data/history/military_forces_1914.json`, voir `docs/history/`) : sept puissances jouables et quinze États secondaires intégrés en Phase II ;
+  - depuis la Phase II, les États secondaires ont des effectifs sourcés ou bornés et participent aux batailles tactiques ; les incertitudes de chaque État sont documentées dans sa fiche.
 
 ## 1. Architecture
 
@@ -168,9 +168,9 @@ Constats (détail et recommandations : `docs/project/MIL01_T045_T046_REPORT.md` 
 ## 7. Fonctionnalités incomplètes ou limites
 
 - **Campagne historique** :
-  - combat jouable avec les effectifs documentés des sept puissances jouables ;
-  - répartition territoriale et ventilation par arme **estimées** ;
-  - États hors MIL-01 sans effectifs, avec repli neutre ;
+  - combat jouable avec les effectifs documentés des **22 États** (7 puissances + 15 secondaires depuis la Phase II) ;
+  - répartition territoriale et ventilation par arme **estimées** (ventilation générique pour les 15 secondaires) ;
+  - États secondaires : effectifs sourcés ou bornés, incertitudes signalées ; plus de repli neutre ;
   - armée ottomane sans ventilation par arme (infanterie générique signalée).
 - **Croisement** : sans bataille, conformément à **T-045** (décision validée), et non plus comme limite.
 - **Terrain du champ** : il est uniforme par région (moyenne des catégories de relief) ; fleuves, ponts et cols ne sont pas représentés sur le champ.
