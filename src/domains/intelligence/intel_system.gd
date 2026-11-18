@@ -95,9 +95,29 @@ static func view_for(state: GameState, world: WorldMap, nation: String, rules: D
 		"sent_proposals": state.proposals.filter(func(p: Dictionary) -> bool: return p["from"] == nation and p["status"] == "pending"),
 		"messages": DiplomacySystem.visible_messages(state, nation),
 		"memory": (state.memory.get(nation, []) as Array).duplicate(true),
+		# Phase III : vue diplomatique — relations propres, réputation publique, engagements
+		# et crises concernant ce gouvernement. Aucun volume militaire foreign n'est révélé.
+		"relations": _own_relations(state, nation),
+		"reputation": (state.reputation as Dictionary).duplicate(true),
+		"personality": str(state.personalities.get(nation, "cautious")),
+		"alliances": (state.diplomacy.get("alliances", []) as Array).filter(func(a: Dictionary) -> bool:
+			return (a["members"] as Array).has(nation) or (a.get("status", "")) == "active").duplicate(true),
+		"crises": (state.diplomacy.get("crises", []) as Array).filter(func(c: Dictionary) -> bool:
+			return (c["parties"] as Array).has(nation) or (c["mediators"] as Array).has(nation)).duplicate(true),
+		"pow": {"held": PowSystem.held_by(state, nation), "lost": PowSystem.lost_by(state, nation)},
 		"capital_region": state.nations[nation]["capital_region_id"],
 		"capitals": _capitals(state),
 	}
+
+
+## Relations bilatérales connues de `nation` (elle connaît ses propres relations, pas celles des autres).
+static func _own_relations(state: GameState, nation: String) -> Dictionary:
+	var out := {}
+	for k: String in state.relations:
+		var parts := k.split("|")
+		if parts.size() == 2 and (parts[0] == nation or parts[1] == nation):
+			out[k] = (state.relations[k] as Dictionary).duplicate(true)
+	return out
 
 
 ## Renseignement militaire disponible pour `nation` sur la région `rid`.

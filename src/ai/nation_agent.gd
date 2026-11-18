@@ -63,8 +63,20 @@ static func op_cfg(rules: Dictionary = {}) -> Dictionary:
 static func decide(view: Dictionary, world: WorldMap, rules: Dictionary) -> Array:
 	var orders: Array = []
 	var me: String = view["nation"]
-	orders.append_array(_answer_proposals(view, me))
-	orders.append_array(_peace_initiatives(view, me))
+	# Phase III : couche diplomatique autonome (personnalité, mémoire, initiatives).
+	var diplomatic := DiplomaticAI.decide(view, world, rules)
+	orders.append_array(diplomatic)
+	var handled := {}
+	for o: Dictionary in diplomatic:
+		if o.get("proposal", "") != "":
+			handled[str(o["proposal"])] = true
+	orders.append_array(_answer_proposals(view, me, handled))
+	var has_peace := false
+	for o: Dictionary in diplomatic:
+		if str(o.get("type", "")) == Orders.PROPOSE_PEACE:
+			has_peace = true
+	if not has_peace:
+		orders.append_array(_peace_initiatives(view, me))
 	orders.append_array(_military(view, world, rules, me))
 	orders.append_array(MobilizationAgent.decide(view, world, rules))  # T-052 : doctrine nationale
 	return orders
@@ -107,10 +119,12 @@ static func _at_war_with(view: Dictionary, me: String) -> Array:
 	return out
 
 
-static func _answer_proposals(view: Dictionary, me: String) -> Array:
+static func _answer_proposals(view: Dictionary, me: String, handled: Dictionary = {}) -> Array:
 	var orders: Array = []
 	var partners := _partners(view, me)
 	for p: Dictionary in view["pending_proposals"]:
+		if handled.has(str(p["id"])):
+			continue
 		var accept := false
 		if _hostile_memory(view, p["from"]):
 			accept = false

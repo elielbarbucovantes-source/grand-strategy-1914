@@ -17,6 +17,20 @@ const SET_MOBILIZATION_ALLOCATION := "set_mobilization_allocation"
 const CALL_NEXT_ECHELON := "call_next_echelon"
 const TERRITORIAL_OVERSEAS := "territorial_overseas"
 const SET_DEFENSIVE_POSTURE := "set_defensive_posture"  # phase 6, étape 2 (T-055)
+# Phase III — diplomatie active
+const PROPOSE_AGREEMENT := "propose_agreement"
+const RESPOND_AGREEMENT := "respond_agreement"
+const WITHDRAW_PROPOSAL := "withdraw_proposal"
+const START_CRISIS := "start_crisis"
+const CRISIS_RESPONSE := "crisis_response"
+const OFFER_MEDIATION := "offer_mediation"
+const PROPOSE_PEACE := "propose_peace"
+const EXCHANGE_POW := "exchange_pow"
+const JOIN_ALLIANCE := "join_alliance"
+const LEAVE_ALLIANCE := "leave_alliance"
+const DISSOLVE_ALLIANCE := "dissolve_alliance"
+const UNIVERSAL_PACT := "universal_pact"
+const CONCLUDE_CONFERENCE := "conclude_conference"
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
@@ -51,6 +65,60 @@ static func respond(nation: String, proposal_id: String, accept: bool) -> Dictio
 
 static func break_treaty(nation: String, treaty_id: String) -> Dictionary:
 	return {"type": BREAK_TREATY, "nation": nation, "treaty": treaty_id}
+
+
+static func propose_agreement(nation: String, to: Array, kind: String, terms: Dictionary = {}, channel: String = "private") -> Dictionary:
+	return {"type": PROPOSE_AGREEMENT, "nation": nation, "to": to, "kind": kind,
+		"terms": terms.duplicate(true), "channel": channel}
+
+
+static func respond_agreement(nation: String, proposal: String, accept: bool, counter_terms: Dictionary = {}) -> Dictionary:
+	return {"type": RESPOND_AGREEMENT, "nation": nation, "proposal": proposal,
+		"accept": accept, "counter_terms": counter_terms.duplicate(true)}
+
+
+static func withdraw_proposal(nation: String, proposal: String) -> Dictionary:
+	return {"type": WITHDRAW_PROPOSAL, "nation": nation, "proposal": proposal}
+
+
+static func start_crisis(nation: String, target: String, motive: String, stake: String) -> Dictionary:
+	return {"type": START_CRISIS, "nation": nation, "target": target, "motive": motive, "stake": stake}
+
+
+static func crisis_response(nation: String, crisis: String, action: String) -> Dictionary:
+	return {"type": CRISIS_RESPONSE, "nation": nation, "crisis": crisis, "action": action}
+
+
+static func offer_mediation(nation: String, crisis: String) -> Dictionary:
+	return {"type": OFFER_MEDIATION, "nation": nation, "crisis": crisis}
+
+
+static func propose_peace(nation: String, to: Array, terms: Dictionary = {}) -> Dictionary:
+	return {"type": PROPOSE_PEACE, "nation": nation, "to": to, "terms": terms.duplicate(true)}
+
+
+static func exchange_pow(nation: String, other: String) -> Dictionary:
+	return {"type": EXCHANGE_POW, "nation": nation, "other": other}
+
+
+static func join_alliance(nation: String, alliance: String) -> Dictionary:
+	return {"type": JOIN_ALLIANCE, "nation": nation, "alliance": alliance}
+
+
+static func leave_alliance(nation: String, alliance: String) -> Dictionary:
+	return {"type": LEAVE_ALLIANCE, "nation": nation, "alliance": alliance}
+
+
+static func dissolve_alliance(nation: String, alliance: String) -> Dictionary:
+	return {"type": DISSOLVE_ALLIANCE, "nation": nation, "alliance": alliance}
+
+
+static func universal_pact(nation: String, members: Array) -> Dictionary:
+	return {"type": UNIVERSAL_PACT, "nation": nation, "members": members}
+
+
+static func conclude_conference(nation: String, conference: String, topic: String) -> Dictionary:
+	return {"type": CONCLUDE_CONFERENCE, "nation": nation, "conference": conference, "topic": topic}
 
 
 static func message(nation: String, channel: String, to: Array, text: String) -> Dictionary:

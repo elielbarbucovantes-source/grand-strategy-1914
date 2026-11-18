@@ -24,7 +24,7 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 				rejected.append({"order": order, "reason": reason})
 	state.orders_history.append({"turn": state.turn, "date": state.date_label(), "orders": accepted.duplicate(true),
 		"rejected": rejected.duplicate(true)})
-	DiplomacySystem.resolve(state, accepted)
+	DiplomacySystem.resolve(state, accepted, rules)
 	for order: Dictionary in accepted:
 		if order["type"] == Orders.SET_INDUSTRY_ALLOCATION:
 			EconomySystem.apply_allocation(state, order)
@@ -70,6 +70,7 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		DefenseSystem.monthly(state, world, rules["combat"])
 		BattleManager.monthly_encirclement(state, world, rules["combat"])
 		BattleManager.monthly_morale(state, rules["combat"])
+	DiplomacySystem.monthly(state, rules)  # Phase III : expiration, relations, crises, alliances
 	if rules.has("forces"):
 		MobilizationSystem.monthly(state, world, rules["forces"])
 		ForceLedger.monthly_recovery(state, world, rules["forces"])  # fin de convalescence (phase 6, étape 1)
@@ -135,6 +136,9 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 			return TerritorialForce.validate_overseas(state, rules["forces"], order) if rules.has("forces") else "règles des forces absentes"
 		Orders.SET_DEFENSIVE_POSTURE:
 			return MilitarySystem.validate_posture(state, order)
-		Orders.DECLARE_WAR, Orders.PROPOSE_TREATY, Orders.RESPOND_PROPOSAL, Orders.BREAK_TREATY, Orders.SEND_MESSAGE:
-			return DiplomacySystem.validate(state, order)
+		Orders.DECLARE_WAR, Orders.PROPOSE_TREATY, Orders.RESPOND_PROPOSAL, Orders.BREAK_TREATY, Orders.SEND_MESSAGE, \
+		Orders.PROPOSE_AGREEMENT, Orders.RESPOND_AGREEMENT, Orders.WITHDRAW_PROPOSAL, Orders.PROPOSE_PEACE, \
+		Orders.START_CRISIS, Orders.CRISIS_RESPONSE, Orders.OFFER_MEDIATION, Orders.EXCHANGE_POW, \
+		Orders.JOIN_ALLIANCE, Orders.LEAVE_ALLIANCE, Orders.DISSOLVE_ALLIANCE, Orders.UNIVERSAL_PACT, Orders.CONCLUDE_CONFERENCE:
+			return DiplomacySystem.validate(state, order, rules)
 	return "type d'ordre inconnu"

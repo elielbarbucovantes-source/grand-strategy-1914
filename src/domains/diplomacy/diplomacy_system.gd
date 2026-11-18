@@ -1,14 +1,11 @@
 class_name DiplomacySystem
 extends RefCounted
-## Fondations diplomatiques : traités, propositions et réponses, ruptures, déclarations de
-## guerre, canaux de communication (public, privé, groupe), mémoire des engagements.
-## VALIDÉ : passage en territoire étranger accordé par accord (dossier §5.3).
-## OUVERT (DIP-01/02) : conditions de formation et effets des alliances, garanties, accords
-## commerciaux et coalitions. Ces traités sont ENREGISTRÉS sans effet mécanique ; seule
-## l'autorisation de passage a un effet, celui-là validé.
+## Phase III — point d'entrée unique de la diplomatie. Délègue aux sous-systèmes :
+## relations, négociations, alliances, crises, paix et prisonniers.
+## Les canaux public/privé/groupe, les traités existants et la mémoire restent compatibles.
 
 
-static func validate(state: GameState, order: Dictionary) -> String:
+static func validate(state: GameState, order: Dictionary, rules: Dictionary = {}) -> String:
 	var nation: String = order["nation"]
 	match order["type"]:
 		Orders.DECLARE_WAR:
@@ -17,19 +14,20 @@ static func validate(state: GameState, order: Dictionary) -> String:
 				return "cible invalide"
 			if state.at_war(nation, target):
 				return "déjà en guerre"
-		Orders.PROPOSE_TREATY:
-			if not Orders.TREATY_KINDS.has(order.get("kind", "")):
-				return "type de traité inconnu"
-			if not state.nations.has(order.get("to", "")) or order["to"] == nation:
-				return "destinataire invalide"
-			if order["kind"] != "peace" and state.at_war(nation, order["to"]):
-				return "impossible en guerre (seule la paix peut être proposée)"
-			if order["kind"] == "peace" and not state.at_war(nation, order["to"]):
-				return "pas en guerre"
-		Orders.RESPOND_PROPOSAL:
-			var p := _proposal(state, order.get("proposal", ""))
-			if p.is_empty() or p["to"] != nation:
-				return "proposition inconnue ou non adressée à ce pays"
+		Orders.PROPOSE_TREATY, Orders.PROPOSE_AGREEMENT:
+			return NegotiationSystem.validate(state, order, rules)
+		Orders.PROPOSE_PEACE:
+			var dest: Variant = order.get("to", order.get("target", ""))
+			var recipients: Array = dest if dest is Array else [dest]
+			if recipients.is_empty():
+				return "destinataire manquant"
+			for d: String in recipients:
+				if not state.nations.has(d) or d == nation:
+					return "destinataire invalide"
+				if not state.at_war(nation, d):
+					return "pas en guerre avec " + d
+		Orders.RESPOND_PROPOSAL, Orders.RESPOND_AGREEMENT, Orders.WITHDRAW_PROPOSAL:
+			return NegotiationSystem.validate(state, order, rules)
 		Orders.BREAK_TREATY:
 			var t := _treaty(state, order.get("treaty", ""))
 			if t.is_empty() or not (t["members"] as Array).has(nation) or t["status"] != "active":
@@ -37,64 +35,106 @@ static func validate(state: GameState, order: Dictionary) -> String:
 		Orders.SEND_MESSAGE:
 			if not Orders.CHANNELS.has(order.get("channel", "")):
 				return "canal inconnu"
+		Orders.START_CRISIS:
+			if not state.nations.has(order.get("target", "")) or order["target"] == nation:
+				return "cible de crise invalide"
+			if str(order.get("motive", "")) == "":
+				return "motif manquant"
+		Orders.CRISIS_RESPONSE, Orders.OFFER_MEDIATION:
+			if CrisisSystem.by_id(state, str(order.get("crisis", ""))).is_empty():
+				return "crise inconnue"
+		Orders.EXCHANGE_POW:
+			if not state.nations.has(order.get("other", "")):
+				return "adversaire d'échange inconnu"
+		Orders.JOIN_ALLIANCE, Orders.LEAVE_ALLIANCE, Orders.DISSOLVE_ALLIANCE:
+			if AllianceSystem.by_id(state, str(order.get("alliance", ""))).is_empty():
+				return "alliance inconnue"
+		Orders.UNIVERSAL_PACT:
+			var mem: Array = order.get("members", [])
+			if mem.size() < 2:
+				return "membres insuffisants"
+		Orders.CONCLUDE_CONFERENCE:
+			if ConferenceSystem.by_id(state, str(order.get("conference", ""))).is_empty():
+				return "conférence inconnue"
 	return ""
 
 
-## Résolution diplomatique du tour (avant les mouvements ; ordre des phases PROPOSÉ, TURN-01 ouvert).
-static func resolve(state: GameState, orders: Array) -> void:
+## Résolution diplomatique du tour (avant les mouvements).
+static func resolve(state: GameState, orders: Array, rules: Dictionary = {}) -> void:
 	for order: Dictionary in orders:
 		match order["type"]:
 			Orders.SEND_MESSAGE:
-				state.messages.append({"turn": state.turn, "channel": order["channel"], "from": order["nation"],
-					"to": order["to"], "text": order["text"]})
+				NegotiationSystem.message(state, order)
 			Orders.BREAK_TREATY:
-				_break(state, order)
+				_break(state, order, rules)
+			Orders.WITHDRAW_PROPOSAL:
+				NegotiationSystem.withdraw(state, order)
+			Orders.START_CRISIS:
+				CrisisSystem.start(state, order["nation"], order["target"], str(order.get("motive", "")),
+					str(order.get("stake", "")), rules)
+			Orders.CRISIS_RESPONSE:
+				CrisisSystem.respond(state, str(order["crisis"]), order["nation"], str(order.get("action", "protest")), rules)
+			Orders.OFFER_MEDIATION:
+				CrisisSystem.offer_mediation(state, str(order["crisis"]), order["nation"], rules)
+			Orders.EXCHANGE_POW:
+				PowSystem.exchange(state, order["nation"], order["other"], rules)
+			Orders.JOIN_ALLIANCE:
+				AllianceSystem.join(state, str(order["alliance"]), order["nation"], rules)
+			Orders.LEAVE_ALLIANCE:
+				AllianceSystem.leave(state, str(order["alliance"]), order["nation"], rules)
+			Orders.DISSOLVE_ALLIANCE:
+				AllianceSystem.dissolve(state, str(order["alliance"]), order["nation"])
+			Orders.UNIVERSAL_PACT:
+				PeaceSystem.universal_pact(state, order["members"], rules)
+			Orders.CONCLUDE_CONFERENCE:
+				ConferenceSystem.conclude(state, str(order["conference"]), str(order.get("topic", "crisis")), rules)
+	# Réponses avant propositions (une réponse peut clore une proposition du même tour).
 	for order: Dictionary in orders:
-		if order["type"] == Orders.RESPOND_PROPOSAL:
-			_respond(state, order)
+		if order["type"] in [Orders.RESPOND_PROPOSAL, Orders.RESPOND_AGREEMENT]:
+			var p := NegotiationSystem.respond(state, order, rules)
+			if not p.is_empty() and str(p["status"]) == "accepted":
+				_apply_accepted(state, p, rules)
 	for order: Dictionary in orders:
 		if order["type"] == Orders.PROPOSE_TREATY:
-			var pid := state.new_id("proposal")
-			state.proposals.append({"id": pid, "turn": state.turn, "from": order["nation"], "to": order["to"],
-				"kind": order["kind"], "status": "pending"})
-			state.log_event("diplomatie", "%s propose « %s » à %s." % [_n(state, order["nation"]), order["kind"], _n(state, order["to"])],
-				[order["nation"], order["to"]])
+			_legacy_proposal(state, order, rules)
+		elif order["type"] == Orders.PROPOSE_AGREEMENT:
+			NegotiationSystem.propose(state, order, rules)
+		elif order["type"] == Orders.PROPOSE_PEACE:
+			PeaceSystem.propose(state, order, rules)
 	for order: Dictionary in orders:
 		if order["type"] == Orders.DECLARE_WAR and not state.at_war(order["nation"], order["target"]):
 			state.wars.append({"id": state.new_id("war"), "a": order["nation"], "b": order["target"], "since_turn": state.turn})
 			state.log_event("guerre", "%s déclare la guerre à %s." % [_n(state, order["nation"]), _n(state, order["target"])],
 				[order["nation"], order["target"]])
 			for nid: String in state.nation_order:
-				state.remember(nid, order["nation"], "declared_war", order["target"])
+				RelationsSystem.record(state, nid, order["nation"], "declared_war", order["target"], rules)
 
 
-static func _respond(state: GameState, order: Dictionary) -> void:
-	var p := _proposal(state, order["proposal"])
-	if p.is_empty() or p["status"] != "pending":
+static func _legacy_proposal(state: GameState, order: Dictionary, rules: Dictionary) -> void:
+	if order["kind"] == "peace":
+		PeaceSystem.propose(state, order, rules)
 		return
-	p["status"] = "accepted" if order["accept"] else "rejected"
-	state.remember(p["from"], p["to"], "proposal_" + p["status"], p["kind"])
-	if not order["accept"]:
-		state.log_event("diplomatie", "%s refuse « %s » proposé par %s." % [_n(state, p["to"]), p["kind"], _n(state, p["from"])], [p["from"], p["to"]])
-		return
-	if p["kind"] == "peace":
-		state.wars = state.wars.filter(func(w: Dictionary) -> bool:
-			return not ((w["a"] == p["from"] and w["b"] == p["to"]) or (w["a"] == p["to"] and w["b"] == p["from"])))
-		state.log_event("paix", "Paix entre %s et %s (conditions : OUVERTES)." % [_n(state, p["from"]), _n(state, p["to"])], [p["from"], p["to"]])
-		return
-	var treaty := {"id": state.new_id("treaty"), "type": p["kind"], "members": [p["from"], p["to"]], "status": "active",
-		"signed": state.date_label(), "terms": null, "terms_status": "OUVERTE (DIP-02)"}
-	if p["kind"] == "transit":
-		treaty["grantor"] = p["to"]
-		treaty["grantee"] = p["from"]
-		treaty["terms_status"] = "VALIDÉ : autorise le passage de %s sur le territoire de %s" % [p["from"], p["to"]]
-	state.treaties.append(treaty)
-	state.remember(p["to"], p["from"], "treaty_signed", p["kind"])
-	state.log_event("diplomatie", "%s et %s signent : %s." % [_n(state, p["from"]), _n(state, p["to"]), p["kind"]], [p["from"], p["to"]])
+	NegotiationSystem.propose(state, {
+		"type": Orders.PROPOSE_AGREEMENT, "nation": order["nation"], "to": [order["to"]],
+		"kind": order["kind"], "terms": {}, "channel": "private"}, rules)
 
 
-static func _break(state: GameState, order: Dictionary) -> void:
-	var t := _treaty(state, order["treaty"])
+static func _apply_accepted(state: GameState, p: Dictionary, rules: Dictionary) -> void:
+	match str(p["kind"]):
+		"peace":
+			PeaceSystem.sign(state, p, rules)
+		"alliance", "coalition", "guarantee", "transit", "trade", "neutrality":
+			AllianceSystem.create(state, p, rules)
+		"pow_exchange":
+			var to: Array = p["to"]
+			if not to.is_empty():
+				PowSystem.exchange(state, str(p["from"]), str(to[0]), rules)
+		"conference":
+			ConferenceSystem.create(state, p, rules)
+
+
+static func _break(state: GameState, order: Dictionary, rules: Dictionary) -> void:
+	var t := _treaty(state, order.get("treaty", ""))
 	if t.is_empty() or t["status"] != "active":
 		return
 	t["status"] = "broken"
@@ -102,33 +142,43 @@ static func _break(state: GameState, order: Dictionary) -> void:
 	t["broken_turn"] = state.turn
 	for member: String in t["members"]:
 		if member != order["nation"]:
-			state.remember(member, order["nation"], "treaty_broken", t["id"])
+			RelationsSystem.record(state, member, order["nation"], "treaty_broken", t["id"], rules)
+	# Une rupture d'alliance active est une trahison enregistrée dans la mémoire de tous.
+	for a: Dictionary in state.diplomacy.get("alliances", []):
+		if str(a["id"]) == str(t["id"]):
+			a["status"] = "broken"
+			for member: String in a["members"]:
+				if member != order["nation"]:
+					RelationsSystem.record(state, member, order["nation"], "alliance_betrayal", str(a["id"]), rules)
 	state.log_event("diplomatie", "%s rompt le traité %s (%s)." % [_n(state, order["nation"]), t["id"], t["type"]], t["members"])
 
 
-## Messages visibles par une nation : publics, ceux qu'elle envoie et ceux qui lui sont adressés.
+## Appel mensuel : expiration des propositions, mise à jour des relations, crises et alliances.
+static func monthly(state: GameState, rules: Dictionary) -> void:
+	NegotiationSystem.expire(state)
+	RelationsSystem.monthly(state, rules)
+	CrisisSystem.monthly(state, rules)
+	AllianceSystem.monthly(state, rules)
+
+
 static func visible_messages(state: GameState, nation: String) -> Array:
-	return state.messages.filter(func(m: Dictionary) -> bool:
-		return m["channel"] == "public" or m["from"] == nation or (m["to"] as Array).has(nation))
+	return NegotiationSystem.visible_messages(state, nation)
 
 
 static func pending_for(state: GameState, nation: String) -> Array:
-	return state.proposals.filter(func(p: Dictionary) -> bool: return p["to"] == nation and p["status"] == "pending")
+	return NegotiationSystem.pending_for(state, nation)
 
 
 static func _proposal(state: GameState, pid: String) -> Dictionary:
-	for p: Dictionary in state.proposals:
-		if p["id"] == pid:
-			return p
-	return {}
+	return NegotiationSystem.by_id(state, pid)
 
 
 static func _treaty(state: GameState, tid: String) -> Dictionary:
 	for t: Dictionary in state.treaties:
-		if t["id"] == tid:
+		if str(t["id"]) == tid:
 			return t
 	return {}
 
 
 static func _n(state: GameState, nid: String) -> String:
-	return state.nations[nid]["name_fr"]
+	return str(state.nations[nid]["name_fr"])

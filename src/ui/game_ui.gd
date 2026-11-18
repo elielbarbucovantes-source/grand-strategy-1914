@@ -177,43 +177,112 @@ func _page_diplomacy() -> void:
 	var box := _clear("Diplomatie")
 	var st := session.state
 	var me := st.player_nation
-	for p: Dictionary in DiplomacySystem.pending_for(st, me):
+	# 1. Négociations en cours : accepter, refuser, contre-proposer, retirer.
+	_rich(box, "[b]Négociations en cours[/b]")
+	var pending: Array = DiplomacySystem.pending_for(st, me)
+	if pending.is_empty():
+		_label(box, "Aucune proposition en attente.", 12)
+	for p: Dictionary in pending:
 		var row := HBoxContainer.new()
 		box.add_child(row)
-		_label(row, "Proposition de %s : %s" % [_n(p["from"]), p["kind"]], 13)
-		_button(row, "Accepter", func() -> void: _queue(Orders.respond(me, p["id"], true)))
-		_button(row, "Refuser", func() -> void: _queue(Orders.respond(me, p["id"], false)))
-	_rich(box, "[b]Relations[/b] — effets des alliances, garanties et accords commerciaux : [i]OUVERTS (DIP-02), enregistrés sans effet[/i] ; passage : [b]effectif[/b].")
+		_label(row, "%s : %s (exp. T%s)" % [_n(str(p["from"])), p["kind"], str(p.get("expires_turn", "?"))], 12)
+		_button(row, "Accepter", func() -> void: _queue(Orders.respond(me, str(p["id"]), true)))
+		_button(row, "Refuser", func() -> void: _queue(Orders.respond(me, str(p["id"]), false)))
+		_button(row, "Contre-proposer", func() -> void: _queue(Orders.respond_agreement(me, str(p["id"]), false,
+			{"duration": 18, "reciprocal": true})))
+	for p: Dictionary in st.proposals:
+		if str(p["from"]) == me and str(p["status"]) == "pending":
+			var row2 := HBoxContainer.new()
+			box.add_child(row2)
+			_label(row2, "Envoyée à %s : %s" % [str(p["to"]), p["kind"]], 12)
+			_button(row2, "Retirer", func() -> void: _queue(Orders.withdraw_proposal(me, str(p["id"]))))
+	# 2. Relations bilatérales (dimensions réelles, pas une note unique).
+	_rich(box, "\n[b]Relations[/b] (confiance / hostilité / coopération / tensions)")
 	for nid: String in st.nation_order:
 		if nid == me:
 			continue
 		var tags: Array = []
 		if st.at_war(me, nid):
 			tags.append("[color=#b03a2e]GUERRE[/color]")
-		for t: Dictionary in st.active_treaties_between(me, nid):
-			tags.append(t["type"])
 		if st.has_transit(me, nid):
-			tags.append("passage accordé")
+			tags.append("passage")
+		var r: Dictionary = RelationsSystem.between(st, me, nid, session.rules)
+		if not r.is_empty():
+			tags.append("conf %.0f" % float(r.get("trust", 0)))
+			tags.append("host %.0f" % float(r.get("hostility", 0)))
+			tags.append("tens %.0f" % float(r.get("tensions", 0)))
 		_rich(box, "[b]%s[/b] %s" % [_n(nid), " ; ".join(tags)])
 		var row := HBoxContainer.new()
 		box.add_child(row)
 		if st.at_war(me, nid):
-			_button(row, "Proposer la paix", func() -> void: _queue(Orders.propose_treaty(me, nid, "peace")))
+			_button(row, "Paix blanche", func() -> void: _queue(Orders.propose_peace(me, [nid], {"white": true})))
+			_button(row, "Échanger prisonniers", func() -> void: _queue(Orders.exchange_pow(me, nid)))
 		else:
-			_button(row, "Déclarer la guerre", func() -> void: _queue(Orders.declare_war(me, nid)))
-			_button(row, "Demander le passage", func() -> void: _queue(Orders.propose_treaty(me, nid, "transit")))
-			_button(row, "Alliance", func() -> void: _queue(Orders.propose_treaty(me, nid, "alliance")))
-			_button(row, "Commerce", func() -> void: _queue(Orders.propose_treaty(me, nid, "trade")))
-	_rich(box, "\n[b]Traités[/b]")
+			_button(row, "Guerre", func() -> void: _queue(Orders.declare_war(me, nid)))
+			_button(row, "Passage", func() -> void: _queue(Orders.propose_agreement(me, [nid], "transit")))
+			_button(row, "Alliance", func() -> void: _queue(Orders.propose_agreement(me, [nid], "alliance")))
+			_button(row, "Garantie", func() -> void: _queue(Orders.propose_agreement(me, [nid], "guarantee")))
+			_button(row, "Crise", func() -> void: _queue(Orders.start_crisis(me, nid, "incident diplomatique", "frontière")))
+	# 3. Alliances et engagements.
+	_rich(box, "\n[b]Alliances actives[/b]")
+	for a: Dictionary in st.diplomacy.get("alliances", []):
+		if str(a.get("status", "")) != "active" or not (a["members"] as Array).has(me):
+			continue
+		var com: Dictionary = a.get("commitments", {})
+		_rich(box, "%s — %s | défensive:%s offensive:%s passage:%s" % [a["id"], str(a["members"]),
+			str(com.get("defensive", false)), str(com.get("offensive", false)), str(com.get("transit", false))])
+		var row3 := HBoxContainer.new()
+		box.add_child(row3)
+		_button(row3, "Quitter", func() -> void: _queue(Orders.leave_alliance(me, str(a["id"]))))
+		_button(row3, "Dissoudre", func() -> void: _queue(Orders.dissolve_alliance(me, str(a["id"]))))
+	# 4. Crises et médiation.
+	_rich(box, "\n[b]Crises[/b]")
+	for cr: Dictionary in st.diplomacy.get("crises", []):
+		if str(cr.get("status", "")) != "active" or not (cr["parties"] as Array).has(me):
+			continue
+		_rich(box, "%s — %s (tension %.0f, enjeu %s)" % [cr["id"], cr["motive"], float(cr["tension"]), cr["stake"]])
+		var row4 := HBoxContainer.new()
+		box.add_child(row4)
+		for action: String in ["protest", "negotiate", "concede", "guarantee", "sanction", "mobilize"]:
+			_button(row4, action, func() -> void: _queue(Orders.crisis_response(me, str(cr["id"]), action)))
+	for cr: Dictionary in st.diplomacy.get("crises", []):
+		if str(cr.get("status", "")) == "active" and not (cr["parties"] as Array).has(me) \
+			and not (cr["mediators"] as Array).has(me):
+			var row5 := HBoxContainer.new()
+			box.add_child(row5)
+			_button(row5, "Médier %s" % cr["id"], func() -> void: _queue(Orders.offer_mediation(me, str(cr["id"]))))
+	# 4b. Conférences internationales (sujets multiples, accords réels).
+	_rich(box, "\n[b]Conférences[/b]")
+	var others: Array = []
+	for nid: String in st.nation_order:
+		if nid != me:
+			others.append(nid)
+	if others.size() >= 2:
+		_button(box, "Proposer une conférence (crise + alliance)", func() -> void:
+			_queue(Orders.propose_agreement(me, others, "conference", {"topics": ["crisis", "alliance"]})))
+	for c: Dictionary in st.diplomacy.get("conferences", []):
+		if str(c.get("status", "")) != "active" or not (c["participants"] as Array).has(me):
+			continue
+		_rich(box, "%s — %s" % [c["id"], str(c["topics"])])
+		var rowc := HBoxContainer.new()
+		box.add_child(rowc)
+		for topic: String in c["topics"]:
+			_button(rowc, "Conclure %s" % topic, func() -> void:
+				_queue(Orders.conclude_conference(me, str(c["id"]), topic)))
+	# 5. Traités de paix et prisonniers.
+	_rich(box, "\n[b]Traités de paix[/b]")
+	for t: Dictionary in st.diplomacy.get("peace_treaties", []):
+		_rich(box, "%s — %s (%s)" % [t["id"], str(t.get("parties", [])), str(t.get("terms", {}))])
+	_rich(box, "\n[b]Prisonniers[/b] — %s" % PowSystem.summary(st, me))
+	_rich(box, "\n[b]Traités historiques / messages[/b] (public, privé, groupe)")
 	for t: Dictionary in st.treaties:
 		if t["status"] == "active" and (t["members"] as Array).has(me):
-			var row := HBoxContainer.new()
-			box.add_child(row)
-			_label(row, "%s : %s" % [t["type"], ", ".join((t["members"] as Array).map(func(x: String) -> String: return _n(x)))], 12)
-			_button(row, "Rompre", func() -> void: _queue(Orders.break_treaty(me, t["id"])))
-	_rich(box, "\n[b]Messages[/b] (canaux public, privé, groupe)")
+			var row6 := HBoxContainer.new()
+			box.add_child(row6)
+			_label(row6, "%s : %s" % [t["type"], ", ".join((t["members"] as Array).map(func(x: String) -> String: return _n(x)))], 12)
+			_button(row6, "Rompre", func() -> void: _queue(Orders.break_treaty(me, str(t["id"]))))
 	for m: Dictionary in DiplomacySystem.visible_messages(st, me).slice(-10):
-		_rich(box, "[%s] %s : %s" % [m["channel"], _n(m["from"]), m["text"]])
+		_rich(box, "[%s] %s : %s" % [m["channel"], _n(str(m["from"])), m["text"]])
 	var edit := LineEdit.new()
 	edit.placeholder_text = "Message public…"
 	box.add_child(edit)

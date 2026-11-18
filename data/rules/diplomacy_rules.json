@@ -1,0 +1,93 @@
+{
+  "format": "gs1914.diplomacy_rules",
+  "format_version": 1,
+  "_statut": "Phase III : parametres de comportement PROPOSES (non des faits historiques). Aucune regle de jeu validee n'est modifiee.",
+  "relations": {
+    "dimensions": ["trust", "hostility", "cooperation", "rivalry", "dependence", "tensions", "interests"],
+    "initial": {"trust": 50, "hostility": 10, "cooperation": 20, "rivalry": 20, "dependence": 10, "tensions": 0, "interests": 20},
+    "min": 0,
+    "max": 100,
+    "monthly_drift": {"trust": 0.2, "hostility": 0.1, "tensions": 0.5, "rivalry": 0.1},
+    "war_hostility_per_month": 4,
+    "war_tensions_per_month": 6,
+    "treaty_signed_trust": 6,
+    "treaty_signed_cooperation": 5,
+    "treaty_respected_trust": 3,
+    "treaty_broken_trust": -35,
+    "treaty_broken_tensions": 20,
+    "declaration_of_war_trust": -25,
+    "proposal_rejected_tensions": 3,
+    "proposal_accepted_trust": 4,
+    "reputation_weight": 0.6
+  },
+  "proposals": {
+    "valid_turns": 3,
+    "max_per_nation_per_turn": 3,
+    "max_counter_per_proposal": 2,
+    "max_active_per_nation": 8,
+    "kinds": ["alliance", "transit", "trade", "guarantee", "coalition", "neutrality", "peace", "pow_exchange", "conference", "mediate"]
+  },
+  "alliances": {
+    "types": {
+      "alliance": {"defensive": true, "offensive": false, "transit": false, "duration_turns": 36},
+      "coalition": {"defensive": true, "offensive": true, "transit": true, "duration_turns": 24},
+      "guarantee": {"defensive": true, "offensive": false, "transit": false, "duration_turns": 24},
+      "transit": {"defensive": false, "offensive": false, "transit": true, "duration_turns": 18},
+      "trade": {"defensive": false, "offensive": false, "transit": false, "duration_turns": 24},
+      "neutrality": {"defensive": false, "offensive": false, "transit": false, "duration_turns": 18}
+    },
+    "default_duration_turns": 24,
+    "max_alliances_per_nation": 2,
+    "join_requires_consent": true,
+    "exit_penalty_trust": -8,
+    "defense_obligation_min_trust": 40,
+    "call_interval_turns": 3
+  },
+  "crises": {
+    "start_tension": 35,
+    "monthly_escalation": 6,
+    "monthly_deescalation": 5,
+    "war_threshold": 85,
+    "settle_threshold": 20,
+    "mediation_reduction": 20,
+    "concession_reduction": 12,
+    "protest_reduction": 4,
+    "guarantee_reduction": 10,
+    "max_crises_at_once": 6,
+    "triggers": ["border_incident", "sovereignty_violation", "territorial_claim", "mobilization", "diplomatic_break", "treaty_violation", "international_event"]
+  },
+  "peace": {
+    "white_peace": {"territorial_changes": false, "reparations": false, "pow_repatriation": true},
+    "terms": ["white", "status_ante", "territorial", "reparations", "guarantees", "pow_exchange"],
+    "territorial_max_regions": 3,
+    "min_occupation_turns": 2,
+    "universal_peace_name": "universal_pact",
+    "universal_peace_requires_regions": 0.9
+  },
+  "pow": {
+    "ledger_categories": ["prisoner", "surrendered"],
+    "exchange_ratio": 1.0,
+    "repatriation_on_peace": true,
+    "max_exchanges_per_turn": 4
+  },
+  "ai": {
+    "max_initiatives_per_turn": 2,
+    "max_responses_per_turn": 3,
+    "max_proposals_per_turn": 3,
+    "counter_probability_threshold": 55,
+    "accept_trust_threshold": 55,
+    "refuse_hostility_threshold": 60,
+    "personalities": {
+      "cautious": {"trust_bias": 8, "hostility_bias": -6, "initiative": 0.4, "reputation_value": 0.8, "war_likelihood": 0.3},
+      "expansionist": {"trust_bias": -8, "hostility_bias": 10, "initiative": 0.8, "reputation_value": 0.2, "war_likelihood": 0.9},
+      "conciliatory": {"trust_bias": 12, "hostility_bias": -10, "initiative": 0.6, "reputation_value": 1.0, "war_likelihood": 0.2},
+      "opportunist": {"trust_bias": 0, "hostility_bias": 2, "initiative": 0.9, "reputation_value": 0.4, "war_likelihood": 0.6},
+      "mistrustful": {"trust_bias": -12, "hostility_bias": 12, "initiative": 0.5, "reputation_value": 0.7, "war_likelihood": 0.7},
+      "ambitious": {"trust_bias": -4, "hostility_bias": 6, "initiative": 1.0, "reputation_value": 0.5, "war_likelihood": 0.8},
+      "honourable": {"trust_bias": 10, "hostility_bias": 0, "initiative": 0.5, "reputation_value": 1.4, "war_likelihood": 0.4}
+    },
+    "default_personality": "cautious",
+    "betrayal_trust_threshold": 25,
+    "memory_window_turns": 12
+  }
+}

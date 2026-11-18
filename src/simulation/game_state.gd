@@ -5,7 +5,7 @@ extends RefCounted
 ## sauvegarde, le rejeu déterministe et l'évolution multijoueur.
 
 const FORMAT := "gs1914.state"
-const FORMAT_VERSION := 4  # 2 : échelons et pertes (phase 2) ; 3 : Territorial Force (phase 4) ; 4 : pertes ventilées (phase 6, étape 1)
+const FORMAT_VERSION := 5  # 2 : échelons/pertes ; 3 : Territorial Force ; 4 : pertes ventilées ; 5 : diplomatie Phase III
 
 var scenario_id: String = ""
 var year: int = 1914
@@ -33,6 +33,13 @@ var active_battles: Array = []     # batailles tactiques en cours (sauvegardées
 var human_nations: Array = []      # pays commandés par des humains (solo : le joueur)
 var defense_orders: Array = []     # constructions défensives stratégiques en cours
 
+# Phase III — diplomatie. Tout est JSON-sérialisable et indépendant de l'interface.
+var relations: Dictionary = {}     # "a|b" -> dimensions + historique des relations bilatérales
+var reputation: Dictionary = {}    # nation -> réputation calculée (respect/trahises)
+var personalities: Dictionary = {} # nation -> identifiant de personnalité diplomatique
+# sous-clés : alliances, crises, conferences, peace_treaties, pow, negotiations, history
+var diplomacy: Dictionary = {}
+
 # Index hiérarchique en mémoire (non sérialisé) : évite le recalcul quadratique de descendants().
 var _hierarchy_dirty: bool = true
 var _indexed_size: int = -1
@@ -59,6 +66,13 @@ static func from_scenario(scenario: Dictionary, start_month_value: int, player: 
 		n["industry_allocation"] = {}  # priorités gouvernementales (catégories validées), vides au départ
 		n["research"] = {"projects": [], "status": "OUVERT : arbre technologique non défini"}
 		s.memory[nid] = []
+		s.reputation[nid] = 0.0
+		s.personalities[nid] = "cautious"
+	# Phase III : structures diplomatiques initialisées pour toutes les nations.
+	s.diplomacy = {
+		"alliances": [], "crises": [], "conferences": [], "peace_treaties": [],
+		"pow": {"holders": {}, "exchanges": []}, "negotiations": {}, "history": []
+	}
 	s.regions = (scenario["regions"] as Dictionary).duplicate(true)
 	s.human_nations = [player]
 	for f: Dictionary in scenario["formations"]:
@@ -131,6 +145,17 @@ func active_treaties_between(a: String, b: String, kind: String = "") -> Array:
 func has_transit(grantee: String, grantor: String) -> bool:
 	for t: Dictionary in treaties:
 		if t["status"] == "active" and t["type"] == "transit" and t.get("grantor", "") == grantor and t.get("grantee", "") == grantee:
+			return true
+	# Phase III : un accord de transit accepté crée une alliance avec engagement de passage.
+	if not (diplomacy is Dictionary):
+		return false
+	for a: Dictionary in diplomacy.get("alliances", []):
+		if str(a.get("status", "")) != "active":
+			continue
+		if not bool((a.get("commitments", {}) as Dictionary).get("transit", false)):
+			continue
+		var mem: Array = a.get("members", [])
+		if mem.has(grantee) and mem.has(grantor):
 			return true
 	return false
 
@@ -348,6 +373,7 @@ func to_dict() -> Dictionary:
 		"memory": memory, "battles": battles, "events": events, "orders_history": orders_history,
 		"pending_orders": pending_orders, "next_id": next_id,
 		"active_battles": active_battles, "human_nations": human_nations, "defense_orders": defense_orders,
+		"relations": relations, "reputation": reputation, "personalities": personalities, "diplomacy": diplomacy,
 	}
 
 
@@ -365,6 +391,14 @@ static func from_dict(d: Dictionary) -> GameState:
 	s.events = d["events"]; s.orders_history = d["orders_history"]; s.pending_orders = d["pending_orders"]
 	s.active_battles = d.get("active_battles", []); s.human_nations = d.get("human_nations", [s.player_nation])
 	s.defense_orders = d.get("defense_orders", [])
+	# Compatibilité ascendante : une sauvegarde v4 n'a pas ces champs.
+	s.relations = d.get("relations", {})
+	s.reputation = d.get("reputation", {})
+	s.personalities = d.get("personalities", {})
+	s.diplomacy = d.get("diplomacy", {})
+	if not (s.diplomacy is Dictionary) or s.diplomacy.is_empty():
+		s.diplomacy = {"alliances": [], "crises": [], "conferences": [], "peace_treaties": [],
+			"pow": {"holders": {}, "exchanges": []}, "negotiations": {}, "history": []}
 	_normalize_numbers(s)
 	return s
 
