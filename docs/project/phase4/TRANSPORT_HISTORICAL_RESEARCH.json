@@ -1,0 +1,551 @@
+{
+  "level_legend": "Niveau de vérification : A = fait établi/vérifié, B = bien attesté mais détails approximatifs ou variables, C = estimation/ordre de grandeur, D = incertain (à confirmer). Champs complémentaires : 'importance' = primary|secondary|minor, 'fact' = verifie|estimation. Les chiffres précédés de ~ sont arrondis. Périmètre : janvier 1914 (avant-guerre).",
+  "sources": {
+    "EB11": {
+      "citation": "Encyclopædia Britannica, 11e édition (1910–1914), articles « Europe », « Railways », « Roads and Bridges », « Canals », « Paris », « Berlin », « Wien », « Budapest », « Danube », « Rhine », « Alps » — référence générale contemporaine (décrite de façon générale, sans page inventée).",
+      "reliability": "haute"
+    },
+    "SYB": {
+      "citation": "The Statesman's Year-Book (Macmillan, annuel, fondé en 1864), tableaux statistiques par État : chemins de fer, ports, commerce — source statistique contemporaine.",
+      "reliability": "haute"
+    },
+    "WHIT": {
+      "citation": "Whitaker's Almanack (annuel, fondé en 1868), annuaire de référence comportant itinéraires ferroviaires et renseignements maritimes.",
+      "reliability": "moyenne"
+    },
+    "ATLAS": {
+      "citation": "Stielers Handatlas (Justus Perthes, Gotha) et Andrees Allgemeiner Handatlas (Velhagen & Klasing), atlas généraux contemporains — tracés de voies ferrées, cols et cours d'eau.",
+      "reliability": "haute"
+    },
+    "BAED": {
+      "citation": "Karl Baedeker, Handbücher für Reisende (guides « Northern Germany », « Southern Germany and Austria », « Italy », « France », « Spain and Portugal », éditions d'avant 1914) — itinéraires ferroviaires, gares et descriptions de cols.",
+      "reliability": "moyenne"
+    },
+    "COOK": {
+      "citation": "Thomas Cook's Continental Timetable (publié à partir du milieu du XIXe siècle), horaires et correspondances internationales — atteste de l'existence des liaisons et des nœuds.",
+      "reliability": "moyenne"
+    },
+    "STAT_REICH": {
+      "citation": "Statistisches Jahrbuch für das Deutsche Reich (statistique officielle allemande, publication annuelle depuis 1880) — étendue du réseau ferré, trafic des ports de Hambourg, Brême et Stettin.",
+      "reliability": "haute"
+    },
+    "SCHIV": {
+      "citation": "Wolfgang Schivelbusch, The Railway Journey: The Industrialization of Time and Space in the 19th Century (1977 ; trad. 1986), synthèse historique sur le chemin de fer, les écarts de voie et la gare comme nœud — ouvrage de synthèse, non source de chiffres de 1914.",
+      "reliability": "moyenne"
+    }
+  },
+  "rail_axes": [
+    {
+      "name": "Réseau ferré français — étoile de Paris",
+      "endpoints": "Paris – Lille / Strasbourg / Lyon–Marseille / Bordeaux / Le Havre",
+      "note": "Six gares terminales à Paris : Nord, de l'Est, de Lyon, d'Austerlitz, Montparnasse, Saint-Lazare. Réseau structuré en étoile autour de Paris, exploité par plusieurs compagnies (Nord, Est, PLM, Midi, Ouest, Orléans, État). Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Paris – Berlin (via Aix-la-Chapelle/Cologne)",
+      "endpoints": "Paris – Liège – Aachen – Köln – Berlin",
+      "note": "Liaison directe des réseaux français et allemand par la Belgique et la Rhénanie. Après 1871, la ligne directe Paris–Strasbourg était interrompue à la frontière (Alsace-Lorraine allemande), d'où le détour par Aachen. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Orient Express",
+      "endpoints": "Paris – Strasbourg – Munich – Vienne – Budapest – Constantinople",
+      "note": "Service de la Compagnie Internationale des Wagons-Lits (premier parcours 1883, prolongé jusqu'à Constantinople en 1889). Selon les services : via Belgrade–Sofia, ou via le ferry du Danube Giurgiu–Rousse–Bucarest. Le « Simplon-Orient-Express » est postérieur (1919). Existence vérifiée ; tracés variables.",
+      "level": "B",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Berlin – Varsovie – Moscou",
+      "endpoints": "Berlin – Varsovie – Moscou / Saint-Pétersbourg",
+      "note": "Axe est-ouest majeur. Rupture de voie à la frontière russo-prussienne : 1 435 mm (Prusse) contre 1 524 mm (Empire russe). Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Écartements des réseaux européens (ruptures de voie)",
+      "endpoints": "Europe",
+      "note": "Voie normale 1 435 mm (France, Allemagne, Autriche-Hongrie, Italie, Belgique, Pays-Bas, Suisse, Grande-Bretagne) ; voie russe 1 524 mm (Empire russe, Pologne, Finlande) ; voie ibérique 1 668 mm (Espagne), Portugal ~1 664 mm. Obstacle majeur aux échanges ; transbordement aux frontières. Faits établis ; localisation exacte des installations de transbordement à confirmer.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Südbahn — Vienne – Trieste (via Semmering)",
+      "endpoints": "Vienne – Wiener Neustadt – Semmering – Graz – Maribor – Ljubljana – Trieste",
+      "note": "Chemin de fer autrichien du Sud. Le Semmering (1848–1854) fut le premier chemin de fer de montagne d'Europe. Trieste, port franc, principal débouché maritime de l'Autriche-Hongrie. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Chemin de fer du Brenner",
+      "endpoints": "Vienne – Innsbruck – Brenner – Bolzane – Vérone – Milan",
+      "note": "Ligne ouverte en 1867 ; principal axe autrichien vers l'Italie, franchissement du col à ~1 370 m (altitude approximative). Fait vérifié pour la ligne et l'année.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Chemin de fer du Gotthard",
+      "endpoints": "Lucerne – Gotthard – Bellinzona – Lugano – Milan",
+      "note": "Tunnel du Gotthard ouvert en 1882, ~15 km, alors le plus long tunnel ferroviaire du monde ; axe nord-sud majeur Suisse–Italie. Fait vérifié ; longueur arrondie.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Chemin de fer du Simplon",
+      "endpoints": "Brig – Simplon – Domodossola – Milan",
+      "note": "Tunnel du Simplon ouvert en 1906, ~19,8 km, alors le plus long du monde ; deuxième grand axe Suisse–Italie. Fait vérifié ; longueur arrondie.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Ligne du Fréjus (Mont Cenis)",
+      "endpoints": "Lyon – Chambéry – Modane – Bardonecchia – Turin",
+      "note": "Tunnel ferroviaire du Fréjus, dit « du Mont Cenis », ouvert en 1871, ~13,7 km : premier grand tunnel alpin, principal axe France–Italie. Fait vérifié ; longueur arrondie.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Paris – Lyon – Marseille (PLM, ligne « Impériale »)",
+      "endpoints": "Paris – Lyon – Marseille – Nice – Vintimille",
+      "note": "Axe nord-sud majeur de la France, compagnie du PLM ; prolongement vers la Riviera et l'Italie par Vintimille. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Berlin – Hambourg",
+      "endpoints": "Berlin – Hambourg",
+      "note": "Axe majeur de la Prusse ; Hambourg, plus grand port allemand et port franc depuis 1888, connecté à Berlin et à l'Elbe. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Vienne – Budapest – Belgrade (axe danubien)",
+      "endpoints": "Vienne – Budapest – Szeged/Novi Sad – Belgrade",
+      "note": "Axe de l'Autriche-Hongrie vers les Balkans. Budapest est le grand nœud hongrois (MÁV) : gares Keleti (1884), Nyugati (1877), Déli. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Nœud de Varsovie",
+      "endpoints": "Varsovie – Vienne / Berlin / Moscou / Saint-Pétersbourg",
+      "note": "Varsovie est alors dans l'Empire russe (Pologne du Congrès) ; gare principale « Dworzec Wiedeński » (gare de Vienne) ; correspondances vers Vienne, Berlin, Moscou et Saint-Pétersbourg, avec rupture de voie à la frontière. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Réseau espagnol — Madrid et les Pyrénées",
+      "endpoints": "Madrid – Barcelone – Irun/Hendaye et Portbou/Cerbère – France",
+      "note": "Réseau à écartement ibérique (1 668 mm). Deux passages ferroviaires principaux des Pyrénées (Irun–Hendaye à l'Atlantique, Portbou–Cerbère à la Méditerranée), tous deux avec rupture de voie à la frontière française. Gares de Madrid : Atocha (1892), Chamartín (début XXe, date approximative). Fait vérifié pour l'essentiel.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Italie du Nord — Milan, Turin, Gênes",
+      "endpoints": "Milan – Turin / Gênes / Vérone / Bologne–Florence–Rome",
+      "note": "Réseau nationalisé en 1905 (Ferrovie dello Stato, FS). Milan est le principal nœud du nord (gares Centrale de 1864 et Cadorna de 1901) ; Gênes est le débouché maritime. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Réseau ferroviaire britannique — nœud de Londres",
+      "endpoints": "Londres – Liverpool/Manchester / Bristol / Écosse / Douvres",
+      "note": "Nombreuses gares terminales à Londres : King's Cross, Paddington, Euston, Waterloo, Victoria, St Pancras, Liverpool Street, Marylebone (1907). Métro de Londres depuis 1863. Axes vers le Midland, le pays de Galles, l'Écosse (côtes est et ouest) et Douvres. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Liaison trans-Manche",
+      "endpoints": "Londres – Douvres – (ferry) – Calais – Paris",
+      "note": "Principal lien entre le réseau britannique et les réseaux continentaux, par ferry (aucun tunnel sous la Manche avant 1994). Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Salonique – Belgrade",
+      "endpoints": "Thessalonique (Salonique) – Skopje – Niš – Belgrade",
+      "note": "Ligne achevée vers 1888 (date approximative). Salonique, alors ottomane, est le principal port égéen et le débouché des Balkans, desservi par une branche de l'Orient Express. Fait vérifié pour la ligne ; date approximative.",
+      "level": "B",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Vienne – Prague – Berlin (axe Bohême)",
+      "endpoints": "Vienne – Prague – Dresden/Berlin",
+      "note": "Liaison Autriche–Bohême–Prusse ; Prague est alors autrichienne et constitue un nœud intermédiaire. Fait vérifié.",
+      "level": "B",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Absence de ligne transpyrénéenne centrale (Somport/Canfranc)",
+      "endpoints": "Pyrénées centrales — aucun axe ferroviaire en 1914",
+      "note": "Le tunnel du Somport (Canfranc) n'est ouvert qu'en 1928 : en janvier 1914, les seuls passages ferroviaires des Pyrénées sont Irun/Hendaye et Portbou/Cerbère. Fait vérifié (absence).",
+      "level": "A",
+      "importance": "minor",
+      "fact": "verifie"
+    },
+    {
+      "name": "Réseau russe — Varsovie – Saint-Pétersbourg / Moscou",
+      "endpoints": "Varsovie – Moscou / Saint-Pétersbourg",
+      "note": "Réseau à voie large (1 524 mm), avec peu de liaisons directes vers l'Europe centrale en raison des ruptures de voie. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    }
+  ],
+  "ports": [
+    {
+      "name": "Rotterdam (Pays-Bas)",
+      "note": "Embouchure du Rhin et de la Meuse ; la Nieuwe Waterweg (1872) donne un accès maritime direct. Principal port de transit du bassin rhénan et de la Ruhr, en forte expansion. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Anvers / Antwerpen (Belgique)",
+      "note": "Sur l'Escaut ; grand port de transit pour la Belgique et la Ruhr, avec accès maritime par l'estuaire de l'Escaut ; rivalité commerciale avec Rotterdam. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Hambourg (Allemagne)",
+      "note": "Sur l'Elbe, ~100 km en amont de la mer (approximation) ; port franc depuis 1888 ; plus grand port allemand, principal débouché de l'Allemagne centrale et grand port d'émigration. Fait vérifié ; distance arrondie.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Le Havre (France)",
+      "note": "Embouchure de la Seine ; principal débouché maritime de Paris et du bassin de la Seine ; relié à Paris par voie ferrée (1847) ; grand port transatlantique. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Gênes / Genova (Italie)",
+      "note": "Principal port méditerranéen italien, débouché de Milan et de la vallée du Pô ; relié par voie ferrée au Piémont et à la France (Fréjus/Mont Cenis). Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Trieste (Autriche-Hongrie)",
+      "note": "Port franc, principal débouché commercial de la double monarchie et terminus du Südbahn ; grand port de commerce (café, etc.). La base navale autrichienne était Pola (Pula), distincte. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Thessalonique / Salonique (Empire ottoman)",
+      "note": "Port égéen majeur, terminus de la ligne vers Belgrade et desservi par l'Orient Express ; important centre commercial, avec une grande communauté juive. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Londres / Port of London (Royaume-Uni)",
+      "note": "Sur la Tamise ; le plus grand port du monde vers 1914 (classement par estimation) ; docks majeurs. Existence et rang vérifiés ; classement à confirmer.",
+      "level": "B",
+      "importance": "primary",
+      "fact": "estimation"
+    },
+    {
+      "name": "Liverpool (Royaume-Uni)",
+      "note": "Grand port atlantique, trafic transatlantique et liaisons avec l'Irlande. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Southampton (Royaume-Uni)",
+      "note": "Port transatlantique de passagers, escale des grands paquebots. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Amsterdam (Pays-Bas)",
+      "note": "Port majeur relié au Rhin et à la mer du Nord par le Canal de la Mer du Nord (Nordseekanal, 1876) ; grand centre commercial et financier. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Marseille (France)",
+      "note": "Principal port français de Méditerranée, débouché du Rhône, liaison avec l'Afrique du Nord et le canal de Suez. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Bordeaux (France)",
+      "note": "Port sur la Garonne, commerce avec l'Amérique et l'Afrique ; relié à Paris par la compagnie du Midi. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Dunkerque, Calais, Boulogne (France)",
+      "note": "Ports de la Manche : Dunkerque (charbon, liaison avec le bassin charbonnier du Nord), Calais et Boulogne (trafic trans-Manche vers Douvres). Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Brême / Bremerhaven (Allemagne)",
+      "note": "Ports sur la Weser ; Bremerhaven, grand port d'émigration et de pêche. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Stettin / Szczecin (Allemagne)",
+      "note": "Port principal de l'Oder, débouché de la Silésie et de Berlin ; important chantier naval. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Dantzig / Gdańsk (Allemagne)",
+      "note": "Port de l'embouchure de la Vistule, débouché du bassin de la Vistule ; commerce de céréales. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Odessa (Empire russe)",
+      "note": "Grand port de la mer Noire, principal débouché céréalier de l'Ukraine. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Constantinople (Empire ottoman)",
+      "note": "Port majeur sur le Bosphore, carrefour entre mer Noire et Méditerranée ; terminus de l'Orient Express. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Fiume / Rijeka (Hongrie)",
+      "note": "Port de l'Adriatique relevant de la couronne hongroise, débouché de la Hongrie ; rival de Trieste. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Venise (Italie) et Naples (Italie)",
+      "note": "Venise : port adriatique majeur à l'embouchure du Pô. Naples : grand port du Sud, trafic méditerranéen et transatlantique. Faits vérifiés.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Ports scandinaves : Copenhague, Göteborg, Stockholm, Kristiania (Oslo)",
+      "note": "Ports majeurs du Nord ; Göteborg, débouché suédois en grande partie libre de glace. Fait vérifié ; hiérarchie exacte à confirmer.",
+      "level": "B",
+      "importance": "secondary",
+      "fact": "verifie"
+    }
+  ],
+  "rivers": [
+    {
+      "name": "Rhin (Rhein)",
+      "crossings": "Rotterdam (embouchure, Nieuwe Waterweg), Arnhem, Cologne (pont Hohenzollern 1911), Düsseldorf, Mayence, Mannheim–Ludwigshafen, Strasbourg, Bâle",
+      "note": "Artère navigable la plus active d'Europe ; trafic intense de barges et bassin industriel de la Ruhr. Réglementation internationale : Commission centrale pour la navigation du Rhin, Acte de Mannheim (1868), siège à Mannheim. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Danube (Donau)",
+      "crossings": "Vienne, Bratislava (Pressburg), Budapest, Novi Sad, Belgrade, Giurgiu–Rousse (ferry de l'Orient Express), Galați, Brăila",
+      "note": "Deuxième fleuve d'Europe par la longueur (~2 800 km, approximation). Navigation rendue possible jusqu'à la mer Noire après les travaux des Portes de Fer (1899) ; Commission européenne du Danube (1856) pour le bas Danube. Fait vérifié pour les ouvrages ; longueur arrondie.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Vistule (Wisła)",
+      "crossings": "Cracovie (Galicie autrichienne), Varsovie (ponts), Toruń (Thorn), embouchure à Dantzig (Gdańsk)",
+      "note": "Principal fleuve de Pologne (alors Empire russe, avec la Galicie autrichienne en amont) ; navigation limitée et régularisée ; frontière stratégique entre Prusse et Russie. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Oder (Odra)",
+      "crossings": "Francfort-sur-l'Oder, Küstrin, Stettin (Szczecin)",
+      "note": "Fleuve de Prusse/Brandebourg vers la Baltique ; relié à Berlin par les canaux Oder–Havel et Oder–Spree ; débouché à Stettin. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Seine",
+      "crossings": "Paris (ponts), Rouen, Le Havre / Honfleur (embouchure)",
+      "note": "Navigable jusqu'à Paris ; principal débouché via Le Havre ; reliée à d'autres bassins par des canaux (Canal de la Marne au Rhin, Canal Saint-Denis). Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Pô (Po)",
+      "crossings": "Turin, Plaisance, Ferrare, embouchure près de Venise",
+      "note": "Plus grand fleuve d'Italie ; navigation par barges ; réseau de canaux de la plaine padane (Naviglio Grande, etc.) reliant Milan ; débouché dans l'Adriatique. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Elbe",
+      "crossings": "Dresde, Magdebourg, Hambourg",
+      "note": "Fleuve d'Allemagne centrale ; port de Hambourg ; canaux Elbe–Lübeck (1900) et Elbe–Havel reliant Berlin. Fait vérifié.",
+      "level": "A",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Escaut (Scheldt)",
+      "crossings": "Anvers, Gand, estuaire aux Pays-Bas",
+      "note": "Fleuve d'Anvers ; accès maritime par l'estuaire de l'Escaut, navigabilité internationalisée par traités. Fait vérifié ; détail des traités à confirmer.",
+      "level": "B",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Meuse (Maas)",
+      "crossings": "Liège, Namur, Maastricht, delta avec le Rhin à Rotterdam",
+      "note": "Fleuve navigable du bassin charbonnier liégeois, axe Liège–Rotterdam. Fait vérifié ; classement comme axe secondaire à confirmer.",
+      "level": "B",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Rhône – Saône",
+      "crossings": "Lyon, Avignon, embouchure en Camargue",
+      "note": "Axe navigable Lyon–Marseille et débouché méditerranéen ; le canal Rhône–Rhin est postérieur (achevée en 1932). Fait vérifié.",
+      "level": "B",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Tibre (Tevere)",
+      "crossings": "Rome, Ostie (Ostia)",
+      "note": "Fleuve du Latium, navigation limitée ; port de Rome à Ostie. Fait vérifié pour l'existence ; importance mineure estimée.",
+      "level": "C",
+      "importance": "minor",
+      "fact": "estimation"
+    }
+  ],
+  "passes": [
+    {
+      "name": "Brenner (Brennerpass)",
+      "note": "Principal col alpin (~1 370 m) sur la frontière autrichienne/italienne ; chemin de fer du Brenner (1867), axe Vienne–Innsbruck–Vérone. Fait vérifié ; altitude approximative.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Gotthard",
+      "note": "Col suisse et tunnel ferroviaire (1882, ~15 km) ; axe nord-sud Lucerne–Bellinzona–Milan ; col routier à ~2 100 m (approximation). Fait vérifié pour le tunnel.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Mont Cenis / Fréjus",
+      "note": "Col franco-italien et tunnel ferroviaire du Fréjus (1871, ~13,7 km) ; liaison Lyon/Chambéry–Modane–Bardonecchia–Turin. Fait vérifié ; longueur approximative.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Simplon",
+      "note": "Col suisse-italien et tunnel ferroviaire (1906, ~19,8 km) ; liaison Brig–Domodossola–Milan ; alors le plus long tunnel ferroviaire du monde. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Semmering",
+      "note": "Col autrichien sur la ligne Vienne–Trieste (Südbahn) ; chemin de fer du Semmering (1848–1854), premier chemin de fer de montagne d'Europe. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Pyrénées — Irun / Hendaye",
+      "note": "Passage ferroviaire atlantique des Pyrénées sur la Bidassoa ; rupture de voie (1 435 mm / 1 668 mm) à la frontière franco-espagnole ; axe Paris–Madrid. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Pyrénées — Le Perthus / Portbou–Cerbère",
+      "note": "Passage ferroviaire méditerranéen des Pyrénées ; ligne Barcelone–Perpignan ; rupture de voie à la frontière. Fait vérifié.",
+      "level": "A",
+      "importance": "primary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Pyrénées — Somport / Canfranc",
+      "note": "Col central des Pyrénées ; le tunnel ferroviaire n'ouvre qu'en 1928 : aucune liaison ferroviaire au cœur des Pyrénées en 1914, seulement un col routier. Fait vérifié (absence).",
+      "level": "A",
+      "importance": "minor",
+      "fact": "verifie"
+    },
+    {
+      "name": "Carpates — Jablunkov (Jablunkovský průsmyk)",
+      "note": "Col de Silésie sur la ligne Vienne–Ostrava–Kassa (vers la Galicie/le nord-est hongrois) ; point stratégique du réseau autrichien. Fait vérifié pour l'itinéraire ; importance stratégique à confirmer.",
+      "level": "B",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Carpates — Predeal (Roumanie)",
+      "note": "Col des Carpates méridionales sur la ligne Brașov–Bucarest ; gare de Predeal à ~1 033 m, présentée comme la plus haute gare à voie normale de Roumanie (chiffre approximatif). Fait vérifié pour la ligne.",
+      "level": "B",
+      "importance": "secondary",
+      "fact": "verifie"
+    },
+    {
+      "name": "Carpates — autres percées (Oujok, Verecke, cols de Transylvanie)",
+      "note": "Quelques percées ferroviaires et routières à travers l'arc carpatique (Galicie–Hongrie–Roumanie) ; maillage beaucoup plus lâche qu'en Europe centrale. Détails et itinéraires précis à confirmer.",
+      "level": "C",
+      "importance": "secondary",
+      "fact": "estimation"
+    }
+  ],
+  "uncertainties": [
+    "Aucune recherche en ligne n'a été effectuée : tout repose sur des connaissances historiques établies. Les références citées sont des ouvrages réels et vérifiables, décrits de façon générale, sans numéro de page, date d'édition précise ni citation textuelle inventée.",
+    "Périmètre temporel : janvier 1914, avant la mobilisation d'août 1914. Les réseaux sont alors civils ; les plans ferroviaires militaires (plan Schlieffen, mobilisation russe) existent mais ne sont pas des infrastructures et ne doivent pas être confondus avec l'état du réseau en janvier 1914.",
+    "Frontières de 1914 très différentes d'aujourd'hui : Strasbourg et Metz sont allemandes (Alsace-Lorraine), Trieste et Fiume sont autrichienne/hongroise, Varsovie et la Pologne sont russes, Salonique est ottomane, Dantzig est allemande, la Bohême est autrichienne. Privilégier les noms d'époque.",
+    "Les chiffres de trafic, tonnages, capacités, longueurs de quais et distances ne sont pas fiables au chiffre près sans consulter les annuaires statistiques de l'époque. Ils sont marqués ~ ou 'estimation' ; ne jamais inventer de chiffre exact.",
+    "Écartements (faits établis) : 1 435 mm en Europe occidentale/centrale, 1 524 mm dans l'Empire russe et la Finlande, 1 668 mm en Espagne, ~1 664 mm au Portugal. La localisation précise des ruptures de voie et des installations de transbordement mérite confirmation.",
+    "Altitudes de cols et longueurs de tunnels sont arrondies : Brenner ~1 370 m, Gotthard ~15 km, Fréjus/Mont Cenis ~13,7 km, Simplon ~19,8 km, Semmering non chiffré. Le classement des ports (par exemple « plus grand port du monde » pour Londres) est une estimation.",
+    "Structuration des compagnies : chemin de fer italien nationalisé en 1905 (FS), réseau autrichien largement nationalisé (k.k. Staatsbahnen) ; en France et en Allemagne plusieurs compagnies ou réseaux princiers subsistent. La liste exacte des exploitants en 1914 est à vérifier.",
+    "Dates d'ouverture données comme approximatives : Salonique–Belgrade ~1888, gare de Chamartín « début XXe siècle ». Premier Orient Express 1883, extension à Constantinople 1889, Simplon-Orient-Express 1919 (postérieur à la période).",
+    "Le champ 'level' est un niveau de vérification (A = vérifié, B = bien attesté/approximatif, C = estimation, D = incertain), et non un rang d'importance. L'importance est portée séparément dans 'importance' (primary/secondary/minor)."
+  ]
+}

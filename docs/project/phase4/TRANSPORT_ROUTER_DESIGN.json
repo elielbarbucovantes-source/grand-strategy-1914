@@ -1,0 +1,105 @@
+{
+  "algorithm": "Multi-modal constrained shortest path: a deterministic label-setting Dijkstra variant over a 90-region time-expanded graph. Each state is (region, mode, link_entry_state). Edge relaxation uses a non-negative scalar cost = travel_time + mode_change_penalty + congestion_delay + control/treaty_delay. Ties are broken by a fixed total order (cost, then arrival_tick, then link_id, then mode_rank, then region_id) so results are bit-for-bit reproducible across runs/machines. Priority queue is a binary min-heap keyed by that total order; no floating point, all costs are integer ticks (e.g. 1 tick = 1 hour). A single Node owns the Router; all public calls are single-threaded on the main loop, so no locks are needed. Path reconstruction stores predecessor pointers in the settled label table. Because costs are non-negative and integer, Dijkstra optimality holds; capacity/state effects are folded into per-relaxation integer costs rather than dynamic global multipliers, preserving determinism and avoiding any unlimited global bonus.",
+  "state": {
+    "graph": {
+      "regions": "90 nodes, id 0..89, fixed stable order; adjacency lists pre-sorted by neighbor id for deterministic iteration.",
+      "layers": ["rail", "road", "port", "river", "mountain"],
+      "link": {
+        "id": "stable int, globally unique",
+        "a": "region id",
+        "b": "region id",
+        "mode": "enum Layer",
+        "base_time": "int ticks, >0",
+        "capacity": "int units per tick window, >=0",
+        "reverse_ok": "bool (rail/road/port/river usually bidirectional; mountain passes may be one-way)",
+        "river_direction": "optional flow direction for river; upstream costs extra",
+        "port_requires_coastal": "bool"
+      },
+      "mode_change": {
+        "matrix": "int[N][N] penalty ticks to switch from mode i to mode j at a region; diagonal 0; symmetric; fixed constants in data, never scaled globally",
+        "node_transfer": "per-region transfer time when changing mode (e.g. rail depot, port wharf)",
+        "applied_when": "only on the relaxation where incoming mode != outgoing mode"
+      }
+    },
+    "link_runtime_state": {
+      "values": ["OPEN", "DEGRADED", "INTERRUPTED", "REPAIR"],
+      "OPEN": "base_time, full capacity",
+      "DEGRADED": "time_multiplier_x100 (e.g. 150 = +50%) and capacity_multiplier_x100 (e.g. 50 = half); deterministic int math",
+      "INTERRUPTED": "not traversable; skipped entirely, no fallback bonus",
+      "REPAIR": "treated as INTERRUPTED until repair_done_tick; then auto-transitions to OPEN (or DEGRADED per data)",
+      "repair": { "start_tick": "int", "end_tick": "int", "result_state": "OPEN|DEGRADED" },
+      "state_timeline": "each link keeps a sorted list of {from_tick, state, time_mult_x100, cap_mult_x100}; lookup by current sim tick via binary search. No randomness."
+    },
+    "capacity_model": {
+      "window": "capacity is per discrete tick window W (e.g. demand for the next 24 ticks is reserved at route commit)",
+      "usage": "per-link int used_units[window] tracked by the routing manager, updated at path commit, not during search",
+      "free_capacity": "floor(link.capacity * cap_mult_x100 / 100) - used_units[window]",
+      "edge_cost": "base_time_adjusted + ceil(demand_units * congestion_factor / max(free_capacity,1)) when free_capacity > 0; edge skipped when free_capacity <= 0",
+      "no_global_bonus": "There is no global speed multiplier or team-wide bonus. All modifiers are local, per-link, per-tick, integer, and capped by the multipliers in state timelines. Congestion can only increase cost or block; it never decreases below base_time.",
+      "reservation": "at commit, each accepted path atomically adds demand_units to every traversed link's usage for the relevant windows; if any link lacks capacity the whole path is rejected and the search reruns with those links blocked (cache invalidated)."
+    },
+    "territory": {
+      "owner": "per-region int faction id, or -1 neutral",
+      "transit_treaty": "bool[ faction ][ faction ] matrix from game state; symmetric unless data says otherwise",
+      "rule": "entering a region requires owner == self, or owner == -1, or treaty[self][owner] == true; otherwise the region is impassable",
+      "transit_delay": "int ticks added when entering a foreign treaty region (e.g. customs), from fixed data",
+      "control_of_link": "optional: if either endpoint is hostile and no treaty, even an otherwise open link is blocked"
+    },
+    "cache": {
+      "key": "hash of (source_region, target_region, demand_units, sim_tick_window, mode_allow_mask, owner_vector, treaty_matrix_version, link_state_version, usage_vector_version)",
+      "value": "{path: Array[int link ids], total_cost: int, computed_at_tick: int}",
+      "policy": "LRU with fixed max entries (e.g. 256); deterministic eviction by (last_used_tick, insertion_seq, key)",
+      "invalidation": {
+        "on_event": ["region_owner_changed", "treaty_changed", "link_state_changed", "repair_completed", "tick_window_rolled", "path_committed_usage_changed", "mode_rules_changed"],
+        "mechanism": "monotonic version counters per class; on event bump the relevant version, and any cache entry whose key embeds that version becomes stale and is purged lazily on lookup and eagerly on bump for small maps"
+      },
+      "safety": "cache is pure function of key; never store mutable arrays by reference; return copies. A miss always recomputes from current state."
+    },
+    "integration_points": [
+      "Router.gd singleton (autoload) exposing func find_path(src:int, dst:int, demand:int, mode_mask:int) -> Dictionary and func commit_path(path:Dictionary) -> bool.",
+      "MapData resource loaded once from data/routes.json (or .tres): regions, links, base times, capacities, mode-change matrix, transfer times.",
+      "GameState signal bus: emit region_owner_changed, treaty_changed, link_state_changed( link_id, new_state ), repair_completed( link_id ) -> Router.invalidate(tag).",
+      "SimClock:Router uses current tick window; connect tick_window_rolled signal to invalidate window-scoped entries.",
+      "MovementOrder/planner calls Router.find_path, displays total_cost and per-link mode changes; on commit, Router reserves capacity and emits path_committed(link_ids, demand).",
+      "Save/load: serialize link state timelines, usage vectors, and version counters; cache itself is NOT serialized, it is rebuilt after load."
+    ],
+    "limits": [
+      "90 nodes * up to 5 modes => at most 450 label states; edges <= 5 per pair, so Dijkstra is O((V*M + E*M) log(V*M)) and bounded/small.",
+      "Integer-only arithmetic avoids floating drift; time multipliers use x100 fixed point with explicit floor/ceil rules.",
+      "Capacity is reserved per window, not continuous; a path spanning many windows must reserve in each and can fail in any one.",
+      "INTERRUPTED/REPAIR links are hard blockers, never rerouted with a hidden bonus; if no path exists the Router returns {found:false, reason} deterministically.",
+      "Transit treaties are binary and global per faction pair; no partial or negotiated transit is modeled.",
+      "Mountain layer is slow and capacity-limited; it is just another mode, not an always-available fallback.",
+      "No dynamic obstacle prediction; link states are taken as current at search time and a commit may fail if state changes before reservation (caller retries).",
+      "Determinism assumes all inputs (data table order, version counters, current tick) are fixed for a given call; any nondeterministic upstream data breaks reproducibility."
+    ]
+  },
+  "capacity_model": {
+    "type": "per-link per-tick-window integer reservation with congestion cost, no global bonus",
+    "formula": "available = floor(capacity * cap_mult_x100 / 100) - used; if available <= 0 skip edge; else added_cost = ceil(demand * congestion_factor / available)",
+    "reservation": "atomic at commit across all windows traversed; all-or-nothing, rollback on failure",
+    "invariants": ["added_cost >= 0", "base_time_adjusted >= base_time when degraded", "effects are local to the link, never a global multiplier"]
+  },
+  "cache": {
+    "type": "versioned LRU keyed by full query + state versions",
+    "max_entries": 256,
+    "invalidation": "bump version counters on owner/treaty/link-state/repair/tick-window/usage changes; stale entries purged on lookup and eagerly on event",
+    "determinism": "LRU eviction uses (last_used_tick, insertion_seq, key) total order; no wall-clock time in keys"
+  },
+  "integration_points": [
+    "Autoload Router.gd with find_path()/commit_path()/invalidate()",
+    "MapData resource from data/routes.json",
+    "GameState signals -> Router.invalidate",
+    "SimClock tick_window_rolled signal",
+    "MovementOrder planner consumes paths and reservations",
+    "Save/load serializes state + versions, rebuilds cache"
+  ],
+  "limits": [
+    "bounded to 90 regions and 5 modes",
+    "integer fixed-point only",
+    "capacity per discrete window, all-or-nothing commit",
+    "hard blocks for interrupted/repair and hostile territory",
+    "no unlimited global bonus or hidden fallback",
+    "no predictive state changes; caller retries on commit failure"
+  ]
+}
