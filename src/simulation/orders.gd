@@ -35,6 +35,9 @@ const CONCLUDE_CONFERENCE := "conclude_conference"
 const DISRUPT_LINK := "disrupt_link"
 const REPAIR_LINK := "repair_link"
 const SET_PORT_STATUS := "set_port_status"
+# Phase V — économie
+const TRADE := "trade"
+const INVEST_RESOURCE := "invest_resource"
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
@@ -135,6 +138,14 @@ static func repair_link(nation: String, link: String, turns: int = 2) -> Diction
 
 static func set_port_status(nation: String, port: String, status: String) -> Dictionary:
 	return {"type": SET_PORT_STATUS, "nation": nation, "port": port, "status": status}
+
+
+static func trade(nation: String, from: String, to: String, resource: String, amount: float) -> Dictionary:
+	return {"type": TRADE, "nation": nation, "from": from, "to": to, "resource": resource, "amount": amount}
+
+
+static func invest_resource(nation: String, region: String, resource: String, amount: float) -> Dictionary:
+	return {"type": INVEST_RESOURCE, "nation": nation, "region": region, "resource": resource, "amount": amount}
 
 
 static func message(nation: String, channel: String, to: Array, text: String) -> Dictionary:

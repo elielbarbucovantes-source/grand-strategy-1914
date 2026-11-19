@@ -1,0 +1,37 @@
+{
+  "exists": [
+    "economy_system.gd :: EconomySystem.region_output — production régionale = potential × capacity × infrastructure ; null si l'une des données (potential[resource], exploitation_capacity, infrastructure_level) manque ; null propagé tel quel, jamais remplacé par 0.",
+    "economy_system.gd :: EconomySystem.national_balance — {produced, accessible, delivered} par ressource : produced = somme des régions contrôlées ; accessible = somme des régions reliées à la capitale ; delivered toujours null ; propagation : au premier region_output null, produced et reachable deviennent null et la boucle s'arrête (break) : une région manquante annule le bilan des régions suivantes.",
+    "economy_system.gd :: EconomySystem.validate_allocation — validation : clés dans rules[\"economy\"][\"industry_categories\"], valeurs non négatives, somme des priorités ≤ 100,01 %.",
+    "economy_system.gd :: EconomySystem.apply_allocation — enregistrement state.nations[nation][\"industry_allocation\"] = duplicata de l'allocation transmise.",
+    "game_rules.json :: economy — status VALIDÉ (modèle C) ; industry_categories VALIDÉ (5 : industrie_militaire_terrestre, industrie_aeronautique, industrie_navale, industrie_civile, munitions_et_equipements) ; resource_categories OUVERT (R-03, vide) ; budget_status OUVERT (ECO-05, structure seule).",
+    "transport_router.gd :: TransportRouter — Dijkstra multimodal (rail/road/river/maritime), capacités des liaisons, état interrupted/repairing/degraded, accords de transit (state.has_transit), pénalité de changement de mode (MODE_CHANGE), calcul du bottleneck sur l'itinéraire retenu.",
+    "force_ledger.gd :: ForceLedger — comptabilité nationale des pertes (MIL-01) : ventilation ventilée (tués, blessés remained_in_unit/convalescing/long_term/returned/unfit, disparus par cause, prisonniers), invariant personnel, migrations v1→v2 (legacy_unventilated), reconnexion des survivants (rejoin_and_remove)."
+  ],
+  "partial": [
+    "economy_system.gd :: national_balance — champ `delivered` : aucun calcul de livraison, toujours null (seul écart produit/accessible signalé).",
+    "economy_system.gd :: national_balance — règle de null : propagation + break (voir exists) ; le bilan d'une nation s'annule à la première région contrôlée sans donnée, sans indiquer quelle région.",
+    "game_rules.json :: economy — budget OUVERT (ECO-05) : seule la structure du statut existe, aucune règle de budget définie.",
+    "force_ledger.gd :: monthly_recovery — puissances non-MIL-01 (bac à sable) : les convalescents sont conservés (aucun mécanisme de retour) ; les retours pour les puissances historiques dépendent de MobilizationSystem.incorporate.",
+    "force_ledger.gd :: book_battle_losses — appel impossible sans forces_rules.json (bloc casualties, cfg()) : la source de paramètres n'est pas lue ici et la ventilation repose sur celle-ci."
+  ],
+  "missing": [
+    "Stocks nationaux — déclarés VALIDÉS dans game_rules.json :: economy.status, mais aucun système de stock n'existe dans les fichiers audités (aucun champ stock/inventory dans economy_system.gd, force_ledger.gd ou les règles économiques).",
+    "Population — aucune donnée ni mécanisme de population dans les fichiers audités (le système de pertes traite les soldats des formations/unités, pas la population).",
+    "Données de ressources — resource_categories = [] (OUVERT R-03) : le moteur n'en fixe aucune et aucune donnée de scénario est présente dans les fichiers audités ; les catégories de ressources restent à fournir par les données.",
+    "Effets de l'allocation industrielle — les 5 catégories sont VALIDÉES et enregistrées (apply_allocation), mais aucun effet n'est appliqué dans les fichiers audités : « Leurs effets dépendent de capacités encore inconnues » ; aucun consommateur de industry_allocation visible.",
+    "Mécanisme de livraison — delivered toujours null ; aucun calcul produit → accessible → livré dans les fichiers audités.",
+    "Règles de budget économique — ECO-05 ouvert : structure seule, pas de règle de budget définie.",
+    "États de guerre côtés économiques — pas de fichier ou module économique distinct en dehors de economy_system.gd dans ce périmètre audité."
+  ],
+  "integration_points": [
+    "game_rules.json [\"economy\"] ↔ EconomySystem.validate_allocation — les 5 catégories VALIDÉES d'industrie servent de source de validation des ordres d'allocation (rules[\"economy\"][\"industry_categories\"]).",
+    "EconomySystem.region_output → state.regions[rid][\"economy\"] — contrat de données : potential (Dict keyé par ressource), exploitation_capacity, infrastructure_level fournis par GameState/scénario.",
+    "EconomySystem.national_balance → LogisticsSystem.accessible_regions(state, world, nation) — accessible = régions reliées à la capitale selon le système de logistique ; aucun appel direct à TransportRouter dans les fichiers audités.",
+    "EconomySystem.apply_allocation → state.nations[nation][\"industry_allocation\"] — aucun lecteur visible dans les fichiers audités.",
+    "TransportRouter.accessible → LogisticsSystem.friendly + state.has_transit — liens visibles vers le système de logistique ; pas d'appel visible vers EconomySystem dans les fichiers audités.",
+    "ForceLedger → MobilizationSystem (incorporate, communication, _region_has_battle), LogisticsSystem.accessible_regions, state.regions — pertes liées à l'accessibilité logistique et à la mobilisation.",
+    "ForceLedger → data/rules/forces_rules.json [\"casualties\"] — source de paramètres de ventilation (non lue ici, cfg())."
+  ],
+  "notes": "Audit porté sur les fichiers spécifiés : economy_system.gd, game_rules.json, transport_router.gd, force_ledger.gd. Modèle économique existant : production régionale = potential × capacity × infrastructure avec propagation de null (donnée manquante → null, jamais 0). Catégories de ressources OUVERTES (R-03) : le moteur n'en fixe aucune, game_rules.json les laisse vides, les données de scénario doivent les fournir. Industrie : 5 catégories VALIDÉES, allocation enregistrée (state.nations[nation][\"industry_allocation\"]) sans effets appliqués. Logistique : le bilan économique détermine l'accessibilité via LogisticsSystem (TransportRouter.accessible est un calcul d'itinéraires distinct, avec capacités et état des liaisons). Confirmé absents des fichiers audités : stocks, population, données de ressources, effets d'allocation, mécanisme de livraison (delivered toujours null), règles de budget (ECO-05)."
+}

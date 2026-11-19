@@ -22,7 +22,7 @@ const FORMAT := "gs1914.save"
 ## messages, wars et mémoire existants sont conservés tels quels.
 ## Version 6 (Phase IV) : état du réseau de transport (conditions, flux, réparations).
 ## Version 5 MIGRÉE sans perte : le champ absent est initialisé à vide, tout le reste est conservé.
-const FORMAT_VERSION := 6  # 6 : réseau de transport Phase IV ; 5 : diplomatie Phase III
+const FORMAT_VERSION := 7  # 7 : économie Phase V ; 6 : transport Phase IV ; 5 : diplomatie Phase III
 const ENGINE := "Godot 4.7.2"
 
 ## T3 : l'analyseur décimal de Godot 4.7 n'est pas correctement arrondi (p.ex. la chaîne
@@ -114,6 +114,8 @@ static func load_save(path: String, world: WorldMap, rules: Dictionary) -> Dicti
 		return {"error": "sauvegarde de l'ancien format (version 1, antérieure à la refonte de la mobilisation) : "
 			+ "migration impossible de façon fiable (réservoirs non échelonnés, données historiques corrigées, pertes non comptabilisées). "
 			+ "Commencez une nouvelle partie."}
+	if int(env.get("format_version", -1)) == 6:
+		return _load_v6(env, world, rules)
 	if int(env.get("format_version", -1)) == 5:
 		return _load_v5(env, world, rules)
 	if int(env.get("format_version", -1)) == 4:
@@ -153,6 +155,32 @@ static func list_saves(dir_path: String) -> PackedStringArray:
 	return out
 
 
+## Initialise les structures économiques absentes d'une sauvegarde anterieure a la Phase V.
+static func _ensure_economy(state: GameState, rules: Dictionary) -> void:
+	if state.economy is Dictionary and not (state.economy.get("regions") as Dictionary).is_empty():
+		return
+	EconomySystem.initialize(state, rules)
+
+
+## Migration v6 -> v7 (Phase V) : mêmes contrôles, empreinte calculée sans le champ economy.
+static func _load_v6(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dictionary:
+	if int(env.get("rules_format_version", -1)) != int(rules.get("format_version", 0)):
+		return {"error": "version des règles incompatible"}
+	if env.get("world_sha256", "") != world.source_sha256:
+		return {"error": "données cartographiques différentes de celles de la sauvegarde"}
+	if not (env.get("state") is Dictionary):
+		return {"error": "état absent"}
+	var state := GameState.from_dict(env["state"])
+	var d := state.to_dict()
+	d["format_version"] = 6
+	d.erase("economy")
+	var once := JSON.stringify(d, "", true, true)
+	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
+		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
+	_ensure_economy(state, rules)
+	return {"state": state, "migrated_from": 6}
+
+
 ## Migration v5 -> v6 (Phase IV) : mêmes contrôles, empreinte calculée sans le champ transport.
 static func _load_v5(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dictionary:
 	if int(env.get("rules_format_version", -1)) != int(rules.get("format_version", 0)):
@@ -165,9 +193,11 @@ static func _load_v5(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 	var d := state.to_dict()
 	d["format_version"] = 5
 	d.erase("transport")
+	d.erase("economy")
 	var once := JSON.stringify(d, "", true, true)
 	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
+	_ensure_economy(state, rules)
 	return {"state": state, "migrated_from": 5}
 
 
@@ -184,11 +214,12 @@ static func _load_v4(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 	var d := state.to_dict()
 	d["format_version"] = 4
 	# L'empreinte d'origine a été calculée avant l'ajout des champs Phase III.
-	for k: String in ["relations", "reputation", "personalities", "diplomacy"]:
+	for k: String in ["relations", "reputation", "personalities", "diplomacy", "transport", "economy"]:
 		d.erase(k)
 	var once := JSON.stringify(d, "", true, true)
 	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
+	_ensure_economy(state, rules)
 	return {"state": state, "migrated_from": 4}
 
 
@@ -205,8 +236,11 @@ static func _load_v3(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 	# L'empreinte d'origine a été calculée avec le numéro de format 3 de l'état.
 	var d := state.to_dict()
 	d["format_version"] = 3
+	d.erase("transport")
+	d.erase("economy")
 	var once := JSON.stringify(d, "", true, true)
 	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
 	ForceLedger.migrate_state(state)
+	_ensure_economy(state, rules)
 	return {"state": state, "migrated_from": 3}

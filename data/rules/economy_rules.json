@@ -1,0 +1,64 @@
+{
+  "format": "gs1914.economy_rules",
+  "format_version": 1,
+  "_statut": "Phase V : parametres de modele PROPOSES. Les valeurs historiques sont dans data/game/economic_baseline.json avec leur niveau de fiabilite.",
+  "resources": ["coal", "iron", "oil", "wood", "grain", "other_ores"],
+  "sectors": ["agriculture", "industry", "mines", "transport", "services", "administration"],
+  "industry_categories": ["heavy", "manufacturing", "military", "processing", "energy"],
+  "population": {
+    "active_share": 0.52,
+    "urban_workforce_share": 0.45,
+    "birth_rate_per_1000": 24,
+    "death_rate_per_1000": 18,
+    "growth_cap_per_month": 0.004,
+    "mobilization_workforce_factor": 0.75,
+    "food_per_1000_per_month": 0.9
+  },
+  "resources_model": {
+    "exploitation_cap_per_month": 0.02,
+    "investment_effect": 0.15,
+    "workforce_effect": 0.5,
+    "infrastructure_effect": 0.35,
+    "minimum_infrastructure": 0.1,
+    "deposit_years": 30
+  },
+  "industry_model": {
+    "capacity_use_max": 1.0,
+    "inputs": {"heavy": {"coal": 0.5, "iron": 0.3}, "manufacturing": {"coal": 0.15, "iron": 0.1},
+      "military": {"coal": 0.3, "iron": 0.35}, "processing": {"grain": 0.3, "wood": 0.1},
+      "energy": {"coal": 0.6}},
+    "workforce_per_capacity": 120,
+    "maintenance_share": 0.05
+  },
+  "military_supply": {
+    "needs_per_soldier": {"grain": 0.0012, "coal": 0.0004},
+    "well_supplied_threshold": 0.9,
+    "strained_threshold": 0.6,
+    "strained_morale_modifier": -2.0,
+    "shortage_morale_modifier": -5.0,
+    "shortage_soldier_loss_cap": 0.002
+  },
+  "replacement": {
+    "monthly_fraction_of_reserves": 0.04,
+    "min_workforce_pool": 5000,
+    "materials_per_soldier": {"iron": 0.01, "coal": 0.005},
+    "training_months": 2
+  },
+  "trade": {
+    "route_capacity_share": 0.25,
+    "transfer_months": 1,
+    "require_transport_route": true,
+    "max_imports_per_nation_per_month": 6
+  },
+  "ai": {
+    "max_allocation_changes_per_month": 1,
+    "max_trade_orders_per_month": 2,
+    "personalities": {
+      "industrial": {"military": 0.35, "heavy": 0.3, "agriculture": 0.15, "stocks": 0.1, "trade": 0.1},
+      "stability": {"military": 0.15, "heavy": 0.15, "agriculture": 0.4, "stocks": 0.2, "trade": 0.1},
+      "commercial": {"military": 0.15, "heavy": 0.2, "agriculture": 0.15, "stocks": 0.1, "trade": 0.4},
+      "autarkic": {"military": 0.25, "heavy": 0.3, "agriculture": 0.25, "stocks": 0.2, "trade": 0.0}
+    },
+    "default_personality": "stability"
+  }
+}

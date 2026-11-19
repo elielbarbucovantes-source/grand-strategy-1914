@@ -56,7 +56,8 @@ func _build() -> void:
 	layer_bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
 	layer_bar.offset_top = 42
 	add_child(layer_bar)
-	for layer: String in ["rail", "road", "river", "maritime", "ports", "interruptions", "capacity"]:
+	for layer: String in ["rail", "road", "river", "maritime", "ports", "interruptions", "capacity",
+		"resources", "industry", "population", "agriculture", "stocks"]:
 		_button(layer_bar, layer, func() -> void:
 			map_view.toggle_layer(layer)
 			map_view.queue_redraw())
@@ -310,8 +311,32 @@ func _page_economy() -> void:
 		var bal := EconomySystem.national_balance(session.state, session.world, session.state.player_nation, cats)
 		for k: String in bal:
 			t += "%s : produit %s ; accessible %s ; livré %s\n" % [k, str(bal[k]["produced"]), str(bal[k]["accessible"]), str(bal[k]["delivered"])]
-	t += "\nBudget mensuel : %s — structure prévue, catégories et formules OUVERTES (ECO-05).\nCommerce : accords enregistrables (onglet Diplomatie), effets OUVERTS (ECO-04)." % NOT_FUNCTIONAL
+	var me := session.state.player_nation
+	var sum := EconomySystem.summary(session.state, me)
+	var demo: Dictionary = sum["demography"]
+	var stocks: Dictionary = sum["stocks"]
+	t += "\n[b]Phase V — démographie[/b] : population %s ; main-d'œuvre %s.\n" % [
+		str(demo.get("population", 0)), str(demo.get("workforce", {}))]
+	t += "[b]Capacité industrielle[/b] : %.2f ; [b]stocks[/b] : %s.\n" % [
+		float(sum["industry_capacity"]), str(stocks)]
+	t += "[b]Dépendances commerciales[/b] : %s ; [b]remplacement[/b] : %s.\n" % [
+		str(sum["dependencies"]), str(sum["replacement"])]
+	var dep: Dictionary = sum["dependencies"]
+	if not dep.is_empty():
+		t += "[color=#b03a2e]Ressources dépendantes d'importations : %s[/color]\n" % str(dep.keys())
 	_rich(box, t)
+	_rich(box, "\n[b]Priorités industrielles[/b] (catégories validées)")
+	var current: Dictionary = session.state.nations[me].get("industry_allocation", {})
+	for cat: String in session.rules["economy"]["industry_categories"]:
+		var row := HBoxContainer.new()
+		box.add_child(row)
+		_label(row, "%s : %s" % [cat, _num(current.get(cat, 0))], 12)
+		var minus := _button(row, "−10", func() -> void:
+			var a := current.duplicate(); a[cat] = maxf(0.0, float(a.get(cat, 0)) - 10.0)
+			_queue(Orders.industry_allocation(me, a)))
+		var plus := _button(row, "+10", func() -> void:
+			var a := current.duplicate(); a[cat] = float(a.get(cat, 0)) + 10.0
+			_queue(Orders.industry_allocation(me, a)))
 
 
 func _page_industry() -> void:

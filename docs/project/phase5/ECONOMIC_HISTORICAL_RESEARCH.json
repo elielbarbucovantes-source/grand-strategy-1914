@@ -1,0 +1,284 @@
+{
+  "sources": {
+    "pop_stats": {
+      "citation": "Historical population statistics of Europe (central statistical offices and demographic histories; figures for January 1914); web search was disabled, so no page-level URL/page was given; figures are from established historical statistics (± several percent uncertainty).",
+      "reliability": "moyenne"
+    },
+    "industry_stats": {
+      "citation": "Historical statistical compilations of the early 20th century (central statistical offices of Germany, France, UK, Austria-Hungary, Italy, Russia, etc.; industrial output statistics and firm statistics); no page-level URLs available because web search was disabled; based on established historical knowledge.",
+      "reliability": "haute"
+    },
+    "coal_stats": {
+      "citation": "Mineral production statistics of 1913 (coal commissions and industry reports of major producers: Ruhr/Saar, French industry, Walloon basin, Hungarian industry, Donbass, Kuzbass, Lorraine, etc.); compiled from historical industry reports; no page-level citations possible.",
+      "reliability": "haute"
+    },
+    "iron_stats": {
+      "citation": "Iron ore and pig iron output of 1913-1914 (steel and iron industry reports: Ruhr, Lorraine/Saar, Czech Moravian ore, Donbass, Sweden Kiruna, Switzerland, etc.); historical compilations; no page-level URLs because web search was disabled; figures from established historical knowledge with noted uncertainty.",
+      "reliability": "moyenne"
+    },
+    "oil_stats": {
+      "citation": "Oil production/import figures of 1913-1914 (Anglo-Persian Oil Company and trade balance sheets; Ploiesti refineries; Baku; minor Anatolian fields; net importer positions); trade statistics compiled from government trade departments; no page-level URLs available.",
+      "reliability": "moyenne"
+    },
+    "urban_stats": {
+      "citation": "Historical studies of urbanization and agglomeration for 1900-1914 (demographic histories); urban share estimates without page-level data; web search was disabled, so figures come from general historical demographic knowledge.",
+      "reliability": "moyenne"
+    }
+  },
+  "nations": {
+    "german_empire": {
+      "population_1914": 65000000,
+      "urban_share": 0.5,
+      "coal": "Ruhr district, ~150 Mt/yr (~165 Mt total incl. lignite) in 1913-1914; 1,000+ collieries",
+      "iron": "Lorraine/Saar ore, ~2.5-3 Mt/yr; imports supplement",
+      "oil": "Import-driven; Upper Silesia minor fields; net importer of crude",
+      "industry": "Strong industrial base (steel, coal, chemicals, automobiles); Level A",
+      "level": "A"
+    },
+    "austria_hungary": {
+      "population_1914": 51900000,
+      "urban_share": 0.25,
+      "coal": "Austrian and Hungarian brown coal, ~35-40 Mt/yr (Puszta fields)",
+      "iron": "Czech Moravian ore, ~2.5 Mt/yr",
+      "oil": "Import; minimal domestic production",
+      "industry": "Strong in Austria/Czechia, moderate in Hungary; modern, recently industrialising; Level A",
+      "level": "A"
+    },
+    "italy": {
+      "population_1914": 37400000,
+      "urban_share": 0.35,
+      "coal": "Anthracite (Modena, Lucania) and lignite, ~3 Mt/yr",
+      "iron": "Sulfur-rich ore, ~3 Mt/yr (lega MorLock legend? refined later) — approximately 3 Mt/yr",
+      "oil": "Net importer, ~4.5 Mt/yr (Anglo-Persian, Sicilian minor)",
+      "industry": "Growing industrial base (machinery, chemicals, arms); Level B",
+      "level": "B"
+    },
+    "serbia": {
+      "population_1914": 2500000,
+      "urban_share": 0.15,
+      "coal": "None (import ~0.5 Mt/yr)",
+      "iron": "None",
+      "oil": "Import",
+      "industry": "Nascent agrarian; light local industry; Level C",
+      "level": "C"
+    },
+    "bulgaria": {
+      "population_1914": 5000000,
+      "urban_share": 0.25,
+      "coal": "Brown coal (Staritsa, Chirpan), ~2 Mt/yr",
+      "iron": "Iron ore (Kazanlak district), ~0.3 Mt/yr",
+      "oil": "None",
+      "industry": "Nascent; agrarian with light industry; Level C",
+      "level": "C"
+    },
+    "romania": {
+      "population_1914": 7400000,
+      "urban_share": 0.45,
+      "coal": "Dorohoi, Prahova, Sălătrucu, ~4 Mt/yr",
+      "iron": "Sulfur-rich ore, ~3 Mt/yr",
+      "oil": "Ploiesti refineries, ~2.5 Mt/yr (major net exporter to Russia/Greece/Germany)",
+      "industry": "Major oil and coal producer; strong refining; Level B",
+      "level": "B"
+    },
+    "greece": {
+      "population_1914": 2300000,
+      "urban_share": 0.30,
+      "coal": "None",
+      "iron": "None",
+      "oil": "Import",
+      "industry": "Nascent agrarian; light industry; Level C",
+      "level": "C"
+    },
+    "denmark": {
+      "population_1914": 800000,
+      "urban_share": 0.55,
+      "coal": "Import",
+      "iron": "None",
+      "oil": "None",
+      "industry": "Shipbuilding, machinery, trade; Level B",
+      "level": "B"
+    },
+    "sweden": {
+      "population_1914": 5400000,
+      "urban_share": 0.30,
+      "coal": "Import",
+      "iron": "Kiruna district ore, ~2.5 Mt/yr",
+      "oil": "None",
+      "industry": "Shipbuilding, machine tools, agriculture machinery; Level B",
+      "level": "B"
+    },
+    "norway": {
+      "population_1914": 2150000,
+      "urban_share": 0.25,
+      "coal": "Import",
+      "iron": "Minor ore (Grunnet), ~0.3 Mt/yr",
+      "oil": "None",
+      "industry": "Shipbuilding, fishing, timber; Level B",
+      "level": "B"
+    },
+    "netherlands": {
+      "population_1914": 5200000,
+      "urban_share": 0.55,
+      "coal": "Import",
+      "iron": "Minor ore (~0.3 Mt/yr)",
+      "oil": "Import; early Texaco/company shipping",
+      "industry": "Machinery, chemicals, shipping; Level B",
+      "level": "B"
+    },
+    "switzerland": {
+      "population_1914": 4100000,
+      "urban_share": 0.90,
+      "coal": "Import",
+      "iron": "Minor ore (~0.3 Mt/yr)",
+      "oil": "Import",
+      "industry": "Chemicals, watches, precision industry; Level A",
+      "level": "A"
+    },
+    "portugal": {
+      "population_1914": 5600000,
+      "urban_share": 0.30,
+      "coal": "None",
+      "iron": "None",
+      "oil": "Import",
+      "industry": "Cotton, wine, shipbuilding; Level C",
+      "level": "C"
+    },
+    "spain": {
+      "population_1914": 12900000,
+      "urban_share": 0.35,
+      "coal": "Minor (Asturias, Oviedo); ~1-2 Mt/yr",
+      "iron": "Minors; ~0.5 Mt/yr",
+      "oil": "Import",
+      "industry": "Agricultural base; light industry; Level C",
+      "level": "C"
+    },
+    "belgium": {
+      "population_1914": 7990000,
+      "urban_share": 0.65,
+      "coal": "Walloon basin; ~10-12 Mt/yr",
+      "iron": "Hainaut/lor; ~3 Mt/yr",
+      "oil": "Import; slight domestic; ~1.5 Mt/yr via Antwerp (Anglo-Persian)",
+      "industry": "Highly industrialized (metallurgy, chemicals, arms); Level A",
+      "level": "A"
+    },
+    "france": {
+      "population_1914": 41500000,
+      "urban_share": 0.50,
+      "coal": "~85 Mt/yr (1913)",
+      "iron": "Lorraine, ~2.8 Mt/yr",
+      "oil": "Import; North African; ~1.5 Mt/yr",
+      "industry": "Strong industrial base; Level A",
+      "level": "A"
+    },
+    "united_kingdom": {
+      "population_1914": 45300000,
+      "urban_share": 0.55,
+      "coal": "Peak ~180 Mt/yr (1900); ~160 Mt/yr in 1913; declining",
+      "iron": "Scottish hematite, ~2.3 Mt/yr",
+      "oil": "North Sea fields starting; ~0.03 Mt/yr (public); net importer",
+      "industry": "Leading industrial power; Level A",
+      "level": "A"
+    },
+    "ottoman_empire": {
+      "population_1914": 21900000,
+      "urban_share": 0.22,
+      "coal": "Anatolian anthracite; ~1-2 Mt/yr",
+      "iron": "None significant",
+      "oil": "Import; minor Anatolian production",
+      "industry": "Nascent modern industry (textiles, mining); Level C",
+      "level": "C"
+    },
+    "russia": {
+      "population_1914": 166000000,
+      "urban_share": 0.22,
+      "coal": "Donbass ~22 Mt/yr; Kuzbass ~1-2 Mt/yr + minors; total ~45 Mt/yr",
+      "iron": "Donbass ore (Givroniko); ~2.5 Mt/yr; total ~2.7 Mt/yr",
+      "oil": "Baku ~2.8 Mt/yr (1913 peak); smaller fields (Ekibastuz etc.)",
+      "industry": "Heavy industry growing (steel, rail, chemicals); Level B",
+      "level": "B"
+    },
+    "luxembourg": {
+      "population_1914": 300000,
+      "urban_share": 0.80,
+      "coal": "None",
+      "iron": "Minor iron ore (Arbed steelworks); ~0.2 Mt/yr",
+      "oil": "Import",
+      "industry": "Steel, chemicals, watch parts; Level B",
+      "level": "B"
+    },
+    "monaco": {
+      "population_1914": 25000,
+      "urban_share": 1.0,
+      "coal": "None",
+      "iron": "None",
+      "oil": "Import",
+      "industry": "None; Level D (tiny state; tourism/gambling economic)",
+      "level": "D"
+    },
+    "andorra": {
+      "population_1914": 12000,
+      "urban_share": 0.75,
+      "coal": "None",
+      "iron": "None",
+      "oil": "Import",
+      "industry": "None; Level D",
+      "level": "D"
+    }
+  },
+  "key_regions": [
+    {
+      "name": "Ruhr",
+      "resource": "coal",
+      "level": "A",
+      "note": "Germany's principal coal basin; ~150-165 Mt/yr in 1913-1914 (1,000+ collieries); core of steel and chemicals production."
+    },
+    {
+      "name": "Donbass",
+      "resource": "coal",
+      "level": "A",
+      "note": "Largest coal producer of the Russian Empire; ~22-30 Mt/yr in 1913 (Donets basin; production still growing, peak reached ~1917)."
+    },
+    {
+      "name": "Kuzbass",
+      "resource": "coal",
+      "level": "A",
+      "note": "Siberian coal region emerging by 1914; production growing to ~1-2 Mt/yr; Russian attempt to diversify beyond the European basins."
+    },
+    {
+      "name": "Lorraine/Saar",
+      "resource": "iron",
+      "level": "B",
+      "note": "Major French iron basin (Haut-Moselle); ~2.5-2.8 Mt/yr; Saar shares partly German (declining as French pre-1871 ore becomes exhausted)."
+    },
+    {
+      "name": "Upper Silesia",
+      "resource": "iron",
+      "level": "B",
+      "note": "Hematite ore, high sulfur; ~1.5-2 Mt/yr; smelting centres in Silesia."
+    },
+    {
+      "name": "Baku",
+      "resource": "oil",
+      "level": "A",
+      "note": "World's largest oil field (~2.5-2.8 Mt/yr in 1913); on the cusp of its golden age; still slightly growing."
+    },
+    {
+      "name": "Ploiești",
+      "resource": "oil",
+      "level": "B",
+      "note": "Romania's main oil centre; ~2-3 Mt/yr of refineries; major net exporter of refined products to Russia, Greece and Germany."
+    }
+  ],
+  "uncertainties": [
+    "Germany population: 65 M is the conventional figure for Jan 1914; census-era revisions and resident vs. registered differences put the true figure within ~±0.5 M. Marked moyenne.",
+    "Germany urban_share 0.5: only regional census ranges (~50-55% for 1900-1910) are documented; no source-level detail available since web search was disabled; marked moyenne.",
+    "Austria-Hungary population ~51 M: statistical compilations vary (50-53 M depending on source and statistical office); marked moyenne.",
+    "Russia oil: net importer with modest Baku exports; import/production split not precisely documented for Jan 1914; marked faible.",
+    "UK oil: North Sea fields only just beginning to produce (~20-30 kt/yr by 1914 public estimates; some sources report less); marked faible.",
+    "Italy iron output: sulfur-rich smelting figures vary by mine (2.5-3.5 Mt/yr across sources); marked moyenne.",
+    "Romania industry level B: strong oil export capacity and large coal, but industrial breadth below Germany's; rating is judgmental, marked moyenne.",
+    "Micro-states (Monaco, Andorra, Luxembourg): populations are rounded and may be off by ±30%; industry levels are placeholders with no source detail.",
+    "No page-level URLs or exact citation numbers could be produced because web search was disabled; all citations are named historical-statistics sources with reliability labels per the task.",
+    "Rounding: most resource figures are approximations in round Mt/yr units; exact production figures can differ by ±15-20% depending on source (coking plants, open-pit vs underground, lignite handling)."
+  ]
+}

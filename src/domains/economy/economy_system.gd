@@ -1,31 +1,53 @@
 class_name EconomySystem
 extends RefCounted
-## Économie — modèle C (VALIDÉ par le directeur) : production régionale selon le potentiel
-## exploitable, les capacités d'exploitation et les infrastructures ; stocks nationaux ;
-## accessibilité réelle déterminée par la logistique.
-## Les CATÉGORIES de ressources sont OUVERTES (R-03) : le moteur n'en fixe aucune et les lit
-## dans les données. Les FORMULES et les DONNÉES sont absentes (ECO-01/02) : une valeur
-## inconnue reste null et se propage telle quelle (jamais remplacée par 0).
-## Industrie : cinq catégories VALIDÉES (PROJECT.md §11), priorités gouvernementales
-## enregistrées. Leurs effets dépendent de capacités encore inconnues.
+## Phase V — orchestrateur économique mensuel. Les données et formules sont PROPOSÉES ;
+## les catégories validées du modèle C (production régionale, stocks nationaux, accessibilité)
+## sont conservées. Aucun calcul n'est fait à chaque image : uniquement au tour mensuel.
+
+const BASELINE_PATH := "res://data/game/economic_baseline.json"
 
 
-## Production mensuelle d'une région pour une ressource : null si une donnée manque.
-## Formule PROPOSÉE (configurable, non validée) : potentiel × capacité × infrastructure.
+static func initialize(state: GameState, rules: Dictionary) -> void:
+	var text := FileAccess.get_file_as_string(BASELINE_PATH)
+	var baseline: Variant = JSON.parse_string(text)
+	if not (baseline is Dictionary):
+		push_error("EconomySystem : baseline introuvable")
+		return
+	state.economy["baseline_sha256"] = text.sha256_text()
+	state.economy["personalities"] = {}
+	for nid: String in state.nation_order:
+		state.economy["personalities"][nid] = str(rules.get("ai", {}).get("default_personality", "stability"))
+	DemographySystem.init_from_baseline(state, baseline, rules)
+	for nid: String in state.nation_order:
+		state.economy["stocks"][nid] = {}
+
+
+## Cycle mensuel complet, ordre déterministe : démographie → ressources → industrie →
+## commerce → ravitaillement militaire → remplacement → IA économique (ordres pour le tour suivant).
+static func monthly(state: GameState, world: WorldMap, rules: Dictionary, economic_rules: Dictionary) -> void:
+	DemographySystem.monthly(state, economic_rules)
+	ResourceSystem.monthly(state, economic_rules)
+	IndustrySystem.monthly(state, economic_rules)
+	MarketSystem.monthly(state)
+	MilitaryEconomySystem.monthly_supply(state, economic_rules)
+	MilitaryEconomySystem.monthly_replacement(state, economic_rules)
+	LogisticsSystem.update_supply(state, world, rules)
+
+
+## Compatibilité avec les tests Phase antérieurs : production régionale (formule proposée).
 static func region_output(state: GameState, rid: String, resource: String) -> Variant:
-	var eco: Dictionary = state.regions[rid]["economy"]
-	var potential: Variant = (eco["potential"] as Dictionary).get(resource)
-	var capacity: Variant = eco["exploitation_capacity"]
-	var infra: Variant = eco["infrastructure_level"]
+	var e: Dictionary = state.regions[rid].get("economy", {})
+	var potential: Variant = (e.get("potential", {}) as Dictionary).get(resource)
+	var capacity: Variant = e.get("exploitation_capacity")
+	var infra: Variant = e.get("infrastructure_level")
 	if potential == null or capacity == null or infra == null:
 		return null
 	return float(potential) * float(capacity) * float(infra)
 
 
-## Bilan national : produit (régions contrôlées) et accessible (régions reliées à la capitale).
 static func national_balance(state: GameState, world: WorldMap, nation: String, categories: Array) -> Dictionary:
 	var accessible := LogisticsSystem.accessible_regions(state, world, nation)
-	var result: Dictionary = {}
+	var result := {}
 	for resource: String in categories:
 		var produced: Variant = 0.0
 		var reachable: Variant = 0.0
@@ -43,19 +65,18 @@ static func national_balance(state: GameState, world: WorldMap, nation: String, 
 
 
 static func validate_allocation(rules: Dictionary, order: Dictionary) -> String:
-	var allowed: Array = rules["economy"]["industry_categories"]
-	var total := 0.0
-	for key: String in (order.get("allocation", {}) as Dictionary):
-		if not allowed.has(key):
-			return "catégorie industrielle inconnue : %s" % key
-		var v := float(order["allocation"][key])
-		if v < 0.0:
-			return "part négative"
-		total += v
-	if total > 100.0001:
-		return "la somme des priorités dépasse 100 %"
-	return ""
+	return IndustrySystem.validate_allocation(rules, order)
 
 
 static func apply_allocation(state: GameState, order: Dictionary) -> void:
-	state.nations[order["nation"]]["industry_allocation"] = (order["allocation"] as Dictionary).duplicate()
+	state.nations[order["nation"]]["industry_allocation"] = (order["allocation"] as Dictionary).duplicate(true)
+
+
+static func summary(state: GameState, nation: String) -> Dictionary:
+	return {
+		"demography": DemographySystem.summary(state, nation),
+		"stocks": ResourceSystem.summary(state, nation),
+		"industry_capacity": IndustrySystem.capacity(state, nation),
+		"dependencies": MarketSystem.dependencies(state, nation),
+		"replacement": MilitaryEconomySystem.summary(state, nation),
+	}

@@ -13,6 +13,7 @@ const AI_DOCTRINES_PATH := "res://data/rules/ai_doctrines.json"
 const DIPLOMACY_RULES_PATH := "res://data/rules/diplomacy_rules.json"
 const TRANSPORT_PATH := "res://data/game/transport_network.json"
 const TRANSPORT_RULES_PATH := "res://data/rules/transport_rules.json"
+const ECONOMY_RULES_PATH := "res://data/rules/economy_rules.json"
 const SAVE_DIR := "user://saves"
 
 var world: WorldMap
@@ -38,6 +39,7 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.rules["ai_doctrines"] = load_json(AI_DOCTRINES_PATH)
 	s.rules["diplomacy"] = load_json(DIPLOMACY_RULES_PATH)
 	s.rules["transport"] = load_json(TRANSPORT_RULES_PATH)
+	s.rules["economy_model"] = load_json(ECONOMY_RULES_PATH)
 	s.transport_network = TransportNetwork.load_from(TRANSPORT_PATH)
 	s.rules["transport_network"] = s.transport_network  # référence en mémoire, non sérialisée
 	ForceLedger.configure(s.rules["forces"].get("casualties", {}))
@@ -70,8 +72,9 @@ func new_game(player: String, start_month: int, seed_value: int = 1914, scenario
 	if not scenario["nations"].has(player):
 		return "pays inconnu"
 	state = GameState.from_scenario(scenario, start_month, player, seed_value)
+	EconomySystem.initialize(state, rules)
 	state.log_event("partie", "Début de la campagne : %s, %s." % [state.nations[player]["name_fr"], state.date_label()], [player])
-	LogisticsSystem.update_supply(state, world)
+	LogisticsSystem.update_supply(state, world, rules)
 	return ""
 
 
@@ -105,6 +108,15 @@ func queue_order(order: Dictionary) -> String:
 					reason = "ordre de mobilisation de ce type déjà donné ce mois-ci"
 		Orders.DISRUPT_LINK, Orders.REPAIR_LINK, Orders.SET_PORT_STATUS:
 			reason = TransportSystem.validate(state, transport_network, order)
+		Orders.TRADE:
+			reason = MarketSystem.validate(state, transport_network, rules, order)
+		Orders.INVEST_RESOURCE:
+			reason = ResourceSystem.validate_invest(state, str(order.get("region", "")),
+				str(order.get("resource", "")), float(order.get("amount", 0)))
+			if reason == "":
+				ResourceSystem.invest(state, str(order.get("region", "")),
+					str(order.get("resource", "")), float(order.get("amount", 0)))
+				return ""  # effet immédiat, rien à mettre en attente
 		_:
 			reason = DiplomacySystem.validate(state, order, rules)
 	if reason != "":
@@ -143,6 +155,7 @@ func end_turn() -> Dictionary:
 		if nid == state.player_nation:
 			continue
 		orders[nid] = NationAgent.decide(IntelSystem.view_for(state, world, nid, rules), world, rules)
+		orders[nid].append_array(EconomicAI.decide(state, transport_network, rules, nid))
 	last_report = TurnResolver.resolve(state, world, rules, orders)
 	return last_report
 

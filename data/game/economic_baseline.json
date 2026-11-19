@@ -1,0 +1,4682 @@
+{
+  "format": "gs1914.economic_baseline",
+  "format_version": 1,
+  "reference_date": "1914-01-01",
+  "generated_by": "tools/economy/build_economic_baseline.py",
+  "sources": {
+    "CENSUS": {
+      "citation": "Recensements nationaux d'avant 1914 (Annuaire statistique de France, Statistisches Jahrbuch, Board of Trade, censos espanol/portugues)",
+      "reliability": "haute"
+    },
+    "EB1911": {
+      "citation": "Encyclopaedia Britannica, 11e edition (1911), articles pays et 'Coal', 'Iron', 'Petroleum'",
+      "reliability": "moyenne"
+    },
+    "SYB": {
+      "citation": "The Statesman's Year-Book 1913/1914, tableaux demographiques et industriels",
+      "reliability": "haute"
+    },
+    "MODEL": {
+      "citation": "Estimation de modele : repartition regionale proportionnelle a la surface, au rail et aux ports",
+      "reliability": "faible"
+    }
+  },
+  "key_deposits": [
+    {
+      "name": "Ruhr",
+      "regions": [
+        "region_026",
+        "region_028"
+      ],
+      "resource": "coal",
+      "level": "A"
+    },
+    {
+      "name": "Haut-Rhin / Lorraine",
+      "regions": [
+        "region_035"
+      ],
+      "resource": "iron",
+      "level": "A"
+    },
+    {
+      "name": "Pays de Galles",
+      "regions": [
+        "region_003"
+      ],
+      "resource": "coal",
+      "level": "A"
+    },
+    {
+      "name": "Donbass",
+      "regions": [
+        "region_063",
+        "region_064"
+      ],
+      "resource": "coal",
+      "level": "B"
+    },
+    {
+      "name": "Bakou",
+      "regions": [
+        "region_090"
+      ],
+      "resource": "oil",
+      "level": "B"
+    },
+    {
+      "name": "Ploiesti",
+      "regions": [
+        "region_070"
+      ],
+      "resource": "oil",
+      "level": "B"
+    },
+    {
+      "name": "Silesie",
+      "regions": [
+        "region_031"
+      ],
+      "resource": "coal",
+      "level": "B"
+    }
+  ],
+  "capacity_disclaimer": "Les capacites et la repartition regionale sont des estimations de modele, pas des faits historiques verifies.",
+  "regions": {
+    "region_026": {
+      "region_id": "region_026",
+      "nation": "german_empire",
+      "population": 2925254,
+      "urban_share": 0.6,
+      "workforce": 1521132,
+      "sectors": {
+        "agriculture": 684509,
+        "industry": 334649,
+        "mines": 91267,
+        "transport": 106479,
+        "services": 228169,
+        "administration": 76056
+      },
+      "deposits": {
+        "coal": 9.001,
+        "iron": 0.99,
+        "oil": 0.009,
+        "wood": 1.8,
+        "grain": 1.35,
+        "other_ores": 0.27
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.045,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_027": {
+      "region_id": "region_027",
+      "nation": "german_empire",
+      "population": 5557647,
+      "urban_share": 0.6,
+      "workforce": 2889976,
+      "sectors": {
+        "agriculture": 1300489,
+        "industry": 635794,
+        "mines": 173398,
+        "transport": 202298,
+        "services": 433496,
+        "administration": 144498
+      },
+      "deposits": {
+        "coal": 8.55,
+        "iron": 1.881,
+        "oil": 0.017,
+        "wood": 3.42,
+        "grain": 2.565,
+        "other_ores": 0.513
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0855,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_028": {
+      "region_id": "region_028",
+      "nation": "german_empire",
+      "population": 18860981,
+      "urban_share": 0.6,
+      "workforce": 9807710,
+      "sectors": {
+        "agriculture": 4413469,
+        "industry": 2157696,
+        "mines": 588462,
+        "transport": 686539,
+        "services": 1471156,
+        "administration": 490385
+      },
+      "deposits": {
+        "coal": 58.034,
+        "iron": 6.384,
+        "oil": 0.058,
+        "wood": 11.607,
+        "grain": 8.705,
+        "other_ores": 1.741
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.6964,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_029": {
+      "region_id": "region_029",
+      "nation": "german_empire",
+      "population": 9971266,
+      "urban_share": 0.6,
+      "workforce": 5185058,
+      "sectors": {
+        "agriculture": 2333276,
+        "industry": 1140712,
+        "mines": 311103,
+        "transport": 362954,
+        "services": 777758,
+        "administration": 259252
+      },
+      "deposits": {
+        "coal": 15.34,
+        "iron": 3.375,
+        "oil": 0.031,
+        "wood": 6.136,
+        "grain": 4.602,
+        "other_ores": 0.92
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1534,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_030": {
+      "region_id": "region_030",
+      "nation": "german_empire",
+      "population": 2852441,
+      "urban_share": 0.6,
+      "workforce": 1483269,
+      "sectors": {
+        "agriculture": 667471,
+        "industry": 326319,
+        "mines": 88996,
+        "transport": 103828,
+        "services": 222490,
+        "administration": 74163
+      },
+      "deposits": {
+        "coal": 4.388,
+        "iron": 0.965,
+        "oil": 0.009,
+        "wood": 1.755,
+        "grain": 1.317,
+        "other_ores": 0.263
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0439,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_031": {
+      "region_id": "region_031",
+      "nation": "german_empire",
+      "population": 5211569,
+      "urban_share": 0.6,
+      "workforce": 2710015,
+      "sectors": {
+        "agriculture": 1219507,
+        "industry": 596203,
+        "mines": 162600,
+        "transport": 189701,
+        "services": 406502,
+        "administration": 135500
+      },
+      "deposits": {
+        "coal": 16.036,
+        "iron": 1.764,
+        "oil": 0.016,
+        "wood": 3.207,
+        "grain": 2.405,
+        "other_ores": 0.481
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1122,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_032": {
+      "region_id": "region_032",
+      "nation": "german_empire",
+      "population": 6669528,
+      "urban_share": 0.6,
+      "workforce": 3468154,
+      "sectors": {
+        "agriculture": 1560669,
+        "industry": 762994,
+        "mines": 208089,
+        "transport": 242770,
+        "services": 520223,
+        "administration": 173407
+      },
+      "deposits": {
+        "coal": 10.261,
+        "iron": 2.257,
+        "oil": 0.021,
+        "wood": 4.104,
+        "grain": 3.078,
+        "other_ores": 0.616
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1437,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_033": {
+      "region_id": "region_033",
+      "nation": "german_empire",
+      "population": 6152467,
+      "urban_share": 0.6,
+      "workforce": 3199282,
+      "sectors": {
+        "agriculture": 1439677,
+        "industry": 703842,
+        "mines": 191956,
+        "transport": 223949,
+        "services": 479892,
+        "administration": 159964
+      },
+      "deposits": {
+        "coal": 9.465,
+        "iron": 2.082,
+        "oil": 0.019,
+        "wood": 3.786,
+        "grain": 2.84,
+        "other_ores": 0.568
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1325,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_034": {
+      "region_id": "region_034",
+      "nation": "german_empire",
+      "population": 5780295,
+      "urban_share": 0.6,
+      "workforce": 3005753,
+      "sectors": {
+        "agriculture": 1352589,
+        "industry": 661265,
+        "mines": 180345,
+        "transport": 210402,
+        "services": 450863,
+        "administration": 150287
+      },
+      "deposits": {
+        "coal": 8.893,
+        "iron": 1.956,
+        "oil": 0.018,
+        "wood": 3.557,
+        "grain": 2.668,
+        "other_ores": 0.534
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1067,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_035": {
+      "region_id": "region_035",
+      "nation": "german_empire",
+      "population": 1018548,
+      "urban_share": 0.6,
+      "workforce": 529644,
+      "sectors": {
+        "agriculture": 238340,
+        "industry": 116521,
+        "mines": 31778,
+        "transport": 37075,
+        "services": 79446,
+        "administration": 26482
+      },
+      "deposits": {
+        "coal": 1.567,
+        "iron": 0.689,
+        "oil": 0.003,
+        "wood": 0.627,
+        "grain": 0.47,
+        "other_ores": 0.094
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0157,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_001": {
+      "region_id": "region_001",
+      "nation": "united_kingdom",
+      "population": 16487472,
+      "urban_share": 0.78,
+      "workforce": 8573485,
+      "sectors": {
+        "agriculture": 3858068,
+        "industry": 1886166,
+        "mines": 514409,
+        "transport": 600143,
+        "services": 1286022,
+        "administration": 428674
+      },
+      "deposits": {
+        "coal": 91.597,
+        "iron": 5.496,
+        "oil": 0.037,
+        "wood": 2.931,
+        "grain": 4.397,
+        "other_ores": 1.832
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.6595,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_002": {
+      "region_id": "region_002",
+      "nation": "united_kingdom",
+      "population": 10984588,
+      "urban_share": 0.78,
+      "workforce": 5711985,
+      "sectors": {
+        "agriculture": 2570393,
+        "industry": 1256636,
+        "mines": 342719,
+        "transport": 399839,
+        "services": 856797,
+        "administration": 285599
+      },
+      "deposits": {
+        "coal": 61.025,
+        "iron": 3.662,
+        "oil": 0.024,
+        "wood": 1.953,
+        "grain": 2.929,
+        "other_ores": 1.221
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.3417,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_003": {
+      "region_id": "region_003",
+      "nation": "united_kingdom",
+      "population": 5763314,
+      "urban_share": 0.78,
+      "workforce": 2996923,
+      "sectors": {
+        "agriculture": 1348615,
+        "industry": 659323,
+        "mines": 179815,
+        "transport": 209784,
+        "services": 449538,
+        "administration": 149846
+      },
+      "deposits": {
+        "coal": 64.037,
+        "iron": 1.921,
+        "oil": 0.013,
+        "wood": 1.025,
+        "grain": 1.537,
+        "other_ores": 0.64
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1281,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_004": {
+      "region_id": "region_004",
+      "nation": "united_kingdom",
+      "population": 1328743,
+      "urban_share": 0.78,
+      "workforce": 690946,
+      "sectors": {
+        "agriculture": 310925,
+        "industry": 152008,
+        "mines": 41456,
+        "transport": 48366,
+        "services": 103641,
+        "administration": 34547
+      },
+      "deposits": {
+        "coal": 7.382,
+        "iron": 0.443,
+        "oil": 0.003,
+        "wood": 0.236,
+        "grain": 0.354,
+        "other_ores": 0.148
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0354,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_005": {
+      "region_id": "region_005",
+      "nation": "united_kingdom",
+      "population": 1826808,
+      "urban_share": 0.78,
+      "workforce": 949940,
+      "sectors": {
+        "agriculture": 427473,
+        "industry": 208986,
+        "mines": 56996,
+        "transport": 66495,
+        "services": 142491,
+        "administration": 47497
+      },
+      "deposits": {
+        "coal": 10.149,
+        "iron": 0.609,
+        "oil": 0.004,
+        "wood": 0.325,
+        "grain": 0.487,
+        "other_ores": 0.203
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0406,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_006": {
+      "region_id": "region_006",
+      "nation": "united_kingdom",
+      "population": 8609072,
+      "urban_share": 0.78,
+      "workforce": 4476717,
+      "sectors": {
+        "agriculture": 2014522,
+        "industry": 984877,
+        "mines": 268603,
+        "transport": 313370,
+        "services": 671507,
+        "administration": 223835
+      },
+      "deposits": {
+        "coal": 47.828,
+        "iron": 2.87,
+        "oil": 0.019,
+        "wood": 1.531,
+        "grain": 2.296,
+        "other_ores": 0.957
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2678,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_007": {
+      "region_id": "region_007",
+      "nation": "france",
+      "population": 2404788,
+      "urban_share": 0.44,
+      "workforce": 1250489,
+      "sectors": {
+        "agriculture": 562720,
+        "industry": 275107,
+        "mines": 75029,
+        "transport": 87534,
+        "services": 187573,
+        "administration": 62524
+      },
+      "deposits": {
+        "coal": 2.466,
+        "iron": 1.85,
+        "oil": 0.006,
+        "wood": 1.542,
+        "grain": 2.158,
+        "other_ores": 0.247
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0533,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_008": {
+      "region_id": "region_008",
+      "nation": "france",
+      "population": 10584446,
+      "urban_share": 0.44,
+      "workforce": 5503911,
+      "sectors": {
+        "agriculture": 2476760,
+        "industry": 1210860,
+        "mines": 330234,
+        "transport": 385273,
+        "services": 825586,
+        "administration": 275195
+      },
+      "deposits": {
+        "coal": 10.856,
+        "iron": 8.142,
+        "oil": 0.027,
+        "wood": 6.785,
+        "grain": 9.499,
+        "other_ores": 1.086
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.6253,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_009": {
+      "region_id": "region_009",
+      "nation": "france",
+      "population": 6880790,
+      "urban_share": 0.44,
+      "workforce": 3578010,
+      "sectors": {
+        "agriculture": 1610104,
+        "industry": 787162,
+        "mines": 214680,
+        "transport": 250460,
+        "services": 536701,
+        "administration": 178900
+      },
+      "deposits": {
+        "coal": 7.057,
+        "iron": 5.293,
+        "oil": 0.018,
+        "wood": 4.411,
+        "grain": 6.175,
+        "other_ores": 0.706
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.127,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_010": {
+      "region_id": "region_010",
+      "nation": "france",
+      "population": 5291398,
+      "urban_share": 0.44,
+      "workforce": 2751526,
+      "sectors": {
+        "agriculture": 1238187,
+        "industry": 605335,
+        "mines": 165091,
+        "transport": 192606,
+        "services": 412729,
+        "administration": 137576
+      },
+      "deposits": {
+        "coal": 5.427,
+        "iron": 4.07,
+        "oil": 0.014,
+        "wood": 3.392,
+        "grain": 4.749,
+        "other_ores": 0.543
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1368,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_011": {
+      "region_id": "region_011",
+      "nation": "france",
+      "population": 5632632,
+      "urban_share": 0.44,
+      "workforce": 2928968,
+      "sectors": {
+        "agriculture": 1318035,
+        "industry": 644373,
+        "mines": 175738,
+        "transport": 205027,
+        "services": 439345,
+        "administration": 146448
+      },
+      "deposits": {
+        "coal": 5.777,
+        "iron": 4.333,
+        "oil": 0.014,
+        "wood": 3.611,
+        "grain": 5.055,
+        "other_ores": 0.578
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1248,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_012": {
+      "region_id": "region_012",
+      "nation": "france",
+      "population": 8205942,
+      "urban_share": 0.44,
+      "workforce": 4267089,
+      "sectors": {
+        "agriculture": 1920190,
+        "industry": 938759,
+        "mines": 256025,
+        "transport": 298696,
+        "services": 640063,
+        "administration": 213354
+      },
+      "deposits": {
+        "coal": 8.416,
+        "iron": 6.312,
+        "oil": 0.021,
+        "wood": 5.26,
+        "grain": 7.364,
+        "other_ores": 0.842
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2121,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_052": {
+      "region_id": "region_052",
+      "nation": "russian_empire",
+      "population": 11240778,
+      "urban_share": 0.18,
+      "workforce": 5845204,
+      "sectors": {
+        "agriculture": 2630342,
+        "industry": 1285945,
+        "mines": 350712,
+        "transport": 409164,
+        "services": 876780,
+        "administration": 292260
+      },
+      "deposits": {
+        "coal": 1.927,
+        "iron": 1.156,
+        "oil": 0.771,
+        "wood": 5.781,
+        "grain": 5.139,
+        "other_ores": 0.514
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0347,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_053": {
+      "region_id": "region_053",
+      "nation": "russian_empire",
+      "population": 1712084,
+      "urban_share": 0.18,
+      "workforce": 890283,
+      "sectors": {
+        "agriculture": 400627,
+        "industry": 195862,
+        "mines": 53417,
+        "transport": 62319,
+        "services": 133542,
+        "administration": 44514
+      },
+      "deposits": {
+        "coal": 0.294,
+        "iron": 0.176,
+        "oil": 0.117,
+        "wood": 0.881,
+        "grain": 0.783,
+        "other_ores": 0.078
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0044,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_054": {
+      "region_id": "region_054",
+      "nation": "russian_empire",
+      "population": 2358113,
+      "urban_share": 0.18,
+      "workforce": 1226218,
+      "sectors": {
+        "agriculture": 551798,
+        "industry": 269768,
+        "mines": 73573,
+        "transport": 85835,
+        "services": 183932,
+        "administration": 61310
+      },
+      "deposits": {
+        "coal": 0.404,
+        "iron": 0.243,
+        "oil": 0.162,
+        "wood": 1.213,
+        "grain": 1.078,
+        "other_ores": 0.108
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0085,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_055": {
+      "region_id": "region_055",
+      "nation": "russian_empire",
+      "population": 3190748,
+      "urban_share": 0.18,
+      "workforce": 1659188,
+      "sectors": {
+        "agriculture": 746635,
+        "industry": 365021,
+        "mines": 99551,
+        "transport": 116143,
+        "services": 248878,
+        "administration": 82959
+      },
+      "deposits": {
+        "coal": 0.547,
+        "iron": 0.328,
+        "oil": 0.219,
+        "wood": 1.641,
+        "grain": 1.459,
+        "other_ores": 0.146
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0148,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_056": {
+      "region_id": "region_056",
+      "nation": "russian_empire",
+      "population": 1383954,
+      "urban_share": 0.18,
+      "workforce": 719656,
+      "sectors": {
+        "agriculture": 323845,
+        "industry": 158324,
+        "mines": 43179,
+        "transport": 50375,
+        "services": 107948,
+        "administration": 35982
+      },
+      "deposits": {
+        "coal": 0.237,
+        "iron": 0.142,
+        "oil": 0.095,
+        "wood": 0.712,
+        "grain": 0.633,
+        "other_ores": 0.063
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0036,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_057": {
+      "region_id": "region_057",
+      "nation": "russian_empire",
+      "population": 9597517,
+      "urban_share": 0.18,
+      "workforce": 4990708,
+      "sectors": {
+        "agriculture": 2245818,
+        "industry": 1097955,
+        "mines": 299442,
+        "transport": 349349,
+        "services": 748606,
+        "administration": 249535
+      },
+      "deposits": {
+        "coal": 1.645,
+        "iron": 0.987,
+        "oil": 0.658,
+        "wood": 4.936,
+        "grain": 4.387,
+        "other_ores": 0.439
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0296,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_058": {
+      "region_id": "region_058",
+      "nation": "russian_empire",
+      "population": 3429183,
+      "urban_share": 0.18,
+      "workforce": 1783175,
+      "sectors": {
+        "agriculture": 802428,
+        "industry": 392298,
+        "mines": 106990,
+        "transport": 124822,
+        "services": 267476,
+        "administration": 89158
+      },
+      "deposits": {
+        "coal": 0.588,
+        "iron": 0.353,
+        "oil": 0.235,
+        "wood": 1.764,
+        "grain": 1.568,
+        "other_ores": 0.157
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0106,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_059": {
+      "region_id": "region_059",
+      "nation": "russian_empire",
+      "population": 8449477,
+      "urban_share": 0.18,
+      "workforce": 4393728,
+      "sectors": {
+        "agriculture": 1977177,
+        "industry": 966620,
+        "mines": 263623,
+        "transport": 307560,
+        "services": 659059,
+        "administration": 219686
+      },
+      "deposits": {
+        "coal": 1.448,
+        "iron": 0.869,
+        "oil": 0.579,
+        "wood": 4.345,
+        "grain": 3.863,
+        "other_ores": 0.386
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0391,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_060": {
+      "region_id": "region_060",
+      "nation": "russian_empire",
+      "population": 4674125,
+      "urban_share": 0.18,
+      "workforce": 2430545,
+      "sectors": {
+        "agriculture": 1093745,
+        "industry": 534719,
+        "mines": 145832,
+        "transport": 170138,
+        "services": 364581,
+        "administration": 121527
+      },
+      "deposits": {
+        "coal": 0.801,
+        "iron": 0.481,
+        "oil": 0.321,
+        "wood": 2.404,
+        "grain": 2.137,
+        "other_ores": 0.214
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0144,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_061": {
+      "region_id": "region_061",
+      "nation": "russian_empire",
+      "population": 1952207,
+      "urban_share": 0.18,
+      "workforce": 1015147,
+      "sectors": {
+        "agriculture": 456816,
+        "industry": 223332,
+        "mines": 60908,
+        "transport": 71060,
+        "services": 152272,
+        "administration": 50757
+      },
+      "deposits": {
+        "coal": 0.335,
+        "iron": 0.201,
+        "oil": 0.134,
+        "wood": 1.004,
+        "grain": 0.892,
+        "other_ores": 0.089
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.006,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_062": {
+      "region_id": "region_062",
+      "nation": "russian_empire",
+      "population": 923468,
+      "urban_share": 0.18,
+      "workforce": 480203,
+      "sectors": {
+        "agriculture": 216091,
+        "industry": 105644,
+        "mines": 28812,
+        "transport": 33614,
+        "services": 72030,
+        "administration": 24010
+      },
+      "deposits": {
+        "coal": 0.158,
+        "iron": 0.095,
+        "oil": 0.063,
+        "wood": 0.475,
+        "grain": 0.422,
+        "other_ores": 0.042
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0024,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_063": {
+      "region_id": "region_063",
+      "nation": "russian_empire",
+      "population": 389029,
+      "urban_share": 0.18,
+      "workforce": 202295,
+      "sectors": {
+        "agriculture": 91032,
+        "industry": 44504,
+        "mines": 12137,
+        "transport": 14160,
+        "services": 30344,
+        "administration": 10114
+      },
+      "deposits": {
+        "coal": 0.133,
+        "iron": 0.04,
+        "oil": 0.027,
+        "wood": 0.2,
+        "grain": 0.178,
+        "other_ores": 0.018
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.001,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_064": {
+      "region_id": "region_064",
+      "nation": "russian_empire",
+      "population": 17608968,
+      "urban_share": 0.18,
+      "workforce": 9156663,
+      "sectors": {
+        "agriculture": 4120498,
+        "industry": 2014465,
+        "mines": 549399,
+        "transport": 640966,
+        "services": 1373499,
+        "administration": 457833
+      },
+      "deposits": {
+        "coal": 6.037,
+        "iron": 1.811,
+        "oil": 1.207,
+        "wood": 9.056,
+        "grain": 8.05,
+        "other_ores": 0.805
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0906,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_065": {
+      "region_id": "region_065",
+      "nation": "russian_empire",
+      "population": 21242110,
+      "urban_share": 0.18,
+      "workforce": 11045897,
+      "sectors": {
+        "agriculture": 4970653,
+        "industry": 2430097,
+        "mines": 662753,
+        "transport": 773212,
+        "services": 1656884,
+        "administration": 552294
+      },
+      "deposits": {
+        "coal": 3.642,
+        "iron": 2.185,
+        "oil": 1.457,
+        "wood": 10.925,
+        "grain": 9.711,
+        "other_ores": 0.971
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0546,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_066": {
+      "region_id": "region_066",
+      "nation": "russian_empire",
+      "population": 44788031,
+      "urban_share": 0.18,
+      "workforce": 23289776,
+      "sectors": {
+        "agriculture": 10480399,
+        "industry": 5123750,
+        "mines": 1397386,
+        "transport": 1630284,
+        "services": 3493466,
+        "administration": 1164488
+      },
+      "deposits": {
+        "coal": 7.678,
+        "iron": 4.607,
+        "oil": 3.071,
+        "wood": 23.034,
+        "grain": 20.475,
+        "other_ores": 2.047
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2534,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_067": {
+      "region_id": "region_067",
+      "nation": "russian_empire",
+      "population": 13784064,
+      "urban_share": 0.18,
+      "workforce": 7167713,
+      "sectors": {
+        "agriculture": 3225470,
+        "industry": 1576896,
+        "mines": 430062,
+        "transport": 501739,
+        "services": 1075156,
+        "administration": 358385
+      },
+      "deposits": {
+        "coal": 2.363,
+        "iron": 1.418,
+        "oil": 0.945,
+        "wood": 7.089,
+        "grain": 6.301,
+        "other_ores": 0.63
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0354,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_068": {
+      "region_id": "region_068",
+      "nation": "russian_empire",
+      "population": 19929736,
+      "urban_share": 0.18,
+      "workforce": 10363462,
+      "sectors": {
+        "agriculture": 4663558,
+        "industry": 2279961,
+        "mines": 621807,
+        "transport": 725442,
+        "services": 1554519,
+        "administration": 518173
+      },
+      "deposits": {
+        "coal": 3.417,
+        "iron": 2.05,
+        "oil": 1.367,
+        "wood": 10.25,
+        "grain": 9.111,
+        "other_ores": 0.911
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0615,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_069": {
+      "region_id": "region_069",
+      "nation": "russian_empire",
+      "population": 8346400,
+      "urban_share": 0.18,
+      "workforce": 4340128,
+      "sectors": {
+        "agriculture": 1953057,
+        "industry": 954828,
+        "mines": 260407,
+        "transport": 303808,
+        "services": 651019,
+        "administration": 217006
+      },
+      "deposits": {
+        "coal": 1.431,
+        "iron": 0.858,
+        "oil": 0.572,
+        "wood": 4.292,
+        "grain": 3.815,
+        "other_ores": 0.382
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0258,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_036": {
+      "region_id": "region_036",
+      "nation": "austria_hungary",
+      "population": 5972789,
+      "urban_share": 0.3,
+      "workforce": 3105850,
+      "sectors": {
+        "agriculture": 1397632,
+        "industry": 683287,
+        "mines": 186351,
+        "transport": 217409,
+        "services": 465877,
+        "administration": 155292
+      },
+      "deposits": {
+        "coal": 4.02,
+        "iron": 1.378,
+        "oil": 0.172,
+        "wood": 4.02,
+        "grain": 3.446,
+        "other_ores": 0.574
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1378,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_037": {
+      "region_id": "region_037",
+      "nation": "austria_hungary",
+      "population": 4722217,
+      "urban_share": 0.3,
+      "workforce": 2455552,
+      "sectors": {
+        "agriculture": 1104998,
+        "industry": 540221,
+        "mines": 147333,
+        "transport": 171888,
+        "services": 368332,
+        "administration": 122777
+      },
+      "deposits": {
+        "coal": 3.178,
+        "iron": 1.09,
+        "oil": 0.136,
+        "wood": 3.178,
+        "grain": 2.724,
+        "other_ores": 0.454
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0545,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_038": {
+      "region_id": "region_038",
+      "nation": "austria_hungary",
+      "population": 2941955,
+      "urban_share": 0.3,
+      "workforce": 1529816,
+      "sectors": {
+        "agriculture": 688417,
+        "industry": 336559,
+        "mines": 91788,
+        "transport": 107087,
+        "services": 229472,
+        "administration": 76490
+      },
+      "deposits": {
+        "coal": 1.98,
+        "iron": 0.679,
+        "oil": 0.085,
+        "wood": 1.98,
+        "grain": 1.697,
+        "other_ores": 0.283
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0407,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_039": {
+      "region_id": "region_039",
+      "nation": "austria_hungary",
+      "population": 1261600,
+      "urban_share": 0.3,
+      "workforce": 656032,
+      "sectors": {
+        "agriculture": 295214,
+        "industry": 144327,
+        "mines": 39361,
+        "transport": 45922,
+        "services": 98404,
+        "administration": 32801
+      },
+      "deposits": {
+        "coal": 0.849,
+        "iron": 0.291,
+        "oil": 0.036,
+        "wood": 0.849,
+        "grain": 0.728,
+        "other_ores": 0.121
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0146,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_040": {
+      "region_id": "region_040",
+      "nation": "austria_hungary",
+      "population": 5353582,
+      "urban_share": 0.3,
+      "workforce": 2783862,
+      "sectors": {
+        "agriculture": 1252738,
+        "industry": 612449,
+        "mines": 167031,
+        "transport": 194870,
+        "services": 417579,
+        "administration": 139193
+      },
+      "deposits": {
+        "coal": 3.603,
+        "iron": 1.235,
+        "oil": 0.154,
+        "wood": 3.603,
+        "grain": 3.089,
+        "other_ores": 0.515
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0618,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_041": {
+      "region_id": "region_041",
+      "nation": "austria_hungary",
+      "population": 20213282,
+      "urban_share": 0.3,
+      "workforce": 10510906,
+      "sectors": {
+        "agriculture": 4729907,
+        "industry": 2312399,
+        "mines": 630654,
+        "transport": 735763,
+        "services": 1576635,
+        "administration": 525545
+      },
+      "deposits": {
+        "coal": 13.605,
+        "iron": 4.665,
+        "oil": 0.583,
+        "wood": 13.605,
+        "grain": 11.662,
+        "other_ores": 1.944
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.3732,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_042": {
+      "region_id": "region_042",
+      "nation": "austria_hungary",
+      "population": 2644230,
+      "urban_share": 0.3,
+      "workforce": 1374999,
+      "sectors": {
+        "agriculture": 618749,
+        "industry": 302499,
+        "mines": 82499,
+        "transport": 96249,
+        "services": 206249,
+        "administration": 68749
+      },
+      "deposits": {
+        "coal": 1.78,
+        "iron": 0.61,
+        "oil": 0.076,
+        "wood": 1.78,
+        "grain": 1.526,
+        "other_ores": 0.254
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0305,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_043": {
+      "region_id": "region_043",
+      "nation": "austria_hungary",
+      "population": 8890343,
+      "urban_share": 0.3,
+      "workforce": 4622978,
+      "sectors": {
+        "agriculture": 2080340,
+        "industry": 1017055,
+        "mines": 277378,
+        "transport": 323608,
+        "services": 693446,
+        "administration": 231148
+      },
+      "deposits": {
+        "coal": 5.984,
+        "iron": 2.052,
+        "oil": 0.256,
+        "wood": 5.984,
+        "grain": 5.129,
+        "other_ores": 0.855
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1231,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_080": {
+      "region_id": "region_080",
+      "nation": "italy",
+      "population": 11474183,
+      "urban_share": 0.3,
+      "workforce": 5966575,
+      "sectors": {
+        "agriculture": 2684958,
+        "industry": 1312646,
+        "mines": 357994,
+        "transport": 417660,
+        "services": 894986,
+        "administration": 298328
+      },
+      "deposits": {
+        "coal": 0.164,
+        "iron": 0.164,
+        "oil": 0.033,
+        "wood": 3.278,
+        "grain": 5.901,
+        "other_ores": 0.984
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2655,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_081": {
+      "region_id": "region_081",
+      "nation": "italy",
+      "population": 5528529,
+      "urban_share": 0.3,
+      "workforce": 2874835,
+      "sectors": {
+        "agriculture": 1293675,
+        "industry": 632463,
+        "mines": 172490,
+        "transport": 201238,
+        "services": 431225,
+        "administration": 143741
+      },
+      "deposits": {
+        "coal": 0.079,
+        "iron": 0.079,
+        "oil": 0.016,
+        "wood": 1.58,
+        "grain": 2.843,
+        "other_ores": 0.474
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0853,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_082": {
+      "region_id": "region_082",
+      "nation": "italy",
+      "population": 5517938,
+      "urban_share": 0.3,
+      "workforce": 2869327,
+      "sectors": {
+        "agriculture": 1291197,
+        "industry": 631252,
+        "mines": 172159,
+        "transport": 200852,
+        "services": 430399,
+        "administration": 143466
+      },
+      "deposits": {
+        "coal": 0.079,
+        "iron": 0.079,
+        "oil": 0.016,
+        "wood": 1.577,
+        "grain": 2.838,
+        "other_ores": 0.473
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0851,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_083": {
+      "region_id": "region_083",
+      "nation": "italy",
+      "population": 2159589,
+      "urban_share": 0.3,
+      "workforce": 1122986,
+      "sectors": {
+        "agriculture": 505343,
+        "industry": 247056,
+        "mines": 67379,
+        "transport": 78609,
+        "services": 168447,
+        "administration": 56149
+      },
+      "deposits": {
+        "coal": 0.031,
+        "iron": 0.031,
+        "oil": 0.006,
+        "wood": 0.617,
+        "grain": 1.111,
+        "other_ores": 0.185
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0278,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_084": {
+      "region_id": "region_084",
+      "nation": "italy",
+      "population": 6286878,
+      "urban_share": 0.3,
+      "workforce": 3269176,
+      "sectors": {
+        "agriculture": 1471129,
+        "industry": 719218,
+        "mines": 196150,
+        "transport": 228842,
+        "services": 490376,
+        "administration": 163458
+      },
+      "deposits": {
+        "coal": 0.09,
+        "iron": 0.09,
+        "oil": 0.018,
+        "wood": 1.796,
+        "grain": 3.233,
+        "other_ores": 0.539
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0808,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_085": {
+      "region_id": "region_085",
+      "nation": "italy",
+      "population": 2087931,
+      "urban_share": 0.3,
+      "workforce": 1085724,
+      "sectors": {
+        "agriculture": 488575,
+        "industry": 238859,
+        "mines": 65143,
+        "transport": 76000,
+        "services": 162858,
+        "administration": 54286
+      },
+      "deposits": {
+        "coal": 0.03,
+        "iron": 0.03,
+        "oil": 0.006,
+        "wood": 0.597,
+        "grain": 1.074,
+        "other_ores": 0.179
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0268,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_086": {
+      "region_id": "region_086",
+      "nation": "italy",
+      "population": 1944947,
+      "urban_share": 0.3,
+      "workforce": 1011372,
+      "sectors": {
+        "agriculture": 455117,
+        "industry": 222501,
+        "mines": 60682,
+        "transport": 70796,
+        "services": 151705,
+        "administration": 50568
+      },
+      "deposits": {
+        "coal": 0.028,
+        "iron": 0.028,
+        "oil": 0.006,
+        "wood": 0.556,
+        "grain": 1.0,
+        "other_ores": 0.167
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.025,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_087": {
+      "region_id": "region_087",
+      "nation": "ottoman_empire",
+      "population": 1378189,
+      "urban_share": 0.2,
+      "workforce": 716658,
+      "sectors": {
+        "agriculture": 322496,
+        "industry": 157664,
+        "mines": 42999,
+        "transport": 50166,
+        "services": 107498,
+        "administration": 35832
+      },
+      "deposits": {
+        "coal": 0.011,
+        "iron": 0.017,
+        "oil": 0.017,
+        "wood": 0.662,
+        "grain": 1.103,
+        "other_ores": 0.11
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.011,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "D",
+        "resources": "D",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "SYB",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau D."
+    },
+    "region_088": {
+      "region_id": "region_088",
+      "nation": "ottoman_empire",
+      "population": 10043614,
+      "urban_share": 0.2,
+      "workforce": 5222679,
+      "sectors": {
+        "agriculture": 2350205,
+        "industry": 1148989,
+        "mines": 313360,
+        "transport": 365587,
+        "services": 783401,
+        "administration": 261133
+      },
+      "deposits": {
+        "coal": 0.08,
+        "iron": 0.121,
+        "oil": 0.121,
+        "wood": 4.821,
+        "grain": 8.035,
+        "other_ores": 0.803
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0964,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "D",
+        "resources": "D",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "SYB",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau D."
+    },
+    "region_089": {
+      "region_id": "region_089",
+      "nation": "ottoman_empire",
+      "population": 9769321,
+      "urban_share": 0.2,
+      "workforce": 5080046,
+      "sectors": {
+        "agriculture": 2286021,
+        "industry": 1117610,
+        "mines": 304802,
+        "transport": 355603,
+        "services": 762007,
+        "administration": 254002
+      },
+      "deposits": {
+        "coal": 0.078,
+        "iron": 0.117,
+        "oil": 0.117,
+        "wood": 4.689,
+        "grain": 7.815,
+        "other_ores": 0.782
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0938,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "D",
+        "resources": "D",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "SYB",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau D."
+    },
+    "region_090": {
+      "region_id": "region_090",
+      "nation": "ottoman_empire",
+      "population": 3808874,
+      "urban_share": 0.2,
+      "workforce": 1980614,
+      "sectors": {
+        "agriculture": 891276,
+        "industry": 435735,
+        "mines": 118836,
+        "transport": 138643,
+        "services": 297092,
+        "administration": 99030
+      },
+      "deposits": {
+        "coal": 0.03,
+        "iron": 0.046,
+        "oil": 0.091,
+        "wood": 1.828,
+        "grain": 3.047,
+        "other_ores": 0.305
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0305,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "D",
+        "resources": "D",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "SYB",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau D."
+    },
+    "region_013": {
+      "region_id": "region_013",
+      "nation": "belgium",
+      "population": 3951779,
+      "urban_share": 0.6,
+      "workforce": 2054925,
+      "sectors": {
+        "agriculture": 924716,
+        "industry": 452083,
+        "mines": 123295,
+        "transport": 143844,
+        "services": 308238,
+        "administration": 102746
+      },
+      "deposits": {
+        "coal": 11.592,
+        "iron": 1.054,
+        "oil": 0.0,
+        "wood": 1.054,
+        "grain": 2.635,
+        "other_ores": 2.108
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.5901,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_014": {
+      "region_id": "region_014",
+      "nation": "belgium",
+      "population": 3548220,
+      "urban_share": 0.6,
+      "workforce": 1845074,
+      "sectors": {
+        "agriculture": 830283,
+        "industry": 405916,
+        "mines": 110704,
+        "transport": 129155,
+        "services": 276761,
+        "administration": 92253
+      },
+      "deposits": {
+        "coal": 10.408,
+        "iron": 0.946,
+        "oil": 0.0,
+        "wood": 0.946,
+        "grain": 2.365,
+        "other_ores": 1.892
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.3974,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_015": {
+      "region_id": "region_015",
+      "nation": "netherlands",
+      "population": 1901104,
+      "urban_share": 0.55,
+      "workforce": 988574,
+      "sectors": {
+        "agriculture": 444858,
+        "industry": 217486,
+        "mines": 59314,
+        "transport": 69200,
+        "services": 148286,
+        "administration": 49428
+      },
+      "deposits": {
+        "coal": 1.584,
+        "iron": 0.063,
+        "oil": 0.0,
+        "wood": 0.317,
+        "grain": 1.901,
+        "other_ores": 0.317
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1711,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_016": {
+      "region_id": "region_016",
+      "nation": "netherlands",
+      "population": 4098895,
+      "urban_share": 0.55,
+      "workforce": 2131425,
+      "sectors": {
+        "agriculture": 959141,
+        "industry": 468913,
+        "mines": 127885,
+        "transport": 149199,
+        "services": 319713,
+        "administration": 106571
+      },
+      "deposits": {
+        "coal": 3.416,
+        "iron": 0.137,
+        "oil": 0.0,
+        "wood": 0.683,
+        "grain": 4.099,
+        "other_ores": 0.683
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.3689,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_019": {
+      "region_id": "region_019",
+      "nation": "luxembourg",
+      "population": 300000,
+      "urban_share": 0.25,
+      "workforce": 156000,
+      "sectors": {
+        "agriculture": 70200,
+        "industry": 34320,
+        "mines": 9360,
+        "transport": 10920,
+        "services": 23400,
+        "administration": 7800
+      },
+      "deposits": {
+        "coal": 0.1,
+        "iron": 3.0,
+        "oil": 0.0,
+        "wood": 0.5,
+        "grain": 0.5,
+        "other_ores": 0.2
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.35,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_017": {
+      "region_id": "region_017",
+      "nation": "switzerland",
+      "population": 2265368,
+      "urban_share": 0.45,
+      "workforce": 1177991,
+      "sectors": {
+        "agriculture": 530096,
+        "industry": 259158,
+        "mines": 70679,
+        "transport": 82459,
+        "services": 176698,
+        "administration": 58899
+      },
+      "deposits": {
+        "coal": 0.058,
+        "iron": 0.058,
+        "oil": 0.0,
+        "wood": 1.743,
+        "grain": 1.162,
+        "other_ores": 0.29
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.5112,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_018": {
+      "region_id": "region_018",
+      "nation": "switzerland",
+      "population": 1634631,
+      "urban_share": 0.45,
+      "workforce": 850008,
+      "sectors": {
+        "agriculture": 382503,
+        "industry": 187001,
+        "mines": 51000,
+        "transport": 59500,
+        "services": 127501,
+        "administration": 42500
+      },
+      "deposits": {
+        "coal": 0.042,
+        "iron": 0.042,
+        "oil": 0.0,
+        "wood": 1.257,
+        "grain": 0.838,
+        "other_ores": 0.21
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2766,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_021": {
+      "region_id": "region_021",
+      "nation": "spain",
+      "population": 3548970,
+      "urban_share": 0.3,
+      "workforce": 1845464,
+      "sectors": {
+        "agriculture": 830458,
+        "industry": 406002,
+        "mines": 110727,
+        "transport": 129182,
+        "services": 276819,
+        "administration": 92273
+      },
+      "deposits": {
+        "coal": 1.42,
+        "iron": 0.887,
+        "oil": 0.0,
+        "wood": 2.129,
+        "grain": 2.662,
+        "other_ores": 1.065
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0621,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_022": {
+      "region_id": "region_022",
+      "nation": "spain",
+      "population": 4481487,
+      "urban_share": 0.3,
+      "workforce": 2330373,
+      "sectors": {
+        "agriculture": 1048667,
+        "industry": 512682,
+        "mines": 139822,
+        "transport": 163126,
+        "services": 349555,
+        "administration": 116518
+      },
+      "deposits": {
+        "coal": 1.793,
+        "iron": 1.12,
+        "oil": 0.0,
+        "wood": 2.689,
+        "grain": 3.361,
+        "other_ores": 1.344
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0941,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_023": {
+      "region_id": "region_023",
+      "nation": "spain",
+      "population": 7649658,
+      "urban_share": 0.3,
+      "workforce": 3977822,
+      "sectors": {
+        "agriculture": 1790019,
+        "industry": 875120,
+        "mines": 238669,
+        "transport": 278447,
+        "services": 596673,
+        "administration": 198891
+      },
+      "deposits": {
+        "coal": 3.06,
+        "iron": 1.912,
+        "oil": 0.0,
+        "wood": 4.59,
+        "grain": 5.737,
+        "other_ores": 2.295
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2945,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_024": {
+      "region_id": "region_024",
+      "nation": "spain",
+      "population": 1691551,
+      "urban_share": 0.3,
+      "workforce": 879606,
+      "sectors": {
+        "agriculture": 395822,
+        "industry": 193513,
+        "mines": 52776,
+        "transport": 61572,
+        "services": 131940,
+        "administration": 43980
+      },
+      "deposits": {
+        "coal": 0.677,
+        "iron": 0.423,
+        "oil": 0.0,
+        "wood": 1.015,
+        "grain": 1.269,
+        "other_ores": 0.507
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0296,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_025": {
+      "region_id": "region_025",
+      "nation": "spain",
+      "population": 2628332,
+      "urban_share": 0.3,
+      "workforce": 1366732,
+      "sectors": {
+        "agriculture": 615029,
+        "industry": 300681,
+        "mines": 82003,
+        "transport": 95671,
+        "services": 205009,
+        "administration": 68336
+      },
+      "deposits": {
+        "coal": 1.051,
+        "iron": 0.657,
+        "oil": 0.0,
+        "wood": 1.577,
+        "grain": 1.971,
+        "other_ores": 0.788
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.046,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_020": {
+      "region_id": "region_020",
+      "nation": "portugal",
+      "population": 6000000,
+      "urban_share": 0.22,
+      "workforce": 3120000,
+      "sectors": {
+        "agriculture": 1404000,
+        "industry": 686400,
+        "mines": 187200,
+        "transport": 218400,
+        "services": 468000,
+        "administration": 156000
+      },
+      "deposits": {
+        "coal": 0.5,
+        "iron": 0.5,
+        "oil": 0.0,
+        "wood": 5.0,
+        "grain": 5.0,
+        "other_ores": 1.0
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.24,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_044": {
+      "region_id": "region_044",
+      "nation": "denmark",
+      "population": 1347086,
+      "urban_share": 0.4,
+      "workforce": 700484,
+      "sectors": {
+        "agriculture": 315218,
+        "industry": 154106,
+        "mines": 42029,
+        "transport": 49033,
+        "services": 105072,
+        "administration": 35024
+      },
+      "deposits": {
+        "coal": 0.048,
+        "iron": 0.048,
+        "oil": 0.0,
+        "wood": 0.241,
+        "grain": 2.887,
+        "other_ores": 0.096
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2021,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_051": {
+      "region_id": "region_051",
+      "nation": "denmark",
+      "population": 1452913,
+      "urban_share": 0.4,
+      "workforce": 755514,
+      "sectors": {
+        "agriculture": 339981,
+        "industry": 166213,
+        "mines": 45330,
+        "transport": 52886,
+        "services": 113327,
+        "administration": 37775
+      },
+      "deposits": {
+        "coal": 0.052,
+        "iron": 0.052,
+        "oil": 0.0,
+        "wood": 0.259,
+        "grain": 3.113,
+        "other_ores": 0.104
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1557,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_045": {
+      "region_id": "region_045",
+      "nation": "norway",
+      "population": 1075435,
+      "urban_share": 0.28,
+      "workforce": 559226,
+      "sectors": {
+        "agriculture": 251651,
+        "industry": 123029,
+        "mines": 33553,
+        "transport": 39145,
+        "services": 83883,
+        "administration": 27961
+      },
+      "deposits": {
+        "coal": 0.134,
+        "iron": 0.448,
+        "oil": 0.0,
+        "wood": 4.481,
+        "grain": 0.448,
+        "other_ores": 0.448
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1792,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_046": {
+      "region_id": "region_046",
+      "nation": "norway",
+      "population": 761633,
+      "urban_share": 0.28,
+      "workforce": 396049,
+      "sectors": {
+        "agriculture": 178222,
+        "industry": 87130,
+        "mines": 23762,
+        "transport": 27723,
+        "services": 59407,
+        "administration": 19802
+      },
+      "deposits": {
+        "coal": 0.095,
+        "iron": 0.317,
+        "oil": 0.0,
+        "wood": 3.173,
+        "grain": 0.317,
+        "other_ores": 0.317
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0952,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_047": {
+      "region_id": "region_047",
+      "nation": "norway",
+      "population": 562930,
+      "urban_share": 0.28,
+      "workforce": 292723,
+      "sectors": {
+        "agriculture": 131725,
+        "industry": 64399,
+        "mines": 17563,
+        "transport": 20490,
+        "services": 43908,
+        "administration": 14636
+      },
+      "deposits": {
+        "coal": 0.07,
+        "iron": 0.235,
+        "oil": 0.0,
+        "wood": 2.346,
+        "grain": 0.235,
+        "other_ores": 0.235
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0586,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_048": {
+      "region_id": "region_048",
+      "nation": "sweden",
+      "population": 1819408,
+      "urban_share": 0.25,
+      "workforce": 946092,
+      "sectors": {
+        "agriculture": 425741,
+        "industry": 208140,
+        "mines": 56765,
+        "transport": 66226,
+        "services": 141913,
+        "administration": 47304
+      },
+      "deposits": {
+        "coal": 0.063,
+        "iron": 2.51,
+        "oil": 0.0,
+        "wood": 6.274,
+        "grain": 1.255,
+        "other_ores": 0.627
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2008,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_049": {
+      "region_id": "region_049",
+      "nation": "sweden",
+      "population": 1294070,
+      "urban_share": 0.25,
+      "workforce": 672916,
+      "sectors": {
+        "agriculture": 302812,
+        "industry": 148041,
+        "mines": 40374,
+        "transport": 47104,
+        "services": 100937,
+        "administration": 33645
+      },
+      "deposits": {
+        "coal": 0.045,
+        "iron": 1.785,
+        "oil": 0.0,
+        "wood": 4.462,
+        "grain": 0.892,
+        "other_ores": 0.446
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1071,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_050": {
+      "region_id": "region_050",
+      "nation": "sweden",
+      "population": 2686520,
+      "urban_share": 0.25,
+      "workforce": 1396990,
+      "sectors": {
+        "agriculture": 628645,
+        "industry": 307337,
+        "mines": 83819,
+        "transport": 97789,
+        "services": 209548,
+        "administration": 69849
+      },
+      "deposits": {
+        "coal": 0.093,
+        "iron": 3.706,
+        "oil": 0.0,
+        "wood": 9.264,
+        "grain": 1.853,
+        "other_ores": 0.926
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2223,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_070": {
+      "region_id": "region_070",
+      "nation": "romania",
+      "population": 5216776,
+      "urban_share": 0.18,
+      "workforce": 2712723,
+      "sectors": {
+        "agriculture": 1220725,
+        "industry": 596799,
+        "mines": 162763,
+        "transport": 189890,
+        "services": 406908,
+        "administration": 135636
+      },
+      "deposits": {
+        "coal": 0.745,
+        "iron": 0.373,
+        "oil": 2.981,
+        "wood": 8.943,
+        "grain": 13.415,
+        "other_ores": 0.745
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.2087,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_071": {
+      "region_id": "region_071",
+      "nation": "romania",
+      "population": 1783223,
+      "urban_share": 0.18,
+      "workforce": 927275,
+      "sectors": {
+        "agriculture": 417274,
+        "industry": 204000,
+        "mines": 55636,
+        "transport": 64909,
+        "services": 139091,
+        "administration": 46363
+      },
+      "deposits": {
+        "coal": 0.255,
+        "iron": 0.127,
+        "oil": 0.509,
+        "wood": 3.057,
+        "grain": 4.585,
+        "other_ores": 0.255
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0611,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_072": {
+      "region_id": "region_072",
+      "nation": "bulgaria",
+      "population": 1692530,
+      "urban_share": 0.18,
+      "workforce": 880115,
+      "sectors": {
+        "agriculture": 396052,
+        "industry": 193625,
+        "mines": 52806,
+        "transport": 61608,
+        "services": 132017,
+        "administration": 44005
+      },
+      "deposits": {
+        "coal": 0.106,
+        "iron": 0.071,
+        "oil": 0.0,
+        "wood": 2.116,
+        "grain": 3.526,
+        "other_ores": 0.176
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.074,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_073": {
+      "region_id": "region_073",
+      "nation": "bulgaria",
+      "population": 3107469,
+      "urban_share": 0.18,
+      "workforce": 1615883,
+      "sectors": {
+        "agriculture": 727147,
+        "industry": 355494,
+        "mines": 96953,
+        "transport": 113111,
+        "services": 242382,
+        "administration": 80794
+      },
+      "deposits": {
+        "coal": 0.194,
+        "iron": 0.129,
+        "oil": 0.0,
+        "wood": 3.884,
+        "grain": 6.474,
+        "other_ores": 0.324
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1165,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_074": {
+      "region_id": "region_074",
+      "nation": "serbia",
+      "population": 4500000,
+      "urban_share": 0.15,
+      "workforce": 2340000,
+      "sectors": {
+        "agriculture": 1053000,
+        "industry": 514800,
+        "mines": 140400,
+        "transport": 163800,
+        "services": 351000,
+        "administration": 117000
+      },
+      "deposits": {
+        "coal": 1.0,
+        "iron": 0.5,
+        "oil": 0.0,
+        "wood": 6.0,
+        "grain": 8.0,
+        "other_ores": 1.0
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.21,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "C",
+        "resources": "D",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "SYB",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau C."
+    },
+    "region_075": {
+      "region_id": "region_075",
+      "nation": "montenegro",
+      "population": 500000,
+      "urban_share": 0.08,
+      "workforce": 260000,
+      "sectors": {
+        "agriculture": 117000,
+        "industry": 57200,
+        "mines": 15600,
+        "transport": 18200,
+        "services": 39000,
+        "administration": 13000
+      },
+      "deposits": {
+        "coal": 0.1,
+        "iron": 0.1,
+        "oil": 0.0,
+        "wood": 2.0,
+        "grain": 0.5,
+        "other_ores": 0.1
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.05,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "D",
+        "resources": "D",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "SYB",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau D."
+    },
+    "region_076": {
+      "region_id": "region_076",
+      "nation": "albania",
+      "population": 800000,
+      "urban_share": 0.08,
+      "workforce": 416000,
+      "sectors": {
+        "agriculture": 187200,
+        "industry": 91520,
+        "mines": 24960,
+        "transport": 29120,
+        "services": 62400,
+        "administration": 20800
+      },
+      "deposits": {
+        "coal": 0.1,
+        "iron": 0.1,
+        "oil": 0.0,
+        "wood": 2.0,
+        "grain": 1.0,
+        "other_ores": 0.1
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.05,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "D",
+        "resources": "D",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "SYB",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau D."
+    },
+    "region_077": {
+      "region_id": "region_077",
+      "nation": "greece",
+      "population": 995151,
+      "urban_share": 0.25,
+      "workforce": 517478,
+      "sectors": {
+        "agriculture": 232865,
+        "industry": 113845,
+        "mines": 31048,
+        "transport": 36223,
+        "services": 77621,
+        "administration": 25873
+      },
+      "deposits": {
+        "coal": 0.041,
+        "iron": 0.041,
+        "oil": 0.0,
+        "wood": 0.622,
+        "grain": 0.829,
+        "other_ores": 0.207
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0581,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_078": {
+      "region_id": "region_078",
+      "nation": "greece",
+      "population": 2595186,
+      "urban_share": 0.25,
+      "workforce": 1349496,
+      "sectors": {
+        "agriculture": 607273,
+        "industry": 296889,
+        "mines": 80969,
+        "transport": 94464,
+        "services": 202424,
+        "administration": 67474
+      },
+      "deposits": {
+        "coal": 0.108,
+        "iron": 0.108,
+        "oil": 0.0,
+        "wood": 1.622,
+        "grain": 2.163,
+        "other_ores": 0.541
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.1514,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    },
+    "region_079": {
+      "region_id": "region_079",
+      "nation": "greece",
+      "population": 1209662,
+      "urban_share": 0.25,
+      "workforce": 629024,
+      "sectors": {
+        "agriculture": 283060,
+        "industry": 138385,
+        "mines": 37741,
+        "transport": 44031,
+        "services": 94353,
+        "administration": 31451
+      },
+      "deposits": {
+        "coal": 0.05,
+        "iron": 0.05,
+        "oil": 0.0,
+        "wood": 0.756,
+        "grain": 1.008,
+        "other_ores": 0.252
+      },
+      "exploitation": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "industry_capacity": 0.0504,
+      "stocks": {
+        "coal": 0.0,
+        "iron": 0.0,
+        "oil": 0.0,
+        "wood": 0.0,
+        "grain": 0.0,
+        "other_ores": 0.0
+      },
+      "levels": {
+        "population": "B",
+        "resources": "C",
+        "regional_distribution": "C"
+      },
+      "sources": [
+        "CENSUS",
+        "EB1911",
+        "MODEL"
+      ],
+      "note": "Repartition regionale ESTIMEE ; population nationale au niveau B."
+    }
+  },
+  "totals": {
+    "regions": 90,
+    "nations": 22,
+    "population": 513099959
+  }
+}

@@ -5,7 +5,7 @@ extends RefCounted
 ## sauvegarde, le rejeu déterministe et l'évolution multijoueur.
 
 const FORMAT := "gs1914.state"
-const FORMAT_VERSION := 6  # 5 : diplomatie Phase III ; 6 : réseau de transport Phase IV
+const FORMAT_VERSION := 7  # 6 : transport Phase IV ; 7 : économie Phase V
 
 var scenario_id: String = ""
 var year: int = 1914
@@ -41,6 +41,8 @@ var personalities: Dictionary = {} # nation -> identifiant de personnalité dipl
 var diplomacy: Dictionary = {}
 # Phase IV — état d'exploitation du réseau de transport (conditions, flux mensuels, réparations)
 var transport: Dictionary = {}
+# Phase V — économie : régions, stocks, main-d'œuvre, commerce, remplacement
+var economy: Dictionary = {}
 
 # Index hiérarchique en mémoire (non sérialisé) : évite le recalcul quadratique de descendants().
 var _hierarchy_dirty: bool = true
@@ -76,6 +78,7 @@ static func from_scenario(scenario: Dictionary, start_month_value: int, player: 
 		"pow": {"holders": {}, "exchanges": []}, "negotiations": {}, "history": []
 	}
 	s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
+	s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "replacement": {}, "history": [], "prices": {}}
 	s.regions = (scenario["regions"] as Dictionary).duplicate(true)
 	s.human_nations = [player]
 	for f: Dictionary in scenario["formations"]:
@@ -377,7 +380,7 @@ func to_dict() -> Dictionary:
 		"pending_orders": pending_orders, "next_id": next_id,
 		"active_battles": active_battles, "human_nations": human_nations, "defense_orders": defense_orders,
 		"relations": relations, "reputation": reputation, "personalities": personalities, "diplomacy": diplomacy,
-		"transport": transport,
+		"transport": transport, "economy": economy,
 	}
 
 
@@ -404,8 +407,11 @@ static func from_dict(d: Dictionary) -> GameState:
 		s.diplomacy = {"alliances": [], "crises": [], "conferences": [], "peace_treaties": [],
 			"pow": {"holders": {}, "exchanges": []}, "negotiations": {}, "history": []}
 	s.transport = d.get("transport", {})
+	s.economy = d.get("economy", {})
 	if not (s.transport is Dictionary) or s.transport.is_empty():
 		s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
+	if not (s.economy is Dictionary) or s.economy.is_empty():
+		s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "replacement": {}, "history": [], "prices": {}}
 	_normalize_numbers(s)
 	return s
 
@@ -437,6 +443,19 @@ static func _normalize_numbers(s: GameState) -> void:
 				fo[key] = int(fo[key])
 	for b: Dictionary in s.active_battles + s.battles:
 		CombatData.normalize_battle(b)
+	# Phase V : l'économie contient des compteurs entiers (population, main-d'œuvre, tours).
+	if s.economy is Dictionary:
+		for rid: String in s.economy.get("regions", {}):
+			var er: Dictionary = s.economy["regions"][rid]
+			for k: String in ["population", "workforce"]:
+				if er.has(k):
+					er[k] = int(er[k])
+			for sk: String in er.get("sectors", {}):
+				er["sectors"][sk] = int(er["sectors"][sk])
+		for t: Dictionary in s.economy.get("trade", []):
+			for k: String in ["turn", "arrival_turn"]:
+				if t.has(k):
+					t[k] = int(t[k])
 	for rid: String in s.regions:
 		var r: Dictionary = s.regions[rid]
 		if r.has("recon_reports"):

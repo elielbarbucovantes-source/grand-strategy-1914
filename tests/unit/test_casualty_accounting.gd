@@ -316,9 +316,11 @@ func test_old_save_migration() -> void:
 	env["format_version"] = 3
 	var d: Dictionary = env["state"]
 	d["format_version"] = 3
+	d.erase("transport")
+	d.erase("economy")
 	env["state_sha256"] = JSON.stringify(JSON.parse_string(JSON.stringify(d, "", true, true)), "", true, true).sha256_text()
 	var f := FileAccess.open("user://test_saves/v3.json", FileAccess.WRITE)
-	f.store_string(JSON.stringify(env))
+	f.store_string(JSON.stringify(SaveRepository._encode_floats(env), "", true, true))
 	f.close()
 	var loaded := SaveRepository.load_save("user://test_saves/v3.json", s.world, s.rules)
 	runner.check(not loaded.has("error") and int(loaded.get("migrated_from", 0)) == 3, "sauvegarde de format 3 migrée (%s)" % str(loaded.get("error", "")))

@@ -27,7 +27,8 @@ var _dragging := false
 var _stripe: ImageTexture
 # Phase IV — couches d'infrastructure activables sans surcharger la carte.
 var layers: Dictionary = {"rail": false, "road": false, "river": false, "maritime": false,
-	"ports": false, "interruptions": false, "capacity": false}
+	"ports": false, "interruptions": false, "capacity": false,
+	"resources": false, "industry": false, "population": false, "agriculture": false, "stocks": false}
 
 
 func set_layer(name: String, value: bool) -> void:
@@ -215,6 +216,8 @@ func _draw() -> void:
 			draw_polyline(closed, SELECT_COLOR, 3.5 * k)
 	# Phase IV : couches d'infrastructure (dessinées sous les figurines, au-dessus des frontières).
 	_draw_transport_layers(k)
+	# Phase V : couches économiques.
+	_draw_economic_layers(k)
 	# Villes et capitales (étoiles), noms des capitales toujours visibles (MAP-DEC-41).
 	for cid: String in session.world.cities:
 		var c: Dictionary = session.world.cities[cid]
@@ -286,6 +289,36 @@ func _draw_transport_layers(k: float) -> void:
 			var pos := Vector2(city["position_km"][0], -city["position_km"][1])
 			var col := Color("#134f5c") if str(p.get("status", "")) == "operational" else Color("#b03a2e")
 			draw_rect(Rect2(pos - Vector2(5, 5) * k, Vector2(10, 10) * k), col)
+
+
+func _draw_economic_layers(k: float) -> void:
+	var eco: Dictionary = session.state.economy.get("regions", {})
+	if eco.is_empty():
+		return
+	for rid: String in eco:
+		var r: Dictionary = eco[rid]
+		var p := screen_pos(rid)
+		if bool(layers.get("resources", false)):
+			for res: String in r.get("deposits", {}):
+				if float(r["deposits"][res]) > 0.0:
+					var col: Color = {"coal": Color("#3d3d3d"), "iron": Color("#7a4b2a"),
+						"oil": Color("#6b3f8a"), "grain": Color("#b8a23a")}.get(res, Color.GRAY)
+					draw_circle(p + Vector2(-10, -10) * k, 3.0 * k, col)
+					break
+		if bool(layers.get("industry", false)) and float(r.get("industry_capacity", 0.0)) > 0.05:
+			draw_rect(Rect2(p + Vector2(6, -14) * k, Vector2(7, 7) * k), Color("#8c4a2f"))
+		if bool(layers.get("population", false)) and camera.zoom.x > 0.5:
+			draw_string(ThemeDB.fallback_font, p + Vector2(-18, 14) * k,
+				"%d" % int(r.get("population", 0)), HORIZONTAL_ALIGNMENT_CENTER, -1, int(8 * k), Color("#1d4f6b"))
+		if bool(layers.get("agriculture", false)) and float(r.get("sectors", {}).get("agriculture", 0)) > 0:
+			draw_circle(p + Vector2(12, 10) * k, 4.0 * k, Color("#5c8a3a"))
+		if bool(layers.get("stocks", false)) and camera.zoom.x > 0.5:
+			var stock: float = 0.0
+			for v: float in session.state.economy.get("stocks", {}).get(str(r["nation"]), {}).values():
+				stock += v
+			if stock > 0.0:
+				draw_string(ThemeDB.fallback_font, p + Vector2(-6, 24) * k, "%.0f" % stock,
+					HORIZONTAL_ALIGNMENT_CENTER, -1, int(8 * k), Color("#2b5c3a"))
 
 
 func _draw_figurine(p: Vector2, color: Color, k: float, label: String, selected: bool) -> void:

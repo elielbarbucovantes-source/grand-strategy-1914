@@ -1,0 +1,44 @@
+{
+  "format": "gs1914.economic_baseline_sources",
+  "reference_date": "1914-01-01",
+  "_statut": "Population : ordres de grandeur issus des recensements d'avant 1914 (niveau B). Ressources et industrie : estimations de modele (niveau C/D), jamais presentees comme des statistiques verifiees.",
+  "sources": {
+    "CENSUS": {"citation": "Recensements nationaux d'avant 1914 (Annuaire statistique de France, Statistisches Jahrbuch, Board of Trade, censos espanol/portugues)", "reliability": "haute"},
+    "EB1911": {"citation": "Encyclopaedia Britannica, 11e edition (1911), articles pays et 'Coal', 'Iron', 'Petroleum'", "reliability": "moyenne"},
+    "SYB": {"citation": "The Statesman's Year-Book 1913/1914, tableaux demographiques et industriels", "reliability": "haute"},
+    "MODEL": {"citation": "Estimation de modele : repartition regionale proportionnelle a la surface, au rail et aux ports", "reliability": "faible"}
+  },
+  "nations": {
+    "german_empire": {"name_fr": "Empire allemand", "population": 65000000, "population_level": "B", "urban_share": 0.60, "resources": {"coal": 100, "iron": 22, "oil": 0.2, "wood": 40, "grain": 30, "other_ores": 6}, "industry": 1.0, "resource_level": "C"},
+    "united_kingdom": {"name_fr": "Royaume-Uni", "population": 45000000, "population_level": "B", "urban_share": 0.78, "resources": {"coal": 250, "iron": 15, "oil": 0.1, "wood": 8, "grain": 12, "other_ores": 5}, "industry": 1.0, "resource_level": "C"},
+    "france": {"name_fr": "France", "population": 39000000, "population_level": "B", "urban_share": 0.44, "resources": {"coal": 40, "iron": 30, "oil": 0.1, "wood": 25, "grain": 35, "other_ores": 4}, "industry": 0.72, "resource_level": "C"},
+    "russian_empire": {"name_fr": "Empire russe", "population": 175000000, "population_level": "B", "urban_share": 0.18, "resources": {"coal": 30, "iron": 18, "oil": 12, "wood": 90, "grain": 80, "other_ores": 8}, "industry": 0.45, "resource_level": "C"},
+    "austria_hungary": {"name_fr": "Autriche-Hongrie", "population": 52000000, "population_level": "B", "urban_share": 0.30, "resources": {"coal": 35, "iron": 12, "oil": 1.5, "wood": 35, "grain": 30, "other_ores": 5}, "industry": 0.6, "resource_level": "C"},
+    "italy": {"name_fr": "Italie", "population": 35000000, "population_level": "B", "urban_share": 0.30, "resources": {"coal": 0.5, "iron": 0.5, "oil": 0.1, "wood": 10, "grain": 18, "other_ores": 3}, "industry": 0.45, "resource_level": "C"},
+    "ottoman_empire": {"name_fr": "Empire ottoman", "population": 25000000, "population_level": "D", "urban_share": 0.20, "resources": {"coal": 0.2, "iron": 0.3, "oil": 0.3, "wood": 12, "grain": 20, "other_ores": 2}, "industry": 0.2, "resource_level": "D"},
+    "belgium": {"name_fr": "Belgique", "population": 7500000, "population_level": "B", "urban_share": 0.60, "resources": {"coal": 22, "iron": 2, "oil": 0.0, "wood": 2, "grain": 5, "other_ores": 4}, "industry": 0.7, "resource_level": "C"},
+    "netherlands": {"name_fr": "Pays-Bas", "population": 6000000, "population_level": "B", "urban_share": 0.55, "resources": {"coal": 5, "iron": 0.2, "oil": 0.0, "wood": 1, "grain": 6, "other_ores": 1}, "industry": 0.45, "resource_level": "C"},
+    "luxembourg": {"name_fr": "Luxembourg", "population": 300000, "population_level": "B", "urban_share": 0.25, "resources": {"coal": 0.1, "iron": 3, "oil": 0.0, "wood": 0.5, "grain": 0.5, "other_ores": 0.2}, "industry": 0.25, "resource_level": "C"},
+    "switzerland": {"name_fr": "Suisse", "population": 3900000, "population_level": "B", "urban_share": 0.45, "resources": {"coal": 0.1, "iron": 0.1, "oil": 0.0, "wood": 3, "grain": 2, "other_ores": 0.5}, "industry": 0.55, "resource_level": "C"},
+    "spain": {"name_fr": "Espagne", "population": 20000000, "population_level": "B", "urban_share": 0.30, "resources": {"coal": 8, "iron": 5, "oil": 0.0, "wood": 12, "grain": 15, "other_ores": 6}, "industry": 0.35, "resource_level": "C"},
+    "portugal": {"name_fr": "Portugal", "population": 6000000, "population_level": "B", "urban_share": 0.22, "resources": {"coal": 0.5, "iron": 0.5, "oil": 0.0, "wood": 5, "grain": 5, "other_ores": 1}, "industry": 0.2, "resource_level": "C"},
+    "denmark": {"name_fr": "Danemark", "population": 2800000, "population_level": "B", "urban_share": 0.40, "resources": {"coal": 0.1, "iron": 0.1, "oil": 0.0, "wood": 0.5, "grain": 6, "other_ores": 0.2}, "industry": 0.3, "resource_level": "C"},
+    "norway": {"name_fr": "Norvege", "population": 2400000, "population_level": "B", "urban_share": 0.28, "resources": {"coal": 0.3, "iron": 1, "oil": 0.0, "wood": 10, "grain": 1, "other_ores": 1}, "industry": 0.25, "resource_level": "C"},
+    "sweden": {"name_fr": "Suede", "population": 5800000, "population_level": "B", "urban_share": 0.25, "resources": {"coal": 0.2, "iron": 8, "oil": 0.0, "wood": 20, "grain": 4, "other_ores": 2}, "industry": 0.4, "resource_level": "C"},
+    "romania": {"name_fr": "Roumanie", "population": 7000000, "population_level": "B", "urban_share": 0.18, "resources": {"coal": 1, "iron": 0.5, "oil": 2, "wood": 12, "grain": 18, "other_ores": 1}, "industry": 0.2, "resource_level": "C"},
+    "bulgaria": {"name_fr": "Bulgarie", "population": 4800000, "population_level": "B", "urban_share": 0.18, "resources": {"coal": 0.3, "iron": 0.2, "oil": 0.0, "wood": 6, "grain": 10, "other_ores": 0.5}, "industry": 0.15, "resource_level": "C"},
+    "serbia": {"name_fr": "Serbie", "population": 4500000, "population_level": "C", "urban_share": 0.15, "resources": {"coal": 1, "iron": 0.5, "oil": 0.0, "wood": 6, "grain": 8, "other_ores": 1}, "industry": 0.15, "resource_level": "D"},
+    "montenegro": {"name_fr": "Montenegro", "population": 500000, "population_level": "D", "urban_share": 0.08, "resources": {"coal": 0.1, "iron": 0.1, "oil": 0.0, "wood": 2, "grain": 0.5, "other_ores": 0.1}, "industry": 0.05, "resource_level": "D"},
+    "albania": {"name_fr": "Albanie", "population": 800000, "population_level": "D", "urban_share": 0.08, "resources": {"coal": 0.1, "iron": 0.1, "oil": 0.0, "wood": 2, "grain": 1, "other_ores": 0.1}, "industry": 0.05, "resource_level": "D"},
+    "greece": {"name_fr": "Grece", "population": 4800000, "population_level": "B", "urban_share": 0.25, "resources": {"coal": 0.2, "iron": 0.2, "oil": 0.0, "wood": 3, "grain": 4, "other_ores": 1}, "industry": 0.2, "resource_level": "C"}
+  },
+  "key_deposits": [
+    {"name": "Ruhr", "regions": ["region_026", "region_028"], "resource": "coal", "level": "A"},
+    {"name": "Haut-Rhin / Lorraine", "regions": ["region_035"], "resource": "iron", "level": "A"},
+    {"name": "Pays de Galles", "regions": ["region_003"], "resource": "coal", "level": "A"},
+    {"name": "Donbass", "regions": ["region_063", "region_064"], "resource": "coal", "level": "B"},
+    {"name": "Bakou", "regions": ["region_090"], "resource": "oil", "level": "B"},
+    {"name": "Ploiesti", "regions": ["region_070"], "resource": "oil", "level": "B"},
+    {"name": "Silesie", "regions": ["region_031"], "resource": "coal", "level": "B"}
+  ]
+}
