@@ -1,0 +1,36 @@
+{
+  "format": "gs1914.transport_rules",
+  "format_version": 1,
+  "_statut": "Phase IV : parametres de modele PROPOSES. Les capacites ne sont pas des faits historiques.",
+  "capacity": {
+    "flow_reset": "monthly",
+    "default_need": 1,
+    "degraded_factor": 0.5,
+    "port_min_capacity": 1
+  },
+  "costs": {
+    "mode_time": {"rail": 0.25, "road": 1.0, "river": 0.7, "maritime": 0.5},
+    "mode_change_penalty": 0.6,
+    "degraded_multiplier": 1.8,
+    "difficulty_weight": 0.2
+  },
+  "conditions": ["operational", "degraded", "interrupted", "repairing"],
+  "repair": {"turns": 2, "requires_control": true},
+  "access": {
+    "allow_own": true,
+    "allow_ally": true,
+    "allow_war": true,
+    "allow_transit_treaty": true,
+    "allow_straits_without_port": false
+  },
+  "fog": {
+    "own_links": "exact",
+    "foreign_links": "estimated",
+    "foreign_repairs": "hidden_without_intelligence"
+  },
+  "limits": {
+    "max_route_length": 90,
+    "max_modes_per_route": 4,
+    "cache_invalidation": ["condition_change", "control_change", "transit_change"]
+  }
+}

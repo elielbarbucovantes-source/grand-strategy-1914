@@ -37,21 +37,45 @@ static func accessible_regions(state: GameState, world: WorldMap, nation: String
 ## Met à jour l'état de ravitaillement des formations (connexion à la capitale).
 ## Les conséquences d'un mauvais ravitaillement ne sont pas définies (dossier §7.2) :
 ## l'état est calculé et affiché, sans pénalité appliquée.
-static func update_supply(state: GameState, world: WorldMap) -> void:
+static func update_supply(state: GameState, world: WorldMap, rules: Dictionary = {}) -> void:
+	var net: TransportNetwork = rules.get("transport_network") as TransportNetwork
+	TransportNetwork.ensure_state(state)
 	var cache: Dictionary = {}
+	var routes: Dictionary = {}
 	for fid: String in state.sorted_formation_ids():
 		var f: Dictionary = state.formations[fid]
-		if not cache.has(f["nation"]):
-			cache[f["nation"]] = accessible_regions(state, world, f["nation"])
+		var nation := str(f["nation"])
+		if not cache.has(nation):
+			cache[nation] = accessible_regions(state, world, nation)
 		var was: bool = f["supplied"]
-		f["supplied"] = (cache[f["nation"]] as Dictionary).has(f["region"])
+		f["supplied"] = (cache[nation] as Dictionary).has(str(f["region"]))
+		# Phase IV : "livré" dépend du réseau de transport, pas seulement de la continuité.
+		if net != null:
+			var key := nation + "|" + str(f["region"])
+			if not routes.has(key):
+				var cap := str(state.nations[nation].get("capital_region_id", ""))
+				routes[key] = TransportRouter.route(net, state, cap, str(f["region"]), nation, 1)
+			var r: Dictionary = routes[key]
+			f["delivered"] = bool(r.get("ok", false))
+			f["route_time"] = float(r.get("time", 0.0))
+			f["route_bottleneck"] = str(r.get("bottleneck", ""))
 		if was and not f["supplied"] and state.is_top_level(f):  # une entrée par armée, pas par unité
 			state.log_event("logistique", "%s (%s) est coupée de sa capitale." % [f["name_fr"], state.nations[f["nation"]]["name_fr"]], [f["nation"]])
 
 
-static func summary(state: GameState, world: WorldMap, nation: String) -> Dictionary:
+static func summary(state: GameState, world: WorldMap, nation: String, rules: Dictionary = {}) -> Dictionary:
 	var owned := state.regions_controlled_by(nation)
 	var acc := accessible_regions(state, world, nation)
 	var cut: Array = owned.filter(func(rid: String) -> bool: return not acc.has(rid))
-	return {"controlled": owned.size(), "accessible": acc.size(), "cut_off": cut, "delivered": null,
-		"delivered_status": "OUVERT : capacités de transport non définies"}
+	var net: TransportNetwork = rules.get("transport_network") as TransportNetwork
+	var delivered := 0
+	var delivered_status := "OUVERT : réseau de transport non chargé"
+	if net != null:
+		var cap := str(state.nations[nation].get("capital_region_id", ""))
+		for rid: String in owned:
+			var r := TransportRouter.route(net, state, cap, rid, nation, 1)
+			if bool(r.get("ok", false)):
+				delivered += 1
+		delivered_status = "Phase IV : itinéraires multimodaux calculés avec capacités et contrôle"
+	return {"controlled": owned.size(), "accessible": acc.size(), "cut_off": cut,
+		"delivered": delivered, "delivered_status": delivered_status}

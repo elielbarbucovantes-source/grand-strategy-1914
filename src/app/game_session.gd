@@ -11,12 +11,15 @@ const COMBAT_RULES_PATH := "res://data/rules/combat_rules.json"
 const FORCES_RULES_PATH := "res://data/rules/forces_rules.json"
 const AI_DOCTRINES_PATH := "res://data/rules/ai_doctrines.json"
 const DIPLOMACY_RULES_PATH := "res://data/rules/diplomacy_rules.json"
+const TRANSPORT_PATH := "res://data/game/transport_network.json"
+const TRANSPORT_RULES_PATH := "res://data/rules/transport_rules.json"
 const SAVE_DIR := "user://saves"
 
 var world: WorldMap
 var rules: Dictionary
 var scenario: Dictionary
 var state: GameState
+var transport_network: TransportNetwork
 var last_report: Dictionary = {}
 
 
@@ -34,6 +37,9 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.rules["forces"] = load_json(FORCES_RULES_PATH)
 	s.rules["ai_doctrines"] = load_json(AI_DOCTRINES_PATH)
 	s.rules["diplomacy"] = load_json(DIPLOMACY_RULES_PATH)
+	s.rules["transport"] = load_json(TRANSPORT_RULES_PATH)
+	s.transport_network = TransportNetwork.load_from(TRANSPORT_PATH)
+	s.rules["transport_network"] = s.transport_network  # référence en mémoire, non sérialisée
 	ForceLedger.configure(s.rules["forces"].get("casualties", {}))
 	if s.world == null or s.rules.is_empty() or s.scenario.is_empty() or (s.rules["combat"] as Dictionary).is_empty() \
 			or (s.rules["forces"] as Dictionary).is_empty():
@@ -97,6 +103,8 @@ func queue_order(order: Dictionary) -> String:
 			for o: Dictionary in player_orders():
 				if o["type"] in same and reason == "":
 					reason = "ordre de mobilisation de ce type déjà donné ce mois-ci"
+		Orders.DISRUPT_LINK, Orders.REPAIR_LINK, Orders.SET_PORT_STATUS:
+			reason = TransportSystem.validate(state, transport_network, order)
 		_:
 			reason = DiplomacySystem.validate(state, order, rules)
 	if reason != "":

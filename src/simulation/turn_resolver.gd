@@ -37,6 +37,8 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 			TerritorialForce.apply_overseas(state, rules["forces"], order)
 		elif order["type"] == Orders.SET_DEFENSIVE_POSTURE:
 			state.formations[order["army"]]["defensive_posture"] = order["posture"]  # avant les batailles du mois
+		elif order["type"] in [Orders.DISRUPT_LINK, Orders.REPAIR_LINK, Orders.SET_PORT_STATUS]:
+			TransportSystem.apply(state, rules.get("transport_network"), order)
 	# Les mouvements sont revalidés après la diplomatie (une déclaration de guerre du même
 	# tour peut autoriser l'entrée ; une paix peut l'interdire). Une formation = un ordre.
 	var moves: Array = []
@@ -75,7 +77,8 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		MobilizationSystem.monthly(state, world, rules["forces"])
 		ForceLedger.monthly_recovery(state, world, rules["forces"])  # fin de convalescence (phase 6, étape 1)
 		ForceLedger.heal_lightly_wounded(state)  # blessés légers restés dans leur unité (étape 2)
-	LogisticsSystem.update_supply(state, world)
+	TransportNetwork.release_month(state)  # Phase IV : flux de capacité mensuel
+	LogisticsSystem.update_supply(state, world, rules)
 	state.pending_orders = {}
 	var finished := state.date_label()
 	var nxt := GameCalendar.next(state.year, state.month)
@@ -141,4 +144,6 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 		Orders.START_CRISIS, Orders.CRISIS_RESPONSE, Orders.OFFER_MEDIATION, Orders.EXCHANGE_POW, \
 		Orders.JOIN_ALLIANCE, Orders.LEAVE_ALLIANCE, Orders.DISSOLVE_ALLIANCE, Orders.UNIVERSAL_PACT, Orders.CONCLUDE_CONFERENCE:
 			return DiplomacySystem.validate(state, order, rules)
+		Orders.DISRUPT_LINK, Orders.REPAIR_LINK, Orders.SET_PORT_STATUS:
+			return TransportSystem.validate(state, rules.get("transport_network"), order)
 	return "type d'ordre inconnu"

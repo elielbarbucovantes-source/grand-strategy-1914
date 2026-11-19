@@ -51,6 +51,15 @@ func _build() -> void:
 	_button(bar, "Charger", _on_load)
 	_button(bar, "Menu", func() -> void: request_menu.emit())
 	_button(bar, "Panneau ⇆", func() -> void: side.visible = not side.visible)
+	# Phase IV : barre de couches cartographiques (compacte, sous la barre principale).
+	var layer_bar := HBoxContainer.new()
+	layer_bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
+	layer_bar.offset_top = 42
+	add_child(layer_bar)
+	for layer: String in ["rail", "road", "river", "maritime", "ports", "interruptions", "capacity"]:
+		_button(layer_bar, layer, func() -> void:
+			map_view.toggle_layer(layer)
+			map_view.queue_redraw())
 	side = PanelContainer.new()
 	side.anchor_left = 1.0; side.anchor_right = 1.0; side.anchor_top = 0.0; side.anchor_bottom = 1.0
 	side.offset_left = -440; side.offset_top = 44; side.offset_bottom = -30
@@ -557,8 +566,33 @@ func _page_logistics() -> void:
 	var t := "Continuité territoriale (implémentée) : régions contrôlées %d ; accessibles depuis la capitale %d.\n" % [s["controlled"], s["accessible"]]
 	if not (s["cut_off"] as Array).is_empty():
 		t += "[color=#b03a2e]Régions coupées :[/color] %s\n" % ", ".join((s["cut_off"] as Array).map(func(r: String) -> String: return session.world.regions[r]["name_fr"]))
-	t += "Ressources livrées : %s — capacités de transport non définies ; réseau ferré des données fragmenté (17 composantes).\nConséquences d'un mauvais ravitaillement : OUVERTES (aucune pénalité appliquée)." % NOT_FUNCTIONAL
+	t += "\n[b]Phase IV[/b] : %s — %d régions atteignables par un itinéraire multimodal depuis la capitale (capacités et contrôle pris en compte)." % [
+		s["delivered_status"], int(s["delivered"])]
 	_rich(box, t)
+	var net: TransportNetwork = session.rules.get("transport_network") as TransportNetwork
+	if net != null:
+		var me := session.state.player_nation
+		var cap := str(session.state.nations[me]["capital_region_id"])
+		_rich(box, "\n[b]Infrastructures contrôlées[/b]")
+		var shown := 0
+		for lid: String in net.links:
+			var l: Dictionary = net.links[lid]
+			if shown >= 12:
+				break
+			if not TransportSystem.controls(session.state, me, str(l["a"]), str(l["b"])):
+				continue
+			shown += 1
+			var row := HBoxContainer.new()
+			box.add_child(row)
+			_label(row, "%s (%s, cap %d, %s)" % [lid, l["mode"],
+				TransportNetwork.available(session.state, net, lid), TransportNetwork.condition(session.state, lid)], 11)
+			_button(row, "Interrompre", func() -> void: _queue(Orders.disrupt_link(me, lid)))
+			_button(row, "Réparer", func() -> void: _queue(Orders.repair_link(me, lid, 2)))
+		if shown == 0:
+			_label(box, "Aucune liaison sous contrôle direct.", 12)
+		var ports_row := HBoxContainer.new()
+		box.add_child(ports_row)
+		_label(ports_row, "Ports contrôlés : %d" % (session.state.regions_controlled_by(me).size()), 12)
 
 
 func _page_research() -> void:

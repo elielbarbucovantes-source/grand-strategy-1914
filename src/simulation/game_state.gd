@@ -5,7 +5,7 @@ extends RefCounted
 ## sauvegarde, le rejeu déterministe et l'évolution multijoueur.
 
 const FORMAT := "gs1914.state"
-const FORMAT_VERSION := 5  # 2 : échelons/pertes ; 3 : Territorial Force ; 4 : pertes ventilées ; 5 : diplomatie Phase III
+const FORMAT_VERSION := 6  # 5 : diplomatie Phase III ; 6 : réseau de transport Phase IV
 
 var scenario_id: String = ""
 var year: int = 1914
@@ -39,6 +39,8 @@ var reputation: Dictionary = {}    # nation -> réputation calculée (respect/tr
 var personalities: Dictionary = {} # nation -> identifiant de personnalité diplomatique
 # sous-clés : alliances, crises, conferences, peace_treaties, pow, negotiations, history
 var diplomacy: Dictionary = {}
+# Phase IV — état d'exploitation du réseau de transport (conditions, flux mensuels, réparations)
+var transport: Dictionary = {}
 
 # Index hiérarchique en mémoire (non sérialisé) : évite le recalcul quadratique de descendants().
 var _hierarchy_dirty: bool = true
@@ -73,6 +75,7 @@ static func from_scenario(scenario: Dictionary, start_month_value: int, player: 
 		"alliances": [], "crises": [], "conferences": [], "peace_treaties": [],
 		"pow": {"holders": {}, "exchanges": []}, "negotiations": {}, "history": []
 	}
+	s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
 	s.regions = (scenario["regions"] as Dictionary).duplicate(true)
 	s.human_nations = [player]
 	for f: Dictionary in scenario["formations"]:
@@ -374,6 +377,7 @@ func to_dict() -> Dictionary:
 		"pending_orders": pending_orders, "next_id": next_id,
 		"active_battles": active_battles, "human_nations": human_nations, "defense_orders": defense_orders,
 		"relations": relations, "reputation": reputation, "personalities": personalities, "diplomacy": diplomacy,
+		"transport": transport,
 	}
 
 
@@ -399,6 +403,9 @@ static func from_dict(d: Dictionary) -> GameState:
 	if not (s.diplomacy is Dictionary) or s.diplomacy.is_empty():
 		s.diplomacy = {"alliances": [], "crises": [], "conferences": [], "peace_treaties": [],
 			"pow": {"holders": {}, "exchanges": []}, "negotiations": {}, "history": []}
+	s.transport = d.get("transport", {})
+	if not (s.transport is Dictionary) or s.transport.is_empty():
+		s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
 	_normalize_numbers(s)
 	return s
 

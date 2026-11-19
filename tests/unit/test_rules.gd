@@ -219,7 +219,8 @@ func test_logistics_cut_off() -> void:
 	LogisticsSystem.update_supply(st, s.world)
 	runner.check(not st.formations["army_france_region_008"]["supplied"], "capitale perdue : formation coupée")
 	var summary := LogisticsSystem.summary(st, s.world, "france")
-	runner.check(summary["delivered"] == null, "« livré » reste inconnu (capacités non définies)")
+	# Phase IV : « livré » est un nombre de régions atteignables par le réseau (0 ici, capitale perdue).
+	runner.check(int(summary["delivered"]) == 0, "« livré » = 0 sans continuité depuis la capitale")
 
 
 func test_economy_unknowns_propagate() -> void:

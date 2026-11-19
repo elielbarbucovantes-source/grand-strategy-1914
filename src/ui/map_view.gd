@@ -25,6 +25,19 @@ var selected_formation := ""
 var visible_formations: Array = []
 var _dragging := false
 var _stripe: ImageTexture
+# Phase IV — couches d'infrastructure activables sans surcharger la carte.
+var layers: Dictionary = {"rail": false, "road": false, "river": false, "maritime": false,
+	"ports": false, "interruptions": false, "capacity": false}
+
+
+func set_layer(name: String, value: bool) -> void:
+	if layers.has(name):
+		layers[name] = value
+		queue_redraw()
+
+
+func toggle_layer(name: String) -> void:
+	set_layer(name, not bool(layers.get(name, false)))
 
 
 func setup(s: GameSession) -> void:
@@ -200,6 +213,8 @@ func _draw() -> void:
 			var closed := ring.duplicate()
 			closed.append(ring[0])
 			draw_polyline(closed, SELECT_COLOR, 3.5 * k)
+	# Phase IV : couches d'infrastructure (dessinées sous les figurines, au-dessus des frontières).
+	_draw_transport_layers(k)
 	# Villes et capitales (étoiles), noms des capitales toujours visibles (MAP-DEC-41).
 	for cid: String in session.world.cities:
 		var c: Dictionary = session.world.cities[cid]
@@ -231,6 +246,46 @@ func _draw() -> void:
 			# Flèche d'ordre (formations du joueur seulement).
 			if f["nation"] == st.player_nation and full.get("planned_target", "") != "":
 				_draw_arrow(pos, screen_pos(full["planned_target"]), k)
+
+
+func _draw_transport_layers(k: float) -> void:
+	var net: TransportNetwork = session.rules.get("transport_network") as TransportNetwork
+	if net == null:
+		return
+	var palette := {"rail": Color("#7b3f00"), "road": Color("#8a6d3b"),
+		"river": Color("#2e6fa8"), "maritime": Color("#1f7a8c")}
+	for lid: String in net.links:
+		var l: Dictionary = net.links[lid]
+		var mode := str(l.get("mode", ""))
+		if not bool(layers.get(mode, false)):
+			continue
+		var a := screen_pos(str(l["a"]))
+		var b := screen_pos(str(l["b"]))
+		var cond := TransportNetwork.condition(session.state, lid)
+		var col: Color = palette.get(mode, Color.GRAY)
+		if cond != "operational":
+			col = Color("#b03a2e")
+		var w := 2.2 * k
+		if mode == "rail":
+			w = 3.0 * k
+		draw_line(a, b, col, w)
+		if bool(layers.get("capacity", false)) and camera.zoom.x > 0.6:
+			var mid := (a + b) / 2.0
+			draw_string(ThemeDB.fallback_font, mid, str(TransportNetwork.available(session.state, net, lid)),
+				HORIZONTAL_ALIGNMENT_CENTER, -1, int(9 * k), Color.BLACK)
+		if bool(layers.get("interruptions", false)) and cond in ["interrupted", "repairing"]:
+			var mid := (a + b) / 2.0
+			draw_line(mid + Vector2(-5, -5) * k, mid + Vector2(5, 5) * k, Color.RED, 3.0 * k)
+			draw_line(mid + Vector2(-5, 5) * k, mid + Vector2(5, -5) * k, Color.RED, 3.0 * k)
+	if bool(layers.get("ports", false)):
+		for pid: String in net.ports:
+			var p: Dictionary = net.ports[pid]
+			var city: Dictionary = session.world.cities.get(pid, {})
+			if city.is_empty():
+				continue
+			var pos := Vector2(city["position_km"][0], -city["position_km"][1])
+			var col := Color("#134f5c") if str(p.get("status", "")) == "operational" else Color("#b03a2e")
+			draw_rect(Rect2(pos - Vector2(5, 5) * k, Vector2(10, 10) * k), col)
 
 
 func _draw_figurine(p: Vector2, color: Color, k: float, label: String, selected: bool) -> void:

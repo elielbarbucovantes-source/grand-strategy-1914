@@ -31,6 +31,10 @@ const LEAVE_ALLIANCE := "leave_alliance"
 const DISSOLVE_ALLIANCE := "dissolve_alliance"
 const UNIVERSAL_PACT := "universal_pact"
 const CONCLUDE_CONFERENCE := "conclude_conference"
+# Phase IV — infrastructures
+const DISRUPT_LINK := "disrupt_link"
+const REPAIR_LINK := "repair_link"
+const SET_PORT_STATUS := "set_port_status"
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
@@ -119,6 +123,18 @@ static func universal_pact(nation: String, members: Array) -> Dictionary:
 
 static func conclude_conference(nation: String, conference: String, topic: String) -> Dictionary:
 	return {"type": CONCLUDE_CONFERENCE, "nation": nation, "conference": conference, "topic": topic}
+
+
+static func disrupt_link(nation: String, link: String, condition: String = "interrupted") -> Dictionary:
+	return {"type": DISRUPT_LINK, "nation": nation, "link": link, "condition": condition}
+
+
+static func repair_link(nation: String, link: String, turns: int = 2) -> Dictionary:
+	return {"type": REPAIR_LINK, "nation": nation, "link": link, "turns": turns}
+
+
+static func set_port_status(nation: String, port: String, status: String) -> Dictionary:
+	return {"type": SET_PORT_STATUS, "nation": nation, "port": port, "status": status}
 
 
 static func message(nation: String, channel: String, to: Array, text: String) -> Dictionary:
