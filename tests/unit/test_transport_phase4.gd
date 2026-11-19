@@ -196,6 +196,7 @@ func test_v5_save_migration_keeps_diplomacy() -> void:
 	st["format_version"] = 5
 	st.erase("transport")
 	st.erase("economy")
+	st.erase("tech")
 	var once := JSON.stringify(st, "", true, true)
 	env["state_sha256"] = JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text()
 	var path := "user://test_saves/phase4_v5.json"

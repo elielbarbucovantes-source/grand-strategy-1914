@@ -28,7 +28,8 @@ var _stripe: ImageTexture
 # Phase IV — couches d'infrastructure activables sans surcharger la carte.
 var layers: Dictionary = {"rail": false, "road": false, "river": false, "maritime": false,
 	"ports": false, "interruptions": false, "capacity": false,
-	"resources": false, "industry": false, "population": false, "agriculture": false, "stocks": false}
+	"resources": false, "industry": false, "population": false, "agriculture": false, "stocks": false,
+	"airbases": false, "fleets": false, "intel_activity": false}
 
 
 func set_layer(name: String, value: bool) -> void:
@@ -218,6 +219,8 @@ func _draw() -> void:
 	_draw_transport_layers(k)
 	# Phase V : couches économiques.
 	_draw_economic_layers(k)
+	# Phase VI : bases aériennes, flottes et renseignement.
+	_draw_phase6_layers(k)
 	# Villes et capitales (étoiles), noms des capitales toujours visibles (MAP-DEC-41).
 	for cid: String in session.world.cities:
 		var c: Dictionary = session.world.cities[cid]
@@ -319,6 +322,30 @@ func _draw_economic_layers(k: float) -> void:
 			if stock > 0.0:
 				draw_string(ThemeDB.fallback_font, p + Vector2(-6, 24) * k, "%.0f" % stock,
 					HORIZONTAL_ALIGNMENT_CENTER, -1, int(8 * k), Color("#2b5c3a"))
+
+
+func _draw_phase6_layers(k: float) -> void:
+	var tech: Dictionary = session.state.tech
+	if bool(layers.get("airbases", false)):
+		for nid: String in tech["air"]["bases"]:
+			for b: Dictionary in tech["air"]["bases"][nid]:
+				if session.state.regions.has(str(b["region"])):
+					var p := screen_pos(str(b["region"]))
+					draw_colored_polygon(PackedVector2Array([
+						p + Vector2(0, -12) * k, p + Vector2(10, 8) * k, p + Vector2(-10, 8) * k]),
+						Color("#4a6fa5"))
+	if bool(layers.get("fleets", false)):
+		for nid: String in tech["naval"]["fleets"]:
+			for f: Dictionary in tech["naval"]["fleets"][nid]:
+				if session.state.regions.has(str(f["region"])):
+					var p := screen_pos(str(f["region"]))
+					draw_circle(p + Vector2(0, -18) * k, 6.0 * k, Color("#144d6b"))
+	if bool(layers.get("intel_activity", false)):
+		for nid: String in tech.get("intel", {}):
+			for entry: Dictionary in tech["intel"][nid]:
+				if session.state.regions.has(str(entry.get("region", ""))):
+					var p := screen_pos(str(entry["region"]))
+					draw_circle(p, 14.0 * k, Color(1.0, 0.8, 0.2, 0.3))
 
 
 func _draw_figurine(p: Vector2, color: Color, k: float, label: String, selected: bool) -> void:

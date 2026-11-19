@@ -43,6 +43,26 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 			MarketSystem.propose(state, rules.get("transport_network"), rules, order)
 		elif order["type"] == Orders.INVEST_RESOURCE:
 			ResourceSystem.invest(state, str(order["region"]), str(order["resource"]), float(order["amount"]))
+		elif order["type"] == Orders.SET_RESEARCH:
+			TechSystem.start_project(state, order["nation"], str(order["tech"]))
+		elif order["type"] == Orders.SET_COMMS_PROTECTION:
+			CommunicationsSystem.ensure(state, order["nation"])
+			state.tech["comms"][order["nation"]]["protection"] = mini(int(order.get("level", 1)), 4)
+		elif order["type"] == Orders.INTERCEPT:
+			var seed: int = state.turn * 97 + str(order["nation"]).length() * 13 + str(order["target"]).length()
+			CommunicationsSystem.attempt_intercept(state, rules.get("tech_tree"), order["nation"],
+				str(order["target"]), rules.get("phase6", {}), seed)
+		elif order["type"] == Orders.BUILD_AIRBASE:
+			AirSystem.build_base(state, order["nation"], str(order["region"]), rules)
+		elif order["type"] == Orders.PRODUCE_AIRCRAFT:
+			AirSystem.produce(state, order["nation"], str(order["kind"]), int(order["amount"]), rules)
+		elif order["type"] == Orders.AIR_RECON:
+			AirSystem.reconnaissance(state, rules.get("tech_tree"), order["nation"], str(order["region"]), rules)
+		elif order["type"] == Orders.CREATE_FLEET:
+			NavalSystem.create_fleet(state, order["nation"], str(order["port"]), order["composition"], rules)
+		elif order["type"] == Orders.NAVAL_OPERATION:
+			NavalSystem.operation(state, order["nation"], str(order["fleet"]), str(order["kind"]),
+				str(order["zone"]), rules.get("phase6", {}))
 	# Les mouvements sont revalidés après la diplomatie (une déclaration de guerre du même
 	# tour peut autoriser l'entrée ; une paix peut l'interdire). Une formation = un ordre.
 	var moves: Array = []
@@ -82,6 +102,10 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		ForceLedger.monthly_recovery(state, world, rules["forces"])  # fin de convalescence (phase 6, étape 1)
 		ForceLedger.heal_lightly_wounded(state)  # blessés légers restés dans leur unité (étape 2)
 	EconomySystem.monthly(state, world, rules, rules.get("economy_model", {}))  # Phase V : cycle économique
+	TechSystem.monthly(state, rules.get("tech_tree"), rules.get("phase6", {}))  # Phase VI : recherche
+	for nid: String in state.nation_order:
+		AirSystem.monthly(state, nid, rules.get("phase6", {}))
+		NavalSystem.monthly(state, nid)
 	TransportNetwork.release_month(state)  # Phase IV : flux de capacité mensuel
 	LogisticsSystem.update_supply(state, world, rules)
 	state.pending_orders = {}
@@ -156,4 +180,12 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 		Orders.INVEST_RESOURCE:
 			return ResourceSystem.validate_invest(state, str(order.get("region", "")),
 				str(order.get("resource", "")), float(order.get("amount", 0)))
+		Orders.SET_RESEARCH:
+			return TechSystem.can_research(state, rules.get("tech_tree"), order["nation"], str(order["tech"]))
+		Orders.BUILD_AIRBASE, Orders.AIR_RECON:
+			if not state.regions.has(str(order.get("region", ""))):
+				return "région inconnue"
+			return ""
+		Orders.PRODUCE_AIRCRAFT, Orders.CREATE_FLEET, Orders.NAVAL_OPERATION, Orders.INTERCEPT, Orders.SET_COMMS_PROTECTION:
+			return ""
 	return "type d'ordre inconnu"

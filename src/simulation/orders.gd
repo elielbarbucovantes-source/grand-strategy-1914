@@ -38,6 +38,15 @@ const SET_PORT_STATUS := "set_port_status"
 # Phase V — économie
 const TRADE := "trade"
 const INVEST_RESOURCE := "invest_resource"
+# Phase VI
+const SET_RESEARCH := "set_research"
+const SET_COMMS_PROTECTION := "set_comms_protection"
+const INTERCEPT := "intercept"
+const AIR_RECON := "air_recon"
+const BUILD_AIRBASE := "build_airbase"
+const PRODUCE_AIRCRAFT := "produce_aircraft"
+const CREATE_FLEET := "create_fleet"
+const NAVAL_OPERATION := "naval_operation"
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
@@ -146,6 +155,38 @@ static func trade(nation: String, from: String, to: String, resource: String, am
 
 static func invest_resource(nation: String, region: String, resource: String, amount: float) -> Dictionary:
 	return {"type": INVEST_RESOURCE, "nation": nation, "region": region, "resource": resource, "amount": amount}
+
+
+static func set_research(nation: String, tech: String) -> Dictionary:
+	return {"type": SET_RESEARCH, "nation": nation, "tech": tech}
+
+
+static func set_comms_protection(nation: String, level: int) -> Dictionary:
+	return {"type": SET_COMMS_PROTECTION, "nation": nation, "level": level}
+
+
+static func intercept(nation: String, target: String) -> Dictionary:
+	return {"type": INTERCEPT, "nation": nation, "target": target}
+
+
+static func air_recon(nation: String, region: String) -> Dictionary:
+	return {"type": AIR_RECON, "nation": nation, "region": region}
+
+
+static func build_airbase(nation: String, region: String) -> Dictionary:
+	return {"type": BUILD_AIRBASE, "nation": nation, "region": region}
+
+
+static func produce_aircraft(nation: String, kind: String, amount: int) -> Dictionary:
+	return {"type": PRODUCE_AIRCRAFT, "nation": nation, "kind": kind, "amount": amount}
+
+
+static func create_fleet(nation: String, port: String, composition: Dictionary) -> Dictionary:
+	return {"type": CREATE_FLEET, "nation": nation, "port": port, "composition": composition.duplicate(true)}
+
+
+static func naval_operation(nation: String, fleet: String, kind: String, zone: String) -> Dictionary:
+	return {"type": NAVAL_OPERATION, "nation": nation, "fleet": fleet, "kind": kind, "zone": zone}
 
 
 static func message(nation: String, channel: String, to: Array, text: String) -> Dictionary:

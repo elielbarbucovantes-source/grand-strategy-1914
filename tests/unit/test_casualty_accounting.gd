@@ -318,6 +318,7 @@ func test_old_save_migration() -> void:
 	d["format_version"] = 3
 	d.erase("transport")
 	d.erase("economy")
+	d.erase("tech")
 	env["state_sha256"] = JSON.stringify(JSON.parse_string(JSON.stringify(d, "", true, true)), "", true, true).sha256_text()
 	var f := FileAccess.open("user://test_saves/v3.json", FileAccess.WRITE)
 	f.store_string(JSON.stringify(SaveRepository._encode_floats(env), "", true, true))

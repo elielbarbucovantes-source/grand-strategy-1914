@@ -290,13 +290,13 @@ func test_v4_save_migration_preserves_existing_data() -> void:
 	env["format_version"] = 4
 	var st: Dictionary = env["state"]
 	st["format_version"] = 4
-	for k: String in ["relations", "reputation", "personalities", "diplomacy", "transport", "economy"]:
+	for k: String in ["relations", "reputation", "personalities", "diplomacy", "transport", "economy", "tech"]:
 		st.erase(k)
 	var once := JSON.stringify(st, "", true, true)
 	env["state_sha256"] = JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text()
 	var path := "user://test_saves/phase3_v4.json"
 	var f := FileAccess.open(path, FileAccess.WRITE)
-	f.store_string(JSON.stringify(env, "", true, true))
+	f.store_string(JSON.stringify(SaveRepository._encode_floats(env), "", true, true))
 	f.close()
 	var loaded := SaveRepository.load_save(path, s.world, s.rules)
 	runner.check(not loaded.has("error"), "sauvegarde v4 migrée sans erreur : %s" % str(loaded.get("error", "")))

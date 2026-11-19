@@ -1,0 +1,32 @@
+{
+  "exists": [
+    "ResearchSystem (technology/research_system.gd): skeleton — new_project/advance, HORIZON_START/END consts",
+    "IntelSystem (intelligence/intel_system.gd): full stealth view — view_for, region_intel, _own_operational/_own_morale/_own_fort_level, recon/combat estimate bands, staleness (fresh/stale/unknown)",
+    "EconomySystem (economy/economy_system.gd): Phase V orchestrator — monthly cycle (demography→resources→industry→market→military supply/replacement→logistics), region_output, national_balance, summary, apply_allocation/validate_allocation",
+    "SaveRepository (adapters/save_repository.gd): versioned envelope, FORMAT_VERSION 7, migrations v6→v7",
+    "GameState.tech skeleton (game_state.gd:47,84,386,414,417-418): empty sub-dicts known/projects/intel/comms/air/naval, serialized in to_dict/from_dict"
+  ],
+  "partial": [
+    "Research — skeleton only: advance() returns early when cost == null (no measurable progression); tech catalog empty (state.tech['projects'] = {}); HORIZON_START/END unused",
+    "Intel — INT-01-style view implemented; interception/decryption structures absent (TODO at intel_system.gd:12)",
+    "Economy — Phase V operational (wired into game_session/turn_resolver/game_ui/save_repository); Phase VI integration hooks present but dormant",
+    "SaveRepository — v7 written; mismatch with GameState.FORMAT_VERSION := 8 ('technologie/comms/air/marine Phase VI'): load_save rejects version != 7, no v8 migration",
+    "Tech state — skeleton on GameState (empty comms/air/naval dicts) but no implementation behind it"
+  ],
+  "missing": [
+    "Technology tree (arbre technologique, TECH-01): no catalog, no tree structure implementation, no national start-of-tree (rule 'OUVERT : arbre technologique non défini' at game_state.gd:73); ResearchSystem.advance is not called anywhere — no call sites",
+    "Comms/crypto research + communications systems: state.tech['comms'] empty, no code; only proposed params in data/rules/phase6_rules.json ('comms' section)",
+    "Aviation (air): state.tech['air'] = {bases, aircraft, missions} — all empty; no AirSystem; proposed params in phase6_rules.json ('aviation')",
+    "Naval (marine): state.tech['naval'] = {fleets, zones, operations} — all empty; no NavalSystem; proposed params in phase6_rules.json ('naval')",
+    "Interception & decryption (INT-02, R-09): IntelSystem line 12 marks structures as open; no interception/decryption systems implemented"
+  ],
+  "integration_points": [
+    "GameState.tech: to_dict (game_state.gd:386), from_dict (414), skeleton init (47, 84, 417-418)",
+    "ResearchSystem: game_ui.gd:624 (UI status text 'l'arbre technologique n'est pas défini') — no other call sites; advance/new_project uncalled",
+    "EconomySystem: game_session.gd:75 (initialize), 96 (validate_allocation); turn_resolver.gd:30 (apply_allocation), 84 (monthly), 138 (validate_allocation); game_ui.gd:311 (national_balance), 315 (summary); save_repository.gd:162 (initialize on migration)",
+    "IntelSystem: game_session.gd:157 ( NationAgent.decide(IntelSystem.view_for(...)) ); game_ui.gd:171 (region_intel), 629 (view_for); map_view.gd:153 (view_for)",
+    "SaveRepository: game_session.gd:225 (save), 229 (load_save); main.gd:68 (list_saves); game_ui.gd:764 (list_saves)",
+    "Rules source: data/rules/phase6_rules.json — format_version 1, '_statut': PROPOSÉ, non des faits historiques; sections: research, communications, aviation, naval, ai"
+  ],
+  "notes": "Phase VI not started per docs/project/POST_MIL01_PHASE5_REPORT.md:162 ('La Phase VI n'a pas été commencée'). Roadmap scope: tech tree + interception/decryption + naval/aviation (POST_MIL01_ROADMAP_AUDIT.md:370-379, 436). Findings are concrete: ResearchSystem is a null-cost skeleton (advance() early-returns when cost==null), there is no tech tree, no comms/crypto research, no air or naval implementation — only empty state.tech sub-dicts and proposed phase6_rules.json params. Additional discrepancy: game_state.gd FORMAT_VERSION is already 8 for Phase VI while SaveRepository.FORMAT_VERSION is still 7 and load_save() rejects anything else, so Phase VI saves would be rejected once bumped."
+}

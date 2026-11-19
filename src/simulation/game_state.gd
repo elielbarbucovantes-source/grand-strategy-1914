@@ -5,7 +5,7 @@ extends RefCounted
 ## sauvegarde, le rejeu déterministe et l'évolution multijoueur.
 
 const FORMAT := "gs1914.state"
-const FORMAT_VERSION := 7  # 6 : transport Phase IV ; 7 : économie Phase V
+const FORMAT_VERSION := 8  # 8 : technologie/comms/air/marine Phase VI ; 7 : économie Phase V
 
 var scenario_id: String = ""
 var year: int = 1914
@@ -43,6 +43,8 @@ var diplomacy: Dictionary = {}
 var transport: Dictionary = {}
 # Phase V — économie : régions, stocks, main-d'œuvre, commerce, remplacement
 var economy: Dictionary = {}
+# Phase VI — technologie, communications, aviation et marine
+var tech: Dictionary = {}
 
 # Index hiérarchique en mémoire (non sérialisé) : évite le recalcul quadratique de descendants().
 var _hierarchy_dirty: bool = true
@@ -79,6 +81,7 @@ static func from_scenario(scenario: Dictionary, start_month_value: int, player: 
 	}
 	s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
 	s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "replacement": {}, "history": [], "prices": {}}
+	s.tech = {"known": {}, "projects": {}, "intel": {}, "comms": {}, "air": {"bases": {}, "aircraft": {}, "missions": []}, "naval": {"fleets": {}, "zones": {}, "operations": []}}
 	s.regions = (scenario["regions"] as Dictionary).duplicate(true)
 	s.human_nations = [player]
 	for f: Dictionary in scenario["formations"]:
@@ -380,7 +383,7 @@ func to_dict() -> Dictionary:
 		"pending_orders": pending_orders, "next_id": next_id,
 		"active_battles": active_battles, "human_nations": human_nations, "defense_orders": defense_orders,
 		"relations": relations, "reputation": reputation, "personalities": personalities, "diplomacy": diplomacy,
-		"transport": transport, "economy": economy,
+		"transport": transport, "economy": economy, "tech": tech,
 	}
 
 
@@ -408,8 +411,11 @@ static func from_dict(d: Dictionary) -> GameState:
 			"pow": {"holders": {}, "exchanges": []}, "negotiations": {}, "history": []}
 	s.transport = d.get("transport", {})
 	s.economy = d.get("economy", {})
+	s.tech = d.get("tech", {})
 	if not (s.transport is Dictionary) or s.transport.is_empty():
 		s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
+	if not (s.tech is Dictionary) or s.tech.is_empty():
+		s.tech = {"known": {}, "projects": {}, "intel": {}, "comms": {}, "air": {"bases": {}, "aircraft": {}, "missions": []}, "naval": {"fleets": {}, "zones": {}, "operations": []}}
 	if not (s.economy is Dictionary) or s.economy.is_empty():
 		s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "replacement": {}, "history": [], "prices": {}}
 	_normalize_numbers(s)

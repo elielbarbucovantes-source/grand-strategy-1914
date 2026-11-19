@@ -1,0 +1,68 @@
+{
+  "format": "gs1914.phase6_rules",
+  "format_version": 1,
+  "_statut": "Phase VI : parametres de simulation PROPOSES, non des faits historiques.",
+  "research": {
+    "science_from_industry": 0.15,
+    "science_from_workforce": 0.00002,
+    "science_per_turn_base": 0.5,
+    "resource_cost_per_point": {"coal": 0.05, "iron": 0.03},
+    "max_projects_per_nation": 3,
+    "max_progress_per_turn": 20.0,
+    "diffusion_cost_factor": 0.6,
+    "capture_cost_factor": 0.4,
+    "transfer_months": 2
+  },
+  "communications": {
+    "base_protection": 0,
+    "protection_per_tech": 1,
+    "max_protection": 4,
+    "intercept_range_km": 300,
+    "detection_base": 0.3,
+    "intercept_base": 0.2,
+    "partial_comprehension": 0.5,
+    "full_comprehension": 0.85,
+    "decrypt_progress_per_turn": 0.08,
+    "decrypt_bonus_with_codebooks": 0.12,
+    "max_intercepts_per_turn": 4,
+    "intel_reliability_low": 0.4,
+    "intel_stale_turns": 3
+  },
+  "aviation": {
+    "base_aircraft": 0,
+    "production_cost_per_aircraft": {"iron": 2.0, "coal": 1.0},
+    "aircraft_per_industry": 0.2,
+    "base_range_km": 150,
+    "recon_accuracy": 0.3,
+    "recon_per_aircraft": 0.02,
+    "maintenance_share": 0.08,
+    "base_capacity": 40,
+    "mission_cost_supply": 0.5,
+    "max_missions_per_turn": 3
+  },
+  "naval": {
+    "categories": ["battleship", "cruiser", "destroyer", "submarine", "auxiliary", "transport"],
+    "production_cost": {"battleship": {"iron": 60, "coal": 40}, "cruiser": {"iron": 30, "coal": 20},
+      "destroyer": {"iron": 12, "coal": 8}, "submarine": {"iron": 10, "coal": 6},
+      "auxiliary": {"iron": 5, "coal": 4}, "transport": {"iron": 6, "coal": 3}},
+    "maintenance_share": 0.05,
+    "base_autonomy": 3,
+    "escort_effectiveness": 1.0,
+    "blockade_trade_reduction": 0.4,
+    "max_operations_per_turn": 3,
+    "zone_control_threshold": 0.6
+  },
+  "ai": {
+    "max_research_projects": 2,
+    "max_air_missions": 2,
+    "max_naval_operations": 2,
+    "max_intercepts": 2,
+    "personalities": {
+      "scientist": {"research": 0.5, "air": 0.2, "naval": 0.1, "comms": 0.2},
+      "naval": {"research": 0.2, "air": 0.1, "naval": 0.5, "comms": 0.2},
+      "air": {"research": 0.25, "air": 0.45, "naval": 0.1, "comms": 0.2},
+      "balanced": {"research": 0.3, "air": 0.2, "naval": 0.2, "comms": 0.3}
+    },
+    "default_personality": "balanced"
+  }
+}

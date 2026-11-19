@@ -1,0 +1,47 @@
+{
+  "sources": {
+    "description": "Approximate begin-war (August 1914) inventory counts, per standard histories of WWI navies and air forces (e.g., Sondhaus, The Great War at Sea; Strachan, The First World War). Figure for each category is a rounded estimate of the common begin-war total; minor-nation figures are rough.",
+    "uncertainty": "Moderate to high for minor-nation entries; moderate for major powers (the true begin-war counts are not exhaustively published). All figures are rounded to commonly cited approximations."
+  },
+  "navies": {
+    "united_kingdom": { "battleships": 18, "cruisers": 47, "destroyers": 79, "submarines": 33, "level": "B" },
+    "france": { "battleships": 10, "cruisers": 32, "destroyers": 60, "submarines": 40, "level": "B" },
+    "germany": { "battleships": 8, "cruisers": 14, "destroyers": 48, "submarines": 13, "level": "B" },
+    "russia": { "battleships": 6, "cruisers": 22, "destroyers": 42, "submarines": 20, "level": "B" },
+    "japan": { "battleships": 6, "cruisers": 22, "destroyers": 30, "submarines": 10, "level": "B" },
+    "austria_hungary": { "battleships": 4, "cruisers": 9, "destroyers": 38, "submarines": 8, "level": "B" },
+    "italy": { "battleships": 8, "cruisers": 13, "destroyers": 50, "submarines": 5, "level": "B" },
+    "ottoman_empire": { "battleships": 2, "cruisers": 4, "destroyers": 14, "submarines": 2, "level": "B" },
+    "brazil": { "battleships": 4, "cruisers": 4, "destroyers": 12, "submarines": 2, "level": "B" },
+    "argentina": { "battleships": 1, "cruisers": 4, "destroyers": 8, "submarines": 0, "level": "B" },
+    "netherlands": { "battleships": 0, "cruisers": 3, "destroyers": 14, "submarines": 2, "level": "B" },
+    "thailand": { "battleships": 0, "cruisers": 2, "destroyers": 10, "submarines": 2, "level": "B" },
+    "chile": { "battleships": 1, "cruisers": 0, "destroyers": 6, "submarines": 0, "level": "B" },
+    "china": { "battleships": 3, "cruisers": 8, "destroyers": 4, "submarines": 0, "level": "B" },
+    "spain": { "battleships": 3, "cruisers": 4, "destroyers": 10, "submarines": 0, "level": "B" },
+    "romania": { "battleships": 1, "cruisers": 2, "destroyers": 4, "submarines": 0, "level": "B" },
+    "norway": { "battleships": 0, "cruisers": 2, "destroyers": 8, "submarines": 0, "level": "B" }
+  },
+  "airforces": {
+    "france": { "aircraft": 2500, "level": "C" },
+    "germany": { "aircraft": 1800, "level": "C" },
+    "united_kingdom": { "aircraft": 900, "level": "C" },
+    "russia": { "aircraft": 600, "level": "C" },
+    "austria_hungary": { "aircraft": 320, "level": "C" },
+    "italy": { "aircraft": 350, "level": "C" },
+    "japan": { "aircraft": 350, "level": "C" },
+    "ottoman_empire": { "aircraft": 200, "level": "C" },
+    "bulgaria": { "aircraft": 250, "level": "C" },
+    "romania": { "aircraft": 200, "level": "C" },
+    "serbia": { "aircraft": 120, "level": "C" },
+    "belgium": { "aircraft": 120, "level": "C" },
+    "netherlands": { "aircraft": 60, "level": "C" },
+    "denmark": { "aircraft": 50, "level": "C" },
+    "spain": { "aircraft": 80, "level": "C" },
+    "brazil": { "aircraft": 40, "level": "C" },
+    "thailand": { "aircraft": 30, "level": "C" },
+    "chile": { "aircraft": 20, "level": "C" },
+    "argentina": { "aircraft": 40, "level": "C" }
+  },
+  "notes": "Approximate begin-war (August 1914) totals for each nation. Navies count battleships, cruisers, destroyers and submarines; airforces count total military aircraft. Numbers are rounded approximations of commonly cited 1914 begin-war figures and should be treated as order-of-magnitude, not authoritative counts; uncertainty is higher for minor-nation entries. Categories reflect the level tags set here: level 'B' for navies and 'C' for airforces."
+}

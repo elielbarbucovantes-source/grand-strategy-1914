@@ -14,6 +14,7 @@ const DIPLOMACY_RULES_PATH := "res://data/rules/diplomacy_rules.json"
 const TRANSPORT_PATH := "res://data/game/transport_network.json"
 const TRANSPORT_RULES_PATH := "res://data/rules/transport_rules.json"
 const ECONOMY_RULES_PATH := "res://data/rules/economy_rules.json"
+const PHASE6_RULES_PATH := "res://data/rules/phase6_rules.json"
 const SAVE_DIR := "user://saves"
 
 var world: WorldMap
@@ -21,6 +22,7 @@ var rules: Dictionary
 var scenario: Dictionary
 var state: GameState
 var transport_network: TransportNetwork
+var tech_tree: TechSystem
 var last_report: Dictionary = {}
 
 
@@ -40,8 +42,11 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.rules["diplomacy"] = load_json(DIPLOMACY_RULES_PATH)
 	s.rules["transport"] = load_json(TRANSPORT_RULES_PATH)
 	s.rules["economy_model"] = load_json(ECONOMY_RULES_PATH)
+	s.rules["phase6"] = load_json(PHASE6_RULES_PATH)
 	s.transport_network = TransportNetwork.load_from(TRANSPORT_PATH)
+	s.tech_tree = TechSystem.load_tree()
 	s.rules["transport_network"] = s.transport_network  # référence en mémoire, non sérialisée
+	s.rules["tech_tree"] = s.tech_tree
 	ForceLedger.configure(s.rules["forces"].get("casualties", {}))
 	if s.world == null or s.rules.is_empty() or s.scenario.is_empty() or (s.rules["combat"] as Dictionary).is_empty() \
 			or (s.rules["forces"] as Dictionary).is_empty():
@@ -156,6 +161,7 @@ func end_turn() -> Dictionary:
 			continue
 		orders[nid] = NationAgent.decide(IntelSystem.view_for(state, world, nid, rules), world, rules)
 		orders[nid].append_array(EconomicAI.decide(state, transport_network, rules, nid))
+		orders[nid].append_array(Phase6AI.decide(state, tech_tree, rules, nid))
 	last_report = TurnResolver.resolve(state, world, rules, orders)
 	return last_report
 

@@ -57,7 +57,8 @@ func _build() -> void:
 	layer_bar.offset_top = 42
 	add_child(layer_bar)
 	for layer: String in ["rail", "road", "river", "maritime", "ports", "interruptions", "capacity",
-		"resources", "industry", "population", "agriculture", "stocks"]:
+		"resources", "industry", "population", "agriculture", "stocks",
+		"airbases", "fleets", "intel_activity"]:
 		_button(layer_bar, layer, func() -> void:
 			map_view.toggle_layer(layer)
 			map_view.queue_redraw())
@@ -621,7 +622,52 @@ func _page_logistics() -> void:
 
 
 func _page_research() -> void:
-	_rich(_clear("Recherche"), "%s — l'arbre technologique (1914–1945) n'est pas défini. La structure des projets existe (ResearchSystem) ; aucune technologie n'est inventée." % NOT_FUNCTIONAL)
+	var box := _clear("Recherche")
+	var me := session.state.player_nation
+	TechSystem.ensure(session.state, me)
+	var known: Array = session.state.tech["known"][me]
+	var projects: Array = session.state.tech["projects"][me]
+	_rich(box, "[b]Recherche 1914–1945[/b] — %d technologies connues, %d projet(s) actif(s)." % [known.size(), projects.size()])
+	for p: Dictionary in projects:
+		var tech: Dictionary = session.tech_tree.by_id.get(str(p["tech"]), {})
+		_rich(box, "%s : %.0f / %.0f pts (%s)" % [p["tech"], float(p["progress"]),
+			float(tech.get("cost", 100)), str(p["status"])])
+	_rich(box, "\n[b]Technologies disponibles[/b] (prérequis remplis)")
+	var count := 0
+	var candidates: Array = session.tech_tree.tree.get("technologies", [])
+	candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return int(a["year"]) < int(b["year"]))
+	for tech: Dictionary in candidates:
+		if count >= 10:
+			break
+		if TechSystem.can_research(session.state, session.tech_tree, me, str(tech["id"])) != "":
+			continue
+		count += 1
+		var row := HBoxContainer.new()
+		box.add_child(row)
+		_label(row, "%s (%s, %d pt, %d mois)" % [tech["id"], tech["domain"], int(tech["cost"]), int(tech["duration"])], 11)
+		_button(row, "Lancer", func() -> void: _queue(Orders.set_research(me, str(tech["id"]))))
+	if count == 0:
+		_label(box, "Aucune technologie accessible pour le moment.", 12)
+	# Communications et renseignement technique.
+	CommunicationsSystem.ensure(session.state, me)
+	var comms: Dictionary = session.state.tech["comms"][me]
+	_rich(box, "\n[b]Communications[/b] — protection %d ; interceptions %d." % [
+		int(comms["protection"]), (comms["intercepts"] as Array).size()])
+	for nid: String in session.state.nation_order:
+		if nid == me:
+			continue
+		var row2 := HBoxContainer.new()
+		box.add_child(row2)
+		_label(row2, "Intercepter %s" % _n(nid), 11)
+		_button(row2, "Écouter", func() -> void: _queue(Orders.intercept(me, nid)))
+	# Aviation et marine (résumé).
+	AirSystem.ensure(session.state, me)
+	NavalSystem.ensure(session.state, me)
+	var ac: Dictionary = session.state.tech["air"]["aircraft"][me]
+	_rich(box, "\n[b]Aviation[/b] — appareils : %s ; bases : %d." % [
+		str(ac), (session.state.tech["air"]["bases"][me] as Array).size()])
+	var fleets: Array = session.state.tech["naval"]["fleets"][me]
+	_rich(box, "[b]Marine[/b] — flottes : %d." % fleets.size())
 
 
 func _page_intel() -> void:
