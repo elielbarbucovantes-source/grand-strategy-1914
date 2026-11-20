@@ -156,6 +156,46 @@ static func decide(view: Dictionary, world: WorldMap, rules: Dictionary) -> Arra
 	return out
 
 
+## Consolidation 01 — décision d'un État sur le Traité de Paix et d'Unité Internationale.
+## Fondée sur la situation réelle et la personnalité diplomatique ; déterministe.
+static func decide_universal(state: GameState, nation: String, rules: Dictionary) -> Dictionary:
+	var up: Dictionary = state.diplomacy.get("universal_pact", {})
+	var proposer := str(up.get("proposer", ""))
+	var rel := RelationsSystem.between(state, nation, proposer, rules.get("diplomacy", {}))
+	var trust := float(rel.get("trust", 50))
+	var hostility := float(rel.get("hostility", 10))
+	var rep := float(state.reputation.get(proposer, 0.0))
+	var pol: Dictionary = {}
+	if state.politics is Dictionary and (state.politics.get("states", {}) as Dictionary).has(nation):
+		pol = state.politics["states"][nation]
+	var stability := float(pol.get("stability", 65))
+	var tension := float(pol.get("social_tension", 25))
+	var at_war := false
+	for w: Dictionary in state.wars:
+		if (str(w["a"]) == nation and str(w["b"]) == proposer) or (str(w["b"]) == nation and str(w["a"]) == proposer):
+			at_war = true
+	var score := trust * 0.4 - hostility * 0.3 + rep * 0.2 + stability * 0.1 - tension * 0.1
+	var dcfg: Dictionary = (rules.get("diplomacy", {}) as Dictionary).get("ai", {})
+	var profiles: Dictionary = dcfg.get("personalities", {})
+	var pid := str(state.personalities.get(nation, dcfg.get("default_personality", "cautious")))
+	var p: Dictionary = profiles.get(pid, {}) if profiles.get(pid) is Dictionary else {}
+	var bias := float(p.get("trust_bias", 0)) * 0.3 - float(p.get("hostility_bias", 0)) * 0.2
+	if pid == "honourable":
+		bias += 6.0
+	if str(state.personalities.get(nation, "")) == "expansionist":
+		bias -= 10.0
+	if at_war:
+		bias -= 20.0
+	score += bias
+	var accept := score >= 25.0
+	var reason := "confiance suffisante" if accept else "méfiance ou situation défavorable"
+	if at_war and not accept:
+		reason = "guerre en cours avec le proposant"
+	elif tension > 70.0 and not accept:
+		reason = "instabilité intérieure"
+	return {"accept": accept, "reason": reason, "score": score}
+
+
 static func _enemies(view: Dictionary) -> Array:
 	var out: Array = []
 	var me := str(view["nation"])

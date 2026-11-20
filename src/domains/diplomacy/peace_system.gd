@@ -119,6 +119,117 @@ static func _apply_territorial(state: GameState, parties: Array, terms: Dictiona
 	terms["transferred_regions"] = moved
 
 
+## Consolidation 01 — négociation universelle : proposition puis acceptation État par État.
+## Aucune signature n'est produite tant que tous les participants requis n'ont pas répondu favorablement.
+static func propose_universal(state: GameState, proposer: String, rules: Dictionary) -> Dictionary:
+	var participants: Array = []
+	for nid: String in state.nation_order:
+		if nid != proposer:
+			participants.append(nid)
+	var p := NegotiationSystem.propose(state, {
+		"type": Orders.PROPOSE_AGREEMENT, "nation": proposer, "to": participants,
+		"kind": "universal_pact", "channel": "public",
+		"terms": {"name": "Traité de Paix et d'Unité Internationale"}
+	}, rules)
+	state.diplomacy["universal_pact"] = {
+		"proposal": str(p["id"]), "proposer": proposer, "participants": participants,
+		"responses": {}, "status": "negotiating", "history": [{"turn": state.turn, "event": "proposed", "by": proposer}]
+	}
+	state.log_event("paix", "%s propose le Traité de Paix et d'Unité Internationale." % [
+		state.nations[proposer]["name_fr"]], [proposer])
+	return state.diplomacy["universal_pact"]
+
+
+static func respond_universal(state: GameState, proposal_id: String, nation: String,
+		accept: bool, reason: String, rules: Dictionary) -> Dictionary:
+	var up: Dictionary = state.diplomacy.get("universal_pact", {})
+	if up.is_empty() or str(up.get("proposal", "")) != proposal_id or str(up.get("status", "")) != "negotiating":
+		return {"ok": false, "reason": "aucune négociation universelle en cours"}
+	var participants: Array = up["participants"]
+	if not participants.has(nation):
+		return {"ok": false, "reason": "État non participant"}
+	var responses: Dictionary = up["responses"]
+	if responses.has(nation):
+		return {"ok": false, "reason": "réponse déjà enregistrée"}
+	responses[nation] = {"accept": accept, "reason": reason, "turn": state.turn}
+	(up["history"] as Array).append({"turn": state.turn, "nation": nation, "accept": accept, "reason": reason})
+	# Historique diplomatique persistant (Phase III).
+	RelationsSystem.record(state, nation, str(up["proposer"]), "proposal_accepted" if accept else "proposal_rejected", "universal_pact", rules)
+	state.log_event("paix", "%s %s le traité universel%s" % [
+		state.nations[nation]["name_fr"], "accepte" if accept else "refuse",
+		(" : " + reason) if reason != "" else "."], [nation])
+	if responses.size() == participants.size():
+		var all_yes := true
+		for p: String in participants:
+			if not bool((responses[p] as Dictionary).get("accept", false)):
+				all_yes = false
+				break
+		if all_yes:
+			var result := universal_pact(state, participants.duplicate(true), rules)
+			if bool(result.get("ok", false)):
+				up["status"] = "signed"
+				(up["history"] as Array).append({"turn": state.turn, "event": "signed", "treaty": result["treaty"]["id"]})
+				return {"ok": true, "signed": true}
+			up["status"] = "blocked"
+			return {"ok": false, "reason": str(result.get("reason", "conditions non réunies")), "signed": false}
+		up["status"] = "rejected"
+		return {"ok": false, "reason": "au moins un État a refusé", "signed": false}
+	return {"ok": true, "signed": false}
+
+
+## Une réponse IA par tour au plus, pour une signature progressive et observable.
+static func tick_universal(state: GameState, rules: Dictionary) -> void:
+	var up: Dictionary = state.diplomacy.get("universal_pact", {})
+	if up.is_empty() or str(up.get("status", "")) != "negotiating":
+		return
+	var responses: Dictionary = up["responses"]
+	for p: String in up["participants"]:
+		if responses.has(p):
+			continue
+		if state.human_nations.has(p):
+			continue  # le joueur répond via l'interface
+		var decision := DiplomaticAI.decide_universal(state, p, rules)
+		respond_universal(state, str(up["proposal"]), p, bool(decision["accept"]),
+			str(decision["reason"]), rules)
+		return
+
+
+static func withdraw_universal(state: GameState) -> String:
+	var up: Dictionary = state.diplomacy.get("universal_pact", {})
+	if up.is_empty() or str(up.get("status", "")) != "negotiating":
+		return "aucune négociation à retirer"
+	up["status"] = "withdrawn"
+	(up["history"] as Array).append({"turn": state.turn, "event": "withdrawn"})
+	var pid := str(up.get("proposal", ""))
+	for p: Dictionary in state.proposals:
+		if str(p["id"]) == pid:
+			p["status"] = "withdrawn"
+	return ""
+
+
+static func universal_progress(state: GameState) -> Dictionary:
+	var up: Dictionary = state.diplomacy.get("universal_pact", {})
+	if up.is_empty():
+		return {"status": "none", "accepted": [], "refused": [], "pending": [], "reasons": {}}
+	var responses: Dictionary = up["responses"]
+	var accepted: Array = []
+	var refused: Array = []
+	var pending: Array = []
+	var reasons := {}
+	for p: String in up["participants"]:
+		if responses.has(p):
+			var r: Dictionary = responses[p]
+			if bool(r.get("accept", false)):
+				accepted.append(p)
+			else:
+				refused.append(p)
+			reasons[p] = str(r.get("reason", ""))
+		else:
+			pending.append(p)
+	return {"status": str(up["status"]), "proposer": str(up.get("proposer", "")),
+		"accepted": accepted, "refused": refused, "pending": pending, "reasons": reasons}
+
+
 static func universal_pact(state: GameState, nations: Array, rules: Dictionary) -> Dictionary:
 	var threshold := float(cfg(rules).get("universal_peace_requires_regions", 0.9))
 	var total := state.regions.size()

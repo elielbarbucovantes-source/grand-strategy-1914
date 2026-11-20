@@ -5,7 +5,9 @@ extends RefCounted
 
 
 static func personality(state: GameState, nid: String, rules: Dictionary) -> Dictionary:
-	var cfg: Dictionary = rules.get("ai", {})
+	# Accepte soit le bloc phase6, soit le dictionnaire de règles complet.
+	var phase6: Dictionary = rules.get("phase6", {})
+	var cfg: Dictionary = phase6.get("ai", {}) if phase6.has("ai") else rules.get("ai", {})
 	var profiles: Dictionary = cfg.get("personalities", {})
 	var id := str(state.tech.get("personalities", {}).get(nid, cfg.get("default_personality", "balanced")))
 	var p: Variant = profiles.get(id, profiles.get("balanced", {}))
@@ -15,7 +17,7 @@ static func personality(state: GameState, nid: String, rules: Dictionary) -> Dic
 static func decide(state: GameState, t: TechSystem, rules: Dictionary, nid: String) -> Array:
 	var out: Array = []
 	var p := personality(state, nid, rules)
-	var cfg: Dictionary = rules
+	var cfg: Dictionary = (rules.get("phase6", {}) as Dictionary) if rules.has("phase6") else rules
 	# 1. Recherche : choisir une technologie réalisable selon la personnalité.
 	var max_research := int(cfg.get("ai", {}).get("max_research_projects", 2))
 	var active := (state.tech["projects"].get(nid, []) as Array).size()

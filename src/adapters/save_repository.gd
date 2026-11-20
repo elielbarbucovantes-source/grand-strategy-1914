@@ -139,6 +139,7 @@ static func load_save(path: String, world: WorldMap, rules: Dictionary) -> Dicti
 	var state := GameState.from_dict(env["state"])
 	if state.checksum() != env.get("state_sha256", ""):
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
+	PersonalitySystem.ensure(state)
 	return {"state": state}
 
 
@@ -184,6 +185,7 @@ static func _load_v8(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
 	for nid: String in state.nation_order:
 		PoliticalSystem.ensure(state, nid, rules.get("phase7", {}))
+	PersonalitySystem.ensure(state)
 	return {"state": state, "migrated_from": 8}
 
 
@@ -206,6 +208,7 @@ static func _load_v7(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 	var once := JSON.stringify(d, "", true, true)
 	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
+	PersonalitySystem.ensure(state)
 	return {"state": state, "migrated_from": 7}
 
 
@@ -230,6 +233,7 @@ static func _load_v6(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
 	_ensure_economy(state, rules)
+	PersonalitySystem.ensure(state)
 	return {"state": state, "migrated_from": 6}
 
 
@@ -255,6 +259,7 @@ static func _load_v5(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
 	_ensure_economy(state, rules)
+	PersonalitySystem.ensure(state)
 	return {"state": state, "migrated_from": 5}
 
 
@@ -277,6 +282,7 @@ static func _load_v4(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 	if JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text() != env.get("state_sha256", ""):
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
 	_ensure_economy(state, rules)
+	PersonalitySystem.ensure(state)
 	return {"state": state, "migrated_from": 4}
 
 
@@ -305,4 +311,5 @@ static func _load_v3(env: Dictionary, world: WorldMap, rules: Dictionary) -> Dic
 		return {"error": "sauvegarde corrompue (empreinte de l'état invalide)"}
 	ForceLedger.migrate_state(state)
 	_ensure_economy(state, rules)
+	PersonalitySystem.ensure(state)
 	return {"state": state, "migrated_from": 3}

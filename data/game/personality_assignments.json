@@ -1,0 +1,190 @@
+{
+  "format": "gs1914.personality_assignments",
+  "format_version": 1,
+  "reference_date": "1914-01-01",
+  "_statut": "Attributions de modele fondees sur la situation historique 1914. Niveau B (identifiable) ou C (estimation). Aucune attribution aleatoire.",
+  "sources": {
+    "HIST": {
+      "citation": "Situation historique generale des Etats en 1914 (recensements, structures politiques et forces)",
+      "reliability": "moyenne"
+    }
+  },
+  "assignments": {
+    "german_empire": {
+      "diplomatic": "honourable",
+      "economic": "industrial",
+      "technological": "scientist",
+      "political": "traditional",
+      "level": "B",
+      "note": "Puissance industrielle et scientifique, alliances engagements, institutions imperiales."
+    },
+    "united_kingdom": {
+      "diplomatic": "honourable",
+      "economic": "commercial",
+      "technological": "naval",
+      "political": "traditional",
+      "level": "B",
+      "note": "Commerce maritime, tradition parlementaire, reputation d'engagements."
+    },
+    "france": {
+      "diplomatic": "cautious",
+      "economic": "stability",
+      "technological": "balanced",
+      "political": "pragmatic",
+      "level": "B",
+      "note": "Priorite a la stabilite et a la reconstruction, doctrine defensive prudente."
+    },
+    "russian_empire": {
+      "diplomatic": "expansionist",
+      "economic": "autarkic",
+      "technological": "balanced",
+      "political": "traditional",
+      "level": "B",
+      "note": "Vastes ressources, ambitions territoriales, institutions autocratiques."
+    },
+    "austria_hungary": {
+      "diplomatic": "cautious",
+      "economic": "stability",
+      "technological": "balanced",
+      "political": "traditional",
+      "level": "B",
+      "note": "Equilibre multi-national fragile, prudence diplomatic et alliances etablies."
+    },
+    "italy": {
+      "diplomatic": "opportunist",
+      "economic": "commercial",
+      "technological": "air",
+      "political": "pragmatic",
+      "level": "C",
+      "note": "Jeune puissance, interets flexibles, interet precoce pour l'aviation."
+    },
+    "ottoman_empire": {
+      "diplomatic": "mistrustful",
+      "economic": "autarkic",
+      "technological": "balanced",
+      "political": "traditional",
+      "level": "C",
+      "note": "Institutions en transition, mefiance envers les grandes puissances."
+    },
+    "belgium": {
+      "diplomatic": "cautious",
+      "economic": "commercial",
+      "technological": "balanced",
+      "political": "pragmatic",
+      "level": "B",
+      "note": "Neutralite, industrie et commerce, prudence diplomatique."
+    },
+    "netherlands": {
+      "diplomatic": "conciliatory",
+      "economic": "commercial",
+      "technological": "naval",
+      "political": "pragmatic",
+      "level": "B",
+      "note": "Puissance commerciale et maritime, neutralite."
+    },
+    "luxembourg": {
+      "diplomatic": "cautious",
+      "economic": "stability",
+      "technological": "balanced",
+      "political": "pragmatic",
+      "level": "C",
+      "note": "Petit Etat neutral, priorite a la stabilite."
+    },
+    "switzerland": {
+      "diplomatic": "conciliatory",
+      "economic": "stability",
+      "technological": "balanced",
+      "political": "pragmatic",
+      "level": "B",
+      "note": "Neutralite, mediation, stabilite interne."
+    },
+    "spain": {
+      "diplomatic": "cautious",
+      "economic": "autarkic",
+      "technological": "balanced",
+      "political": "traditional",
+      "level": "C",
+      "note": "Ressources internes, prudence, institutions monarchiques."
+    },
+    "portugal": {
+      "diplomatic": "conciliatory",
+      "economic": "commercial",
+      "technological": "naval",
+      "political": "traditional",
+      "level": "C",
+      "note": "Orientation maritime et commerce, republicaine jeune."
+    },
+    "denmark": {
+      "diplomatic": "cautious",
+      "economic": "commercial",
+      "technological": "naval",
+      "political": "pragmatic",
+      "level": "B",
+      "note": "Commerce et proximite maritime, neutralite."
+    },
+    "norway": {
+      "diplomatic": "conciliatory",
+      "economic": "commercial",
+      "technological": "naval",
+      "political": "pragmatic",
+      "level": "B",
+      "note": "Economie maritime et ressources, jeune Etat."
+    },
+    "sweden": {
+      "diplomatic": "cautious",
+      "economic": "stability",
+      "technological": "scientist",
+      "political": "pragmatic",
+      "level": "B",
+      "note": "Neutralite, industrie et tradition scientifique."
+    },
+    "romania": {
+      "diplomatic": "opportunist",
+      "economic": "autarkic",
+      "technological": "balanced",
+      "political": "traditional",
+      "level": "C",
+      "note": "Ressources petrolieres, interets regionaux flexibles."
+    },
+    "bulgaria": {
+      "diplomatic": "ambitious",
+      "economic": "autarkic",
+      "technological": "balanced",
+      "political": "militarist",
+      "level": "C",
+      "note": "Ambitions balkaniques apres 1913, priorite militaire."
+    },
+    "serbia": {
+      "diplomatic": "expansionist",
+      "economic": "autarkic",
+      "technological": "balanced",
+      "political": "militarist",
+      "level": "C",
+      "note": "Ambitions nationales, experience des guerres balkaniques."
+    },
+    "montenegro": {
+      "diplomatic": "expansionist",
+      "economic": "autarkic",
+      "technological": "balanced",
+      "political": "traditional",
+      "level": "D",
+      "note": "Petite monarchie, donnes incertaines."
+    },
+    "albania": {
+      "diplomatic": "cautious",
+      "economic": "stability",
+      "technological": "balanced",
+      "political": "pragmatic",
+      "level": "D",
+      "note": "Etat nouveau et fragile, donnes tres incertaines."
+    },
+    "greece": {
+      "diplomatic": "opportunist",
+      "economic": "commercial",
+      "technological": "naval",
+      "political": "pragmatic",
+      "level": "C",
+      "note": "Orientation maritime et interets regionaux changeants."
+    }
+  }
+}

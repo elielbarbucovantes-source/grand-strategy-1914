@@ -265,6 +265,30 @@ func _page_diplomacy() -> void:
 			var row5 := HBoxContainer.new()
 			box.add_child(row5)
 			_button(row5, "Médier %s" % cr["id"], func() -> void: _queue(Orders.offer_mediation(me, str(cr["id"]))))
+	# 4c. Traité de Paix et d'Unité Internationale (victoire diplomatique).
+	_rich(box, "\n[b]Traîté de Paix et d'Unité Internationale[/b] — victoire diplomatique.")
+	var prog := PeaceSystem.universal_progress(st)
+	var cond: Dictionary = session.rules["diplomacy"]["peace"]
+	_rich(box, "Conditions : %s ; seuil de contrôle souverain %.0f %% ; %d États participants requis." % [
+		"accord de tous les États" if bool(session.rules["phase7"]["victory"]["diplomatic"]["requires_all_participants"]) else "accord simple",
+		100.0 * float(cond["universal_peace_requires_regions"]),
+		st.nation_order.size() - 1])
+	_rich(box, "État : %s | signés %d | refus %d | en attente %d" % [str(prog["status"]),
+		(prog["accepted"] as Array).size(), (prog["refused"] as Array).size(),
+		(prog["pending"] as Array).size()])
+	for nid: String in (prog["refused"] as Array):
+		_rich(box, "[color=#b03a2e]%s refuse : %s[/color]" % [_n(nid), str(prog["reasons"][nid])])
+	for nid: String in (prog["pending"] as Array):
+		_rich(box, "%s : pas encore de réponse" % _n(nid))
+	var rowu := HBoxContainer.new()
+	box.add_child(rowu)
+	if str(prog["status"]) == "none" or str(prog["status"]) == "withdrawn" or str(prog["status"]) == "rejected":
+		_button(rowu, "Proposer à tous les États", func() -> void: _queue(Orders.propose_universal(me)))
+	if str(prog["status"]) == "negotiating" and (prog["pending"] as Array).has(me):
+		_button(rowu, "Accepter", func() -> void: _queue(Orders.respond_universal(me, true)))
+		_button(rowu, "Refuser", func() -> void: _queue(Orders.respond_universal(me, false)))
+	if str(prog["status"]) == "negotiating" and str(prog["proposer"]) == me:
+		_button(rowu, "Retirer", func() -> void: _queue(Orders.withdraw_universal(me)))
 	# 4b. Conférences internationales (sujets multiples, accords réels).
 	_rich(box, "\n[b]Conférences[/b]")
 	var others: Array = []
@@ -525,7 +549,7 @@ func _page_army() -> void:
 		if TerritorialForce.is_territorial(f) and f.get("service", "home") == "home":
 			var ob := _button(box, "Volontaires pour le service outre-mer", func() -> void: _queue(Orders.territorial_overseas(st.player_nation, f["id"])))
 			ob.tooltip_text = "Territorial Force (T-054) : les volontaires de cette armée forment une armée de service outre-mer."
-	_rich(box, "\nCréation libre de formations, entraînement, équipement, démobilisation : %s (MIL-02 ouvert).\nBatailles tactiques : fonctionnelles quand les effectifs des deux camps sont connus ; sinon (États hors MIL-01) l'affrontement est clos sans issue (repli neutre documenté)." % NOT_FUNCTIONAL)
+	_rich(box, "\nCréation libre de formations, entraînement, équipement et démobilisation : %s (MIL-02 ouvert).\nBatailles tactiques : opérationnelles pour les 22 États (forces historiques Phase II). Le repli neutre n'est plus utilisé en campagne historique." % NOT_FUNCTIONAL)
 	if not st.battles.is_empty():
 		_rich(box, "\n[b]Dernières batailles[/b]")
 		for b: Dictionary in st.battles.slice(-5):
@@ -757,7 +781,7 @@ func _page_intel() -> void:
 			t += "  • [b]%s[/b] : %s\n" % [session.world.regions[rid]["name_fr"], _format_region_intel(ri)]
 	if reports == 0:
 		t += "  [i]Aucun rapport de reconnaissance actif (ordonnez une approche « Reconnaissance en force » pour évaluer une position défendue).[/i]\n"
-	t += "\nInterception, décryptage, espionnage industriel : %s (INT-01/02 ouverts)." % NOT_FUNCTIONAL
+	t += "\n[b]Interception et décryptage[/b] (Phase VI) : opérationnels — détection, interception, compréhension partielle puis décryptage abstrait, avec fiabilité décroissante selon l'ancienneté. L'espionnage industriel distinct n'est pas implémenté (INT-02 ouvert)."
 	_rich(box, t)
 
 

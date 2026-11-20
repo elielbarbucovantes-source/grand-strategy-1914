@@ -86,6 +86,7 @@ func new_game(player: String, start_month: int, seed_value: int = 1914, scenario
 	CrossingSystem.init_state(state)
 	for nid: String in state.nation_order:
 		PoliticalSystem.ensure(state, nid, rules.get("phase7", {}))
+	PersonalitySystem.ensure(state)
 	state.log_event("partie", "Début de la campagne : %s, %s." % [state.nations[player]["name_fr"], state.date_label()], [player])
 	LogisticsSystem.update_supply(state, world, rules)
 	return ""

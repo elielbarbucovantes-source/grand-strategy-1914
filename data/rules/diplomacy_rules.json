@@ -25,7 +25,7 @@
     "max_per_nation_per_turn": 3,
     "max_counter_per_proposal": 2,
     "max_active_per_nation": 8,
-    "kinds": ["alliance", "transit", "trade", "guarantee", "coalition", "neutrality", "peace", "pow_exchange", "conference", "mediate"]
+    "kinds": ["alliance", "transit", "trade", "guarantee", "coalition", "neutrality", "peace", "pow_exchange", "conference", "mediate", "universal_pact"]
   },
   "alliances": {
     "types": {

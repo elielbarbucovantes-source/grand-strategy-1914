@@ -30,6 +30,9 @@ const JOIN_ALLIANCE := "join_alliance"
 const LEAVE_ALLIANCE := "leave_alliance"
 const DISSOLVE_ALLIANCE := "dissolve_alliance"
 const UNIVERSAL_PACT := "universal_pact"
+const PROPOSE_UNIVERSAL := "propose_universal"
+const RESPOND_UNIVERSAL := "respond_universal"
+const WITHDRAW_UNIVERSAL := "withdraw_universal"
 const CONCLUDE_CONFERENCE := "conclude_conference"
 # Phase IV — infrastructures
 const DISRUPT_LINK := "disrupt_link"
@@ -139,6 +142,18 @@ static func dissolve_alliance(nation: String, alliance: String) -> Dictionary:
 
 static func universal_pact(nation: String, members: Array) -> Dictionary:
 	return {"type": UNIVERSAL_PACT, "nation": nation, "members": members}
+
+
+static func propose_universal(nation: String) -> Dictionary:
+	return {"type": PROPOSE_UNIVERSAL, "nation": nation}
+
+
+static func respond_universal(nation: String, accept: bool) -> Dictionary:
+	return {"type": RESPOND_UNIVERSAL, "nation": nation, "accept": accept}
+
+
+static func withdraw_universal(nation: String) -> Dictionary:
+	return {"type": WITHDRAW_UNIVERSAL, "nation": nation}
 
 
 static func conclude_conference(nation: String, conference: String, topic: String) -> Dictionary:

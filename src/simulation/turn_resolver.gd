@@ -25,6 +25,7 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 	state.orders_history.append({"turn": state.turn, "date": state.date_label(), "orders": accepted.duplicate(true),
 		"rejected": rejected.duplicate(true)})
 	DiplomacySystem.resolve(state, accepted, rules)
+	PeaceSystem.tick_universal(state, rules)  # Consolidation 01 : réponses IA progressives au traité universel
 	for order: Dictionary in accepted:
 		if order["type"] == Orders.SET_INDUSTRY_ALLOCATION:
 			EconomySystem.apply_allocation(state, order)
@@ -63,6 +64,15 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		elif order["type"] == Orders.NAVAL_OPERATION:
 			NavalSystem.operation(state, order["nation"], str(order["fleet"]), str(order["kind"]),
 				str(order["zone"]), rules.get("phase6", {}))
+		elif order["type"] == Orders.PROPOSE_UNIVERSAL:
+			PeaceSystem.propose_universal(state, order["nation"], rules.get("phase6", {}))
+		elif order["type"] == Orders.RESPOND_UNIVERSAL:
+			var up: Dictionary = state.diplomacy.get("universal_pact", {})
+			if not up.is_empty():
+				PeaceSystem.respond_universal(state, str(up.get("proposal", "")), order["nation"],
+					bool(order.get("accept", false)), "décision du joueur", rules.get("phase6", {}))
+		elif order["type"] == Orders.WITHDRAW_UNIVERSAL:
+			PeaceSystem.withdraw_universal(state)
 		elif order["type"] == Orders.POLITICAL_DECISION:
 			PoliticalSystem.apply_decision(state, order["nation"], str(order["kind"]), rules.get("phase7", {}))
 		elif order["type"] == Orders.CHANGE_GOVERNMENT:
@@ -185,7 +195,7 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 		Orders.DECLARE_WAR, Orders.PROPOSE_TREATY, Orders.RESPOND_PROPOSAL, Orders.BREAK_TREATY, Orders.SEND_MESSAGE, \
 		Orders.PROPOSE_AGREEMENT, Orders.RESPOND_AGREEMENT, Orders.WITHDRAW_PROPOSAL, Orders.PROPOSE_PEACE, \
 		Orders.START_CRISIS, Orders.CRISIS_RESPONSE, Orders.OFFER_MEDIATION, Orders.EXCHANGE_POW, \
-		Orders.JOIN_ALLIANCE, Orders.LEAVE_ALLIANCE, Orders.DISSOLVE_ALLIANCE, Orders.UNIVERSAL_PACT, Orders.CONCLUDE_CONFERENCE:
+		Orders.JOIN_ALLIANCE, Orders.LEAVE_ALLIANCE, Orders.DISSOLVE_ALLIANCE, Orders.UNIVERSAL_PACT, Orders.CONCLUDE_CONFERENCE, Orders.PROPOSE_UNIVERSAL, Orders.RESPOND_UNIVERSAL, Orders.WITHDRAW_UNIVERSAL:
 			return DiplomacySystem.validate(state, order, rules)
 		Orders.DISRUPT_LINK, Orders.REPAIR_LINK, Orders.SET_PORT_STATUS:
 			return TransportSystem.validate(state, rules.get("transport_network"), order)
