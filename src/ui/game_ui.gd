@@ -58,7 +58,7 @@ func _build() -> void:
 	add_child(layer_bar)
 	for layer: String in ["rail", "road", "river", "maritime", "ports", "interruptions", "capacity",
 		"resources", "industry", "population", "agriculture", "stocks",
-		"airbases", "fleets", "intel_activity"]:
+		"airbases", "fleets", "intel_activity", "rivers", "bridges"]:
 		_button(layer_bar, layer, func() -> void:
 			map_view.toggle_layer(layer)
 			map_view.queue_redraw())
@@ -68,7 +68,7 @@ func _build() -> void:
 	add_child(side)
 	tabs = TabContainer.new()
 	side.add_child(tabs)
-	for name in ["Pays", "Diplomatie", "Économie", "Industrie", "Armée", "Logistique", "Recherche", "Renseignement", "Événements", "Ordres"]:
+	for name in ["Pays", "Diplomatie", "Économie", "Industrie", "Armée", "Logistique", "Recherche", "Renseignement", "Politique", "Victoire", "Multijoueur", "Événements", "Ordres"]:
 		var scroll := ScrollContainer.new()
 		scroll.name = name
 		if name == "Armée":
@@ -133,7 +133,7 @@ func refresh() -> void:
 	var st := session.state
 	date_label.text = "  %s  " % st.date_label()
 	nation_label.text = "%s  " % _n(st.player_nation)
-	share_label.text = "Contrôle : %.1f %% des régions (seuil de 90 %% validé ; calcul OUVERT)" % (100.0 * session.territorial_share(st.player_nation))
+	share_label.text = "Contrôle : %.1f %% des régions (seuil 90 %% ; victoire : %s)" % [100.0 * session.territorial_share(st.player_nation), str(st.victory.get("status", "ongoing"))]
 	battle_button.visible = not session.current_battle().is_empty()
 	var current := tabs.get_tab_title(tabs.current_tab)
 	match current:
@@ -145,6 +145,9 @@ func refresh() -> void:
 		"Logistique": _page_logistics()
 		"Recherche": _page_research()
 		"Renseignement": _page_intel()
+		"Politique": _page_politics()
+		"Victoire": _page_victory()
+		"Multijoueur": _page_multiplayer()
 		"Événements": _page_events()
 		"Ordres": _page_orders()
 	map_view.refresh()
@@ -668,6 +671,73 @@ func _page_research() -> void:
 		str(ac), (session.state.tech["air"]["bases"][me] as Array).size()])
 	var fleets: Array = session.state.tech["naval"]["fleets"][me]
 	_rich(box, "[b]Marine[/b] — flottes : %d." % fleets.size())
+
+
+func _page_politics() -> void:
+	var box := _clear("Politique")
+	var me := session.state.player_nation
+	var pol := PoliticalSystem.summary(session.state, me)
+	_rich(box, "[b]Stabilité intérieure[/b] — stabilité %.0f | cohésion %.0f | popularité %.0f | tensions sociales %.0f | soutien guerre %.0f | confiance %.0f." % [
+		float(pol["stability"]), float(pol["cohesion"]), float(pol["popularity"]), float(pol["social_tension"]),
+		float(pol["war_support"]), float(pol["trust"])])
+	if str(pol["crisis"]) != "":
+		_rich(box, "[color=#b03a2e]Crise intérieure active : %s[/color]" % str(pol["crisis"]))
+	var groups: Dictionary = session.state.politics["states"][me]["groups"]
+	_rich(box, "\n[b]Groupes d'influence[/b]")
+	for gid: String in groups:
+		var g: Dictionary = groups[gid]
+		_rich(box, "%s : influence %.0f, satisfaction %.0f (%s)" % [gid, float(g["influence"]),
+			float(g["satisfaction"]), str(g["interests"])])
+	_rich(box, "\n[b]Décisions gouvernementales[/b]")
+	for kind: String in session.rules["phase7"]["politics"]["decisions"]["costs"]:
+		_button(box, kind, func() -> void: _queue(Orders.political_decision(me, kind)))
+	_button(box, "Changement de gouvernement (négocié)", func() -> void:
+		_queue(Orders.change_government(me, "negotiated")))
+	_rich(box, "\n[b]Historique politique[/b]")
+	for h: Dictionary in (session.state.politics["states"][me]["history"] as Array).slice(-8):
+		_rich(box, "T%s : %s" % [str(h["turn"]), str(h["event"])])
+
+
+func _page_victory() -> void:
+	var box := _clear("Victoire")
+	var me := session.state.player_nation
+	var v: Dictionary = session.state.victory
+	var rules_v: Dictionary = session.rules["phase7"]["victory"]
+	_rich(box, "[b]État[/b] : %s — %s (tour %s)" % [str(v.get("status", "ongoing")),
+		str(v.get("condition", "")), str(v.get("turn", "-"))])
+	var share := VictorySystem.military_share(session.state, me, session.rules["phase7"])
+	_rich(box, "\n[b]1. Victoire militaire[/b] — contrôle %.1f %% (seuil %.0f %%)." % [
+		100.0 * share, 100.0 * float(rules_v["military"]["threshold"])])
+	var hdi := VictorySystem.hdi(session.state, me, session.rules["phase7"])
+	_rich(box, "[b]2. Développement humain[/b] — score %.3f, population %d, industrie %.2f (seuil relatif %.2f sur %d mois)." % [
+		float(hdi["score"]), int(hdi["population"]), float(hdi["industry"]),
+		float(rules_v["hdi"]["relative_threshold"]), int(rules_v["hdi"]["duration_months"])])
+	var universal := false
+	for t: Dictionary in session.state.diplomacy["peace_treaties"]:
+		if str(t.get("type", "")) == "universal" and str(t.get("status", "")) == "active":
+			universal = true
+	_rich(box, "[b]3. Traité de Paix et d'Unité Internationale[/b] — %s." % ("signé" if universal else "non signé"))
+	if str(v.get("status", "ongoing")) == "finished":
+		_rich(box, "\n[b]Bilan de fin de partie[/b]")
+		var summary := VictorySystem.final_summary(session.state, session.rules["phase7"])
+		for s: Dictionary in summary["standings"]:
+			_rich(box, "%s : contrôle %.1f %%, IDH %.3f" % [str(s["nation"]),
+				100.0 * float(s["military"]), float(s["hdi"])])
+
+
+func _page_multiplayer() -> void:
+	var box := _clear("Multijoueur")
+	var mp: Dictionary = session.state.multiplayer
+	_rich(box, "[b]État[/b] : %s — hôte %s." % [str(mp.get("state", "solo")), str(mp.get("host", ""))])
+	var players: Dictionary = mp.get("players", {})
+	_rich(box, "[b]Joueurs[/b] : %d" % players.size())
+	for p: String in players:
+		var info: Dictionary = players[p]
+		_rich(box, "%s : connecté=%s" % [p, str(info.get("connected", true))])
+	_rich(box, "\n[b]Synchronisation[/b] — %d hachages enregistrés." % (mp.get("state_hashes", []) as Array).size())
+	for e: Dictionary in (mp.get("events", []) as Array).slice(-8):
+		_rich(box, "T%s : %s (%s)" % [str(e["turn"]), str(e["player"]), str(e["event"])])
+	_rich(box, "\n[i]Socle local déterministe : aucune connexion réelle n'est implémentée.[/i]")
 
 
 func _page_intel() -> void:

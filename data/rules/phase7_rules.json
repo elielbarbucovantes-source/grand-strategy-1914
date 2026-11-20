@@ -1,0 +1,79 @@
+{
+  "format": "gs1914.phase7_rules",
+  "format_version": 1,
+  "_statut": "Phase VII : parametres de simulation PROPOSES. Le seuil de 90 % est VALIDE (MAP-DEC-13).",
+  "politics": {
+    "stability_start": 65,
+    "cohesion_start": 60,
+    "popularity_start": 55,
+    "social_tension_start": 25,
+    "war_support_start": 50,
+    "institution_trust_start": 60,
+    "min": 0,
+    "max": 100,
+    "monthly_regression": 0.5,
+    "groups": {
+      "elites": {"influence": 20, "satisfaction": 60, "interests": ["stability", "trade", "property"]},
+      "industriels": {"influence": 18, "satisfaction": 60, "interests": ["industry", "military", "trade"]},
+      "ouvriers": {"influence": 16, "satisfaction": 55, "interests": ["wages", "food", "social_reform"]},
+      "agriculteurs": {"influence": 16, "satisfaction": 58, "interests": ["food", "land", "stability"]},
+      "conservateurs": {"influence": 14, "satisfaction": 62, "interests": ["order", "tradition", "military"]},
+      "reformistes": {"influence": 10, "satisfaction": 50, "interests": ["reform", "suffrage", "social_reform"]},
+      "militaires": {"influence": 14, "satisfaction": 60, "interests": ["military", "war_support", "order"]}
+    },
+    "crisis": {
+      "tension_threshold": 75,
+      "stability_threshold": 25,
+      "popularity_threshold": 20,
+      "escalation_per_turn": 3,
+      "recovery_per_turn": 2,
+      "paralysis_turns": 2,
+      "government_change_stability": 20,
+      "regime_change_stability": 10,
+      "chance_per_turn": 0.08
+    },
+    "decisions": {
+      "max_per_turn": 2,
+      "costs": {"social_reform": {"money": 20, "stability": -5}, "fiscal_reform": {"money": 10, "trust": -3},
+        "public_spending": {"money": 25, "popularity": 8}, "cohesion_campaign": {"money": 15, "tension": -8},
+        "political_concession": {"stability": 5, "trust": -4}, "mobilization_effort": {"war_support": 10, "tension": 12}}
+    }
+  },
+  "victory": {
+    "military": {"threshold": 0.9, "require_controlled_not_occupied": true, "ally_territory_counts": false, "contested_counts": false},
+    "hdi": {"indicators": ["life_expectancy", "education", "income", "food_security", "stability"],
+      "relative_threshold": 1.25, "duration_months": 6, "min_population": 5000000, "min_industry": 0.3},
+    "diplomatic": {"requires_all_participants": true, "name": "traite_paix_unite", "reserves_allowed": true},
+    "endgame": {"summary_months": 12, "final_save": true, "ties_allowed": true}
+  },
+  "bridges": {
+    "crossing_types": ["bridge", "ford", "improvis", "none"],
+    "base_crossing_penalty": 0.35,
+    "bridge_penalty": 0.05,
+    "ford_penalty": 0.2,
+    "improvis_penalty": 0.45,
+    "none_penalty": 1.0,
+    "bridge_capacity": {"main": 60, "secondary": 30},
+    "interruption_logistics_factor": 0.5
+  },
+  "multiplayer": {
+    "authority": "host",
+    "max_players": 8,
+    "ai_takeover_after_turns": 2,
+    "state_hash_algorithm": "sha256",
+    "desync_tolerance": 0,
+    "order_validation": "authoritative",
+    "secrecy": ["orders", "private_messages", "intel", "economy_details", "intercepts"],
+    "network_required_for_production": true
+  },
+  "ai": {
+    "max_decisions_per_turn": 2,
+    "personalities": {
+      "reformer": {"reform": 0.6, "military": 0.2, "cohesion": 0.2},
+      "traditional": {"reform": 0.1, "military": 0.4, "cohesion": 0.5},
+      "militarist": {"reform": 0.1, "military": 0.7, "cohesion": 0.2},
+      "pragmatic": {"reform": 0.35, "military": 0.35, "cohesion": 0.3}
+    },
+    "default_personality": "pragmatic"
+  }
+}

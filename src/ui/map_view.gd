@@ -221,6 +221,8 @@ func _draw() -> void:
 	_draw_economic_layers(k)
 	# Phase VI : bases aériennes, flottes et renseignement.
 	_draw_phase6_layers(k)
+	# Phase VII : rivières, ponts et franchissements.
+	_draw_phase7_layers(k)
 	# Villes et capitales (étoiles), noms des capitales toujours visibles (MAP-DEC-41).
 	for cid: String in session.world.cities:
 		var c: Dictionary = session.world.cities[cid]
@@ -346,6 +348,23 @@ func _draw_phase6_layers(k: float) -> void:
 				if session.state.regions.has(str(entry.get("region", ""))):
 					var p := screen_pos(str(entry["region"]))
 					draw_circle(p, 14.0 * k, Color(1.0, 0.8, 0.2, 0.3))
+
+
+func _draw_phase7_layers(k: float) -> void:
+	if bool(layers.get("rivers", false)):
+		for river: Dictionary in session.rules.get("rivers", []):
+			var rids: Array = river.get("region_ids", [])
+			for i in range(maxi(0, rids.size() - 1)):
+				if session.state.regions.has(str(rids[i])) and session.state.regions.has(str(rids[i+1])):
+					draw_line(screen_pos(str(rids[i])), screen_pos(str(rids[i+1])), Color("#2e6fa8"), 2.0 * k)
+	if bool(layers.get("bridges", false)):
+		for bid: String in session.state.bridges:
+			var b: Dictionary = session.state.bridges[bid]
+			if not session.state.regions.has(str(b.get("region", ""))):
+				continue
+			var p := screen_pos(str(b["region"]))
+			var col := Color("#2e8b57") if str(b.get("status", "operational")) == "operational" else Color("#b03a2e")
+			draw_rect(Rect2(p + Vector2(-4, -20) * k, Vector2(8, 8) * k), col)
 
 
 func _draw_figurine(p: Vector2, color: Color, k: float, label: String, selected: bool) -> void:

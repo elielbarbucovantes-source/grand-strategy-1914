@@ -290,7 +290,8 @@ func test_v4_save_migration_preserves_existing_data() -> void:
 	env["format_version"] = 4
 	var st: Dictionary = env["state"]
 	st["format_version"] = 4
-	for k: String in ["relations", "reputation", "personalities", "diplomacy", "transport", "economy", "tech"]:
+	for k: String in ["relations", "reputation", "personalities", "diplomacy", "transport", "economy", "tech",
+		"politics", "victory", "bridges", "multiplayer"]:
 		st.erase(k)
 	var once := JSON.stringify(st, "", true, true)
 	env["state_sha256"] = JSON.stringify(JSON.parse_string(once), "", true, true).sha256_text()

@@ -1,0 +1,2089 @@
+{
+  "format": "gs1914.bridges",
+  "format_version": 1,
+  "reference_date": "1914-01-01",
+  "generated_by": "tools/map/build_bridges.py",
+  "disclaimer": "Les points de franchissement sont des estimations de modele derives des grands fleuves, pas des ponts historiques verifies.",
+  "bridges": [
+    {
+      "id": "bridge_river_rhine_1",
+      "river": "river_rhine",
+      "name_fr": "Franchissement du Rhin (1)",
+      "region": "region_017",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_rhine_2",
+      "river": "river_rhine",
+      "name_fr": "Franchissement du Rhin (2)",
+      "region": "region_018",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_rhine_3",
+      "river": "river_rhine",
+      "name_fr": "Franchissement du Rhin (3)",
+      "region": "region_035",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_rhine_4",
+      "river": "river_rhine",
+      "name_fr": "Franchissement du Rhin (4)",
+      "region": "region_033",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_rhine_5",
+      "river": "river_rhine",
+      "name_fr": "Franchissement du Rhin (5)",
+      "region": "region_032",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_rhine_6",
+      "river": "river_rhine",
+      "name_fr": "Franchissement du Rhin (6)",
+      "region": "region_016",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_rhine_7",
+      "river": "river_rhine",
+      "name_fr": "Franchissement du Rhin (7)",
+      "region": "region_015",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_1",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (1)",
+      "region": "region_033",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_2",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (2)",
+      "region": "region_034",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_3",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (3)",
+      "region": "region_036",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_4",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (4)",
+      "region": "region_041",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_5",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (5)",
+      "region": "region_043",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_6",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (6)",
+      "region": "region_074",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_7",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (7)",
+      "region": "region_070",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_8",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (8)",
+      "region": "region_072",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_9",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (9)",
+      "region": "region_073",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_10",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (10)",
+      "region": "region_071",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_danube_11",
+      "river": "river_danube",
+      "name_fr": "Franchissement du Danube (11)",
+      "region": "region_062",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "natural_earth_10m_v5",
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_meuse_1",
+      "river": "river_meuse",
+      "name_fr": "Franchissement du Meuse (1)",
+      "region": "region_011",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_meuse_2",
+      "river": "river_meuse",
+      "name_fr": "Franchissement du Meuse (2)",
+      "region": "region_014",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_meuse_3",
+      "river": "river_meuse",
+      "name_fr": "Franchissement du Meuse (3)",
+      "region": "region_016",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_meuse_4",
+      "river": "river_meuse",
+      "name_fr": "Franchissement du Meuse (4)",
+      "region": "region_015",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_scheldt_1",
+      "river": "river_scheldt",
+      "name_fr": "Franchissement du Escaut (1)",
+      "region": "region_007",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_scheldt_2",
+      "river": "river_scheldt",
+      "name_fr": "Franchissement du Escaut (2)",
+      "region": "region_014",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_scheldt_3",
+      "river": "river_scheldt",
+      "name_fr": "Franchissement du Escaut (3)",
+      "region": "region_013",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_scheldt_4",
+      "river": "river_scheldt",
+      "name_fr": "Franchissement du Escaut (4)",
+      "region": "region_015",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_seine_1",
+      "river": "river_seine",
+      "name_fr": "Franchissement du Seine (1)",
+      "region": "region_011",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_seine_2",
+      "river": "river_seine",
+      "name_fr": "Franchissement du Seine (2)",
+      "region": "region_008",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_somme_1",
+      "river": "river_somme",
+      "name_fr": "Franchissement du Somme (1)",
+      "region": "region_007",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_marne_1",
+      "river": "river_marne",
+      "name_fr": "Franchissement du Marne (1)",
+      "region": "region_011",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_marne_2",
+      "river": "river_marne",
+      "name_fr": "Franchissement du Marne (2)",
+      "region": "region_008",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_moselle_1",
+      "river": "river_moselle",
+      "name_fr": "Franchissement du Moselle (1)",
+      "region": "region_011",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_moselle_2",
+      "river": "river_moselle",
+      "name_fr": "Franchissement du Moselle (2)",
+      "region": "region_035",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_moselle_3",
+      "river": "river_moselle",
+      "name_fr": "Franchissement du Moselle (3)",
+      "region": "region_019",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_moselle_4",
+      "river": "river_moselle",
+      "name_fr": "Franchissement du Moselle (4)",
+      "region": "region_032",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_loire_1",
+      "river": "river_loire",
+      "name_fr": "Franchissement du Loire (1)",
+      "region": "region_012",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_loire_2",
+      "river": "river_loire",
+      "name_fr": "Franchissement du Loire (2)",
+      "region": "region_011",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_loire_3",
+      "river": "river_loire",
+      "name_fr": "Franchissement du Loire (3)",
+      "region": "region_008",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_loire_4",
+      "river": "river_loire",
+      "name_fr": "Franchissement du Loire (4)",
+      "region": "region_009",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_garonne_1",
+      "river": "river_garonne",
+      "name_fr": "Franchissement du Garonne (1)",
+      "region": "region_022",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_garonne_2",
+      "river": "river_garonne",
+      "name_fr": "Franchissement du Garonne (2)",
+      "region": "region_010",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_rhone_1",
+      "river": "river_rhone",
+      "name_fr": "Franchissement du Rhône (1)",
+      "region": "region_017",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_rhone_2",
+      "river": "river_rhone",
+      "name_fr": "Franchissement du Rhône (2)",
+      "region": "region_012",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_thames_1",
+      "river": "river_thames",
+      "name_fr": "Franchissement du Tamise (1)",
+      "region": "region_001",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_severn_1",
+      "river": "river_severn",
+      "name_fr": "Franchissement du Severn (1)",
+      "region": "region_004",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_severn_2",
+      "river": "river_severn",
+      "name_fr": "Franchissement du Severn (2)",
+      "region": "region_002",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_severn_3",
+      "river": "river_severn",
+      "name_fr": "Franchissement du Severn (3)",
+      "region": "region_001",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_shannon_1",
+      "river": "river_shannon",
+      "name_fr": "Franchissement du Shannon (1)",
+      "region": "region_005",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_shannon_2",
+      "river": "river_shannon",
+      "name_fr": "Franchissement du Shannon (2)",
+      "region": "region_006",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_tagus_1",
+      "river": "river_tagus",
+      "name_fr": "Franchissement du Tage (Tajo / Tejo) (1)",
+      "region": "region_023",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_tagus_2",
+      "river": "river_tagus",
+      "name_fr": "Franchissement du Tage (Tajo / Tejo) (2)",
+      "region": "region_020",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_douro_1",
+      "river": "river_douro",
+      "name_fr": "Franchissement du Douro (Duero) (1)",
+      "region": "region_021",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_douro_2",
+      "river": "river_douro",
+      "name_fr": "Franchissement du Douro (Duero) (2)",
+      "region": "region_020",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_ebro_1",
+      "river": "river_ebro",
+      "name_fr": "Franchissement du Èbre (1)",
+      "region": "region_021",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_ebro_2",
+      "river": "river_ebro",
+      "name_fr": "Franchissement du Èbre (2)",
+      "region": "region_022",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_guadalquivir_1",
+      "river": "river_guadalquivir",
+      "name_fr": "Franchissement du Guadalquivir (1)",
+      "region": "region_025",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_elbe_1",
+      "river": "river_elbe",
+      "name_fr": "Franchissement du Elbe (Labe) (1)",
+      "region": "region_038",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_elbe_2",
+      "river": "river_elbe",
+      "name_fr": "Franchissement du Elbe (Labe) (2)",
+      "region": "region_031",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_elbe_3",
+      "river": "river_elbe",
+      "name_fr": "Franchissement du Elbe (Labe) (3)",
+      "region": "region_028",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_elbe_4",
+      "river": "river_elbe",
+      "name_fr": "Franchissement du Elbe (Labe) (4)",
+      "region": "region_029",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_weser_1",
+      "river": "river_weser",
+      "name_fr": "Franchissement du Weser (1)",
+      "region": "region_033",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_weser_2",
+      "river": "river_weser",
+      "name_fr": "Franchissement du Weser (2)",
+      "region": "region_032",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_weser_3",
+      "river": "river_weser",
+      "name_fr": "Franchissement du Weser (3)",
+      "region": "region_029",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_oder_1",
+      "river": "river_oder",
+      "name_fr": "Franchissement du Oder (1)",
+      "region": "region_039",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_oder_2",
+      "river": "river_oder",
+      "name_fr": "Franchissement du Oder (2)",
+      "region": "region_030",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_oder_3",
+      "river": "river_oder",
+      "name_fr": "Franchissement du Oder (3)",
+      "region": "region_028",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_vistula_1",
+      "river": "river_vistula",
+      "name_fr": "Franchissement du Vistule (1)",
+      "region": "region_039",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1",
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_vistula_2",
+      "river": "river_vistula",
+      "name_fr": "Franchissement du Vistule (2)",
+      "region": "region_040",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1",
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_vistula_3",
+      "river": "river_vistula",
+      "name_fr": "Franchissement du Vistule (3)",
+      "region": "region_027",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1",
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_vistula_4",
+      "river": "river_vistula",
+      "name_fr": "Franchissement du Vistule (4)",
+      "region": "region_055",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1",
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_vistula_5",
+      "river": "river_vistula",
+      "name_fr": "Franchissement du Vistule (5)",
+      "region": "region_056",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1",
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_tisza_1",
+      "river": "river_tisza",
+      "name_fr": "Franchissement du Tisza (Theiß) (1)",
+      "region": "region_041",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_sava_1",
+      "river": "river_sava",
+      "name_fr": "Franchissement du Save (1)",
+      "region": "region_037",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_sava_2",
+      "river": "river_sava",
+      "name_fr": "Franchissement du Save (2)",
+      "region": "region_043",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_drava_1",
+      "river": "river_drava",
+      "name_fr": "Franchissement du Drave (1)",
+      "region": "region_037",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_drava_2",
+      "river": "river_drava",
+      "name_fr": "Franchissement du Drave (2)",
+      "region": "region_036",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_drava_3",
+      "river": "river_drava",
+      "name_fr": "Franchissement du Drave (3)",
+      "region": "region_041",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_drava_4",
+      "river": "river_drava",
+      "name_fr": "Franchissement du Drave (4)",
+      "region": "region_043",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_isonzo_1",
+      "river": "river_isonzo",
+      "name_fr": "Franchissement du Isonzo (Soča) (1)",
+      "region": "region_037",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_po_1",
+      "river": "river_po",
+      "name_fr": "Franchissement du Pô (1)",
+      "region": "region_080",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_po_2",
+      "river": "river_po",
+      "name_fr": "Franchissement du Pô (2)",
+      "region": "region_081",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_adige_1",
+      "river": "river_adige",
+      "name_fr": "Franchissement du Adige (Etsch) (1)",
+      "region": "region_037",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_adige_2",
+      "river": "river_adige",
+      "name_fr": "Franchissement du Adige (Etsch) (2)",
+      "region": "region_081",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_tiber_1",
+      "river": "river_tiber",
+      "name_fr": "Franchissement du Tibre (1)",
+      "region": "region_082",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_volga_1",
+      "river": "river_volga",
+      "name_fr": "Franchissement du Volga (1)",
+      "region": "region_066",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_volga_2",
+      "river": "river_volga",
+      "name_fr": "Franchissement du Volga (2)",
+      "region": "region_067",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_volga_3",
+      "river": "river_volga",
+      "name_fr": "Franchissement du Volga (3)",
+      "region": "region_068",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_kama_1",
+      "river": "river_kama",
+      "name_fr": "Franchissement du Kama (1)",
+      "region": "region_067",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_oka_1",
+      "river": "river_oka",
+      "name_fr": "Franchissement du Oka (1)",
+      "region": "region_066",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_ural_1",
+      "river": "river_ural",
+      "name_fr": "Franchissement du Oural (1)",
+      "region": "region_068",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_don_1",
+      "river": "river_don",
+      "name_fr": "Franchissement du Don (1)",
+      "region": "region_066",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_don_2",
+      "river": "river_don",
+      "name_fr": "Franchissement du Don (2)",
+      "region": "region_061",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_don_3",
+      "river": "river_don",
+      "name_fr": "Franchissement du Don (3)",
+      "region": "region_069",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_donets_1",
+      "river": "river_donets",
+      "name_fr": "Franchissement du Donets (Severski Donets) (1)",
+      "region": "region_066",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_donets_2",
+      "river": "river_donets",
+      "name_fr": "Franchissement du Donets (Severski Donets) (2)",
+      "region": "region_059",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_donets_3",
+      "river": "river_donets",
+      "name_fr": "Franchissement du Donets (Severski Donets) (3)",
+      "region": "region_061",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_donets_4",
+      "river": "river_donets",
+      "name_fr": "Franchissement du Donets (Severski Donets) (4)",
+      "region": "region_069",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_kuban_1",
+      "river": "river_kuban",
+      "name_fr": "Franchissement du Kouban (1)",
+      "region": "region_069",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_terek_1",
+      "river": "river_terek",
+      "name_fr": "Franchissement du Terek (1)",
+      "region": "region_069",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_dnieper_1",
+      "river": "river_dnieper",
+      "name_fr": "Franchissement du Dniepr (1)",
+      "region": "region_066",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_dnieper_2",
+      "river": "river_dnieper",
+      "name_fr": "Franchissement du Dniepr (2)",
+      "region": "region_057",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_dnieper_3",
+      "river": "river_dnieper",
+      "name_fr": "Franchissement du Dniepr (3)",
+      "region": "region_059",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_dnieper_4",
+      "river": "river_dnieper",
+      "name_fr": "Franchissement du Dniepr (4)",
+      "region": "region_060",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1",
+        "natural_earth_10m_v5"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_pripyat_1",
+      "river": "river_pripyat",
+      "name_fr": "Franchissement du Pripiat (1)",
+      "region": "region_057",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_pripyat_2",
+      "river": "river_pripyat",
+      "name_fr": "Franchissement du Pripiat (2)",
+      "region": "region_058",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_pripyat_3",
+      "river": "river_pripyat",
+      "name_fr": "Franchissement du Pripiat (3)",
+      "region": "region_059",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_berezina_1",
+      "river": "river_berezina",
+      "name_fr": "Franchissement du Bérézina (1)",
+      "region": "region_057",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_southern_bug_1",
+      "river": "river_southern_bug",
+      "name_fr": "Franchissement du Boug méridional (1)",
+      "region": "region_058",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_southern_bug_2",
+      "river": "river_southern_bug",
+      "name_fr": "Franchissement du Boug méridional (2)",
+      "region": "region_060",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_dniester_1",
+      "river": "river_dniester",
+      "name_fr": "Franchissement du Dniestr (1)",
+      "region": "region_058",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_dniester_2",
+      "river": "river_dniester",
+      "name_fr": "Franchissement du Dniestr (2)",
+      "region": "region_062",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_dniester_3",
+      "river": "river_dniester",
+      "name_fr": "Franchissement du Dniestr (3)",
+      "region": "region_060",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_western_dvina_1",
+      "river": "river_western_dvina",
+      "name_fr": "Franchissement du Dvina occidentale (Daugava) (1)",
+      "region": "region_066",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_western_dvina_2",
+      "river": "river_western_dvina",
+      "name_fr": "Franchissement du Dvina occidentale (Daugava) (2)",
+      "region": "region_057",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_western_dvina_3",
+      "river": "river_western_dvina",
+      "name_fr": "Franchissement du Dvina occidentale (Daugava) (3)",
+      "region": "region_053",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_western_dvina_4",
+      "river": "river_western_dvina",
+      "name_fr": "Franchissement du Dvina occidentale (Daugava) (4)",
+      "region": "region_054",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_niemen_1",
+      "river": "river_niemen",
+      "name_fr": "Franchissement du Niémen (Neman) (1)",
+      "region": "region_057",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_niemen_2",
+      "river": "river_niemen",
+      "name_fr": "Franchissement du Niémen (Neman) (2)",
+      "region": "region_056",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_niemen_3",
+      "river": "river_niemen",
+      "name_fr": "Franchissement du Niémen (Neman) (3)",
+      "region": "region_054",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_western_bug_narew_1",
+      "river": "river_western_bug_narew",
+      "name_fr": "Franchissement du Boug occidental et Narew (1)",
+      "region": "region_058",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_western_bug_narew_2",
+      "river": "river_western_bug_narew",
+      "name_fr": "Franchissement du Boug occidental et Narew (2)",
+      "region": "region_056",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_western_bug_narew_3",
+      "river": "river_western_bug_narew",
+      "name_fr": "Franchissement du Boug occidental et Narew (3)",
+      "region": "region_057",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_western_bug_narew_4",
+      "river": "river_western_bug_narew",
+      "name_fr": "Franchissement du Boug occidental et Narew (4)",
+      "region": "region_055",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_neva_volkhov_1",
+      "river": "river_neva_volkhov",
+      "name_fr": "Franchissement du Neva et Volkhov (1)",
+      "region": "region_064",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_northern_dvina_1",
+      "river": "river_northern_dvina",
+      "name_fr": "Franchissement du Dvina septentrionale (1)",
+      "region": "region_065",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_pechora_1",
+      "river": "river_pechora",
+      "name_fr": "Franchissement du Petchora (1)",
+      "region": "region_065",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "ristat_1897_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_glomma_1",
+      "river": "river_glomma",
+      "name_fr": "Franchissement du Glomma (1)",
+      "region": "region_045",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_gota_alv_1",
+      "river": "river_gota_alv",
+      "name_fr": "Franchissement du Göta älv et Canal Göta (1)",
+      "region": "region_048",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_gota_alv_2",
+      "river": "river_gota_alv",
+      "name_fr": "Franchissement du Göta älv et Canal Göta (2)",
+      "region": "region_049",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_dalalven_1",
+      "river": "river_dalalven",
+      "name_fr": "Franchissement du Dalälven (1)",
+      "region": "region_049",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_torne_lule_1",
+      "river": "river_torne_lule",
+      "name_fr": "Franchissement du Torne älv (Tornionjoki) et Lule älv (1)",
+      "region": "region_050",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_torne_lule_2",
+      "river": "river_torne_lule",
+      "name_fr": "Franchissement du Torne älv (Tornionjoki) et Lule älv (2)",
+      "region": "region_052",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_prut_siret_1",
+      "river": "river_prut_siret",
+      "name_fr": "Franchissement du Prout et Siret (1)",
+      "region": "region_071",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_prut_siret_2",
+      "river": "river_prut_siret",
+      "name_fr": "Franchissement du Prout et Siret (2)",
+      "region": "region_062",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_prut_siret_3",
+      "river": "river_prut_siret",
+      "name_fr": "Franchissement du Prout et Siret (3)",
+      "region": "region_070",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_olt_1",
+      "river": "river_olt",
+      "name_fr": "Franchissement du Olt (cours inférieur) (1)",
+      "region": "region_070",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_morava_serbia_1",
+      "river": "river_morava_serbia",
+      "name_fr": "Franchissement du Morava (Grande, Occidentale et Méridionale) (1)",
+      "region": "region_074",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_drina_1",
+      "river": "river_drina",
+      "name_fr": "Franchissement du Drina (1)",
+      "region": "region_074",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_drina_2",
+      "river": "river_drina",
+      "name_fr": "Franchissement du Drina (2)",
+      "region": "region_075",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_vardar_1",
+      "river": "river_vardar",
+      "name_fr": "Franchissement du Vardar (Axios) (1)",
+      "region": "region_074",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_vardar_2",
+      "river": "river_vardar",
+      "name_fr": "Franchissement du Vardar (Axios) (2)",
+      "region": "region_078",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_struma_1",
+      "river": "river_struma",
+      "name_fr": "Franchissement du Strouma (Strymon) (1)",
+      "region": "region_072",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_struma_2",
+      "river": "river_struma",
+      "name_fr": "Franchissement du Strouma (Strymon) (2)",
+      "region": "region_078",
+      "crossing_type": "ford",
+      "capacity": 30,
+      "status": "operational",
+      "importance": "secondary",
+      "sources": [
+        "regis_2026_v1"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_maritsa_1",
+      "river": "river_maritsa",
+      "name_fr": "Franchissement du Maritsa (Evros / Meriç) (1)",
+      "region": "region_073",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1",
+        "geoboundaries_tur_v6"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_maritsa_2",
+      "river": "river_maritsa",
+      "name_fr": "Franchissement du Maritsa (Evros / Meriç) (2)",
+      "region": "region_089",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1",
+        "geoboundaries_tur_v6"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    },
+    {
+      "id": "bridge_river_maritsa_3",
+      "river": "river_maritsa",
+      "name_fr": "Franchissement du Maritsa (Evros / Meriç) (3)",
+      "region": "region_090",
+      "crossing_type": "bridge",
+      "capacity": 60,
+      "status": "operational",
+      "importance": "main",
+      "sources": [
+        "regis_2026_v1",
+        "geoboundaries_tur_v6"
+      ],
+      "status_precision": "ESTIMATION DE MODELE : presence d'un passage, pas un inventaire historique verifie"
+    }
+  ],
+  "totals": {
+    "bridges": 146,
+    "rivers": 59
+  }
+}

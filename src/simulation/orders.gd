@@ -47,6 +47,14 @@ const BUILD_AIRBASE := "build_airbase"
 const PRODUCE_AIRCRAFT := "produce_aircraft"
 const CREATE_FLEET := "create_fleet"
 const NAVAL_OPERATION := "naval_operation"
+# Phase VII
+const POLITICAL_DECISION := "political_decision"
+const CHANGE_GOVERNMENT := "change_government"
+const SET_BRIDGE_STATUS := "set_bridge_status"
+const MP_SETUP := "mp_setup"
+const MP_SUBMIT_ORDER := "mp_submit_order"
+const MP_DISCONNECT := "mp_disconnect"
+const MP_RECONNECT := "mp_reconnect"
 
 const TREATY_KINDS: PackedStringArray = ["alliance", "transit", "trade", "guarantee", "coalition", "peace"]
 const CHANNELS: PackedStringArray = ["public", "private", "group"]
@@ -187,6 +195,34 @@ static func create_fleet(nation: String, port: String, composition: Dictionary) 
 
 static func naval_operation(nation: String, fleet: String, kind: String, zone: String) -> Dictionary:
 	return {"type": NAVAL_OPERATION, "nation": nation, "fleet": fleet, "kind": kind, "zone": zone}
+
+
+static func political_decision(nation: String, kind: String) -> Dictionary:
+	return {"type": POLITICAL_DECISION, "nation": nation, "kind": kind}
+
+
+static func change_government(nation: String, kind: String) -> Dictionary:
+	return {"type": CHANGE_GOVERNMENT, "nation": nation, "kind": kind}
+
+
+static func set_bridge_status(bridge: String, status: String) -> Dictionary:
+	return {"type": SET_BRIDGE_STATUS, "nation": "", "bridge": bridge, "status": status}
+
+
+static func mp_setup(players: Dictionary) -> Dictionary:
+	return {"type": MP_SETUP, "nation": "", "players": players.duplicate(true)}
+
+
+static func mp_submit_order(player: String, order: Dictionary) -> Dictionary:
+	return {"type": MP_SUBMIT_ORDER, "nation": player, "order": order.duplicate(true)}
+
+
+static func mp_disconnect(player: String) -> Dictionary:
+	return {"type": MP_DISCONNECT, "nation": player}
+
+
+static func mp_reconnect(player: String) -> Dictionary:
+	return {"type": MP_RECONNECT, "nation": player}
 
 
 static func message(nation: String, channel: String, to: Array, text: String) -> Dictionary:

@@ -15,6 +15,7 @@ const TRANSPORT_PATH := "res://data/game/transport_network.json"
 const TRANSPORT_RULES_PATH := "res://data/rules/transport_rules.json"
 const ECONOMY_RULES_PATH := "res://data/rules/economy_rules.json"
 const PHASE6_RULES_PATH := "res://data/rules/phase6_rules.json"
+const PHASE7_RULES_PATH := "res://data/rules/phase7_rules.json"
 const SAVE_DIR := "user://saves"
 
 var world: WorldMap
@@ -23,6 +24,7 @@ var scenario: Dictionary
 var state: GameState
 var transport_network: TransportNetwork
 var tech_tree: TechSystem
+var crossings: CrossingSystem
 var last_report: Dictionary = {}
 
 
@@ -43,8 +45,11 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.rules["transport"] = load_json(TRANSPORT_RULES_PATH)
 	s.rules["economy_model"] = load_json(ECONOMY_RULES_PATH)
 	s.rules["phase6"] = load_json(PHASE6_RULES_PATH)
+	s.rules["phase7"] = load_json(PHASE7_RULES_PATH)
 	s.transport_network = TransportNetwork.load_from(TRANSPORT_PATH)
 	s.tech_tree = TechSystem.load_tree()
+	s.crossings = CrossingSystem.load_bridges()
+	s.rules["rivers"] = load_json("res://data/world/map/terrain.json").get("major_rivers", [])
 	s.rules["transport_network"] = s.transport_network  # référence en mémoire, non sérialisée
 	s.rules["tech_tree"] = s.tech_tree
 	ForceLedger.configure(s.rules["forces"].get("casualties", {}))
@@ -78,6 +83,9 @@ func new_game(player: String, start_month: int, seed_value: int = 1914, scenario
 		return "pays inconnu"
 	state = GameState.from_scenario(scenario, start_month, player, seed_value)
 	EconomySystem.initialize(state, rules)
+	CrossingSystem.init_state(state)
+	for nid: String in state.nation_order:
+		PoliticalSystem.ensure(state, nid, rules.get("phase7", {}))
 	state.log_event("partie", "Début de la campagne : %s, %s." % [state.nations[player]["name_fr"], state.date_label()], [player])
 	LogisticsSystem.update_supply(state, world, rules)
 	return ""
@@ -162,7 +170,13 @@ func end_turn() -> Dictionary:
 		orders[nid] = NationAgent.decide(IntelSystem.view_for(state, world, nid, rules), world, rules)
 		orders[nid].append_array(EconomicAI.decide(state, transport_network, rules, nid))
 		orders[nid].append_array(Phase6AI.decide(state, tech_tree, rules, nid))
+		orders[nid].append_array(PoliticalAI.decide(state, nid, rules.get("phase7", {})))
 	last_report = TurnResolver.resolve(state, world, rules, orders)
+	var phase7: Dictionary = rules.get("phase7", {})
+	for nid: String in state.nation_order:
+		PoliticalSystem.monthly(state, nid, phase7)
+		state.economy["stocks"][nid]["money"] = float(state.economy["stocks"].get(nid, {}).get("money", 0.0))
+	VictorySystem.check_victory(state, phase7)
 	return last_report
 
 

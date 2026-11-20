@@ -63,6 +63,20 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		elif order["type"] == Orders.NAVAL_OPERATION:
 			NavalSystem.operation(state, order["nation"], str(order["fleet"]), str(order["kind"]),
 				str(order["zone"]), rules.get("phase6", {}))
+		elif order["type"] == Orders.POLITICAL_DECISION:
+			PoliticalSystem.apply_decision(state, order["nation"], str(order["kind"]), rules.get("phase7", {}))
+		elif order["type"] == Orders.CHANGE_GOVERNMENT:
+			PoliticalSystem.change_government(state, order["nation"], str(order["kind"]), rules.get("phase7", {}))
+		elif order["type"] == Orders.SET_BRIDGE_STATUS:
+			CrossingSystem.set_status(state, str(order["bridge"]), str(order["status"]))
+		elif order["type"] == Orders.MP_SETUP:
+			MultiplayerSystem.setup(state, order["players"], rules.get("phase7", {}))
+		elif order["type"] == Orders.MP_SUBMIT_ORDER:
+			MultiplayerSystem.submit_order(state, order["nation"], order["order"], rules.get("phase7", {}))
+		elif order["type"] == Orders.MP_DISCONNECT:
+			MultiplayerSystem.disconnect_player(state, order["nation"])
+		elif order["type"] == Orders.MP_RECONNECT:
+			MultiplayerSystem.reconnect_player(state, order["nation"])
 	# Les mouvements sont revalidés après la diplomatie (une déclaration de guerre du même
 	# tour peut autoriser l'entrée ; une paix peut l'interdire). Une formation = un ordre.
 	var moves: Array = []
@@ -187,5 +201,14 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 				return "région inconnue"
 			return ""
 		Orders.PRODUCE_AIRCRAFT, Orders.CREATE_FLEET, Orders.NAVAL_OPERATION, Orders.INTERCEPT, Orders.SET_COMMS_PROTECTION:
+			return ""
+		Orders.POLITICAL_DECISION:
+			var costs: Dictionary = rules.get("phase7", {}).get("politics", {}).get("decisions", {}).get("costs", {})
+			return "" if costs.has(str(order.get("kind", ""))) else "décision inconnue"
+		Orders.CHANGE_GOVERNMENT:
+			return ""
+		Orders.SET_BRIDGE_STATUS:
+			return "" if state.bridges.has(str(order.get("bridge", ""))) else "franchissement inconnu"
+		Orders.MP_SETUP, Orders.MP_SUBMIT_ORDER, Orders.MP_DISCONNECT, Orders.MP_RECONNECT:
 			return ""
 	return "type d'ordre inconnu"
