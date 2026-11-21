@@ -49,7 +49,8 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.transport_network = TransportNetwork.load_from(TRANSPORT_PATH)
 	s.tech_tree = TechSystem.load_tree()
 	s.crossings = CrossingSystem.load_bridges()
-	s.rules["rivers"] = load_json("res://data/world/map/terrain.json").get("major_rivers", [])
+	# data/world contient un .gdignore : les rivières sont exportées via data/rules/rivers.json.
+	s.rules["rivers"] = load_json("res://data/rules/rivers.json").get("major_rivers", [])
 	s.rules["transport_network"] = s.transport_network  # référence en mémoire, non sérialisée
 	s.rules["tech_tree"] = s.tech_tree
 	ForceLedger.configure(s.rules["forces"].get("casualties", {}))

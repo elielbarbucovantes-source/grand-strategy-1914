@@ -20,6 +20,11 @@ var nation_label: Label
 var share_label: Label
 var battle_button: Button
 var pages: Dictionary = {}    # nom -> VBoxContainer
+const TAB_NAMES: Array[String] = ["Pays", "Diplomatie", "Économie", "Industrie", "Armée",
+	"Logistique", "Recherche", "Renseignement", "Politique", "Victoire", "Multijoueur",
+	"Événements", "Ordres"]
+var nav_bar: HFlowContainer
+var nav_buttons: Dictionary = {}
 var approach := "assault"     # approche offensive des prochains ordres de déplacement (T-055)
 
 
@@ -54,7 +59,7 @@ func _build() -> void:
 	# Phase IV : barre de couches cartographiques (compacte, sous la barre principale).
 	var layer_bar := HBoxContainer.new()
 	layer_bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
-	layer_bar.offset_top = 42
+	layer_bar.offset_top = 44
 	add_child(layer_bar)
 	for layer: String in ["rail", "road", "river", "maritime", "ports", "interruptions", "capacity",
 		"resources", "industry", "population", "agriculture", "stocks",
@@ -64,22 +69,40 @@ func _build() -> void:
 			map_view.queue_redraw())
 	side = PanelContainer.new()
 	side.anchor_left = 1.0; side.anchor_right = 1.0; side.anchor_top = 0.0; side.anchor_bottom = 1.0
-	side.offset_left = -440; side.offset_top = 44; side.offset_bottom = -30
+	# Consolidation 02 : panneau plus large et navigation adaptative (1280x720 et 1600x900).
+	var panel_width := 520.0
+	var viewport_w := float(get_viewport().size.x) if get_viewport() != null else 1600.0
+	if viewport_w > 0.0 and viewport_w < 1400.0:
+		panel_width = 460.0
+	side.offset_left = -panel_width; side.offset_top = 84; side.offset_bottom = -30
 	add_child(side)
+	var side_box := VBoxContainer.new()
+	side.add_child(side_box)
+	# Barre de navigation à retournement automatique : les 13 rubriques restent toutes visibles.
+	nav_bar = HFlowContainer.new()
+	nav_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	side_box.add_child(nav_bar)
 	tabs = TabContainer.new()
-	side.add_child(tabs)
-	for name in ["Pays", "Diplomatie", "Économie", "Industrie", "Armée", "Logistique", "Recherche", "Renseignement", "Politique", "Victoire", "Multijoueur", "Événements", "Ordres"]:
+	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	side_box.add_child(tabs)
+	var tab_bar := tabs.get_tab_bar()
+	if tab_bar != null:
+		tab_bar.visible = false  # évite les flèches tronquées ; nav_bar assure l'accès
+	for name in TAB_NAMES:
 		var scroll := ScrollContainer.new()
 		scroll.name = name
 		if name == "Armée":
-			# Vérification visuelle (phase 3) : le texte doit se replier dans la largeur du panneau.
 			scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 		tabs.add_child(scroll)
 		var box := VBoxContainer.new()
 		box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		scroll.add_child(box)
 		pages[name] = box
-	tabs.tab_changed.connect(func(_i: int) -> void: refresh())
+		var btn := _button(nav_bar, name, func() -> void: _open_tab(name))
+		nav_buttons[name] = btn
+	tabs.tab_changed.connect(func(_i: int) -> void:
+		_update_nav_highlight()
+		refresh())
 	status = Label.new()
 	status.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
 	status.offset_top = -26
@@ -111,6 +134,25 @@ func _rich(parent: Node, bbcode: String) -> RichTextLabel:
 	r.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	parent.add_child(r)
 	return r
+
+
+func _open_tab(name: String) -> void:
+	if tabs == null:
+		return
+	for i in tabs.get_tab_count():
+		if tabs.get_tab_title(i) == name:
+			tabs.current_tab = i
+			_update_nav_highlight()
+			return
+
+
+func _update_nav_highlight() -> void:
+	if tabs == null:
+		return
+	var current := tabs.get_tab_title(tabs.current_tab)
+	for name: String in nav_buttons:
+		var b: Button = nav_buttons[name]
+		b.modulate = Color.WHITE if name == current else Color(0.72, 0.72, 0.72)
 
 
 func _clear(page: String) -> VBoxContainer:
@@ -174,17 +216,95 @@ func _page_country() -> void:
 		text += "Zones maritimes : %s\n" % (", ".join(session.world.maritime_links[rid]) if not (session.world.maritime_links[rid] as Array).is_empty() else "—")
 		var ri := IntelSystem.region_intel(st, session.world, st.player_nation, rid, session.rules)
 		text += "Renseignement militaire : %s\n" % _format_region_intel(ri)
-		text += "Économie régionale : [i]données à sourcer (modèle C validé, ECO-02 ouvert)[/i]\n"
+		var baseline: Dictionary = st.economy.get("regions", {}).get(rid, {})
+		if baseline.is_empty():
+			text += "Économie régionale : [i]données indisponibles[/i]\n"
+		else:
+			var dep: Dictionary = baseline.get("deposits", {})
+			var dep_parts: Array = []
+			var dkeys: Array = dep.keys()
+			dkeys.sort()
+			for k: String in dkeys:
+				if float(dep[k]) > 0.0:
+					dep_parts.append("%s %.1f" % [k, float(dep[k])])
+			text += "Économie régionale (Phase V) : population %s ; main-d'œuvre %s ; industrie %.3f ; gisements %s.\n" % [
+				_format_n(int(baseline.get("population", 0))), _format_n(int(baseline.get("workforce", 0))),
+				float(baseline.get("industry_capacity", 0.0)),
+				", ".join(dep_parts) if not dep_parts.is_empty() else "—"]
 		_rich(box, text)
 	var nid := st.controller(rid) if rid != "" else st.player_nation
 	var n: Dictionary = st.nations[nid]
 	var t := "\n[b]Pays : %s[/b]\nCapitale : %s\nRégions contrôlées : %d ; jouable : %s\n" % [n["name_fr"],
 		session.world.cities[n["capital_city_id"]]["name_fr"], st.regions_controlled_by(nid).size(), "oui" if n["playable"] else "non"]
-	t += "Population : [i]inconnue (NAT-02)[/i]\n[b]Statistiques nationales[/b] (NAT-01 à définir) :\n"
+	# Consolidation 02 : les valeurs viennent des systèmes Phase V, pas des champs null du scénario.
+	var demo: Dictionary = DemographySystem.summary(st, nid)
+	var workforce: Dictionary = demo.get("workforce", {})
+	var stocks: Dictionary = ResourceSystem.summary(st, nid)
+	var pop := int(demo.get("population", 0))
+	var soldiers := 0
+	for f: Dictionary in st.formations.values():
+		if str(f["nation"]) == nid and f["echelon"] == "unit" and f.get("soldiers") != null:
+			soldiers += int(f["soldiers"])
+	var stability := 0.0
+	if st.politics["states"].has(nid):
+		stability = float(st.politics["states"][nid].get("stability", 0.0))
+	t += "\n[b]Démographie (Phase V)[/b] : population %s ; main-d'œuvre %s.\n" % [
+		_format_n(pop), _format_n(int(_sum_dict(workforce)))]
+	t += "Répartition : %s.\n" % _format_sectors(workforce)
+	t += "[b]Économie (Phase V)[/b] : capacité industrielle %.2f ; stocks %s.\n" % [
+		IndustrySystem.capacity(st, nid), _format_stocks(stocks)]
+	t += "[b]Militaire (MIL-01)[/b] : soldats sous les drapeaux %s.\n" % _format_n(soldiers)
+	t += "[b]Stabilité intérieure (Phase VII)[/b] : %.0f / 100.\n" % stability
+	var relations := ""
+	for other: String in st.nation_order:
+		if other == nid:
+			continue
+		relations += "- %s : %s\n" % [_n(other), RelationsSystem.summary(st, nid, other, session.rules["diplomacy"])]
+	t += "\n[b]Relations[/b] (confiance / hostilité / tensions) :\n%s" % relations
+	var unknown: Array = []
 	for key: String in n["stats"]:
-		var v: Variant = n["stats"][key]["value"]
-		t += "  • %s : %s\n" % [key.replace("_", " "), "[i]inconnu[/i]" if v == null else str(v)]
+		if n["stats"][key]["value"] == null:
+			unknown.append(key.replace("_", " "))
+	if not unknown.is_empty():
+		t += "\n[i]Statistiques abstraction non encore sourcées : %s.[/i]" % ", ".join(unknown)
 	_rich(box, t)
+
+
+func _sum_dict(d: Dictionary) -> float:
+	var total := 0.0
+	for v: Variant in d.values():
+		total += float(v)
+	return total
+
+
+func _format_n(v: int) -> String:
+	if v <= 0:
+		return "—"
+	var s := str(v)
+	var out := ""
+	for i in s.length():
+		if i > 0 and (s.length() - i) % 3 == 0:
+			out += " "
+		out += s[i]
+	return out
+
+
+func _format_sectors(d: Dictionary) -> String:
+	var parts: Array = []
+	for k: String in d:
+		parts.append("%s %s" % [k, _format_n(int(d[k]))])
+	return ", ".join(parts)
+
+
+func _format_stocks(d: Dictionary) -> String:
+	var parts: Array = []
+	var keys: Array = d.keys()
+	keys.sort()
+	for k: String in keys:
+		var v := float(d[k])
+		if v > 0.0:
+			parts.append("%s %.0f" % [k, v])
+	return ", ".join(parts) if not parts.is_empty() else "—"
 
 
 func _page_diplomacy() -> void:

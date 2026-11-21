@@ -86,8 +86,8 @@ static func monthly(state: GameState, rules: Dictionary) -> void:
 		var a := parts[0]
 		var b := parts[1]
 		if state.at_war(a, b):
-			rel["hostility"] = clampf(float(rel["hostility"]) + float(c.get("war_hostility_per_month", 4)), 0.0, 100.0)
-			rel["tensions"] = clampf(float(rel["tensions"]) + float(c.get("war_tensions_per_month", 6)), 0.0, 100.0)
+			rel["hostility"] = clampf(float(rel.get("hostility", 10)) + float(c.get("war_hostility_per_month", 4)), 0.0, 100.0)
+			rel["tensions"] = clampf(float(rel.get("tensions", 0)) + float(c.get("war_tensions_per_month", 6)), 0.0, 100.0)
 	for nid: String in state.nation_order:
 		state.reputation[nid] = reputation(state, nid, rules)
 
@@ -120,4 +120,5 @@ static func summary(state: GameState, a: String, b: String, rules: Dictionary) -
 	if r.is_empty():
 		return "aucune relation"
 	return "confiance %.0f | hostilité %.0f | coopération %.0f | rivalité %.0f | tensions %.0f" % [
-		float(r["trust"]), float(r["hostility"]), float(r["cooperation"]), float(r["rivalry"]), float(r["tensions"])]
+		float(r.get("trust", 50)), float(r.get("hostility", 10)), float(r.get("cooperation", 20)),
+		float(r.get("rivalry", 20)), float(r.get("tensions", 0))]

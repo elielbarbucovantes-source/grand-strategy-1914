@@ -36,7 +36,7 @@ func _show_menu() -> void:
 	title.add_theme_font_size_override("font_size", 30)
 	box.add_child(title)
 	var sub := Label.new()
-	sub.text = "« Le joueur dirige son pays, mais ne dirige pas le monde. »\nPrototype technique : voir docs/project/PROTOTYPE_STATUS.md"
+	sub.text = "« Le joueur dirige son pays, mais ne dirige pas le monde. »\nSimulation stratégique — 22 États, 90 régions, campagne 1914–1945.\nVoir docs/project/POST_MIL01_GLOBAL_AUDIT.md pour l'état réel des systèmes."
 	box.add_child(sub)
 	var nation := OptionButton.new()
 	for nid: String in session.playable_nations():
@@ -47,7 +47,7 @@ func _show_menu() -> void:
 	for i in 12:
 		month.add_item(GameCalendar.MONTHS_FR[i] + " 1914")
 	var scen := OptionButton.new()
-	scen.add_item("Campagne historique 1914 (effectifs sourcés des 7 puissances, MIL-01 ; répartition estimée)")
+	scen.add_item("Campagne historique 1914 (22 États, forces MIL-01 et Phase II ; répartition estimée)")
 	scen.add_item("Bac à sable FICTIF (forces génériques de test, combat jouable)")
 	box.add_child(_row("Scénario :", scen))
 	# T-057 : la campagne commence en janvier 1914 ; seul le bac à sable laisse choisir le mois.
