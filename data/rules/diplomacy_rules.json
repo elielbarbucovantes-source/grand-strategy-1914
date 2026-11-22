@@ -86,6 +86,12 @@
       "ambitious": {"trust_bias": -4, "hostility_bias": 6, "initiative": 1.0, "reputation_value": 0.5, "war_likelihood": 0.8},
       "honourable": {"trust_bias": 10, "hostility_bias": 0, "initiative": 0.5, "reputation_value": 1.4, "war_likelihood": 0.4}
     },
+    "allow_automatic_war": true,
+    "war_thresholds": {"tension": 65.0, "hostility": 55.0, "min_score": 60.0,
+      "min_soldiers": 30000, "min_money": 50.0, "rivalry": 55.0,
+      "earliest_war_turn": 7, "war_cooldown_turns": 6, "min_stability": 40.0},
+    "proposal_cooldown_turns": 6,
+    "alliance_proposal_cooldown_turns": 6,
     "default_personality": "cautious",
     "betrayal_trust_threshold": 25,
     "memory_window_turns": 12

@@ -1,0 +1,133 @@
+{
+  "format": "gs1914.initial_rivalries",
+  "format_version": 1,
+  "reference_date": "1914-01-01",
+  "_statut": "Rivalites historiques documentees (niveau B). Elles fournissent un point de depart de tensions, pas un script de guerre.",
+  "sources": {
+    "HIST": {
+      "citation": "Contexte diplomatique europeen au 1er janvier 1914 (recits historiques courants)",
+      "reliability": "moyenne"
+    }
+  },
+  "rivalries": [
+    {
+      "a": "france",
+      "b": "german_empire",
+      "tensions": 58,
+      "hostility": 55,
+      "reason": "Alsace-Lorraine et rivalite continentale",
+      "level": "B",
+      "rivalry": 58
+    },
+    {
+      "a": "austria_hungary",
+      "b": "serbia",
+      "tensions": 62,
+      "hostility": 60,
+      "reason": "Annexion de la Bosnie et nationalisme slave",
+      "level": "B",
+      "rivalry": 62
+    },
+    {
+      "a": "russian_empire",
+      "b": "austria_hungary",
+      "tensions": 50,
+      "hostility": 48,
+      "reason": "Rivalite en Europe orientale et pan-slavisme",
+      "level": "B",
+      "rivalry": 50
+    },
+    {
+      "a": "united_kingdom",
+      "b": "german_empire",
+      "tensions": 45,
+      "hostility": 45,
+      "reason": "Course navale et rivalite coloniale",
+      "level": "B",
+      "rivalry": 45
+    },
+    {
+      "a": "italy",
+      "b": "austria_hungary",
+      "tensions": 42,
+      "hostility": 42,
+      "reason": "Trieste, Trentin et rivages adriatiques",
+      "level": "B",
+      "rivalry": 42
+    },
+    {
+      "a": "russian_empire",
+      "b": "ottoman_empire",
+      "tensions": 48,
+      "hostility": 50,
+      "reason": "Detsroits et influence dans le Caucase",
+      "level": "B",
+      "rivalry": 48
+    },
+    {
+      "a": "serbia",
+      "b": "bulgaria",
+      "tensions": 46,
+      "hostility": 48,
+      "reason": "Partage de la Macedoine apres 1913",
+      "level": "C",
+      "rivalry": 46
+    },
+    {
+      "a": "greece",
+      "b": "ottoman_empire",
+      "tensions": 44,
+      "hostility": 46,
+      "reason": "Heredite de la guerre balkanique",
+      "level": "C",
+      "rivalry": 44
+    },
+    {
+      "a": "romania",
+      "b": "austria_hungary",
+      "tensions": 38,
+      "hostility": 38,
+      "reason": "Transylvanie et Dobroudja",
+      "level": "C",
+      "rivalry": 38
+    }
+  ],
+  "friendships": [
+    {
+      "a": "france",
+      "b": "russian_empire",
+      "trust": 75,
+      "cooperation": 65,
+      "reason": "Alliance franco-russe",
+      "level": "B",
+      "rivalry": 5
+    },
+    {
+      "a": "france",
+      "b": "united_kingdom",
+      "trust": 68,
+      "cooperation": 60,
+      "reason": "Entente cordiale",
+      "level": "B",
+      "rivalry": 5
+    },
+    {
+      "a": "german_empire",
+      "b": "austria_hungary",
+      "trust": 72,
+      "cooperation": 62,
+      "reason": "Dual Alliance",
+      "level": "B",
+      "rivalry": 5
+    },
+    {
+      "a": "german_empire",
+      "b": "italy",
+      "trust": 58,
+      "cooperation": 50,
+      "reason": "Triple Alliance (Italie neutre en 1914)",
+      "level": "B",
+      "rivalry": 5
+    }
+  ]
+}

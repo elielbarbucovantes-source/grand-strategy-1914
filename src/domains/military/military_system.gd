@@ -81,6 +81,12 @@ static func resolve_moves(state: GameState, world: WorldMap, rules: Dictionary, 
 	ids.sort()
 	for rid: String in ids:
 		var present := state.armies_in(rid)
+		# RESTORATION 01 : une formation déjà présente (qui n'a pas bougé ce tour) peut être
+		# impliquée dans un affrontement ; son origine est sa région actuelle. Sans cela,
+		# le résolveur neutre échoue sur battle["origin"][fid].
+		for f: Dictionary in present:
+			if not origin.has(f["id"]):
+				origin[f["id"]] = rid
 		var hostile_pairs := false
 		for i in present.size():
 			for j in range(i + 1, present.size()):

@@ -42,7 +42,9 @@ static func hdi(state: GameState, nid: String, rules: Dictionary) -> Dictionary:
 	var p: Dictionary = PoliticalSystem.ensure(state, nid, rules.get("politics", {}))
 	var life := 45.0 + avg_food * 10.0 + float(p["stability"]) * 0.1
 	var education := 0.2 + float(state.tech["known"].get(nid, []).size()) * 0.01
-	var income := industry * 0.5 + float(state.economy["stocks"].get(nid, {}).get("money", 0.0)) * 0.001
+	# Revenu PAR HABITANT : un stock monétaire brut ne doit pas donner une victoire artificielle.
+	var income := (industry * 0.5 + float(state.economy["stocks"].get(nid, {}).get("money", 0.0)) * 0.001) \
+		/ maxf(1.0, float(pop) / 1000000.0)
 	var score := (clampf(life / 85.0, 0.0, 1.0) + clampf(education, 0.0, 1.0)
 		+ clampf(income / 2.0, 0.0, 1.0) + clampf(avg_food, 0.0, 1.2) / 1.2
 		+ float(p["institution_trust"]) / 100.0) / 5.0

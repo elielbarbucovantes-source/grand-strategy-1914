@@ -34,6 +34,15 @@ static func monthly(state: GameState, rules: Dictionary) -> void:
 		var available_work := workers / maxf(1.0, work_need)
 		var budget: float = minf(capacity, available_work)
 		var stocks: Dictionary = state.economy["stocks"][nid]
+		# RESTORATION 01 — recette fiscale abstraite issue du travail et de l'activité réelle.
+		var fiscal: Dictionary = rules.get("fiscal", {})
+		var total_workers := 0.0
+		for w: float in DemographySystem.summary(state, nid).get("workforce", {}).values():
+			total_workers += w
+		var revenue := total_workers * float(fiscal.get("money_per_worker", 0.004)) \
+			+ capacity * float(fiscal.get("money_per_industry", 1.5))
+		var upkeep := revenue * float(fiscal.get("maintenance_share", 0.15))
+		stocks["money"] = float(stocks.get("money", 0.0)) + maxf(0.0, revenue - upkeep)
 		for cat: String in ["military", "heavy", "manufacturing", "processing", "energy"]:
 			var share := float(alloc.get(cat, 0.0)) / total
 			if share <= 0.0:

@@ -61,6 +61,38 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	return s
 
 
+## RESTORATION 01 — rivalités et alliances historiques comme point de départ (janvier 1914).
+## Ce ne sont pas des scripts de guerre : elles ne font que renseigner l'état initial des relations.
+func _init_diplomatic_context(state: GameState) -> void:
+	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(
+		"res://data/game/initial_rivalries.json"))
+	if not (data is Dictionary):
+		return
+	for item: Dictionary in data.get("rivalries", []):
+		var a := str(item["a"])
+		var b := str(item["b"])
+		if not state.nations.has(a) or not state.nations.has(b):
+			continue
+		RelationsSystem.ensure(state, a, b, rules)
+		var key := RelationsSystem.key(a, b)
+		var rel: Dictionary = state.relations[key]
+		rel["tensions"] = float(item.get("tensions", 40))
+		rel["hostility"] = float(item.get("hostility", 40))
+		rel["rivalry"] = float(item.get("rivalry", 55))
+	for item: Dictionary in data.get("friendships", []):
+		var a := str(item["a"])
+		var b := str(item["b"])
+		if not state.nations.has(a) or not state.nations.has(b):
+			continue
+		RelationsSystem.ensure(state, a, b, rules)
+		var key := RelationsSystem.key(a, b)
+		var rel: Dictionary = state.relations[key]
+		rel["trust"] = float(item.get("trust", 60))
+		rel["cooperation"] = float(item.get("cooperation", 50))
+		rel["rivalry"] = float(item.get("rivalry", 5))
+		rel["hostility"] = maxf(0.0, float(rel.get("hostility", 10)) - 5.0)
+
+
 func playable_nations() -> Array:
 	var out: Array = []
 	for nid: String in scenario["nation_order"]:
@@ -88,6 +120,7 @@ func new_game(player: String, start_month: int, seed_value: int = 1914, scenario
 	for nid: String in state.nation_order:
 		PoliticalSystem.ensure(state, nid, rules.get("phase7", {}))
 	PersonalitySystem.ensure(state)
+	_init_diplomatic_context(state)
 	state.log_event("partie", "Début de la campagne : %s, %s." % [state.nations[player]["name_fr"], state.date_label()], [player])
 	LogisticsSystem.update_supply(state, world, rules)
 	return ""
@@ -130,7 +163,8 @@ func queue_order(order: Dictionary) -> String:
 				str(order.get("resource", "")), float(order.get("amount", 0)))
 			if reason == "":
 				ResourceSystem.invest(state, str(order.get("region", "")),
-					str(order.get("resource", "")), float(order.get("amount", 0)))
+					str(order.get("resource", "")), float(order.get("amount", 0)),
+					rules, order["nation"])
 				return ""  # effet immédiat, rien à mettre en attente
 		_:
 			reason = DiplomacySystem.validate(state, order, rules)

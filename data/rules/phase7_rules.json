@@ -34,9 +34,9 @@
     },
     "decisions": {
       "max_per_turn": 2,
-      "costs": {"social_reform": {"money": 20, "stability": -5}, "fiscal_reform": {"money": 10, "trust": -3},
-        "public_spending": {"money": 25, "popularity": 8}, "cohesion_campaign": {"money": 15, "tension": -8},
-        "political_concession": {"stability": 5, "trust": -4}, "mobilization_effort": {"war_support": 10, "tension": 12}}
+      "costs": {"social_reform": {"money": 20, "stability": -5}, "fiscal_reform": {"money": 10, "institution_trust": -3},
+        "public_spending": {"money": 25, "popularity": 8}, "cohesion_campaign": {"money": 15, "social_tension": -8},
+        "political_concession": {"stability": 5, "institution_trust": -4}, "mobilization_effort": {"war_support": 10, "social_tension": 12}}
     }
   },
   "victory": {

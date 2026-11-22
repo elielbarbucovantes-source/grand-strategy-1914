@@ -69,8 +69,11 @@ func test_resources_extraction_and_no_negative_stock() -> void:
 			runner.check(float(s.state.economy["stocks"][nid][res]) >= -0.0001, "stock non négatif")
 	var rid := "region_003"  # Pays de Galles, gisement identifié
 	var deposit_before := float(s.state.economy["regions"][rid]["deposits"]["coal"])
-	var err := ResourceSystem.invest(s.state, rid, "coal", 0.2)
-	runner.check(err == "", "investissement accepté")
+	s.state.economy["stocks"]["united_kingdom"]["money"] = 50.0
+	var err := ResourceSystem.invest(s.state, rid, "coal", 0.2, s.rules, "united_kingdom")
+	runner.check(err == "", "investissement accepté : %s" % err)
+	runner.check(float(s.state.economy["stocks"]["united_kingdom"]["money"]) < 50.0,
+		"investissement a un coût réel en fonds")
 	ResourceSystem.monthly(s.state, _model(s))
 	runner.check(float(s.state.economy["regions"][rid]["deposits"]["coal"]) <= deposit_before,
 		"gisement non régénéré par l'investissement")

@@ -4,6 +4,8 @@
   "_statut": "Phase V : parametres de modele PROPOSES. Les valeurs historiques sont dans data/game/economic_baseline.json avec leur niveau de fiabilite.",
   "resources": ["coal", "iron", "oil", "wood", "grain", "other_ores"],
   "sectors": ["agriculture", "industry", "mines", "transport", "services", "administration"],
+  "fiscal": {"money_per_worker": 0.00002, "money_per_industry": 0.5, "maintenance_share": 0.15,
+    "note": "Recette fiscale abstraite issue du travail et de l'activite industrielle, pas une creation gratuite de ressources."},
   "industry_categories": ["heavy", "manufacturing", "military", "processing", "energy"],
   "population": {
     "active_share": 0.52,
@@ -20,7 +22,9 @@
     "workforce_effect": 0.5,
     "infrastructure_effect": 0.35,
     "minimum_infrastructure": 0.1,
-    "deposit_years": 30
+    "deposit_years": 30,
+    "investment": {"money_per_rate_point": 8.0, "max_rate_per_deposit": 1.0,
+      "max_investments_per_nation_per_turn": 2, "min_deposit_for_investment": 1.0}
   },
   "industry_model": {
     "capacity_use_max": 1.0,

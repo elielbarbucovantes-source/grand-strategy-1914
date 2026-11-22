@@ -46,7 +46,7 @@ static func validate_invest(state: GameState, rid: String, res: String, amount: 
 	return ""
 
 
-static func invest(state: GameState, rid: String, res: String, amount: float) -> String:
+static func invest(state: GameState, rid: String, res: String, amount: float, rules: Dictionary = {}, nation: String = "") -> String:
 	if not state.economy["regions"].has(rid):
 		return "région inconnue"
 	var r: Dictionary = state.economy["regions"][rid]
@@ -54,8 +54,51 @@ static func invest(state: GameState, rid: String, res: String, amount: float) ->
 		return "ressource absente"
 	if amount <= 0.0:
 		return "investissement non positif"
-	r["exploitation"][res] = clampf(float(r["exploitation"].get(res, 0.0)) + amount, 0.0, 1.0)
+	var cfg: Dictionary = (rules.get("resources_model", {}) as Dictionary).get("investment", {})
+	var max_rate := float(cfg.get("max_rate_per_deposit", 1.0))
+	var current := float((r.get("exploitation", {}) as Dictionary).get(res, 0.0))
+	if current >= max_rate:
+		return "taux d'exploitation maximal"
+	var applied := minf(amount, max_rate - current)
+	var owner := nation if nation != "" else str(r["nation"])
+	var money := float(cfg.get("money_per_rate_point", 8.0)) * applied
+	var stocks: Dictionary = state.economy["stocks"].get(owner, {})
+	if float(stocks.get("money", 0.0)) + 0.000001 < money:
+		return "fonds insuffisants"
+	stocks["money"] = float(stocks.get("money", 0.0)) - money
+	if not r.has("exploitation"):
+		r["exploitation"] = {}
+	r["exploitation"][res] = current + applied
 	return ""
+
+
+static func best_investment(state: GameState, nid: String, rules: Dictionary, focus: Array = []) -> Dictionary:
+	var cfg: Dictionary = (rules.get("resources_model", {}) as Dictionary).get("investment", {})
+	var min_deposit := float(cfg.get("min_deposit_for_investment", 1.0))
+	var max_rate := float(cfg.get("max_rate_per_deposit", 1.0))
+	var stocks: Dictionary = state.economy["stocks"].get(nid, {})
+	var best := {}
+	var best_score := -1.0
+	for rid: String in state.economy["regions"]:
+		var r: Dictionary = state.economy["regions"][rid]
+		if str(r["nation"]) != nid:
+			continue
+		for res: String in r["deposits"]:
+			var deposit := float(r["deposits"][res])
+			if deposit < min_deposit:
+				continue
+			var rate := float((r.get("exploitation", {}) as Dictionary).get(res, 0.0))
+			if rate >= max_rate:
+				continue
+			var scarcity := 1.0 / (1.0 + float(stocks.get(res, 0.0)))
+			var score := deposit * scarcity * (1.0 - rate) \
+				* (1.0 + ControlledVariation.jitter(state, "invest", nid + "|" + rid + "|" + res) * 0.25)
+			if focus.has(res):
+				score *= 1.5
+			if score > best_score:
+				best_score = score
+				best = {"region": rid, "resource": res}
+	return best
 
 
 static func available(state: GameState, nation: String, res: String) -> float:

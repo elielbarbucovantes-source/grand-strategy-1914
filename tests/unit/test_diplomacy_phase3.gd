@@ -246,10 +246,12 @@ func test_ai_remembers_betrayal_and_is_deterministic() -> void:
 	var a := JSON.stringify(DiplomaticAI.decide(view, s.world, s.rules))
 	var b := JSON.stringify(DiplomaticAI.decide(view, s.world, s.rules))
 	runner.check(a == b, "décision IA déterministe")
-	var score_traitor := DiplomaticAI._score(view, "german_empire", s.rules)
+	# RESTORATION 01 : comparer la MÊME cible avant/après trahison, sans dépendre des
+	# rivalités historiques pré-chargées qui différencient les deux paires.
+	var score_before := DiplomaticAI._score(view, "belgium", s.rules)
 	RelationsSystem.record(s.state, "france", "belgium", "treaty_broken", "x", s.rules)
 	view = IntelSystem.view_for(s.state, s.world, "france", s.rules)
-	runner.check(DiplomaticAI._score(view, "belgium", s.rules) < score_traitor + 1.0,
+	runner.check(DiplomaticAI._score(view, "belgium", s.rules) < score_before,
 		"trahison mémorisée : score dégradé")
 	# deux IA négocient sans humain, sans boucle
 	_direct(s, [Orders.propose_agreement("france", ["belgium"], "alliance", {})])

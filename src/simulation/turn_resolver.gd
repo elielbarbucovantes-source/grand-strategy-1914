@@ -43,7 +43,8 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		elif order["type"] == Orders.TRADE:
 			MarketSystem.propose(state, rules.get("transport_network"), rules, order)
 		elif order["type"] == Orders.INVEST_RESOURCE:
-			ResourceSystem.invest(state, str(order["region"]), str(order["resource"]), float(order["amount"]))
+			ResourceSystem.invest(state, str(order["region"]), str(order["resource"]),
+				float(order["amount"]), rules, order["nation"])
 		elif order["type"] == Orders.SET_RESEARCH:
 			TechSystem.start_project(state, order["nation"], str(order["tech"]))
 		elif order["type"] == Orders.SET_COMMS_PROTECTION:
@@ -202,8 +203,14 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 		Orders.TRADE:
 			return MarketSystem.validate(state, rules.get("transport_network"), rules, order)
 		Orders.INVEST_RESOURCE:
-			return ResourceSystem.validate_invest(state, str(order.get("region", "")),
+			var err := ResourceSystem.validate_invest(state, str(order.get("region", "")),
 				str(order.get("resource", "")), float(order.get("amount", 0)))
+			if err != "":
+				return err
+			var cfg: Dictionary = (rules.get("economy_model", {}) as Dictionary).get("resources_model", {}).get("investment", {})
+			var cost := float(cfg.get("money_per_rate_point", 8.0)) * float(order.get("amount", 0))
+			var st: Dictionary = state.economy["stocks"].get(order["nation"], {})
+			return "fonds insuffisants" if float(st.get("money", 0.0)) + 0.000001 < cost else ""
 		Orders.SET_RESEARCH:
 			return TechSystem.can_research(state, rules.get("tech_tree"), order["nation"], str(order["tech"]))
 		Orders.BUILD_AIRBASE, Orders.AIR_RECON:

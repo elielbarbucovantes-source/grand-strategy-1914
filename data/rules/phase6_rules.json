@@ -6,7 +6,7 @@
     "science_from_industry": 0.15,
     "science_from_workforce": 0.00002,
     "science_per_turn_base": 0.5,
-    "resource_cost_per_point": {"coal": 0.05, "iron": 0.03},
+    "resource_cost_per_point": {"money": 2.0},
     "max_projects_per_nation": 3,
     "max_progress_per_turn": 20.0,
     "diffusion_cost_factor": 0.6,

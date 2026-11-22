@@ -25,14 +25,14 @@ func test_tree_and_prerequisites() -> void:
 
 func test_research_costs_and_progress() -> void:
 	var s := _session("german_empire")
-	for r: String in ["coal", "iron"]:
-		s.state.economy["stocks"]["german_empire"][r] = 200.0
+	s.state.economy["stocks"]["german_empire"]["money"] = 2000.0
 	TechSystem.ensure(s.state, "german_empire")
 	runner.check(TechSystem.start_project(s.state, "german_empire", "electrification") == "", "projet lancé")
-	var before := float(s.state.economy["stocks"]["german_empire"]["coal"])
+	var before := float(s.state.economy["stocks"]["german_empire"]["money"])
 	for i in 8:
 		TechSystem.monthly(s.state, s.tech_tree, s.rules["phase6"])
-	runner.check(float(s.state.economy["stocks"]["german_empire"]["coal"]) < before, "recherche consomme des ressources")
+	runner.check(float(s.state.economy["stocks"]["german_empire"]["money"]) < before,
+		"recherche consomme réellement des fonds")
 	runner.check(TechSystem.known(s.state, "german_empire", "electrification"), "découverte obtenue")
 
 

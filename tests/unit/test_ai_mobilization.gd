@@ -124,6 +124,9 @@ func test_stand_down_when_threat_disappears() -> void:
 	# L'Empire ottoman mobilise sous l'effet de la tension générale (guerres en cours), puis
 	# désescalade d'un niveau à la fois quand la paix revient et que la menace retombe sous ses seuils.
 	var s := _session()
+	# RESTORATION 01 : isoler la désescalade ; une nouvelle guerre autonome réintroduirait
+	# une tension générale et empêcherait le retour à la paix testé ici.
+	s.rules["diplomacy"]["ai"]["allow_automatic_war"] = false
 	_war(s, "german_empire", "france")
 	_war(s, "austria_hungary", "russian_empire")
 	for i in 3:

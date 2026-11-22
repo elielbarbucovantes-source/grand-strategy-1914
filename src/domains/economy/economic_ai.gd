@@ -19,6 +19,8 @@ static func decide(state: GameState, net: TransportNetwork, rules: Dictionary, n
 	var cfg: Dictionary = model.get("ai", {})
 	var max_alloc := int(cfg.get("max_allocation_changes_per_month", 1))
 	var max_trade := int(cfg.get("max_trade_orders_per_month", 2))
+	var inv_cfg: Dictionary = (model.get("resources_model", {}) as Dictionary).get("investment", {})
+	var max_invest := int(inv_cfg.get("max_investments_per_nation_per_turn", 2))
 	var current: Dictionary = state.nations[nid].get("industry_allocation", {})
 	var target: Dictionary = {}
 	# Les catégories VALIDÉES sont celles de game_rules.economy (noms français).
@@ -45,6 +47,24 @@ static func decide(state: GameState, net: TransportNetwork, rules: Dictionary, n
 			changed = true
 	if changed and max_alloc > 0:
 		out.append({"type": Orders.SET_INDUSTRY_ALLOCATION, "nation": nid, "allocation": target})
+	# RESTORATION 01 — investissement autonome dans l'extraction.
+	# Une nation prospère investit davantage ; une nation pauvre limite ses dépenses.
+	var funds := float(stocks.get("money", 0.0))
+	var focus: Array = []
+	if float(p.get("military", 0.2)) >= 0.3:
+		focus = ["coal", "iron"]
+	elif float(p.get("trade", 0.1)) >= 0.3:
+		focus = ["grain", "oil"]
+	if funds >= float(inv_cfg.get("money_per_rate_point", 8.0)) and max_invest > 0:
+		var choice := ResourceSystem.best_investment(state, nid, model, focus)
+		if not choice.is_empty():
+			var rate := 0.15
+			if float(p.get("heavy", 0.2)) >= 0.28:
+				rate = 0.25
+			elif funds < 30.0:
+				rate = 0.08
+			out.append({"type": Orders.INVEST_RESOURCE, "nation": nid,
+				"region": choice["region"], "resource": choice["resource"], "amount": rate})
 	# Commerce : importer la ressource la plus déficitaire depuis un partenaire non belligérant.
 	var trade_orders := 0
 	var resources: Array = model.get("resources", [])

@@ -83,7 +83,12 @@ static func view_for(state: GameState, world: WorldMap, nation: String, rules: D
 				own_defenses[rid] = own_lvl
 		reg_intel[rid] = region_intel(state, world, nation, rid, rules, seen, foreign_by_region)
 	return {
-		"nation": nation, "turn": state.turn, "visible_regions": seen, "formations": formations,
+		"nation": nation, "turn": state.turn, "seed": state.seed_value,
+		"nation_order": (state.nation_order as Array).duplicate(),
+		"proposals": (state.proposals as Array).duplicate(true),
+		"own_money": float(state.economy["stocks"].get(nation, {}).get("money", 0.0)),
+		"own_stability": float((state.politics["states"].get(nation, {}) as Dictionary).get("stability", 65.0)),
+		"visible_regions": seen, "formations": formations,
 		"political": political,
 		"own_defenses": own_defenses,
 		"region_intel": reg_intel,
