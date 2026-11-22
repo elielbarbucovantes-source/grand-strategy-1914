@@ -24,6 +24,46 @@ static func ensure(state: GameState, nid: String) -> void:
 		state.tech["known"][nid] = []
 	if not state.tech["projects"].has(nid):
 		state.tech["projects"][nid] = []
+	if not (state.tech.get("cooperation", []) is Array):
+		state.tech["cooperation"] = []
+	if not (state.tech.get("transfers", []) is Array):
+		state.tech["transfers"] = []
+
+
+## RESTORATION 02 — enregistrer un accord de coopération scientifique accepté.
+static func register_cooperation(state: GameState, proposal: Dictionary, rules: Dictionary) -> void:
+	ensure(state, str(proposal["from"]))
+	var members: Array = (proposal["to"] as Array).duplicate()
+	members.append(str(proposal["from"]))
+	var types: Dictionary = rules.get("diplomacy", {}).get("alliances", {}).get("types", {})
+	var tcfg: Dictionary = types.get("tech", {})
+	var duration := int(tcfg.get("duration_turns", 24))
+	(state.tech["cooperation"] as Array).append({
+		"id": state.new_id("coop"), "turn": state.turn, "members": members,
+		"expires_turn": state.turn + duration, "status": "active"
+	})
+	RelationsSystem.record(state, str(proposal["from"]), str(members[0]), "treaty_signed", "tech", rules)
+	state.log_event("technologie", "Coopération scientifique conclue entre %s." % str(members), members)
+
+
+static func has_cooperation(state: GameState, a: String, b: String) -> bool:
+	for c: Dictionary in state.tech.get("cooperation", []):
+		if str(c.get("status", "")) != "active" or state.turn > int(c.get("expires_turn", 0)):
+			continue
+		if (c["members"] as Array).has(a) and (c["members"] as Array).has(b):
+			return true
+	return false
+
+
+static func partners_of(state: GameState, nid: String) -> Array:
+	var out: Array = []
+	for c: Dictionary in state.tech.get("cooperation", []):
+		if str(c.get("status", "")) != "active" or state.turn > int(c.get("expires_turn", 0)):
+			continue
+		for m: String in c["members"]:
+			if m != nid and not out.has(m):
+				out.append(m)
+	return out
 
 
 static func known(state: GameState, nid: String, tech_id: String) -> bool:
@@ -60,8 +100,82 @@ static func start_project(state: GameState, nid: String, tech_id: String) -> Str
 	return ""
 
 
+## RESTORATION 02 — transfert consensuel : une technologie déjà découverte par un partenaire
+## peut être acquise à coût réduit et après délai. Jamais de copie gratuite ou universelle.
+static func _diffraction(state: GameState, t: TechSystem, rules: Dictionary) -> void:
+	var cfg: Dictionary = rules.get("research", {})
+	var factor := float(cfg.get("diffusion_cost_factor", 0.6))
+	var delay := int(cfg.get("transfer_months", 2))
+	var donor_share := float(cfg.get("donor_share", 0.5))
+	var min_industry := float(cfg.get("min_industry_for_transfer", 2.0))
+	# 1. Livraison des transferts arrivés à échéance.
+	for tr: Dictionary in state.tech.get("transfers", []):
+		if str(tr.get("status", "")) != "in_transit" or state.turn < int(tr.get("arrival_turn", 0)):
+			continue
+		var recipient := str(tr["to"])
+		var tid := str(tr["tech"])
+		if not known(state, recipient, tid):
+			(state.tech["known"][recipient] as Array).append(tid)
+			state.log_event("technologie", "%s reçoit « %s » par coopération avec %s." % [
+				state.nations[recipient]["name_fr"], tid, state.nations[str(tr["from"])]["name_fr"]], [recipient, str(tr["from"])])
+		tr["status"] = "delivered"
+		tr["delivered_turn"] = state.turn
+	# 2. Nouveaux transferts : un seul en cours par couple et par accord.
+	for coop: Dictionary in state.tech.get("cooperation", []):
+		if str(coop.get("status", "")) != "active" or state.turn > int(coop.get("expires_turn", 0)):
+			continue
+		var members: Array = coop["members"]
+		if members.size() < 2:
+			continue
+		for d: int in [0, 1]:
+			var donor := str(members[d])
+			var recipient := str(members[1 - d])
+			if IndustrySystem.capacity(state, recipient) < min_industry:
+				continue
+			var busy := false
+			for tr: Dictionary in state.tech.get("transfers", []):
+				if str(tr["from"]) == donor and str(tr["to"]) == recipient and str(tr["status"]) == "in_transit":
+					busy = true
+					break
+			if busy:
+				continue
+			var choices: Array = []
+			for tid: String in state.tech["known"].get(donor, []):
+				if known(state, recipient, tid):
+					continue
+				var data: Dictionary = t.by_id.get(tid, {})
+				if int(data.get("year", 9999)) > state.year + 1:
+					continue
+				var prereqs: Array = data.get("prerequisites", [])
+				var ok := true
+				for pre: String in prereqs:
+					if not known(state, recipient, pre):
+						ok = false
+						break
+				if ok:
+					choices.append(tid)
+			if choices.is_empty():
+				continue
+			choices.sort_custom(func(a: String, b: String) -> bool:
+				return float((t.by_id[a] as Dictionary).get("cost", 100)) < float((t.by_id[b] as Dictionary).get("cost", 100)))
+			var tid2 := str(choices[0])
+			var cost := float((t.by_id[tid2] as Dictionary).get("cost", 100)) * factor
+			var buyer: Dictionary = state.economy["stocks"].get(recipient, {})
+			if float(buyer.get("money", 0.0)) + 0.000001 < cost:
+				continue
+			ResourceSystem.consume(state, recipient, "money", cost)
+			var seller: Dictionary = state.economy["stocks"].get(donor, {})
+			seller["money"] = float(seller.get("money", 0.0)) + cost * donor_share
+			(state.tech["transfers"] as Array).append({
+				"id": state.new_id("transfer"), "tech": tid2, "from": donor, "to": recipient,
+				"turn": state.turn, "arrival_turn": state.turn + delay, "cost": cost,
+				"cooperation": str(coop["id"]), "status": "in_transit"
+			})
+
+
 static func monthly(state: GameState, t: TechSystem, rules: Dictionary) -> void:
 	var cfg: Dictionary = rules.get("research", {})
+	_diffraction(state, t, rules)
 	for nid: String in state.nation_order:
 		ensure(state, nid)
 		var projects: Array = state.tech["projects"][nid]
@@ -76,11 +190,24 @@ static func monthly(state: GameState, t: TechSystem, rules: Dictionary) -> void:
 			var tech: Dictionary = t.by_id.get(tech_id, {})
 			points *= 1.0 + float((tech.get("effects", {}) as Dictionary).get("research_bonus", 0.0))
 		points = minf(points, float(cfg.get("max_progress_per_turn", 20.0)))
-		# Coût économique réel (Phase V) : chaque point consomme charbon/fer.
+		# Coût économique réel (Phase V + RESTORATION 02) : chaque point consomme des fonds.
+		# RESTORATION 02 : un projet déjà connu d'un partenaire coopérant coûte moins cher.
+		var discount := 1.0
+		var partners: Array = partners_of(state, nid)
+		if not partners.is_empty():
+			var discounted := 0
+			for pr: Dictionary in projects:
+				for partner: String in partners:
+					if known(state, partner, str(pr["tech"])):
+						discounted += 1
+						break
+			if discounted > 0:
+				discount = 1.0 - (1.0 - float(cfg.get("diffusion_cost_factor", 0.6))) \
+					* float(discounted) / float(projects.size())
 		var costs: Dictionary = cfg.get("resource_cost_per_point", {})
 		var affordable := points
 		for res: String in costs:
-			var need := float(costs[res]) * points
+			var need := float(costs[res]) * points * discount
 			var got := ResourceSystem.consume(state, nid, res, need)
 			if got + 0.000001 < need:
 				affordable = minf(affordable, points * (got / maxf(need, 0.0001)))

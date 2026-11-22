@@ -50,6 +50,8 @@ var politics: Dictionary = {}
 var victory: Dictionary = {}
 var bridges: Dictionary = {}
 var multiplayer: Dictionary = {}
+# RESTORATION 02 — classement dynamique : scores, rangs et historique borné.
+var power: Dictionary = {}
 
 # Index hiérarchique en mémoire (non sérialisé) : évite le recalcul quadratique de descendants().
 var _hierarchy_dirty: bool = true
@@ -86,11 +88,12 @@ static func from_scenario(scenario: Dictionary, start_month_value: int, player: 
 	}
 	s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
 	s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "replacement": {}, "history": [], "prices": {}}
-	s.tech = {"known": {}, "projects": {}, "intel": {}, "comms": {}, "air": {"bases": {}, "aircraft": {}, "missions": []}, "naval": {"fleets": {}, "zones": {}, "operations": []}}
+	s.tech = {"known": {}, "projects": {}, "intel": {}, "comms": {}, "cooperation": [], "transfers": [], "air": {"bases": {}, "aircraft": {}, "missions": []}, "naval": {"fleets": {}, "zones": {}, "operations": []}}
 	s.politics = {"states": {}, "decisions": [], "crises": [], "history": []}
 	s.victory = {"status": "ongoing", "winner": "", "condition": "", "turn": -1, "history": []}
 	s.bridges = {}
 	s.multiplayer = {"players": {}, "host": "", "state": "solo", "orders": {}, "state_hashes": [], "events": []}
+	s.power = {"scores": {}, "ranks": {}, "history": []}
 	s.regions = (scenario["regions"] as Dictionary).duplicate(true)
 	s.human_nations = [player]
 	for f: Dictionary in scenario["formations"]:
@@ -394,6 +397,7 @@ func to_dict() -> Dictionary:
 		"relations": relations, "reputation": reputation, "personalities": personalities, "diplomacy": diplomacy,
 		"transport": transport, "economy": economy, "tech": tech,
 		"politics": politics, "victory": victory, "bridges": bridges, "multiplayer": multiplayer,
+		"power": power,
 	}
 
 
@@ -422,14 +426,21 @@ static func from_dict(d: Dictionary) -> GameState:
 	s.transport = d.get("transport", {})
 	s.economy = d.get("economy", {})
 	s.tech = d.get("tech", {})
+	if not (s.tech.get("cooperation", []) is Array):
+		s.tech["cooperation"] = []
+	if not (s.tech.get("transfers", []) is Array):
+		s.tech["transfers"] = []
 	s.politics = d.get("politics", {})
+	s.power = d.get("power", {"scores": {}, "ranks": {}, "history": []})
+	if not (s.power is Dictionary):
+		s.power = {"scores": {}, "ranks": {}, "history": []}
 	s.victory = d.get("victory", {})
 	s.bridges = d.get("bridges", {})
 	s.multiplayer = d.get("multiplayer", {})
 	if not (s.transport is Dictionary) or s.transport.is_empty():
 		s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
 	if not (s.tech is Dictionary) or s.tech.is_empty():
-		s.tech = {"known": {}, "projects": {}, "intel": {}, "comms": {}, "air": {"bases": {}, "aircraft": {}, "missions": []}, "naval": {"fleets": {}, "zones": {}, "operations": []}}
+		s.tech = {"known": {}, "projects": {}, "intel": {}, "comms": {}, "cooperation": [], "transfers": [], "air": {"bases": {}, "aircraft": {}, "missions": []}, "naval": {"fleets": {}, "zones": {}, "operations": []}}
 	if not (s.economy is Dictionary) or s.economy.is_empty():
 		s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "replacement": {}, "history": [], "prices": {}}
 	if not (s.politics is Dictionary): s.politics = {"states": {}, "decisions": [], "crises": [], "history": []}
@@ -450,6 +461,8 @@ static func _normalize_numbers(s: GameState) -> void:
 		w["since_turn"] = int(w["since_turn"])
 	for p: Dictionary in s.proposals:
 		p["turn"] = int(p["turn"])
+	for h: Dictionary in s.power.get("history", []):
+		h["turn"] = int(h["turn"])
 	for nid: String in s.memory:
 		for m: Dictionary in s.memory[nid]:
 			m["turn"] = int(m["turn"])

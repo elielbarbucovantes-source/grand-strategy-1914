@@ -1,11 +1,64 @@
 class_name MarketSystem
 extends RefCounted
-## Phase V.F/H — commerce entre États via les réseaux de Phase IV. Une expédition retire le
-## stock de l'exportateur immédiatement et ne le crédite à l'importateur qu'après le délai de
-## transport : aucune duplication, aucune livraison instantanée.
+## Phase V.F/H + RESTORATION 02 — commerce entre États via les réseaux de Phase IV.
+## Une expédition retire le stock de l'exportateur immédiatement, paie l'exportateur, engage
+## la capacité du réseau et ne crédite l'importateur qu'après le délai de transport.
+## Le chemin réellement emprunté est conservé dans l'expédition : une livraison ne peut pas
+## être certifiée sans traversée effective du réseau. Aucune duplication, aucune livraison
+## instantanée, aucune ressource gratuite.
 
 
-static func validate(state: GameState, net: TransportNetwork, rules: Dictionary, order: Dictionary) -> String:
+static func cfg(rules: Dictionary) -> Dictionary:
+	var model: Dictionary = rules.get("economy_model", {})
+	var c: Variant = model.get("trade")
+	if not (c is Dictionary):
+		c = rules.get("trade", {})
+	return c if c is Dictionary else {}
+
+
+static func unit_price(res: String, rules: Dictionary) -> float:
+	var c := cfg(rules)
+	var prices: Dictionary = c.get("prices", {})
+	return float(prices.get(res, c.get("default_price", 1.0)))
+
+
+## RESTORATION 02 — prix effectif : un accord commercial actif ouvre un tarif préférentiel.
+static func effective_price(state: GameState, res: String, rules: Dictionary, from: String, to: String) -> float:
+	var price := unit_price(res, rules)
+	var c := cfg(rules)
+	var discount := float(c.get("preferred_partner_discount", 0.1))
+	var preferred := state.active_treaties_between(from, to, "trade")
+	preferred.append_array(state.active_treaties_between(from, to, "transit"))
+	if not preferred.is_empty():
+		price *= maxf(0.0, 1.0 - discount)
+	return price
+
+
+static func _arrived_this_turn(state: GameState, nation: String) -> int:
+	var n := 0
+	for t: Dictionary in state.economy["trade"]:
+		if str(t["to"]) == nation and int(t["turn"]) == state.turn:
+			n += 1
+	return n
+
+
+## Itinéraire commercial réel (capitales). Conservé dans l'expédition pour auditabilité.
+static func route_for(state: GameState, net: TransportNetwork, rules: Dictionary, order: Dictionary,
+		cache: Dictionary = {}) -> Dictionary:
+	var from := str(order.get("from", order.get("nation", "")))
+	var to := str(order.get("to", ""))
+	var key := str(state.turn) + "|" + from + "|" + to
+	if cache.has(key):
+		return cache[key]
+	var cap := str(state.nations[from].get("capital_region_id", ""))
+	var dest := str(state.nations[to].get("capital_region_id", ""))
+	var r := TransportRouter.route(net, state, cap, dest, from, 1)
+	cache[key] = r
+	return r
+
+
+static func validate(state: GameState, net: TransportNetwork, rules: Dictionary, order: Dictionary,
+		cache: Dictionary = {}) -> String:
 	var from := str(order.get("from", order.get("nation", "")))
 	var to := str(order.get("to", ""))
 	var res := str(order.get("resource", ""))
@@ -14,15 +67,23 @@ static func validate(state: GameState, net: TransportNetwork, rules: Dictionary,
 		return "parties commerciales invalides"
 	if amount <= 0.0:
 		return "volume non positif"
+	if not (state.economy.get("resources", []) as Array).has(res) and not ((rules.get("economy_model", {}) as Dictionary).get("resources", []) as Array).has(res):
+		return "ressource inconnue"
 	if ResourceSystem.available(state, from, res) < amount:
 		return "stock insuffisant chez l'exportateur"
 	if state.at_war(from, to):
 		return "commerce impossible en guerre sans accord"
-	var cfg: Dictionary = rules.get("trade", {})
+	var cfg := cfg(rules)
+	var imports := _arrived_this_turn(state, to)
+	if imports >= int(cfg.get("max_imports_per_nation_per_month", 6)):
+		return "quota d'importations atteint"
+	# RESTORATION 02 : l'importateur paie réellement l'exportateur.
+	var cost := effective_price(state, res, rules, from, to) * amount
+	var buyer: Dictionary = state.economy["stocks"].get(to, {})
+	if float(buyer.get("money", 0.0)) + 0.000001 < cost:
+		return "fonds insuffisants pour l'importation"
 	if bool(cfg.get("require_transport_route", true)):
-		var cap := str(state.nations[from].get("capital_region_id", ""))
-		var dest := str(state.nations[to].get("capital_region_id", ""))
-		var r := TransportRouter.route(net, state, cap, dest, from, 1)
+		var r := route_for(state, net, rules, order, cache)
 		if not bool(r.get("ok", false)):
 			return "aucun itinéraire commercial disponible"
 	return ""
@@ -32,32 +93,66 @@ static func propose(state: GameState, net: TransportNetwork, rules: Dictionary, 
 	var err := validate(state, net, rules, order)
 	if err != "":
 		return err
-	var cfg: Dictionary = rules.get("trade", {})
+	var cfg := cfg(rules)
 	var from := str(order.get("from", order.get("nation", "")))
 	var to := str(order["to"])
 	var res := str(order["resource"])
 	var amount := float(order["amount"])
+	var cost := effective_price(state, res, rules, from, to) * amount
+	# Paiement réel : la trésorerie de l'importateur alimente celle de l'exportateur.
+	var buyer: Dictionary = state.economy["stocks"][to]
+	var seller: Dictionary = state.economy["stocks"][from]
+	buyer["money"] = float(buyer.get("money", 0.0)) - cost
+	seller["money"] = float(seller.get("money", 0.0)) + cost
 	ResourceSystem.consume(state, from, res, amount)  # retiré du stock dès l'expédition
+	# RESTORATION 02 : route réelle conservée et capacité effectivement engagée.
+	var r := route_for(state, net, rules, order)
+	var need := maxi(1, int(ceil(amount * float(cfg.get("route_capacity_share", 0.25)))))
+	var committed := TransportRouter.commit(net, state, r, need)
 	(state.economy["trade"] as Array).append({
 		"id": state.new_id("trade"), "turn": state.turn, "from": from, "to": to,
-		"resource": res, "amount": amount,
+		"resource": res, "amount": amount, "cost": cost,
 		"arrival_turn": state.turn + int(cfg.get("transfer_months", 1)),
-		"status": "in_transit"
+		"status": "in_transit", "path": (r.get("path", []) as Array).duplicate(),
+		"links": (r.get("links", []) as Array).duplicate(),
+		"modes": (r.get("modes", []) as Array).duplicate(),
+		"route_time": float(r.get("time", 0.0)), "bottleneck": str(r.get("bottleneck", "")),
+		"capacity_committed": need if committed else 0, "delays": 0
 	})
-	state.log_event("commerce", "%s expédie %.1f %s vers %s." % [
-		state.nations[from]["name_fr"], amount, res, state.nations[to]["name_fr"]], [from, to])
+	state.log_event("commerce", "%s expédie %.1f %s vers %s via %d liaison(s) (coût %.1f)." % [
+		state.nations[from]["name_fr"], amount, res, state.nations[to]["name_fr"],
+		(r.get("links", []) as Array).size(), cost], [from, to])
 	return ""
 
 
-static func monthly(state: GameState) -> void:
+static func _route_interrupted(state: GameState, t: Dictionary) -> bool:
+	var cond: Dictionary = state.transport.get("conditions", {})
+	for lid: String in (t.get("links", []) as Array):
+		if str(cond.get(lid, "operational")) != "operational":
+			return true
+	return false
+
+
+static func monthly(state: GameState, rules: Dictionary = {}) -> void:
+	var cfg := cfg(rules)
 	var arrived := 0.0
 	for t: Dictionary in state.economy["trade"]:
-		if str(t["status"]) == "in_transit" and state.turn >= int(t["arrival_turn"]):
-			var dest: Dictionary = state.economy["stocks"][str(t["to"])]
-			var res := str(t["resource"])
-			dest[res] = float(dest.get(res, 0.0)) + float(t["amount"])
-			t["status"] = "delivered"
-			arrived += float(t["amount"])
+		if str(t["status"]) != "in_transit" or state.turn < int(t["arrival_turn"]):
+			continue
+		# RESTORATION 02 : une interruption du réseau retarde la livraison, elle n'est pas
+		# créditée tant que le chemin n'a pas été réellement praticable.
+		if _route_interrupted(state, t):
+			t["arrival_turn"] = int(t["arrival_turn"]) + maxi(1, int(cfg.get("delay_on_interrupted_link", 1)))
+			t["delays"] = int(t.get("delays", 0)) + 1
+			state.log_event("commerce", "Livraison retardée (%s → %s) : liaison interrompue." % [
+				str(t["from"]), str(t["to"])], [str(t["from"]), str(t["to"])])
+			continue
+		var dest: Dictionary = state.economy["stocks"][str(t["to"])]
+		var res := str(t["resource"])
+		dest[res] = float(dest.get(res, 0.0)) + float(t["amount"])
+		t["status"] = "delivered"
+		t["delivered_turn"] = state.turn
+		arrived += float(t["amount"])
 	if arrived > 0.0:
 		state.log_event("commerce", "Marchandises livrées ce mois : %.1f" % arrived, [])
 
@@ -70,3 +165,12 @@ static func dependencies(state: GameState, nation: String) -> Dictionary:
 		var res := str(t["resource"])
 		out[res] = float(out.get(res, 0.0)) + float(t["amount"])
 	return out
+
+
+## Volume importé en provenance d'un partenaire donné (hors expéditions livrées).
+static func dependence_on(state: GameState, nation: String, partner: String) -> float:
+	var total := 0.0
+	for t: Dictionary in state.economy["trade"]:
+		if str(t["to"]) == nation and str(t["from"]) == partner and str(t["status"]) == "in_transit":
+			total += float(t["amount"])
+	return total

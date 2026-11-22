@@ -128,6 +128,7 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 		ForceLedger.heal_lightly_wounded(state)  # blessés légers restés dans leur unité (étape 2)
 	EconomySystem.monthly(state, world, rules, rules.get("economy_model", {}))  # Phase V : cycle économique
 	TechSystem.monthly(state, rules.get("tech_tree"), rules.get("phase6", {}))  # Phase VI : recherche
+	PowerRankSystem.monthly(state, rules)  # RESTORATION 02 : classement dynamique, hors victoire
 	for nid: String in state.nation_order:
 		AirSystem.monthly(state, nid, rules.get("phase6", {}))
 		NavalSystem.monthly(state, nid)

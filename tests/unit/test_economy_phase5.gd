@@ -108,11 +108,20 @@ func test_trade_transfers_and_no_duplication() -> void:
 	var prop: Dictionary = s.state.proposals[-1]
 	DiplomacySystem.resolve(s.state, [Orders.respond_agreement("belgium", str(prop["id"]), true)], s.rules)
 	s.state.economy["stocks"]["france"]["coal"] = 50.0
+	# RESTORATION 02 : l'importateur paie réellement l'exportateur.
+	s.state.economy["stocks"]["belgium"]["money"] = 100.0
+	var buyer_before := float(s.state.economy["stocks"]["belgium"]["money"])
+	var seller_before := float(s.state.economy["stocks"]["france"].get("money", 0.0))
 	var order := Orders.trade("france", "france", "belgium", "coal", 10.0)
 	runner.check(MarketSystem.validate(s.state, s.transport_network, s.rules, order) == "", "commerce valide")
 	runner.check(MarketSystem.propose(s.state, s.transport_network, s.rules, order) == "", "expédition acceptée")
 	runner.check(ResourceSystem.available(s.state, "france", "coal") == 40.0, "stock expéditeur débité immédiatement")
 	runner.check(ResourceSystem.available(s.state, "belgium", "coal") < 0.0001, "rien crédité avant livraison")
+	runner.check(float(s.state.economy["stocks"]["belgium"]["money"]) < buyer_before, "importateur débité du prix")
+	runner.check(float(s.state.economy["stocks"]["france"].get("money", 0.0)) > seller_before, "exportateur payé")
+	var exp: Dictionary = s.state.economy["trade"][-1]
+	runner.check((exp.get("links", []) as Array).size() > 0, "itinéraire réel conservé dans l'expédition")
+	runner.check(int(exp.get("capacity_committed", 0)) > 0, "capacité de transport effectivement engagée")
 	s.state.turn += 2
 	MarketSystem.monthly(s.state)
 	runner.check(ResourceSystem.available(s.state, "belgium", "coal") == 10.0, "livraison après délai")

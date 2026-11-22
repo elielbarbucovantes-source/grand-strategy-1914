@@ -103,8 +103,8 @@ static func leave(state: GameState, aid: String, nation: String, rules: Dictiona
 	(a["members"] as Array).erase(nation)
 	(a["history"] as Array).append({"turn": state.turn, "action": "left", "member": nation})
 	for m: String in a["members"]:
-		RelationsSystem.adjust(state, m, nation, rules,
-			{"trust": float(cfg(rules).get("exit_penalty_trust", -8))}, "alliance_exit")
+		# RESTORATION 02 : la sortie est mémorisée et dégrade la réputation, pas seulement la confiance.
+		RelationsSystem.record(state, m, nation, "alliance_exit", aid, rules)
 	state.log_event("diplomatie", "%s quitte l'alliance %s." % [state.nations[nation]["name_fr"], aid], a["members"])
 	if (a["members"] as Array).size() < 2:
 		a["status"] = "dissolved"
@@ -172,4 +172,6 @@ static func monthly(state: GameState, rules: Dictionary) -> void:
 			a["status"] = "expired"
 			(a["history"] as Array).append({"turn": state.turn, "action": "expired"})
 			for m: String in a["members"]:
-				RelationsSystem.adjust(state, m, str(a["id"]), rules, {"trust": -2.0}, "alliance_expired")
+				# Correction RESTORATION 02 : le second argument est une nation, pas l'identifiant
+				# de l'alliance (la pénalité était silencieusement ignorée auparavant).
+				RelationsSystem.adjust(state, m, m, rules, {"trust": -2.0}, "alliance_expired")

@@ -125,6 +125,8 @@ static func _apply_accepted(state: GameState, p: Dictionary, rules: Dictionary) 
 			PeaceSystem.sign(state, p, rules)
 		"alliance", "coalition", "guarantee", "transit", "trade", "neutrality":
 			AllianceSystem.create(state, p, rules)
+		"tech":
+			TechSystem.register_cooperation(state, p, rules)
 		"pow_exchange":
 			var to: Array = p["to"]
 			if not to.is_empty():

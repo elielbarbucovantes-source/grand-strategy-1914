@@ -42,7 +42,10 @@ func test_internal_crisis_and_government_change() -> void:
 	var rep_before := float(s.state.reputation["france"])
 	runner.check(PoliticalSystem.change_government(s.state, "france", "regime_change", s.rules["phase7"]) == "", "changement de régime")
 	runner.check(str(p["active_crisis"]) == "", "crise résolue par le changement")
-	runner.check(float(s.state.reputation["france"]) < rep_before, "réputation internationale dégradée")
+	# RESTORATION 02 : la dégradation est persistante et résiste au recalcul mensuel.
+	runner.check(float(p.get("government_penalty", 0.0)) > 0.0, "dégradation persistante enregistrée")
+	var rep_after := RelationsSystem.reputation(s.state, "france", s.rules)
+	runner.check(rep_after < rep_before, "réputation internationale dégradée (%.2f → %.2f)" % [rep_before, rep_after])
 	runner.check(not (p["history"] as Array).is_empty(), "historique conservé")
 
 

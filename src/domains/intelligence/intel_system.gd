@@ -87,7 +87,11 @@ static func view_for(state: GameState, world: WorldMap, nation: String, rules: D
 		"nation_order": (state.nation_order as Array).duplicate(),
 		"proposals": (state.proposals as Array).duplicate(true),
 		"own_money": float(state.economy["stocks"].get(nation, {}).get("money", 0.0)),
+		"own_stocks": (state.economy["stocks"].get(nation, {}) as Dictionary).duplicate(true),
 		"own_stability": float((state.politics["states"].get(nation, {}) as Dictionary).get("stability", 65.0)),
+		"own_government_turn": int((state.politics["states"].get(nation, {}) as Dictionary).get("government_turn", -1)),
+		"own_dependence": _own_dependence(state, nation),
+		"tech_cooperation": (state.tech.get("cooperation", []) as Array).duplicate(true),
 		"visible_regions": seen, "formations": formations,
 		"political": political,
 		"own_defenses": own_defenses,
@@ -286,4 +290,15 @@ static func _capitals(state: GameState) -> Dictionary:
 	var out: Dictionary = {}
 	for nid: String in state.nation_order:
 		out[nid] = state.nations[nid]["capital_region_id"]
+	return out
+
+
+## RESTORATION 02 — dépendance commerciale agrégée par partenaire (données publiques).
+static func _own_dependence(state: GameState, nation: String) -> Dictionary:
+	var out: Dictionary = {}
+	for t: Dictionary in state.economy.get("trade", []):
+		if str(t["to"]) != nation or str(t["status"]) != "in_transit":
+			continue
+		var src := str(t["from"])
+		out[src] = float(out.get(src, 0.0)) + float(t["amount"])
 	return out

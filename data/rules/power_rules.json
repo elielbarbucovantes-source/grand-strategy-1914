@@ -1,0 +1,25 @@
+{
+  "format": "gs1914.power_rules",
+  "format_version": 1,
+  "_statut": "RESTORATION 02 : poids PROPOSES pour un indicateur de puissance explicable. Ne determine aucune condition de victoire.",
+  "weights": {
+    "demography": 0.16,
+    "industry": 0.20,
+    "economy": 0.12,
+    "technology": 0.15,
+    "military": 0.18,
+    "stability": 0.07,
+    "prestige": 0.05,
+    "territory": 0.07
+  },
+  "scales": {
+    "population_per_point": 2000000.0,
+    "industry_per_point": 20.0,
+    "money_per_point": 8000.0,
+    "resource_value": 3.0,
+    "tech_for_full_score": 33.0,
+    "soldiers_per_point": 60000.0,
+    "regions_for_full_score": 12.0
+  },
+  "history_limit": 120
+}

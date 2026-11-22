@@ -867,6 +867,20 @@ func _page_victory() -> void:
 		for s: Dictionary in summary["standings"]:
 			_rich(box, "%s : contrôle %.1f %%, IDH %.3f" % [str(s["nation"]),
 				100.0 * float(s["military"]), float(s["hdi"])])
+	# RESTORATION 02 — classement dynamique, distinct des conditions de victoire.
+	_rich(box, "\n[b]Puissance des États[/b] — indicateur composite, sans lien avec la victoire.")
+	var standings: Array = PowerRankSystem.standings(session.state, session.rules)
+	for i in mini(10, standings.size()):
+		var st: Dictionary = standings[i]
+		var nid := str(st["nation"])
+		var name_fr := str(session.state.nations[nid].get("name_fr", nid))
+		var delta := PowerRankSystem.rank_delta(session.state, nid)
+		var parts: Dictionary = st["parts"]
+		_rich(box, "%d. %s — %.1f (%+d) · industrie %.0f · armée %.0f · tech %.0f" % [
+			int(st["rank"]), name_fr, float(st["score"]), delta,
+			float(parts.get("industry", 0.0)), float(parts.get("military", 0.0)),
+			float(parts.get("technology", 0.0))])
+	_rich(box, "Variation depuis le début de campagne entre parenthèses.")
 
 
 func _page_multiplayer() -> void:

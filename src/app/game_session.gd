@@ -46,6 +46,7 @@ static func create(world_path: String = WorldMap.DEFAULT_PATH) -> GameSession:
 	s.rules["economy_model"] = load_json(ECONOMY_RULES_PATH)
 	s.rules["phase6"] = load_json(PHASE6_RULES_PATH)
 	s.rules["phase7"] = load_json(PHASE7_RULES_PATH)
+	s.rules["power"] = load_json("res://data/rules/power_rules.json")
 	s.transport_network = TransportNetwork.load_from(TRANSPORT_PATH)
 	s.tech_tree = TechSystem.load_tree()
 	s.crossings = CrossingSystem.load_bridges()
@@ -121,6 +122,7 @@ func new_game(player: String, start_month: int, seed_value: int = 1914, scenario
 		PoliticalSystem.ensure(state, nid, rules.get("phase7", {}))
 	PersonalitySystem.ensure(state)
 	_init_diplomatic_context(state)
+	PowerRankSystem.monthly(state, rules)
 	state.log_event("partie", "Début de la campagne : %s, %s." % [state.nations[player]["name_fr"], state.date_label()], [player])
 	LogisticsSystem.update_supply(state, world, rules)
 	return ""

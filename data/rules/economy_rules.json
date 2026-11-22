@@ -52,7 +52,12 @@
     "route_capacity_share": 0.25,
     "transfer_months": 1,
     "require_transport_route": true,
-    "max_imports_per_nation_per_month": 6
+    "max_imports_per_nation_per_month": 6,
+    "prices": {"coal": 1.0, "iron": 1.2, "oil": 1.6, "wood": 0.6, "grain": 0.8, "other_ores": 1.0},
+    "default_price": 1.0,
+    "delay_on_interrupted_link": 1,
+    "preferred_partner_discount": 0.1,
+    "note": "Prix proposes (non sources). L'importateur paie l'exportateur ; la livraison suit le reseau et peut etre retardee par une liaison interrompue."
   },
   "ai": {
     "max_allocation_changes_per_month": 1,

@@ -11,7 +11,9 @@
     "max_progress_per_turn": 20.0,
     "diffusion_cost_factor": 0.6,
     "capture_cost_factor": 0.4,
-    "transfer_months": 2
+    "transfer_months": 2,
+    "donor_share": 0.5,
+    "min_industry_for_transfer": 0.5
   },
   "communications": {
     "base_protection": 0,

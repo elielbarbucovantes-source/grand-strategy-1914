@@ -28,7 +28,7 @@ static func monthly(state: GameState, world: WorldMap, rules: Dictionary, econom
 	DemographySystem.monthly(state, economic_rules)
 	ResourceSystem.monthly(state, economic_rules)
 	IndustrySystem.monthly(state, economic_rules)
-	MarketSystem.monthly(state)
+	MarketSystem.monthly(state, rules)
 	MilitaryEconomySystem.monthly_supply(state, economic_rules)
 	MilitaryEconomySystem.monthly_replacement(state, economic_rules)
 	LogisticsSystem.update_supply(state, world, rules)

@@ -22,7 +22,21 @@ static func decide(state: GameState, t: TechSystem, rules: Dictionary, nid: Stri
 	var max_research := int(cfg.get("ai", {}).get("max_research_projects", 2))
 	var active := (state.tech["projects"].get(nid, []) as Array).size()
 	var candidates: Array = t.tree.get("technologies", [])
-	candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a["id"]) < str(b["id"]))
+	# RESTORATION 02 : préférences par personnalité ET bruit déterministe par graine — deux
+	# États ne découvrent pas nécessairement les mêmes technologies au même rythme.
+	var scored: Array = []
+	for tech: Dictionary in candidates:
+		var domain := str(tech["domain"])
+		var weight := float(p.get(domain, 0.2))
+		var jitter := ControlledVariation.jitter(state, "research", nid + "|" + str(tech["id"]))
+		scored.append([tech, weight + jitter * 0.15])
+	scored.sort_custom(func(a: Array, b: Array) -> bool:
+		if not is_equal_approx(float(a[1]), float(b[1])):
+			return float(a[1]) > float(b[1])
+		return str((a[0] as Dictionary)["id"]) < str((b[0] as Dictionary)["id"]))
+	candidates = []
+	for entry: Array in scored:
+		candidates.append(entry[0])
 	var started := 0
 	for tech: Dictionary in candidates:
 		if active + started >= max_research:

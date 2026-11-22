@@ -121,8 +121,9 @@ static func change_government(state: GameState, nid: String, kind: String, rules
 	p["government_turn"] = state.turn
 	p["active_crisis"] = ""
 	(p["history"] as Array).append({"turn": state.turn, "event": "government_change", "kind": kind})
-	# Effet diplomatique : la réputation du pays est dégradée, sans effacer l'historique.
-	state.reputation[nid] = float(state.reputation.get(nid, 0.0)) - 5.0
+	# RESTORATION 02 : la dégradation est persistante dans l'état politique ; la réputation
+	# calculée mensuellement l'intègre désormais au lieu d'être écrasée.
+	p["government_penalty"] = float(p.get("government_penalty", 0.0)) + float(ccfg.get("government_reputation_penalty", 5.0))
 	state.log_event("politique", "Changement de gouvernement en %s (%s)." % [
 		state.nations[nid]["name_fr"], kind], [nid])
 	return ""

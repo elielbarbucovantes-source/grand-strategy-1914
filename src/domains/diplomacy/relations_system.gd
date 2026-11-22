@@ -68,6 +68,10 @@ static func record(state: GameState, observer: String, actor: String, kind: Stri
 				"hostility": 20.0, "tensions": 25.0}
 		"proposal_rejected":
 			changes = {"tensions": float(c.get("proposal_rejected_tensions", 3))}
+		"alliance_exit":
+			# RESTORATION 02 : quitter un engagement est une action observable et coûteuse.
+			changes = {"trust": float(c.get("exit_trust", -8)), "tensions": float(c.get("exit_tensions", 8)),
+				"hostility": float(c.get("exit_hostility", 5))}
 	if not changes.is_empty():
 		adjust(state, observer, actor, rules, changes, kind)
 
@@ -106,12 +110,18 @@ static func reputation(state: GameState, nid: String, rules: Dictionary) -> floa
 			if m.get("about", "") != nid:
 				continue
 			match str(m.get("kind", "")):
-				"treaty_broken", "declared_war":
+				"treaty_broken", "declared_war", "alliance_betrayal":
 					score -= 8.0 * w
+				"alliance_exit":
+					score -= 4.0 * w
 				"treaty_signed", "treaty_respected", "proposal_accepted":
 					score += 2.0 * w
 				"mediation_accepted", "peace_signed":
 					score += 3.0 * w
+	# RESTORATION 02 : la dégradation liée à un changement de gouvernement est persistante
+	# (elle n'est pas écrasée par le recalcul mensuel de la réputation).
+	var pol: Dictionary = (state.politics.get("states", {}) as Dictionary).get(nid, {})
+	score -= float(pol.get("government_penalty", 0.0))
 	return snappedf(clampf(score, -100.0, 100.0), 0.0001)
 
 
