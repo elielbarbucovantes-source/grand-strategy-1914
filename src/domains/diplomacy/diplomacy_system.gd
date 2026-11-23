@@ -123,8 +123,28 @@ static func _apply_accepted(state: GameState, p: Dictionary, rules: Dictionary) 
 	match str(p["kind"]):
 		"peace":
 			PeaceSystem.sign(state, p, rules)
-		"alliance", "coalition", "guarantee", "transit", "trade", "neutrality":
+		"alliance", "coalition", "guarantee", "transit", "neutrality":
 			AllianceSystem.create(state, p, rules)
+		"trade":
+			AllianceSystem.create(state, p, rules)
+			# RESTORATION 03 : une demande d'achat acceptée devient une expédition RÉELLE,
+			# émise par l'exportateur après validation économique et logistique. Aucun transfert
+			# n'est effectué par l'interface ni sans le consentement du partenaire.
+			var terms: Dictionary = p.get("terms", {})
+			if str(terms.get("request", "")) == "purchase":
+				var exporter := str((p["to"] as Array)[0])
+				var importer := str(p["from"])
+				var res := str(terms.get("resource", ""))
+				var amount := float(terms.get("amount", 0))
+				var order := {"type": Orders.TRADE, "nation": exporter, "from": exporter,
+					"to": importer, "resource": res, "amount": amount}
+				var net: TransportNetwork = rules.get("transport_network")
+				var err := MarketSystem.validate(state, net, rules, order)
+				if err == "":
+					MarketSystem.propose(state, net, rules, order)
+				else:
+					state.log_event("commerce", "Demande d'achat %s → %s (%s %.1f) non exécutée : %s" % [
+						importer, exporter, res, amount, err], [importer, exporter])
 		"tech":
 			TechSystem.register_cooperation(state, p, rules)
 		"pow_exchange":

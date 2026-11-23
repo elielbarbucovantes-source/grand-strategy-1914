@@ -36,6 +36,11 @@ func setup(s: GameSession, m: MapView) -> void:
 	refresh()
 
 
+## RESTORATION 03 — largeur du panneau latéral selon la résolution (1600×900 / 1280×720).
+static func panel_width_for(viewport_width: float) -> float:
+	return 460.0 if viewport_width > 0.0 and viewport_width < 1400.0 else 520.0
+
+
 func _build() -> void:
 	for c in get_children():
 		c.queue_free()
@@ -69,11 +74,9 @@ func _build() -> void:
 			map_view.queue_redraw())
 	side = PanelContainer.new()
 	side.anchor_left = 1.0; side.anchor_right = 1.0; side.anchor_top = 0.0; side.anchor_bottom = 1.0
-	# Consolidation 02 : panneau plus large et navigation adaptative (1280x720 et 1600x900).
-	var panel_width := 520.0
+	# Consolidation 02 / RESTORATION 03 : largeur calculée par une fonction pure testable.
 	var viewport_w := float(get_viewport().size.x) if get_viewport() != null else 1600.0
-	if viewport_w > 0.0 and viewport_w < 1400.0:
-		panel_width = 460.0
+	var panel_width := panel_width_for(viewport_w)
 	side.offset_left = -panel_width; side.offset_top = 84; side.offset_bottom = -30
 	add_child(side)
 	var side_box := VBoxContainer.new()
@@ -447,6 +450,50 @@ func _page_diplomacy() -> void:
 	_button(box, "Envoyer (public)", func() -> void:
 		if edit.text.strip_edges() != "":
 			_queue(Orders.message(me, "public", [], edit.text.strip_edges())))
+	_diplomacy_history_section(box, me)
+
+
+## RESTORATION 03 — transparence diplomatique limitée à la mémoire et aux relations du joueur.
+## Aucune mémoire d'un autre État, aucune relation entre tiers, aucun secret militaire.
+func _diplomacy_history_section(box: VBoxContainer, me: String) -> void:
+	var st := session.state
+	_rich(box, "\n[b]Historique et confiance[/b] — réputation %+.1f (source : mémoire et relations du pays)." %
+		RelationsSystem.reputation(st, me, session.rules))
+	var memory: Array = st.memory.get(me, [])
+	var broken: Array = []
+	var refused := 0
+	for m: Dictionary in memory:
+		var kind := str(m.get("kind", ""))
+		if kind in ["treaty_broken", "alliance_betrayal", "alliance_exit"]:
+			broken.append(m)
+	for p: Dictionary in st.proposals:
+		if str(p["from"]) == me and str(p["status"]) == "rejected":
+			refused += 1
+	_rich(box, "Engagements rompus : %d ; propositions refusées : %d." % [broken.size(), refused])
+	for m: Dictionary in broken.slice(-10):
+		var nature := "retrait négocié" if str(m["kind"]) == "alliance_exit" else "rupture unilatérale"
+		_rich(box, "T%s — %s envers %s : %s (%s)" % [str(m["turn"]), str(m["kind"]),
+			_n(str(m.get("about", ""))), str(m.get("detail", "")), nature])
+	for nid: String in st.nation_order:
+		if nid == me:
+			continue
+		var rel: Dictionary = RelationsSystem.between(st, me, nid, session.rules)
+		var hist: Array = rel.get("history", [])
+		if hist.is_empty():
+			continue
+		_rich(box, "[b]%s[/b] — confiance %.0f, historique récent :" % [
+			_n(nid), float(rel.get("trust", 0))])
+		for h: Dictionary in hist.slice(-5):
+			_rich(box, "  T%s %s : %s" % [str(h.get("turn", "?")), str(h.get("reason", "")), str(h.get("changes", {}))])
+	var treaties_shown := 0
+	for t: Dictionary in st.treaties:
+		if str(t.get("status", "")) != "broken" or str(t.get("broken_by", "")) != me:
+			continue
+		treaties_shown += 1
+		if treaties_shown > 10:
+			break
+		_rich(box, "Traité rompu %s (%s) au T%s — motif enregistré : %s" % [str(t["id"]), str(t.get("type", "")),
+			str(t.get("broken_turn", "?")), str(t.get("break_reason", "non précisé"))])
 
 
 func _page_economy() -> void:
@@ -473,6 +520,7 @@ func _page_economy() -> void:
 	if not dep.is_empty():
 		t += "[color=#b03a2e]Ressources dépendantes d'importations : %s[/color]\n" % str(dep.keys())
 	_rich(box, t)
+	_trade_section(box, me)
 	_rich(box, "\n[b]Priorités industrielles[/b] (catégories validées)")
 	var current: Dictionary = session.state.nations[me].get("industry_allocation", {})
 	for cat: String in session.rules["economy"]["industry_categories"]:
@@ -485,6 +533,105 @@ func _page_economy() -> void:
 		var plus := _button(row, "+10", func() -> void:
 			var a := current.duplicate(); a[cat] = float(a.get(cat, 0)) + 10.0
 			_queue(Orders.industry_allocation(me, a)))
+
+
+## RESTORATION 03 — consultation, négociation et historique du commerce international.
+## Toutes les valeurs proviennent des systèmes existants ; aucun chiffre n'est inventé.
+func _trade_section(box: VBoxContainer, me: String) -> void:
+	var st := session.state
+	var model: Dictionary = session.rules.get("economy_model", {})
+	var allocation: Dictionary = st.nations[me].get("industry_allocation", {})
+	var resources: Array = model.get("resources", [])
+	resources.sort()
+	_rich(box, "\n[b]Commerce international[/b] — prix PROPOSÉS (non sourcés), modèle économique.")
+	# 1. Stocks, besoins industriels, excédents et déficits calculés.
+	for res: String in resources:
+		var stock := ResourceSystem.available(st, me, res)
+		var reserve := EconomicAI._reserve(st, me, res, model, allocation, allocation)
+		var delta := stock - reserve
+		var state_txt := "excédent %.1f" % delta if delta > 0.0 else "déficit %.1f" % absf(delta)
+		_rich(box, "%s : stock %.1f ; réserve industrielle %.1f ; [b]%s[/b] ; prix %.2f (%.2f avec accord)" % [
+			res, stock, reserve, state_txt, MarketSystem.unit_price(res, session.rules),
+			MarketSystem.unit_price(res, session.rules) * maxf(0.0,
+				1.0 - float(model.get("trade", {}).get("preferred_partner_discount", 0.1)))])
+	# 2. Accords actifs et partenaires.
+	var partners: Array = []
+	var agreements: Dictionary = {}
+	for nid: String in st.nation_order:
+		if nid == me:
+			continue
+		var tr: Array = st.active_treaties_between(me, nid, "trade")
+		var tr2: Array = st.active_treaties_between(me, nid, "transit")
+		if not tr.is_empty() or not tr2.is_empty():
+			partners.append(nid)
+			agreements[nid] = ("commerce" if not tr.is_empty() else "") + (" / passage" if not tr2.is_empty() else "")
+	var agreement_labels: Array = []
+	for n: String in partners:
+		agreement_labels.append("%s (%s)" % [_n(n), str(agreements[n])])
+	_rich(box, "[b]Accords actifs[/b] : %s" % (", ".join(agreement_labels) if not agreement_labels.is_empty() else "aucun"))
+	# 3. Livraisons en cours (jamais présentées comme livrées avant leur date réelle).
+	var in_transit := 0
+	var delivered_count := 0
+	for t: Dictionary in st.economy.get("trade", []):
+		if str(t["from"]) != me and str(t["to"]) != me:
+			continue
+		var direction := "→ %s" % _n(str(t["to"])) if str(t["from"]) == me else "← %s" % _n(str(t["from"]))
+		var status_txt := str(t["status"])
+		if status_txt == "in_transit":
+			in_transit += 1
+			status_txt = "en transit (arrivée T%s%s)" % [str(t["arrival_turn"]),
+				", %d retard(s)" % int(t.get("delays", 0)) if int(t.get("delays", 0)) > 0 else ""]
+		elif status_txt == "delivered":
+			delivered_count += 1
+			status_txt = "livrée T%s" % str(t.get("delivered_turn", t.get("arrival_turn", "?")))
+		var goulot := str(t.get("bottleneck", ""))
+		_rich(box, "%s %.1f %s %s — coût %.2f — goulot %s — %d liaison(s)%s" % [direction,
+			float(t["amount"]), t["resource"], status_txt, float(t.get("cost", 0.0)), goulot,
+			(t["links"] as Array).size(), ", retard(s) : %d" % int(t.get("delays", 0)) if int(t.get("delays", 0)) > 0 else ""])
+	_rich(box, "[b]Expéditions[/b] : %d en cours, %d livrées (historique complet conservé)." % [in_transit, delivered_count])
+	var dep: Dictionary = MarketSystem.dependencies(st, me)
+	if not dep.is_empty():
+		_rich(box, "[b]Dépendances en transit[/b] : %s" % str(dep))
+	# 4. Négociation : vente immédiate (validée) ou demande d'achat (proposition diplomatique).
+	_rich(box, "[b]Nouvelle transaction[/b]")
+	var sel_partner := OptionButton.new()
+	for nid: String in st.nation_order:
+		if nid != me:
+			sel_partner.add_item(_n(nid))
+	box.add_child(sel_partner)
+	var sel_res := OptionButton.new()
+	for res: String in resources:
+		sel_res.add_item(res)
+	box.add_child(sel_res)
+	var amount := SpinBox.new()
+	amount.min_value = 1.0
+	amount.max_value = 100.0
+	amount.step = 1.0
+	amount.value = 5.0
+	box.add_child(amount)
+	var row_trade := HBoxContainer.new()
+	box.add_child(row_trade)
+	_button(row_trade, "Vendre", func() -> void:
+		if sel_partner.item_count == 0 or sel_res.item_count == 0:
+			return
+		var other := str(st.nation_order.filter(func(n: String) -> bool: return n != me)[sel_partner.selected])
+		var res := sel_res.get_item_text(sel_res.selected)
+		_queue(Orders.trade(me, me, other, res, float(amount.value))))
+	_button(row_trade, "Demander achat", func() -> void:
+		if sel_partner.item_count == 0 or sel_res.item_count == 0:
+			return
+		var others: Array = st.nation_order.filter(func(n: String) -> bool: return n != me)
+		var other := str(others[sel_partner.selected])
+		var res := sel_res.get_item_text(sel_res.selected)
+		# Aucun prélèvement unilatéral : une demande d'achat est une proposition acceptée
+		# par le partenaire avant toute expédition.
+		_queue(Orders.propose_agreement(me, [other], "trade",
+			{"request": "purchase", "resource": res, "amount": float(amount.value)})))
+	_button(row_trade, "Accord commercial", func() -> void:
+		if sel_partner.item_count == 0:
+			return
+		var others: Array = st.nation_order.filter(func(n: String) -> bool: return n != me)
+		_queue(Orders.propose_agreement(me, [str(others[sel_partner.selected])], "trade", {})))
 
 
 func _page_industry() -> void:
@@ -795,6 +942,7 @@ func _page_research() -> void:
 		_button(row, "Lancer", func() -> void: _queue(Orders.set_research(me, str(tech["id"]))))
 	if count == 0:
 		_label(box, "Aucune technologie accessible pour le moment.", 12)
+	_tech_section(box, me)
 	# Communications et renseignement technique.
 	CommunicationsSystem.ensure(session.state, me)
 	var comms: Dictionary = session.state.tech["comms"][me]
@@ -815,6 +963,65 @@ func _page_research() -> void:
 		str(ac), (session.state.tech["air"]["bases"][me] as Array).size()])
 	var fleets: Array = session.state.tech["naval"]["fleets"][me]
 	_rich(box, "[b]Marine[/b] — flottes : %d." % fleets.size())
+
+
+## RESTORATION 03 — état de l'arbre, coopérations et transferts technologiques.
+## Les technologies d'autrui ne sont jamais révélées : seuls les accords consentis et les
+## transferts concernant le joueur sont affichés.
+func _tech_section(box: VBoxContainer, me: String) -> void:
+	var st := session.state
+	var known: Array = st.tech["known"].get(me, [])
+	var projects: Array = st.tech["projects"].get(me, [])
+	var all_tech: Array = session.tech_tree.tree.get("technologies", [])
+	var available := 0
+	var locked := 0
+	for t: Dictionary in all_tech:
+		if TechSystem.known(st, me, str(t["id"])):
+			continue
+		if TechSystem.can_research(st, session.tech_tree, me, str(t["id"])) == "":
+			available += 1
+		else:
+			locked += 1
+	_rich(box, "\n[b]Arbre technologique[/b] — %d découvertes, %d en recherche, %d accessibles, %d verrouillées (prérequis manquants ou année future)." % [
+		known.size(), projects.size(), available, locked])
+	for tid: String in known:
+		var t: Dictionary = session.tech_tree.by_id.get(tid, {})
+		var fx: Dictionary = t.get("effects", {})
+		_rich(box, "[b]%s[/b] — %s, %d, effet %s [color=#1e8449]découverte[/color]" % [
+			tid, str(t.get("domain", "?")), int(t.get("year", 0)), str(fx)])
+	for p: Dictionary in projects:
+		var t2: Dictionary = session.tech_tree.by_id.get(str(p["tech"]), {})
+		_rich(box, "%s — %s [color=#b7950b]en recherche %.0f%%[/color]" % [str(p["tech"]), str(t2.get("domain", "?")),
+			100.0 * float(p["progress"]) / maxf(1.0, float(t2.get("cost", 100)))])
+	# Coopérations actives (information publique).
+	var partners: Array = TechSystem.partners_of(st, me)
+	_rich(box, "\n[b]Coopération scientifique[/b] — partenaires : %s." % (
+		", ".join(partners.map(func(x: String) -> String: return _n(x))) if not partners.is_empty() else "aucun"))
+	for nid: String in st.nation_order:
+		if nid == me or partners.has(nid):
+			continue
+		var row := HBoxContainer.new()
+		box.add_child(row)
+		_label(row, "Coopérer avec %s" % _n(nid), 11)
+		_button(row, "Proposer", func() -> void:
+			_queue(Orders.propose_agreement(me, [nid], "tech", {})))
+	# Transferts concernant le joueur uniquement.
+	var shown := 0
+	for tr: Dictionary in st.tech.get("transfers", []):
+		if str(tr["from"]) != me and str(tr["to"]) != me:
+			continue
+		shown += 1
+		if shown > 20:
+			break
+		var direction := "reçu de %s" % _n(str(tr["from"])) if str(tr["to"]) == me else "envoyé à %s" % _n(str(tr["to"]))
+		var status_txt := str(tr["status"])
+		if status_txt == "in_transit":
+			status_txt = "en cours (arrivée T%s)" % str(tr["arrival_turn"])
+		elif status_txt == "delivered":
+			status_txt = "reçu T%s" % str(tr.get("delivered_turn", tr.get("arrival_turn", "?")))
+		_rich(box, "%s : %s — coût %.1f — %s" % [str(tr["tech"]), direction, float(tr.get("cost", 0.0)), status_txt])
+	if shown == 0:
+		_label(box, "Aucun transfert en cours. Un transfert est négocié par coopération : il n'existe pas d'ordre pour l'imposer.", 12)
 
 
 func _page_politics() -> void:
@@ -983,6 +1190,13 @@ func _describe(o: Dictionary) -> String:
 			return "Message %s : %s" % [o["channel"], o["text"]]
 		Orders.SET_INDUSTRY_ALLOCATION:
 			return "Priorités industrielles %s" % JSON.stringify(o["allocation"])
+		Orders.TRADE:
+			return "Expédier %.1f %s de %s vers %s" % [float(o["amount"]), o["resource"],
+				_n(str(o["from"])), _n(str(o["to"]))]
+		Orders.PROPOSE_AGREEMENT:
+			if str(o.get("kind", "")) in ["trade", "tech"]:
+				return "Proposer un accord « %s » à %s" % [o["kind"], ", ".join((o["to"] as Array).map(func(x: String) -> String: return _n(x)))]
+			return "Proposer « %s » à %s" % [o["kind"], str(o["to"])]
 		Orders.MOBILIZE:
 			return "Décréter la mobilisation générale (posture générale)"
 		Orders.SET_MOBILIZATION_POSTURE:
