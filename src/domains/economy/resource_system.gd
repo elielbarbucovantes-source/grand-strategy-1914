@@ -113,5 +113,11 @@ static func consume(state: GameState, nation: String, res: String, amount: float
 	return used
 
 
+## Restitue exactement la quantité prélevée par `consume` (annulation d'une expédition refusée).
+static func release_reserved(state: GameState, nation: String, res: String, amount: float) -> void:
+	var stocks: Dictionary = state.economy["stocks"][nation]
+	stocks[res] = float(stocks.get(res, 0.0)) + maxf(0.0, amount)
+
+
 static func summary(state: GameState, nation: String) -> Dictionary:
 	return (state.economy.get("stocks", {}).get(nation, {}) as Dictionary).duplicate(true)

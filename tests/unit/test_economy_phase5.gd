@@ -113,6 +113,8 @@ func test_trade_transfers_and_no_duplication() -> void:
 	var buyer_before := float(s.state.economy["stocks"]["belgium"]["money"])
 	var seller_before := float(s.state.economy["stocks"]["france"].get("money", 0.0))
 	var order := Orders.trade("france", "france", "belgium", "coal", 10.0)
+	order["transaction"] = MarketSystem.open_transaction(s.state, order, s.rules)
+	MarketSystem.approve_transaction(s.state, str(order["transaction"]), "france", s.rules)
 	runner.check(MarketSystem.validate(s.state, s.transport_network, s.rules, order) == "", "commerce valide")
 	runner.check(MarketSystem.propose(s.state, s.transport_network, s.rules, order) == "", "expédition acceptée")
 	runner.check(ResourceSystem.available(s.state, "france", "coal") == 40.0, "stock expéditeur débité immédiatement")

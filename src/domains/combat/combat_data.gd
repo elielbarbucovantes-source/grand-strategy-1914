@@ -41,10 +41,25 @@ static func can_fight(u: Dictionary) -> bool:
 	return u["status"] == ACTIVE
 
 
-## Unités sorted par identifiant (ordre déterministe).
+## Unités triées par identifiant (ordre déterministe).
+## STABILIZATION 01 : cache HORS de l'état sérialisé (un champ dans la bataille modifierait
+## le checksum et les sauvegardes). La clé est l'identifiant de bataille et la taille de
+## l'ensemble des unités : les unités ne sont jamais ajoutées après création, seulement
+## marquées détruites, donc la taille suffit à détecter un changement.
+static var _uid_cache: Dictionary = {}
+
+
 static func unit_ids(battle: Dictionary) -> Array:
-	var ids: Array = (battle["units"] as Dictionary).keys()
+	var units: Dictionary = battle["units"]
+	var ids: Array = units.keys()
+	# Hash des clés : garantit l'identité exacte de l'ensemble, y compris pour les scénarios
+	# où plusieurs batailles partagent le même identifiant.
+	var key := "%s|%d|%d" % [str(battle.get("id", "")), ids.size(), ids.hash()]
+	var cached: Variant = _uid_cache.get(key)
+	if cached is Array:
+		return cached
 	ids.sort()
+	_uid_cache[key] = ids
 	return ids
 
 

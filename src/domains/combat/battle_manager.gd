@@ -380,8 +380,19 @@ static func _grace_expiry(b: Dictionary, cr: Dictionary) -> void:
 
 static func run_to_end(b: Dictionary, cr: Dictionary, auto_all: bool = true) -> void:
 	b["paused"] = false
-	while b["status"] == "active":
-		advance(b, cr, 50, auto_all)
+	# STABILIZATION 01 — borne de stabilité pour les très grandes batailles 100 % IA.
+	# Sans humain, une bataille de 300+ unités consommait jusqu'à 900 ticks et jusqu'à
+	# 160 s sur un seul tour. On abrège la résolution automatique au-delà d'un seuil de
+	# taille : les pertes et le vainqueur restent calculés par le moteur MIL-01, mais sur
+	# un nombre de ticks borné. Ce changement de comportement est documenté dans le rapport.
+	var limit := int(b.get("max_ticks", 0))
+	if auto_all and (b.get("humans", []) as Array).is_empty() and (b["units"] as Dictionary).size() > 120:
+		limit = mini(limit, int((cr.get("ai", {}) as Dictionary).get("auto_max_ticks_large", 180)))
+	while b["status"] == "active" and int(b["tick"]) < limit:
+		advance(b, cr, mini(50, limit - int(b["tick"])), auto_all)
+	if b["status"] == "active":
+		b["status"] = "ended"
+		b["end_reason"] = "résolution automatique abrégée (borne de stabilité)"
 
 
 ## Votants d'une pause : humains participants ACTUELLEMENT connectés (l'IA, y compris l'IA qui

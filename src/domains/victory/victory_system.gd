@@ -58,9 +58,17 @@ static func check_victory(state: GameState, rules: Dictionary) -> Dictionary:
 	# 1. Militaire : > 90 % de régions contrôlées, occupation ≠ souveraineté.
 	var mil: Dictionary = cfg_v.get("military", {})
 	var threshold := float(mil.get("threshold", 0.9))
+	# STABILIZATION 01 : la règle validée dit « affiché, sans fin de partie automatique ».
+	# On ne déclare plus de victoire ici ; on signale seulement l'état de la condition.
+	var leaders: Array = []
 	for nid: String in state.nation_order:
 		if military_share(state, nid, rules) >= threshold:
-			return _declare(state, nid, "military")
+			leaders.append(nid)
+	if not leaders.is_empty():
+		state.victory["military_condition_met"] = leaders.duplicate()
+	else:
+		state.victory.erase("military_condition_met")
+	# Aucun retour `_declare` : le joueur conserve la décision de terminer la campagne.
 	# 2. IDH relatif maintenu sur la durée.
 	var hdi_cfg: Dictionary = cfg_v.get("hdi", {})
 	var rel := float(hdi_cfg.get("relative_threshold", 1.25))
@@ -88,14 +96,11 @@ static func check_victory(state: GameState, rules: Dictionary) -> Dictionary:
 	# 3. Diplomatique : pacte universel (Phase III).
 	for t: Dictionary in state.diplomacy.get("peace_treaties", []):
 		if str(t.get("type", "")) == "universal" and str(t.get("status", "")) == "active":
-			return _declare(state, str((t.get("members", []) as Array)[0]) if not (t.get("members", []) as Array).is_empty() else "", "diplomatic")
-	# Égalité militaire : plusieurs États au-dessus du seuil simultanément (rare).
-	var leaders: Array = []
-	for nid: String in state.nation_order:
-		if military_share(state, nid, rules) >= threshold:
-			leaders.append(nid)
-	if leaders.size() > 1:
-		return _declare_tie(state, leaders)
+			# Le proposant est enregistré explicitement ; l'ordre des membres est indifférent.
+			var winner := str(t.get("proposer", ""))
+			if winner == "" and not (t.get("members", []) as Array).is_empty():
+				winner = str((t.get("members", []) as Array)[0])
+			return _declare(state, winner, "diplomatic")
 	return state.victory.duplicate(true)
 
 

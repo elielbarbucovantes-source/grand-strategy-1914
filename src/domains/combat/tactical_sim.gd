@@ -155,6 +155,13 @@ static func update_fog(b: Dictionary, r: Dictionary) -> void:
 	for side: String in CombatData.SIDES:
 		var visible: Dictionary = {}
 		var memory: Dictionary = b["fog"][side]
+		# STABILIZATION 01 : observateurs et cibles précalculés une seule fois par mise à jour.
+		var observers: Array = []
+		for oid: String in CombatData.unit_ids(b):
+			var o: Dictionary = b["units"][oid]
+			if o["side"] != side or not CombatData.is_on_field(o):
+				continue
+			observers.append([CombatData.v(o["pos"]), float(type_cfg(r, o)["spot_range"]) * spot_mult])
 		for eid: String in CombatData.unit_ids(b):
 			var e: Dictionary = b["units"][eid]
 			if e["side"] == side or not CombatData.is_on_field(e):
@@ -164,12 +171,10 @@ static func update_fog(b: Dictionary, r: Dictionary) -> void:
 				stealth *= 0.7
 			if e["type"] == "artillery" and int(e.get("engaged_ticks", 0)) > 0:
 				stealth *= 1.6
-			for oid: String in CombatData.unit_ids(b):
-				var o: Dictionary = b["units"][oid]
-				if o["side"] != side or not CombatData.is_on_field(o):
-					continue
-				var rng := float(type_cfg(r, o)["spot_range"]) * spot_mult * stealth
-				if CombatData.v(o["pos"]).distance_to(CombatData.v(e["pos"])) <= rng:
+			var epos := CombatData.v(e["pos"])
+			for obs: Array in observers:
+				var rng := float(obs[1]) * stealth
+				if (obs[0] as Vector2).distance_squared_to(epos) <= rng * rng:
 					visible[eid] = true
 					break
 			if visible.has(eid):
@@ -276,11 +281,45 @@ static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
 	var dt := float(r["tick_seconds"])
 	var cmb: Dictionary = r["combat"]
 	var shooter_idx := {CombatData.ATTACKERS: 0, CombatData.DEFENDERS: 0}
+	# STABILIZATION 01 : l'ancienne boucle reconstruisait la liste des ennemis visibles POUR
+	# CHAQUE tireur (O(n²) appels dictionary + vecteurs). On la précalcule une fois par camp
+	# et par tick ; l'ordre de parcours et les distances restent identiques.
+	var enemy_cache: Dictionary = {}
+	for side: String in CombatData.SIDES:
+		var list: Array = []
+		for eid: String in b["visible"][side]:
+			var e: Dictionary = b["units"].get(eid, {})
+			if e.is_empty() or not CombatData.is_on_field(e):
+				continue
+			list.append([eid, e, CombatData.v(e["pos"])])
+		enemy_cache[side] = list
+	# Grille spatiale : seuls les ennemis voisins peuvent être à portée. Les candidats sont
+	# réordonnés selon l'index d'origine, donc la sélection reste strictement identique.
+	var cell := 700.0
+	var grids: Dictionary = {}
+	for side: String in CombatData.SIDES:
+		var g: Dictionary = {}
+		for i: int in (enemy_cache[side] as Array).size():
+			var entry: Array = (enemy_cache[side] as Array)[i]
+			var p2: Vector2 = entry[2]
+			var key := "%d,%d" % [floori(p2.x / cell), floori(p2.y / cell)]
+			var arr: Array = g.get(key, [])
+			arr.append(i)
+			g[key] = arr
+		grids[side] = g
+	# Valeurs stables pendant la phase de tir (les pertes ne sont appliquées qu'après).
+	var tc_cache: Dictionary = {}
+	var eff_cache: Dictionary = {}
+	var expo_cache: Dictionary = {}
+	var inst_cache: Dictionary = {}
+	var fc_cache: Dictionary = {}
+	var op_cache: Dictionary = {}
 	for uid: String in CombatData.unit_ids(b):
 		var s: Dictionary = b["units"][uid]
 		if s["status"] != CombatData.ACTIVE:
 			continue
-		var tc := type_cfg(r, s)
+		if not tc_cache.has(uid): tc_cache[uid] = type_cfg(r, s)
+		var tc: Dictionary = tc_cache[uid]
 		var spos := CombatData.v(s["pos"])
 		var target := ""
 		var best := INF
@@ -297,30 +336,48 @@ static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
 			# Priorité : 0 = unité active en ligne ; 1 = unité active en attente ; 2 = déroute ou repli.
 			var best_rank := 3
 			var all_in_range: Array = []
-			for eid: String in b["visible"][s["side"]]:
-				var e: Dictionary = b["units"].get(eid, {})
-				if e.is_empty() or not CombatData.is_on_field(e):
+			var range_sq := float(tc["range"]) * float(tc["range"])
+			var best_sq := INF
+			var best_art_sq := INF
+			var best_rout_sq := INF
+			var candidates: Array = []
+			var gx := floori(spos.x / cell)
+			var gy := floori(spos.y / cell)
+			var gsel: Dictionary = grids[s["side"]]
+			for dx: int in [-1, 0, 1]:
+				for dy: int in [-1, 0, 1]:
+					var arr: Array = gsel.get("%d,%d" % [gx + dx, gy + dy], [])
+					for idx: int in arr:
+						candidates.append(idx)
+			candidates.sort()
+			for idx: int in candidates:
+				var entry: Array = (enemy_cache[s["side"]] as Array)[idx]
+				var eid := str(entry[0])
+				var e: Dictionary = entry[1]
+				var d2 := spos.distance_squared_to(entry[2])
+				if d2 > range_sq:
 					continue
-				var d := spos.distance_to(CombatData.v(e["pos"]))
-				if d > float(tc["range"]):
-					continue
-				if s["type"] == "artillery" and e["type"] == "artillery" and e["status"] == CombatData.ACTIVE and d < best_art_d:
-					best_art_d = d
+				if s["type"] == "artillery" and e["type"] == "artillery" and e["status"] == CombatData.ACTIVE and d2 < best_art_sq:
+					best_art_sq = d2
 					art_target = eid
-				if e["status"] == CombatData.ROUTING and int(e["soldiers"]) > int(e["start_soldiers"]) * 0.35 and d < best_rout_d:
-					best_rout_d = d
+				if e["status"] == CombatData.ROUTING and int(e["soldiers"]) > int(e["start_soldiers"]) * 0.35 and d2 < best_rout_sq:
+					best_rout_sq = d2
 					rout_target = eid
 				var rank := 2 if (e["status"] == CombatData.ROUTING or e["status"] == CombatData.WITHDRAWING) else (1 if e.get("front_status", "") == "waiting" else 0)
-				all_in_range.append([rank, d, eid, e["type"]])
-				if rank < best_rank or (rank == best_rank and d < best):
-					best = d
+				all_in_range.append([rank, d2, eid, e["type"]])
+				if rank < best_rank or (rank == best_rank and d2 < best_sq):
+					best_sq = d2
 					best_rank = rank
 					target = eid
+			best = sqrt(best_sq) if best_sq < INF else INF
+			#Une seule racine par tireur au lieu d'une par ennemi : la sélection est identique
+			#car sqrt est strictement croissante.
+			var band_limit_sq := (best + 35.0) * (best + 35.0)
 			if not all_in_range.is_empty():
 				var band: Array = []
 				var screen_band: Array = []
 				for item: Array in all_in_range:
-					if int(item[0]) == best_rank and float(item[1]) <= best + 35.0:
+					if int(item[0]) == best_rank and float(item[1]) <= band_limit_sq:
 						band.append(item[2])
 						if item[3] != "artillery":
 							screen_band.append(item[2])
@@ -341,12 +398,17 @@ static func _fire_and_melee(b: Dictionary, r: Dictionary) -> Dictionary:
 		if s["order"] == "build":
 			continue  # une unité au travail ne tire pas
 		var falloff := lerpf(1.0, float(cmb["falloff_min"]), clampf(d / float(tc["range"]), 0.0, 1.0))
-		var bonus := installation_bonus(b, r, s)
-		var fire := float(tc["lethality"]) * Engagement.operational(r, s) * share * float(formation_cfg(r, s)["fire"]) \
-			* effectiveness(r, s) * (1.0 + float(bonus["fire"])) * falloff * dt
+		if not inst_cache.has(uid): inst_cache[uid] = installation_bonus(b, r, s)
+		if not eff_cache.has(uid): eff_cache[uid] = effectiveness(r, s)
+		if not fc_cache.has(uid): fc_cache[uid] = formation_cfg(r, s)
+		if not op_cache.has(uid): op_cache[uid] = Engagement.operational(r, s)
+		var bonus: Dictionary = inst_cache[uid]
+		var fire := float(tc["lethality"]) * float(op_cache[uid]) * share * float((fc_cache[uid] as Dictionary)["fire"]) \
+			* float(eff_cache[uid]) * (1.0 + float(bonus["fire"])) * falloff * dt
 		var cb_share := float(cmb.get("counter_battery_share", 0.25)) if (s["type"] == "artillery" and art_target != "" and art_target != target) else 0.0
 		var p_share := float(cmb.get("pursuit_fire_share", 0.18)) if (rout_target != "" and rout_target != target) else 0.0
-		var c := fire * (1.0 - cb_share - p_share) * exposure(b, r, t)
+		if not expo_cache.has(target): expo_cache[target] = exposure(b, r, t)
+		var c := fire * (1.0 - cb_share - p_share) * float(expo_cache[target])
 		losses[target] = float(losses.get(target, 0.0)) + c
 		if cb_share > 0.0:
 			var at: Dictionary = b["units"][art_target]
@@ -441,12 +503,17 @@ static func _apply_losses(b: Dictionary, r: Dictionary, losses: Dictionary) -> v
 static func _morale(b: Dictionary, r: Dictionary, losses: Dictionary) -> void:
 	var m: Dictionary = r["morale"]
 	var routing_positions: Array = []
+	var routing_by_side: Dictionary = {CombatData.ATTACKERS: [], CombatData.DEFENDERS: []}
+	var pos_cache: Dictionary = {}
 	var side_start := {CombatData.ATTACKERS: 0, CombatData.DEFENDERS: 0}
 	var side_out := {CombatData.ATTACKERS: 0, CombatData.DEFENDERS: 0}
 	for uid: String in CombatData.unit_ids(b):
 		var u: Dictionary = b["units"][uid]
+		var upos := CombatData.v(u["pos"])
+		pos_cache[uid] = upos
 		if u["status"] == CombatData.ROUTING:
-			routing_positions.append([u["side"], CombatData.v(u["pos"])])
+			routing_positions.append([u["side"], upos])
+			(routing_by_side[u["side"]] as Array).append(upos)
 		if u["status"] in [CombatData.ACTIVE, CombatData.ROUTING, CombatData.WITHDRAWN, CombatData.DESTROYED, CombatData.WITHDRAWING]:
 			var s_side: String = u["side"]
 			side_start[s_side] = int(side_start.get(s_side, 0)) + int(u["start_soldiers"])
@@ -472,10 +539,12 @@ static func _morale(b: Dictionary, r: Dictionary, losses: Dictionary) -> void:
 			u["quiet_ticks"] = 0
 		else:
 			u["quiet_ticks"] = int(u["quiet_ticks"]) + 1
-		for entry: Array in routing_positions:
-			if entry[0] == u["side"] and (entry[1] as Vector2).distance_to(CombatData.v(u["pos"])) <= float(m["rout_contagion_radius"]) \
-					and u["status"] != CombatData.ROUTING:
-				morale -= float(m["rout_contagion_per_tick"])
+		if u["status"] != CombatData.ROUTING:
+			var upos: Vector2 = pos_cache[uid]
+			var radius_sq := float(m["rout_contagion_radius"]) * float(m["rout_contagion_radius"])
+			for rp: Vector2 in (routing_by_side[u["side"]] as Array):
+				if rp.distance_squared_to(upos) <= radius_sq:
+					morale -= float(m["rout_contagion_per_tick"])
 		if not under_fire and installation_bonus(b, r, u)["command"]:
 			morale += float(m["command_post_recovery_per_tick"])
 		for o: Dictionary in b["objectives"]:

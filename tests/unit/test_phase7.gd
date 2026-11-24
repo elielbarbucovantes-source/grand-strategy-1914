@@ -65,8 +65,10 @@ func test_military_victory_90_percent() -> void:
 		s.state.regions[str(ids[i])]["controller"] = "france"
 		# distinction souveraineté / occupation conservée : on ne modifie pas "sovereign"
 	var r := VictorySystem.check_victory(s.state, s.rules["phase7"])
-	runner.check(str(r["status"]) == "finished" and str(r["condition"]) == "military", "victoire militaire à 90 % de contrôle")
-	runner.check(str(s.state.victory["winner"]) == "france", "vainqueur identifié")
+	# STABILIZATION 01 : la règle validée dit « affiché, sans fin de partie automatique ».
+	runner.check(str(r["status"]) == "ongoing", "90 % de contrôle ne termine pas la campagne")
+	runner.check((r.get("military_condition_met", []) as Array).has("france"), "condition militaire signalée")
+	runner.check(s.state.victory.is_empty() or not bool(s.state.victory.get("finished", false)), "aucune victoire automatique")
 	var sum := VictorySystem.final_summary(s.state, s.rules["phase7"])
 	runner.check((sum["standings"] as Array).size() == 22, "bilan de fin de partie (22 États)")
 

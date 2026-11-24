@@ -42,6 +42,8 @@ static func resolve(state: GameState, world: WorldMap, rules: Dictionary, orders
 			TransportSystem.apply(state, rules.get("transport_network"), order)
 		elif order["type"] == Orders.TRADE:
 			MarketSystem.propose(state, rules.get("transport_network"), rules, order)
+		elif order["type"] == Orders.APPROVE_TRADE:
+			MarketSystem.approve_transaction(state, str(order["transaction"]), order["nation"], rules)
 		elif order["type"] == Orders.INVEST_RESOURCE:
 			ResourceSystem.invest(state, str(order["region"]), str(order["resource"]),
 				float(order["amount"]), rules, order["nation"])
@@ -203,6 +205,9 @@ static func _validate(state: GameState, world: WorldMap, rules: Dictionary, orde
 			return TransportSystem.validate(state, rules.get("transport_network"), order)
 		Orders.TRADE:
 			return MarketSystem.validate(state, rules.get("transport_network"), rules, order)
+		Orders.APPROVE_TRADE:
+			var c: Dictionary = state.economy["trade_consents"].get(str(order.get("transaction", "")), {})
+			return "" if str(c.get("from", "")) == order["nation"] else "consentement invalide"
 		Orders.INVEST_RESOURCE:
 			var err := ResourceSystem.validate_invest(state, str(order.get("region", "")),
 				str(order.get("resource", "")), float(order.get("amount", 0)))

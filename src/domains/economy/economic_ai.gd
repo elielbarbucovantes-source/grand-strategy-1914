@@ -101,11 +101,12 @@ static func decide(state: GameState, net: TransportNetwork, rules: Dictionary, n
 				continue
 			if float(state.economy["stocks"].get(other, {}).get(res, 0.0)) < amount + 2.0:
 				continue
-			var order := {"type": Orders.TRADE, "nation": nid, "from": other, "to": nid,
-				"resource": res, "amount": amount}
-			# Essayer tous les partenaires : un refus de route n'empêche pas le suivant.
-			if MarketSystem.validate(state, net, rules, order, route_cache) == "":
-				out.append(order)
+			# STABILIZATION 01 : importer = proposer un achat au partenaire. L'IA ne prélève
+			# jamais le stock d'autrui ; elle attend le consentement de l'exportateur.
+			var request := {"type": Orders.PROPOSE_AGREEMENT, "nation": nid, "to": [other],
+				"kind": "trade", "terms": {"request": "purchase", "resource": res, "amount": amount}}
+			if MarketSystem.validate_request(state, net, rules, request, route_cache) == "":
+				out.append(request)
 				trade_orders += 1
 				break
 	return out

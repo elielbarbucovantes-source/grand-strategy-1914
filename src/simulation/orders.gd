@@ -40,6 +40,7 @@ const REPAIR_LINK := "repair_link"
 const SET_PORT_STATUS := "set_port_status"
 # Phase V — économie
 const TRADE := "trade"
+const APPROVE_TRADE := "approve_trade"
 const INVEST_RESOURCE := "invest_resource"
 # Phase VI
 const SET_RESEARCH := "set_research"
@@ -172,8 +173,15 @@ static func set_port_status(nation: String, port: String, status: String) -> Dic
 	return {"type": SET_PORT_STATUS, "nation": nation, "port": port, "status": status}
 
 
+## RESTORATION/STABILIZATION : `nation` est TOUJOURS l'exportateur. Le consentement est
+## enregistré dans l'état (voir MarketSystem.approve_trade) avant tout transfert.
 static func trade(nation: String, from: String, to: String, resource: String, amount: float) -> Dictionary:
 	return {"type": TRADE, "nation": nation, "from": from, "to": to, "resource": resource, "amount": amount}
+
+
+## Consentement explicite de l'exportateur pour une transaction identifiée.
+static func approve_trade(nation: String, transaction: String) -> Dictionary:
+	return {"type": APPROVE_TRADE, "nation": nation, "transaction": transaction}
 
 
 static func invest_resource(nation: String, region: String, resource: String, amount: float) -> Dictionary:

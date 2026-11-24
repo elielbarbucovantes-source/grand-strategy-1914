@@ -87,7 +87,7 @@ static func from_scenario(scenario: Dictionary, start_month_value: int, player: 
 		"pow": {"holders": {}, "exchanges": []}, "negotiations": {}, "history": []
 	}
 	s.transport = {"conditions": {}, "usage": {}, "repairs": {}, "disruptions": []}
-	s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "replacement": {}, "history": [], "prices": {}}
+	s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "trade_consents": {}, "replacement": {}, "history": [], "prices": {}}
 	s.tech = {"known": {}, "projects": {}, "intel": {}, "comms": {}, "cooperation": [], "transfers": [], "air": {"bases": {}, "aircraft": {}, "missions": []}, "naval": {"fleets": {}, "zones": {}, "operations": []}}
 	s.politics = {"states": {}, "decisions": [], "crises": [], "history": []}
 	s.victory = {"status": "ongoing", "winner": "", "condition": "", "turn": -1, "history": []}
@@ -426,6 +426,8 @@ static func from_dict(d: Dictionary) -> GameState:
 	s.transport = d.get("transport", {})
 	s.economy = d.get("economy", {})
 	s.tech = d.get("tech", {})
+	if not (s.economy.get("trade_consents", {}) is Dictionary):
+		s.economy["trade_consents"] = {}
 	if not (s.tech.get("cooperation", []) is Array):
 		s.tech["cooperation"] = []
 	if not (s.tech.get("transfers", []) is Array):
@@ -442,7 +444,7 @@ static func from_dict(d: Dictionary) -> GameState:
 	if not (s.tech is Dictionary) or s.tech.is_empty():
 		s.tech = {"known": {}, "projects": {}, "intel": {}, "comms": {}, "cooperation": [], "transfers": [], "air": {"bases": {}, "aircraft": {}, "missions": []}, "naval": {"fleets": {}, "zones": {}, "operations": []}}
 	if not (s.economy is Dictionary) or s.economy.is_empty():
-		s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "replacement": {}, "history": [], "prices": {}}
+		s.economy = {"regions": {}, "stocks": {}, "workforce": {}, "trade": [], "trade_consents": {}, "replacement": {}, "history": [], "prices": {}}
 	if not (s.politics is Dictionary): s.politics = {"states": {}, "decisions": [], "crises": [], "history": []}
 	if not (s.victory is Dictionary) or s.victory.is_empty(): s.victory = {"status": "ongoing", "winner": "", "condition": "", "turn": -1, "history": []}
 	if not (s.bridges is Dictionary): s.bridges = {}

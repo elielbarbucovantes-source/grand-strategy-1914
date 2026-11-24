@@ -138,6 +138,11 @@ static func _apply_accepted(state: GameState, p: Dictionary, rules: Dictionary) 
 				var amount := float(terms.get("amount", 0))
 				var order := {"type": Orders.TRADE, "nation": exporter, "from": exporter,
 					"to": importer, "resource": res, "amount": amount}
+				# STABILIZATION 01 : l'acceptation de la proposition vaut consentement de
+				# l'exportateur, authentifié par le contexte de simulation.
+				var tid := MarketSystem.open_transaction(state, order, rules)
+				order["transaction"] = tid
+				MarketSystem.approve_transaction(state, tid, exporter, rules)
 				var net: TransportNetwork = rules.get("transport_network")
 				var err := MarketSystem.validate(state, net, rules, order)
 				if err == "":

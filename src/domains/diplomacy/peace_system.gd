@@ -165,7 +165,10 @@ static func respond_universal(state: GameState, proposal_id: String, nation: Str
 				all_yes = false
 				break
 		if all_yes:
-			var result := universal_pact(state, participants.duplicate(true), rules)
+			# STABILIZATION 01 : inclure le proposant comme signataire — l'ordre interne des
+			# participants ne doit pas déterminer le vainqueur.
+			var signatories: Array = [str(up["proposer"])] + (participants.duplicate(true) as Array)
+			var result := universal_pact(state, signatories, rules)
 			if bool(result.get("ok", false)):
 				up["status"] = "signed"
 				(up["history"] as Array).append({"turn": state.turn, "event": "signed", "treaty": result["treaty"]["id"]})
@@ -240,8 +243,12 @@ static func universal_pact(state: GameState, nations: Array, rules: Dictionary) 
 			controlled += 1
 	if total == 0 or float(controlled) / float(total) < threshold:
 		return {"ok": false, "reason": "contrôle insuffisant pour la paix universelle"}
+	var proposer := ""
+	var up: Dictionary = state.diplomacy.get("universal_pact", {})
+	if not up.is_empty():
+		proposer = str(up.get("proposer", ""))
 	var t := {"id": state.new_id("universal_pact"), "signed_turn": state.turn,
-		"type": "universal", "members": nations.duplicate(true), "status": "active",
+		"type": "universal", "proposer": proposer, "members": nations.duplicate(true), "status": "active",
 		"note": "Pacte universel — distinct d'un traité bilatéral (condition de victoire diplomatique)."}
 	(state.diplomacy["peace_treaties"] as Array).append(t)
 	state.wars.clear()

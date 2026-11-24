@@ -158,8 +158,24 @@ func queue_order(order: Dictionary) -> String:
 					reason = "ordre de mobilisation de ce type déjà donné ce mois-ci"
 		Orders.DISRUPT_LINK, Orders.REPAIR_LINK, Orders.SET_PORT_STATUS:
 			reason = TransportSystem.validate(state, transport_network, order)
+		Orders.APPROVE_TRADE:
+			reason = MarketSystem.approve_transaction(state, str(order.get("transaction", "")),
+				order["nation"], rules)
+			if reason == "":
+				return ""  # effet immédiat dans l'état, rien à résoudre plus tard
 		Orders.TRADE:
-			reason = MarketSystem.validate(state, transport_network, rules, order)
+			# RESTORATION/STABILIZATION 01 : une vente joueur est d'abord un engagement signé,
+			# puis une transaction approuvée — jamais un prélèvement direct sur autrui.
+			if str(order.get("nation", "")) != str(order.get("from", "")):
+				reason = "un État ne peut pas expédier les ressources d'un autre État"
+			else:
+				var tid := MarketSystem.open_transaction(state, order, rules)
+				if str(order.get("transaction", "")).is_empty():
+					order["transaction"] = tid
+				reason = MarketSystem.approve_transaction(state, str(order["transaction"]),
+					order["nation"], rules)
+				if reason == "":
+					reason = MarketSystem.validate(state, transport_network, rules, order)
 		Orders.INVEST_RESOURCE:
 			reason = ResourceSystem.validate_invest(state, str(order.get("region", "")),
 				str(order.get("resource", "")), float(order.get("amount", 0)))

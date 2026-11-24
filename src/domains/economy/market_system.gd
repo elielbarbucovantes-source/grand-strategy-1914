@@ -57,8 +57,94 @@ static func route_for(state: GameState, net: TransportNetwork, rules: Dictionary
 	return r
 
 
-static func validate(state: GameState, net: TransportNetwork, rules: Dictionary, order: Dictionary,
-		cache: Dictionary = {}) -> String:
+## STABILIZATION 01 — consentement commercial authentifié.
+## L'exportateur crée un engagement dans l'état ; la transaction ne peut être exécutée que
+## si un engagement ACTIF correspond EXACTEMENT aux parties, ressource, quantité et prix.
+static func open_transaction(state: GameState, order: Dictionary, rules: Dictionary) -> String:
+	var from := str(order.get("nation", ""))
+	var to := str(order.get("to", ""))
+	var res := str(order.get("resource", ""))
+	var amount := float(order.get("amount", 0))
+	if not state.nations.has(from) or not state.nations.has(to) or from == to:
+		return "parties commerciales invalides"
+	if amount <= 0.0:
+		return "volume non positif"
+	var id := str(order.get("transaction", "")) if str(order.get("transaction", "")) != "" else state.new_id("commerce")
+	var price := effective_price(state, res, rules, from, to)
+	var consents: Dictionary = state.economy["trade_consents"]
+	consents[id] = {"id": id, "from": from, "to": to, "resource": res, "amount": amount,
+		"price": price, "turn": state.turn, "expires_turn": state.turn + int(cfg(rules).get("consent_valid_turns", 6)),
+		"status": "pending", "executed": false}
+	return id
+
+
+static func approve_transaction(state: GameState, transaction: String, nation: String, rules: Dictionary) -> String:
+	var consents: Dictionary = state.economy["trade_consents"]
+	if not consents.has(transaction):
+		return "transaction inconnue"
+	var c: Dictionary = consents[transaction]
+	if str(c["from"]) != nation:
+		return "seul l'exportateur peut consentir"
+	if str(c["status"]) != "pending":
+		return "transaction déjà traitée"
+	if state.turn > int(c["expires_turn"]):
+		c["status"] = "expired"
+		return "transaction expirée"
+	c["status"] = "approved"
+	return ""
+
+
+static func _consent_error(state: GameState, order: Dictionary, rules: Dictionary) -> String:
+	var tid := str(order.get("transaction", ""))
+	if tid == "":
+		return "consentement absent"
+	var consents: Dictionary = state.economy["trade_consents"]
+	if not consents.has(tid):
+		return "consentement falsifié ou inconnu"
+	var c: Dictionary = consents[tid]
+	if str(c.get("status", "")) != "approved":
+		return "consentement non approuvé"
+	if bool(c.get("executed", false)):
+		return "transaction déjà exécutée"
+	if state.turn > int(c.get("expires_turn", 0)):
+		return "consentement expiré"
+	var from := str(order.get("from", order.get("nation", "")))
+	if str(order.get("nation", "")) != from or str(c.get("from", "")) != from:
+		return "exportateur non authentifié"
+	if str(c.get("to", "")) != str(order.get("to", "")):
+		return "partenaire non conforme à l'accord"
+	if str(c.get("resource", "")) != str(order.get("resource", "")):
+		return "ressource non conforme à l'accord"
+	if float(order.get("amount", 0)) > float(c.get("amount", 0)) + 0.000001:
+		return "quantité supérieure à celle acceptée"
+	var expected := float(c.get("price", 0.0)) * float(order.get("amount", 0))
+	var paid := effective_price(state, str(order.get("resource", "")), rules, from, str(order.get("to", ""))) * float(order.get("amount", 0))
+	if not is_equal_approx(expected, paid):
+		return "prix non conforme à l'accord"
+	return ""
+
+
+## Validation d'une DEMANDE d'achat : aucune ressource n'est débitée ici ; le consentement
+## sera vérifié au moment de l'expédition par l'exportateur.
+static func validate_request(state: GameState, net: TransportNetwork, rules: Dictionary,
+		order: Dictionary, cache: Dictionary = {}) -> String:
+	var to := str(order.get("nation", ""))
+	var terms: Dictionary = order.get("terms", {})
+	var from := str((order["to"] as Array)[0])
+	var res := str(terms.get("resource", ""))
+	var amount := float(terms.get("amount", 0))
+	if not state.nations.has(from) or not state.nations.has(to) or from == to or amount <= 0.0:
+		return "demande commerciale invalide"
+	if ResourceSystem.available(state, from, res) < amount:
+		return "stock insuffisant chez l'exportateur"
+	if not (state.economy.get("resources", []) as Array).has(res) and not ((rules.get("economy_model", {}) as Dictionary).get("resources", []) as Array).has(res):
+		return "ressource inconnue"
+	var fake := {"nation": from, "from": from, "to": to, "resource": res, "amount": amount}
+	return validate_core(state, net, rules, fake, cache)
+
+
+static func validate_core(state: GameState, net: TransportNetwork, rules: Dictionary,
+		order: Dictionary, cache: Dictionary = {}) -> String:
 	var from := str(order.get("from", order.get("nation", "")))
 	var to := str(order.get("to", ""))
 	var res := str(order.get("resource", ""))
@@ -77,7 +163,6 @@ static func validate(state: GameState, net: TransportNetwork, rules: Dictionary,
 	var imports := _arrived_this_turn(state, to)
 	if imports >= int(cfg.get("max_imports_per_nation_per_month", 6)):
 		return "quota d'importations atteint"
-	# RESTORATION 02 : l'importateur paie réellement l'exportateur.
 	var cost := effective_price(state, res, rules, from, to) * amount
 	var buyer: Dictionary = state.economy["stocks"].get(to, {})
 	if float(buyer.get("money", 0.0)) + 0.000001 < cost:
@@ -89,10 +174,23 @@ static func validate(state: GameState, net: TransportNetwork, rules: Dictionary,
 	return ""
 
 
+static func validate(state: GameState, net: TransportNetwork, rules: Dictionary, order: Dictionary,
+		cache: Dictionary = {}) -> String:
+	var consent_err := _consent_error(state, order, rules)
+	if consent_err != "":
+		return consent_err
+	return validate_core(state, net, rules, order, cache)
+
+
 static func propose(state: GameState, net: TransportNetwork, rules: Dictionary, order: Dictionary) -> String:
-	var err := validate(state, net, rules, order)
+	# Un seul calcul de route, AVANT toute modification d'état.
+	var route_cache: Dictionary = {}
+	var err := validate(state, net, rules, order, route_cache)
 	if err != "":
 		return err
+	var r: Dictionary = route_for(state, net, rules, order, route_cache)
+	if not bool(r.get("ok", false)):
+		return "itinéraire devenu indisponible"
 	var cfg := cfg(rules)
 	var from := str(order.get("from", order.get("nation", "")))
 	var to := str(order["to"])
@@ -105,10 +203,19 @@ static func propose(state: GameState, net: TransportNetwork, rules: Dictionary, 
 	buyer["money"] = float(buyer.get("money", 0.0)) - cost
 	seller["money"] = float(seller.get("money", 0.0)) + cost
 	ResourceSystem.consume(state, from, res, amount)  # retiré du stock dès l'expédition
+	# STABILIZATION 01 : verrou anti-réexécution — une transaction signée ne sert qu'une fois.
+	var tid := str(order.get("transaction", ""))
+	if tid != "" and (state.economy["trade_consents"] as Dictionary).has(tid):
+		(state.economy["trade_consents"][tid] as Dictionary)["executed"] = true
 	# RESTORATION 02 : route réelle conservée et capacité effectivement engagée.
-	var r := route_for(state, net, rules, order)
 	var need := maxi(1, int(ceil(amount * float(cfg.get("route_capacity_share", 0.25)))))
 	var committed := TransportRouter.commit(net, state, r, need)
+	if not committed:
+		# Restaurer les fonds et le stock : aucun prélèvement sans livraison possible.
+		buyer["money"] = float(buyer.get("money", 0.0)) + cost
+		seller["money"] = float(seller.get("money", 0.0)) - cost
+		ResourceSystem.release_reserved(state, from, res, amount)
+		return "capacité de transport insuffisante"
 	(state.economy["trade"] as Array).append({
 		"id": state.new_id("trade"), "turn": state.turn, "from": from, "to": to,
 		"resource": res, "amount": amount, "cost": cost,

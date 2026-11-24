@@ -28,8 +28,7 @@ func test_trade_pays_exporter_and_records_real_route() -> void:
 	s.state.economy["stocks"]["france"]["coal"] = 50.0
 	s.state.economy["stocks"]["belgium"]["money"] = 100.0
 	var seller_before := float(s.state.economy["stocks"]["france"].get("money", 0.0))
-	var err := MarketSystem.propose(s.state, s.transport_network, s.rules,
-		Orders.trade("france", "france", "belgium", "coal", 10.0))
+	var err := MarketSystem.propose(s.state, s.transport_network, s.rules, _approved_trade(s))
 	runner.check(err == "", "expédition acceptée : %s" % err)
 	var exp: Dictionary = s.state.economy["trade"][-1]
 	runner.check((exp["links"] as Array).size() > 0, "itinéraire réel conservé")
@@ -47,8 +46,7 @@ func test_trade_delivery_requires_turn_and_practicable_links() -> void:
 	_transit(s, "france", "belgium")
 	s.state.economy["stocks"]["france"]["coal"] = 50.0
 	s.state.economy["stocks"]["belgium"]["money"] = 100.0
-	MarketSystem.propose(s.state, s.transport_network, s.rules,
-		Orders.trade("france", "france", "belgium", "coal", 10.0))
+	MarketSystem.propose(s.state, s.transport_network, s.rules, _approved_trade(s))
 	var exp: Dictionary = s.state.economy["trade"][-1]
 	var links: Array = exp["links"]
 	s.state.turn = int(exp["arrival_turn"])
@@ -88,8 +86,7 @@ func test_trade_persists_in_save() -> void:
 	_transit(s, "france", "belgium")
 	s.state.economy["stocks"]["france"]["coal"] = 50.0
 	s.state.economy["stocks"]["belgium"]["money"] = 100.0
-	MarketSystem.propose(s.state, s.transport_network, s.rules,
-		Orders.trade("france", "france", "belgium", "coal", 10.0))
+	MarketSystem.propose(s.state, s.transport_network, s.rules, _approved_trade(s))
 	DirAccess.make_dir_recursive_absolute("user://test_saves")
 	var path := "user://test_saves/r02_trade.json"
 	runner.check(SaveRepository.save(path, s.state, s.world, s.rules) == "", "sauvegarde commerce")
@@ -301,3 +298,11 @@ func test_seed_reproducibility_is_preserved() -> void:
 		a.end_turn(); b.end_turn(); c.end_turn()
 	runner.check(a.state.checksum() == b.state.checksum(), "même graine → résultat identique")
 	runner.check(a.state.checksum() != c.state.checksum(), "graines différentes → campagnes différentes")
+
+
+## STABILIZATION 01 : ordre commercial signé par l'exportateur.
+func _approved_trade(s: GameSession) -> Dictionary:
+	var o := Orders.trade("france", "france", "belgium", "coal", 10.0)
+	o["transaction"] = MarketSystem.open_transaction(s.state, o, s.rules)
+	MarketSystem.approve_transaction(s.state, str(o["transaction"]), "france", s.rules)
+	return o
